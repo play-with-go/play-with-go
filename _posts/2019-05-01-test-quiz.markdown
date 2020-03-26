@@ -1,0 +1,23 @@
+---
+layout: post
+title:  "Quiz Test"
+tags: [beginner, linux, operations, developer]
+categories: beginner
+terms: 1
+toc: true
+---
+
+
+{:.quiz}
+Which function is used to copy a slice?
+- (x) copy()
+- ( ) cp()
+- ( ) rep()
+
+{:.quiz}
+Which of the following is true about packages in Go?
+- [ ] The first line of the program package defines the package name in which a Go program should lie.
+- [ ] It is a must statement as Go programs runs in packages.
+- [ ] Each package has a path and name associated with it.
+- [x] All of the above
+- [ ] None of the above

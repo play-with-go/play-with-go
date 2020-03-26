@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+
+  site:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/srv/jekyll
+    ports:
+      - 4000:4000
+    command: ["jekyll", "serve"]
+

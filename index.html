@@ -1,0 +1,20 @@
+---
+layout: page
+---
+
+
+
+<div class="tags-expo">
+  {% assign categories = site.categories %}
+  <div class="tags-expo-section">
+    {% for cat in categories %}
+    <ul class="tags-expo-posts">
+      {% for post in cat[1] %}
+      <li>
+        <a class="post-title" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </div>
+</div>
