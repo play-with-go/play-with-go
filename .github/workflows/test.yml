@@ -1,0 +1,20 @@
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - '**'
+
+name: Go
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        go_version: ["1.14.2"]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@01aecccf739ca6ff86c0539fbc67a7a5007bbc81 # v2.1.0
