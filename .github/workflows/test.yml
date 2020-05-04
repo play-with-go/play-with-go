@@ -6,6 +6,11 @@ on:
     branches:
       - '**'
 
+env:
+  GOPRIVATE: "github.com/play-with-go/*"
+  PREGUIDE_SKIP_CACHE: "true"
+  PREGUIDE_PULL_IMAGE: "missing"
+
 name: Go
 jobs:
   test:
@@ -26,6 +31,8 @@ jobs:
       run: echo -e "machine github.com\nlogin playwithgopher\npassword ${{secrets.playwithgopherPAT}}\n\nmachine api.github.com\nlogin playwithgopher\npassword ${{secrets.playwithgopherPAT}}\n" > ~/.netrc
     - name: Verify
       run: go mod verify
+    - name: Re-generate
+      run: go generate ./...
     - name: Tidy
       run: go mod tidy
     - name: Verify commit is clean
