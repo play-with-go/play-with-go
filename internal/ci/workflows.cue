@@ -31,12 +31,24 @@ test: json.#Workflow & {
 			name: "Checkout code"
 			uses: "actions/checkout@v2"
 		}, {
-			name: "Env setup"
-			run:  "./_scripts/env.sh github"
-		}, {
 			name: "Install Go"
 			uses: "actions/setup-go@v2"
 			with: "go-version": "${{ matrix.go_version }}"
+		}, {
+			name: "go mod download"
+			run:  "./_scripts/go_mod_download.sh"
+		}, {
+			name: "Setup mkcert"
+			run:  "./_scripts/setupmkcert.sh"
+		}, {
+			name: "Env setup"
+			run:  "./_scripts/env.sh github"
+		}, {
+			name: "Start gitea services"
+			run:  "./_scripts/dc.sh up -d nginx gitea gitea_prestep"
+		}, {
+			name: "Setup"
+			run:  "./_scripts/setup.sh"
 		}, {
 			name: "Verify"
 			run:  "go mod verify"

@@ -1,8 +1,12 @@
+# For each of the styles of export/alias below, we actually perform the
+# export/alias so that the rest of the script can take advantage of the change
+
 bashExport() {
 	echo export "$1=\"$2\""
 }
 
 bashAlias() {
+	alias "$1=$2"
 	echo alias "$1=$2"
 }
 
@@ -11,6 +15,7 @@ smartcdExport() {
 }
 
 smartcdAlias() {
+	alias "$1=$2"
 	echo autostash alias "$1=$2"
 }
 
@@ -19,8 +24,7 @@ githubExport() {
 }
 
 githubAlias() {
-	# no-op
-	echo ""
+	alias "$1=$2"
 }
 
 export=bashExport
