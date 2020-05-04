@@ -22,6 +22,8 @@ jobs:
       uses: actions/setup-go@78bd24e01a1a907f7ea3e614b4d7c15e563585a8 # v2.0.3
       with:
         go-version: ${{ matrix.go_version }}
+    - name: Setup netrc
+      run: echo -e "machine github.com\nlogin playwithgopher\npassword ${{secrets.playwithgopherPAT}}\n\nmachine api.github.com\nlogin playwithgopher\npassword ${{secrets.playwithgopherPAT}}\n" > ~/.netrc
     - name: Verify
       run: go mod verify
     - name: Tidy
