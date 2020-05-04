@@ -9,6 +9,7 @@ test: json.#Workflow & {
 	}
 
 	env: {
+		PREGUIDE_SKIP_CACHE:       true
 		PLAYWITHGODEV_GITHUB_USER: "playwithgopher"
 		PLAYWITHGODEV_GITHUB_PAT:  "${{ secrets.PLAYWITHGODEV_GITHUB_PAT }}"
 	}
