@@ -1,2 +1,5 @@
 /.github/workflows/*.yml linguist-generated
 /cue.mod/pkg/* linguist-generated
+_posts/* linguist-generated
+guides/*/out/gen_out.cue linguist-generated
+guides/gen_guide_structures.cue linguist-generated
