@@ -40,6 +40,9 @@ test: json.#Workflow & {
 			name: "Setup netrc"
 			run:  "echo -e \"machine github.com\\nlogin playwithgopher\\npassword ${{secrets.playwithgopherPAT}}\\n\\nmachine api.github.com\\nlogin playwithgopher\\npassword ${{secrets.playwithgopherPAT}}\\n\" > ~/.netrc"
 		}, {
+			name: "Start gitea"
+			run:  "$(go list -f {{.Dir}} github.com/play-with-go/gitea)/setup.sh"
+		}, {
 			name: "Verify"
 			run:  "go mod verify"
 		}, {
