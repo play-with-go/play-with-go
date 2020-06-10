@@ -1,6 +1,27 @@
 version: '3'
 
+networks:
+  pwg:
+    external: false
+
 services:
+  haproxy:
+    networks:
+      - pwg
+
+  pwd:
+    networks:
+      - pwg
+    volumes:
+      - $PWD/.bin/play-with-docker:/runbin/pwd:ro
+    environment:
+      - PWD_UNSAFE=true
+
+  l2:
+    networks:
+      - pwg
+    volumes:
+      - $PWD/.bin/l2:/runbin/l2:ro
 
   site:
     build:
