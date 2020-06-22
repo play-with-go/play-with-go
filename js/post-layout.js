@@ -4,7 +4,7 @@ var siteUrl = "{{ site.url }}";
 var fontChanged = false;
 pwd.newSession(
   [{ selector: ".term1" }, { selector: ".term2" }, { selector: ".term3" }],
-  { baseUrl: "{{site.pwdurl}}", ImageName: imageName }
+  { baseUrl: "{{site.pwdurl}}", ImageName: imageName, oauthProvider: 'google' }
 );
 $(".panel-left").resizable({
   handleSelector: ".splitter",
