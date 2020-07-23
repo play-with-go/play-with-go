@@ -5,13 +5,13 @@ layout: default
 {% assign terms = page.terms | default: 1 %}
 <div class="progress-bar"></div>
 <div class="panel-container">
-    
+
     <div class="menu-panel">
         {% include menu.html %}
     </div>
 
     <div class="panel-left">
-        <div class="course-index-button panel-nav" style="padding: 11px 0 0 15px; color: #007d9c; margin-bottom: 10px"> 
+        <div class="course-index-button panel-nav" style="padding: 11px 0 0 15px; color: #007d9c; margin-bottom: 10px">
             <i class="menu-button fa fa-bars fa-2x pull-left"></i>
             <h4 style="line-height: 30px;" class="course-index-bttn-text">Course Index</h4>
         </div>
@@ -37,7 +37,7 @@ layout: default
             {% endfor %}
             </ul>
         </div>
-        <div class="twrapper"> 
+        <div class="twrapper">
             <div class="splitter"></div>
             <div class="tab-content" id="myTabContent">
                 {% for i in (1..terms) %}
@@ -63,7 +63,8 @@ layout: default
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js"></script>
 <script src="https://rawgit.com/RickStrahl/jquery-resizable/master/dist/jquery-resizable.min.js"></script>
-<script src="https://unpkg.com/pwd-sdk@0.0.2/dist/pwd.min.js"></script>
+<!-- <script src="https://unpkg.com/pwd-sdk@0.0.2/dist/pwd.min.js"></script> -->
+<script src="http://localhost:8080/dist/pwd.js"></script>
 <script src="{{site.baseurl}}/js/quiz.js"></script>
 <script src="{{site.baseurl}}/js/post-layout.js"></script>
 <script src="{{site.baseurl}}/js/progress-bar.js"></script>
