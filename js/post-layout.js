@@ -2,6 +2,7 @@
 ---
 var siteUrl = "{{ site.url }}";
 var fontChanged = false;
+var pwd = new PWD();
 pwd.newSession(
   [{ selector: ".term1" }, { selector: ".term2" }, { selector: ".term3" }],
   { baseUrl: "{{site.pwdurl}}", ImageName: imageName, oauthProvider: 'google' }
@@ -19,6 +20,10 @@ $(document).ready(function() {
     sel.offsetHeight; // no need to store this anywhere, the reference is enough
     sel.style.display = "";
   });
+  //Resize when switching terminals
+  $(".nav-tabs .nav-item").on("click",()=>{
+    pwd.resize()
+  })
   // expand/shrink terminals
   $(".fa-expand").on("click", function() {
     const leftPanel = $(".panel-left");

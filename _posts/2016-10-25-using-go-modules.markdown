@@ -71,6 +71,7 @@ func Hello() string {
     return "Ahoy, world!"
 }
 ```
+{:data-upload-path="/" data-source-url="https://raw.githubusercontent.com/play-with-docker/play-with-docker/master/api.go" data-upload-term=".term1"}
 
 ```.term1
 cd $GOPATH/src
