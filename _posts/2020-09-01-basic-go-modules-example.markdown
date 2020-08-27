@@ -27,25 +27,23 @@ go: creating new go.mod: module gopher.live/{% raw %}{{{.REPO1}}}{% endraw %}
 
 Write a readme:
 
-```.term1
-cat <<'EOD' > /home/gopher/mod1/README.md
+```md
 ## `gopher.live/{% raw %}{{{.REPO1}}}{% endraw %}`
-EOD
 ```
+{:data-upload-path="L2hvbWUvZ29waGVyL21vZDE=" data-upload-src="UkVBRE1FLm1k:IyMgYGdvcGhlci5saXZlL3t7ey5SRVBPMX19fWA=" data-upload-term=".term1"}
 
 Write a readme:
 
-```.term1
-cat <<'EOD' > /home/gopher/mod1/main.go
+```go
 package main
 
 import "fmt"
 
 func main() {
-        fmt.Println("Hello, world!")
+	fmt.Println("Hello, world!")
 }
-EOD
 ```
+{:data-upload-path="L2hvbWUvZ29waGVyL21vZDE=" data-upload-src="bWFpbi5nbw==:cGFja2FnZSBtYWluCgppbXBvcnQgImZtdCIKCmZ1bmMgbWFpbigpIHsKCWZtdC5QcmludGxuKCJIZWxsbywgd29ybGQhIikKfQ==" data-upload-term=".term1"}
 
 Commit and push:
 
