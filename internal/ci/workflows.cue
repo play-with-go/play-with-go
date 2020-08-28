@@ -31,6 +31,9 @@ test: json.#Workflow & {
 			name: "Checkout code"
 			uses: "actions/checkout@v2"
 		}, {
+			name: "Env setup"
+			run:  "./_scripts/env.sh github"
+		}, {
 			name: "Install Go"
 			uses: "actions/setup-go@v2"
 			with: "go-version": "${{ matrix.go_version }}"
