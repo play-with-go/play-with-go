@@ -4,9 +4,22 @@ set -euo pipefail
 
 eval "$($( command cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )/env.sh bash)"
 
+# Check we have the required variables set
+if [ "${PLAYWITHGODEV_GITHUB_USER:-}" == "" ]
+then
+	echo "PLAYWITHGODEV_GITHUB_USER is not set"
+	exit 1
+fi
+if [ "${PLAYWITHGODEV_GITHUB_PAT:-}" == "" ]
+then
+	echo "PLAYWITHGODEV_GITHUB_PAT is not set"
+	exit 1
+fi
+
 bin="$( command cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )/../.bin"
 
-GOBIN=$bin go install github.com/play-with-docker/play-with-docker github.com/play-with-docker/play-with-docker/router/l2
+GOBIN=$bin go install github.com/play-with-docker/play-with-docker github.com/play-with-docker/play-with-docker/router/l2 \
+	github.com/play-with-go/gitea/cmd/gitea
 
 export GOMODCACHE="$(go env GOPATH | cut -f 1 -d :)"/pkg/mod
 
