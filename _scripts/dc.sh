@@ -19,7 +19,7 @@ fi
 bin="$( command cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )/../.bin"
 
 GOBIN=$bin go install github.com/play-with-docker/play-with-docker github.com/play-with-docker/play-with-docker/router/l2 \
-	github.com/play-with-go/gitea/cmd/gitea
+	github.com/play-with-go/gitea/cmd/gitea github.com/play-with-go/play-with-go/cmd/controller
 
 export GOMODCACHE="$(go env GOPATH | cut -f 1 -d :)"/pkg/mod
 

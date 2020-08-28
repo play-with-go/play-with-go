@@ -3,10 +3,31 @@
 var siteUrl = "{{ site.url }}";
 var fontChanged = false;
 var pwd = new PWD();
-pwd.newSession(
-  [{ selector: ".term1" }, { selector: ".term2" }, { selector: ".term3" }],
-  { baseUrl: "{{site.pwdurl}}", ImageName: imageName, oauthProvider: 'google' }
-);
+var guideRequest = new XMLHttpRequest();
+// TODO: move away from hard-code guides URL to use {{ page.guide }}
+guideRequest.open('GET', '{{site.pwdurl}}/guides/2019-03-19-using-go-modules');
+guideRequest.withCredentials = true;
+guideRequest.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
+guideRequest.onload = function() {
+	console.log("We got a response", guideRequest)
+	// TODO: error handling
+	if (guideRequest.status != 200) {
+		return;
+	}
+	var sessionData = JSON.parse(guideRequest.responseText);
+	pwd.init(
+		sessionData.session_id,
+		{ baseUrl: "{{site.pwdurl}}", ImageName: imageName, oauthProvider: 'google' },
+		function() {
+			var instances = [];
+			for (name in pwd.instances) {
+				instances.push(pwd.instances[name]);
+			}
+			pwd.createTerminal({ selector: ".term1" }, instances[0].name);
+		}
+	);
+};
+guideRequest.send();
 $(".panel-left").resizable({
   handleSelector: ".splitter",
   resizeHeight: false,
