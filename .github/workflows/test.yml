@@ -6,6 +6,10 @@ on:
     branches:
       - '**'
 
+env:
+  PLAYWITHGODEV_GITHUB_USER: playwithgopher
+  PLAYWITHGODEV_GITHUB_PAT: ${{ secrets.PLAYWITHGODEV_GITHUB_PAT }}
+
 name: Go
 jobs:
   test:
@@ -16,6 +20,8 @@ jobs:
         go_version: ["1.14.2"]
     runs-on: ${{ matrix.os }}
     steps:
+    - name: Setup netrc
+      run: echo -e "machine github.com\nlogin $PLAYWITHGODEV_GITHUB_USER\npassword $PLAYWITHGODEV_GITHUB_PAT\n\nmachine api.github.com\nlogin $PLAYWITHGODEV_GITHUB_USER\npassword $PLAYWITHGODEV_GITHUB_PAT\n" > ~/.netrc
     - name: Checkout code
       uses: actions/checkout@01aecccf739ca6ff86c0539fbc67a7a5007bbc81 # v2.1.0
     - name: Install Go
