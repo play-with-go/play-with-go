@@ -20,6 +20,7 @@ GOBIN=$modRoot/.bin go install github.com/myitcv/docker-compose
 $export COMPOSE_PROJECT_NAME playwithgo
 $export COMPOSE_FILE "$pwdRoot/docker-compose.yml:$giteaRoot/docker-compose.yml:$modRoot/docker-compose.yml"
 $export PATH "$modRoot/.bin:$PATH"
+$export PREGUIDE_CONFIG "$modRoot/prestep_conf.cue"
 mkcertRoot="$(mkcert -CAROOT)"
 rootCA="$(cat $mkcertRoot/rootCA.pem)"
 $export PLAYWITHGO_ROOTCA "$rootCA"
@@ -36,3 +37,6 @@ then
 	$export PLAYWITHGODEV_ROOT_USER root
 	$export PLAYWITHGODEV_ROOT_PASSWORD asdffdsa
 fi
+$export PREGUIDE_DOCKER "busybox@sha256:2423a1efa0c8eeae54e2fc587c53c5161511d0c3882c2944febb2860577ad327"
+$export PREGUIDE_PULL_IMAGE missing
+$export PREGUIDE_DEVEL_HASH true
