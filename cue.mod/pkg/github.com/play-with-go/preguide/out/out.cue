@@ -74,6 +74,7 @@ _#stepCommon: {
 
 #UploadStep: {
 	_#stepCommon
+	Renderer: preguide.#Renderer
 	Language: string
 	Source:   string
 	Target:   string

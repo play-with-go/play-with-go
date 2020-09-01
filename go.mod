@@ -7,8 +7,8 @@ require (
 	github.com/kr/pretty v0.2.0
 	github.com/myitcv/docker-compose v0.0.0-20200623052903-c60483a3250f
 	github.com/play-with-docker/play-with-docker v0.0.2-0.20200622012609-cf50d344b2d8
-	github.com/play-with-go/gitea v0.0.0-20200831060332-b6c3b4566fd4
-	github.com/play-with-go/preguide v0.0.0-20200831060003-8afe19d430b2
+	github.com/play-with-go/gitea v0.0.0-20200901154324-2109ace16bee
+	github.com/play-with-go/preguide v0.0.0-20200901132516-efacc1315e70
 	golang.org/x/sync v0.0.0-20200317015054-43a5402ce75a
 )
 
