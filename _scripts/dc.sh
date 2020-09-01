@@ -7,13 +7,11 @@ eval "$($( command cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd 
 # Check we have the required variables set
 if [ "${PLAYWITHGODEV_GITHUB_USER:-}" == "" ]
 then
-	echo "PLAYWITHGODEV_GITHUB_USER is not set"
-	exit 1
+	echo "warning: PLAYWITHGODEV_GITHUB_USER is not set"
 fi
 if [ "${PLAYWITHGODEV_GITHUB_PAT:-}" == "" ]
 then
-	echo "PLAYWITHGODEV_GITHUB_PAT is not set"
-	exit 1
+	echo "warning: PLAYWITHGODEV_GITHUB_PAT is not set"
 fi
 
 bin="$( command cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )/../.bin"
