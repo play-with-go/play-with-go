@@ -1,83 +1,40 @@
-# Contributing
+## [`play-with-go.dev`](https://play-with-go.dev/)
 
-Details to follow.
+[`play-with-go.dev`](https://play-with-go.dev/) is a series of hands-on, interactive, browser-based guides that
+introduce the tools required to work with [the Go programming language](https://golang.org/). It is the natural next
+step after ["A Tour of Go"](https://tour.golang.org/welcome/1) which introduces the language itself. `play-with-go.dev`
+covers the various subcommands of the `go` command, [`staticcheck`](https://staticcheck.io/) and many other tools that
+will make writing Go programs that much easier and fun!
 
-## Prerequisite 1 - GitHub account with `userguides` membership
+To get started learning with `play-with-go.dev`, simply visit https://play-with-go.dev/.
 
-A number of the play-with-go guides require the reader to commit code to a
-remote source control server (for example publishing modules). The creation
-of user account and any repositories happens automatically when a guide is
-opened. This setup works via GitHub. Hence to develop any guides locally
-you need to have a GitHub account and various permissions.
+If you are interested in learning more about the project, in particular how to contribute, please see the [contribution
+guidelines](CONTRIBUTING.md).
 
-Please [raise an
-issue](https://github.com/play-with-go/play-with-go/issues/new?title=access:%20please%20grant%20me%20access%20to%20develop%20guides)
-requesting member accessing to the [`userguides`](https://github.com/userguides) organisation.
+![Screenshot showing a play-with-go.dev guide in the browser](images/screenshot.png "Screenshot showing a
+play-with-go.dev guide in the browser")
 
-Once you have been granted access, [create a new personal access token](https://github.com/settings/tokens/new) with
-`public_repo` scope.
+### About
 
-Then set the following two environment variables:
+`play-with-go.dev` guides is built using the popular
+[`play-with-docker`](https://github.com/play-with-docker/play-with-docker) platform. Guides are served via
+https://play-with-go.dev/ and run in a user's browser, presenting the guide content on the left, and an interactive
+terminal on the right. This terminal is connected to a remote session hosted in [Google's
+Cloud](https://cloud.google.com/). As the reader works through a guide, clicking on command blocks cause those commands
+to be executed on the remote session. Similarly, clicking on file contents causes those file contents to be uploaded.
+The reader can also run commands or make changes to files themselves.
 
-* `PLAYWITHGODEV_GITHUB_USER`
-* `PLAYWITHGODEV_GITHUB_PAT`
+### Sponsors
 
-## Prerequisite 2 - `mkcert`-created play-with-go.dev SSL certificate
+The `play-with-go.dev` project exists and is free of charge thanks to the generosity of our sponsors.
 
-Firstly install [`mkcert`](https://github.com/FiloSottile/mkcert).
+_Details to follow._
 
-Then create a play-with-go.dev SSL certificate:
+If you or your company would like to sponsor the project, please [contact us](mailto:sponsor@play-with-go.dev).
 
-```
-pushd $(mkcert -CAROOT)
-mkdir play-with-go.dev
-mkcert -cert-file play-with-go.dev/cert.pem -key-file play-with-go.dev/key.pem "*.play-with-go.dev" play-with-go.dev
-popd
-```
+### Thanks
 
-## Setup
-
-In one terminal:
-
-```
-./_scripts/dc.sh up
-```
-
-_(we use `up` here as opposed to `up -d` because the log output is useful for debugging purposes)_
-
-In another terminal:
-
-```
-./_scripts/setup.sh
-```
-
-to create the admin user.
-
-
-## Regenerating guides
-
-Regenerate guides using `preguide` via:
-
-```
-./_scripts/generateGuides.sh
-```
-
-For more verbose logging:
-
-```
-PREGUIDE_DEBUG=true ./_scripts/generateGuides.sh
-```
-
-To regenerate guides, skipping any cache checks:
-
-```
-PREGUIDE_SKIP_CACHE=true ./_scripts/generateGuides.sh
-```
-
-## Viewing a guide
-
-For now you also need to run the [SDK](https://github.com/play-with-docker/sdk) locally, specifically [this
-PR](https://github.com/play-with-docker/sdk/pull/35). Follow the instructions in that project's README to start the
-`sdktest` container.
-
-Then visit http://localhost:4000 and choose the guide from the list.
+Thank you to the following individuals for their help in making `play-with-go.dev` happen: [Carmen
+Andoh](https://twitter.com/carmatrocity), [Marcos Nils](https://twitter.com/marcosnils), [Jonathan
+Leibiusky](https://twitter.com/xetorthio), [Marcel van Lohuizen](https://twitter.com/mpvl_), [Daniel
+Martí](https://twitter.com/mvdan_), [Roger Peppe](https://twitter.com/rogpeppe).
