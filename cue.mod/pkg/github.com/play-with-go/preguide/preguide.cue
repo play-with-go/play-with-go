@@ -26,12 +26,17 @@ import (
 	}
 
 	_#uploadCommon: {
+		Target: string
+
 		// The language of the content being uploaded, e.g. go
 		// This gets used on the markdown code block, hence the
 		// values supported here are a function of the markdown
 		// parse on the other end.
-		Target:   string
 		Language: *regexp.FindSubmatch("^.(.*)", path.Ext(Target))[1] | string
+
+		// Renderer defines how the upload file contents will be
+		// rendered to the user in the guide.
+		Renderer: #Renderer
 		...
 	}
 
@@ -172,6 +177,32 @@ import (
 	// Env is the environment to pass to docker containers when running
 	// this prestep.
 	Env: [...string]
+}
+
+// Renderers define what part (or whole) of an upload file should be shown (rendered)
+// to the user in the guide.
+#Renderer: (*#RenderFull | #RenderLineRanges) & _#rendererCommon
+
+#RendererType: int
+
+#RendererTypeFull:       #RendererType & 1
+#RendererTypeLineRanges: #RendererType & 2
+
+_#rendererCommon: {
+	RendererType: #RendererType
+	...
+}
+
+#RenderFull: {
+	_#rendererCommon
+	RendererType: #RendererTypeFull
+}
+
+#RenderLineRanges: {
+	_#rendererCommon
+	RendererType: #RendererTypeLineRanges
+	Ellipsis:     *"..." | string
+	Lines: [...[int, int]]
 }
 
 // Post upgrade to latest CUE we have a number of things to change/test, with /
