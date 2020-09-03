@@ -396,10 +396,10 @@ github.com/pkg/diff v0.0.0-20190930165518-531926345625/go.mod h1:kFj35MyHn14a6pI
 github.com/pkg/errors v0.8.0/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pkg/errors v0.8.1 h1:iURUrRGxPUNPdy5/HRSm+Yj6okJ6UtLINN0Q9M4+h3I=
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
-github.com/play-with-go/gitea v0.0.0-20200901154324-2109ace16bee h1:+ltL4MPYcTcImpNf5pDPx0qLBAsM04QzfLer/B1+P+A=
-github.com/play-with-go/gitea v0.0.0-20200901154324-2109ace16bee/go.mod h1:5wzGVHZdpakzP9oeBPme69c9UJ5AxVtddtF3xWK9CXc=
-github.com/play-with-go/preguide v0.0.0-20200901132516-efacc1315e70 h1:1+PlPuWpC0UrMjj9YA8xi0GVlzE2tZD3kSk6j2c27Uc=
-github.com/play-with-go/preguide v0.0.0-20200901132516-efacc1315e70/go.mod h1:BjTLKAv4oTx5N7oiS8qduVj2pUmNBqDGdrMG4k5U/YQ=
+github.com/play-with-go/gitea v0.0.0-20200903101414-d298acd78a27 h1:MIMr4/MeenvDtZ7j8lvjNkUIkDF2D96x2qsYFd2VLxs=
+github.com/play-with-go/gitea v0.0.0-20200903101414-d298acd78a27/go.mod h1:uQ67ahxOjvzzW4IdyUvk+LYEjAd18S6aDHo6AwGCKvA=
+github.com/play-with-go/preguide v0.0.0-20200903100314-03754f51d880 h1:AfRrkFpPeNlSCaOOiaqQkrMKe1i+uKEkJd1zm5RvzGg=
+github.com/play-with-go/preguide v0.0.0-20200903100314-03754f51d880/go.mod h1:fM7TWWrNmD/Avohhv4Zh3vj78lgQNApPCD5/hWh1jU8=
 github.com/pmezard/go-difflib v0.0.0-20151028094244-d8ed2627bdf0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
