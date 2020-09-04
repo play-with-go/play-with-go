@@ -52,19 +52,19 @@ Commit and push:
 ```.term1
 $ git add -A
 $ git commit -m "Initial commit"
-[master (root-commit) abcd123] Initial commit
+[main (root-commit) abcd123] Initial commit
  3 files changed, 11 insertions(+)
  create mode 100644 README.md
  create mode 100644 go.mod
  create mode 100644 main.go
-$ git push -u origin master
+$ git push -u origin main
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
 To https://play-with-go.dev/userguides/{% raw %}{{.REPO1}}{% endraw %}.git
- * [new branch]      master -> master
-Branch 'master' set up to track remote branch 'master' from 'origin'.
+ * [new branch]      main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
 ```
-{:data-command-src="Z2l0IGFkZCAtQQpnaXQgY29tbWl0IC1tICJJbml0aWFsIGNvbW1pdCIKZ2l0IHB1c2ggLXUgb3JpZ2luIG1hc3Rlcgo="}
+{:data-command-src="Z2l0IGFkZCAtQQpnaXQgY29tbWl0IC1tICJJbml0aWFsIGNvbW1pdCIKZ2l0IHB1c2ggLXUgb3JpZ2luIG1haW4K"}
 
 Use the module:
 
