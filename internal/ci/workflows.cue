@@ -4,7 +4,7 @@ import "github.com/SchemaStore/schemastore/src/schemas/json"
 
 test: json.#Workflow & {
 	on: {
-		push: branches: ["master"]
+		push: branches: ["main"]
 		pull_request: branches: ["**"]
 	}
 

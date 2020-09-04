@@ -21,8 +21,8 @@ package out
           \"Path\": \"github.com/play-with-go/gitea/cmd/gitea\",
           \"Main\": {
             \"Path\": \"github.com/play-with-go/gitea\",
-            \"Version\": \"v0.0.0-20200903101414-d298acd78a27\",
-            \"Sum\": \"h1:MIMr4/MeenvDtZ7j8lvjNkUIkDF2D96x2qsYFd2VLxs=\",
+            \"Version\": \"v0.0.0-20200904151012-19bc77e031fd\",
+            \"Sum\": \"h1:jKJdeqeesCeAqhSYZyaMQmh5hrtquDxYsucKhyuWjDg=\",
             \"Replace\": null
           },
           \"Deps\": [
@@ -133,7 +133,7 @@ package out
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15@sha256:ec830fd226bdf40efd20d6d12a100f3176bc3d86b7e01c8772a7b7434306ffd4"
+				Image: "playwithgo/go1.15.1@sha256:ce6cfb9fbc282b872db4b24fea0b24277e6751b67013ce26b77bc8a776296831"
 			}
 		}
 	}]
@@ -225,7 +225,7 @@ package out
 						CmdStr:   "git commit -m \"Initial commit\""
 						ExitCode: 0
 						Output: """
-        [master (root-commit) abcd123] Initial commit
+        [main (root-commit) abcd123] Initial commit
          3 files changed, 11 insertions(+)
          create mode 100644 README.md
          create mode 100644 go.mod
@@ -234,14 +234,14 @@ package out
         """
 					}, {
 						Negated:  false
-						CmdStr:   "git push -u origin master"
+						CmdStr:   "git push -u origin main"
 						ExitCode: 0
 						Output: """
         remote: . Processing 1 references        
         remote: Processed 1 references in total        
         To https://play-with-go.dev/userguides/{{.REPO1}}.git
-         * [new branch]      master -> master
-        Branch 'master' set up to track remote branch 'master' from 'origin'.
+         * [new branch]      main -> main
+        Branch 'main' set up to track remote branch 'main' from 'origin'.
         
         """
 					}]
@@ -289,7 +289,7 @@ package out
 					}]
 				}
 			}
-			Hash: "6088f4860382776841fdefb387e03b892dd2580b399a8eb9143aa7092ffa697e"
+			Hash: "e86c65f10a52dc83cc9ab57ff5c7ac3e13810c52704c5ee9c87d5ddae5e4d85f"
 		}
 	}
 }

@@ -24,7 +24,7 @@ Scenarios: go115: preguide.#Scenario & {
 
 Terminals: term1: preguide.#Guide.#Terminal & {
 	Description: "The main terminal"
-	Scenarios: go115: Image: "playwithgo/go1.15@sha256:ec830fd226bdf40efd20d6d12a100f3176bc3d86b7e01c8772a7b7434306ffd4"
+	Scenarios: go115: Image: #go115LatestImage
 }
 
 Steps: create_module: en: preguide.#Command & {Source: """
@@ -52,7 +52,7 @@ func main() {
 Steps: commit_and_push: en: preguide.#Command & {Source: """
 git add -A
 git commit -m "Initial commit"
-git push -u origin master
+git push -u origin main
 """}
 
 Steps: use_module: en: preguide.#Command & {Source: """
