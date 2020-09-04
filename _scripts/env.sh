@@ -4,9 +4,6 @@ set -euo pipefail
 
 source "$( command cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"/env_common.bash
 
-# Must be set first because the go list commands below rely on it
-$export GOPRIVATE github.com/play-with-go/*
-
 # We need to ensure everything is downloaded else the go list -m commands that
 # follow will not work
 go mod download
