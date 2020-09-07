@@ -21,8 +21,8 @@ package out
           \"Path\": \"github.com/play-with-go/gitea/cmd/gitea\",
           \"Main\": {
             \"Path\": \"github.com/play-with-go/gitea\",
-            \"Version\": \"v0.0.0-20200904151012-19bc77e031fd\",
-            \"Sum\": \"h1:jKJdeqeesCeAqhSYZyaMQmh5hrtquDxYsucKhyuWjDg=\",
+            \"Version\": \"v0.0.0-20200907105535-234e83ded480\",
+            \"Sum\": \"h1:09xh6SgCXISNI6QdVMQADeievtCuEK/1ivtQa2NFuVE=\",
             \"Replace\": null
           },
           \"Deps\": [
@@ -82,8 +82,8 @@ package out
             },
             {
               \"Path\": \"github.com/play-with-go/preguide\",
-              \"Version\": \"v0.0.0-20200903100314-03754f51d880\",
-              \"Sum\": \"h1:AfRrkFpPeNlSCaOOiaqQkrMKe1i+uKEkJd1zm5RvzGg=\",
+              \"Version\": \"v0.0.0-20200907104401-64ec5179ca6a\",
+              \"Sum\": \"h1:KcvwYng+P5UAhgM+yWtRw606bjatSmKxDanCv9nJnp8=\",
               \"Replace\": null
             },
             {
@@ -289,7 +289,7 @@ package out
 					}]
 				}
 			}
-			Hash: "e86c65f10a52dc83cc9ab57ff5c7ac3e13810c52704c5ee9c87d5ddae5e4d85f"
+			Hash: "5110092f47c0b47edd46467a836c45af9209579a4df8ee767a867e9ace8a9d28"
 		}
 	}
 }
