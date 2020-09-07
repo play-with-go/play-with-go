@@ -4,6 +4,7 @@ go 1.15
 
 require (
 	cuelang.org/go v0.2.2
+	github.com/gorilla/securecookie v1.1.1
 	github.com/kr/pretty v0.2.0
 	github.com/myitcv/docker-compose v0.0.0-20200623052903-c60483a3250f
 	github.com/play-with-docker/play-with-docker v0.0.3-0.20200904130329-2d1515d12fb0
