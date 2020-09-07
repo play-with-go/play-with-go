@@ -1,5 +1,10 @@
 ---
 ---
+// replaceAll is a basic alternative to String.prototype.replaceAll which has not
+// yet landed in all browsers
+function replaceAll(string, search, replace) {
+  return string.split(search).join(replace);
+}
 function replaceInText(element, replacements) {
 	for (let node of element.childNodes) {
 		switch (node.nodeType) {
@@ -8,7 +13,7 @@ function replaceInText(element, replacements) {
 				break;
 			case Node.TEXT_NODE:
 				for (let r of replacements) {
-					node.textContent = node.textContent.replaceAll(r[0], r[1]);
+					node.textContent = replaceAll(node.textContent, r[0], r[1]);
 				}
 				break;
 			case Node.DOCUMENT_NODE:
@@ -41,7 +46,7 @@ guideRequest.onload = function() {
 		document.querySelectorAll("["+attr+"]").forEach(function(node) {
 			let v = atob(node.getAttribute(attr));
 			for (let r of replacements) {
-				v = v.replaceAll(r[0], r[1]);
+				v = replaceAll(v, r[0], r[1]);
 			}
 			node.setAttribute(attr, btoa(v));
 		});
