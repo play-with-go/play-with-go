@@ -133,7 +133,7 @@ package out
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.1@sha256:ce6cfb9fbc282b872db4b24fea0b24277e6751b67013ce26b77bc8a776296831"
+				Image: "playwithgo/go1.15.1@sha256:009b09b0b12874cb1dd362bc2471e39d430f6c2c7cac47dc9db2ab7a4290e59b"
 			}
 		}
 	}]
@@ -289,7 +289,7 @@ package out
 					}]
 				}
 			}
-			Hash: "5110092f47c0b47edd46467a836c45af9209579a4df8ee767a867e9ace8a9d28"
+			Hash: "e5d4e6ad70ebd8609799f8887e1f6a183654238609d2312c997d7d30377a8a93"
 		}
 	}
 }
