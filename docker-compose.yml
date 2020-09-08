@@ -16,7 +16,7 @@ services:
     environment:
       - PLAYWITHGO_ROOTCA
     working_dir: "/start"
-    command: ["/runbin/controller", "-guideconfig=guides/gen_guide_structures.cue", "-prestepconfig=prestep_conf.cue", "-dev"]
+    command: ["/runbin/controller", "-guideconfig=guides/gen_guide_structures.cue", "-prestepconfig=prestep_conf.cue", "-unsafe", "-origin=http://localhost:4000"]
 
   nginx:
     networks:

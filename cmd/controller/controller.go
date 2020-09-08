@@ -13,14 +13,11 @@ import (
 
 	"cuelang.org/go/cue"
 	"cuelang.org/go/cue/load"
+	"github.com/gorilla/securecookie"
 	"github.com/kr/pretty"
 	"github.com/play-with-go/preguide"
 	"golang.org/x/sync/errgroup"
 )
-
-// TODO: config for
-//
-// * Supported origins
 
 type config struct {
 	guides   preguide.GuideStructures
@@ -31,6 +28,12 @@ func (r *runner) mainerr() (err error) {
 	defer HandleKnown(&err)
 	if err := r.fs.Parse(os.Args[1:]); err != nil {
 		return usageErr{err: err}
+	}
+
+	if !*r.fUnsafe {
+		if *r.fHashKey == "" {
+			raise("-hashKey is required in a non-development environment")
+		}
 	}
 
 	if len(r.fGuideConfigs) == 0 {
@@ -47,13 +50,35 @@ func (r *runner) mainerr() (err error) {
 			return
 		}
 
-		// TODO: fix up with config instead of echo-ing back Origin
-		resp.Header().Set("Access-Control-Allow-Origin", req.Header.Get("Origin"))
-		resp.Header().Set("Access-Control-Allow-Credentials", "true")
-		if req.Method == "OPTIONS" {
-			resp.Header().Set("Access-Control-Allow-Methods", "GET")
-			resp.Header().Set("Access-Control-Allow-Headers", "Content-Type")
-			return
+		// Authenticate the request
+		if !*r.fUnsafe {
+			type CookieID struct {
+				Id         string `json:"id"`
+				UserName   string `json:"user_name"`
+				UserAvatar string `json:"user_avatar"`
+				ProviderId string `json:"provider_id"`
+			}
+			var s *securecookie.SecureCookie
+			s = securecookie.New([]byte(*r.fHashKey), []byte(*r.fBlockKey))
+			cookie, err := req.Cookie("id")
+			if err != nil {
+				raiseHTTP(http.StatusUnauthorized, "failed to find cookie named id")
+			}
+			var cookieData CookieID
+			if err := s.Decode("id", cookie.Value, &cookieData); err != nil {
+				raiseHTTP(http.StatusUnauthorized, "failed to authenticate: %v", err)
+			}
+		}
+
+		// CORS (if required)
+		if *r.fOrigin != "" {
+			resp.Header().Set("Access-Control-Allow-Origin", *r.fOrigin)
+			resp.Header().Set("Access-Control-Allow-Credentials", "true")
+			if req.Method == "OPTIONS" {
+				resp.Header().Set("Access-Control-Allow-Methods", "GET")
+				resp.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+				return
+			}
 		}
 
 		if req.Method != "POST" {
@@ -136,7 +161,7 @@ func (r *runner) mainerr() (err error) {
 			if strings.Index(e, "=") == -1 {
 				// We need to expand the env based on the controller's environment
 				// but only if we are in dev mode
-				if !*r.fDev {
+				if !*r.fUnsafe {
 					continue
 				}
 				e += "=" + os.Getenv(e)
@@ -206,7 +231,7 @@ func (r *runner) logOrRespond(resp http.ResponseWriter, format string, args ...i
 	// If we are in development mode, also write the response to the HTTP request to
 	// make debugging that bit easier. Assumes the status header has already been
 	// written
-	if *r.fDev {
+	if *r.fUnsafe {
 		w = io.MultiWriter(w, resp)
 	}
 	fmt.Fprintf(w, msg)

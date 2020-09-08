@@ -45,9 +45,12 @@ func (u usageErr) Error() string {
 type runner struct {
 	fs *flag.FlagSet
 
-	fDev            *bool
+	fUnsafe         *bool
 	fGuideConfigs   []string
 	fPrestepConfigs []string
+	fOrigin         *string
+	fHashKey        *string
+	fBlockKey       *string
 
 	runtime cue.Runtime
 	codec   *gocodec.Codec
@@ -62,9 +65,12 @@ func newRunner() *runner {
 		fs: fs,
 	}
 
-	r.fDev = fs.Bool("dev", false, "indicates we are running in development-mode")
+	r.fUnsafe = fs.Bool("unsafe", false, "indicates we are running in development-mode and hence enable unsafe things")
 	fs.Var(stringFlagList{&r.fGuideConfigs}, "guideconfig", "CUE configuration input for guides; can appear multiple times")
 	fs.Var(stringFlagList{&r.fPrestepConfigs}, "prestepconfig", "CUE configuration input for presteps deployments; can appear multiple times")
+	r.fOrigin = fs.String("origin", "", "the origin to set in the Access-Control-Allow-Origin header. Empty means no CORS setup required")
+	r.fHashKey = fs.String("hashKey", "", "hashKey is used to authenticate the cookie value using HMAC")
+	r.fBlockKey = fs.String("blockKey", "", "blockKey (optional), used to encrypt the cookie value. Empty means implies not using encryption")
 
 	r.codec = gocodec.New(&r.runtime, nil)
 
@@ -80,10 +86,9 @@ Usage of controller:
 
     controller
 
-In -dev mode, incomplete environment variables in a guide's configuration
-are expanded as part of the environment returned to the caller. This allows
-for things like machine-local root CAs to be passed into the running
-container.
+In -unsafe mode, incomplete environment variables in a guide's configuration
+are expanded as part of the environment returned to the caller. This allows for
+things like machine-local root CAs to be passed into the running container.
 
 %s`[1:], r.flagDefaults())
 }
