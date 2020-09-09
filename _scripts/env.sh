@@ -19,12 +19,12 @@ $export COMPOSE_FILE "$pwdRoot/docker-compose.yml:$giteaRoot/docker-compose.yml:
 $export PATH "$modRoot/.bin:$PATH"
 $export PREGUIDE_CONFIG "$modRoot/prestep_conf.cue"
 mkcertRoot="$(mkcert -CAROOT)"
-rootCA="$(cat $mkcertRoot/rootCA.pem)"
+rootCA="$(cat "$mkcertRoot/rootCA.pem")"
 $export PLAYWITHGO_ROOTCA "$rootCA"
 if [ "${PLAYWITHGODEV_CERT_FILE:-}" == "" ]
 then
-	certFile="$(cat $mkcertRoot/play-with-go.dev/cert.pem)"
-	keyFile="$(cat $mkcertRoot/play-with-go.dev/key.pem)"
+	certFile="$(cat "$mkcertRoot/play-with-go.dev/cert.pem")"
+	keyFile="$(cat "$mkcertRoot/play-with-go.dev/key.pem")"
 	$export PLAYWITHGODEV_CERT_FILE "$certFile"
 	$export PLAYWITHGODEV_KEY_FILE "$keyFile"
 fi
