@@ -149,7 +149,7 @@ First, [install `mkcert`](https://github.com/FiloSottile/mkcert#installation).
 Then create a play-with-go.dev SSL certificate:
 
 ```
-pushd $(mkcert -CAROOT)
+pushd "$(mkcert -CAROOT)"
 mkdir play-with-go.dev
 mkcert -cert-file play-with-go.dev/cert.pem -key-file play-with-go.dev/key.pem "*.play-with-go.dev" play-with-go.dev
 popd
