@@ -127,7 +127,7 @@ package out
         """
 		Variables: ["GITEA_USERNAME", "GITEA_PASSWORD", "REPO1"]
 	}]
-	Delims: ["{{", "}}"]
+	Delims: ["{{{", "}}}"]
 	Terminals: [{
 		Name:        "term1"
 		Description: "The main terminal"
@@ -165,15 +165,15 @@ package out
         """
 					}, {
 						Negated:  false
-						CmdStr:   "git remote add origin https://play-with-go.dev/userguides/{{.REPO1}}.git"
+						CmdStr:   "git remote add origin https://play-with-go.dev/userguides/{{{.REPO1}}}.git"
 						ExitCode: 0
 						Output:   ""
 					}, {
 						Negated:  false
-						CmdStr:   "go mod init play-with-go.dev/userguides/{{.REPO1}}"
+						CmdStr:   "go mod init play-with-go.dev/userguides/{{{.REPO1}}}"
 						ExitCode: 0
 						Output: """
-        go: creating new go.mod: module play-with-go.dev/userguides/{{.REPO1}}
+        go: creating new go.mod: module play-with-go.dev/userguides/{{{.REPO1}}}
         
         """
 					}]
@@ -187,7 +187,7 @@ package out
 					Renderer: {
 						RendererType: 1
 					}
-					Source: "## `play-with-go.dev/userguides/{{.REPO1}}`"
+					Source: "## `play-with-go.dev/userguides/{{{.REPO1}}}`"
 					Order:  1
 				}
 				create_main: {
@@ -239,7 +239,7 @@ package out
 						Output: """
         remote: . Processing 1 references        
         remote: Processed 1 references in total        
-        To https://play-with-go.dev/userguides/{{.REPO1}}.git
+        To https://play-with-go.dev/userguides/{{{.REPO1}}}.git
          * [new branch]      main -> main
         Branch 'main' set up to track remote branch 'main' from 'origin'.
         
@@ -271,16 +271,16 @@ package out
         """
 					}, {
 						Negated:  false
-						CmdStr:   "go get play-with-go.dev/userguides/{{.REPO1}}"
+						CmdStr:   "go get play-with-go.dev/userguides/{{{.REPO1}}}"
 						ExitCode: 0
 						Output: """
-        go: downloading play-with-go.dev/userguides/{{.REPO1}} v0.0.0-20060102150405-abcde12345
-        go: play-with-go.dev/userguides/{{.REPO1}} upgrade => v0.0.0-20060102150405-abcde12345
+        go: downloading play-with-go.dev/userguides/{{{.REPO1}}} v0.0.0-20060102150405-abcde12345
+        go: play-with-go.dev/userguides/{{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcde12345
         
         """
 					}, {
 						Negated:  false
-						CmdStr:   "go run play-with-go.dev/userguides/{{.REPO1}}"
+						CmdStr:   "go run play-with-go.dev/userguides/{{{.REPO1}}}"
 						ExitCode: 0
 						Output: """
         Hello, world!
@@ -289,7 +289,7 @@ package out
 					}]
 				}
 			}
-			Hash: "1dd15a2b13fc289d88730783c8944bd35d55e1bf15fb400ad319066db3f347d2"
+			Hash: "cad86716022189e64828c37c98c9488ac787e0d4bddfb6d415d841e087831024"
 		}
 	}
 }

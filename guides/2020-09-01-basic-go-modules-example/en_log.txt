@@ -33,11 +33,11 @@ $ mkdir /home/gopher/mod1
 $ cd /home/gopher/mod1
 $ git init
 Initialized empty Git repository in /home/gopher/mod1/.git/
-$ git remote add origin https://play-with-go.dev/userguides/{{.REPO1}}.git
-$ go mod init play-with-go.dev/userguides/{{.REPO1}}
-go: creating new go.mod: module play-with-go.dev/userguides/{{.REPO1}}
+$ git remote add origin https://play-with-go.dev/userguides/{{{.REPO1}}}.git
+$ go mod init play-with-go.dev/userguides/{{{.REPO1}}}
+go: creating new go.mod: module play-with-go.dev/userguides/{{{.REPO1}}}
 $ cat <<EOD > /home/gopher/mod1/README.md
-## `play-with-go.dev/userguides/{{.REPO1}}`
+## `play-with-go.dev/userguides/{{{.REPO1}}}`
 EOD
 $ cat <<EOD > /home/gopher/mod1/main.go
 package main
@@ -58,15 +58,15 @@ $ git commit -m "Initial commit"
 $ git push -u origin main
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
-To https://play-with-go.dev/userguides/{{.REPO1}}.git
+To https://play-with-go.dev/userguides/{{{.REPO1}}}.git
  * [new branch]      main -> main
 Branch 'main' set up to track remote branch 'main' from 'origin'.
 $ mkdir /home/gopher/mod2
 $ cd /home/gopher/mod2
 $ go mod init mod.com
 go: creating new go.mod: module mod.com
-$ go get play-with-go.dev/userguides/{{.REPO1}}
-go: downloading play-with-go.dev/userguides/{{.REPO1}} v0.0.0-20060102150405-abcde12345
-go: play-with-go.dev/userguides/{{.REPO1}} upgrade => v0.0.0-20060102150405-abcde12345
-$ go run play-with-go.dev/userguides/{{.REPO1}}
+$ go get play-with-go.dev/userguides/{{{.REPO1}}}
+go: downloading play-with-go.dev/userguides/{{{.REPO1}}} v0.0.0-20060102150405-abcde12345
+go: play-with-go.dev/userguides/{{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcde12345
+$ go run play-with-go.dev/userguides/{{{.REPO1}}}
 Hello, world!
