@@ -17,7 +17,7 @@ package guides
 			}]
 		}
 	}]
-	Delims: ["{{", "}}"]
+	Delims: ["{{{", "}}}"]
 	Terminals: [{
 		Name:        "term1"
 		Description: "The main terminal"
