@@ -21,8 +21,8 @@ package out
           \"Path\": \"github.com/play-with-go/gitea/cmd/gitea\",
           \"Main\": {
             \"Path\": \"github.com/play-with-go/gitea\",
-            \"Version\": \"v0.0.0-20200910060534-3b55d1ab0435\",
-            \"Sum\": \"h1:gzLdttqUPoFy49mF1ZbJOYyU1K3hNPJTXC7nWsOMILg=\",
+            \"Version\": \"v0.0.0-20200910095922-078aeaa71f64\",
+            \"Sum\": \"h1:TOrRjRAF8jtzEIKdqMmbDyd5H/tmBVCcZ0y3wu5mtnw=\",
             \"Replace\": null
           },
           \"Deps\": [
@@ -289,7 +289,7 @@ package out
 					}]
 				}
 			}
-			Hash: "cad86716022189e64828c37c98c9488ac787e0d4bddfb6d415d841e087831024"
+			Hash: "99c3b5afa36f740fae725b72708f6c618d29f8094bd1ca06f6db11558736455e"
 		}
 	}
 }
