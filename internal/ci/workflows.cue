@@ -48,7 +48,7 @@ test: json.#Workflow & {
 			run:  "./_scripts/dc.sh up -d nginx gitea gitea_prestep"
 		}, {
 			name: "Setup"
-			run:  "./_scripts/setup.sh"
+			run:  "./_scripts/gitea.sh setup"
 		}, {
 			name: "Verify"
 			run:  "go mod verify"
