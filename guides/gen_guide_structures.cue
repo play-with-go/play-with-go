@@ -1,15 +1,10 @@
 package guides
 
 "2020-09-01-basic-go-modules-example": {
-	Scenarios: [{
-		Name:        "go115"
-		Description: "Go 1.15"
-	}]
-	Networks: ["playwithgo_gitea"]
-	Env: ["PLAYWITHGO_ROOTCA"]
+	Delims: ["{{{", "}}}"]
 	Presteps: [{
-		Path:    "/newuser"
 		Package: "github.com/play-with-go/gitea"
+		Path:    "/newuser"
 		Args: {
 			Repos: [{
 				Pattern: "mod1*"
@@ -17,7 +12,6 @@ package guides
 			}]
 		}
 	}]
-	Delims: ["{{{", "}}}"]
 	Terminals: [{
 		Name:        "term1"
 		Description: "The main terminal"
@@ -27,5 +21,11 @@ package guides
 			}
 		}
 	}]
+	Scenarios: [{
+		Name:        "go115"
+		Description: "Go 1.15"
+	}]
+	Networks: ["playwithgo_gitea"]
+	Env: ["PLAYWITHGO_ROOTCA"]
 }
 

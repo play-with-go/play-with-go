@@ -5,8 +5,8 @@ import "github.com/play-with-go/preguide"
 #GuideOutput: {
 	Delims: [string, string]
 	Presteps: [...#Prestep]
-	Terminals: [...#Terminal]
-	Scenarios: [...#Scenario]
+	Terminals: [...preguide.#Terminal]
+	Scenarios: [...preguide.#Scenario]
 	Langs: [preguide.#Language]: #LangSteps
 	Defs: [string]:              _
 	Networks: [...string]
@@ -48,21 +48,6 @@ _#stepCommon: {
 #CommandStep: {
 	_#stepCommon
 	Stmts: [...#Stmt]
-}
-
-#Scenario: {
-	Name:        string
-	Description: string
-}
-
-#Terminal: {
-	Name:        string
-	Description: string
-	Scenarios: [string]: #TerminalScenario
-}
-
-#TerminalScenario: {
-	Image: string
 }
 
 #Stmt: {
