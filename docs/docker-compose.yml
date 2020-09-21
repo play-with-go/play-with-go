@@ -1,0 +1,60 @@
+version: '3.2'
+
+networks:
+  pwg:
+    external: false
+services:
+  controller:
+    image: golang
+    networks:
+      - pwg
+    ports:
+      - "8081:8080"
+    volumes:
+      - $PWD/.bin/controller:/runbin/controller:ro
+      - $PWD:/start:ro
+    environment:
+      - PLAYWITHGO_ROOTCA
+    working_dir: "/start"
+    command: ["/runbin/controller", "-guideconfig=guides/gen_guide_structures.cue", "-prestepconfig=prestep_conf.cue", "-unsafe", "-origin=http://localhost:4000"]
+
+  nginx:
+    networks:
+      pwg:
+        aliases:
+          - play-with-go.dev
+
+  gitea_prestep:
+    networks:
+      - pwg
+    volumes:
+      - $PWD/.bin/gitea:/runbin/gitea:ro
+
+  haproxy:
+    networks:
+      - pwg
+
+  pwd:
+    networks:
+      - pwg
+    volumes:
+      - $PWD/.bin/play-with-docker:/runbin/pwd:ro
+    environment:
+      - PWD_UNSAFE=true
+
+  l2:
+    networks:
+      - pwg
+    volumes:
+      - $PWD/.bin/l2:/runbin/l2:ro
+
+  site:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/srv/jekyll
+    ports:
+      - 4000:4000
+    command: ["jekyll", "serve"]
+
