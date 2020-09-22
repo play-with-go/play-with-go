@@ -2,6 +2,12 @@ package ci
 
 import "github.com/SchemaStore/schemastore/src/schemas/json"
 
+workflows: [...{file: string, schema: json.#Workflow}]
+workflows: [
+	{file: "test.yml", schema: test},
+	{file: "wip.yml", schema:  wip},
+]
+
 test: json.#Workflow & {
 	on: {
 		push: branches: ["main"]

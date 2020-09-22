@@ -22,7 +22,7 @@ Scenarios: go115: preguide.#Scenario & {
 	Description: "Go 1.15"
 }
 
-Terminals: term1: preguide.#Guide.#Terminal & {
+Terminals: term1: preguide.#Terminal & {
 	Description: "The main terminal"
 	Scenarios: go115: Image: #go115LatestImage
 }
