@@ -7,8 +7,8 @@ Presteps: [{
           \"Path\": \"github.com/play-with-go/gitea/cmd/gitea\",
           \"Main\": {
             \"Path\": \"github.com/play-with-go/gitea\",
-            \"Version\": \"v0.0.0-20200921114606-e713515083fc\",
-            \"Sum\": \"h1:LxgPteEy6dGKY60JxW6dFZhsDEJA0d2xlft0hsF+1AA=\",
+            \"Version\": \"v0.0.0-20200923061654-b167c460f8ef\",
+            \"Sum\": \"h1:rAGH/rHtM9WtN6SjYuTDtg0v2XvhiMHO7vslUGanPZQ=\",
             \"Replace\": null
           },
           \"Deps\": [
@@ -68,8 +68,8 @@ Presteps: [{
             },
             {
               \"Path\": \"github.com/play-with-go/preguide\",
-              \"Version\": \"v0.0.0-20200921113921-e25b36230915\",
-              \"Sum\": \"h1:Wpe48q8eGdQugB3tG2USVASQKFMopSFPY4MoYtFIyMM=\",
+              \"Version\": \"v0.0.0-20200922142535-8ddd23c822fb\",
+              \"Sum\": \"h1:gvkHpUvTUU6s/+LFLYKOicVYPuv4i5FYCYTNV/9mkcU=\",
               \"Replace\": null
             },
             {
@@ -124,7 +124,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.1@sha256:009b09b0b12874cb1dd362bc2471e39d430f6c2c7cac47dc9db2ab7a4290e59b"
+			Image: "playwithgo/go1.15.1@sha256:af32904111a7ae381d6821f4ab217b2bce58996267e22f2cf1cd27a16199c128"
 		}
 	}
 	Name: "term1"
@@ -137,7 +137,7 @@ Networks: ["playwithgo_gitea"]
 Env: ["PLAYWITHGO_ROOTCA"]
 Langs: {
 	en: {
-		Hash: "67d0ae3f341e6e85fcb59dd860cf1db4df7c130c78261ec3eb0625ee7600ca6e"
+		Hash: "412be6b3b8592dc0d404a1f8b4c8dd5fabcde6cf5194ece559246302d280f2e0"
 		Steps: {
 			use_module: {
 				Stmts: [{
@@ -160,12 +160,12 @@ Langs: {
 					Negated:  false
 				}, {
 					Output: """
-        go: downloading play-with-go.dev/userguides/{{{.REPO1}}} v0.0.0-20060102150405-abcde12345
-        go: play-with-go.dev/userguides/{{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcde12345
+        go: downloading gopher.live/{{{.REPO1}}} v0.0.0-20060102150405-abcde12345
+        go: gopher.live/{{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcde12345
         
         """
 					ExitCode: 0
-					CmdStr:   "go get play-with-go.dev/userguides/{{{.REPO1}}}"
+					CmdStr:   "go get gopher.live/{{{.REPO1}}}"
 					Negated:  false
 				}, {
 					Output: """
@@ -173,7 +173,7 @@ Langs: {
         
         """
 					ExitCode: 0
-					CmdStr:   "go run play-with-go.dev/userguides/{{{.REPO1}}}"
+					CmdStr:   "go run gopher.live/{{{.REPO1}}}"
 					Negated:  false
 				}]
 				Order:    4
@@ -203,7 +203,7 @@ Langs: {
 					Output: """
         remote: . Processing 1 references        
         remote: Processed 1 references in total        
-        To https://play-with-go.dev/userguides/{{{.REPO1}}}.git
+        To https://gopher.live/{{{.REPO1}}}.git
          * [new branch]      main -> main
         Branch 'main' set up to track remote branch 'main' from 'origin'.
         
@@ -239,7 +239,7 @@ Langs: {
 			}
 			create_readme: {
 				Order:  1
-				Source: "## `play-with-go.dev/userguides/{{{.REPO1}}}`"
+				Source: "## `gopher.live/{{{.REPO1}}}`"
 				Renderer: {
 					RendererType: 1
 				}
@@ -271,15 +271,15 @@ Langs: {
 				}, {
 					Output:   ""
 					ExitCode: 0
-					CmdStr:   "git remote add origin https://play-with-go.dev/userguides/{{{.REPO1}}}.git"
+					CmdStr:   "git remote add origin https://gopher.live/{{{.REPO1}}}.git"
 					Negated:  false
 				}, {
 					Output: """
-        go: creating new go.mod: module play-with-go.dev/userguides/{{{.REPO1}}}
+        go: creating new go.mod: module gopher.live/{{{.REPO1}}}
         
         """
 					ExitCode: 0
-					CmdStr:   "go mod init play-with-go.dev/userguides/{{{.REPO1}}}"
+					CmdStr:   "go mod init gopher.live/{{{.REPO1}}}"
 					Negated:  false
 				}]
 				Order:    0
