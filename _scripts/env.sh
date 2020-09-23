@@ -23,8 +23,8 @@ rootCA="$(cat "$mkcertRoot/rootCA.pem")"
 $export PLAYWITHGO_ROOTCA "$rootCA"
 if [ "${PLAYWITHGODEV_CERT_FILE:-}" == "" ]
 then
-	certFile="$(cat "$mkcertRoot/play-with-go.dev/cert.pem")"
-	keyFile="$(cat "$mkcertRoot/play-with-go.dev/key.pem")"
+	certFile="$(cat "$mkcertRoot/gopher.live/cert.pem")"
+	keyFile="$(cat "$mkcertRoot/gopher.live/key.pem")"
 	$export PLAYWITHGODEV_CERT_FILE "$certFile"
 	$export PLAYWITHGODEV_KEY_FILE "$keyFile"
 fi
