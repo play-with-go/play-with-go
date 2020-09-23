@@ -38,3 +38,4 @@ Thank you to the following individuals for their help in making `play-with-go.de
 Andoh](https://twitter.com/carmatrocity), [Marcos Nils](https://twitter.com/marcosnils), [Jonathan
 Leibiusky](https://twitter.com/xetorthio), [Marcel van Lohuizen](https://twitter.com/mpvl_), [Daniel
 Martí](https://twitter.com/mvdan_), [Roger Peppe](https://twitter.com/rogpeppe).
+
