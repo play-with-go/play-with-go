@@ -22,7 +22,8 @@ services:
     networks:
       pwg:
         aliases:
-          - play-with-go.dev
+          - gopher.live
+          - api.gopher.live
 
   gitea_prestep:
     networks:

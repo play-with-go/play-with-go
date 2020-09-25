@@ -16,16 +16,20 @@ import (
 
 #Guide: {
 
-	#Step: (#Command | #CommandFile | #Upload | #UploadFile ) & _#stepCommon
-
-	_#stepCommon: {
+	#Step: (#Command | #CommandFile | #Upload | #UploadFile ) & {
 		Name:     string
 		StepType: #StepType
 		Terminal: string
-		...
 	}
 
-	_#uploadCommon: {
+	// Change this to a hidden definition once cuelang.org/issue/533 is resolved
+	#stepCommon: {
+		Name:     string
+		StepType: #StepType
+		Terminal: string
+	}
+
+	#uploadCommon: {
 		Target: string
 
 		// The language of the content being uploaded, e.g. go
@@ -37,43 +41,32 @@ import (
 		// Renderer defines how the upload file contents will be
 		// rendered to the user in the guide.
 		Renderer: #Renderer
-		...
 	}
 
 	#Command: {
-		_#stepCommon
+		#stepCommon
 		StepType: #StepTypeCommand
 		Source:   string
 	}
 
 	#CommandFile: {
-		_#stepCommon
+		#stepCommon
 		StepType: #StepTypeCommandFile
 		Path:     string
 	}
 
 	#Upload: {
-		_#stepCommon
-		_#uploadCommon
+		#stepCommon
+		#uploadCommon
 		StepType: #StepTypeUpload
 		Source:   string
 	}
 
 	#UploadFile: {
-		_#stepCommon
-		_#uploadCommon
+		#stepCommon
+		#uploadCommon
 		StepType: #StepTypeUploadFile
 		Path:     string
-	}
-
-	#Terminal: {
-		Name:        string
-		Description: string
-		Scenarios: [string]: #TerminalScenario
-	}
-
-	#TerminalScenario: {
-		Image: string
 	}
 
 	// Networks is the list of docker networks to connect to when running
@@ -129,6 +122,16 @@ import (
 	Defs: [string]: _
 }
 
+#Terminal: {
+	Name:        string
+	Description: string
+	Scenarios: [string]: #TerminalScenario
+}
+
+#TerminalScenario: {
+	Image: string
+}
+
 #Scenario: {
 	Name:        string
 	Description: string
@@ -137,7 +140,7 @@ import (
 #Prestep: {
 	Package: string
 	Path:    *"/" | string
-	Args:    *null | _
+	Args?:   _
 }
 
 // TODO: keep in sync with Go code
@@ -209,7 +212,7 @@ _#rendererCommon: {
 // reference to https://gist.github.com/myitcv/399ed50f792b49ae7224ee5cb3e504fa#file-304b02e-cue
 //
 // 1. Move to the use of #TerminalName (probably hidden) as a type for a terminal's
-// name in _#stepCommon
+// name in #stepCommon
 // 2. Try and move to the advanced definition of Steps: [string]: [lang] to be the
 // disjunction of #Step or [scenario]: #Step
 // 3. Ensure that a step's name can be defaulted for this advanced definition (i.e.

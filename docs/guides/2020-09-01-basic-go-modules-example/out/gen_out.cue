@@ -1,28 +1,14 @@
 package out
 
-{
-	Scenarios: [{
-		Name:        "go115"
-		Description: "Go 1.15"
-	}]
-	Networks: ["playwithgo_gitea"]
-	Env: ["PLAYWITHGO_ROOTCA"]
-	Presteps: [{
-		Path:    "/newuser"
-		Package: "github.com/play-with-go/gitea"
-		Args: {
-			Repos: [{
-				Pattern: "mod1*"
-				Var:     "REPO1"
-			}]
-		}
-		Version: """
+Presteps: [{
+	Variables: ["GITEA_USERNAME", "GITEA_PASSWORD", "REPO1"]
+	Version: """
         {
           \"Path\": \"github.com/play-with-go/gitea/cmd/gitea\",
           \"Main\": {
             \"Path\": \"github.com/play-with-go/gitea\",
-            \"Version\": \"v0.0.0-20200910095922-078aeaa71f64\",
-            \"Sum\": \"h1:TOrRjRAF8jtzEIKdqMmbDyd5H/tmBVCcZ0y3wu5mtnw=\",
+            \"Version\": \"v0.0.0-20200923061654-b167c460f8ef\",
+            \"Sum\": \"h1:rAGH/rHtM9WtN6SjYuTDtg0v2XvhiMHO7vslUGanPZQ=\",
             \"Replace\": null
           },
           \"Deps\": [
@@ -34,8 +20,8 @@ package out
             },
             {
               \"Path\": \"cuelang.org/go\",
-              \"Version\": \"v0.2.2\",
-              \"Sum\": \"h1:i/wFo48WDibGHKQTRZ08nB8PqmGpVpQ2sRflZPj73nQ=\",
+              \"Version\": \"v0.3.0-alpha3\",
+              \"Sum\": \"h1:CxqJByVB1t6kcgcVnBYfcxWmzcupeepnoaI1CKaOC7U=\",
               \"Replace\": null
             },
             {
@@ -82,8 +68,8 @@ package out
             },
             {
               \"Path\": \"github.com/play-with-go/preguide\",
-              \"Version\": \"v0.0.0-20200910055839-cabee9c6c8f3\",
-              \"Sum\": \"h1:BMbWheaL+yYGfc6SlEClcYFx/4X/g0WGf3GzkDtr2Uc=\",
+              \"Version\": \"v0.0.0-20200922142535-8ddd23c822fb\",
+              \"Sum\": \"h1:gvkHpUvTUU6s/+LFLYKOicVYPuv4i5FYCYTNV/9mkcU=\",
               \"Replace\": null
             },
             {
@@ -125,81 +111,115 @@ package out
           ]
         }
         """
-		Variables: ["GITEA_USERNAME", "GITEA_PASSWORD", "REPO1"]
-	}]
-	Delims: ["{{{", "}}}"]
-	Terminals: [{
-		Name:        "term1"
-		Description: "The main terminal"
-		Scenarios: {
-			go115: {
-				Image: "playwithgo/go1.15.1@sha256:009b09b0b12874cb1dd362bc2471e39d430f6c2c7cac47dc9db2ab7a4290e59b"
-			}
+	Args: {
+		Repos: [{
+			Var:     "REPO1"
+			Pattern: "mod1*"
+		}]
+	}
+	Package: "github.com/play-with-go/gitea"
+	Path:    "/newuser"
+}]
+Terminals: [{
+	Description: "The main terminal"
+	Scenarios: {
+		go115: {
+			Image: "playwithgo/go1.15.1@sha256:af32904111a7ae381d6821f4ab217b2bce58996267e22f2cf1cd27a16199c128"
 		}
-	}]
-	Langs: {
-		en: {
-			Steps: {
-				create_module: {
-					Name:     "create_module"
-					StepType: 1
-					Terminal: "term1"
-					Order:    0
-					Stmts: [{
-						Negated:  false
-						CmdStr:   "mkdir /home/gopher/mod1"
-						ExitCode: 0
-						Output:   ""
-					}, {
-						Negated:  false
-						CmdStr:   "cd /home/gopher/mod1"
-						ExitCode: 0
-						Output:   ""
-					}, {
-						Negated:  false
-						CmdStr:   "git init"
-						ExitCode: 0
-						Output: """
-        Initialized empty Git repository in /home/gopher/mod1/.git/
+	}
+	Name: "term1"
+}]
+Scenarios: [{
+	Description: "Go 1.15"
+	Name:        "go115"
+}]
+Networks: ["playwithgo_gitea"]
+Env: ["PLAYWITHGO_ROOTCA"]
+Langs: {
+	en: {
+		Hash: "412be6b3b8592dc0d404a1f8b4c8dd5fabcde6cf5194ece559246302d280f2e0"
+		Steps: {
+			use_module: {
+				Stmts: [{
+					Output:   ""
+					ExitCode: 0
+					CmdStr:   "mkdir /home/gopher/mod2"
+					Negated:  false
+				}, {
+					Output:   ""
+					ExitCode: 0
+					CmdStr:   "cd /home/gopher/mod2"
+					Negated:  false
+				}, {
+					Output: """
+        go: creating new go.mod: module mod.com
         
         """
-					}, {
-						Negated:  false
-						CmdStr:   "git remote add origin https://play-with-go.dev/userguides/{{{.REPO1}}}.git"
-						ExitCode: 0
-						Output:   ""
-					}, {
-						Negated:  false
-						CmdStr:   "go mod init play-with-go.dev/userguides/{{{.REPO1}}}"
-						ExitCode: 0
-						Output: """
-        go: creating new go.mod: module play-with-go.dev/userguides/{{{.REPO1}}}
+					ExitCode: 0
+					CmdStr:   "go mod init mod.com"
+					Negated:  false
+				}, {
+					Output: """
+        go: downloading gopher.live/{{{.REPO1}}} v0.0.0-20060102150405-abcde12345
+        go: gopher.live/{{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcde12345
         
         """
-					}]
-				}
-				create_readme: {
-					Name:     "create_readme"
-					StepType: 2
-					Terminal: "term1"
-					Target:   "/home/gopher/mod1/README.md"
-					Language: "md"
-					Renderer: {
-						RendererType: 1
-					}
-					Source: "## `play-with-go.dev/userguides/{{{.REPO1}}}`"
-					Order:  1
-				}
-				create_main: {
-					Name:     "create_main"
-					StepType: 2
-					Terminal: "term1"
-					Target:   "/home/gopher/mod1/main.go"
-					Language: "go"
-					Renderer: {
-						RendererType: 1
-					}
-					Source: """
+					ExitCode: 0
+					CmdStr:   "go get gopher.live/{{{.REPO1}}}"
+					Negated:  false
+				}, {
+					Output: """
+        Hello, world!
+        
+        """
+					ExitCode: 0
+					CmdStr:   "go run gopher.live/{{{.REPO1}}}"
+					Negated:  false
+				}]
+				Order:    4
+				Terminal: "term1"
+				StepType: 1
+				Name:     "use_module"
+			}
+			commit_and_push: {
+				Stmts: [{
+					Output:   ""
+					ExitCode: 0
+					CmdStr:   "git add -A"
+					Negated:  false
+				}, {
+					Output: """
+        [main (root-commit) abcd123] Initial commit
+         3 files changed, 11 insertions(+)
+         create mode 100644 README.md
+         create mode 100644 go.mod
+         create mode 100644 main.go
+        
+        """
+					ExitCode: 0
+					CmdStr:   "git commit -m \"Initial commit\""
+					Negated:  false
+				}, {
+					Output: """
+        remote: . Processing 1 references        
+        remote: Processed 1 references in total        
+        To https://gopher.live/{{{.REPO1}}}.git
+         * [new branch]      main -> main
+        Branch 'main' set up to track remote branch 'main' from 'origin'.
+        
+        """
+					ExitCode: 0
+					CmdStr:   "git push -u origin main"
+					Negated:  false
+				}]
+				Order:    3
+				Terminal: "term1"
+				StepType: 1
+				Name:     "commit_and_push"
+			}
+			create_main: {
+				Order: 2
+				Source: """
         package main
         
         import \"fmt\"
@@ -208,88 +228,66 @@ package out
         \tfmt.Println(\"Hello, world!\")
         }
         """
-					Order: 2
+				Renderer: {
+					RendererType: 1
 				}
-				commit_and_push: {
-					Name:     "commit_and_push"
-					StepType: 1
-					Terminal: "term1"
-					Order:    3
-					Stmts: [{
-						Negated:  false
-						CmdStr:   "git add -A"
-						ExitCode: 0
-						Output:   ""
-					}, {
-						Negated:  false
-						CmdStr:   "git commit -m \"Initial commit\""
-						ExitCode: 0
-						Output: """
-        [main (root-commit) abcd123] Initial commit
-         3 files changed, 11 insertions(+)
-         create mode 100644 README.md
-         create mode 100644 go.mod
-         create mode 100644 main.go
-        
-        """
-					}, {
-						Negated:  false
-						CmdStr:   "git push -u origin main"
-						ExitCode: 0
-						Output: """
-        remote: . Processing 1 references        
-        remote: Processed 1 references in total        
-        To https://play-with-go.dev/userguides/{{{.REPO1}}}.git
-         * [new branch]      main -> main
-        Branch 'main' set up to track remote branch 'main' from 'origin'.
-        
-        """
-					}]
-				}
-				use_module: {
-					Name:     "use_module"
-					StepType: 1
-					Terminal: "term1"
-					Order:    4
-					Stmts: [{
-						Negated:  false
-						CmdStr:   "mkdir /home/gopher/mod2"
-						ExitCode: 0
-						Output:   ""
-					}, {
-						Negated:  false
-						CmdStr:   "cd /home/gopher/mod2"
-						ExitCode: 0
-						Output:   ""
-					}, {
-						Negated:  false
-						CmdStr:   "go mod init mod.com"
-						ExitCode: 0
-						Output: """
-        go: creating new go.mod: module mod.com
-        
-        """
-					}, {
-						Negated:  false
-						CmdStr:   "go get play-with-go.dev/userguides/{{{.REPO1}}}"
-						ExitCode: 0
-						Output: """
-        go: downloading play-with-go.dev/userguides/{{{.REPO1}}} v0.0.0-20060102150405-abcde12345
-        go: play-with-go.dev/userguides/{{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcde12345
-        
-        """
-					}, {
-						Negated:  false
-						CmdStr:   "go run play-with-go.dev/userguides/{{{.REPO1}}}"
-						ExitCode: 0
-						Output: """
-        Hello, world!
-        
-        """
-					}]
-				}
+				Language: "go"
+				Target:   "/home/gopher/mod1/main.go"
+				Terminal: "term1"
+				StepType: 2
+				Name:     "create_main"
 			}
-			Hash: "99c3b5afa36f740fae725b72708f6c618d29f8094bd1ca06f6db11558736455e"
+			create_readme: {
+				Order:  1
+				Source: "## `gopher.live/{{{.REPO1}}}`"
+				Renderer: {
+					RendererType: 1
+				}
+				Language: "md"
+				Target:   "/home/gopher/mod1/README.md"
+				Terminal: "term1"
+				StepType: 2
+				Name:     "create_readme"
+			}
+			create_module: {
+				Stmts: [{
+					Output:   ""
+					ExitCode: 0
+					CmdStr:   "mkdir /home/gopher/mod1"
+					Negated:  false
+				}, {
+					Output:   ""
+					ExitCode: 0
+					CmdStr:   "cd /home/gopher/mod1"
+					Negated:  false
+				}, {
+					Output: """
+        Initialized empty Git repository in /home/gopher/mod1/.git/
+        
+        """
+					ExitCode: 0
+					CmdStr:   "git init"
+					Negated:  false
+				}, {
+					Output:   ""
+					ExitCode: 0
+					CmdStr:   "git remote add origin https://gopher.live/{{{.REPO1}}}.git"
+					Negated:  false
+				}, {
+					Output: """
+        go: creating new go.mod: module gopher.live/{{{.REPO1}}}
+        
+        """
+					ExitCode: 0
+					CmdStr:   "go mod init gopher.live/{{{.REPO1}}}"
+					Negated:  false
+				}]
+				Order:    0
+				Terminal: "term1"
+				StepType: 1
+				Name:     "create_module"
+			}
 		}
 	}
 }
+Delims: ["{{{", "}}}"]

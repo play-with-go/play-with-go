@@ -25,7 +25,7 @@ var pwd = new PWD();
 var guideRequest = new XMLHttpRequest();
 // TODO: move away from hard-code guides URL to use a variable
 // specified in the site config
-guideRequest.open('POST', 'https://api.play-with-go.dev/guides/');
+guideRequest.open('POST', 'http://localhost:8081/guides/');
 guideRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 guideRequest.onload = function() {
 	// TODO: error handling
@@ -49,7 +49,7 @@ guideRequest.onload = function() {
 			node.setAttribute(attr, btoa(v));
 		});
 	}
-	pwd.newSession(guideDetails.Terminals, { baseUrl: "http://api.play-with-go.dev", oauthProvider: 'google', Networks: guideDetails.Networks, Envs: guideDetails.Env });
+	pwd.newSession(guideDetails.Terminals, { baseUrl: "http://localhost", oauthProvider: 'google', Networks: guideDetails.Networks, Envs: guideDetails.Env });
 };
 guideRequest.send(JSON.stringify({Guide: pageGuide, Language: pageLanguage, Scenario: pageScenario}));
 $(".panel-left").resizable({

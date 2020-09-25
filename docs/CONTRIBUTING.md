@@ -134,24 +134,24 @@ Then set the following two environment variables:
 * `PLAYWITHGODEV_GITHUB_USER`
 * `PLAYWITHGODEV_GITHUB_PAT`
 
-### Prerequisite 2 - `mkcert`-created play-with-go.dev SSL certificate
+### Prerequisite 2 - `mkcert`-created gopher.live SSL certificate
 
 _This step is only required if you will be writing/updating guides that use the `gitea` prestep_
 
 Another prerequisite for guides that require a remote version control system is creating a certificate authority for the
-`play-with-go.dev` domain. Modules that are published as part of `play-with-go.dev` guides are created under the
-`play-with-go.dev/userguides/...` module path. Therefore, locally-trusted development certificates for the
-`play-with-go.dev` domain are required for local development. We use [`mkcert`](https://github.com/FiloSottile/mkcert)
+`gopher.live` domain. Modules that are published as part of `play-with-go.dev` guides are created under the
+`gopher.live/...` module path. Therefore, locally-trusted development certificates for the
+`gopher.live` domain are required for local development. We use [`mkcert`](https://github.com/FiloSottile/mkcert)
 for this.
 
 First, [install `mkcert`](https://github.com/FiloSottile/mkcert#installation).
 
-Then create a play-with-go.dev SSL certificate:
+Then create a gopher.live SSL certificate:
 
 ```
 pushd "$(mkcert -CAROOT)"
-mkdir play-with-go.dev
-mkcert -cert-file play-with-go.dev/cert.pem -key-file play-with-go.dev/key.pem "*.play-with-go.dev" play-with-go.dev
+mkdir gopher.live
+mkcert -cert-file gopher.live/cert.pem -key-file gopher.live/key.pem "*.gopher.live" gopher.live
 popd
 ```
 

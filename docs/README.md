@@ -16,7 +16,7 @@ play-with-go.dev guide in the browser")
 
 ### About
 
-`play-with-go.dev` guides is built using the popular
+`play-with-go.dev` guides are built using the popular
 [`play-with-docker`](https://github.com/play-with-docker/play-with-docker) platform. Guides are served via
 https://play-with-go.dev/ and run in a user's browser, presenting the guide content on the left, and an interactive
 terminal on the right. This terminal is connected to a remote session hosted in [Google's
@@ -38,3 +38,4 @@ Thank you to the following individuals for their help in making `play-with-go.de
 Andoh](https://twitter.com/carmatrocity), [Marcos Nils](https://twitter.com/marcosnils), [Jonathan
 Leibiusky](https://twitter.com/xetorthio), [Marcel van Lohuizen](https://twitter.com/mpvl_), [Daniel
 Martí](https://twitter.com/mvdan_), [Roger Peppe](https://twitter.com/rogpeppe).
+

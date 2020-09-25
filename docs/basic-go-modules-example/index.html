@@ -192,19 +192,19 @@ layout: compress
             <div class="post-content" itemprop="articleBody">
                 <p>Create a module:</p>
 
-<pre data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL21vZDEKY2QgL2hvbWUvZ29waGVyL21vZDEKZ2l0IGluaXQKZ2l0IHJlbW90ZSBhZGQgb3JpZ2luIGh0dHBzOi8vcGxheS13aXRoLWdvLmRldi91c2VyZ3VpZGVzL3t7ey5SRVBPMX19fS5naXQKZ28gbW9kIGluaXQgcGxheS13aXRoLWdvLmRldi91c2VyZ3VpZGVzL3t7ey5SRVBPMX19fQo="><code class="language-.term1">$ mkdir /home/gopher/mod1
+<pre data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL21vZDEKY2QgL2hvbWUvZ29waGVyL21vZDEKZ2l0IGluaXQKZ2l0IHJlbW90ZSBhZGQgb3JpZ2luIGh0dHBzOi8vZ29waGVyLmxpdmUve3t7LlJFUE8xfX19LmdpdApnbyBtb2QgaW5pdCBnb3BoZXIubGl2ZS97e3suUkVQTzF9fX0K"><code class="language-.term1">$ mkdir /home/gopher/mod1
 $ cd /home/gopher/mod1
 $ git init
 Initialized empty Git repository in /home/gopher/mod1/.git/
-$ git remote add origin https://play-with-go.dev/userguides/{{{.REPO1}}}.git
-$ go mod init play-with-go.dev/userguides/{{{.REPO1}}}
-go: creating new go.mod: module play-with-go.dev/userguides/{{{.REPO1}}}
+$ git remote add origin https://gopher.live/{{{.REPO1}}}.git
+$ go mod init gopher.live/{{{.REPO1}}}
+go: creating new go.mod: module gopher.live/{{{.REPO1}}}
 </code></pre>
 
 <p>Write a readme:</p>
 
 <pre><code class="language-.term1">cat &lt;&lt;'EOD' &gt; /home/gopher/mod1/README.md
-## `play-with-go.dev/userguides/{{{.REPO1}}}`
+## `gopher.live/{{{.REPO1}}}`
 EOD
 </code></pre>
 
@@ -233,21 +233,21 @@ $ git commit -m "Initial commit"
 $ git push -u origin main
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
-To https://play-with-go.dev/userguides/{{{.REPO1}}}.git
+To https://gopher.live/{{{.REPO1}}}.git
  * [new branch]      main -&gt; main
 Branch 'main' set up to track remote branch 'main' from 'origin'.
 </code></pre>
 
 <p>Use the module:</p>
 
-<pre data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL21vZDIKY2QgL2hvbWUvZ29waGVyL21vZDIKZ28gbW9kIGluaXQgbW9kLmNvbQpnbyBnZXQgcGxheS13aXRoLWdvLmRldi91c2VyZ3VpZGVzL3t7ey5SRVBPMX19fQpnbyBydW4gcGxheS13aXRoLWdvLmRldi91c2VyZ3VpZGVzL3t7ey5SRVBPMX19fQo="><code class="language-.term1">$ mkdir /home/gopher/mod2
+<pre data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL21vZDIKY2QgL2hvbWUvZ29waGVyL21vZDIKZ28gbW9kIGluaXQgbW9kLmNvbQpnbyBnZXQgZ29waGVyLmxpdmUve3t7LlJFUE8xfX19CmdvIHJ1biBnb3BoZXIubGl2ZS97e3suUkVQTzF9fX0K"><code class="language-.term1">$ mkdir /home/gopher/mod2
 $ cd /home/gopher/mod2
 $ go mod init mod.com
 go: creating new go.mod: module mod.com
-$ go get play-with-go.dev/userguides/{{{.REPO1}}}
-go: downloading play-with-go.dev/userguides/{{{.REPO1}}} v0.0.0-20060102150405-abcde12345
-go: play-with-go.dev/userguides/{{{.REPO1}}} upgrade =&gt; v0.0.0-20060102150405-abcde12345
-$ go run play-with-go.dev/userguides/{{{.REPO1}}}
+$ go get gopher.live/{{{.REPO1}}}
+go: downloading gopher.live/{{{.REPO1}}} v0.0.0-20060102150405-abcde12345
+go: gopher.live/{{{.REPO1}}} upgrade =&gt; v0.0.0-20060102150405-abcde12345
+$ go run gopher.live/{{{.REPO1}}}
 Hello, world!
 </code></pre>
 
@@ -296,7 +296,7 @@ Hello, world!
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js"></script>
 <script src="https://rawgit.com/RickStrahl/jquery-resizable/master/dist/jquery-resizable.min.js"></script>
-<script src="https://unpkg.com/pwd-sdk@0.0.3/dist/pwd.min.js"></script>
+<script src="http://localhost:8080/dist/pwd.js"></script>
 <script src="/js/quiz.js"></script>
 <script src="/js/post-layout.js"></script>
 <script src="/js/progress-bar.js"></script>
