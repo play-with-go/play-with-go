@@ -3,56 +3,113 @@ version: '3.2'
 networks:
   pwg:
     external: false
+
+volumes:
+  sessions:
+  networks:
+  gitea:
+    driver: local
+
 services:
   controller:
-    image: golang
+    build:
+      context: .
+      dockerfile: ./docker/controller/Dockerfile
+    ports:
+      - "8081:8080"
+    networks:
+      - pwg
+    volumes:
+      - .:/start:ro
+    command: ["-guideconfig=guides/gen_guide_structures.cue", "-prestepconfig=prestep_conf.cue", "-unsafe", "-origin=http://localhost:4000"]
+    working_dir: "/start"
+    environment:
+      - GOPHERLIVE_ROOTCA
+
+  haproxy:
+    container_name: haproxy
+    image: haproxy:2.2.3
     networks:
       - pwg
     ports:
-      - "8081:8080"
+        - "80:8080"
     volumes:
-      - $PWD/.bin/controller:/runbin/controller:ro
-      - $PWD:/start:ro
-    environment:
-      - PLAYWITHGO_ROOTCA
-    working_dir: "/start"
-    command: ["/runbin/controller", "-guideconfig=guides/gen_guide_structures.cue", "-prestepconfig=prestep_conf.cue", "-unsafe", "-origin=http://localhost:4000"]
+        - ./docker/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
 
   nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    environment:
+      - PLAYWITHGODEV_CERT_FILE
+      - PLAYWITHGODEV_KEY_FILE
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     networks:
       pwg:
         aliases:
           - gopher.live
           - api.gopher.live
 
-  gitea_prestep:
+  gitea:
+    image: gitea/gitea:1.12.4
     networks:
       - pwg
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - PLAYWITHGODEV_GITHUB_USER
+      - PLAYWITHGODEV_GITHUB_PAT
     volumes:
-      - $PWD/.bin/gitea:/runbin/gitea:ro
+      - ./docker/gitea/app.ini:/data/gitea/conf/app.ini:ro
+      - gitea:/data
 
-  haproxy:
+  cmd_gitea:
+    build:
+      context: .
+      dockerfile: ./docker/cmd_gitea/Dockerfile
     networks:
       - pwg
+    environment:
+      - PLAYWITHGODEV_ROOT_USER
+      - PLAYWITHGODEV_ROOT_PASSWORD
+      - PLAYWITHGODEV_GITHUB_USER
+      - PLAYWITHGODEV_GITHUB_PAT
+      - GOPHERLIVE_ROOTCA
+    command: ["/runbin/gitea", "serve"]
 
   pwd:
+    build:
+      context: .
+      dockerfile: ./docker/pwd/Dockerfile
     networks:
       - pwg
-    volumes:
-      - $PWD/.bin/play-with-docker:/runbin/pwd:ro
     environment:
       - PWD_UNSAFE=true
+    command: ["-save", "/pwd/sessions", "-name", "l2"]
+    volumes:
+      - sessions:/pwd
+      - /var/run/docker.sock:/var/run/docker.sock
+    working_dir: /start
+    container_name: pwd
 
   l2:
+    build:
+      context: .
+      dockerfile: ./docker/l2/Dockerfile
     networks:
       - pwg
+    command: ["-ssh_key_path", "/etc/ssh/ssh_host_rsa_key", "-save", "/pwd/networks", "-name", "l2"]
     volumes:
-      - $PWD/.bin/l2:/runbin/l2:ro
+      - networks:/pwd
+      - /var/run/docker.sock:/var/run/docker.sock
+    working_dir: /start
+    container_name: l2
 
   site:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./docker/site/Dockerfile
     volumes:
       - ./:/srv/jekyll
     ports:

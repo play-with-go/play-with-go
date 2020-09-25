@@ -5,7 +5,7 @@ import "github.com/play-with-go/preguide"
 preguide.#PrestepServiceConfig
 
 "github.com/play-with-go/gitea": preguide.#PrestepConfig & {
-	Endpoint: "http://gitea_prestep:8080"
-	Env: ["PLAYWITHGO_ROOTCA"]
-	Networks: ["playwithgo_gitea"]
+	Endpoint: "http://cmd_gitea:8080"
+	Env: ["GOPHERLIVE_ROOTCA"]
+	Networks: ["playwithgo_pwg"]
 }

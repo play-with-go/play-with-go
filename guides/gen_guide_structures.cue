@@ -17,7 +17,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.1@sha256:af32904111a7ae381d6821f4ab217b2bce58996267e22f2cf1cd27a16199c128"
+				Image: "playwithgo/go1.15.1@sha256:314e0bb16dbb33ecb0a931d02478954fcec10ade080809e9bd106db6b23b9c7c"
 			}
 		}
 	}]
@@ -25,7 +25,7 @@ package guides
 		Name:        "go115"
 		Description: "Go 1.15"
 	}]
-	Networks: ["playwithgo_gitea"]
-	Env: ["PLAYWITHGO_ROOTCA"]
+	Networks: ["playwithgo_pwg"]
+	Env: ["GOPHERLIVE_ROOTCA"]
 }
 

@@ -1,9 +1,9 @@
 package guide
 
-Env: *["PLAYWITHGO_ROOTCA"] | [...string]
+Env: *["GOPHERLIVE_ROOTCA"] | [...string]
 
-Networks: *["playwithgo_gitea"] | [...string]
+Networks: *["playwithgo_pwg"] | [...string]
 
 Delims: ["{{{", "}}}"]
 
-#go115LatestImage: "playwithgo/go1.15.1@sha256:af32904111a7ae381d6821f4ab217b2bce58996267e22f2cf1cd27a16199c128"
+#go115LatestImage: "playwithgo/go1.15.1@sha256:314e0bb16dbb33ecb0a931d02478954fcec10ade080809e9bd106db6b23b9c7c"
