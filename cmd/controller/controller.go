@@ -49,7 +49,7 @@ func (r *runner) mainerr() (err error) {
 
 	http.HandleFunc("/", func(resp http.ResponseWriter, req *http.Request) {
 		defer r.handleKnownRequest(resp)
-		if !strings.HasPrefix(req.URL.Path, "/guides/") {
+		if !strings.HasPrefix(req.URL.Path, "/guides") {
 			resp.WriteHeader(http.StatusNotFound)
 			return
 		}
