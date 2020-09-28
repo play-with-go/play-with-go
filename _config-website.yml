@@ -1,0 +1,5 @@
+# Play with Docker website prod config
+sdkurl: https://unpkg.com/pwd-sdk@0.0.3/dist/pwd.min.js"
+pwdurl: https://api.play-with-go.dev
+controllerurl: https://api.play-with-go.dev/guides
+
