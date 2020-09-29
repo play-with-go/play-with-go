@@ -51,7 +51,7 @@ test: json.#Workflow & {
 			run:  "./_scripts/env.sh github"
 		}, {
 			name: "Start gitea services"
-			run:  "./_scripts/dc.sh up -d nginx gitea gitea_prestep"
+			run:  "./_scripts/dc.sh up -d nginx gitea cmd_gitea"
 		}, {
 			name: "Setup"
 			run:  "./_scripts/setup.sh"
