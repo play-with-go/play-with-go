@@ -34,11 +34,15 @@ jobs:
       with:
         go-version: ${{ matrix.go_version }}
     - name: go mod download
-      run: ./_scripts/go_mod_download.sh
+      run: go mod download
+    - name: Ensure docker setup
+      run: ./_scripts/ensureDocker.sh
     - name: Setup mkcert
       run: ./_scripts/setupmkcert.sh
     - name: Env setup
       run: ./_scripts/env.sh github
+    - name: docker-compose build
+      run: ./_scripts/dc.sh build
     - name: Start gitea services
       run: ./_scripts/dc.sh up -d nginx gitea cmd_gitea
     - name: Setup
