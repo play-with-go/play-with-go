@@ -33,6 +33,7 @@ jobs:
       uses: actions/setup-go@v2
       with:
         go-version: ${{ matrix.go_version }}
+    - run: echo hello world
     - name: go mod download
       run: go mod download
     - name: Ensure docker setup
