@@ -33,8 +33,9 @@ jobs:
       uses: actions/setup-go@v2
       with:
         go-version: ${{ matrix.go_version }}
-    - name: go mod download
-      run: go mod download
+    - name: mac CI setup
+      if: matrix.os == 'macos-latest'
+      run: echo hello
     - name: Ensure docker setup
       run: ./_scripts/ensureDocker.sh
     - name: Setup mkcert
