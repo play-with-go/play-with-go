@@ -34,7 +34,6 @@ jobs:
       with:
         go-version: ${{ matrix.go_version }}
     - name: mac CI setup
-      if: matrix.os == 'macos-latest'
       run: echo hello
     - name: Ensure docker setup
       run: ./_scripts/ensureDocker.sh
