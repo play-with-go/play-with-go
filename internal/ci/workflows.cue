@@ -2,18 +2,14 @@ package ci
 
 import "github.com/SchemaStore/schemastore/src/schemas/json"
 
-workflows: [...{file: string, schema: json.#Workflow}]
-workflows: [
-	{file: "test.yml", schema: test},
-	{file: "wip.yml", schema:  wip},
+_#workflows: [...{file: string, schema: json.#Workflow}]
+_#workflows: [
+	{file: "test.yml", schema:    test},
+	{file: "testmac.yml", schema: testmac},
+	{file: "wip.yml", schema:     wip},
 ]
 
-test: json.#Workflow & {
-	on: {
-		push: branches: ["main"]
-		pull_request: branches: ["**"]
-	}
-
+#testWorkflow: json.#Workflow & {
 	env: {
 		PREGUIDE_SKIP_CACHE:       true
 		PLAYWITHGODEV_GITHUB_USER: "playwithgopher"
@@ -25,7 +21,6 @@ test: json.#Workflow & {
 		strategy: {
 			"fail-fast": false
 			matrix: {
-				os: ["ubuntu-latest"]
 				go_version: ["1.15.2"]
 			}
 		}
@@ -41,8 +36,12 @@ test: json.#Workflow & {
 			uses: "actions/setup-go@v2"
 			with: "go-version": "${{ matrix.go_version }}"
 		}, {
-			name: "go mod download"
-			run:  "go mod download"
+			name: "Pre-download specific modules"
+			run:  "go mod download github.com/play-with-go/preguide github.com/play-with-go/gitea"
+		}, {
+			name: "mac CI setup"
+			run:  "./_scripts/macCISetup.sh"
+			if:   "${{ matrix.os == 'macos-latest' }}"
 		}, {
 			name: "Ensure docker setup"
 			run:  "./_scripts/ensureDocker.sh"
@@ -78,6 +77,21 @@ test: json.#Workflow & {
 			run:  "test -z \"$(git status --porcelain)\" || (git status; git diff; false)"
 		}]
 	}
+}
+
+test: {
+	#testWorkflow
+	on: {
+		push: branches: ["main"]
+		pull_request: branches: ["**"]
+	}
+	jobs: test: strategy: matrix: os: ["ubuntu-latest"]
+}
+
+testmac: {
+	#testWorkflow
+	on: schedule: [{cron: "0 9 * * *"}]
+	jobs: test: strategy: matrix: os: ["macos-latest"]
 }
 
 wip: json.#Workflow & {

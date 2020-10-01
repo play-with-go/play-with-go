@@ -5,10 +5,6 @@ shopt -s inherit_errexit
 
 source "$( command cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"/env_common.bash
 
-# We need to ensure everything is downloaded else the go list -m commands that
-# follow will not work
-go mod download
-
 modRoot="$(go list -m -f {{.Dir}})"
 
 $export COMPOSE_PROJECT_NAME playwithgo
