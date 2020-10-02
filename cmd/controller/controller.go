@@ -54,7 +54,18 @@ func (r *runner) mainerr() (err error) {
 			return
 		}
 
-		// Authenticate the request
+		// CORS (if required)
+		if *r.fOrigin != "" {
+			resp.Header().Set("Access-Control-Allow-Origin", *r.fOrigin)
+			resp.Header().Set("Access-Control-Allow-Credentials", "true")
+			if req.Method == "OPTIONS" {
+				resp.Header().Set("Access-Control-Allow-Methods", "GET")
+				resp.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+				return
+			}
+		}
+
+		// Authenticate the request only if it's not CORS
 		if !*r.fUnsafe {
 			type CookieID struct {
 				Id         string `json:"id"`
@@ -71,17 +82,6 @@ func (r *runner) mainerr() (err error) {
 			var cookieData CookieID
 			if err := s.Decode("id", cookie.Value, &cookieData); err != nil {
 				raiseHTTP(http.StatusUnauthorized, "failed to authenticate: %v", err)
-			}
-		}
-
-		// CORS (if required)
-		if *r.fOrigin != "" {
-			resp.Header().Set("Access-Control-Allow-Origin", *r.fOrigin)
-			resp.Header().Set("Access-Control-Allow-Credentials", "true")
-			if req.Method == "OPTIONS" {
-				resp.Header().Set("Access-Control-Allow-Methods", "GET")
-				resp.Header().Set("Access-Control-Allow-Headers", "Content-Type")
-				return
 			}
 		}
 
