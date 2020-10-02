@@ -43,14 +43,22 @@ guideRequest.onload = function() {
 	replaceInText(document.querySelector("article"), replacements);
 	for (let attr of ["data-upload-src", "data-command-src", "data-upload-path"]) {
 		document.querySelectorAll("["+attr+"]").forEach(function(node) {
-			let v = atob(node.getAttribute(attr));
+			let na = data = node.getAttribute(attr);
+			let prefix = "";
+			if (attr == "data-upload-src") {
+				let parts = na.split(":");
+				prefix = atob(parts[0])+":";
+				data = parts[1];
+			}
+			let v = atob(data);
 			for (let r of replacements) {
 				v = replaceAll(v, r[0], r[1]);
+				prefix = replaceAll(prefix, r[0], r[1]);
 			}
 			if (attr != "data-upload-path") {
 				v = btoa(v);
 			}
-			node.setAttribute(attr, v);
+			node.setAttribute(attr, prefix+v);
 		});
 	}
 	pwd.newSession(guideDetails.Terminals, { baseUrl: "https://api.play-with-go.dev", oauthProvider: 'google', Networks: guideDetails.Networks, Envs: guideDetails.Env });
