@@ -3,7 +3,7 @@ services:
   site:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./docker/site/Dockerfile
     volumes:
       - ./:/srv/jekyll
     ports:
