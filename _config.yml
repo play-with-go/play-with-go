@@ -67,5 +67,12 @@ controllerurl: http://localhost:8081/guides/
 
 exclude:
   - "docs"
+  - "*.go"
+  - "*.mod"
+  - "*.sum"
+  - "docker/"
+  - "*.sh"
+  - "*.cue"
+  - "*.yaml"
 
 

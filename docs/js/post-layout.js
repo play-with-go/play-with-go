@@ -26,6 +26,7 @@ var guideRequest = new XMLHttpRequest();
 // TODO: move away from hard-code guides URL to use a variable
 // specified in the site config
 guideRequest.open('POST', 'https://api.play-with-go.dev/guides');
+guideRequest.withCredentials = true;
 guideRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 guideRequest.onload = function() {
 	// TODO: error handling
