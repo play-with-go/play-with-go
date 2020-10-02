@@ -1,3 +1,4 @@
+/docs/* linguist-generated
 /.github/workflows/*.yml linguist-generated
 /cue.mod/pkg/* linguist-generated
 _posts/* linguist-generated

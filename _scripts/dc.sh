@@ -15,12 +15,9 @@ then
 	echo "warning: PLAYWITHGODEV_GITHUB_PAT is not set"
 fi
 
-args="$@"
+args=("$@")
 if [ "${1:-}" == "up" ] || [ "${1:-}" == "down" ] || [ "${1:-}" == "stop" ]
 then
-	first="$1 -t 0"
-	shift
-	args="$first $@"
+	args=("$1" -t 0 "${args[@]:1}")
 fi
-
-docker-compose $args
+docker-compose "${args[@]}"
