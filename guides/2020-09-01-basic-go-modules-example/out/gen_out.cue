@@ -124,7 +124,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.1@sha256:314e0bb16dbb33ecb0a931d02478954fcec10ade080809e9bd106db6b23b9c7c"
+			Image: "playwithgo/go1.15.2@sha256:4f5346af0d93f50c974d9be2f2f31c55d2f953da9437aac990d30a50e3d591a5"
 		}
 	}
 	Name: "term1"
@@ -137,7 +137,7 @@ Networks: ["playwithgo_pwg"]
 Env: ["GOPHERLIVE_ROOTCA"]
 Langs: {
 	en: {
-		Hash: "abca8a19fe6c01745042a4b94e243514c85187bf21cd757065f9b1237cfc7f9a"
+		Hash: "4b6d745d1902f6840e095996f72850e5f12985442820f65de8c72aa686e71b9b"
 		Steps: {
 			use_module: {
 				Stmts: [{
