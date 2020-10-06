@@ -38,6 +38,9 @@ func (r *runner) mainerr() (err error) {
 		if *r.fHashKey == "" {
 			raise("-hashKey is required in a non-development environment")
 		}
+		if *r.fBlockKey == "" {
+			raise("-blockKey is required in a non-development environment")
+		}
 	}
 
 	if len(r.fGuideConfigs) == 0 {
