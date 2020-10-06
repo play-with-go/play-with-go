@@ -13,4 +13,4 @@ require (
 	golang.org/x/sync v0.0.0-20200317015054-43a5402ce75a
 )
 
-replace github.com/play-with-docker/play-with-docker => github.com/myitcvforks/play-with-docker v0.0.2-0.20201006081434-ee215e95a325
+replace github.com/play-with-docker/play-with-docker => github.com/myitcvforks/play-with-docker v0.0.2-0.20201006134625-b2ac2bbe16af
