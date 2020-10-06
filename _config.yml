@@ -77,5 +77,6 @@ exclude:
   - "*.sh"
   - "*.cue"
   - "*.yml"
+  - "CONTRIBUTING.md"
 
 
