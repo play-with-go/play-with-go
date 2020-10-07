@@ -43,6 +43,9 @@ func (r *runner) mainerr() (err error) {
 		}
 	}
 
+	if len(r.fOrigins) == 0 {
+		raise("must supply at least one -origin")
+	}
 	if len(r.fGuideConfigs) == 0 {
 		raise("controller not provided with any -guideconfig flags")
 	}
@@ -57,15 +60,26 @@ func (r *runner) mainerr() (err error) {
 			return
 		}
 
-		// CORS (if required)
-		if *r.fOrigin != "" {
-			resp.Header().Set("Access-Control-Allow-Origin", *r.fOrigin)
-			resp.Header().Set("Access-Control-Allow-Credentials", "true")
-			if req.Method == "OPTIONS" {
-				resp.Header().Set("Access-Control-Allow-Methods", "GET")
-				resp.Header().Set("Access-Control-Allow-Headers", "Content-Type")
-				return
+		// CORS
+		if len(r.fOrigins) > 0 {
+			reqOrigin := req.Header.Get("Origin")
+			var set bool
+			for _, o := range r.fOrigins {
+				if o == reqOrigin {
+					resp.Header().Set("Access-Control-Allow-Origin", o)
+					set = true
+				}
 			}
+			if !set {
+				// Abritrarily choose the first origin - it's a failure case
+				resp.Header().Set("Access-Control-Allow-Origin", r.fOrigins[0])
+			}
+		}
+		resp.Header().Set("Access-Control-Allow-Credentials", "true")
+		if req.Method == "OPTIONS" {
+			resp.Header().Set("Access-Control-Allow-Methods", "GET")
+			resp.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+			return
 		}
 
 		// Authenticate the request only if it's not CORS
