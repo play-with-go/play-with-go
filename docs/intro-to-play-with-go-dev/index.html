@@ -9,13 +9,13 @@ layout: compress
 <html>
 
   <head>
-<title>A simple Go modules guide</title>
+<title>An introduction to play-with-go.dev guides</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="A simple Go modules guide" />
+<meta name="twitter:title" content="An introduction to play-with-go.dev guides" />
 <meta name="twitter:description" content="Learn docker through online trainings in training.play-with-docker.com" />
 <meta name="twitter:image" content="https://training.play-with-docker.com/images/simple-logo.png" />
 
@@ -94,12 +94,11 @@ layout: compress
     <div class="menu-panel">
         <div class="menu-container">
   <h3 class="menu-title">
-    A simple Go modules guide
+    An introduction to play-with-go.dev guides
   </h3>
 
   <div class="toc-menu-container">
-    <ul class="section-nav">
-</ul>
+    
   </div>
 
   <div class="menu-extra-options">
@@ -187,28 +186,64 @@ layout: compress
         </div>
         <article class="post content" itemscope itemtype="http://schema.org/BlogPosting">
             <header class="post-header">
-                <h1 class="post-title" itemprop="name headline">A simple Go modules guide</h1>
+                <h1 class="post-title" itemprop="name headline">An introduction to play-with-go.dev guides</h1>
             </header>
             <div class="post-content" itemprop="articleBody">
-                <p>Create a module:</p>
+                <p><a href="https://play-with-go.dev/"><code>play-with-go.dev</code></a> is a series of interactive browser-based guides that lead you on a tour
+of the <a href="https://golang.org/cmd/go/">Go command</a> and <a href="https://golang.org/ref/mod">Go modules</a>.</p>
 
-<!--step: create_module -->
+<p>If you have not done so already, head over and complete <a href="https://tour.golang.org">the Go Tour</a>; it presents an excellent
+interactive introduction to Go the programming language.</p>
 
-<p>Write a readme:</p>
+<p><code>play-with-go.dev</code> helps you take the next steps to practically getting things done with Go, covering various topics
+from writing tests, understanding Go modules, static analysis, code generation and much more.</p>
 
-<!--step: create_readme -->
+<h3 id="structure-of-play-with-godev-guides">Structure of <code>play-with-go.dev</code> guides</h3>
 
-<p>Write a readme:</p>
+<p><code>play-with-go.dev</code> guides are best viewed on a laptop or desktop device with a good sized screen. The left hand side
+(the bit you are reading now) is the guide itself, otherwise known as the prose. The right hand size is an interactive
+terminal that is connected to a remote virtual session, hosted on <a href="https://cloud.google.com/">Google Cloud</a>.</p>
 
-<!--step: create_main -->
+<p>Throughout each guide (prose) you will see clickable blocks of command and code. For example, try clicking on the
+following command block:</p>
 
-<p>Commit and push:</p>
+<pre data-command-src="ZWNobyAiSGVsbG8sIHdvcmxkISIK"><code class="language-.term1">$ echo "Hello, world!"
+Hello, world!
+</code></pre>
 
-<!--step: commit_and_push -->
+<p>Clicking on block of commands causes those commands to run in the interactive terminal on the right hand side. Blocks of
+commands are indicated by a <code>$</code> sign at the beginning of a line; the output from that command (if there is any) will be
+on the lines that follow. Command blocks can contain multiple commands:</p>
 
-<p>Use the module:</p>
+<pre data-command-src="d2hvYW1pCmVjaG8gIkhlbGxvLCBnb3BoZXIhIgo="><code class="language-.term1">$ whoami
+gopher
+$ echo "Hello, gopher!"
+Hello, gopher!
+</code></pre>
 
-<!--step: use_module -->
+<p>We can also upload code/content to our interactive session using code blocks. Try clicking on the following code block
+to upload contents to <code>/home/gopher/readme.txt</code>:</p>
+
+<pre data-upload-path="L2hvbWUvZ29waGVy" data-upload-src="cmVhZG1lLnR4dA==:VGhpcyBpcyAvaG9tZS9nb3BoZXIvcmVhZG1lLnR4dC4KCkhlbGxvLCBnb3BoZXIh" data-upload-term=".term1"><code class="language-txt">This is /home/gopher/readme.txt.
+
+Hello, gopher!
+</code></pre>
+
+<p>Now that we have uploaded <code>/home/gopher/readme.txt</code> we can run another command to do something with it:</p>
+
+<pre data-command-src="Y2F0IC9ob21lL2dvcGhlci9yZWFkbWUudHh0Cg=="><code class="language-.term1">$ cat /home/gopher/readme.txt
+This is /home/gopher/readme.txt.
+
+Hello, gopher!
+</code></pre>
+
+<h3 id="im-lost-help">I’m lost, help!</h3>
+
+<p>Don’t worry, there are people who can help! Either head over to <code>#play-with-go</code> on <a href="https://gophers.slack.com/">Gophers
+Slack</a> (<a href="https://invite.slack.golangbridge.org/">sign-up</a>) or <a href="https://github.com/play-with-go/play-with-go/issues/new?title=help:&amp;labels=question">raise an
+issue</a> in our GitHub issue tracker.</p>
+
+<script>let pageGuide="2020-10-07-intro-to-play-with-go-dev"; let pageLanguage="en"; let pageScenario="go115";</script>
 
 
             </div>

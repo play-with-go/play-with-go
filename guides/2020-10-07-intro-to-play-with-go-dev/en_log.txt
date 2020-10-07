@@ -1,0 +1,26 @@
+Terminals: [
+  {
+    "Name": "term1",
+    "Description": "The main terminal",
+    "Scenarios": {
+      "go115": {
+        "Image": "playwithgo/go1.15.2@sha256:4f5346af0d93f50c974d9be2f2f31c55d2f953da9437aac990d30a50e3d591a5"
+      }
+    }
+  }
+]
+$ echo "Hello, world!"
+Hello, world!
+$ whoami
+gopher
+$ echo "Hello, gopher!"
+Hello, gopher!
+$ cat <<EOD > /home/gopher/readme.txt
+This is /home/gopher/readme.txt.
+
+Hello, gopher!
+EOD
+$ cat /home/gopher/readme.txt
+This is /home/gopher/readme.txt.
+
+Hello, gopher!

@@ -74,6 +74,7 @@ exclude:
   - "*.mod"
   - "*.sum"
   - "docker/"
+  - "guides/"
   - "*.sh"
   - "*.cue"
   - "*.yml"
