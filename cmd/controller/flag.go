@@ -52,7 +52,7 @@ type runner struct {
 	fUnsafe         *bool
 	fGuideConfigs   []string
 	fPrestepConfigs []string
-	fOrigin         *string
+	fOrigins        []string
 	fHashKey        *string
 	fBlockKey       *string
 
@@ -72,7 +72,7 @@ func newRunner() *runner {
 	r.fUnsafe = fs.Bool("unsafe", false, "indicates we are running in development-mode and hence enable unsafe things")
 	fs.Var(stringFlagList{&r.fGuideConfigs}, "guideconfig", "CUE configuration input for guides; can appear multiple times")
 	fs.Var(stringFlagList{&r.fPrestepConfigs}, "prestepconfig", "CUE configuration input for presteps deployments; can appear multiple times")
-	r.fOrigin = fs.String("origin", "", "the origin to set in the Access-Control-Allow-Origin header. Empty means no CORS setup required")
+	fs.Var(stringFlagList{&r.fOrigins}, "origin", "the origin to set in the Access-Control-Allow-Origin header. Empty means no CORS setup required")
 	r.fHashKey = fs.String("hashKey", "", "hashKey is used to authenticate the cookie value using HMAC")
 	r.fBlockKey = fs.String("blockKey", "", "blockKey (optional), used to encrypt the cookie value. Empty means implies not using encryption")
 
