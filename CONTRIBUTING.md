@@ -112,48 +112,19 @@ start to finish. That guide can be found here: https://play-with-go.dev/writing-
 When you come to write a guide you will need to do so in your local development environment. We now explain the required
 setup for local development.
 
-### Prerequisite 1 - GitHub account with `userguides` membership
+### Prerequisite 1 - gopher.live contributor account
 
 _This step is only required if you will be writing/updating guides that use the `gitea` prestep_
 
 As explained above, the
 [`github.com/play-with-go/gitea/cmd/gitea`](https://pkg.go.dev/github.com/play-with-go/gitea/cmd/gitea) prestep creates
-a temporary user account and remote repository for the reader to use as part of a guide. The `gitea` prestep creates a
-public GitHub repository in the https://github.com/userguides organisation as part of this setup. Hence to develop any
-guides locally you need to have a GitHub account and various permissions.
+a temporary user account and remote repository for the reader to use as part of a guide. This temporary account is
+created within the gopher.live hosted [gitea](https://gitea.io) instance. Hence to develop any guides locally you need
+to have a contributor account and various permissions.
 
 Please [raise an
 issue](https://github.com/play-with-go/play-with-go/issues/new?title=access:%20please%20grant%20me%20access%20to%20develop%20guides)
-requesting member accessing to the [`userguides`](https://github.com/userguides) organisation.
-
-Once you have been granted access, [create a new personal access token](https://github.com/settings/tokens/new) with
-`public_repo` scope.
-
-Then set the following two environment variables:
-
-* `PLAYWITHGODEV_GITHUB_USER`
-* `PLAYWITHGODEV_GITHUB_PAT`
-
-### Prerequisite 2 - `mkcert`-created gopher.live SSL certificate
-
-_This step is only required if you will be writing/updating guides that use the `gitea` prestep_
-
-Another prerequisite for guides that require a remote version control system is creating a certificate authority for the
-`gopher.live` domain. Modules that are published as part of `play-with-go.dev` guides are created under the
-`gopher.live/...` module path. Therefore, locally-trusted development certificates for the
-`gopher.live` domain are required for local development. We use [`mkcert`](https://github.com/FiloSottile/mkcert)
-for this.
-
-First, [install `mkcert`](https://github.com/FiloSottile/mkcert#installation).
-
-Then create a gopher.live SSL certificate:
-
-```
-pushd "$(mkcert -CAROOT)"
-mkdir gopher.live
-mkcert -cert-file gopher.live/cert.pem -key-file gopher.live/key.pem "*.gopher.live" gopher.live
-popd
-```
+requesting contributor access.
 
 ### Start the `play-with-go.dev` environment
 
@@ -161,12 +132,6 @@ Run the environment in one terminal:
 
 ```
 ./_scripts/dc.sh up
-```
-
-In another, run a one-off setup process:
-
-```
-./_scripts/setup.sh
 ```
 
 ### You're ready to start writing guides!

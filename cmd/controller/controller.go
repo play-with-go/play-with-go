@@ -260,7 +260,6 @@ func (r *runner) logOrRespond(resp http.ResponseWriter, format string, args ...i
 
 func (r *runner) loadConfig() (config, error) {
 	var res config
-	fmt.Printf(">> %v\n", r.schemas.GuideStructures)
 	if err := r.loadConfigFromFlags(r.fGuideConfigs, r.schemas.GuideStructures, &res.guides); err != nil {
 		return res, fmt.Errorf("failed to load guide config: %v", err)
 	}

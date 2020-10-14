@@ -14,7 +14,7 @@ Scenarios: [{
 	Name:        "go115"
 }]
 Networks: ["playwithgo_pwg"]
-Env: ["GOPHERLIVE_ROOTCA"]
+Env: []
 Langs: {
 	en: {
 		Hash: "6473e5f634e069a0384257bba65ff96435bcf2d06de7289eae53398285d4f059"
