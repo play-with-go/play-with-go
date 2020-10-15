@@ -38,9 +38,11 @@ guideRequest.onload = function() {
 	var guideDetails = JSON.parse(guideRequest.responseText);
 
 	let replacements = [];
-	for (let env of guideDetails.Env) {
-		let parts = env.split("=", 2);
-		replacements.push([guideDetails.Delims[0]+"."+parts[0]+guideDetails.Delims[1], parts[1]]);
+	if (guideDetails.Env != null) {
+		for (let env of guideDetails.Env) {
+			let parts = env.split("=", 2);
+			replacements.push([guideDetails.Delims[0]+"."+parts[0]+guideDetails.Delims[1], parts[1]]);
+		}
 	}
 	replaceInText(document.querySelector("article"), replacements);
 	for (let attr of ["data-upload-src", "data-command-src", "data-upload-path"]) {

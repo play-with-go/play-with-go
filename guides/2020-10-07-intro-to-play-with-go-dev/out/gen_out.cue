@@ -17,7 +17,7 @@ Networks: ["playwithgo_pwg"]
 Env: []
 Langs: {
 	en: {
-		Hash: "6473e5f634e069a0384257bba65ff96435bcf2d06de7289eae53398285d4f059"
+		Hash: "d38399dd8995db9e66d642e241badef979ffa450152c95a3f299720564e579c8"
 		Steps: {
 			cat_readme: {
 				Stmts: [{
@@ -25,6 +25,7 @@ Langs: {
         This is /home/gopher/readme.txt.
         
         Hello, gopher!
+        
         
         """
 					ExitCode: 0
@@ -42,6 +43,7 @@ Langs: {
         This is /home/gopher/readme.txt.
         
         Hello, gopher!
+        
         """
 				Renderer: {
 					RendererType: 1
