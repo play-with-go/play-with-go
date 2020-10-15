@@ -79,4 +79,6 @@ Hello, world!
 ```
 {:data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL21vZDIKY2QgL2hvbWUvZ29waGVyL21vZDIKZ28gbW9kIGluaXQgbW9kLmNvbQpnbyBnZXQgZ29waGVyLmxpdmUve3t7LlJFUE8xfX19CmdvIHJ1biBnb3BoZXIubGl2ZS97e3suUkVQTzF9fX0K"}
 
+You're done!
+
 <script>let pageGuide="2020-09-01-basic-go-modules-example"; let pageLanguage="en"; let pageScenario="go115";</script>
