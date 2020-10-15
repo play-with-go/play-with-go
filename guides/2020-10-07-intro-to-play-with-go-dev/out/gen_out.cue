@@ -17,17 +17,17 @@ Networks: ["playwithgo_pwg"]
 Env: []
 Langs: {
 	en: {
-		Hash: "d38399dd8995db9e66d642e241badef979ffa450152c95a3f299720564e579c8"
+		Hash: "ba476323967ea0eebe2cdc3ea439a43e65f63976d28873e9d674fab2624e4c9e"
 		Steps: {
 			cat_readme: {
 				Stmts: [{
 					Output: """
-        This is /home/gopher/readme.txt.
-        
-        Hello, gopher!
-        
-        
-        """
+						This is /home/gopher/readme.txt.
+
+						Hello, gopher!
+
+
+						"""
 					ExitCode: 0
 					CmdStr:   "cat /home/gopher/readme.txt"
 					Negated:  false
@@ -40,11 +40,11 @@ Langs: {
 			upload_readme: {
 				Order: 2
 				Source: """
-        This is /home/gopher/readme.txt.
-        
-        Hello, gopher!
-        
-        """
+					This is /home/gopher/readme.txt.
+
+					Hello, gopher!
+
+					"""
 				Renderer: {
 					RendererType: 1
 				}
@@ -57,17 +57,17 @@ Langs: {
 			multiple_commands: {
 				Stmts: [{
 					Output: """
-        gopher
-        
-        """
+						gopher
+
+						"""
 					ExitCode: 0
 					CmdStr:   "whoami"
 					Negated:  false
 				}, {
 					Output: """
-        Hello, gopher!
-        
-        """
+						Hello, gopher!
+
+						"""
 					ExitCode: 0
 					CmdStr:   "echo \"Hello, gopher!\""
 					Negated:  false
@@ -80,9 +80,9 @@ Langs: {
 			echo_hello: {
 				Stmts: [{
 					Output: """
-        Hello, world!
-        
-        """
+						Hello, world!
+
+						"""
 					ExitCode: 0
 					CmdStr:   "echo \"Hello, world!\""
 					Negated:  false

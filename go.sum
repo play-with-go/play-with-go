@@ -40,6 +40,8 @@ contrib.go.opencensus.io/integrations/ocsql v0.1.4/go.mod h1:8DsSdjz3F+APR+0z0Wk
 contrib.go.opencensus.io/resource v0.0.0-20190131005048-21591786a5e0/go.mod h1:F361eGI91LCmW1I/Saf+rX0+OFcigGlFvXwEGEnkRLA=
 cuelang.org/go v0.3.0-alpha3 h1:CxqJByVB1t6kcgcVnBYfcxWmzcupeepnoaI1CKaOC7U=
 cuelang.org/go v0.3.0-alpha3/go.mod h1:un6c4wnW3jEIrp97ARM3eJOlIJojP61ASQTRHyR0uiE=
+cuelang.org/go v0.3.0-alpha4 h1:BIPutFX2WhHXwERWZka8PZBxcl6amdKO0Vry4n5qUEc=
+cuelang.org/go v0.3.0-alpha4/go.mod h1:un6c4wnW3jEIrp97ARM3eJOlIJojP61ASQTRHyR0uiE=
 dmitri.shuralyov.com/gpu/mtl v0.0.0-20190408044501-666a987793e9/go.mod h1:H6x//7gZCb22OMCxBHrMx7a5I7Hp++hsVxbQ4BYO7hU=
 docker.io/go-docker v1.0.0 h1:VdXS/aNYQxyA9wdLD5z8Q8Ro688/hG8HzKxYVEVbE6s=
 docker.io/go-docker v1.0.0/go.mod h1:7tiAn5a0LFmjbPDbyTPOaTTOuG1ZRNXdPA6RvKY+fpY=
@@ -420,8 +422,8 @@ github.com/play-with-go/gitea v0.0.0-20201015075538-7787ad03373f h1:VXWqw1WFhU9w
 github.com/play-with-go/gitea v0.0.0-20201015075538-7787ad03373f/go.mod h1:mD4+vK9cH9dCfgegi5Z9+KSg79O9f0lOhg0sN8vve5M=
 github.com/play-with-go/preguide v0.0.2-0.20200929132054-e0f48a7f7b23 h1:XuQlkNTvut6rRO8VkKRqTxPPFU1B3kNmdGD9St37dc0=
 github.com/play-with-go/preguide v0.0.2-0.20200929132054-e0f48a7f7b23/go.mod h1:jkhBBbIBioAzKiRo5Rr9r03tqglgUdPZAVIpBBw7aDU=
-github.com/play-with-go/preguide v0.0.2-0.20201003154103-6be0cdb0cf79 h1:IZTZGD/QmcUkdslqUuhDXvnCWuKlfFkjcq/XyPolcWY=
-github.com/play-with-go/preguide v0.0.2-0.20201003154103-6be0cdb0cf79/go.mod h1:jkhBBbIBioAzKiRo5Rr9r03tqglgUdPZAVIpBBw7aDU=
+github.com/play-with-go/preguide v0.0.2-0.20201015100240-3c46ab78d936 h1:zPmrVhT20nV4327gSc5p89/1rP3ufhoZY5VrtY9b2RU=
+github.com/play-with-go/preguide v0.0.2-0.20201015100240-3c46ab78d936/go.mod h1:XSMWapOehzzeJkzsaT864g9z8bqkSpG5VRUyyjPj6Rw=
 github.com/pmezard/go-difflib v0.0.0-20151028094244-d8ed2627bdf0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
