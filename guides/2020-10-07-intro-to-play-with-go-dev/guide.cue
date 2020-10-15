@@ -40,6 +40,21 @@ Steps: upload_readme: en: preguide.#Upload & {
 		"""
 }
 
+Steps: upload_readme_again: en: preguide.#Upload & {
+	Target:   Defs.readmetxt
+	Renderer: preguide.#RenderDiff & {
+		Pre: Steps.upload_readme.en.Source
+	}
+	Source: """
+		This is \(Defs.readmetxt).
+
+		Hello, gopher!
+
+		We made a change!
+
+		"""
+}
+
 Steps: cat_readme: en: preguide.#Command & {
 	Source: """
 		cat \(Defs.readmetxt)

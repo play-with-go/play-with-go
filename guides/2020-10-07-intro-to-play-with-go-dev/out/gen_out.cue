@@ -17,7 +17,7 @@ Networks: ["playwithgo_pwg"]
 Env: []
 Langs: {
 	en: {
-		Hash: "ba476323967ea0eebe2cdc3ea439a43e65f63976d28873e9d674fab2624e4c9e"
+		Hash: "42c4c1bdefdf0c770c903300499df57786725019ac197973646aa22c21ba60c7"
 		Steps: {
 			cat_readme: {
 				Stmts: [{
@@ -26,16 +26,43 @@ Langs: {
 
 						Hello, gopher!
 
+						We made a change!
+
 
 						"""
 					ExitCode: 0
 					CmdStr:   "cat /home/gopher/readme.txt"
 					Negated:  false
 				}]
-				Order:    3
+				Order:    4
 				Terminal: "term1"
 				StepType: 1
 				Name:     "cat_readme"
+			}
+			upload_readme_again: {
+				Order: 3
+				Source: """
+					This is /home/gopher/readme.txt.
+
+					Hello, gopher!
+
+					We made a change!
+
+					"""
+				Renderer: {
+					Pre: """
+						This is /home/gopher/readme.txt.
+
+						Hello, gopher!
+
+						"""
+					RendererType: 3
+				}
+				Language: "txt"
+				Target:   "/home/gopher/readme.txt"
+				Terminal: "term1"
+				StepType: 2
+				Name:     "upload_readme_again"
 			}
 			upload_readme: {
 				Order: 2

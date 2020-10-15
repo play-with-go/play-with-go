@@ -27,23 +27,17 @@ go: creating new go.mod: module gopher.live/{% raw %}{{{.REPO1}}}{% endraw %}
 
 Write a readme:
 
-```md
-## `gopher.live/{% raw %}{{{.REPO1}}}{% endraw %}`
-```
-{:data-upload-path="L2hvbWUvZ29waGVyL21vZDE=" data-upload-src="UkVBRE1FLm1k:IyMgYGdvcGhlci5saXZlL3t7ey5SRVBPMX19fWA=" data-upload-term=".term1"}
+<pre data-upload-path="L2hvbWUvZ29waGVyL21vZDE=" data-upload-src="UkVBRE1FLm1k:IyMgYGdvcGhlci5saXZlL3t7ey5SRVBPMX19fWA=" data-upload-term=".term1"><code class="language-md">## `gopher.live/{% raw %}{{{.REPO1}}}{% endraw %}`</code></pre>
 
 Write a readme:
 
-```go
-package main
+<pre data-upload-path="L2hvbWUvZ29waGVyL21vZDE=" data-upload-src="bWFpbi5nbw==:cGFja2FnZSBtYWluCgppbXBvcnQgImZtdCIKCmZ1bmMgbWFpbigpIHsKCWZtdC5QcmludGxuKCJIZWxsbywgd29ybGQhIikKfQ==" data-upload-term=".term1"><code class="language-go">package main
 
 import "fmt"
 
 func main() {
 	fmt.Println("Hello, world!")
-}
-```
-{:data-upload-path="L2hvbWUvZ29waGVyL21vZDE=" data-upload-src="bWFpbi5nbw==:cGFja2FnZSBtYWluCgppbXBvcnQgImZtdCIKCmZ1bmMgbWFpbigpIHsKCWZtdC5QcmludGxuKCJIZWxsbywgd29ybGQhIikKfQ==" data-upload-term=".term1"}
+}</code></pre>
 
 Commit and push:
 
