@@ -49,8 +49,9 @@ to upload contents to `/home/gopher/readme.txt`:
 This is /home/gopher/readme.txt.
 
 Hello, gopher!
+
 ```
-{:data-upload-path="L2hvbWUvZ29waGVy" data-upload-src="cmVhZG1lLnR4dA==:VGhpcyBpcyAvaG9tZS9nb3BoZXIvcmVhZG1lLnR4dC4KCkhlbGxvLCBnb3BoZXIh" data-upload-term=".term1"}
+{:data-upload-path="L2hvbWUvZ29waGVy" data-upload-src="cmVhZG1lLnR4dA==:VGhpcyBpcyAvaG9tZS9nb3BoZXIvcmVhZG1lLnR4dC4KCkhlbGxvLCBnb3BoZXIhCg==" data-upload-term=".term1"}
 
 Now that we have uploaded `/home/gopher/readme.txt` we can run another command to do something with it:
 
@@ -59,6 +60,7 @@ $ cat /home/gopher/readme.txt
 This is /home/gopher/readme.txt.
 
 Hello, gopher!
+
 ```
 {:data-command-src="Y2F0IC9ob21lL2dvcGhlci9yZWFkbWUudHh0Cg=="}
 

@@ -19,8 +19,10 @@ $ cat <<EOD > /home/gopher/readme.txt
 This is /home/gopher/readme.txt.
 
 Hello, gopher!
+
 EOD
 $ cat /home/gopher/readme.txt
 This is /home/gopher/readme.txt.
 
 Hello, gopher!
+
