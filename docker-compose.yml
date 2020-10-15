@@ -23,8 +23,6 @@ services:
       - .:/start:ro
     command: ["-guideconfig=guides/gen_guide_structures.cue", "-prestepconfig=prestep_conf.cue", "-unsafe", "-origin=http://localhost:4000"]
     working_dir: "/start"
-    environment:
-      - GOPHERLIVE_ROOTCA
 
   haproxy:
     container_name: haproxy
@@ -36,34 +34,6 @@ services:
     volumes:
         - ./docker/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
 
-  nginx:
-    build:
-      context: .
-      dockerfile: ./docker/nginx/Dockerfile
-    environment:
-      - PLAYWITHGODEV_CERT_FILE
-      - PLAYWITHGODEV_KEY_FILE
-    volumes:
-      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-    networks:
-      pwg:
-        aliases:
-          - gopher.live
-          - api.gopher.live
-
-  gitea:
-    image: gitea/gitea:1.12.4
-    networks:
-      - pwg
-    environment:
-      - USER_UID=1000
-      - USER_GID=1000
-      - PLAYWITHGODEV_GITHUB_USER
-      - PLAYWITHGODEV_GITHUB_PAT
-    volumes:
-      - ./docker/gitea/app.ini:/data/gitea/conf/app.ini:ro
-      - gitea:/data
-
   cmd_gitea:
     build:
       context: .
@@ -71,11 +41,8 @@ services:
     networks:
       - pwg
     environment:
-      - PLAYWITHGODEV_ROOT_USER
-      - PLAYWITHGODEV_ROOT_PASSWORD
-      - PLAYWITHGODEV_GITHUB_USER
-      - PLAYWITHGODEV_GITHUB_PAT
-      - GOPHERLIVE_ROOTCA
+      - PLAYWITHGODEV_CONTRIBUTOR_USER
+      - PLAYWITHGODEV_CONTRIBUTOR_PASSWORD
     command: ["/runbin/gitea", "serve"]
 
   pwd:

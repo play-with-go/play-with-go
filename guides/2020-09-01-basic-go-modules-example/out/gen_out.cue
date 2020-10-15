@@ -7,15 +7,15 @@ Presteps: [{
           \"Path\": \"github.com/play-with-go/gitea/cmd/gitea\",
           \"Main\": {
             \"Path\": \"github.com/play-with-go/gitea\",
-            \"Version\": \"v0.0.0-20200929134129-867a89fbd9eb\",
-            \"Sum\": \"h1:4XbEIlpLjjj2NwT6lXX/VCP+l0aU/1F9JFg8UP3BdH8=\",
+            \"Version\": \"v0.0.0-20201015075538-7787ad03373f\",
+            \"Sum\": \"h1:VXWqw1WFhU9wD7Yijr4nknfCxkOU9Fg0bkqnOLyo0TU=\",
             \"Replace\": null
           },
           \"Deps\": [
             {
               \"Path\": \"code.gitea.io/sdk/gitea\",
-              \"Version\": \"v0.12.1\",
-              \"Sum\": \"h1:bMgjEqPnNX/i6TpVwXwpjJtFOnUSuC9P6yy/jjy8sjY=\",
+              \"Version\": \"v0.13.1\",
+              \"Sum\": \"h1:Y7bpH2iO6Q0KhhMJfjP/LZ0AmiYITeRQlCD8b0oYqhk=\",
               \"Replace\": null
             },
             {
@@ -34,18 +34,6 @@ Presteps: [{
               \"Path\": \"github.com/emicklei/proto\",
               \"Version\": \"v1.6.15\",
               \"Sum\": \"h1:XbpwxmuOPrdES97FrSfpyy67SSCV/wBIKXqgJzh6hNw=\",
-              \"Replace\": null
-            },
-            {
-              \"Path\": \"github.com/google/go-github/v31\",
-              \"Version\": \"v31.0.0\",
-              \"Sum\": \"h1:JJUxlP9lFK+ziXKimTCprajMApV1ecWD4NB6CCb0plo=\",
-              \"Replace\": null
-            },
-            {
-              \"Path\": \"github.com/google/go-querystring\",
-              \"Version\": \"v1.0.0\",
-              \"Sum\": \"h1:Xkwi/a1rcvNg1PPYe5vI8GbeBY/jrVuDX5ASuANWTrk=\",
               \"Replace\": null
             },
             {
@@ -70,12 +58,6 @@ Presteps: [{
               \"Path\": \"github.com/play-with-go/preguide\",
               \"Version\": \"v0.0.2-0.20201003154103-6be0cdb0cf79\",
               \"Sum\": \"h1:IZTZGD/QmcUkdslqUuhDXvnCWuKlfFkjcq/XyPolcWY=\",
-              \"Replace\": null
-            },
-            {
-              \"Path\": \"golang.org/x/crypto\",
-              \"Version\": \"v0.0.0-20191011191535-87dc89f01550\",
-              \"Sum\": \"h1:ObdrDkeb4kJdCP557AjRjq69pTHfNouLtWZG7j9rPN8=\",
               \"Replace\": null
             },
             {
@@ -134,10 +116,10 @@ Scenarios: [{
 	Name:        "go115"
 }]
 Networks: ["playwithgo_pwg"]
-Env: ["GOPHERLIVE_ROOTCA"]
+Env: []
 Langs: {
 	en: {
-		Hash: "4b6d745d1902f6840e095996f72850e5f12985442820f65de8c72aa686e71b9b"
+		Hash: "b5d40c71ac6f0a944ef3fcfe676423f6d654b127bc0740d5bf45480eecb2f0e6"
 		Steps: {
 			use_module: {
 				Stmts: [{

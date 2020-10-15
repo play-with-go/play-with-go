@@ -26,7 +26,7 @@ package guides
 		Description: "Go 1.15"
 	}]
 	Networks: ["playwithgo_pwg"]
-	Env: ["GOPHERLIVE_ROOTCA"]
+	Env: []
 }
 "2020-10-07-intro-to-play-with-go-dev": {
 	Delims: ["{{{", "}}}"]
@@ -44,6 +44,6 @@ package guides
 		Description: "Go 1.15"
 	}]
 	Networks: ["playwithgo_pwg"]
-	Env: ["GOPHERLIVE_ROOTCA"]
+	Env: []
 }
 

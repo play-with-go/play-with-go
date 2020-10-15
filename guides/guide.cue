@@ -1,7 +1,5 @@
 package guide
 
-Env: *["GOPHERLIVE_ROOTCA"] | [...string]
-
 Networks: *["playwithgo_pwg"] | [...string]
 
 Delims: ["{{{", "}}}"]
