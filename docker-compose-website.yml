@@ -1,5 +1,5 @@
 version: '3.2'
 services:
   site:
-    command: ["jekyll", "build","-d", "docs", "--config", "_config.yml,_config-website.yml"]
+    command: ["jekyll", "build", "--config", "_config.yml,_config-website.yml"]
 

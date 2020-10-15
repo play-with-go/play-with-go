@@ -14,9 +14,9 @@ _#workflows: [
 		PREGUIDE_SKIP_CACHE:                true
 		PLAYWITHGODEV_CONTRIBUTOR_USER:     "playwithgopher_github"
 		PLAYWITHGODEV_CONTRIBUTOR_PASSWORD: "${{ secrets.PLAYWITHGODEV_CONTRIBUTOR_PASSWORD }}"
+		PLAYWITHGOPHER_GITHUB_PAT:          "${{ secrets.PLAYWITHGOPHER_GITHUB_PAT }}"
 	}
 
-	name: "Test"
 	jobs: test: {
 		strategy: {
 			"fail-fast": false
@@ -80,11 +80,16 @@ _#workflows: [
 				name: "Verify commit is clean"
 				run:  "test -z \"$(git status --porcelain)\" || (git status; git diff; false)"
 			},
+			{
+				name: "Publish site"
+				run:  "_scripts/publishSite.sh"
+			},
 		]
 	}
 }
 
 test: {
+	name: "Test"
 	#testWorkflow
 	on: {
 		push: branches: ["main"]
@@ -94,6 +99,7 @@ test: {
 }
 
 testmac: {
+	name: "TestMac"
 	#testWorkflow
 	on: schedule: [{cron: "0 9 * * *"}]
 	jobs: test: strategy: matrix: os: ["macos-latest"]
