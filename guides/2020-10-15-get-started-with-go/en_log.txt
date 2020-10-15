@@ -1,0 +1,47 @@
+Terminals: [
+  {
+    "Name": "term1",
+    "Description": "The main terminal",
+    "Scenarios": {
+      "go115": {
+        "Image": "playwithgo/go1.15.2@sha256:4f5346af0d93f50c974d9be2f2f31c55d2f953da9437aac990d30a50e3d591a5"
+      }
+    }
+  }
+]
+$ go version
+go version go1.15.2 linux/amd64
+$ pwd
+/home/gopher
+$ mkdir /home/gopher/hello
+$ cd /home/gopher/hello
+$ cat <<EOD > /home/gopher/hello/hello.go
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello, World!")
+}
+EOD
+$ go run hello.go
+Hello, World!
+$ cat <<EOD > /home/gopher/hello/hello.go
+package main
+
+import "fmt"
+
+import "rsc.io/quote"
+
+func main() {
+	fmt.Println(quote.Go())
+}
+EOD
+$ go mod init hello
+go: creating new go.mod: module hello
+$ go get rsc.io/quote@v1.5.2
+go: downloading rsc.io/quote v1.5.2
+go: downloading rsc.io/sampler v1.3.0
+go: downloading golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
+$ go run hello.go
+Don't communicate by sharing memory, share memory by communicating.
