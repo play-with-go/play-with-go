@@ -35,6 +35,10 @@ to upload contents to `<!--ref: readmetxt -->`:
 
 <!--step: upload_readme -->
 
+When we update a file, we highlight the bits that have changed:
+
+<!--step: upload_readme_again -->
+
 Now that we have uploaded `<!--ref: readmetxt -->` we can run another command to do something with it:
 
 <!--step: cat_readme -->

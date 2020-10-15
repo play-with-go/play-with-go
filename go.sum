@@ -422,8 +422,8 @@ github.com/play-with-go/gitea v0.0.0-20201015075538-7787ad03373f h1:VXWqw1WFhU9w
 github.com/play-with-go/gitea v0.0.0-20201015075538-7787ad03373f/go.mod h1:mD4+vK9cH9dCfgegi5Z9+KSg79O9f0lOhg0sN8vve5M=
 github.com/play-with-go/preguide v0.0.2-0.20200929132054-e0f48a7f7b23 h1:XuQlkNTvut6rRO8VkKRqTxPPFU1B3kNmdGD9St37dc0=
 github.com/play-with-go/preguide v0.0.2-0.20200929132054-e0f48a7f7b23/go.mod h1:jkhBBbIBioAzKiRo5Rr9r03tqglgUdPZAVIpBBw7aDU=
-github.com/play-with-go/preguide v0.0.2-0.20201015100240-3c46ab78d936 h1:zPmrVhT20nV4327gSc5p89/1rP3ufhoZY5VrtY9b2RU=
-github.com/play-with-go/preguide v0.0.2-0.20201015100240-3c46ab78d936/go.mod h1:XSMWapOehzzeJkzsaT864g9z8bqkSpG5VRUyyjPj6Rw=
+github.com/play-with-go/preguide v0.0.2-0.20201015154104-119a6e859fbe h1:roK/BsBhRN6FkBQFKunqBWicWw/sUXpSPHAbjY3BoHg=
+github.com/play-with-go/preguide v0.0.2-0.20201015154104-119a6e859fbe/go.mod h1:XSMWapOehzzeJkzsaT864g9z8bqkSpG5VRUyyjPj6Rw=
 github.com/pmezard/go-difflib v0.0.0-20151028094244-d8ed2627bdf0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=

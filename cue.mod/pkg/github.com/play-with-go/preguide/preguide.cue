@@ -184,12 +184,13 @@ import (
 
 // Renderers define what part (or whole) of an upload file should be shown (rendered)
 // to the user in the guide.
-#Renderer: (*#RenderFull | #RenderLineRanges) & _#rendererCommon
+#Renderer: (*#RenderFull | #RenderLineRanges | #RenderDiff) & _#rendererCommon
 
 #RendererType: int
 
 #RendererTypeFull:       #RendererType & 1
 #RendererTypeLineRanges: #RendererType & 2
+#RendererTypeDiff:       #RendererType & 3
 
 _#rendererCommon: {
 	RendererType: #RendererType
@@ -206,6 +207,12 @@ _#rendererCommon: {
 	RendererType: #RendererTypeLineRanges
 	Ellipsis:     *"..." | string
 	Lines: [...[int, int]]
+}
+
+#RenderDiff: {
+	_#rendererCommon
+	RendererType: #RendererTypeDiff
+	Pre:          string
 }
 
 // Post upgrade to latest CUE we have a number of things to change/test, with /

@@ -45,13 +45,19 @@ Hello, gopher!
 We can also upload code/content to our interactive session using code blocks. Try clicking on the following code block
 to upload contents to `/home/gopher/readme.txt`:
 
-```txt
-This is /home/gopher/readme.txt.
+<pre data-upload-path="L2hvbWUvZ29waGVy" data-upload-src="cmVhZG1lLnR4dA==:VGhpcyBpcyAvaG9tZS9nb3BoZXIvcmVhZG1lLnR4dC4KCkhlbGxvLCBnb3BoZXIhCg==" data-upload-term=".term1"><code class="language-txt">This is /home/gopher/readme.txt.
 
 Hello, gopher!
+</code></pre>
 
-```
-{:data-upload-path="L2hvbWUvZ29waGVy" data-upload-src="cmVhZG1lLnR4dA==:VGhpcyBpcyAvaG9tZS9nb3BoZXIvcmVhZG1lLnR4dC4KCkhlbGxvLCBnb3BoZXIhCg==" data-upload-term=".term1"}
+When we update a file, we highlight the bits that have changed:
+
+<pre data-upload-path="L2hvbWUvZ29waGVy" data-upload-src="cmVhZG1lLnR4dA==:VGhpcyBpcyAvaG9tZS9nb3BoZXIvcmVhZG1lLnR4dC4KCkhlbGxvLCBnb3BoZXIhCgpXZSBtYWRlIGEgY2hhbmdlIQo=" data-upload-term=".term1"><code class="language-txt">This is /home/gopher/readme.txt.
+
+Hello, gopher!
+<b style="color:darkblue"></b>
+<b style="color:darkblue">We made a change!</b>
+</code></pre>
 
 Now that we have uploaded `/home/gopher/readme.txt` we can run another command to do something with it:
 
@@ -60,6 +66,8 @@ $ cat /home/gopher/readme.txt
 This is /home/gopher/readme.txt.
 
 Hello, gopher!
+
+We made a change!
 
 ```
 {:data-command-src="Y2F0IC9ob21lL2dvcGhlci9yZWFkbWUudHh0Cg=="}
