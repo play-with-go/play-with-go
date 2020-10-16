@@ -1,4 +1,4 @@
-# Play with Docker website prod config
+# play-with-go website prod config
 pwdurl: https://api.play-with-go.dev
 controllerurl: https://api.play-with-go.dev/guides
 
