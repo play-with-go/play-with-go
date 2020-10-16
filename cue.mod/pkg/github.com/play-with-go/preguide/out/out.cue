@@ -55,6 +55,10 @@ _#stepCommon: {
 	CmdStr:   string
 	ExitCode: int
 	Output:   string
+
+	// TrimmedOutput is the Output from the statement
+	// with the trailing \n removed
+	TrimmedOutput: string
 }
 
 #UploadStep: {

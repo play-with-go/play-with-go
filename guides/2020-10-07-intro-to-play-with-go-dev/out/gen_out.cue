@@ -17,10 +17,18 @@ Networks: ["playwithgo_pwg"]
 Env: []
 Langs: {
 	en: {
-		Hash: "42c4c1bdefdf0c770c903300499df57786725019ac197973646aa22c21ba60c7"
+		Hash: "428cc2626aa8eb9f254372bca511ba42d3c81977fc5a24b83a7b80d5cd0379bd"
 		Steps: {
 			cat_readme: {
 				Stmts: [{
+					TrimmedOutput: """
+						This is /home/gopher/readme.txt.
+
+						Hello, gopher!
+
+						We made a change!
+
+						"""
 					Output: """
 						This is /home/gopher/readme.txt.
 
@@ -83,6 +91,7 @@ Langs: {
 			}
 			multiple_commands: {
 				Stmts: [{
+					TrimmedOutput: "gopher"
 					Output: """
 						gopher
 
@@ -91,6 +100,7 @@ Langs: {
 					CmdStr:   "whoami"
 					Negated:  false
 				}, {
+					TrimmedOutput: "Hello, gopher!"
 					Output: """
 						Hello, gopher!
 
@@ -106,6 +116,7 @@ Langs: {
 			}
 			echo_hello: {
 				Stmts: [{
+					TrimmedOutput: "Hello, world!"
 					Output: """
 						Hello, world!
 
