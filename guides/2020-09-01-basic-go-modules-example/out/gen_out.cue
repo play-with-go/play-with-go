@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201015154104-119a6e859fbe",
-		      "Sum": "h1:roK/BsBhRN6FkBQFKunqBWicWw/sUXpSPHAbjY3BoHg=",
+		      "Version": "v0.0.2-0.20201016101909-484ebd22e2b8",
+		      "Sum": "h1:P7QfHI9fgcD0TmV64K6JRuhCnx6SCibxlcNZ4QPJPLM=",
 		      "Replace": null
 		    },
 		    {
@@ -119,20 +119,23 @@ Networks: ["playwithgo_pwg"]
 Env: []
 Langs: {
 	en: {
-		Hash: "d761f6b68a1cb1415b543e15f18a22ef9a27ec5d9da3c226ba74c2708ac2b076"
+		Hash: "412099d94c2894eba4d91ab74a83f3eb5a32dff06eeb4135993983bddc21e59e"
 		Steps: {
 			use_module: {
 				Stmts: [{
-					Output:   ""
-					ExitCode: 0
-					CmdStr:   "mkdir /home/gopher/mod2"
-					Negated:  false
+					TrimmedOutput: ""
+					Output:        ""
+					ExitCode:      0
+					CmdStr:        "mkdir /home/gopher/mod2"
+					Negated:       false
 				}, {
-					Output:   ""
-					ExitCode: 0
-					CmdStr:   "cd /home/gopher/mod2"
-					Negated:  false
+					TrimmedOutput: ""
+					Output:        ""
+					ExitCode:      0
+					CmdStr:        "cd /home/gopher/mod2"
+					Negated:       false
 				}, {
+					TrimmedOutput: "go: creating new go.mod: module mod.com"
 					Output: """
 						go: creating new go.mod: module mod.com
 
@@ -141,6 +144,10 @@ Langs: {
 					CmdStr:   "go mod init mod.com"
 					Negated:  false
 				}, {
+					TrimmedOutput: """
+						go: downloading gopher.live/{{{.REPO1}}} v0.0.0-20060102150405-abcde12345
+						go: gopher.live/{{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcde12345
+						"""
 					Output: """
 						go: downloading gopher.live/{{{.REPO1}}} v0.0.0-20060102150405-abcde12345
 						go: gopher.live/{{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcde12345
@@ -150,6 +157,7 @@ Langs: {
 					CmdStr:   "go get gopher.live/{{{.REPO1}}}"
 					Negated:  false
 				}, {
+					TrimmedOutput: "Hello, world!"
 					Output: """
 						Hello, world!
 
@@ -165,11 +173,19 @@ Langs: {
 			}
 			commit_and_push: {
 				Stmts: [{
-					Output:   ""
-					ExitCode: 0
-					CmdStr:   "git add -A"
-					Negated:  false
+					TrimmedOutput: ""
+					Output:        ""
+					ExitCode:      0
+					CmdStr:        "git add -A"
+					Negated:       false
 				}, {
+					TrimmedOutput: """
+						[main (root-commit) abcd123] Initial commit
+						 3 files changed, 11 insertions(+)
+						 create mode 100644 README.md
+						 create mode 100644 go.mod
+						 create mode 100644 main.go
+						"""
 					Output: """
 						[main (root-commit) abcd123] Initial commit
 						 3 files changed, 11 insertions(+)
@@ -182,6 +198,13 @@ Langs: {
 					CmdStr:   "git commit -m \"Initial commit\""
 					Negated:  false
 				}, {
+					TrimmedOutput: """
+						remote: . Processing 1 references        
+						remote: Processed 1 references in total        
+						To https://gopher.live/{{{.REPO1}}}.git
+						 * [new branch]      main -> main
+						Branch 'main' set up to track remote branch 'main' from 'origin'.
+						"""
 					Output: """
 						remote: . Processing 1 references        
 						remote: Processed 1 references in total        
@@ -233,16 +256,19 @@ Langs: {
 			}
 			create_module: {
 				Stmts: [{
-					Output:   ""
-					ExitCode: 0
-					CmdStr:   "mkdir /home/gopher/mod1"
-					Negated:  false
+					TrimmedOutput: ""
+					Output:        ""
+					ExitCode:      0
+					CmdStr:        "mkdir /home/gopher/mod1"
+					Negated:       false
 				}, {
-					Output:   ""
-					ExitCode: 0
-					CmdStr:   "cd /home/gopher/mod1"
-					Negated:  false
+					TrimmedOutput: ""
+					Output:        ""
+					ExitCode:      0
+					CmdStr:        "cd /home/gopher/mod1"
+					Negated:       false
 				}, {
+					TrimmedOutput: "Initialized empty Git repository in /home/gopher/mod1/.git/"
 					Output: """
 						Initialized empty Git repository in /home/gopher/mod1/.git/
 
@@ -251,11 +277,13 @@ Langs: {
 					CmdStr:   "git init"
 					Negated:  false
 				}, {
-					Output:   ""
-					ExitCode: 0
-					CmdStr:   "git remote add origin https://gopher.live/{{{.REPO1}}}.git"
-					Negated:  false
+					TrimmedOutput: ""
+					Output:        ""
+					ExitCode:      0
+					CmdStr:        "git remote add origin https://gopher.live/{{{.REPO1}}}.git"
+					Negated:       false
 				}, {
+					TrimmedOutput: "go: creating new go.mod: module gopher.live/{{{.REPO1}}}"
 					Output: """
 						go: creating new go.mod: module gopher.live/{{{.REPO1}}}
 
