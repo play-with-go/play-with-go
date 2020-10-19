@@ -35,7 +35,7 @@ package guides
 		Path:    "/newuser"
 		Args: {
 			Repos: [{
-				Pattern: "mod1*"
+				Pattern: "hello*"
 				Var:     "REPO1"
 			}]
 		}
