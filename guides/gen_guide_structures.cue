@@ -30,6 +30,16 @@ package guides
 }
 "2020-10-07-intro-to-play-with-go-dev": {
 	Delims: ["{{{", "}}}"]
+	Presteps: [{
+		Package: "github.com/play-with-go/gitea"
+		Path:    "/newuser"
+		Args: {
+			Repos: [{
+				Pattern: "mod1*"
+				Var:     "REPO1"
+			}]
+		}
+	}]
 	Terminals: [{
 		Name:        "term1"
 		Description: "The main terminal"
