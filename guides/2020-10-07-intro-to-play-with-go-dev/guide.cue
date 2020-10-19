@@ -2,11 +2,20 @@ package guide
 
 import (
 	"github.com/play-with-go/preguide"
+	"github.com/play-with-go/gitea"
 )
 
 Defs: {
 	readmetxt: "/home/gopher/readme.txt"
 }
+
+Presteps: [gitea.#PrestepNewUser & {
+	Args: {
+		Repos: [
+			{Var: "REPO1", Pattern: "mod1*"},
+		]
+	}
+}]
 
 Scenarios: go115: preguide.#Scenario & {
 	Description: "Go 1.15"
@@ -25,8 +34,8 @@ Steps: echo_hello: en: preguide.#Command & {
 
 Steps: multiple_commands: en: preguide.#Command & {
 	Source: """
-		whoami
-		echo "Hello, gopher!"
+		echo "Hello"
+		echo "Gopher!"
 		"""
 }
 
@@ -58,5 +67,12 @@ Steps: upload_readme_again: en: preguide.#Upload & {
 Steps: cat_readme: en: preguide.#Command & {
 	Source: """
 		cat \(Defs.readmetxt)
+		"""
+}
+
+Steps: whoami: en: preguide.#Command & {
+	Source: """
+		whoami
+		pwd
 		"""
 }
