@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201016154009-606741b7e21a",
-		      "Sum": "h1:Zl9SQ1dPUvRNFYAei5hbAOadxSMLz9ppOewApK1x15I=",
+		      "Version": "v0.0.2-0.20201019145505-c5bb1a7f11fd",
+		      "Sum": "h1:hG6asMYlDCzwI2/YZCJtYQhKVqngRd/99S+M9fDEZDc=",
 		      "Replace": null
 		    },
 		    {
@@ -119,7 +119,7 @@ Networks: ["playwithgo_pwg"]
 Env: []
 Langs: {
 	en: {
-		Hash: "6970937d53b5ec8d766262c0ccf71d584d57f9f48e9641baf16d7a6aac9491c3"
+		Hash: "70807882678b2968a638f8d708f95af6025f9383ca89da190b7c71bb78577467"
 		Steps: {
 			use_module: {
 				Stmts: [{
