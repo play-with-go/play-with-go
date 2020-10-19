@@ -16,7 +16,7 @@ Presteps: [
     "Args": {
       "Repos": [
         {
-          "Pattern": "mod1*",
+          "Pattern": "hello*",
           "Var": "REPO1"
         }
       ]
@@ -60,3 +60,6 @@ $ whoami
 gopher
 $ pwd
 /home/gopher
+$ echo gopher.live/{{{.REPO1}}}
+gopher.live/{{{.REPO1}}}
+$ git ls-remote https://gopher.live/{{{.REPO1}}}.git

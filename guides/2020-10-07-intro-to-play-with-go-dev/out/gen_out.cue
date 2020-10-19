@@ -96,7 +96,7 @@ Presteps: [{
 	Args: {
 		Repos: [{
 			Var:     "REPO1"
-			Pattern: "mod1*"
+			Pattern: "hello*"
 		}]
 	}
 	Package: "github.com/play-with-go/gitea"
@@ -119,8 +119,37 @@ Networks: ["playwithgo_pwg"]
 Env: []
 Langs: {
 	en: {
-		Hash: "de8d2ab259d3564bdf04b0f0cfeacb2291ee6be56e1667e70b83b1361d8090e5"
+		Hash: "5e4d1dd73c539e38a1edb530d18b436b85d6eb094c72276133b686a050ae8509"
 		Steps: {
+			gitlsremote: {
+				Stmts: [{
+					TrimmedOutput: ""
+					Output:        ""
+					ExitCode:      0
+					CmdStr:        "git ls-remote https://gopher.live/{{{.REPO1}}}.git"
+					Negated:       false
+				}]
+				Order:    7
+				Terminal: "term1"
+				StepType: 1
+				Name:     "gitlsremote"
+			}
+			echomodpath: {
+				Stmts: [{
+					TrimmedOutput: "gopher.live/{{{.REPO1}}}"
+					Output: """
+						gopher.live/{{{.REPO1}}}
+
+						"""
+					ExitCode: 0
+					CmdStr:   "echo gopher.live/{{{.REPO1}}}"
+					Negated:  false
+				}]
+				Order:    6
+				Terminal: "term1"
+				StepType: 1
+				Name:     "echomodpath"
+			}
 			whoami: {
 				Stmts: [{
 					TrimmedOutput: "gopher"

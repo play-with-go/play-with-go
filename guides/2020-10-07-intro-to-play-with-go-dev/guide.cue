@@ -1,18 +1,23 @@
 package guide
 
 import (
+
 	"github.com/play-with-go/preguide"
 	"github.com/play-with-go/gitea"
 )
 
 Defs: {
-	readmetxt: "/home/gopher/readme.txt"
+	modname:     "hello"
+	modpath:     "gopher.live/\(modname)"
+	fullmodpath: "gopher.live/{{{.REPO1}}}"
+	vcsurl:      "https://gopher.live/{{{.REPO1}}}.git"
+	readmetxt:   "/home/gopher/readme.txt"
 }
 
 Presteps: [gitea.#PrestepNewUser & {
 	Args: {
 		Repos: [
-			{Var: "REPO1", Pattern: "mod1*"},
+			{Var: "REPO1", Pattern: Defs.modname + "*"},
 		]
 	}
 }]
@@ -74,5 +79,18 @@ Steps: whoami: en: preguide.#Command & {
 	Source: """
 		whoami
 		pwd
+		"""
+}
+
+Steps: echomodpath: en: preguide.#Command & {
+	Source: """
+		echo \(Defs.fullmodpath)
+		"""
+}
+
+Steps: gitlsremote: en: preguide.#Command & {
+	Source: """
+		git ls-remote \(Defs.vcsurl)
+		# no output because we have not committed anything
 		"""
 }

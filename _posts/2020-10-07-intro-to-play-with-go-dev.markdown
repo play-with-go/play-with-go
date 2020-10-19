@@ -93,8 +93,16 @@ $ pwd
 ` user.
 
 Some guides need you to publish code to a remote source code repository. For such guides, a unique remote repository is
-automatically created against the https://gopher.live [`gitea`](https://gitea.io) instance. The URL of the repository will be
-made clear in the guide; authentication will be handled automatically.
+automatically created against the https://gopher.live [`gitea`](https://gitea.io) instance. The URL of the repository
+will be made clear in the guide; authentication will be handled automatically. For example, if we are creating a module
+called `hello`, the guide will automatically create a module path for us, like `gopher.live/{% raw %}{{{.REPO1}}}{% endraw %}`. The first part
+of this module path looks familiar: `gopher.live/hello`. It is followed by a random suffix that makes it unique to you.
+The remote version control system URL corresponding to this module path is `https://gopher.live/{% raw %}{{{.REPO1}}}{% endraw %}.git`:
+
+```.term1
+$ git ls-remote https://gopher.live/{% raw %}{{{.REPO1}}}{% endraw %}.git
+```
+{:data-command-src="Z2l0IGxzLXJlbW90ZSBodHRwczovL2dvcGhlci5saXZlL3t7ey5SRVBPMX19fS5naXQK"}
 
 
 ### I'm lost, help!
