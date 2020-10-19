@@ -6,6 +6,9 @@ layout: post
 title: 'Tutorial: Get started with Go'
 ---
 
+_This tutorial is based on the official ["Getting started"](https://golang.org/doc/tutorial/getting-started.html)
+tutorial._
+
 In this tutorial we present a brief introduction to Go programming. You will:
 
 * Write some simple "Hello, world" code
