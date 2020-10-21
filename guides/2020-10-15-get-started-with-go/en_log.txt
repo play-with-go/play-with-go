@@ -23,6 +23,7 @@ import "fmt"
 func main() {
 	fmt.Println("Hello, World!")
 }
+
 EOD
 $ go run hello.go
 Hello, World!
@@ -36,6 +37,7 @@ import "rsc.io/quote"
 func main() {
 	fmt.Println(quote.Go())
 }
+
 EOD
 $ go mod init hello
 go: creating new go.mod: module hello

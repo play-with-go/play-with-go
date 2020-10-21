@@ -6,20 +6,11 @@ function replaceAll(string, search, replace) {
   return string.split(search).join(replace);
 }
 function replaceInText(element, replacements) {
-	for (let node of element.childNodes) {
-		switch (node.nodeType) {
-			case Node.ELEMENT_NODE:
-				replaceInText(node, replacements);
-				break;
-			case Node.TEXT_NODE:
-				for (let r of replacements) {
-					node.textContent = replaceAll(node.textContent, r[0], r[1]);
-				}
-				break;
-			case Node.DOCUMENT_NODE:
-				replaceInText(node, replacements);
-		}
+	let v = element.innerHTML;
+	for (let r of replacements) {
+		v = replaceAll(v, r[0], r[1]);
 	}
+	element.innerHTML = v;
 }
 var siteUrl = "{{ site.url }}";
 var fontChanged = false;

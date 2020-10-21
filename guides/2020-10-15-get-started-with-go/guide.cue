@@ -51,6 +51,7 @@ Steps: create_hello: en: preguide.#Upload & {
 		func main() {
 			fmt.Println("Hello, World!")
 		}
+
 		"""
 }
 
@@ -75,6 +76,7 @@ Steps: update_hello: en: preguide.#Upload & {
 		func main() {
 			fmt.Println(quote.Go())
 		}
+
 		"""
 }
 
