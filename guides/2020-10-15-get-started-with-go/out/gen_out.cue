@@ -17,7 +17,7 @@ Networks: ["playwithgo_pwg"]
 Env: []
 Langs: {
 	en: {
-		Hash: "7f4b09908f411483f51c00cd68b1b1b69fdef42b2a91be4651e5657101c6c238"
+		Hash: "d5e6304e68208929549142aa40f34aaecb1a6574673a3c92eca3aad85492c8d1"
 		Steps: {
 			run_hello_again: {
 				Stmts: [{
@@ -69,6 +69,7 @@ Langs: {
 					func main() {
 					\tfmt.Println(quote.Go())
 					}
+
 					"""
 				Renderer: {
 					Pre: """
@@ -79,6 +80,7 @@ Langs: {
 						func main() {
 						\tfmt.Println("Hello, World!")
 						}
+
 						"""
 					RendererType: 3
 				}
@@ -114,6 +116,7 @@ Langs: {
 					func main() {
 					\tfmt.Println("Hello, World!")
 					}
+
 					"""
 				Renderer: {
 					RendererType: 1
