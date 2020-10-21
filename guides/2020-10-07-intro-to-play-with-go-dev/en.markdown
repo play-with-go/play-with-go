@@ -33,7 +33,7 @@ the lines that follow. Command blocks can contain multiple commands:
 <!--step: multiple_commands -->
 
 You can also upload code/content to our interactive session using code blocks. Click on the following code block to
-upload contents to `<!--ref: readmetxt -->`:
+upload contents to `<!--ref: readme -->`:
 
 <!--step: upload_readme -->
 
@@ -41,28 +41,40 @@ If a later code block updates a file, we typically highlight the bits that have 
 
 <!--step: upload_readme_again -->
 
-Now that we have uploaded `<!--ref: readmetxt -->` we can run another command to show us its contents:
+Now that we have uploaded `<!--ref: readme -->` we can run another command to show us its contents:
 
 <!--step: cat_readme -->
 
 ### The interactive terminal
 
 As mentioned above, the interactive terminal is connected to a remote virtual session, hosted on [Google
-Cloud](https://cloud.google.com/). For Go-related guides, the remote session starts with the following user and working
-directory unless indicated otherwise:
+Cloud](https://cloud.google.com/). For Go-related guides, the remote session is running as the `<!--outref: user-->`
+user, with a working directory of `<!--outref: wd-->`, which is also referred to as the home directory of the
+`<!--outref: user-->` user.
 
-<!--step: whoami-->
+### Remote source code repositories
 
-`<!--outref: wd-->` is referred to as the home directory of the `<!--outref: user-->` user.
+Some guides need you to publish code to a remote source code repository. For such guides, a unique user is automatically
+created for you in the [`gopher.live`](https://gopher.live) [`gitea`](https://gitea.io) instance. Repostitories are
+created beneath that user account. For example, for this guide we have created the unique user `{{{.GITEA_USERNAME}}}`
+and a repository called `<!--ref:modname-->`.
 
-Some guides need you to publish code to a remote source code repository. For such guides, a unique remote repository is
-automatically created against the https://gopher.live [`gitea`](https://gitea.io) instance. The URL of the repository
-will be made clear in the guide; authentication will be handled automatically. For example, if we are creating a module
-called `hello`, the guide will automatically create a module path for us, like `<!--ref:fullmodpath-->`. The first part
-of this module path looks familiar: `<!--ref:modpath-->`. It is followed by a random suffix that makes it unique to you.
-The remote version control system URL corresponding to this module path is `<!--ref: vcsurl -->`:
+Let's add the `<!--ref:readme-->` file we created earlier to this remote repository.
 
-<!--step: gitlsremote-->
+Initialise a local `git` repository and add the remote:
+
+<!--step: gitinit-->
+
+Add and commit the `<!--ref:readme-->` file we created earlier:
+
+<!--step: gitadd-->
+
+Push the commit to the remote repository:
+
+<!--step: gitpush-->
+
+It's as easy as that. Authentication is taken care of for you. The user and repository will be destroyed after 3 hours
+along with the guide session.
 
 
 ### I'm lost, help!

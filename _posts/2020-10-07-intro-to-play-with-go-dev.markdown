@@ -37,72 +37,89 @@ blocks are indicated by a `$` sign at the beginning of a line; the output from t
 the lines that follow. Command blocks can contain multiple commands:
 
 ```.term1
-$ echo "Hello"
-Hello
-$ echo "Gopher!"
-Gopher!
+$ mkdir hello
+$ cd hello
 ```
-{:data-command-src="ZWNobyAiSGVsbG8iCmVjaG8gIkdvcGhlciEiCg=="}
+{:data-command-src="bWtkaXIgaGVsbG8KY2QgaGVsbG8K"}
 
 You can also upload code/content to our interactive session using code blocks. Click on the following code block to
-upload contents to `/home/gopher/readme.txt`:
+upload contents to `README.md`:
 
-<pre data-upload-path="L2hvbWUvZ29waGVy" data-upload-src="cmVhZG1lLnR4dA==:VGhpcyBpcyAvaG9tZS9nb3BoZXIvcmVhZG1lLnR4dC4KCkhlbGxvLCBnb3BoZXIhCg==" data-upload-term=".term1"><code class="language-txt">This is /home/gopher/readme.txt.
+<pre data-upload-path="L2hvbWUvZ29waGVyL2hlbGxv" data-upload-src="UkVBRE1FLm1k:VGhpcyBpcyBSRUFETUUubWQuCgpIZWxsbywgZ29waGVyIQo=" data-upload-term=".term1"><code class="language-md">This is README.md.
 
 Hello, gopher!
 </code></pre>
 
 If a later code block updates a file, we typically highlight the bits that have changed:
 
-<pre data-upload-path="L2hvbWUvZ29waGVy" data-upload-src="cmVhZG1lLnR4dA==:VGhpcyBpcyAvaG9tZS9nb3BoZXIvcmVhZG1lLnR4dC4KCkhlbGxvLCBnb3BoZXIhCgpXZSBtYWRlIGEgY2hhbmdlIQo=" data-upload-term=".term1"><code class="language-txt">This is /home/gopher/readme.txt.
+<pre data-upload-path="L2hvbWUvZ29waGVyL2hlbGxv" data-upload-src="UkVBRE1FLm1k:VGhpcyBpcyBSRUFETUUubWQuCgpIZWxsbywgZ29waGVyIQoKV2UgbWFkZSBhIGNoYW5nZSEK" data-upload-term=".term1"><code class="language-md">This is README.md.
 
 Hello, gopher!
 <b style="color:darkblue"></b>
 <b style="color:darkblue">We made a change!</b>
 </code></pre>
 
-Now that we have uploaded `/home/gopher/readme.txt` we can run another command to show us its contents:
+Now that we have uploaded `README.md` we can run another command to show us its contents:
 
 ```.term1
-$ cat /home/gopher/readme.txt
-This is /home/gopher/readme.txt.
+$ cat README.md
+This is README.md.
 
 Hello, gopher!
 
 We made a change!
 
 ```
-{:data-command-src="Y2F0IC9ob21lL2dvcGhlci9yZWFkbWUudHh0Cg=="}
+{:data-command-src="Y2F0IFJFQURNRS5tZAo="}
 
 ### The interactive terminal
 
 As mentioned above, the interactive terminal is connected to a remote virtual session, hosted on [Google
-Cloud](https://cloud.google.com/). For Go-related guides, the remote session starts with the following user and working
-directory unless indicated otherwise:
+Cloud](https://cloud.google.com/). For Go-related guides, the remote session is running as the `gopher`
+user, with a working directory of `/home/gopher`, which is also referred to as the home directory of the
+`gopher` user.
+
+### Remote source code repositories
+
+Some guides need you to publish code to a remote source code repository. For such guides, a unique user is automatically
+created for you in the [`gopher.live`](https://gopher.live) [`gitea`](https://gitea.io) instance. Repostitories are
+created beneath that user account. For example, for this guide we have created the unique user `{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}`
+and a repository called `hello`.
+
+Let's add the `README.md` file we created earlier to this remote repository.
+
+Initialise a local `git` repository and add the remote:
 
 ```.term1
-$ whoami
-gopher
-$ pwd
-/home/gopher
+$ git init -q
+$ git remote add origin https://gopher.live/{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}/{% raw %}{{{.REPO1}}}{% endraw %}.git
 ```
-{:data-command-src="d2hvYW1pCnB3ZAo="}
+{:data-command-src="Z2l0IGluaXQgLXEKZ2l0IHJlbW90ZSBhZGQgb3JpZ2luIGh0dHBzOi8vZ29waGVyLmxpdmUve3t7LkdJVEVBX1VTRVJOQU1FfX19L3t7ey5SRVBPMX19fS5naXQK"}
 
-`/home/gopher
-` is referred to as the home directory of the `gopher
-` user.
-
-Some guides need you to publish code to a remote source code repository. For such guides, a unique remote repository is
-automatically created against the https://gopher.live [`gitea`](https://gitea.io) instance. The URL of the repository
-will be made clear in the guide; authentication will be handled automatically. For example, if we are creating a module
-called `hello`, the guide will automatically create a module path for us, like `gopher.live/{% raw %}{{{.REPO1}}}{% endraw %}`. The first part
-of this module path looks familiar: `gopher.live/hello`. It is followed by a random suffix that makes it unique to you.
-The remote version control system URL corresponding to this module path is `https://gopher.live/{% raw %}{{{.REPO1}}}{% endraw %}.git`:
+Add and commit the `README.md` file we created earlier:
 
 ```.term1
-$ git ls-remote https://gopher.live/{% raw %}{{{.REPO1}}}{% endraw %}.git
+$ git add -A
+$ git commit -am 'Initial commit'
+[main (root-commit) abcd123] Initial commit
+ 1 file changed, 6 insertions(+)
+ create mode 100644 README.md
 ```
-{:data-command-src="Z2l0IGxzLXJlbW90ZSBodHRwczovL2dvcGhlci5saXZlL3t7ey5SRVBPMX19fS5naXQK"}
+{:data-command-src="Z2l0IGFkZCAtQQpnaXQgY29tbWl0IC1hbSAnSW5pdGlhbCBjb21taXQnCg=="}
+
+Push the commit to the remote repository:
+
+```.term1
+$ git push origin main
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+To https://gopher.live/{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}/{% raw %}{{{.REPO1}}}{% endraw %}.git
+ * [new branch]      main -> main
+```
+{:data-command-src="Z2l0IHB1c2ggb3JpZ2luIG1haW4K"}
+
+It's as easy as that. Authentication is taken care of for you. The user and repository will be destroyed after 3 hours
+along with the guide session.
 
 
 ### I'm lost, help!
