@@ -18,26 +18,27 @@ Create a module:
 $ mkdir /home/gopher/mod1
 $ cd /home/gopher/mod1
 $ git init
-Initialized empty Git repository in /home/gopher/mod1/.git/
-$ git remote add origin https://gopher.live/{% raw %}{{{.REPO1}}}{% endraw %}.git
-$ go mod init gopher.live/{% raw %}{{{.REPO1}}}{% endraw %}
-go: creating new go.mod: module gopher.live/{% raw %}{{{.REPO1}}}{% endraw %}
+Initialized empty Git repository in /home/gopher/{% raw %}{{{.REPO1}}}{% endraw %}/.git/
+$ git remote add origin https://gopher.live/{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}/{% raw %}{{{.REPO1}}}{% endraw %}.git
+$ go mod init gopher.live/{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}/{% raw %}{{{.REPO1}}}{% endraw %}
+go: creating new go.mod: module gopher.live/{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}/{% raw %}{{{.REPO1}}}{% endraw %}
 ```
-{:data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL21vZDEKY2QgL2hvbWUvZ29waGVyL21vZDEKZ2l0IGluaXQKZ2l0IHJlbW90ZSBhZGQgb3JpZ2luIGh0dHBzOi8vZ29waGVyLmxpdmUve3t7LlJFUE8xfX19LmdpdApnbyBtb2QgaW5pdCBnb3BoZXIubGl2ZS97e3suUkVQTzF9fX0K"}
+{:data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL21vZDEKY2QgL2hvbWUvZ29waGVyL21vZDEKZ2l0IGluaXQKZ2l0IHJlbW90ZSBhZGQgb3JpZ2luIGh0dHBzOi8vZ29waGVyLmxpdmUve3t7LkdJVEVBX1VTRVJOQU1FfX19L3t7ey5SRVBPMX19fS5naXQKZ28gbW9kIGluaXQgZ29waGVyLmxpdmUve3t7LkdJVEVBX1VTRVJOQU1FfX19L3t7ey5SRVBPMX19fQo="}
 
 Write a readme:
 
-<pre data-upload-path="L2hvbWUvZ29waGVyL21vZDE=" data-upload-src="UkVBRE1FLm1k:IyMgYGdvcGhlci5saXZlL3t7ey5SRVBPMX19fWA=" data-upload-term=".term1"><code class="language-md">## `gopher.live/{% raw %}{{{.REPO1}}}{% endraw %}`</code></pre>
+<pre data-upload-path="L2hvbWUvZ29waGVyL21vZDE=" data-upload-src="UkVBRE1FLm1k:IyMgYGdvcGhlci5saXZlL3t7ey5HSVRFQV9VU0VSTkFNRX19fS97e3suUkVQTzF9fX1g" data-upload-term=".term1"><code class="language-md">## `gopher.live/{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}/{% raw %}{{{.REPO1}}}{% endraw %}`</code></pre>
 
 Write a readme:
 
-<pre data-upload-path="L2hvbWUvZ29waGVyL21vZDE=" data-upload-src="bWFpbi5nbw==:cGFja2FnZSBtYWluCgppbXBvcnQgImZtdCIKCmZ1bmMgbWFpbigpIHsKCWZtdC5QcmludGxuKCJIZWxsbywgd29ybGQhIikKfQ==" data-upload-term=".term1"><code class="language-go">package main
+<pre data-upload-path="L2hvbWUvZ29waGVyL21vZDE=" data-upload-src="bWFpbi5nbw==:cGFja2FnZSBtYWluCgppbXBvcnQgImZtdCIKCmZ1bmMgbWFpbigpIHsKCWZtdC5QcmludGxuKCJIZWxsbywgd29ybGQhIikKfQo=" data-upload-term=".term1"><code class="language-go">package main
 
 import "fmt"
 
 func main() {
 	fmt.Println("Hello, world!")
-}</code></pre>
+}
+</code></pre>
 
 Commit and push:
 
@@ -45,14 +46,14 @@ Commit and push:
 $ git add -A
 $ git commit -m "Initial commit"
 [main (root-commit) abcd123] Initial commit
- 3 files changed, 11 insertions(+)
+ 3 files changed, 12 insertions(+)
  create mode 100644 README.md
  create mode 100644 go.mod
  create mode 100644 main.go
 $ git push -u origin main
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
-To https://gopher.live/{% raw %}{{{.REPO1}}}{% endraw %}.git
+To https://gopher.live/{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}/{% raw %}{{{.REPO1}}}{% endraw %}.git
  * [new branch]      main -> main
 Branch 'main' set up to track remote branch 'main' from 'origin'.
 ```
@@ -65,13 +66,13 @@ $ mkdir /home/gopher/mod2
 $ cd /home/gopher/mod2
 $ go mod init mod.com
 go: creating new go.mod: module mod.com
-$ go get gopher.live/{% raw %}{{{.REPO1}}}{% endraw %}
-go: downloading gopher.live/{% raw %}{{{.REPO1}}}{% endraw %} v0.0.0-20060102150405-abcde12345
-go: gopher.live/{% raw %}{{{.REPO1}}}{% endraw %} upgrade => v0.0.0-20060102150405-abcde12345
-$ go run gopher.live/{% raw %}{{{.REPO1}}}{% endraw %}
+$ go get gopher.live/{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}/{% raw %}{{{.REPO1}}}{% endraw %}
+go: downloading gopher.live/{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}/{% raw %}{{{.REPO1}}}{% endraw %} v0.0.0-20060102150405-abcde12345
+go: gopher.live/{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}/{% raw %}{{{.REPO1}}}{% endraw %} upgrade => v0.0.0-20060102150405-abcde12345
+$ go run gopher.live/{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}/{% raw %}{{{.REPO1}}}{% endraw %}
 Hello, world!
 ```
-{:data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL21vZDIKY2QgL2hvbWUvZ29waGVyL21vZDIKZ28gbW9kIGluaXQgbW9kLmNvbQpnbyBnZXQgZ29waGVyLmxpdmUve3t7LlJFUE8xfX19CmdvIHJ1biBnb3BoZXIubGl2ZS97e3suUkVQTzF9fX0K"}
+{:data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL21vZDIKY2QgL2hvbWUvZ29waGVyL21vZDIKZ28gbW9kIGluaXQgbW9kLmNvbQpnbyBnZXQgZ29waGVyLmxpdmUve3t7LkdJVEVBX1VTRVJOQU1FfX19L3t7ey5SRVBPMX19fQpnbyBydW4gZ29waGVyLmxpdmUve3t7LkdJVEVBX1VTRVJOQU1FfX19L3t7ey5SRVBPMX19fQo="}
 
 You're done!
 

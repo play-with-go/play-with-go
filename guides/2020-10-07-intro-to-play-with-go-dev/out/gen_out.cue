@@ -7,8 +7,8 @@ Presteps: [{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20201015075538-7787ad03373f",
-		    "Sum": "h1:VXWqw1WFhU9wD7Yijr4nknfCxkOU9Fg0bkqnOLyo0TU=",
+		    "Version": "v0.0.0-20201021052016-746c46c7d2b4",
+		    "Sum": "h1:a+eD8B9W9zZkAsWGfF5Bi598V6G601tA8dZJJxcLt/Q=",
 		    "Replace": null
 		  },
 		  "Deps": [
@@ -96,7 +96,7 @@ Presteps: [{
 	Args: {
 		Repos: [{
 			Var:     "REPO1"
-			Pattern: "hello*"
+			Pattern: "hello"
 		}]
 	}
 	Package: "github.com/play-with-go/gitea"
@@ -119,36 +119,183 @@ Networks: ["playwithgo_pwg"]
 Env: []
 Langs: {
 	en: {
-		Hash: "2a8e9730433cf521f571f3e23f231d9bd01a49b8c0347367761790601f58ec9f"
+		Hash: "79effffa2f3beb35d142a4a371ca4bb9e1b38da197431d63ec7c8feff8695b68"
 		Steps: {
-			gitlsremote: {
+			gitpush: {
+				Stmts: [{
+					TrimmedOutput: """
+						remote: . Processing 1 references        
+						remote: Processed 1 references in total        
+						To https://gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}}.git
+						 * [new branch]      main -> main
+						"""
+					Output: """
+						remote: . Processing 1 references        
+						remote: Processed 1 references in total        
+						To https://gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}}.git
+						 * [new branch]      main -> main
+
+						"""
+					ExitCode: 0
+					CmdStr:   "git push origin main"
+					Negated:  false
+				}]
+				Order:    8
+				Terminal: "term1"
+				StepType: 1
+				Name:     "gitpush"
+			}
+			gitadd: {
 				Stmts: [{
 					TrimmedOutput: ""
 					Output:        ""
 					ExitCode:      0
-					CmdStr:        "git ls-remote https://gopher.live/{{{.REPO1}}}.git"
+					CmdStr:        "git add -A"
 					Negated:       false
+				}, {
+					TrimmedOutput: """
+						[main (root-commit) abcd123] Initial commit
+						 1 file changed, 6 insertions(+)
+						 create mode 100644 README.md
+						"""
+					Output: """
+						[main (root-commit) abcd123] Initial commit
+						 1 file changed, 6 insertions(+)
+						 create mode 100644 README.md
+
+						"""
+					ExitCode: 0
+					CmdStr:   "git commit -am 'Initial commit'"
+					Negated:  false
 				}]
 				Order:    7
 				Terminal: "term1"
 				StepType: 1
-				Name:     "gitlsremote"
+				Name:     "gitadd"
 			}
-			echomodpath: {
+			gitinit: {
 				Stmts: [{
-					TrimmedOutput: "gopher.live/{{{.REPO1}}}"
-					Output: """
-						gopher.live/{{{.REPO1}}}
-
-						"""
-					ExitCode: 0
-					CmdStr:   "echo gopher.live/{{{.REPO1}}}"
-					Negated:  false
+					TrimmedOutput: ""
+					Output:        ""
+					ExitCode:      0
+					CmdStr:        "git init -q"
+					Negated:       false
+				}, {
+					TrimmedOutput: ""
+					Output:        ""
+					ExitCode:      0
+					CmdStr:        "git remote add origin https://gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}}.git"
+					Negated:       false
 				}]
 				Order:    6
 				Terminal: "term1"
 				StepType: 1
-				Name:     "echomodpath"
+				Name:     "gitinit"
+			}
+			cat_readme: {
+				Stmts: [{
+					TrimmedOutput: """
+						This is README.md.
+
+						Hello, gopher!
+
+						We made a change!
+
+						"""
+					Output: """
+						This is README.md.
+
+						Hello, gopher!
+
+						We made a change!
+
+
+						"""
+					ExitCode: 0
+					CmdStr:   "cat README.md"
+					Negated:  false
+				}]
+				Order:    5
+				Terminal: "term1"
+				StepType: 1
+				Name:     "cat_readme"
+			}
+			upload_readme_again: {
+				Order: 4
+				Source: """
+					This is README.md.
+
+					Hello, gopher!
+
+					We made a change!
+
+					"""
+				Renderer: {
+					Pre: """
+						This is README.md.
+
+						Hello, gopher!
+
+						"""
+					RendererType: 3
+				}
+				Language: "md"
+				Target:   "/home/gopher/hello/README.md"
+				Terminal: "term1"
+				StepType: 2
+				Name:     "upload_readme_again"
+			}
+			upload_readme: {
+				Order: 3
+				Source: """
+					This is README.md.
+
+					Hello, gopher!
+
+					"""
+				Renderer: {
+					RendererType: 1
+				}
+				Language: "md"
+				Target:   "/home/gopher/hello/README.md"
+				Terminal: "term1"
+				StepType: 2
+				Name:     "upload_readme"
+			}
+			multiple_commands: {
+				Stmts: [{
+					TrimmedOutput: ""
+					Output:        ""
+					ExitCode:      0
+					CmdStr:        "mkdir hello"
+					Negated:       false
+				}, {
+					TrimmedOutput: ""
+					Output:        ""
+					ExitCode:      0
+					CmdStr:        "cd hello"
+					Negated:       false
+				}]
+				Order:    2
+				Terminal: "term1"
+				StepType: 1
+				Name:     "multiple_commands"
+			}
+			echo_hello: {
+				Stmts: [{
+					TrimmedOutput: "Hello, world!"
+					Output: """
+						Hello, world!
+
+						"""
+					ExitCode: 0
+					CmdStr:   "echo \"Hello, world!\""
+					Negated:  false
+				}]
+				Order:    1
+				Terminal: "term1"
+				StepType: 1
+				Name:     "echo_hello"
 			}
 			whoami: {
 				Stmts: [{
@@ -170,121 +317,10 @@ Langs: {
 					CmdStr:   "pwd"
 					Negated:  false
 				}]
-				Order:    5
-				Terminal: "term1"
-				StepType: 1
-				Name:     "whoami"
-			}
-			cat_readme: {
-				Stmts: [{
-					TrimmedOutput: """
-						This is /home/gopher/readme.txt.
-
-						Hello, gopher!
-
-						We made a change!
-
-						"""
-					Output: """
-						This is /home/gopher/readme.txt.
-
-						Hello, gopher!
-
-						We made a change!
-
-
-						"""
-					ExitCode: 0
-					CmdStr:   "cat /home/gopher/readme.txt"
-					Negated:  false
-				}]
-				Order:    4
-				Terminal: "term1"
-				StepType: 1
-				Name:     "cat_readme"
-			}
-			upload_readme_again: {
-				Order: 3
-				Source: """
-					This is /home/gopher/readme.txt.
-
-					Hello, gopher!
-
-					We made a change!
-
-					"""
-				Renderer: {
-					Pre: """
-						This is /home/gopher/readme.txt.
-
-						Hello, gopher!
-
-						"""
-					RendererType: 3
-				}
-				Language: "txt"
-				Target:   "/home/gopher/readme.txt"
-				Terminal: "term1"
-				StepType: 2
-				Name:     "upload_readme_again"
-			}
-			upload_readme: {
-				Order: 2
-				Source: """
-					This is /home/gopher/readme.txt.
-
-					Hello, gopher!
-
-					"""
-				Renderer: {
-					RendererType: 1
-				}
-				Language: "txt"
-				Target:   "/home/gopher/readme.txt"
-				Terminal: "term1"
-				StepType: 2
-				Name:     "upload_readme"
-			}
-			multiple_commands: {
-				Stmts: [{
-					TrimmedOutput: "Hello"
-					Output: """
-						Hello
-
-						"""
-					ExitCode: 0
-					CmdStr:   "echo \"Hello\""
-					Negated:  false
-				}, {
-					TrimmedOutput: "Gopher!"
-					Output: """
-						Gopher!
-
-						"""
-					ExitCode: 0
-					CmdStr:   "echo \"Gopher!\""
-					Negated:  false
-				}]
-				Order:    1
-				Terminal: "term1"
-				StepType: 1
-				Name:     "multiple_commands"
-			}
-			echo_hello: {
-				Stmts: [{
-					TrimmedOutput: "Hello, world!"
-					Output: """
-						Hello, world!
-
-						"""
-					ExitCode: 0
-					CmdStr:   "echo \"Hello, world!\""
-					Negated:  false
-				}]
 				Order:    0
 				Terminal: "term1"
 				StepType: 1
-				Name:     "echo_hello"
+				Name:     "whoami"
 			}
 		}
 	}

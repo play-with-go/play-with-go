@@ -8,16 +8,16 @@ import (
 
 Defs: {
 	modname:     "hello"
-	modpath:     "gopher.live/\(modname)"
-	fullmodpath: "gopher.live/{{{.REPO1}}}"
-	vcsurl:      "https://gopher.live/{{{.REPO1}}}.git"
-	readmetxt:   "/home/gopher/readme.txt"
+	fullmodpath: "gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}}"
+	vcsurl:      "https://\(fullmodpath).git"
+	readme:      "README.md"
+	readmepath:  "/home/gopher/hello/\(readme)"
 }
 
 Presteps: [gitea.#PrestepNewUser & {
 	Args: {
 		Repos: [
-			{Var: "REPO1", Pattern: Defs.modname + "*"},
+			{Var: "REPO1", Pattern: Defs.modname},
 		]
 	}
 }]
@@ -31,6 +31,13 @@ Terminals: term1: preguide.#Terminal & {
 	Scenarios: go115: Image: #go115LatestImage
 }
 
+Steps: whoami: en: preguide.#Command & {
+	Source: """
+		whoami
+		pwd
+		"""
+}
+
 Steps: echo_hello: en: preguide.#Command & {
 	Source: """
 		echo "Hello, world!"
@@ -39,15 +46,15 @@ Steps: echo_hello: en: preguide.#Command & {
 
 Steps: multiple_commands: en: preguide.#Command & {
 	Source: """
-		echo "Hello"
-		echo "Gopher!"
+		mkdir \(Defs.modname)
+		cd \(Defs.modname)
 		"""
 }
 
 Steps: upload_readme: en: preguide.#Upload & {
-	Target: Defs.readmetxt
+	Target: Defs.readmepath
 	Source: """
-		This is \(Defs.readmetxt).
+		This is \(Defs.readme).
 
 		Hello, gopher!
 
@@ -55,12 +62,12 @@ Steps: upload_readme: en: preguide.#Upload & {
 }
 
 Steps: upload_readme_again: en: preguide.#Upload & {
-	Target:   Defs.readmetxt
+	Target:   Defs.readmepath
 	Renderer: preguide.#RenderDiff & {
 		Pre: Steps.upload_readme.en.Source
 	}
 	Source: """
-		This is \(Defs.readmetxt).
+		This is \(Defs.readme).
 
 		Hello, gopher!
 
@@ -71,26 +78,26 @@ Steps: upload_readme_again: en: preguide.#Upload & {
 
 Steps: cat_readme: en: preguide.#Command & {
 	Source: """
-		cat \(Defs.readmetxt)
+		cat \(Defs.readme)
 		"""
 }
 
-Steps: whoami: en: preguide.#Command & {
+Steps: gitinit: en: preguide.#Command & {
 	Source: """
-		whoami
-		pwd
+		git init -q
+		git remote add origin \(Defs.vcsurl)
 		"""
 }
 
-Steps: echomodpath: en: preguide.#Command & {
+Steps: gitadd: en: preguide.#Command & {
 	Source: """
-		echo \(Defs.fullmodpath)
+		git add -A
+		git commit -am 'Initial commit'
 		"""
 }
 
-Steps: gitlsremote: en: preguide.#Command & {
+Steps: gitpush: en: preguide.#Command & {
 	Source: """
-		git ls-remote \(Defs.vcsurl)
-		# no output because we have not committed anything
+		git push origin main
 		"""
 }
