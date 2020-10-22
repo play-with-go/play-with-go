@@ -7,7 +7,7 @@ import (
 
 Defs: {
 	mod1_name: "mod1"
-	mod1_path: "gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}}"
+	mod1_path: "{{{.REPO1}}}"
 	mod1_dir:  "/home/gopher/\(mod1_name)"
 	mod2_name: "mod2"
 	mod2_dir:  "/home/gopher/\(mod2_name)"

@@ -7,8 +7,8 @@ Presteps: [{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20201021052016-746c46c7d2b4",
-		    "Sum": "h1:a+eD8B9W9zZkAsWGfF5Bi598V6G601tA8dZJJxcLt/Q=",
+		    "Version": "v0.0.0-20201022142910-d10ca95000af",
+		    "Sum": "h1:ySGH/7q+r35IS+ERMpxhhl9q0B7846YzYqKl0yoY0WQ=",
 		    "Replace": null
 		  },
 		  "Deps": [
@@ -119,20 +119,20 @@ Networks: ["playwithgo_pwg"]
 Env: []
 Langs: {
 	en: {
-		Hash: "79effffa2f3beb35d142a4a371ca4bb9e1b38da197431d63ec7c8feff8695b68"
+		Hash: "7fdcea17aed418639f3b0cbda7028adbbd55d2be5b0210ad3ce6835a39bb4592"
 		Steps: {
 			gitpush: {
 				Stmts: [{
 					TrimmedOutput: """
 						remote: . Processing 1 references        
 						remote: Processed 1 references in total        
-						To https://gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}}.git
+						To https://gopher.live/{{{.GITEA_USERNAME}}}/hello.git
 						 * [new branch]      main -> main
 						"""
 					Output: """
 						remote: . Processing 1 references        
 						remote: Processed 1 references in total        
-						To https://gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}}.git
+						To https://gopher.live/{{{.GITEA_USERNAME}}}/hello.git
 						 * [new branch]      main -> main
 
 						"""
@@ -184,7 +184,7 @@ Langs: {
 					TrimmedOutput: ""
 					Output:        ""
 					ExitCode:      0
-					CmdStr:        "git remote add origin https://gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}}.git"
+					CmdStr:        "git remote add origin https://{{{.REPO1}}}.git"
 					Negated:       false
 				}]
 				Order:    6

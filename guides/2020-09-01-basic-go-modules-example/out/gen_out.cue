@@ -7,8 +7,8 @@ Presteps: [{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20201021052016-746c46c7d2b4",
-		    "Sum": "h1:a+eD8B9W9zZkAsWGfF5Bi598V6G601tA8dZJJxcLt/Q=",
+		    "Version": "v0.0.0-20201022142910-d10ca95000af",
+		    "Sum": "h1:ySGH/7q+r35IS+ERMpxhhl9q0B7846YzYqKl0yoY0WQ=",
 		    "Replace": null
 		  },
 		  "Deps": [
@@ -119,7 +119,7 @@ Networks: ["playwithgo_pwg"]
 Env: []
 Langs: {
 	en: {
-		Hash: "e61bf1734d4b3854396973533f4782f4182a5ed74eed9c8ea4a33ac03dba9346"
+		Hash: "6f64cc0c105aaf70e45cb04a991084b24ff845a0f5d599328af6edebaf1607e6"
 		Steps: {
 			use_module: {
 				Stmts: [{
@@ -145,16 +145,16 @@ Langs: {
 					Negated:  false
 				}, {
 					TrimmedOutput: """
-						go: downloading gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}} v0.0.0-20060102150405-abcde12345
-						go: gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcde12345
+						go: downloading gopher.live/{{{.GITEA_USERNAME}}}/mod1 v0.0.0-20060102150405-abcde12345
+						go: gopher.live/{{{.GITEA_USERNAME}}}/mod1 upgrade => v0.0.0-20060102150405-abcde12345
 						"""
 					Output: """
-						go: downloading gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}} v0.0.0-20060102150405-abcde12345
-						go: gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcde12345
+						go: downloading gopher.live/{{{.GITEA_USERNAME}}}/mod1 v0.0.0-20060102150405-abcde12345
+						go: gopher.live/{{{.GITEA_USERNAME}}}/mod1 upgrade => v0.0.0-20060102150405-abcde12345
 
 						"""
 					ExitCode: 0
-					CmdStr:   "go get gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}}"
+					CmdStr:   "go get {{{.REPO1}}}"
 					Negated:  false
 				}, {
 					TrimmedOutput: "Hello, world!"
@@ -163,7 +163,7 @@ Langs: {
 
 						"""
 					ExitCode: 0
-					CmdStr:   "go run gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}}"
+					CmdStr:   "go run {{{.REPO1}}}"
 					Negated:  false
 				}]
 				Order:    4
@@ -201,14 +201,14 @@ Langs: {
 					TrimmedOutput: """
 						remote: . Processing 1 references        
 						remote: Processed 1 references in total        
-						To https://gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}}.git
+						To https://gopher.live/{{{.GITEA_USERNAME}}}/mod1.git
 						 * [new branch]      main -> main
 						Branch 'main' set up to track remote branch 'main' from 'origin'.
 						"""
 					Output: """
 						remote: . Processing 1 references        
 						remote: Processed 1 references in total        
-						To https://gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}}.git
+						To https://gopher.live/{{{.GITEA_USERNAME}}}/mod1.git
 						 * [new branch]      main -> main
 						Branch 'main' set up to track remote branch 'main' from 'origin'.
 
@@ -245,7 +245,7 @@ Langs: {
 			}
 			create_readme: {
 				Order:  1
-				Source: "## `gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}}`"
+				Source: "## `{{{.REPO1}}}`"
 				Renderer: {
 					RendererType: 1
 				}
@@ -269,9 +269,9 @@ Langs: {
 					CmdStr:        "cd /home/gopher/mod1"
 					Negated:       false
 				}, {
-					TrimmedOutput: "Initialized empty Git repository in /home/gopher/{{{.REPO1}}}/.git/"
+					TrimmedOutput: "Initialized empty Git repository in /home/gopher/mod1/.git/"
 					Output: """
-						Initialized empty Git repository in /home/gopher/{{{.REPO1}}}/.git/
+						Initialized empty Git repository in /home/gopher/mod1/.git/
 
 						"""
 					ExitCode: 0
@@ -281,16 +281,16 @@ Langs: {
 					TrimmedOutput: ""
 					Output:        ""
 					ExitCode:      0
-					CmdStr:        "git remote add origin https://gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}}.git"
+					CmdStr:        "git remote add origin https://{{{.REPO1}}}.git"
 					Negated:       false
 				}, {
-					TrimmedOutput: "go: creating new go.mod: module gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}}"
+					TrimmedOutput: "go: creating new go.mod: module gopher.live/{{{.GITEA_USERNAME}}}/mod1"
 					Output: """
-						go: creating new go.mod: module gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}}
+						go: creating new go.mod: module gopher.live/{{{.GITEA_USERNAME}}}/mod1
 
 						"""
 					ExitCode: 0
-					CmdStr:   "go mod init gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}}"
+					CmdStr:   "go mod init {{{.REPO1}}}"
 					Negated:  false
 				}]
 				Order:    0
