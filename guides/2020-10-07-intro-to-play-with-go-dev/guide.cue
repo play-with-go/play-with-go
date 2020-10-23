@@ -8,7 +8,7 @@ import (
 
 Defs: {
 	modname:     "hello"
-	fullmodpath: "gopher.live/{{{.GITEA_USERNAME}}}/{{{.REPO1}}}"
+	fullmodpath: "{{{.REPO1}}}"
 	vcsurl:      "https://\(fullmodpath).git"
 	readme:      "README.md"
 	readmepath:  "/home/gopher/hello/\(readme)"

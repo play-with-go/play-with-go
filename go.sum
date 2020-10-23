@@ -418,8 +418,8 @@ github.com/pkg/diff v0.0.0-20190930165518-531926345625/go.mod h1:kFj35MyHn14a6pI
 github.com/pkg/errors v0.8.0/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pkg/errors v0.8.1 h1:iURUrRGxPUNPdy5/HRSm+Yj6okJ6UtLINN0Q9M4+h3I=
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
-github.com/play-with-go/gitea v0.0.0-20201021052016-746c46c7d2b4 h1:a+eD8B9W9zZkAsWGfF5Bi598V6G601tA8dZJJxcLt/Q=
-github.com/play-with-go/gitea v0.0.0-20201021052016-746c46c7d2b4/go.mod h1:mD4+vK9cH9dCfgegi5Z9+KSg79O9f0lOhg0sN8vve5M=
+github.com/play-with-go/gitea v0.0.0-20201022142910-d10ca95000af h1:ySGH/7q+r35IS+ERMpxhhl9q0B7846YzYqKl0yoY0WQ=
+github.com/play-with-go/gitea v0.0.0-20201022142910-d10ca95000af/go.mod h1:mD4+vK9cH9dCfgegi5Z9+KSg79O9f0lOhg0sN8vve5M=
 github.com/play-with-go/preguide v0.0.2-0.20200929132054-e0f48a7f7b23 h1:XuQlkNTvut6rRO8VkKRqTxPPFU1B3kNmdGD9St37dc0=
 github.com/play-with-go/preguide v0.0.2-0.20200929132054-e0f48a7f7b23/go.mod h1:jkhBBbIBioAzKiRo5Rr9r03tqglgUdPZAVIpBBw7aDU=
 github.com/play-with-go/preguide v0.0.2-0.20201020103208-9664976fa978 h1:5SYpmpzgsPmsZI/s+axWy107fe+i2i6SVo5jXUq5c7o=

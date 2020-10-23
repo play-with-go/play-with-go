@@ -92,9 +92,9 @@ Initialise a local `git` repository and add the remote:
 
 ```.term1
 $ git init -q
-$ git remote add origin https://gopher.live/{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}/{% raw %}{{{.REPO1}}}{% endraw %}.git
+$ git remote add origin https://{% raw %}{{{.REPO1}}}{% endraw %}.git
 ```
-{:data-command-src="Z2l0IGluaXQgLXEKZ2l0IHJlbW90ZSBhZGQgb3JpZ2luIGh0dHBzOi8vZ29waGVyLmxpdmUve3t7LkdJVEVBX1VTRVJOQU1FfX19L3t7ey5SRVBPMX19fS5naXQK"}
+{:data-command-src="Z2l0IGluaXQgLXEKZ2l0IHJlbW90ZSBhZGQgb3JpZ2luIGh0dHBzOi8ve3t7LlJFUE8xfX19LmdpdAo="}
 
 Add and commit the `README.md` file we created earlier:
 
@@ -113,7 +113,7 @@ Push the commit to the remote repository:
 $ git push origin main
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
-To https://gopher.live/{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}/{% raw %}{{{.REPO1}}}{% endraw %}.git
+To https://gopher.live/{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}/hello.git
  * [new branch]      main -> main
 ```
 {:data-command-src="Z2l0IHB1c2ggb3JpZ2luIG1haW4K"}
