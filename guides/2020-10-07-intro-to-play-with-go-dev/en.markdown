@@ -48,9 +48,10 @@ Now that we have uploaded `<!--ref: readme -->` we can run another command to sh
 ### The interactive terminal
 
 As mentioned above, the interactive terminal is connected to a remote virtual session, hosted on [Google
-Cloud](https://cloud.google.com/). For Go-related guides, the remote session is running as the `<!--outref: user-->`
-user, with a working directory of `<!--outref: wd-->`, which is also referred to as the home directory of the
-`<!--outref: user-->` user.
+Cloud](https://cloud.google.com/). For Go-related guides, the remote session runs with the following user and starts
+with a working directory of that user:
+
+<!--step: whoami-->
 
 ### Remote source code repositories
 

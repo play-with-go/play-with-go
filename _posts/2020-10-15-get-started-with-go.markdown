@@ -20,7 +20,13 @@ You should already have completed:
 * [The Go Tour](https://tour.golang.org/)
 * [An introduction to play-with-go.dev guides](/intro-to-play-with-go-dev/)
 
-This guide is running using: `go version go1.15.2 linux/amd64`
+This guide is running using:
+
+```.term1
+$ go version
+go version go1.15.2 linux/amd64
+```
+{:data-command-src="Z28gdmVyc2lvbgo="}
 
 ### Write some code
 

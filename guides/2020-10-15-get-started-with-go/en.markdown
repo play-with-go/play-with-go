@@ -18,7 +18,9 @@ You should already have completed:
 * [The Go Tour](https://tour.golang.org/)
 * [An introduction to play-with-go.dev guides](/intro-to-play-with-go-dev/)
 
-This guide is running using: `<!--outref: goversion-->`
+This guide is running using:
+
+<!--step: goversion-->
 
 ### Write some code
 

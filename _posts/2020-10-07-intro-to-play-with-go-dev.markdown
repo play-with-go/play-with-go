@@ -75,9 +75,16 @@ We made a change!
 ### The interactive terminal
 
 As mentioned above, the interactive terminal is connected to a remote virtual session, hosted on [Google
-Cloud](https://cloud.google.com/). For Go-related guides, the remote session is running as the `gopher`
-user, with a working directory of `/home/gopher`, which is also referred to as the home directory of the
-`gopher` user.
+Cloud](https://cloud.google.com/). For Go-related guides, the remote session runs with the following user and starts
+with a working directory of that user:
+
+```.term1
+$ whoami
+gopher
+$ pwd
+/home/gopher
+```
+{:data-command-src="d2hvYW1pCnB3ZAo="}
 
 ### Remote source code repositories
 
@@ -99,24 +106,19 @@ $ git remote add origin https://{% raw %}{{{.REPO1}}}{% endraw %}.git
 Add and commit the `README.md` file we created earlier:
 
 ```.term1
-$ git add -A
-$ git commit -am 'Initial commit'
-[main (root-commit) abcd123] Initial commit
- 1 file changed, 6 insertions(+)
- create mode 100644 README.md
+$ git add README.md
+$ git commit -q -m 'Initial commit'
 ```
-{:data-command-src="Z2l0IGFkZCAtQQpnaXQgY29tbWl0IC1hbSAnSW5pdGlhbCBjb21taXQnCg=="}
+{:data-command-src="Z2l0IGFkZCBSRUFETUUubWQKZ2l0IGNvbW1pdCAtcSAtbSAnSW5pdGlhbCBjb21taXQnCg=="}
 
 Push the commit to the remote repository:
 
 ```.term1
-$ git push origin main
+$ git push -q origin main
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
-To https://gopher.live/{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}/hello.git
- * [new branch]      main -> main
 ```
-{:data-command-src="Z2l0IHB1c2ggb3JpZ2luIG1haW4K"}
+{:data-command-src="Z2l0IHB1c2ggLXEgb3JpZ2luIG1haW4K"}
 
 It's as easy as that. Authentication is taken care of for you. The user and repository will be destroyed after 3 hours
 along with the guide session.
