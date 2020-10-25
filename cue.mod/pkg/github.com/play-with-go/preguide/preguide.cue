@@ -23,13 +23,29 @@ import (
 	}
 
 	// Change this to a hidden definition once cuelang.org/issue/533 is resolved
-	#stepCommon: {
+	_#stepCommon: {
 		Name:     string
 		StepType: #StepType
 		Terminal: string
 	}
 
-	#uploadCommon: {
+	_#commandCommon: {
+		_#stepCommon
+
+		// RandomReplace indicates the entire output from this command block
+		// should be used to sanitise the output from the entire script,
+		// replacing the "random" output from this command block with the
+		// value specified in RandomReplace.
+		RandomReplace?: string
+
+		// DoNotTrim indicates that when RandomReplace is set, its value
+		// should not be trimmed (the default is to trim the trailing \n
+		// from the output) prior to sanitising the output from the script
+		DoNotTrim: *false | bool
+	}
+
+	_#uploadCommon: {
+		_#stepCommon
 		Target: string
 
 		// The language of the content being uploaded, e.g. go
@@ -44,27 +60,25 @@ import (
 	}
 
 	#Command: {
-		#stepCommon
+		_#commandCommon
 		StepType: #StepTypeCommand
 		Source:   string
 	}
 
 	#CommandFile: {
-		#stepCommon
+		_#commandCommon
 		StepType: #StepTypeCommandFile
 		Path:     string
 	}
 
 	#Upload: {
-		#stepCommon
-		#uploadCommon
+		_#uploadCommon
 		StepType: #StepTypeUpload
 		Source:   string
 	}
 
 	#UploadFile: {
-		#stepCommon
-		#uploadCommon
+		_#uploadCommon
 		StepType: #StepTypeUploadFile
 		Path:     string
 	}
@@ -219,7 +233,7 @@ _#rendererCommon: {
 // reference to https://gist.github.com/myitcv/399ed50f792b49ae7224ee5cb3e504fa#file-304b02e-cue
 //
 // 1. Move to the use of #TerminalName (probably hidden) as a type for a terminal's
-// name in #stepCommon
+// name in _#stepCommon
 // 2. Try and move to the advanced definition of Steps: [string]: [lang] to be the
 // disjunction of #Step or [scenario]: #Step
 // 3. Ensure that a step's name can be defaulted for this advanced definition (i.e.

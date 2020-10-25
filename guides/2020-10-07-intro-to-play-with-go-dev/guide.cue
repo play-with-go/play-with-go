@@ -91,13 +91,13 @@ Steps: gitinit: en: preguide.#Command & {
 
 Steps: gitadd: en: preguide.#Command & {
 	Source: """
-		git add -A
-		git commit -am 'Initial commit'
+		git add README.md
+		git commit -q -m 'Initial commit'
 		"""
 }
 
 Steps: gitpush: en: preguide.#Command & {
 	Source: """
-		git push origin main
+		git push -q origin main
 		"""
 }
