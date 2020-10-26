@@ -63,9 +63,9 @@ Steps: create_main: en: preguide.#Upload & {
 
 Steps: commit_and_push: en: preguide.#Command & {
 	Source: """
-		git add -A
-		git commit -m "Initial commit"
-		git push -u origin main
+		git add README.md main.go
+		git commit -q -m "Initial commit"
+		git push -q origin main
 		"""
 }
 
@@ -76,5 +76,12 @@ Steps: use_module: en: preguide.#Command & {
 		go mod init mod.com
 		go get \(Defs.mod1_path)
 		go run \(Defs.mod1_path)
+		"""
+}
+
+Steps: mod1_pseudoversion: en: preguide.#Command & {
+	RandomReplace: "v0.0.0-\(StablePsuedoversionSuffix)"
+	Source:        """
+		go list -m -f {{.Version}} \(Defs.mod1_path)
 		"""
 }

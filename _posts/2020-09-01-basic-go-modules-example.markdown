@@ -21,7 +21,7 @@ $ git init
 Initialized empty Git repository in /home/gopher/mod1/.git/
 $ git remote add origin https://{% raw %}{{{.REPO1}}}{% endraw %}.git
 $ go mod init {% raw %}{{{.REPO1}}}{% endraw %}
-go: creating new go.mod: module gopher.live/{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}/mod1
+go: creating new go.mod: module {% raw %}{{{.REPO1}}}{% endraw %}
 ```
 {:data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL21vZDEKY2QgL2hvbWUvZ29waGVyL21vZDEKZ2l0IGluaXQKZ2l0IHJlbW90ZSBhZGQgb3JpZ2luIGh0dHBzOi8ve3t7LlJFUE8xfX19LmdpdApnbyBtb2QgaW5pdCB7e3suUkVQTzF9fX0K"}
 
@@ -47,21 +47,13 @@ func main() {
 Commit and push:
 
 ```.term1
-$ git add -A
-$ git commit -m "Initial commit"
-[main (root-commit) abcd123] Initial commit
- 3 files changed, 12 insertions(+)
- create mode 100644 README.md
- create mode 100644 go.mod
- create mode 100644 main.go
-$ git push -u origin main
+$ git add README.md main.go
+$ git commit -q -m "Initial commit"
+$ git push -q origin main
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
-To https://gopher.live/{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}/mod1.git
- * [new branch]      main -> main
-Branch 'main' set up to track remote branch 'main' from 'origin'.
 ```
-{:data-command-src="Z2l0IGFkZCAtQQpnaXQgY29tbWl0IC1tICJJbml0aWFsIGNvbW1pdCIKZ2l0IHB1c2ggLXUgb3JpZ2luIG1haW4K"}
+{:data-command-src="Z2l0IGFkZCBSRUFETUUubWQgbWFpbi5nbwpnaXQgY29tbWl0IC1xIC1tICJJbml0aWFsIGNvbW1pdCIKZ2l0IHB1c2ggLXEgb3JpZ2luIG1haW4K"}
 
 Use the module:
 
@@ -71,8 +63,8 @@ $ cd /home/gopher/mod2
 $ go mod init mod.com
 go: creating new go.mod: module mod.com
 $ go get {% raw %}{{{.REPO1}}}{% endraw %}
-go: downloading gopher.live/{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}/mod1 v0.0.0-20060102150405-abcde12345
-go: gopher.live/{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}/mod1 upgrade => v0.0.0-20060102150405-abcde12345
+go: downloading {% raw %}{{{.REPO1}}}{% endraw %} v0.0.0-20060102150405-abcedf12345
+go: {% raw %}{{{.REPO1}}}{% endraw %} upgrade => v0.0.0-20060102150405-abcedf12345
 $ go run {% raw %}{{{.REPO1}}}{% endraw %}
 Hello, world!
 ```

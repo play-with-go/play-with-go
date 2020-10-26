@@ -1,19 +1,20 @@
 :root {
-  --docker-color: #007d9c;
-  --btn-color: #007d9c;
-  --navbar-color: #007d9c;
-  --term-color: #021b29;
+  --docker-color: #00ADD8;
+  --btn-color: #5DC9E2;
+  --navbar-color: #00A29C ;
+  --term-color: #000;
   --expand-color: #021b29;
   --titles-color: #33444c;
   --font-color: #577482;
-  --pre-bgcolor: #e8f1fa;
-  --pre-color: #375eab;
+  --pre-bgcolor: #e8f5f8;
+  --suc-bgcolor: #e8f8ef;
+  --pre-color: #00758D;
   --page-bgcolor: #fafafa;
   --terminal-text-color: #fafafa;
   --card-bgcolor: #f3f3f3;
   --disabled-bgcolor: #CDCDCD;
-  --right-color: #0acc4e;
-  --wrong-color: #ff0c3e;
+  --right-color: #06e2a0;
+  --wrong-color: #CE3262;
   --drawer-bgcolor: ;
   --aqua: #0decd1;
   --feedbak-footer: #26343B;
@@ -23,7 +24,7 @@
   .dark-mode{
       --navbar-color: #26343B;
       --titles-color: #BFD2DB;
-      --docker-color: #007d9c;
+      --docker-color: #00ADD8;
       --page-bgcolor: #061F2F;
       --font-color: #C0C8CD;
       --expand-color: #C0C8CD;
@@ -302,7 +303,7 @@ i.fa-expand {
   padding-top: 8px;
   // background-color: var(--term-color);
   h2 {
-    font-family: Geomanist;
+    font-family: 'Work Sans', sans-serif;
     font-size: 32px;
     font-weight: normal;
     font-style: normal;
@@ -313,7 +314,7 @@ i.fa-expand {
   }
 
   p {
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 400;
     font-style: normal;
@@ -328,8 +329,9 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: Geomanist;
+  font-family: 'Work Sans', sans-serif;
   letter-spacing: 0.5px;
+  font-weight: 500;
 }
 
 h1,
@@ -357,7 +359,6 @@ h3 {
 
 h4 {
   font-size: 20px;
-  font-weight: normal;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
@@ -368,8 +369,8 @@ h4 {
 
 
 p {
-  font-family: "Open Sans", sans-serif;
-  font-size: 15px;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 16px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
@@ -400,7 +401,6 @@ blockquote > p {
 
 .post-title {
   font-size: 32px;
-  font-weight: normal;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.25;
@@ -463,7 +463,7 @@ li {
     margin-bottom: 0;
     width: 100%;
     height: 40px;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Work Sans', sans-serif;
     font-size: 32px;
     font-weight: normal;
     font-style: normal;
@@ -478,7 +478,7 @@ li {
     margin-bottom: 0;
     width: 100%;
     height: 48px;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Work Sans', sans-serif;
     font-size: 16px;
     font-weight: 600;
     font-style: normal;
@@ -497,7 +497,7 @@ li {
       background-color: var(--docker-color);
       margin: 0 50px;
       text-transform: uppercase;
-      font-family: "Open Sans", sans-serif;
+      font-family: 'Work Sans', sans-serif;
       font-size: 13.7px;
       font-weight: 600;
       font-style: normal;
@@ -520,7 +520,7 @@ li {
 }
 
 .btn {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .btn-primary {
@@ -528,7 +528,29 @@ li {
   border: transparent;
   padding: 8px 24px;
   &:hover {
-   background-color: #375eab;
+   background-color: #FDDD00;
+  }
+}
+
+.btn-secondary {
+  color: var(--pre-color) ;
+  background-color: transparent;
+  border: transparent;
+  padding: 8px 24px;
+  &:hover {
+   color: #FDDD00;
+   background-color: transparent;
+  }
+}
+
+.btn-header{
+  color: #ffffff ;
+  background-color: transparent;
+  border: transparent;
+  padding: 8px 24px;
+  &:hover {
+   color: #FDDD00;
+   background-color: transparent;
   }
 }
 
@@ -713,7 +735,8 @@ $toggle-default-font-size: 0.5rem;
 }
 
 .btn-link{
-color: #007d9c;
+color: #00758D;
+
 }
 
 .btn-toggle.btn-mode,

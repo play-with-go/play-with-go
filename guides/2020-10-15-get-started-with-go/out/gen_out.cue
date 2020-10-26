@@ -17,11 +17,10 @@ Networks: ["playwithgo_pwg"]
 Env: []
 Langs: {
 	en: {
-		Hash: "d5e6304e68208929549142aa40f34aaecb1a6574673a3c92eca3aad85492c8d1"
+		Hash: "6777e27839b24320562dc7073f6e7385bd337bd9380fe3bf0aabd30a25178dee"
 		Steps: {
 			run_hello_again: {
 				Stmts: [{
-					TrimmedOutput: "Don't communicate by sharing memory, share memory by communicating."
 					Output: """
 						Don't communicate by sharing memory, share memory by communicating.
 
@@ -30,18 +29,14 @@ Langs: {
 					CmdStr:   "go run hello.go"
 					Negated:  false
 				}]
-				Order:    8
-				Terminal: "term1"
-				StepType: 1
-				Name:     "run_hello_again"
+				Order:     8
+				DoNotTrim: false
+				Terminal:  "term1"
+				StepType:  1
+				Name:      "run_hello_again"
 			}
 			gogetquote: {
 				Stmts: [{
-					TrimmedOutput: """
-						go: downloading rsc.io/quote v1.5.2
-						go: downloading rsc.io/sampler v1.3.0
-						go: downloading golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
-						"""
 					Output: """
 						go: downloading rsc.io/quote v1.5.2
 						go: downloading rsc.io/sampler v1.3.0
@@ -52,10 +47,11 @@ Langs: {
 					CmdStr:   "go get rsc.io/quote@v1.5.2"
 					Negated:  false
 				}]
-				Order:    7
-				Terminal: "term1"
-				StepType: 1
-				Name:     "gogetquote"
+				Order:     7
+				DoNotTrim: false
+				Terminal:  "term1"
+				StepType:  1
+				Name:      "gogetquote"
 			}
 			update_hello: {
 				Order: 5
@@ -92,7 +88,6 @@ Langs: {
 			}
 			run_hello: {
 				Stmts: [{
-					TrimmedOutput: "Hello, World!"
 					Output: """
 						Hello, World!
 
@@ -101,10 +96,11 @@ Langs: {
 					CmdStr:   "go run hello.go"
 					Negated:  false
 				}]
-				Order:    4
-				Terminal: "term1"
-				StepType: 1
-				Name:     "run_hello"
+				Order:     4
+				DoNotTrim: false
+				Terminal:  "term1"
+				StepType:  1
+				Name:      "run_hello"
 			}
 			create_hello: {
 				Order: 3
@@ -129,26 +125,24 @@ Langs: {
 			}
 			mkdir_hello: {
 				Stmts: [{
-					TrimmedOutput: ""
-					Output:        ""
-					ExitCode:      0
-					CmdStr:        "mkdir /home/gopher/hello"
-					Negated:       false
+					Output:   ""
+					ExitCode: 0
+					CmdStr:   "mkdir /home/gopher/hello"
+					Negated:  false
 				}, {
-					TrimmedOutput: ""
-					Output:        ""
-					ExitCode:      0
-					CmdStr:        "cd /home/gopher/hello"
-					Negated:       false
+					Output:   ""
+					ExitCode: 0
+					CmdStr:   "cd /home/gopher/hello"
+					Negated:  false
 				}]
-				Order:    2
-				Terminal: "term1"
-				StepType: 1
-				Name:     "mkdir_hello"
+				Order:     2
+				DoNotTrim: false
+				Terminal:  "term1"
+				StepType:  1
+				Name:      "mkdir_hello"
 			}
 			pwd_home: {
 				Stmts: [{
-					TrimmedOutput: "/home/gopher"
 					Output: """
 						/home/gopher
 
@@ -157,14 +151,14 @@ Langs: {
 					CmdStr:   "pwd"
 					Negated:  false
 				}]
-				Order:    1
-				Terminal: "term1"
-				StepType: 1
-				Name:     "pwd_home"
+				Order:     1
+				DoNotTrim: false
+				Terminal:  "term1"
+				StepType:  1
+				Name:      "pwd_home"
 			}
 			goversion: {
 				Stmts: [{
-					TrimmedOutput: "go version go1.15.2 linux/amd64"
 					Output: """
 						go version go1.15.2 linux/amd64
 
@@ -173,14 +167,14 @@ Langs: {
 					CmdStr:   "go version"
 					Negated:  false
 				}]
-				Order:    0
-				Terminal: "term1"
-				StepType: 1
-				Name:     "goversion"
+				Order:     0
+				DoNotTrim: false
+				Terminal:  "term1"
+				StepType:  1
+				Name:      "goversion"
 			}
 			gomodinit: {
 				Stmts: [{
-					TrimmedOutput: "go: creating new go.mod: module hello"
 					Output: """
 						go: creating new go.mod: module hello
 
@@ -189,10 +183,11 @@ Langs: {
 					CmdStr:   "go mod init hello"
 					Negated:  false
 				}]
-				Order:    6
-				Terminal: "term1"
-				StepType: 1
-				Name:     "gomodinit"
+				Order:     6
+				DoNotTrim: false
+				Terminal:  "term1"
+				StepType:  1
+				Name:      "gomodinit"
 			}
 		}
 	}

@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201020103208-9664976fa978",
-		      "Sum": "h1:5SYpmpzgsPmsZI/s+axWy107fe+i2i6SVo5jXUq5c7o=",
+		      "Version": "v0.0.2-0.20201025090126-aacdb542a148",
+		      "Sum": "h1:WvlLlHRzDvoETgNwAZApzeulOgN1DpBNr3Oz668XAS4=",
 		      "Replace": null
 		    },
 		    {
@@ -119,23 +119,37 @@ Networks: ["playwithgo_pwg"]
 Env: []
 Langs: {
 	en: {
-		Hash: "6f64cc0c105aaf70e45cb04a991084b24ff845a0f5d599328af6edebaf1607e6"
+		Hash: "db1aad51d7476a99b39d6472f8ed6fd9ab9cd8dc4b478cf4e4412b113e427e50"
 		Steps: {
+			mod1_pseudoversion: {
+				Stmts: [{
+					Output: """
+						v0.0.0-20060102150405-abcedf12345
+
+						"""
+					ExitCode: 0
+					CmdStr:   "go list -m -f {{.Version}} {{{.REPO1}}}"
+					Negated:  false
+				}]
+				Order:         5
+				DoNotTrim:     false
+				RandomReplace: "v0.0.0-20060102150405-abcedf12345"
+				Terminal:      "term1"
+				StepType:      1
+				Name:          "mod1_pseudoversion"
+			}
 			use_module: {
 				Stmts: [{
-					TrimmedOutput: ""
-					Output:        ""
-					ExitCode:      0
-					CmdStr:        "mkdir /home/gopher/mod2"
-					Negated:       false
+					Output:   ""
+					ExitCode: 0
+					CmdStr:   "mkdir /home/gopher/mod2"
+					Negated:  false
 				}, {
-					TrimmedOutput: ""
-					Output:        ""
-					ExitCode:      0
-					CmdStr:        "cd /home/gopher/mod2"
-					Negated:       false
+					Output:   ""
+					ExitCode: 0
+					CmdStr:   "cd /home/gopher/mod2"
+					Negated:  false
 				}, {
-					TrimmedOutput: "go: creating new go.mod: module mod.com"
 					Output: """
 						go: creating new go.mod: module mod.com
 
@@ -144,20 +158,15 @@ Langs: {
 					CmdStr:   "go mod init mod.com"
 					Negated:  false
 				}, {
-					TrimmedOutput: """
-						go: downloading gopher.live/{{{.GITEA_USERNAME}}}/mod1 v0.0.0-20060102150405-abcde12345
-						go: gopher.live/{{{.GITEA_USERNAME}}}/mod1 upgrade => v0.0.0-20060102150405-abcde12345
-						"""
 					Output: """
-						go: downloading gopher.live/{{{.GITEA_USERNAME}}}/mod1 v0.0.0-20060102150405-abcde12345
-						go: gopher.live/{{{.GITEA_USERNAME}}}/mod1 upgrade => v0.0.0-20060102150405-abcde12345
+						go: downloading {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
+						go: {{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcedf12345
 
 						"""
 					ExitCode: 0
 					CmdStr:   "go get {{{.REPO1}}}"
 					Negated:  false
 				}, {
-					TrimmedOutput: "Hello, world!"
 					Output: """
 						Hello, world!
 
@@ -166,61 +175,38 @@ Langs: {
 					CmdStr:   "go run {{{.REPO1}}}"
 					Negated:  false
 				}]
-				Order:    4
-				Terminal: "term1"
-				StepType: 1
-				Name:     "use_module"
+				Order:     4
+				DoNotTrim: false
+				Terminal:  "term1"
+				StepType:  1
+				Name:      "use_module"
 			}
 			commit_and_push: {
 				Stmts: [{
-					TrimmedOutput: ""
-					Output:        ""
-					ExitCode:      0
-					CmdStr:        "git add -A"
-					Negated:       false
-				}, {
-					TrimmedOutput: """
-						[main (root-commit) abcd123] Initial commit
-						 3 files changed, 12 insertions(+)
-						 create mode 100644 README.md
-						 create mode 100644 go.mod
-						 create mode 100644 main.go
-						"""
-					Output: """
-						[main (root-commit) abcd123] Initial commit
-						 3 files changed, 12 insertions(+)
-						 create mode 100644 README.md
-						 create mode 100644 go.mod
-						 create mode 100644 main.go
-
-						"""
+					Output:   ""
 					ExitCode: 0
-					CmdStr:   "git commit -m \"Initial commit\""
+					CmdStr:   "git add README.md main.go"
 					Negated:  false
 				}, {
-					TrimmedOutput: """
-						remote: . Processing 1 references        
-						remote: Processed 1 references in total        
-						To https://gopher.live/{{{.GITEA_USERNAME}}}/mod1.git
-						 * [new branch]      main -> main
-						Branch 'main' set up to track remote branch 'main' from 'origin'.
-						"""
+					Output:   ""
+					ExitCode: 0
+					CmdStr:   "git commit -q -m \"Initial commit\""
+					Negated:  false
+				}, {
 					Output: """
 						remote: . Processing 1 references        
 						remote: Processed 1 references in total        
-						To https://gopher.live/{{{.GITEA_USERNAME}}}/mod1.git
-						 * [new branch]      main -> main
-						Branch 'main' set up to track remote branch 'main' from 'origin'.
 
 						"""
 					ExitCode: 0
-					CmdStr:   "git push -u origin main"
+					CmdStr:   "git push -q origin main"
 					Negated:  false
 				}]
-				Order:    3
-				Terminal: "term1"
-				StepType: 1
-				Name:     "commit_and_push"
+				Order:     3
+				DoNotTrim: false
+				Terminal:  "term1"
+				StepType:  1
+				Name:      "commit_and_push"
 			}
 			create_main: {
 				Order: 2
@@ -257,19 +243,16 @@ Langs: {
 			}
 			create_module: {
 				Stmts: [{
-					TrimmedOutput: ""
-					Output:        ""
-					ExitCode:      0
-					CmdStr:        "mkdir /home/gopher/mod1"
-					Negated:       false
+					Output:   ""
+					ExitCode: 0
+					CmdStr:   "mkdir /home/gopher/mod1"
+					Negated:  false
 				}, {
-					TrimmedOutput: ""
-					Output:        ""
-					ExitCode:      0
-					CmdStr:        "cd /home/gopher/mod1"
-					Negated:       false
+					Output:   ""
+					ExitCode: 0
+					CmdStr:   "cd /home/gopher/mod1"
+					Negated:  false
 				}, {
-					TrimmedOutput: "Initialized empty Git repository in /home/gopher/mod1/.git/"
 					Output: """
 						Initialized empty Git repository in /home/gopher/mod1/.git/
 
@@ -278,25 +261,24 @@ Langs: {
 					CmdStr:   "git init"
 					Negated:  false
 				}, {
-					TrimmedOutput: ""
-					Output:        ""
-					ExitCode:      0
-					CmdStr:        "git remote add origin https://{{{.REPO1}}}.git"
-					Negated:       false
+					Output:   ""
+					ExitCode: 0
+					CmdStr:   "git remote add origin https://{{{.REPO1}}}.git"
+					Negated:  false
 				}, {
-					TrimmedOutput: "go: creating new go.mod: module gopher.live/{{{.GITEA_USERNAME}}}/mod1"
 					Output: """
-						go: creating new go.mod: module gopher.live/{{{.GITEA_USERNAME}}}/mod1
+						go: creating new go.mod: module {{{.REPO1}}}
 
 						"""
 					ExitCode: 0
 					CmdStr:   "go mod init {{{.REPO1}}}"
 					Negated:  false
 				}]
-				Order:    0
-				Terminal: "term1"
-				StepType: 1
-				Name:     "create_module"
+				Order:     0
+				DoNotTrim: false
+				Terminal:  "term1"
+				StepType:  1
+				Name:      "create_module"
 			}
 		}
 	}

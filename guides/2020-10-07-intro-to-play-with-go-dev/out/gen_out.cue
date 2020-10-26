@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201020103208-9664976fa978",
-		      "Sum": "h1:5SYpmpzgsPmsZI/s+axWy107fe+i2i6SVo5jXUq5c7o=",
+		      "Version": "v0.0.2-0.20201025090126-aacdb542a148",
+		      "Sum": "h1:WvlLlHRzDvoETgNwAZApzeulOgN1DpBNr3Oz668XAS4=",
 		      "Replace": null
 		    },
 		    {
@@ -119,89 +119,63 @@ Networks: ["playwithgo_pwg"]
 Env: []
 Langs: {
 	en: {
-		Hash: "7fdcea17aed418639f3b0cbda7028adbbd55d2be5b0210ad3ce6835a39bb4592"
+		Hash: "de653b2eb8cb7ceefb20615422b5dd091bf8f688b2d9727059f5d6ff85f3a38a"
 		Steps: {
 			gitpush: {
 				Stmts: [{
-					TrimmedOutput: """
-						remote: . Processing 1 references        
-						remote: Processed 1 references in total        
-						To https://gopher.live/{{{.GITEA_USERNAME}}}/hello.git
-						 * [new branch]      main -> main
-						"""
 					Output: """
 						remote: . Processing 1 references        
 						remote: Processed 1 references in total        
-						To https://gopher.live/{{{.GITEA_USERNAME}}}/hello.git
-						 * [new branch]      main -> main
 
 						"""
 					ExitCode: 0
-					CmdStr:   "git push origin main"
+					CmdStr:   "git push -q origin main"
 					Negated:  false
 				}]
-				Order:    8
-				Terminal: "term1"
-				StepType: 1
-				Name:     "gitpush"
+				Order:     8
+				DoNotTrim: false
+				Terminal:  "term1"
+				StepType:  1
+				Name:      "gitpush"
 			}
 			gitadd: {
 				Stmts: [{
-					TrimmedOutput: ""
-					Output:        ""
-					ExitCode:      0
-					CmdStr:        "git add -A"
-					Negated:       false
-				}, {
-					TrimmedOutput: """
-						[main (root-commit) abcd123] Initial commit
-						 1 file changed, 6 insertions(+)
-						 create mode 100644 README.md
-						"""
-					Output: """
-						[main (root-commit) abcd123] Initial commit
-						 1 file changed, 6 insertions(+)
-						 create mode 100644 README.md
-
-						"""
+					Output:   ""
 					ExitCode: 0
-					CmdStr:   "git commit -am 'Initial commit'"
+					CmdStr:   "git add README.md"
+					Negated:  false
+				}, {
+					Output:   ""
+					ExitCode: 0
+					CmdStr:   "git commit -q -m 'Initial commit'"
 					Negated:  false
 				}]
-				Order:    7
-				Terminal: "term1"
-				StepType: 1
-				Name:     "gitadd"
+				Order:     7
+				DoNotTrim: false
+				Terminal:  "term1"
+				StepType:  1
+				Name:      "gitadd"
 			}
 			gitinit: {
 				Stmts: [{
-					TrimmedOutput: ""
-					Output:        ""
-					ExitCode:      0
-					CmdStr:        "git init -q"
-					Negated:       false
+					Output:   ""
+					ExitCode: 0
+					CmdStr:   "git init -q"
+					Negated:  false
 				}, {
-					TrimmedOutput: ""
-					Output:        ""
-					ExitCode:      0
-					CmdStr:        "git remote add origin https://{{{.REPO1}}}.git"
-					Negated:       false
+					Output:   ""
+					ExitCode: 0
+					CmdStr:   "git remote add origin https://{{{.REPO1}}}.git"
+					Negated:  false
 				}]
-				Order:    6
-				Terminal: "term1"
-				StepType: 1
-				Name:     "gitinit"
+				Order:     6
+				DoNotTrim: false
+				Terminal:  "term1"
+				StepType:  1
+				Name:      "gitinit"
 			}
 			cat_readme: {
 				Stmts: [{
-					TrimmedOutput: """
-						This is README.md.
-
-						Hello, gopher!
-
-						We made a change!
-
-						"""
 					Output: """
 						This is README.md.
 
@@ -215,10 +189,11 @@ Langs: {
 					CmdStr:   "cat README.md"
 					Negated:  false
 				}]
-				Order:    5
-				Terminal: "term1"
-				StepType: 1
-				Name:     "cat_readme"
+				Order:     5
+				DoNotTrim: false
+				Terminal:  "term1"
+				StepType:  1
+				Name:      "cat_readme"
 			}
 			upload_readme_again: {
 				Order: 4
@@ -264,26 +239,24 @@ Langs: {
 			}
 			multiple_commands: {
 				Stmts: [{
-					TrimmedOutput: ""
-					Output:        ""
-					ExitCode:      0
-					CmdStr:        "mkdir hello"
-					Negated:       false
+					Output:   ""
+					ExitCode: 0
+					CmdStr:   "mkdir hello"
+					Negated:  false
 				}, {
-					TrimmedOutput: ""
-					Output:        ""
-					ExitCode:      0
-					CmdStr:        "cd hello"
-					Negated:       false
+					Output:   ""
+					ExitCode: 0
+					CmdStr:   "cd hello"
+					Negated:  false
 				}]
-				Order:    2
-				Terminal: "term1"
-				StepType: 1
-				Name:     "multiple_commands"
+				Order:     2
+				DoNotTrim: false
+				Terminal:  "term1"
+				StepType:  1
+				Name:      "multiple_commands"
 			}
 			echo_hello: {
 				Stmts: [{
-					TrimmedOutput: "Hello, world!"
 					Output: """
 						Hello, world!
 
@@ -292,14 +265,14 @@ Langs: {
 					CmdStr:   "echo \"Hello, world!\""
 					Negated:  false
 				}]
-				Order:    1
-				Terminal: "term1"
-				StepType: 1
-				Name:     "echo_hello"
+				Order:     1
+				DoNotTrim: false
+				Terminal:  "term1"
+				StepType:  1
+				Name:      "echo_hello"
 			}
 			whoami: {
 				Stmts: [{
-					TrimmedOutput: "gopher"
 					Output: """
 						gopher
 
@@ -308,7 +281,6 @@ Langs: {
 					CmdStr:   "whoami"
 					Negated:  false
 				}, {
-					TrimmedOutput: "/home/gopher"
 					Output: """
 						/home/gopher
 
@@ -317,10 +289,11 @@ Langs: {
 					CmdStr:   "pwd"
 					Negated:  false
 				}]
-				Order:    0
-				Terminal: "term1"
-				StepType: 1
-				Name:     "whoami"
+				Order:     0
+				DoNotTrim: false
+				Terminal:  "term1"
+				StepType:  1
+				Name:      "whoami"
 			}
 		}
 	}
