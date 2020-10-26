@@ -206,7 +206,6 @@ code[class*="."] {
 pre:not(.highlight) {
   color: var(--pre-color);
   background-color: var(--pre-bgcolor);
-  cursor: pointer;
   font-size: 14px;
   border-radius: 4px;
   padding: 16px 8px 16px 8px;
@@ -434,6 +433,7 @@ blockquote > p {
 
 .highlight {
   padding: 10px 8px 1px 8px;
+  cursor: pointer;
   margin-bottom: 16px;
   color: var(--titles-color);
   border-radius: 4px;
