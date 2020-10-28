@@ -206,6 +206,7 @@ code[class*="."] {
 pre:not(.highlight) {
   color: var(--pre-color);
   background-color: var(--pre-bgcolor);
+  cursor: pointer;
   font-size: 14px;
   border-radius: 4px;
   padding: 16px 8px 16px 8px;
