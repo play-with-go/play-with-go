@@ -69,6 +69,11 @@ _#workflows: [
 				run:  "_scripts/generateGuides.sh"
 			},
 			{
+				name:                "Race check re-generating guides"
+				run:                 "go run -race github.com/play-with-go/preguide/cmd/preguide gen -out ../_posts"
+				"working-directory": "./guides"
+			},
+			{
 				name: "Re-generate everything else"
 				run:  "_scripts/generateEverythingElse.sh"
 			},
