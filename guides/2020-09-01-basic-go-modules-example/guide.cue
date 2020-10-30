@@ -80,7 +80,7 @@ Steps: use_module: en: preguide.#Command & {
 }
 
 Steps: mod1_pseudoversion: en: preguide.#Command & {
-	RandomReplace: "v0.0.0-\(StablePsuedoversionSuffix)"
+	RandomReplace: "v0.0.0-\(_#StablePsuedoversionSuffix)"
 	Source:        """
 		go list -m -f {{.Version}} \(Defs.mod1_path)
 		"""
