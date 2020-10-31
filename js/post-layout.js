@@ -12,9 +12,19 @@ function replaceInText(element, replacements) {
 	}
 	element.innerHTML = v;
 }
+
+function login() {
+  localStorage.setItem("authenticated", false);
+  document.location.href = "/welcome.html";
+}
 var siteUrl = "{{ site.url }}";
 var fontChanged = false;
 var pwd = new PWD();
+
+pwd.on("unauthorized", function(){
+  login();
+});
+
 var guideRequest = new XMLHttpRequest();
 // TODO: move away from hard-code guides URL to use a variable
 // specified in the site config
@@ -23,9 +33,11 @@ guideRequest.withCredentials = true;
 guideRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 guideRequest.onload = function() {
 	// TODO: error handling
-	if (guideRequest.status != 200) {
+  if (guideRequest.status > 500) {
 		throw "Failed to make guides request";
-	}
+  } else if (guideRequest.status == 401) {
+    login();
+  }
 	var guideDetails = JSON.parse(guideRequest.responseText);
 
 	let replacements = [];
