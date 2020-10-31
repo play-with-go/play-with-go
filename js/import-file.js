@@ -1,14 +1,11 @@
-pwd.on("uploadStart", function() {
-  feedbackFooter.neutralFeedback("Uploading file", { dontHide: true });
-});
-pwd.on("uploadEnd", function(err) {
+pwd.on("uploadEnd", function(err, path, instance) {
   if (err) {
     feedbackFooter.negativeFeedback(
       "Something went uploading file wrong. Please try again."
     );
     return
   }
-  feedbackFooter.positiveFeedback("File uploaded successfully");
+  instance.terms[0].write(`File uploaded to ${path} successfully.\r\n$ `);
 });
 
 function getSelectedTermInstance() {
