@@ -16,6 +16,9 @@ import (
 
 #Guide: {
 
+	Languages: [...#Language]
+	Languages: ["en"]
+
 	#Step: (#Command | #CommandFile | #Upload | #UploadFile ) & {
 		Name:     string
 		StepType: #StepType
@@ -98,9 +101,7 @@ import (
 	// of the environment variable ABC therefore looks like "{{ .ABC }}"
 	Delims: *["{{", "}}"] | [string, string]
 
-	Steps: [string]: [#Language]: #Step
-
-	Steps: [name=string]: [#Language]: {
+	Steps: [name=string]: #Step & {
 		// TODO: remove post upgrade to latest CUE? Because at that point
 		// the defaulting in #TerminalName will work
 		Terminal: *#TerminalNames[0] | string
@@ -124,7 +125,7 @@ import (
 	// TODO: remove post upgrade to latest CUE? Because at that point
 	// the use of or() will work, which will give a better error message
 	#TerminalNames: [ for k, _ in Terminals {k}]
-	#ok: true & and([ for s in Steps for l in s {list.Contains(#TerminalNames, l.Terminal)}])
+	#ok: true & and([ for s in Steps {list.Contains(#TerminalNames, s.Terminal)}])
 
 	// Terminals defines the required remote VMs for a given guide
 	Terminals: [string]: #Terminal

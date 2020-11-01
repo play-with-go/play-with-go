@@ -30,7 +30,7 @@ Terminals: term1: preguide.#Terminal & {
 	Scenarios: go115: Image: #go115LatestImage
 }
 
-Steps: create_module: en: preguide.#Command & {
+Steps: create_module: preguide.#Command & {
 	Source: """
 		mkdir \(Defs.mod1_dir)
 		cd \(Defs.mod1_dir)
@@ -40,14 +40,14 @@ Steps: create_module: en: preguide.#Command & {
 		"""
 }
 
-Steps: create_readme: en: preguide.#Upload & {
+Steps: create_readme: preguide.#Upload & {
 	Target: Defs.mod1_dir + "/README.md"
 	Source: """
 		## `\(Defs.mod1_path)`
 		"""
 }
 
-Steps: create_main: en: preguide.#Upload & {
+Steps: create_main: preguide.#Upload & {
 	Target: Defs.mod1_dir + "/main.go"
 	Source: """
 		package main
@@ -61,7 +61,7 @@ Steps: create_main: en: preguide.#Upload & {
 		"""
 }
 
-Steps: commit_and_push: en: preguide.#Command & {
+Steps: commit_and_push: preguide.#Command & {
 	Source: """
 		git add README.md main.go
 		git commit -q -m "Initial commit"
@@ -69,7 +69,7 @@ Steps: commit_and_push: en: preguide.#Command & {
 		"""
 }
 
-Steps: use_module: en: preguide.#Command & {
+Steps: use_module: preguide.#Command & {
 	Source: """
 		mkdir \(Defs.mod2_dir)
 		cd \(Defs.mod2_dir)
@@ -79,7 +79,7 @@ Steps: use_module: en: preguide.#Command & {
 		"""
 }
 
-Steps: mod1_pseudoversion: en: preguide.#Command & {
+Steps: mod1_pseudoversion: preguide.#Command & {
 	RandomReplace: "v0.0.0-\(_#StablePsuedoversionSuffix)"
 	Source:        """
 		go list -m -f {{.Version}} \(Defs.mod1_path)
