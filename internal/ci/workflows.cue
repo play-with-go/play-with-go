@@ -11,6 +11,7 @@ _#workflows: [
 
 #testWorkflow: json.#Workflow & {
 	env: {
+		PREGUIDE_DEBUG:                     true
 		PREGUIDE_SKIP_CACHE:                true
 		PLAYWITHGODEV_CONTRIBUTOR_USER:     "playwithgopher_github"
 		PLAYWITHGODEV_CONTRIBUTOR_PASSWORD: "${{ secrets.PLAYWITHGODEV_CONTRIBUTOR_PASSWORD }}"
