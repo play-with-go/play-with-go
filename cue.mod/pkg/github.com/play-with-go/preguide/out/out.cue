@@ -7,8 +7,9 @@ import "github.com/play-with-go/preguide"
 	Presteps: [...#Prestep]
 	Terminals: [...preguide.#Terminal]
 	Scenarios: [...preguide.#Scenario]
-	Langs: [preguide.#Language]: #LangSteps
-	Defs: [string]:              _
+	Hash: string
+	Steps: [string]: #Step
+	Defs: [string]:  _
 	Networks: [...string]
 	Env: [...string]
 }
@@ -36,11 +37,6 @@ _#stepCommon: {
 	// Variables is the set of environment variables that resulted
 	// from the execution of the prestep
 	Variables: [...string]
-}
-
-#LangSteps: {
-	Hash: string
-	Steps: [string]: #Step
 }
 
 #Step: (#CommandStep | #UploadStep) & _#stepCommon

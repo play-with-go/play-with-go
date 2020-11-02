@@ -65,7 +65,7 @@ func (r *runner) mainerr() (err error) {
 			reqOrigin := req.Header.Get("Origin")
 			var set bool
 			for _, o := range r.fOrigins {
-				if o == reqOrigin {
+				if !set && o == reqOrigin {
 					resp.Header().Set("Access-Control-Allow-Origin", o)
 					set = true
 				}
