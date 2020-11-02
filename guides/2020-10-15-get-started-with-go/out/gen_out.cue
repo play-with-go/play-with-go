@@ -187,5 +187,5 @@ Steps: {
 		Name:      "gomodinit"
 	}
 }
-Hash: "be905e9c857bb4e38856bbda7bbc3fc475b57b977e5664c8b8ff32c5c51dd7a4"
+Hash: "58bfff642f0bd81172bdf038e0edf68c0c653e4cefb3dfc0cf414fe419f7b100"
 Delims: ["{{{", "}}}"]
