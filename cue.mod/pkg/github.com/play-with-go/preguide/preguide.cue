@@ -25,7 +25,6 @@ import (
 		Terminal: string
 	}
 
-	// Change this to a hidden definition once cuelang.org/issue/533 is resolved
 	_#stepCommon: {
 		Name:     string
 		StepType: #StepType
@@ -49,6 +48,7 @@ import (
 
 	_#uploadCommon: {
 		_#stepCommon
+
 		Target: string
 
 		// The language of the content being uploaded, e.g. go
@@ -115,8 +115,6 @@ import (
 	Scenarios: [name=string]: {
 		Name: name
 	}
-
-	_#ScenarioName: or([ for name, _ in Scenarios {name}])
 
 	for scenario, _ in Scenarios for terminal, _ in Terminals {
 		Terminals: "\(terminal)": Scenarios: "\(scenario)": #TerminalScenario
