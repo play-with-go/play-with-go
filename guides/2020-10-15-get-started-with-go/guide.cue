@@ -22,26 +22,26 @@ Terminals: term1: preguide.#Terminal & {
 	Scenarios: go115: Image: #go115LatestImage
 }
 
-Steps: goversion: en: preguide.#Command & {
+Steps: goversion: preguide.#Command & {
 	Source: """
 		go version
 		"""
 }
 
-Steps: pwd_home: en: preguide.#Command & {
+Steps: pwd_home: preguide.#Command & {
 	Source: """
 		pwd
 		"""
 }
 
-Steps: mkdir_hello: en: preguide.#Command & {
+Steps: mkdir_hello: preguide.#Command & {
 	Source: """
 		mkdir \(Defs.hello_dir)
 		cd \(Defs.hello_dir)
 		"""
 }
 
-Steps: create_hello: en: preguide.#Upload & {
+Steps: create_hello: preguide.#Upload & {
 	Target: "\(Defs.hello_dir)/\(Defs.hello_go)"
 	Source: """
 		package main
@@ -55,16 +55,16 @@ Steps: create_hello: en: preguide.#Upload & {
 		"""
 }
 
-Steps: run_hello: en: preguide.#Command & {
+Steps: run_hello: preguide.#Command & {
 	Source: """
 		go run \(Defs.hello_go)
 		"""
 }
 
-Steps: update_hello: en: preguide.#Upload & {
+Steps: update_hello: preguide.#Upload & {
 	Target:   "\(Defs.hello_dir)/\(Defs.hello_go)"
 	Renderer: preguide.#RenderDiff & {
-		Pre: Steps.create_hello.en.Source
+		Pre: Steps.create_hello.Source
 	}
 	Source: """
 		package main
@@ -80,19 +80,19 @@ Steps: update_hello: en: preguide.#Upload & {
 		"""
 }
 
-Steps: gomodinit: en: preguide.#Command & {
+Steps: gomodinit: preguide.#Command & {
 	Source: """
 		\(Defs.gomodinit) \(Defs.hellomod)
 		"""
 }
 
-Steps: gogetquote: en: preguide.#Command & {
+Steps: gogetquote: preguide.#Command & {
 	Source: """
 		go get rsc.io/quote@v1.5.2
 		"""
 }
 
-Steps: run_hello_again: en: preguide.#Command & {
+Steps: run_hello_again: preguide.#Command & {
 	Source: """
 		go run \(Defs.hello_go)
 		"""

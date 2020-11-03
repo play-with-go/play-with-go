@@ -31,27 +31,27 @@ Terminals: term1: preguide.#Terminal & {
 	Scenarios: go115: Image: #go115LatestImage
 }
 
-Steps: whoami: en: preguide.#Command & {
+Steps: whoami: preguide.#Command & {
 	Source: """
 		whoami
 		pwd
 		"""
 }
 
-Steps: echo_hello: en: preguide.#Command & {
+Steps: echo_hello: preguide.#Command & {
 	Source: """
 		echo "Hello, world!"
 		"""
 }
 
-Steps: multiple_commands: en: preguide.#Command & {
+Steps: multiple_commands: preguide.#Command & {
 	Source: """
 		mkdir \(Defs.modname)
 		cd \(Defs.modname)
 		"""
 }
 
-Steps: upload_readme: en: preguide.#Upload & {
+Steps: upload_readme: preguide.#Upload & {
 	Target: Defs.readmepath
 	Source: """
 		This is \(Defs.readme).
@@ -61,10 +61,10 @@ Steps: upload_readme: en: preguide.#Upload & {
 		"""
 }
 
-Steps: upload_readme_again: en: preguide.#Upload & {
+Steps: upload_readme_again: preguide.#Upload & {
 	Target:   Defs.readmepath
 	Renderer: preguide.#RenderDiff & {
-		Pre: Steps.upload_readme.en.Source
+		Pre: Steps.upload_readme.Source
 	}
 	Source: """
 		This is \(Defs.readme).
@@ -76,27 +76,27 @@ Steps: upload_readme_again: en: preguide.#Upload & {
 		"""
 }
 
-Steps: cat_readme: en: preguide.#Command & {
+Steps: cat_readme: preguide.#Command & {
 	Source: """
 		cat \(Defs.readme)
 		"""
 }
 
-Steps: gitinit: en: preguide.#Command & {
+Steps: gitinit: preguide.#Command & {
 	Source: """
 		git init -q
 		git remote add origin \(Defs.vcsurl)
 		"""
 }
 
-Steps: gitadd: en: preguide.#Command & {
+Steps: gitadd: preguide.#Command & {
 	Source: """
 		git add README.md
 		git commit -q -m 'Initial commit'
 		"""
 }
 
-Steps: gitpush: en: preguide.#Command & {
+Steps: gitpush: preguide.#Command & {
 	Source: """
 		git push -q origin main
 		"""

@@ -23,6 +23,16 @@ terminal that is connected to a remote virtual session, hosted on [Google Cloud]
 enter any personal credentials/details into the interactive terminal. We make no guarantees on the security of these
 remotes sessions._
 
+For Go-related guides, the remote session runs with a user and working directory as follows:
+
+```.term1
+$ whoami
+gopher
+$ pwd
+/home/gopher
+```
+{:data-command-src="d2hvYW1pCnB3ZAo="}
+
 Throughout each guide (prose) you will see clickable _command_ and _code_ blocks. For example, click on the following
 command block:
 
@@ -71,20 +81,6 @@ We made a change!
 
 ```
 {:data-command-src="Y2F0IFJFQURNRS5tZAo="}
-
-### The interactive terminal
-
-As mentioned above, the interactive terminal is connected to a remote virtual session, hosted on [Google
-Cloud](https://cloud.google.com/). For Go-related guides, the remote session runs with the following user and starts
-with a working directory of that user:
-
-```.term1
-$ whoami
-gopher
-$ pwd
-/home/gopher
-```
-{:data-command-src="d2hvYW1pCnB3ZAo="}
 
 ### Remote source code repositories
 

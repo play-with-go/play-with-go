@@ -16,13 +16,15 @@ import (
 
 #Guide: {
 
+	Languages: [...#Language]
+	Languages: ["en"]
+
 	#Step: (#Command | #CommandFile | #Upload | #UploadFile ) & {
 		Name:     string
 		StepType: #StepType
 		Terminal: string
 	}
 
-	// Change this to a hidden definition once cuelang.org/issue/533 is resolved
 	_#stepCommon: {
 		Name:     string
 		StepType: #StepType
@@ -42,10 +44,17 @@ import (
 		// should not be trimmed (the default is to trim the trailing \n
 		// from the output) prior to sanitising the output from the script
 		DoNotTrim: *false | bool
+
+		// InformationOnly indicates that this field is not required for the
+		// successful execution of the script. Generally this is used by
+		// command blocks which are outputting random data for post-execution
+		// sanitisation, e.g. git commits.
+		InformationOnly: *false | bool
 	}
 
 	_#uploadCommon: {
 		_#stepCommon
+
 		Target: string
 
 		// The language of the content being uploaded, e.g. go
@@ -98,9 +107,7 @@ import (
 	// of the environment variable ABC therefore looks like "{{ .ABC }}"
 	Delims: *["{{", "}}"] | [string, string]
 
-	Steps: [string]: [#Language]: #Step
-
-	Steps: [name=string]: [#Language]: {
+	Steps: [name=string]: #Step & {
 		// TODO: remove post upgrade to latest CUE? Because at that point
 		// the defaulting in #TerminalName will work
 		Terminal: *#TerminalNames[0] | string
@@ -115,8 +122,6 @@ import (
 		Name: name
 	}
 
-	_#ScenarioName: or([ for name, _ in Scenarios {name}])
-
 	for scenario, _ in Scenarios for terminal, _ in Terminals {
 		Terminals: "\(terminal)": Scenarios: "\(scenario)": #TerminalScenario
 	}
@@ -124,7 +129,7 @@ import (
 	// TODO: remove post upgrade to latest CUE? Because at that point
 	// the use of or() will work, which will give a better error message
 	#TerminalNames: [ for k, _ in Terminals {k}]
-	#ok: true & and([ for s in Steps for l in s {list.Contains(#TerminalNames, l.Terminal)}])
+	#ok: true & and([ for s in Steps {list.Contains(#TerminalNames, s.Terminal)}])
 
 	// Terminals defines the required remote VMs for a given guide
 	Terminals: [string]: #Terminal

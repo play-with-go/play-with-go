@@ -11,6 +11,7 @@ _#workflows: [
 
 #testWorkflow: json.#Workflow & {
 	env: {
+		PREGUIDE_DEBUG:                     true
 		PREGUIDE_SKIP_CACHE:                true
 		PLAYWITHGODEV_CONTRIBUTOR_USER:     "playwithgopher_github"
 		PLAYWITHGODEV_CONTRIBUTOR_PASSWORD: "${{ secrets.PLAYWITHGODEV_CONTRIBUTOR_PASSWORD }}"
@@ -67,6 +68,11 @@ _#workflows: [
 			{
 				name: "Re-generate guides"
 				run:  "_scripts/generateGuides.sh"
+			},
+			{
+				name:                "Race check re-generating guides"
+				run:                 "go run -race github.com/play-with-go/preguide/cmd/preguide gen -out ../_posts"
+				"working-directory": "./guides"
 			},
 			{
 				name: "Re-generate everything else"
