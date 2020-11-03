@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201103095508-8c286015d3e2",
-		      "Sum": "h1:US36MyF1LcckPyi/RIn40Dloi8kXNay8+2y/2mP7+8w=",
+		      "Version": "v0.0.2-0.20201103113315-d052385e0a88",
+		      "Sum": "h1:GHY3IzpywqX2K9knm3iwdRjWGf9rZk8z+tW49Rizf7I=",
 		      "Replace": null
 		    },
 		    {
@@ -129,11 +129,12 @@ Steps: {
 			CmdStr:   "git push -q origin main"
 			Negated:  false
 		}]
-		Order:     8
-		DoNotTrim: false
-		Terminal:  "term1"
-		StepType:  1
-		Name:      "gitpush"
+		Order:           8
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "gitpush"
 	}
 	gitadd: {
 		Stmts: [{
@@ -147,11 +148,12 @@ Steps: {
 			CmdStr:   "git commit -q -m 'Initial commit'"
 			Negated:  false
 		}]
-		Order:     7
-		DoNotTrim: false
-		Terminal:  "term1"
-		StepType:  1
-		Name:      "gitadd"
+		Order:           7
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "gitadd"
 	}
 	gitinit: {
 		Stmts: [{
@@ -165,11 +167,12 @@ Steps: {
 			CmdStr:   "git remote add origin https://{{{.REPO1}}}.git"
 			Negated:  false
 		}]
-		Order:     6
-		DoNotTrim: false
-		Terminal:  "term1"
-		StepType:  1
-		Name:      "gitinit"
+		Order:           6
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "gitinit"
 	}
 	cat_readme: {
 		Stmts: [{
@@ -186,11 +189,12 @@ Steps: {
 			CmdStr:   "cat README.md"
 			Negated:  false
 		}]
-		Order:     5
-		DoNotTrim: false
-		Terminal:  "term1"
-		StepType:  1
-		Name:      "cat_readme"
+		Order:           5
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "cat_readme"
 	}
 	upload_readme_again: {
 		Order: 4
@@ -246,11 +250,12 @@ Steps: {
 			CmdStr:   "cd hello"
 			Negated:  false
 		}]
-		Order:     2
-		DoNotTrim: false
-		Terminal:  "term1"
-		StepType:  1
-		Name:      "multiple_commands"
+		Order:           2
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "multiple_commands"
 	}
 	echo_hello: {
 		Stmts: [{
@@ -262,11 +267,12 @@ Steps: {
 			CmdStr:   "echo \"Hello, world!\""
 			Negated:  false
 		}]
-		Order:     1
-		DoNotTrim: false
-		Terminal:  "term1"
-		StepType:  1
-		Name:      "echo_hello"
+		Order:           1
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "echo_hello"
 	}
 	whoami: {
 		Stmts: [{
@@ -286,12 +292,13 @@ Steps: {
 			CmdStr:   "pwd"
 			Negated:  false
 		}]
-		Order:     0
-		DoNotTrim: false
-		Terminal:  "term1"
-		StepType:  1
-		Name:      "whoami"
+		Order:           0
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "whoami"
 	}
 }
-Hash: "9d26117aee18ff8d66a12ac74f990ccecccc949156624f738f1846d30e41b863"
+Hash: "82121d4d218c50577f09b2128953b1d2430e8d43ba7a31e6f44169745c53cc30"
 Delims: ["{{{", "}}}"]
