@@ -5,7 +5,7 @@ pwd.on("uploadEnd", function(err, path, instance) {
     );
     return
   }
-  instance.terms[0].write(`File uploaded to ${path} successfully.\r\n$ `);
+  instance.terms[0].write(`# File uploaded to ${path} successfully.\r\n$ `);
 });
 
 function getSelectedTermInstance() {
