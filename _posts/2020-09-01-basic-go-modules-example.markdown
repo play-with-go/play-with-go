@@ -27,22 +27,18 @@ go: creating new go.mod: module {% raw %}{{{.REPO1}}}{% endraw %}
 
 Write a readme:
 
-
-```markdown
-## `{% raw %}{{{.REPO1}}}{% endraw %}`
-```
-{:data-upload-path="L2hvbWUvZ29waGVyL21vZDE=" data-upload-src="UkVBRE1FLm1k:IyMgYHt7ey5SRVBPMX19fWA=" data-upload-term=".term1"}
+<pre data-upload-path="L2hvbWUvZ29waGVyL21vZDE=" data-upload-src="UkVBRE1FLm1k:IyMgYHt7ey5SRVBPMX19fWA=" data-upload-term=".term1"><code class="language-md">## `{% raw %}{{{.REPO1}}}{% endraw %}`</code></pre>
 
 Write a readme:
 
-```golang
+<pre data-upload-path="L2hvbWUvZ29waGVyL21vZDE=" data-upload-src="bWFpbi5nbw==:cGFja2FnZSBtYWluCgppbXBvcnQgImZtdCIKCmZ1bmMgbWFpbigpIHsKCWZtdC5QcmludGxuKCJIZWxsbywgd29ybGQhIikKfQo=" data-upload-term=".term1"><code class="language-go">package main
+
 import "fmt"
 
 func main() {
 	fmt.Println("Hello, world!")
 }
-```
-{:data-upload-path="L2hvbWUvZ29waGVyL21vZDE=" data-upload-src="bWFpbi5nbw==:cGFja2FnZSBtYWluCgppbXBvcnQgImZtdCIKCmZ1bmMgbWFpbigpIHsKCWZtdC5QcmludGxuKCJIZWxsbywgd29ybGQhIikKfQo=" data-upload-term=".term1"}
+</code></pre>
 
 Commit and push:
 
