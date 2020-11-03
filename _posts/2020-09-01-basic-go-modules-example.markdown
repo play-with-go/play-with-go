@@ -33,10 +33,10 @@ Write a readme:
 
 <pre data-upload-path="L2hvbWUvZ29waGVyL21vZDE=" data-upload-src="bWFpbi5nbw==:cGFja2FnZSBtYWluCgppbXBvcnQgImZtdCIKCmZ1bmMgbWFpbigpIHsKCWZtdC5QcmludGxuKCJIZWxsbywgd29ybGQhIikKfQo=" data-upload-term=".term1"><code class="language-go">package main
 
-import "fmt"
+import &#34;fmt&#34;
 
 func main() {
-	fmt.Println("Hello, world!")
+	fmt.Println(&#34;Hello, world!&#34;)
 }
 </code></pre>
 
