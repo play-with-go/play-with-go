@@ -26,11 +26,12 @@ Steps: {
 			CmdStr:   "go run hello.go"
 			Negated:  false
 		}]
-		Order:     8
-		DoNotTrim: false
-		Terminal:  "term1"
-		StepType:  1
-		Name:      "run_hello_again"
+		Order:           8
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "run_hello_again"
 	}
 	gogetquote: {
 		Stmts: [{
@@ -44,11 +45,12 @@ Steps: {
 			CmdStr:   "go get rsc.io/quote@v1.5.2"
 			Negated:  false
 		}]
-		Order:     7
-		DoNotTrim: false
-		Terminal:  "term1"
-		StepType:  1
-		Name:      "gogetquote"
+		Order:           7
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "gogetquote"
 	}
 	update_hello: {
 		Order: 5
@@ -93,11 +95,12 @@ Steps: {
 			CmdStr:   "go run hello.go"
 			Negated:  false
 		}]
-		Order:     4
-		DoNotTrim: false
-		Terminal:  "term1"
-		StepType:  1
-		Name:      "run_hello"
+		Order:           4
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "run_hello"
 	}
 	create_hello: {
 		Order: 3
@@ -132,11 +135,12 @@ Steps: {
 			CmdStr:   "cd /home/gopher/hello"
 			Negated:  false
 		}]
-		Order:     2
-		DoNotTrim: false
-		Terminal:  "term1"
-		StepType:  1
-		Name:      "mkdir_hello"
+		Order:           2
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "mkdir_hello"
 	}
 	pwd_home: {
 		Stmts: [{
@@ -148,11 +152,12 @@ Steps: {
 			CmdStr:   "pwd"
 			Negated:  false
 		}]
-		Order:     1
-		DoNotTrim: false
-		Terminal:  "term1"
-		StepType:  1
-		Name:      "pwd_home"
+		Order:           1
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "pwd_home"
 	}
 	goversion: {
 		Stmts: [{
@@ -164,11 +169,12 @@ Steps: {
 			CmdStr:   "go version"
 			Negated:  false
 		}]
-		Order:     0
-		DoNotTrim: false
-		Terminal:  "term1"
-		StepType:  1
-		Name:      "goversion"
+		Order:           0
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "goversion"
 	}
 	gomodinit: {
 		Stmts: [{
@@ -180,12 +186,13 @@ Steps: {
 			CmdStr:   "go mod init hello"
 			Negated:  false
 		}]
-		Order:     6
-		DoNotTrim: false
-		Terminal:  "term1"
-		StepType:  1
-		Name:      "gomodinit"
+		Order:           6
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "gomodinit"
 	}
 }
-Hash: "7eec6e70678337690de54f1707a015006e2402bbce9013dfdc880416685ffe16"
+Hash: "dc260ed900320c04474d6e43da568d5afd21dfc63c85bbfa8a91944c3e0fb9ce"
 Delims: ["{{{", "}}}"]

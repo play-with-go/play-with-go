@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201103095508-8c286015d3e2",
-		      "Sum": "h1:US36MyF1LcckPyi/RIn40Dloi8kXNay8+2y/2mP7+8w=",
+		      "Version": "v0.0.2-0.20201103113315-d052385e0a88",
+		      "Sum": "h1:GHY3IzpywqX2K9knm3iwdRjWGf9rZk8z+tW49Rizf7I=",
 		      "Replace": null
 		    },
 		    {
@@ -128,12 +128,13 @@ Steps: {
 			CmdStr:   "go list -m -f {{.Version}} {{{.REPO1}}}"
 			Negated:  false
 		}]
-		Order:         5
-		DoNotTrim:     false
-		RandomReplace: "v0.0.0-20060102150405-abcedf12345"
-		Terminal:      "term1"
-		StepType:      1
-		Name:          "mod1_pseudoversion"
+		Order:           5
+		InformationOnly: true
+		DoNotTrim:       false
+		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "mod1_pseudoversion"
 	}
 	use_module: {
 		Stmts: [{
@@ -172,11 +173,12 @@ Steps: {
 			CmdStr:   "go run {{{.REPO1}}}"
 			Negated:  false
 		}]
-		Order:     4
-		DoNotTrim: false
-		Terminal:  "term1"
-		StepType:  1
-		Name:      "use_module"
+		Order:           4
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "use_module"
 	}
 	commit_and_push: {
 		Stmts: [{
@@ -199,11 +201,12 @@ Steps: {
 			CmdStr:   "git push -q origin main"
 			Negated:  false
 		}]
-		Order:     3
-		DoNotTrim: false
-		Terminal:  "term1"
-		StepType:  1
-		Name:      "commit_and_push"
+		Order:           3
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "commit_and_push"
 	}
 	create_main: {
 		Order: 2
@@ -271,12 +274,13 @@ Steps: {
 			CmdStr:   "go mod init {{{.REPO1}}}"
 			Negated:  false
 		}]
-		Order:     0
-		DoNotTrim: false
-		Terminal:  "term1"
-		StepType:  1
-		Name:      "create_module"
+		Order:           0
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "create_module"
 	}
 }
-Hash: "eee955f346c43fd1cedd2134ac14d837d8916cc981331d350a7230002f81c2e6"
+Hash: "60b69712e41d25e733ab940ef9e500a38104aa4c63f6658eac03fdbe069134de"
 Delims: ["{{{", "}}}"]
