@@ -48,14 +48,16 @@ $ cd /home/gopher/hello
 
 Create the file `hello.go` in `/home/gopher/hello`:
 
-<pre data-upload-path="L2hvbWUvZ29waGVyL2hlbGxv" data-upload-src="aGVsbG8uZ28=:cGFja2FnZSBtYWluCgppbXBvcnQgImZtdCIKCmZ1bmMgbWFpbigpIHsKCWZtdC5QcmludGxuKCJIZWxsbywgV29ybGQhIikKfQo=" data-upload-term=".term1"><code class="language-go">package main
+```golang
+package main
 
 import "fmt"
 
 func main() {
 	fmt.Println("Hello, World!")
 }
-</code></pre>
+```
+{:data-upload-path="L2hvbWUvZ29waGVyL2hlbGxv" data-upload-src="aGVsbG8uZ28=:cGFja2FnZSBtYWluCgppbXBvcnQgImZtdCIKCmZ1bmMgbWFpbigpIHsKCWZtdC5QcmludGxuKCJIZWxsbywgV29ybGQhIikKfQo=" data-upload-term=".term1"}
 
 This is your first `.go` file! In this code you:
 
@@ -98,16 +100,20 @@ _Modules can contain multiple packackages. In the case of the the `rsc.io/quote`
 
 Let's import the `rsc.io/quote` package and add a call to its `Go` function:
 
-<pre data-upload-path="L2hvbWUvZ29waGVyL2hlbGxv" data-upload-src="aGVsbG8uZ28=:cGFja2FnZSBtYWluCgppbXBvcnQgImZtdCIKCmltcG9ydCAicnNjLmlvL3F1b3RlIgoKZnVuYyBtYWluKCkgewoJZm10LlByaW50bG4ocXVvdGUuR28oKSkKfQo=" data-upload-term=".term1"><code class="language-go">package main
+<pre data-upload-path="L2hvbWUvZ29waGVyL2hlbGxv" data-upload-src="aGVsbG8uZ28=:cGFja2FnZSBtYWluCgppbXBvcnQgImZtdCIKCmltcG9ydCAicnNjLmlvL3F1b3RlIgoKZnVuYyBtYWluKCkgewoJZm10LlByaW50bG4ocXVvdGUuR28oKSkKfQo=" data-upload-term=".term1"><code class="language-go"></code></pre>
+
+```golang
+package main
 
 import "fmt"
 
-<b style="color:darkblue">import "rsc.io/quote"</b>
-<b style="color:darkblue"></b>
+import "rsc.io/quote" //Import
+
 func main() {
-<b style="color:darkblue">	fmt.Println(quote.Go())</b>
+    fmt.Println(quote.Go()) //Calling Go() function 
 }
-</code></pre>
+
+```
 
 To import packages from another module, your code must belong to a module. Go modules are identified by a `go.mod` file
 in a directory. A `go.mod` file lists the specific modules and versions providing those packages. That file stays with
