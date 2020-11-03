@@ -1,6 +1,11 @@
 ---
 layout: default
 ---
+<script charset="utf-8">
+  if (!localStorage.getItem("authenticated")) {
+    document.location.href = "/welcome.html";
+  }
+</script>
 {% assign terms = page.terms | default: 1 %}
 <div class="progress-bar"></div>
 <div class="panel-container">
