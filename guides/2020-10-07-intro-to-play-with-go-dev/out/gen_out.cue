@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201102203241-88453f203fd5",
-		      "Sum": "h1:zTSxib0sQekPNxozWa3TjHG1VJFUnJfHm5BN+NFDl+M=",
+		      "Version": "v0.0.2-0.20201103095508-8c286015d3e2",
+		      "Sum": "h1:US36MyF1LcckPyi/RIn40Dloi8kXNay8+2y/2mP7+8w=",
 		      "Replace": null
 		    },
 		    {
@@ -293,5 +293,5 @@ Steps: {
 		Name:      "whoami"
 	}
 }
-Hash: "fc32efb762b7047cbed56cc57fd1f37ce2a443b44fc1acdcfe1dbb1ce91a715a"
+Hash: "9d26117aee18ff8d66a12ac74f990ccecccc949156624f738f1846d30e41b863"
 Delims: ["{{{", "}}}"]
