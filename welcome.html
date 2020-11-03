@@ -5,7 +5,7 @@ layout: default
 
 
 <script charset="utf-8">
-  function performLogin() {
+  function performLogin(provider) {
     var width = screen.width * 0.6;
     var height = screen.height * 0.6;
     var x = screen.width / 2 - width / 2;
@@ -13,11 +13,11 @@ layout: default
 
     window.open(
         "{{site.pwdurl}}" + 
-        "/oauth/providers/google/login",
+        "/oauth/providers/"+provider+"/login",
       "PWDLogin",
       "width=" + width + ",height=" + height + ",left=" + x + ",top=" + y
     );
-    var eventMethod = window.addEventListener
+    var eventMethod = window.addEventLisgtener
       ? "addEventListener"
       : "attachEvent";
     var eventer = window[eventMethod];
@@ -44,7 +44,8 @@ layout: default
         Hands-on Golang Tutorials for Developers.
       </p>
       <p class="lead">
-        <a onclick="performLogin()" class="btn btn-lg btn-primary btn-welcome">Sign-in with Google</a>
+        <a onclick="performLogin('google')" class="btn btn-lg btn-primary btn-welcome">Sign-in with Google</a>
+        <a onclick="performLogin('github')" class="btn btn-lg btn-primary btn-welcome">Sign-in with Github</a>
       </p>
        <img src="{{site.baseurl}}/images/playgo.png"/>
     </main>
