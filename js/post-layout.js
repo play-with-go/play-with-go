@@ -15,6 +15,11 @@ function replaceInText(element, replacements) {
 var siteUrl = "{{ site.url }}";
 var fontChanged = false;
 var pwd = new PWD();
+
+pwd.on("instanceNew", function(instance){
+  instance.terms[0].write(`$ \r\n`);
+});
+
 var guideRequest = new XMLHttpRequest();
 // TODO: move away from hard-code guides URL to use a variable
 // specified in the site config
