@@ -21,6 +21,10 @@ terminal that is connected to a remote virtual session, hosted on [Google Cloud]
 enter any personal credentials/details into the interactive terminal. We make no guarantees on the security of these
 remotes sessions._
 
+For Go-related guides, the remote session runs with a user and working directory as follows:
+
+<!--step: whoami-->
+
 Throughout each guide (prose) you will see clickable _command_ and _code_ blocks. For example, click on the following
 command block:
 
@@ -44,14 +48,6 @@ If a later code block updates a file, we typically highlight the bits that have 
 Now that we have uploaded `<!--ref: readme -->` we can run another command to show us its contents:
 
 <!--step: cat_readme -->
-
-### The interactive terminal
-
-As mentioned above, the interactive terminal is connected to a remote virtual session, hosted on [Google
-Cloud](https://cloud.google.com/). For Go-related guides, the remote session runs with the following user and starts
-with a working directory of that user:
-
-<!--step: whoami-->
 
 ### Remote source code repositories
 

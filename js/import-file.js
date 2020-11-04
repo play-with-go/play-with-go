@@ -1,3 +1,13 @@
+pwd.on("uploadEnd", function(err, path, instance) {
+  if (err) {
+    feedbackFooter.negativeFeedback(
+      "Something went uploading file wrong. Please try again."
+    );
+    return
+  }
+  instance.terms[0].write(`# File uploaded to ${path} successfully.\r\n$ `);
+});
+
 function getSelectedTermInstance() {
   return Object.keys(pwd.instances)
     .map(k => pwd.instances[k])
@@ -7,34 +17,3 @@ function getSelectedTermInstance() {
         .hasClass("active")
     );
 }
-
-$(() => {
-  var myDropzone = new Dropzone(".import-file-button", {
-    headers: { "Cache-Control": "" },
-    url() {
-      const instance = getSelectedTermInstance();
-      const uploadURL =
-        pwd.opts.baseUrl +
-        "/sessions/" +
-        instance.session_id +
-        "/instances/" +
-        instance.name +
-        "/uploads";
-      return uploadURL;
-    },
-    sending(file) {
-      feedbackFooter.neutralFeedback("Uploading file", { dontHide: true });
-    },
-    success(file) {
-      feedbackFooter.positiveFeedback("File uploaded successfully");
-    },
-    error(file) {
-      feedbackFooter.negativeFeedback(
-        "Something went wrong. Please try again."
-      );
-    },
-    addedfile(file) {
-     ga('send', 'event', 'Nav', 'file-added', file.name);
-    }
-  });
-});

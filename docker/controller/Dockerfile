@@ -19,5 +19,8 @@ RUN mkdir /runbin
 
 COPY --from=stage1 /go/cmd/controller/controller /runbin
 COPY ./docker/controller/playwithgo-entrypoint.sh /playwithgo-entrypoint.sh
+COPY ./prestep_conf.cue /start/
+COPY ./guides /start/guides
+COPY ./cue.mod /start/
 
 ENTRYPOINT ["/playwithgo-entrypoint.sh"]

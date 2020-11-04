@@ -6,6 +6,9 @@ layout: post
 title: 'Tutorial: Get started with Go'
 ---
 
+_This tutorial is based on the official ["Getting started"](https://golang.org/doc/tutorial/getting-started.html)
+tutorial._
+
 In this tutorial we present a brief introduction to Go programming. You will:
 
 * Write some simple "Hello, world" code
@@ -24,7 +27,7 @@ This guide is running using:
 
 ```.term1
 $ go version
-go version go1.15.2 linux/amd64
+go version go1.15.3 linux/amd64
 ```
 {:data-command-src="Z28gdmVyc2lvbgo="}
 
@@ -50,10 +53,10 @@ Create the file `hello.go` in `/home/gopher/hello`:
 
 <pre data-upload-path="L2hvbWUvZ29waGVyL2hlbGxv" data-upload-src="aGVsbG8uZ28=:cGFja2FnZSBtYWluCgppbXBvcnQgImZtdCIKCmZ1bmMgbWFpbigpIHsKCWZtdC5QcmludGxuKCJIZWxsbywgV29ybGQhIikKfQo=" data-upload-term=".term1"><code class="language-go">package main
 
-import "fmt"
+import &#34;fmt&#34;
 
 func main() {
-	fmt.Println("Hello, World!")
+	fmt.Println(&#34;Hello, World!&#34;)
 }
 </code></pre>
 
@@ -100,9 +103,9 @@ Let's import the `rsc.io/quote` package and add a call to its `Go` function:
 
 <pre data-upload-path="L2hvbWUvZ29waGVyL2hlbGxv" data-upload-src="aGVsbG8uZ28=:cGFja2FnZSBtYWluCgppbXBvcnQgImZtdCIKCmltcG9ydCAicnNjLmlvL3F1b3RlIgoKZnVuYyBtYWluKCkgewoJZm10LlByaW50bG4ocXVvdGUuR28oKSkKfQo=" data-upload-term=".term1"><code class="language-go">package main
 
-import "fmt"
+import &#34;fmt&#34;
 
-<b style="color:darkblue">import "rsc.io/quote"</b>
+<b style="color:darkblue">import &#34;rsc.io/quote&#34;</b>
 <b style="color:darkblue"></b>
 func main() {
 <b style="color:darkblue">	fmt.Println(quote.Go())</b>
