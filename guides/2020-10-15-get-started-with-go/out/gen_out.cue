@@ -4,7 +4,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.2@sha256:4f5346af0d93f50c974d9be2f2f31c55d2f953da9437aac990d30a50e3d591a5"
+			Image: "playwithgo/go1.15.3@sha256:b19b19d5e50e0d7f026b8388ad5212500c8ce5965889d3054eeef0a84a16234e"
 		}
 	}
 	Name: "term1"
@@ -162,7 +162,7 @@ Steps: {
 	goversion: {
 		Stmts: [{
 			Output: """
-				go version go1.15.2 linux/amd64
+				go version go1.15.3 linux/amd64
 
 				"""
 			ExitCode: 0
@@ -194,5 +194,5 @@ Steps: {
 		Name:            "gomodinit"
 	}
 }
-Hash: "f0d25abe21edf8e2d1621cd9cbc9e674989355de4385a0afee0febe06371b3b8"
+Hash: "bef9d4d596e3833af6feaa35300a074625a44857a492c6d37bee913a2c0ab384"
 Delims: ["{{{", "}}}"]

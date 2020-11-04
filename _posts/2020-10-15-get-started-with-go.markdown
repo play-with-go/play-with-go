@@ -24,7 +24,7 @@ This guide is running using:
 
 ```.term1
 $ go version
-go version go1.15.2 linux/amd64
+go version go1.15.3 linux/amd64
 ```
 {:data-command-src="Z28gdmVyc2lvbgo="}
 
