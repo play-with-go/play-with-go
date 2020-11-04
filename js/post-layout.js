@@ -54,11 +54,17 @@ guideRequest.onload = function() {
 				v = btoa(v);
 			}
 			node.setAttribute(attr, prefix+v);
+
 		});
 	}
+  $("pre").on("click", function() {
+    console.log('clicked');
+    $(this).addClass("completed");
+  });
 	pwd.newSession(guideDetails.Terminals, { baseUrl: "{{site.pwdurl}}", oauthProvider: 'google', Networks: guideDetails.Networks, Envs: guideDetails.Env });
 };
 guideRequest.send(JSON.stringify({Guide: pageGuide, Language: pageLanguage, Scenario: pageScenario}));
+
 $(".panel-left").resizable({
 	handleSelector: ".splitter",
 	resizeHeight: false,
@@ -72,10 +78,14 @@ $(document).ready(function() {
 		sel.offsetHeight; // no need to store this anywhere, the reference is enough
 		sel.style.display = "";
 	});
+
+
 	//Resize when switching terminals
-	$(".nav-tabs .nav-item").on("click",()=>{
-		pwd.resize()
-	})
+  //Not needed since we have a single term
+	//$(".nav-tabs .nav-item").on("click",()=>{
+		//pwd.resize()
+	//})
+
 	// expand/shrink terminals
 	$(".fa-expand").on("click", function() {
 		const leftPanel = $(".panel-left");
@@ -89,30 +99,8 @@ $(document).ready(function() {
 		pwd.resize();
 	});
 
-	// toggle menu
-	$(".course-index-button").on("click", function() {
-		const menuPanel = $(".menu-panel");
-		menuPanel.toggle();
-		setMenuButtonIcon();
-	});
 
-	const setMenuButtonIcon = () => {
-		const menuPanel = $(".menu-panel");
-		const menuButtom = $(".menu-button");
-		const menuIsOpen = menuPanel.is(":visible");
-		menuButtom.toggleClass("fa-times", menuIsOpen);
-		menuButtom.toggleClass("fa-bars", !menuIsOpen);
-	};
 
-	/*$('.btn-text').on('click', function(){
-					if (fontChanged) {
-							$('.terminal').css('font-size', '15px').css('line-height', '17px');
-					} else {
-							$('.terminal').css('font-size', '20px').css('line-height', '22px');
-					}
-					$(window).trigger('resize');
-					fontChanged = !fontChanged;
-			});*/
 });
 
 // progress bar
