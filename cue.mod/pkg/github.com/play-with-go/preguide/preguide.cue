@@ -117,8 +117,8 @@ import (
 
 	// Scenarios define the various images under which this guide will be
 	// run
-	Scenarios: [string]: #Scenario
-	Scenarios: [name=string]: {
+	_#ScenarioName: =~"^[a-zA-Z0-9]+$"
+	Scenarios: [name=_#ScenarioName]: #Scenario & {
 		Name: name
 	}
 
