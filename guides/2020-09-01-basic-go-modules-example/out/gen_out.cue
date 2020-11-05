@@ -106,7 +106,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.3@sha256:11deba7fe9cf24fb92e0dcc4f0c1edfc18d0c1766cb538cd7044b1677464c1dc"
+			Image: "playwithgo/go1.15.3@sha256:f0a27c113697fa8201ae9cd7d80c3f87fc0514a855c8467251c89f8ae4a68043"
 		}
 	}
 	Name: "term1"
@@ -282,5 +282,5 @@ Steps: {
 		Name:            "create_module"
 	}
 }
-Hash: "a98f5a8e373df6039caf493a7d14e5cccde410f495c2fac67a7f0d2b1ff35982"
+Hash: "00a4e38afb7a67e1194ced9325b928a0c7ed80afd2c907309426fd9c11d220db"
 Delims: ["{{{", "}}}"]
