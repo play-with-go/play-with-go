@@ -17,7 +17,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.3@sha256:11deba7fe9cf24fb92e0dcc4f0c1edfc18d0c1766cb538cd7044b1677464c1dc"
+				Image: "playwithgo/go1.15.3@sha256:f0a27c113697fa8201ae9cd7d80c3f87fc0514a855c8467251c89f8ae4a68043"
 			}
 		}
 	}]
@@ -45,7 +45,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.3@sha256:11deba7fe9cf24fb92e0dcc4f0c1edfc18d0c1766cb538cd7044b1677464c1dc"
+				Image: "playwithgo/go1.15.3@sha256:f0a27c113697fa8201ae9cd7d80c3f87fc0514a855c8467251c89f8ae4a68043"
 			}
 		}
 	}]
@@ -63,7 +63,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.3@sha256:11deba7fe9cf24fb92e0dcc4f0c1edfc18d0c1766cb538cd7044b1677464c1dc"
+				Image: "playwithgo/go1.15.3@sha256:f0a27c113697fa8201ae9cd7d80c3f87fc0514a855c8467251c89f8ae4a68043"
 			}
 		}
 	}]
@@ -94,7 +94,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.3@sha256:11deba7fe9cf24fb92e0dcc4f0c1edfc18d0c1766cb538cd7044b1677464c1dc"
+				Image: "playwithgo/go1.15.3@sha256:f0a27c113697fa8201ae9cd7d80c3f87fc0514a855c8467251c89f8ae4a68043"
 			}
 		}
 	}]
