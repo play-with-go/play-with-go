@@ -4,8 +4,8 @@ Networks: *["playwithgo_pwg"] | [...string]
 
 Delims: ["{{{", "}}}"]
 
-_#go115LatestImage: "playwithgo/go1.15.3@sha256:f0a27c113697fa8201ae9cd7d80c3f87fc0514a855c8467251c89f8ae4a68043"
-_#go116LatestImage: "playwithgo/go1.16-3ef8562c9c@sha256:66b6c3507da0232ab5a17a433a998bb967b331d87ac5afdf1cf84cef184d7ca4"
+_#go115LatestImage: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
+_#go116LatestImage: "playwithgo/go1.16-3ef8562c9c@sha256:10a860b1e127f7f4b1e0c5e8403347a643122aff6e94b1b51452f84827f5b79f"
 
 _#golangToolsLatest: "v0.0.0-20201105220310-78b158585360"
 
