@@ -1,0 +1,217 @@
+Terminals: [
+  {
+    "Name": "term1",
+    "Description": "The main terminal",
+    "Scenarios": {
+      "go115": {
+        "Image": "playwithgo/go1.15.3@sha256:f0a27c113697fa8201ae9cd7d80c3f87fc0514a855c8467251c89f8ae4a68043"
+      }
+    }
+  }
+]
+Presteps: [
+  {
+    "Package": "github.com/play-with-go/gitea",
+    "Path": "/newuser",
+    "Args": {
+      "Repos": [
+        {
+          "Pattern": "painkiller",
+          "Var": "PAINKILLER"
+        }
+      ]
+    },
+    "Version": "{\n  \"Path\": \"github.com/play-with-go/gitea/cmd/gitea\",\n  \"Main\": {\n    \"Path\": \"github.com/play-with-go/gitea\",\n    \"Version\": \"v0.0.0-20201106060436-cd0e98fe53f4\",\n    \"Sum\": \"h1:gsIXEg+J3mOTHm32E8Kuqat+6YaB/2MnlwDvpYFD8Aw=\",\n    \"Replace\": null\n  },\n  \"Deps\": [\n    {\n      \"Path\": \"code.gitea.io/sdk/gitea\",\n      \"Version\": \"v0.13.1\",\n      \"Sum\": \"h1:Y7bpH2iO6Q0KhhMJfjP/LZ0AmiYITeRQlCD8b0oYqhk=\",\n      \"Replace\": null\n    },\n    {\n      \"Path\": \"cuelang.org/go\",\n      \"Version\": \"v0.3.0-alpha4\",\n      \"Sum\": \"h1:BIPutFX2WhHXwERWZka8PZBxcl6amdKO0Vry4n5qUEc=\",\n      \"Replace\": null\n    },\n    {\n      \"Path\": \"github.com/cockroachdb/apd/v2\",\n      \"Version\": \"v2.0.1\",\n      \"Sum\": \"h1:y1Rh3tEU89D+7Tgbw+lp52T6p/GJLpDmNvr10UWqLTE=\",\n      \"Replace\": null\n    },\n    {\n      \"Path\": \"github.com/emicklei/proto\",\n      \"Version\": \"v1.6.15\",\n      \"Sum\": \"h1:XbpwxmuOPrdES97FrSfpyy67SSCV/wBIKXqgJzh6hNw=\",\n      \"Replace\": null\n    },\n    {\n      \"Path\": \"github.com/hashicorp/go-version\",\n      \"Version\": \"v1.2.0\",\n      \"Sum\": \"h1:3vNe/fWF5CBgRIguda1meWhsZHy3m8gCJ5wx+dIzX/E=\",\n      \"Replace\": null\n    },\n    {\n      \"Path\": \"github.com/mpvl/unique\",\n      \"Version\": \"v0.0.0-20150818121801-cbe035fff7de\",\n      \"Sum\": \"h1:D5x39vF5KCwKQaw+OC9ZPiLVHXz3UFw2+psEX+gYcto=\",\n      \"Replace\": null\n    },\n    {\n      \"Path\": \"github.com/pkg/errors\",\n      \"Version\": \"v0.8.1\",\n      \"Sum\": \"h1:iURUrRGxPUNPdy5/HRSm+Yj6okJ6UtLINN0Q9M4+h3I=\",\n      \"Replace\": null\n    },\n    {\n      \"Path\": \"github.com/play-with-go/preguide\",\n      \"Version\": \"v0.0.2-0.20201106060430-853a563a2223\",\n      \"Sum\": \"h1:oZlEA1fw7nQSRJv5dHZK99ADt9IapwJg1t13EiBdED8=\",\n      \"Replace\": null\n    },\n    {\n      \"Path\": \"golang.org/x/net\",\n      \"Version\": \"v0.0.0-20200602114024-627f9648deb9\",\n      \"Sum\": \"h1:pNX+40auqi2JqRfOP1akLGtYcn15TUbkhwuCO3foqqM=\",\n      \"Replace\": null\n    },\n    {\n      \"Path\": \"golang.org/x/text\",\n      \"Version\": \"v0.3.2\",\n      \"Sum\": \"h1:tW2bmiBqwgJj/UpqtC8EpXEZVYOwU0yG4iWbprSVAcs=\",\n      \"Replace\": null\n    },\n    {\n      \"Path\": \"golang.org/x/xerrors\",\n      \"Version\": \"v0.0.0-20191204190536-9bdfabe68543\",\n      \"Sum\": \"h1:E7g+9GITq07hpfrRu66IVDexMakfv52eLZ2CXBWiKr4=\",\n      \"Replace\": null\n    },\n    {\n      \"Path\": \"gopkg.in/retry.v1\",\n      \"Version\": \"v1.0.3\",\n      \"Sum\": \"h1:a9CArYczAVv6Qs6VGoLMio99GEs7kY9UzSF9+LD+iGs=\",\n      \"Replace\": null\n    },\n    {\n      \"Path\": \"gopkg.in/yaml.v3\",\n      \"Version\": \"v3.0.0-20200121175148-a6ecf24a6d71\",\n      \"Sum\": \"h1:Xe2gvTZUJpsvOWUnvmL/tmhVBZUmHSvLbMjRj6NUUKo=\",\n      \"Replace\": null\n    }\n  ]\n}",
+    "Variables": [
+      "GITEA_USERNAME",
+      "GITEA_PASSWORD",
+      "PAINKILLER"
+    ]
+  }
+]
+$ go version
+go version go1.15.3 linux/amd64
+$ mkdir painkiller
+$ cd painkiller
+$ go mod init painkiller
+go: creating new go.mod: module painkiller
+$ cat <<EOD > /home/gopher/painkiller/painkiller.go
+package main
+
+import "fmt"
+
+type Pill int
+
+const (
+	Placebo Pill = iota
+	Ibuprofen
+)
+
+func main() {
+	fmt.Printf("For headaches, take %v\n", Ibuprofen)
+}
+
+EOD
+$ go run .
+For headaches, take 1
+$ cat <<EOD > /home/gopher/painkiller/painkiller.go
+package main
+
+import "fmt"
+
+type Pill int
+
+func (p Pill) String() string {
+	switch p {
+	case Placebo:
+		return "Placebo"
+	case Ibuprofen:
+		return "Ibuprofen"
+	default:
+		panic(fmt.Errorf("unknown Pill value %v", p))
+	}
+}
+
+const (
+	Placebo Pill = iota
+	Ibuprofen
+)
+
+func main() {
+	fmt.Printf("For headaches, take %v\n", Ibuprofen)
+}
+
+EOD
+$ go run .
+For headaches, take Ibuprofen
+$ cat <<EOD > /home/gopher/painkiller/painkiller.go
+package main
+
+import "fmt"
+
+type Pill int
+
+const (
+	Placebo Pill = iota
+	Ibuprofen
+)
+
+func main() {
+	fmt.Printf("For headaches, take %v\n", Ibuprofen)
+}
+
+EOD
+$ cat <<EOD > /home/gopher/painkiller/tools.go
+// +build tools
+
+package tools
+
+import (
+	_ "golang.org/x/tools/cmd/stringer"
+)
+
+EOD
+$ go get golang.org/x/tools/cmd/stringer@v0.0.0-20201105220310-78b158585360
+go: downloading golang.org/x/tools v0.0.0-20201105220310-78b158585360
+go: found golang.org/x/tools/cmd/stringer in golang.org/x/tools v0.0.0-20201105220310-78b158585360
+go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
+go: downloading golang.org/x/mod v0.3.0
+$ cat go.mod
+module painkiller
+
+go 1.15
+
+require golang.org/x/tools v0.0.0-20201105220310-78b158585360 // indirect
+$ go mod tidy
+$ go run golang.org/x/tools/cmd/stringer -help
+Usage of stringer:
+	stringer [flags] -type T [directory]
+	stringer [flags] -type T files... # Must be a single package
+For more information, see:
+	https://pkg.go.dev/golang.org/x/tools/cmd/stringer
+Flags:
+  -linecomment
+    	use line comment text as printed text when present
+  -output string
+    	output file name; default srcdir/<type>_string.go
+  -tags string
+    	comma-separated list of build tags to apply
+  -trimprefix prefix
+    	trim the prefix from the generated constant names
+  -type string
+    	comma-separated list of type names; must be set
+$ go run golang.org/x/tools/cmd/stringer -type Pill
+$ ls
+go.mod	go.sum	painkiller.go  pill_string.go  tools.go
+$ cat pill_string.go
+// Code generated by "stringer -type Pill"; DO NOT EDIT.
+
+package main
+
+import "strconv"
+
+func _() {
+	// An "invalid array index" compiler error signifies that the constant values have changed.
+	// Re-run the stringer command to generate them again.
+	var x [1]struct{}
+	_ = x[Placebo-0]
+	_ = x[Ibuprofen-1]
+}
+
+const _Pill_name = "PlaceboIbuprofen"
+
+var _Pill_index = [...]uint8{0, 7, 16}
+
+func (i Pill) String() string {
+	if i < 0 || i >= Pill(len(_Pill_index)-1) {
+		return "Pill(" + strconv.FormatInt(int64(i), 10) + ")"
+	}
+	return _Pill_name[_Pill_index[i]:_Pill_index[i+1]]
+}
+$ go run .
+For headaches, take Ibuprofen
+$ cat <<EOD > /home/gopher/painkiller/painkiller.go
+package main
+
+import "fmt"
+
+//go:generate go run golang.org/x/tools/cmd/stringer -type=Pill
+
+type Pill int
+
+const (
+	Placebo Pill = iota
+	Ibuprofen
+)
+
+func main() {
+	fmt.Printf("For headaches, take %v\n", Ibuprofen)
+}
+
+EOD
+$ go generate .
+$ cat <<EOD > /home/gopher/painkiller/painkiller.go
+package main
+
+import "fmt"
+
+//go:generate go run golang.org/x/tools/cmd/stringer -type=Pill
+
+type Pill int
+
+const (
+	Placebo Pill = iota
+	Ibuprofen
+	Paracetamol
+)
+
+func main() {
+	fmt.Printf("For headaches, take %v\n", Ibuprofen)
+	fmt.Printf("For a fever, take %v\n", Paracetamol)
+}
+
+EOD
+$ go generate .
+$ go run .
+For headaches, take Ibuprofen
+For a fever, take Paracetamol
