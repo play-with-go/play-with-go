@@ -83,7 +83,7 @@ in a directory. A `go.mod` file lists the specific modules and versions providin
 your code, including in your source code repository. We refer to `<!--ref: hellomod-->` as the current development
 module.
 
-To create a module and its `go.mod` file, run the `<!--ref: gomodinit-->` command, giving it the name of the module your
+To create a module and its `go.mod` file, run the `<!--ref: cmdgo.modinit-->` command, giving it the name of the module your
 code will be in (here, just use `<!--ref: hellomod-->`):
 
 <!--step: gomodinit-->

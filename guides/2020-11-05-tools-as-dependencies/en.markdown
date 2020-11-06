@@ -107,7 +107,7 @@ you don't use the imported `<!--ref:stringer_pkg-->` package, the blank identifi
 exists solely for its side effects, in this case the declaration of the dependency.
 
 With the package dependency declared, you can now add a dependency on the module that contains
-`<!--ref:stringer_pkg-->`. Use `<!--ref:goget-->` to add a dependency:
+`<!--ref:stringer_pkg-->`. Use `<!--ref:cmdgo.get-->` to add a dependency:
 
 <!--step: stringer_go_get-->
 
@@ -117,7 +117,7 @@ You can see your new dependency in the project's `go.mod` file:
 
 This guide uses a specific version of `<!--ref: stringer-->` so as to remain reproducible. In a real-world project you would almost
 certainly omit the version to get the latest version, or explicitly use the special version `@latest`. Alternatively,
-you could simply run `<!--ref:gomodtidy-->` instead of `<!--ref:goget-->`:
+you could simply run `<!--ref:cmdgo.modtidy-->` instead of `<!--ref:cmdgo.get-->`:
 
 <!--step: painkiller_go_mod_tidy-->
 
@@ -174,6 +174,6 @@ Finally, check your program's output:
 ### Conclusion
 
 That's it! This guide has shown you how to add tool dependencies to a module, with a focus on the `<!--ref:stringer-->`
-code generation tool and its use via `<!--ref: gogenerate-->`.
+code generation tool and its use via `<!--ref: cmdgo.generate-->`.
 
 

@@ -6,6 +6,7 @@ import (
 )
 
 Defs: {
+	_#commonDefs
 	mod1_name: "mod1"
 	mod1_path: "{{{.REPO1}}}"
 	mod1_dir:  "/home/gopher/\(mod1_name)"
@@ -36,7 +37,7 @@ Steps: create_module: preguide.#Command & {
 		cd \(Defs.mod1_dir)
 		git init
 		git remote add origin https://\(Defs.mod1_path).git
-		go mod init \(Defs.mod1_path)
+		\(Defs.cmdgo.modinit) \(Defs.mod1_path)
 		"""
 }
 
@@ -73,9 +74,9 @@ Steps: use_module: preguide.#Command & {
 	Source: """
 		mkdir \(Defs.mod2_dir)
 		cd \(Defs.mod2_dir)
-		go mod init mod.com
-		go get \(Defs.mod1_path)
-		go run \(Defs.mod1_path)
+		\(Defs.cmdgo.modinit) mod.com
+		\(Defs.cmdgo.get) \(Defs.mod1_path)
+		\(Defs.cmdgo.run) \(Defs.mod1_path)
 		"""
 }
 
@@ -83,6 +84,6 @@ Steps: mod1_pseudoversion: preguide.#Command & {
 	InformationOnly: true
 	RandomReplace:   "v0.0.0-\(_#StablePsuedoversionSuffix)"
 	Source:          """
-		go list -m -f {{.Version}} \(Defs.mod1_path)
+		\(Defs.cmdgo.list) -m -f {{.Version}} \(Defs.mod1_path)
 		"""
 }

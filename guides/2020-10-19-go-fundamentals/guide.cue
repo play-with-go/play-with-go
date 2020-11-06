@@ -15,6 +15,7 @@ Presteps: [gitea.#PrestepNewUser & {
 }]
 
 Defs: {
+	_#commonDefs
 	greetings:           "greetings"
 	greetings_vcs:       "https://\(greetings_mod).git"
 	greetings_mod:       "{{{.GREETINGS}}}"
@@ -26,11 +27,6 @@ Defs: {
 	hello_mod:           "{{{.HELLO}}}"
 	hello_dir:           "/home/gopher/\(hello)"
 	hello_go:            "\(hello).go"
-	gomodinit:           "go mod init"
-	gomodedit:           "go mod edit"
-	gotest:              "go test"
-	gorun:               "go run"
-	goinstall:           "go install"
 	greeting_log_prefix: "greetings: "
 }
 
@@ -64,7 +60,7 @@ Steps: mkdir_greetings: preguide.#Command & {
 
 Steps: gomodinit_greetings: preguide.#Command & {
 	Source: """
-		\(Defs.gomodinit) \(Defs.greetings_mod)
+		\(Defs.cmdgo.modinit) \(Defs.greetings_mod)
 		"""
 }
 
@@ -139,7 +135,7 @@ Steps: mkdir_hello: preguide.#Command & {
 
 Steps: gomodinit_hello: preguide.#Command & {
 	Source: """
-		\(Defs.gomodinit) \(Defs.hello_mod)
+		\(Defs.cmdgo.modinit) \(Defs.hello_mod)
 		"""
 }
 
@@ -302,7 +298,7 @@ Steps: update_hello_go_error: preguide.#Upload & {
 
 Steps: run_hello_error: preguide.#Command & {
 	Source: """
-		! \(Defs.gorun) hello.go
+		! \(Defs.cmdgo.run) hello.go
 		"""
 }
 
@@ -444,8 +440,8 @@ Steps: hello_go_readd_gladys: preguide.#Upload & {
 
 Steps: hello_run_random: preguide.#Command & {
 	Source: """
-		\(Defs.gorun) hello.go
-		\(Defs.gorun) hello.go
+		\(Defs.cmdgo.run) hello.go
+		\(Defs.cmdgo.run) hello.go
 		"""
 }
 
@@ -534,7 +530,7 @@ Steps: hello_use_multiple: preguide.#Command & {
 
 Steps: hello_replace_greetings: preguide.#Command & {
 	Source: """
-		\(Defs.gomodedit) -replace \(Defs.greetings_mod)=\(Defs.greetings_dir)
+		\(Defs.cmdgo.modedit) -replace \(Defs.greetings_mod)=\(Defs.greetings_dir)
 		"""
 }
 
@@ -582,7 +578,7 @@ Steps: hello_go_call_multiple: preguide.#Upload & {
 
 Steps: hello_run_multiple: preguide.#Command & {
 	Source: """
-		\(Defs.gorun) hello.go
+		\(Defs.cmdgo.run) hello.go
 		"""
 }
 
@@ -627,8 +623,8 @@ Steps: greetings_create_greetings_test_go: preguide.#Upload & {
 
 Steps: greetings_run_tests: preguide.#Command & {
 	Source: """
-		\(Defs.gotest)
-		\(Defs.gotest) -v
+		\(Defs.cmdgo.test)
+		\(Defs.cmdgo.test) -v
 		"""
 }
 
@@ -706,7 +702,7 @@ Steps: greetings_go_break: preguide.#Upload & {
 
 Steps: greetings_run_tests_fail: preguide.#Command & {
 	Source: """
-		! \(Defs.gotest)
+		! \(Defs.cmdgo.test)
 		"""
 }
 
@@ -783,7 +779,7 @@ Steps: greetings_go_restore: preguide.#Upload & {
 
 Steps: greetings_check_tests_pass: preguide.#Command & {
 	Source: """
-		\(Defs.gotest)
+		\(Defs.cmdgo.test)
 		"""
 }
 
