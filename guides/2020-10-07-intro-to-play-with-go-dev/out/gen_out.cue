@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201106165850-c4519569760d",
-		      "Sum": "h1:HtmePzZvdtS2WArKY07rANhRV4VTvCCq3YMF6LNsL5c=",
+		      "Version": "v0.0.2-0.20201107174800-297fd9277bf2",
+		      "Sum": "h1:9Ru1VngeDDAAGRhA0/Gx8vU1sL923QereBzdkfvot/I=",
 		      "Replace": null
 		    },
 		    {
@@ -120,6 +120,11 @@ Env: []
 Steps: {
 	gitpush: {
 		Stmts: [{
+			ComparisonOutput: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
 			Output: """
 				remote: . Processing 1 references        
 				remote: Processed 1 references in total        
@@ -138,15 +143,17 @@ Steps: {
 	}
 	gitadd: {
 		Stmts: [{
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "git add README.md"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git add README.md"
+			Negated:          false
 		}, {
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "git commit -q -m 'Initial commit'"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git commit -q -m 'Initial commit'"
+			Negated:          false
 		}]
 		Order:           7
 		InformationOnly: false
@@ -157,15 +164,17 @@ Steps: {
 	}
 	gitinit: {
 		Stmts: [{
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "git init -q"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git init -q"
+			Negated:          false
 		}, {
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "git remote add origin https://{{{.REPO1}}}.git"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git remote add origin https://{{{.REPO1}}}.git"
+			Negated:          false
 		}]
 		Order:           6
 		InformationOnly: false
@@ -176,6 +185,15 @@ Steps: {
 	}
 	cat_readme: {
 		Stmts: [{
+			ComparisonOutput: """
+				This is README.md.
+
+				Hello, gopher!
+
+				We made a change!
+
+
+				"""
 			Output: """
 				This is README.md.
 
@@ -240,15 +258,17 @@ Steps: {
 	}
 	multiple_commands: {
 		Stmts: [{
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "mkdir hello"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "mkdir hello"
+			Negated:          false
 		}, {
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "cd hello"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "cd hello"
+			Negated:          false
 		}]
 		Order:           2
 		InformationOnly: false
@@ -259,6 +279,10 @@ Steps: {
 	}
 	echo_hello: {
 		Stmts: [{
+			ComparisonOutput: """
+				Hello, world!
+
+				"""
 			Output: """
 				Hello, world!
 
@@ -276,6 +300,10 @@ Steps: {
 	}
 	whoami: {
 		Stmts: [{
+			ComparisonOutput: """
+				gopher
+
+				"""
 			Output: """
 				gopher
 
@@ -284,6 +312,10 @@ Steps: {
 			CmdStr:   "whoami"
 			Negated:  false
 		}, {
+			ComparisonOutput: """
+				/home/gopher
+
+				"""
 			Output: """
 				/home/gopher
 
@@ -300,5 +332,5 @@ Steps: {
 		Name:            "whoami"
 	}
 }
-Hash: "73d11849026cf3b54cdc710f97e4dbe62be2f7dfcb705ceed596e6b9ff5e2d35"
+Hash: "633f52cc66c67f72157862057df50c70ed9726131ce526349ca32d002edd258d"
 Delims: ["{{{", "}}}"]
