@@ -1,14 +1,3 @@
-Terminals: [
-  {
-    "Name": "term1",
-    "Description": "The main terminal",
-    "Scenarios": {
-      "go115": {
-        "Image": "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
-      }
-    }
-  }
-]
 $ go version
 go version go1.15.3 linux/amd64
 $ pwd
