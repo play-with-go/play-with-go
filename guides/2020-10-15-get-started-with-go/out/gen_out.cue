@@ -18,6 +18,10 @@ Env: []
 Steps: {
 	run_hello_again: {
 		Stmts: [{
+			ComparisonOutput: """
+				Don't communicate by sharing memory, share memory by communicating.
+
+				"""
 			Output: """
 				Don't communicate by sharing memory, share memory by communicating.
 
@@ -35,6 +39,12 @@ Steps: {
 	}
 	gogetquote: {
 		Stmts: [{
+			ComparisonOutput: """
+
+				go: downloading golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
+				go: downloading rsc.io/quote v1.5.2
+				go: downloading rsc.io/sampler v1.3.0
+				"""
 			Output: """
 				go: downloading rsc.io/quote v1.5.2
 				go: downloading rsc.io/sampler v1.3.0
@@ -87,6 +97,10 @@ Steps: {
 	}
 	run_hello: {
 		Stmts: [{
+			ComparisonOutput: """
+				Hello, World!
+
+				"""
 			Output: """
 				Hello, World!
 
@@ -125,15 +139,17 @@ Steps: {
 	}
 	mkdir_hello: {
 		Stmts: [{
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "mkdir /home/gopher/hello"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "mkdir /home/gopher/hello"
+			Negated:          false
 		}, {
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "cd /home/gopher/hello"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "cd /home/gopher/hello"
+			Negated:          false
 		}]
 		Order:           2
 		InformationOnly: false
@@ -144,6 +160,10 @@ Steps: {
 	}
 	pwd_home: {
 		Stmts: [{
+			ComparisonOutput: """
+				/home/gopher
+
+				"""
 			Output: """
 				/home/gopher
 
@@ -161,6 +181,10 @@ Steps: {
 	}
 	goversion: {
 		Stmts: [{
+			ComparisonOutput: """
+				go version go1.15.3 linux/amd64
+
+				"""
 			Output: """
 				go version go1.15.3 linux/amd64
 
@@ -178,6 +202,10 @@ Steps: {
 	}
 	gomodinit: {
 		Stmts: [{
+			ComparisonOutput: """
+				go: creating new go.mod: module hello
+
+				"""
 			Output: """
 				go: creating new go.mod: module hello
 
@@ -194,5 +222,5 @@ Steps: {
 		Name:            "gomodinit"
 	}
 }
-Hash: "6051c09d53857b06e5935ba5186d63286017e3d087b6310fe5eb48d9a66827be"
+Hash: "2ca3b2aa69c2786186031ea7ceef3993ae550a665d03693980157e21e62f50b8"
 Delims: ["{{{", "}}}"]

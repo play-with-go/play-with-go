@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201106165850-c4519569760d",
-		      "Sum": "h1:HtmePzZvdtS2WArKY07rANhRV4VTvCCq3YMF6LNsL5c=",
+		      "Version": "v0.0.2-0.20201107174800-297fd9277bf2",
+		      "Sum": "h1:9Ru1VngeDDAAGRhA0/Gx8vU1sL923QereBzdkfvot/I=",
 		      "Replace": null
 		    },
 		    {
@@ -120,6 +120,10 @@ Env: []
 Steps: {
 	mod1_pseudoversion: {
 		Stmts: [{
+			ComparisonOutput: """
+				v0.0.0-20060102150405-abcedf12345
+
+				"""
 			Output: """
 				v0.0.0-20060102150405-abcedf12345
 
@@ -138,16 +142,22 @@ Steps: {
 	}
 	use_module: {
 		Stmts: [{
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "mkdir /home/gopher/mod2"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "mkdir /home/gopher/mod2"
+			Negated:          false
 		}, {
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "cd /home/gopher/mod2"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "cd /home/gopher/mod2"
+			Negated:          false
 		}, {
+			ComparisonOutput: """
+				go: creating new go.mod: module mod.com
+
+				"""
 			Output: """
 				go: creating new go.mod: module mod.com
 
@@ -156,6 +166,11 @@ Steps: {
 			CmdStr:   "go mod init mod.com"
 			Negated:  false
 		}, {
+			ComparisonOutput: """
+
+				go: downloading {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
+				go: {{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcedf12345
+				"""
 			Output: """
 				go: downloading {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
 				go: {{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcedf12345
@@ -165,6 +180,10 @@ Steps: {
 			CmdStr:   "go get {{{.REPO1}}}"
 			Negated:  false
 		}, {
+			ComparisonOutput: """
+				Hello, world!
+
+				"""
 			Output: """
 				Hello, world!
 
@@ -182,16 +201,23 @@ Steps: {
 	}
 	commit_and_push: {
 		Stmts: [{
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "git add README.md main.go"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git add README.md main.go"
+			Negated:          false
 		}, {
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "git commit -q -m \"Initial commit\""
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git commit -q -m \"Initial commit\""
+			Negated:          false
 		}, {
+			ComparisonOutput: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
 			Output: """
 				remote: . Processing 1 references        
 				remote: Processed 1 references in total        
@@ -243,16 +269,22 @@ Steps: {
 	}
 	create_module: {
 		Stmts: [{
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "mkdir /home/gopher/mod1"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "mkdir /home/gopher/mod1"
+			Negated:          false
 		}, {
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "cd /home/gopher/mod1"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "cd /home/gopher/mod1"
+			Negated:          false
 		}, {
+			ComparisonOutput: """
+				Initialized empty Git repository in /home/gopher/mod1/.git/
+
+				"""
 			Output: """
 				Initialized empty Git repository in /home/gopher/mod1/.git/
 
@@ -261,11 +293,16 @@ Steps: {
 			CmdStr:   "git init"
 			Negated:  false
 		}, {
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "git remote add origin https://{{{.REPO1}}}.git"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git remote add origin https://{{{.REPO1}}}.git"
+			Negated:          false
 		}, {
+			ComparisonOutput: """
+				go: creating new go.mod: module {{{.REPO1}}}
+
+				"""
 			Output: """
 				go: creating new go.mod: module {{{.REPO1}}}
 
@@ -282,5 +319,5 @@ Steps: {
 		Name:            "create_module"
 	}
 }
-Hash: "9428dd8f1baf568d34cb274e1eb39a5e8e570e0aea076f2ace5e164ebdb5fb2b"
+Hash: "11b57ca2700ad8d3d8acfc7eb066be64cc4c8c23272b66092990b3bcbb131026"
 Delims: ["{{{", "}}}"]
