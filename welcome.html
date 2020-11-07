@@ -41,12 +41,20 @@ layout: default
     <main role="main" class="inner cover">
       <h1 class="cover-heading welcome-title" style="color: seashell;">Play with Go</h1>
       <p class="lead welcome-par" style="color: seashell;">
-        Hands-on Golang Tutorials for Developers.
+        Hands-on Golang Tutorials to learn from anywhere.</br>
+        It all starts with just a few minutes a day.
       </p>
-      <p class="lead">
-        <a onclick="performLogin('google')" class="btn btn-lg btn-primary btn-welcome">Sign-in with Google</a>
-        <a onclick="performLogin('github')" class="btn btn-lg btn-primary btn-welcome">Sign-in with Github</a>
-      </p>
+        <p class="lead">
+            <button onclick="performLogin('google')" class="btn np-login btn-primary btn-welcome">
+              <img src="{{site.baseurl}}/images/google.svg" alt="Text"/>
+              <span>Sign-in with Google</span>
+              </button>
+            <span style="color: seashell;"> - </span>
+            <button onclick="performLogin('github')" class="btn np-login btn-primary btn-welcome">
+              <img src="{{site.baseurl}}/images/github.svg" alt="Text"/>
+              <span>Sign-in with Github</span>
+              </button>            
+          </p>
        <img src="{{site.baseurl}}/images/playgo.png"/>
     </main>
   </div>
