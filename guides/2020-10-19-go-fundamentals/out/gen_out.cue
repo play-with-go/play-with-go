@@ -1724,17 +1724,11 @@ Steps: {
 	}
 	greetings_gitinit: {
 		Stmts: [{
-			ComparisonOutput: """
-				Initialized empty Git repository in /home/gopher/greetings/.git/
-
-				"""
-			Output: """
-				Initialized empty Git repository in /home/gopher/greetings/.git/
-
-				"""
-			ExitCode: 0
-			CmdStr:   "git init"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git init -q"
+			Negated:          false
 		}, {
 			ComparisonOutput: ""
 			Output:           ""
@@ -1942,5 +1936,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "e95e3a372d8cb158e60220d701900de657d188f51c9527679e6f34ed7ede0f69"
+Hash: "1972a6235975fc3223eea8b0483a4744d3bbe818a86fe9706d22074daa3a7882"
 Delims: ["{{{", "}}}"]

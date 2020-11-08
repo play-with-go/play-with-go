@@ -12,17 +12,23 @@ _#golangToolsLatest: "v0.0.0-20201105220310-78b158585360"
 _#StablePsuedoversionSuffix: "20060102150405-abcedf12345"
 
 _#commonDefs: {
-	cmdgo: _#cmdGo
-}
-
-_#cmdGo: {
-	modinit:  "go mod init"
-	modedit:  "go mod edit"
-	modtidy:  "go mod tidy"
-	test:     "go test"
-	run:      "go run"
-	get:      "go get"
-	list:     "go list"
-	install:  "go install"
-	generate: "go generate"
+	cmdgo: {
+		modinit:  "go mod init"
+		modedit:  "go mod edit"
+		modtidy:  "go mod tidy"
+		test:     "go test"
+		run:      "go run"
+		get:      "go get"
+		list:     "go list"
+		install:  "go install"
+		generate: "go generate"
+	}
+	git: {
+		add:      "git add"
+		remote:   "git remote"
+		init:     "git init -q"
+		commit:   "git commit -q"
+		push:     "git push -q"
+		revparse: "git rev-parse"
+	}
 }

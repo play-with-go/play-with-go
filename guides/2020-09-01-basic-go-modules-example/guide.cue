@@ -35,8 +35,8 @@ Steps: create_module: preguide.#Command & {
 	Source: """
 		mkdir \(Defs.mod1_dir)
 		cd \(Defs.mod1_dir)
-		git init
-		git remote add origin https://\(Defs.mod1_path).git
+		\(Defs.git.init)
+		\(Defs.git.remote) add origin https://\(Defs.mod1_path).git
 		\(Defs.cmdgo.modinit) \(Defs.mod1_path)
 		"""
 }
@@ -64,9 +64,9 @@ Steps: create_main: preguide.#Upload & {
 
 Steps: commit_and_push: preguide.#Command & {
 	Source: """
-		git add README.md main.go
-		git commit -q -m "Initial commit"
-		git push -q origin main
+		\(Defs.git.add) README.md main.go
+		\(Defs.git.commit) -m "Initial commit"
+		\(Defs.git.push) origin main
 		"""
 }
 

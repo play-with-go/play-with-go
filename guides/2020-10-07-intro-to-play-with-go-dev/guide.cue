@@ -7,6 +7,7 @@ import (
 )
 
 Defs: {
+	_#commonDefs
 	modname:     "hello"
 	fullmodpath: "{{{.REPO1}}}"
 	vcsurl:      "https://\(fullmodpath).git"
@@ -84,20 +85,20 @@ Steps: cat_readme: preguide.#Command & {
 
 Steps: gitinit: preguide.#Command & {
 	Source: """
-		git init -q
-		git remote add origin \(Defs.vcsurl)
+		\(Defs.git.init)
+		\(Defs.git.remote) add origin \(Defs.vcsurl)
 		"""
 }
 
 Steps: gitadd: preguide.#Command & {
 	Source: """
-		git add README.md
-		git commit -q -m 'Initial commit'
+		\(Defs.git.add) README.md
+		\(Defs.git.commit) -m 'Initial commit'
 		"""
 }
 
 Steps: gitpush: preguide.#Command & {
 	Source: """
-		git push -q origin main
+		\(Defs.git.push) origin main
 		"""
 }
