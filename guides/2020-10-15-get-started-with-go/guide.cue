@@ -5,11 +5,11 @@ import (
 )
 
 Defs: {
+	_#commonDefs
 	quote:     "rsc.io/quote"
 	quotev:    "v1.5.2"
 	hello_dir: "/home/gopher/hello"
 	hello_go:  "hello.go"
-	gomodinit: "go mod init"
 	hellomod:  "hello"
 }
 
@@ -82,7 +82,7 @@ Steps: update_hello: preguide.#Upload & {
 
 Steps: gomodinit: preguide.#Command & {
 	Source: """
-		\(Defs.gomodinit) \(Defs.hellomod)
+		\(Defs.cmdgo.modinit) \(Defs.hellomod)
 		"""
 }
 

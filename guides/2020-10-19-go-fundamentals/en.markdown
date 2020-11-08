@@ -61,13 +61,13 @@ Create a `<!--ref:greetings-->` directory for your Go module source code. This i
 
 <!--step: mkdir_greetings-->
 
-Start your module using the [`<!--ref: gomodinit-->`
+Start your module using the [`<!--ref: cmdgo.modinit-->`
 command](https://golang.org/cmd/go/#hdr-Initialize_new_module_in_current_directory) to create a `go.mod` file.  In this
 guide you will publish your <!--ref:greetings--> module to `<!--ref: greetings_mod-->`:
 
 <!--step: gomodinit_greetings-->
 
-The `<!--ref:gomodinit-->` command creates a `go.mod` file that identifies your code as a module that might be used from
+The `<!--ref:cmdgo.modinit-->` command creates a `go.mod` file that identifies your code as a module that might be used from
 other code.  The file you just created includes only the name of your module and the Go version your code supports:
 
 <!--step: cat_gomodgreetings-->
@@ -126,7 +126,7 @@ Create the directory `<!--ref:hello_dir-->` for your Go module source code. This
 
 <!--step: mkdir_hello-->
 
-Create a new module for this `<!--ref:hello-->` package using the `<!--ref: gomodinit-->` command to create a `go.mod`
+Create a new module for this `<!--ref:hello-->` package using the `<!--ref: cmdgo.modinit-->` command to create a `go.mod`
 file as you did before, but this time using the unique path for the `<!--ref:hello-->` module:
 
 <!--step: gomodinit_hello-->
@@ -337,7 +337,7 @@ First return to the `<!--ref: hello-->` module:
 
 <!--step: hello_use_multiple-->
 
-Now add a `replace` directive using `<!--ref: gomodedit-->`:
+Now add a `replace` directive using `<!--ref: cmdgo.modedit-->`:
 
 <!--step: hello_replace_greetings-->
 
@@ -397,8 +397,8 @@ method](https://golang.org/pkg/testing/#T.Fatalf) to print a message to the cons
   confirm that your error handling works. If the call returns a non-empty string or no error, you use the t parameter's
 `Fatalf` method to print a message to the console and end execution.
 
-At the command line in the greetings directory, run the `<!--ref:gotest-->` command to execute the test. The
-`<!--ref:gotest-->` command executes test functions (whose names begin with `Test`) in test files (whose names end with
+At the command line in the greetings directory, run the `<!--ref:cmdgo.test-->` command to execute the test. The
+`<!--ref:cmdgo.test-->` command executes test functions (whose names begin with `Test`) in test files (whose names end with
 `_test.go`). You can add the `-v` flag to get verbose output that lists all of the tests and their results.
 
 The tests should pass:
@@ -414,7 +414,7 @@ the `<!--ref:greetings-->.Hello` function so that it no longer includes the name
 Note that the highlighted lines change the value that the function returns, as if the `name` argument had been
 accidentally removed.
 
-At the command line in the greetings directory, run `<!--ref:gotest-->` to execute the test. This time, run go test
+At the command line in the greetings directory, run `<!--ref:cmdgo.test-->` to execute the test. This time, run go test
 without the `-v` flag. The output will include results for only the tests that failed, which can be useful when you have
 a lot of tests. The `TestHelloName` test should fail -- `TestHelloEmpty` still passes:
 
@@ -424,7 +424,7 @@ Let's restore `<!--ref: greetings-->.Hello` to a working state
 
 <!--step: greetings_go_restore-->
 
-And re-run `<!--ref:gotest-->` to verify our change:
+And re-run `<!--ref:cmdgo.test-->` to verify our change:
 
 <!--step: greetings_check_tests_pass-->
 
@@ -433,9 +433,9 @@ install your code to run it locally.
 
 ### Compile and install the application
 
-In the last section, you'll learn a new `go` command. While the `<!--ref:gorun-->` command is a useful shortcut for compiling and
+In the last section, you'll learn a new `go` command. While the `<!--ref:cmdgo.run-->` command is a useful shortcut for compiling and
 running a single-file program, it doesn't generate a binary executable you can easily run again. If you want one of
-those, a good choice is to run the `<!--ref:goinstall-->` command, which compiles your code and installs the resulting binary
+those, a good choice is to run the `<!--ref:cmdgo.install-->` command, which compiles your code and installs the resulting binary
 executable where you can run it.
 
 Change to the directory that contains the `<!--ref:hello-->` module:
@@ -452,7 +452,7 @@ is:
 
 <!--step: hello_add_gopath_bin_path-->
 
-Once you've updated the shell path, run the `<!--ref: goinstall-->` command to compile and install the package:
+Once you've updated the shell path, run the `<!--ref: cmdgo.install-->` command to compile and install the package:
 
 <!--step: hello_go_install-->
 

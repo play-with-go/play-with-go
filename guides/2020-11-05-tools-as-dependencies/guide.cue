@@ -14,6 +14,7 @@ Presteps: [gitea.#PrestepNewUser & {
 }]
 
 Defs: {
+	_#commonDefs
 	painkiller:         "painkiller"
 	painkiller_vcs:     "https://\(painkiller_mod).git"
 	painkiller_mod:     "{{{.PAINKILLER}}}"
@@ -21,14 +22,6 @@ Defs: {
 	painkiller_go:      "\(painkiller).go"
 	tools_constraint:   "tools"
 	tools_go:           "\(tools_constraint).go"
-	gomodinit:          "go mod init"
-	gomodedit:          "go mod edit"
-	goget:              "go get"
-	gomodtidy:          "go mod tidy"
-	gotest:             "go test"
-	gorun:              "go run"
-	goinstall:          "go install"
-	gogenerate:         "go generate"
 	pilltype:           "Pill"
 	stringer:           "stringer"
 	stringer_pkg:       "golang.org/x/tools/cmd/\(stringer)"
@@ -54,7 +47,7 @@ Steps: painkiller_go_mod_init: preguide.#Command & {
 	Source: """
 		mkdir \(Defs.painkiller)
 		cd \(Defs.painkiller)
-		\(Defs.gomodinit) \(Defs.painkiller)
+		\(Defs.cmdgo.modinit) \(Defs.painkiller)
 		"""
 }
 
@@ -81,7 +74,7 @@ Steps: basic_app: preguide.#Upload & {
 
 Steps: painkiller_run_basic: preguide.#Command & {
 	Source: """
-		\(Defs.gorun) .
+		\(Defs.cmdgo.run) .
 		"""
 }
 
@@ -120,7 +113,7 @@ Steps: manual_string: preguide.#Upload & {
 
 Steps: painkiller_run_manual_string: preguide.#Command & {
 	Source: """
-		\(Defs.gorun) .
+		\(Defs.cmdgo.run) .
 		"""
 }
 
@@ -162,7 +155,7 @@ Steps: tools_go_initial: preguide.#Upload & {
 
 Steps: stringer_go_get: preguide.#Command & {
 	Source: """
-		\(Defs.goget) \(Defs.stringer_pkg)@\(_#golangToolsLatest)
+		\(Defs.cmdgo.get) \(Defs.stringer_pkg)@\(_#golangToolsLatest)
 		"""
 }
 
@@ -174,19 +167,19 @@ Steps: painkiller_cat_go_mod: preguide.#Command & {
 
 Steps: painkiller_go_mod_tidy: preguide.#Command & {
 	Source: """
-		\(Defs.gomodtidy)
+		\(Defs.cmdgo.modtidy)
 		"""
 }
 
 Steps: stringer_help: preguide.#Command & {
 	Source: """
-		\(Defs.gorun) \(Defs.stringer_pkg) -help
+		\(Defs.cmdgo.run) \(Defs.stringer_pkg) -help
 		"""
 }
 
 Steps: stringer_run_by_hand: preguide.#Command & {
 	Source: """
-		\(Defs.gorun) \(Defs.stringer_pkg) \(Defs.stringer_type_flag) Pill
+		\(Defs.cmdgo.run) \(Defs.stringer_pkg) \(Defs.stringer_type_flag) Pill
 		"""
 }
 
@@ -204,7 +197,7 @@ Steps: stringer_cat_generated: preguide.#Command & {
 
 Steps: painkiller_check_stringer: preguide.#Command & {
 	Source: """
-		\(Defs.gorun) .
+		\(Defs.cmdgo.run) .
 		"""
 }
 
@@ -216,7 +209,7 @@ Steps: painkiller_add_gogenerate_directive: preguide.#Upload & {
 
 		import "fmt"
 
-		//go:generate \#(Defs.gorun) \#(Defs.stringer_pkg) \#(Defs.stringer_type_flag)=Pill
+		//go:generate \#(Defs.cmdgo.run) \#(Defs.stringer_pkg) \#(Defs.stringer_type_flag)=Pill
 
 		type Pill int
 
@@ -234,7 +227,7 @@ Steps: painkiller_add_gogenerate_directive: preguide.#Upload & {
 
 Steps: painkiller_gogenerate: preguide.#Command & {
 	Source: """
-		\(Defs.gogenerate) .
+		\(Defs.cmdgo.generate) .
 		"""
 }
 
@@ -246,7 +239,7 @@ Steps: painkiller_add_fever_advice: preguide.#Upload & {
 
 		import "fmt"
 
-		//go:generate \#(Defs.gorun) \#(Defs.stringer_pkg) \#(Defs.stringer_type_flag)=Pill
+		//go:generate \#(Defs.cmdgo.run) \#(Defs.stringer_pkg) \#(Defs.stringer_type_flag)=Pill
 
 		type Pill int
 
@@ -266,12 +259,12 @@ Steps: painkiller_add_fever_advice: preguide.#Upload & {
 
 Steps: painkiller_gogenerate_again: preguide.#Command & {
 	Source: """
-		\(Defs.gogenerate) .
+		\(Defs.cmdgo.generate) .
 		"""
 }
 
 Steps: painkiller_check_fever_advice: preguide.#Command & {
 	Source: """
-		\(Defs.gorun) .
+		\(Defs.cmdgo.run) .
 		"""
 }
