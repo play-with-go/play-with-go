@@ -1,0 +1,257 @@
+$ go version
+go version devel +3ef8562c9c Thu Nov 5 02:48:05 2020 +0000 linux/amd64
+$ mkdir /home/gopher/proverb
+$ cd /home/gopher/proverb
+$ git init -q
+$ git remote add origin https://{{{.PROVERB}}}.git
+$ go mod init {{{.PROVERB}}}
+go: creating new go.mod: module {{{.PROVERB}}}
+$ cat <<EOD > /home/gopher/proverb/proverb.go
+package proverb
+
+// Go returns a Go proverb
+func Go() string {
+	return "Don't communicate by sharing memory, shard memory by communicating."
+}
+
+EOD
+$ git add -A
+$ git commit -q -m "Initial commit"
+$ git push -q origin main
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ git tag v0.1.0
+$ git push -q origin v0.1.0
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ mkdir /home/gopher/gopher
+$ cd /home/gopher/gopher
+$ go mod init gopher
+go: creating new go.mod: module gopher
+$ cat <<EOD > /home/gopher/gopher/gopher.go
+package main
+
+import (
+	"fmt"
+
+	"{{{.PROVERB}}}"
+)
+
+func main() {
+	fmt.Println(proverb.Go())
+}
+
+EOD
+$ go get {{{.PROVERB}}}@v0.1.0
+go: downloading {{{.PROVERB}}} v0.1.0
+$ go run .
+Don't communicate by sharing memory, shard memory by communicating.
+$ cd /home/gopher/proverb
+$ cat <<EOD > /home/gopher/proverb/proverb.go
+package proverb
+
+// Go returns a Go proverb
+func Go() string {
+	return "Concurrency is parallelism."
+}
+
+EOD
+$ git add -A
+$ git commit -q -m "Switch Go proverb to something more famous"
+$ git push -q origin main
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ git tag v0.2.0
+$ git push -q origin v0.2.0
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ cd /home/gopher/gopher
+$ go get {{{.PROVERB}}}@v0.2.0
+go: downloading {{{.PROVERB}}} v0.2.0
+$ go run .
+Concurrency is parallelism.
+$ cd /home/gopher/proverb
+$ go mod edit -retract=v0.2.0
+$ cat go.mod
+module {{{.PROVERB}}}
+
+go 1.16
+
+retract v0.2.0
+$ cat <<EOD > /home/gopher/proverb/go.mod
+module {{{.PROVERB}}}
+
+go 1.16
+
+retract v0.2.0 // Go proverb was totally wrong
+
+EOD
+$ cat <<EOD > /home/gopher/proverb/proverb.go
+package proverb
+
+// Go returns a Go proverb
+func Go() string {
+	return "Concurrency is not parallelism."
+}
+
+EOD
+$ git add -A
+$ git commit -q -m "Fix severe error in Go proverb"
+$ git push -q origin main
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ git tag v0.3.0
+$ git push -q origin v0.3.0
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ cd /home/gopher/gopher
+$ go get {{{.PROVERB}}}@v0.3.0
+go: downloading {{{.PROVERB}}} v0.3.0
+$ go run .
+Concurrency is not parallelism.
+$ (
+	i=0
+	j=0
+	while true; do
+		x="$(go list -x -m -retracted -versions {{{.PROVERB}}})"
+		echo "$x"
+		if echo "$x" | grep v0.3.0; then
+			j=$((j + 1))
+		else
+			j=0
+			i=$((i + 1))
+		fi
+		if [ "$j" == "10" ]; then
+			break
+		fi
+		if [ "$i" == "120" ]; then
+			exit 1
+		fi
+		sleep 1s
+	done
+) >/dev/null 2>&1
+$ go list -m -versions {{{.PROVERB}}}
+{{{.PROVERB}}} v0.1.0 v0.3.0
+$ go list -m -versions -retracted {{{.PROVERB}}}
+{{{.PROVERB}}} v0.1.0 v0.2.0 v0.3.0
+$ go get {{{.PROVERB}}}@v0.2.0
+go: warning: {{{.PROVERB}}}@v0.2.0 is retracted: Go proverb was totally wrong
+go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
+$ go run .
+Concurrency is parallelism.
+$ go list -m -u all
+gopher
+{{{.PROVERB}}} v0.2.0 (retracted) [v0.3.0]
+$ go get {{{.PROVERB}}}@latest
+go: {{{.PROVERB}}} latest => v0.3.0
+$ cd /home/gopher/proverb
+$ cat <<EOD > /home/gopher/proverb/proverb.go
+package proverb
+
+// Go returns a Go proverb
+func Go() string {
+	return "Concurrency is not parallelism."
+}
+
+// Life returns a proverb useful for day-to-day living
+func Life() string {
+	return "A bird in the hand is worth two in the bush."
+}
+
+EOD
+$ git add -A
+$ git commit -q -m "Add Life() proverb"
+$ git push -q origin main
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ git tag v1.0.0
+$ git push -q origin v1.0.0
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ git tag v0.4.0
+$ git push -q origin v0.4.0
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ cat <<EOD > /home/gopher/proverb/go.mod
+module {{{.PROVERB}}}
+
+go 1.16
+
+retract (
+	v0.2.0 // Go proverb was totally wrong
+	[v1.0.0, v1.0.1] // published v1 too early
+)
+
+EOD
+$ git add -A
+$ git commit -q -m "Retract [v1.0.0, v1.0.1]"
+$ git push -q origin main
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ git tag v1.0.1
+$ git push -q origin v1.0.1
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ cd /home/gopher/gopher
+$ (
+	cd $(mktemp -d)
+	export GOPATH=$(mktemp -d)
+	go mod init mod.com
+	go get -x {{{.PROVERB}}}@v0.4.0
+	go get -x {{{.PROVERB}}}@v1.0.0
+	go get -x {{{.PROVERB}}}@v1.0.1
+
+) >/dev/null 2>&1
+$ (
+	i=0
+	j=0
+	while true; do
+		x="$(go list -x -m -retracted -versions {{{.PROVERB}}})"
+		echo "$x"
+		if echo "$x" | grep v1.0.0 | grep v0.4.0 | grep v1.0.1; then
+			j=$((j + 1))
+		else
+			j=0
+			i=$((i + 1))
+		fi
+		if [ "$j" == "10" ]; then
+			break
+		fi
+		if [ "$i" == "120" ]; then
+			exit 1
+		fi
+		sleep 1s
+	done
+) >/dev/null 2>&1
+$ go get {{{.PROVERB}}}@v1.0.0
+go: downloading {{{.PROVERB}}} v1.0.0
+go: warning: {{{.PROVERB}}}@v1.0.0 is retracted: published v1 too early
+go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
+$ go get {{{.PROVERB}}}@v1.0.1
+go: downloading {{{.PROVERB}}} v1.0.1
+go: warning: {{{.PROVERB}}}@v1.0.1 is retracted: published v1 too early
+go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
+$ go get {{{.PROVERB}}}@v0.4.0
+go: downloading {{{.PROVERB}}} v0.4.0
+$ go list -m -versions -retracted {{{.PROVERB}}}
+{{{.PROVERB}}} v0.1.0 v0.2.0 v0.3.0 v0.4.0 v1.0.0 v1.0.1
+$ go list -m -versions {{{.PROVERB}}}
+{{{.PROVERB}}} v0.1.0 v0.3.0 v0.4.0
+$ cat <<EOD > /home/gopher/gopher/gopher.go
+package main
+
+import (
+	"fmt"
+
+	"{{{.PROVERB}}}"
+)
+
+func main() {
+	fmt.Printf("Go proverb: %v\n", proverb.Go())
+	fmt.Printf("Life advice: %v\n", proverb.Life())
+}
+
+EOD
+$ go run .
+Go proverb: Concurrency is not parallelism.
+Life advice: A bird in the hand is worth two in the bush.
