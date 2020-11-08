@@ -37,8 +37,7 @@ func Hello(name string) string {
 }
 
 EOD
-$ git init
-Initialized empty Git repository in /home/gopher/greetings/.git/
+$ git init -q
 $ git remote add origin https://{{{.GREETINGS}}}.git
 $ git add greetings.go
 $ git commit -q -m 'Initial commit'

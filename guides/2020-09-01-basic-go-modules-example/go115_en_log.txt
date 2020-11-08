@@ -1,7 +1,6 @@
 $ mkdir /home/gopher/mod1
 $ cd /home/gopher/mod1
-$ git init
-Initialized empty Git repository in /home/gopher/mod1/.git/
+$ git init -q
 $ git remote add origin https://{{{.REPO1}}}.git
 $ go mod init {{{.REPO1}}}
 go: creating new go.mod: module {{{.REPO1}}}

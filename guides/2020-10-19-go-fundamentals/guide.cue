@@ -108,21 +108,21 @@ Steps: create_greetingsgo_long: preguide.#Upload & {
 
 Steps: greetings_gitinit: preguide.#Command & {
 	Source: """
-		git init
-		git remote add origin \(Defs.greetings_vcs)
+		\(Defs.git.init)
+		\(Defs.git.remote) add origin \(Defs.greetings_vcs)
 		"""
 }
 
 Steps: greetings_gitadd: preguide.#Command & {
 	Source: """
-		git add \(Defs.greetings_go)
-		git commit -q -m 'Initial commit'
+		\(Defs.git.add) \(Defs.greetings_go)
+		\(Defs.git.commit) -m 'Initial commit'
 		"""
 }
 
 Steps: greetings_gitpush: preguide.#Command & {
 	Source: """
-		git push -q origin main
+		\(Defs.git.push) origin main
 		"""
 }
 
@@ -215,28 +215,28 @@ Steps: update_greetings_go: preguide.#Upload & {
 
 Steps: commit_greetings_error_handling: preguide.#Command & {
 	Source: """
-		git add \(Defs.greetings_go)
-		git commit -q -m 'Added error handling'
+		\(Defs.git.add) \(Defs.greetings_go)
+		\(Defs.git.commit) -m 'Added error handling'
 		"""
 }
 
 Steps: greetings_error_commit: preguide.#Command & {
 	Source: """
-		greetings_error_commit=$(git rev-parse HEAD)
+		greetings_error_commit=$(\(Defs.git.revparse) HEAD)
 		"""
 }
 
 Steps: echo_greetings_error_commit: preguide.#Command & {
 	InformationOnly: true
 	RandomReplace:   "v0.0.0-\(_#StablePsuedoversionSuffix)"
-	Source: """
-		git rev-parse HEAD
+	Source:          """
+		\(Defs.git.revparse) HEAD
 		"""
 }
 
 Steps: republish_greetings: preguide.#Command & {
 	Source: """
-		git push -q origin main
+		\(Defs.git.push) origin main
 		"""
 }
 
@@ -362,35 +362,35 @@ Steps: update_greetings_go_random: preguide.#Upload & {
 
 Steps: greeings_commit_random: preguide.#Command & {
 	Source: """
-		git add \(Defs.greetings_go)
-		git commit -q -m 'Added random format'
+		\(Defs.git.add) \(Defs.greetings_go)
+		\(Defs.git.commit) -m 'Added random format'
 		"""
 }
 
 Steps: greetings_random_commit: preguide.#Command & {
 	Source: """
-		greetings_random_commit=$(git rev-parse HEAD)
+		greetings_random_commit=$(\(Defs.git.revparse) HEAD)
 		"""
 }
 
 Steps: greetings_echo_random_commit: preguide.#Command & {
 	InformationOnly: true
 	RandomReplace:   "v0.0.0-\(_#StablePsuedoversionSuffix)"
-	Source: """
-		git rev-parse HEAD
+	Source:          """
+		\(Defs.git.revparse) HEAD
 		"""
 }
 
 Steps: greetings_publish_random: preguide.#Command & {
 	Source: """
-		git push -q origin main
+		\(Defs.git.push) origin main
 		"""
 }
 
 Steps: hello_use_random: preguide.#Command & {
 	Source: """
 		cd \(Defs.hello_dir)
-		go get \(Defs.greetings_mod)@$greetings_random_commit
+		\(Defs.cmdgo.get) \(Defs.greetings_mod)@$greetings_random_commit
 		"""
 }
 
@@ -398,7 +398,7 @@ Steps: hello_golist_random_greetings: preguide.#Command & {
 	InformationOnly: true
 	RandomReplace:   "v0.0.0-\(_#StablePsuedoversionSuffix)"
 	Source:          """
-		go list -m -f {{.Version}} \(Defs.greetings_mod)
+		\(Defs.cmdgo.list) -m -f {{.Version}} \(Defs.greetings_mod)
 		"""
 }
 

@@ -150,11 +150,10 @@ control system like [GitHub](https://github.com/). You will publish your module 
 Initialise a local  `git` repository for your `greetings` module:
 
 ```.term1
-$ git init
-Initialized empty Git repository in /home/gopher/greetings/.git/
+$ git init -q
 $ git remote add origin https://{% raw %}{{{.GREETINGS}}}{% endraw %}.git
 ```
-{:data-command-src="Z2l0IGluaXQKZ2l0IHJlbW90ZSBhZGQgb3JpZ2luIGh0dHBzOi8ve3t7LkdSRUVUSU5HU319fS5naXQK"}
+{:data-command-src="Z2l0IGluaXQgLXEKZ2l0IHJlbW90ZSBhZGQgb3JpZ2luIGh0dHBzOi8ve3t7LkdSRUVUSU5HU319fS5naXQK"}
 
 Add and commit the `greetings.go` file you created earlier:
 

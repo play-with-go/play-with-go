@@ -281,17 +281,11 @@ Steps: {
 			CmdStr:           "cd /home/gopher/mod1"
 			Negated:          false
 		}, {
-			ComparisonOutput: """
-				Initialized empty Git repository in /home/gopher/mod1/.git/
-
-				"""
-			Output: """
-				Initialized empty Git repository in /home/gopher/mod1/.git/
-
-				"""
-			ExitCode: 0
-			CmdStr:   "git init"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git init -q"
+			Negated:          false
 		}, {
 			ComparisonOutput: ""
 			Output:           ""
@@ -319,5 +313,5 @@ Steps: {
 		Name:            "create_module"
 	}
 }
-Hash: "722feab1ee61d9d830e83080868edcd033f0b5853ba48e035707f3a88cb97e7d"
+Hash: "d8b4ae593dfaf254068ac79620ef60afe789275b40c86e3be21b55d103a9025b"
 Delims: ["{{{", "}}}"]
