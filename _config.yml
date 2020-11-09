@@ -58,8 +58,11 @@ plugins_dir:
   - jekyll-toc
 
 
-# sdkurl: http://localhost:8080/dist/pwd.js
+#sdkurl: http://localhost:8080/dist/pwd.js
 sdkurl: https://unpkg.com/pwd-sdk@0.0.7/dist/pwd.min.js
+pwdurl: http://localhost
+controllerurl: http://localhost:8081/guides
+
 pwdurl: http://localhost
 controllerurl: http://localhost:8081/guides
 
