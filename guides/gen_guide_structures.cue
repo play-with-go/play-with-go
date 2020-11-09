@@ -133,4 +133,32 @@ package guides
 	Networks: ["playwithgo_pwg"]
 	Env: []
 }
+"2020-11-08-retracting-module-versions": {
+	Delims: ["{{{", "}}}"]
+	Presteps: [{
+		Package: "github.com/play-with-go/gitea"
+		Path:    "/newuser"
+		Args: {
+			Repos: [{
+				Pattern: "proverb"
+				Var:     "PROVERB"
+			}]
+		}
+	}]
+	Terminals: [{
+		Name:        "term1"
+		Description: "The main terminal"
+		Scenarios: {
+			go116: {
+				Image: "playwithgo/go1.16-3ef8562c9c@sha256:10a860b1e127f7f4b1e0c5e8403347a643122aff6e94b1b51452f84827f5b79f"
+			}
+		}
+	}]
+	Scenarios: [{
+		Name:        "go116"
+		Description: "Go 1.16"
+	}]
+	Networks: ["playwithgo_pwg"]
+	Env: []
+}
 
