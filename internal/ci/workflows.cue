@@ -73,6 +73,7 @@ _#workflows: [
 				name:                "Race check re-generating guides"
 				run:                 "go run -race github.com/play-with-go/preguide/cmd/preguide gen -out ../_posts"
 				"working-directory": "./guides"
+				if:                  "${{ github.event_name == 'schedule' }}"
 			},
 			{
 				name: "Re-generate everything else"
@@ -100,6 +101,7 @@ test: {
 	on: {
 		push: branches: ["main"]
 		pull_request: branches: ["**"]
+		schedule: [{cron: "0 9 * * *"}]
 	}
 	jobs: test: strategy: matrix: os: ["ubuntu-latest"]
 }
