@@ -133,8 +133,8 @@ import &#34;fmt&#34;
 // Hello returns a greeting for the named person.
 func Hello(name string) string {
 	// Return a greeting that embeds the name in a message.
-<b style="color:darkblue">	var message string</b>
-<b style="color:darkblue">	message = fmt.Sprintf(&#34;Hi, %v. Welcome!&#34;, name)</b>
+<b>	var message string</b>
+<b>	message = fmt.Sprintf(&#34;Hi, %v. Welcome!&#34;, name)</b>
 	return message
 }
 </code></pre>
@@ -268,22 +268,22 @@ empty. Update `greetings.go` as follows:
 
 <pre data-upload-path="L2hvbWUvZ29waGVyL2dyZWV0aW5ncw==" data-upload-src="Z3JlZXRpbmdzLmdv:cGFja2FnZSBncmVldGluZ3MKCmltcG9ydCAoCgkiZXJyb3JzIgoJImZtdCIKKQoKLy8gSGVsbG8gcmV0dXJucyBhIGdyZWV0aW5nIGZvciB0aGUgbmFtZWQgcGVyc29uLgpmdW5jIEhlbGxvKG5hbWUgc3RyaW5nKSAoc3RyaW5nLCBlcnJvcikgewoJLy8gSWYgbm8gbmFtZSB3YXMgZ2l2ZW4sIHJldHVybiBhbiBlcnJvciB3aXRoIGEgbWVzc2FnZS4KCWlmIG5hbWUgPT0gIiIgewoJCXJldHVybiAiIiwgZXJyb3JzLk5ldygiZW1wdHkgbmFtZSIpCgl9CgoJLy8gSWYgYSBuYW1lIHdhcyByZWNlaXZlZCwgcmV0dXJuIGEgdmFsdWUgdGhhdCBlbWJlZHMgdGhlIG5hbWUKCS8vIGluIGEgZ3JlZXRpbmcgbWVzc2FnZS4KCW1lc3NhZ2UgOj0gZm10LlNwcmludGYoIkhpLCAldi4gV2VsY29tZSEiLCBuYW1lKQoJcmV0dXJuIG1lc3NhZ2UsIG5pbAp9Cg==" data-upload-term=".term1"><code class="language-go">package greetings
 
-<b style="color:darkblue">import (</b>
-<b style="color:darkblue">	&#34;errors&#34;</b>
-<b style="color:darkblue">	&#34;fmt&#34;</b>
-<b style="color:darkblue">)</b>
+<b>import (</b>
+<b>	&#34;errors&#34;</b>
+<b>	&#34;fmt&#34;</b>
+<b>)</b>
 
 // Hello returns a greeting for the named person.
-<b style="color:darkblue">func Hello(name string) (string, error) {</b>
-<b style="color:darkblue">	// If no name was given, return an error with a message.</b>
-<b style="color:darkblue">	if name == &#34;&#34; {</b>
-<b style="color:darkblue">		return &#34;&#34;, errors.New(&#34;empty name&#34;)</b>
-<b style="color:darkblue">	}</b>
-<b style="color:darkblue"></b>
-<b style="color:darkblue">	// If a name was received, return a value that embeds the name</b>
-<b style="color:darkblue">	// in a greeting message.</b>
-<b style="color:darkblue">	message := fmt.Sprintf(&#34;Hi, %v. Welcome!&#34;, name)</b>
-<b style="color:darkblue">	return message, nil</b>
+<b>func Hello(name string) (string, error) {</b>
+<b>	// If no name was given, return an error with a message.</b>
+<b>	if name == &#34;&#34; {</b>
+<b>		return &#34;&#34;, errors.New(&#34;empty name&#34;)</b>
+<b>	}</b>
+<b></b>
+<b>	// If a name was received, return a value that embeds the name</b>
+<b>	// in a greeting message.</b>
+<b>	message := fmt.Sprintf(&#34;Hi, %v. Welcome!&#34;, name)</b>
+<b>	return message, nil</b>
 }
 </code></pre>
 
@@ -348,28 +348,28 @@ In your hello.go, handle the error now returned by the `Hello` function, along w
 
 import (
 	&#34;fmt&#34;
-<b style="color:darkblue">	&#34;log&#34;</b>
+<b>	&#34;log&#34;</b>
 
 	&#34;{% raw %}{{{.GREETINGS}}}{% endraw %}&#34;
 )
 
 func main() {
-<b style="color:darkblue">	// Set properties of the predefined Logger, including</b>
-<b style="color:darkblue">	// the log entry prefix and a flag to disable printing</b>
-<b style="color:darkblue">	// the time, source file, and line number.</b>
-<b style="color:darkblue">	log.SetPrefix(&#34;greetings: &#34;)</b>
-<b style="color:darkblue">	log.SetFlags(0)</b>
-<b style="color:darkblue"></b>
-<b style="color:darkblue">	// Request a greeting message.</b>
-<b style="color:darkblue">	message, err := greetings.Hello(&#34;&#34;)</b>
-<b style="color:darkblue">	// If an error was returned, print it to the console and</b>
-<b style="color:darkblue">	// exit the program.</b>
-<b style="color:darkblue">	if err != nil {</b>
-<b style="color:darkblue">		log.Fatal(err)</b>
-<b style="color:darkblue">	}</b>
-<b style="color:darkblue"></b>
-<b style="color:darkblue">	// If no error was returned, print the returned message</b>
-<b style="color:darkblue">	// to the console.</b>
+<b>	// Set properties of the predefined Logger, including</b>
+<b>	// the log entry prefix and a flag to disable printing</b>
+<b>	// the time, source file, and line number.</b>
+<b>	log.SetPrefix(&#34;greetings: &#34;)</b>
+<b>	log.SetFlags(0)</b>
+<b></b>
+<b>	// Request a greeting message.</b>
+<b>	message, err := greetings.Hello(&#34;&#34;)</b>
+<b>	// If an error was returned, print it to the console and</b>
+<b>	// exit the program.</b>
+<b>	if err != nil {</b>
+<b>		log.Fatal(err)</b>
+<b>	}</b>
+<b></b>
+<b>	// If no error was returned, print the returned message</b>
+<b>	// to the console.</b>
 	fmt.Println(message)
 }
 </code></pre>
@@ -415,48 +415,48 @@ Update `greetings.go` as follows:
 
 <pre data-upload-path="L2hvbWUvZ29waGVyL2dyZWV0aW5ncw==" data-upload-src="Z3JlZXRpbmdzLmdv:cGFja2FnZSBncmVldGluZ3MKCmltcG9ydCAoCgkiZXJyb3JzIgoJImZtdCIKCSJtYXRoL3JhbmQiCikKCi8vIEhlbGxvIHJldHVybnMgYSBncmVldGluZyBmb3IgdGhlIG5hbWVkIHBlcnNvbi4KZnVuYyBIZWxsbyhuYW1lIHN0cmluZykgKHN0cmluZywgZXJyb3IpIHsKCS8vIElmIG5vIG5hbWUgd2FzIGdpdmVuLCByZXR1cm4gYW4gZXJyb3Igd2l0aCBhIG1lc3NhZ2UuCglpZiBuYW1lID09ICIiIHsKCQlyZXR1cm4gbmFtZSwgZXJyb3JzLk5ldygiZW1wdHkgbmFtZSIpCgl9CgkvLyBDcmVhdGUgYSBtZXNzYWdlIHVzaW5nIGEgcmFuZG9tIGZvcm1hdC4KCW1lc3NhZ2UgOj0gZm10LlNwcmludGYocmFuZG9tRm9ybWF0KCksIG5hbWUpCglyZXR1cm4gbWVzc2FnZSwgbmlsCn0KCi8vIGluaXQgc2V0cyBpbml0aWFsIHZhbHVlcyBmb3IgdmFyaWFibGVzIHVzZWQgaW4gdGhlIGZ1bmN0aW9uLgpmdW5jIGluaXQoKSB7CgkvLyBGb3IgdHJ1bHkgcmFuZG9tIGdyZWV0aW5ncywgaW1wb3J0ICJ0aW1lIiBhbmQgcmVwbGFjZSB0aGUgY2FsbAoJLy8gdG8gcmFuZC5TZWVkIHdpdGg6CgkvLwoJLy8gcmFuZC5TZWVkKHRpbWUuTm93KCkuVW5peE5hbm8oKSkKCS8vCgkvLyBDYWxsaW5nIHJhbmQuU2VlZCB3aXRoIGEgY29uc3RhbnQgdmFsdWUgbWVhbnMgdGhhdCB3ZSBhbHdheXMKCS8vIGdlbmVyYXRlIHRoZSBzYW1lIHBzZXVkby1yYW5kb20gc2VxdWVuY2UuCglyYW5kLlNlZWQoMSkKfQoKLy8gcmFuZG9tRm9ybWF0IHJldHVybnMgb25lIG9mIGEgc2V0IG9mIGdyZWV0aW5nIG1lc3NhZ2VzLiBUaGUgcmV0dXJuZWQKLy8gbWVzc2FnZSBpcyBzZWxlY3RlZCBhdCByYW5kb20uCmZ1bmMgcmFuZG9tRm9ybWF0KCkgc3RyaW5nIHsKCS8vIEEgc2xpY2Ugb2YgbWVzc2FnZSBmb3JtYXRzLgoJZm9ybWF0cyA6PSBbXXN0cmluZ3sKCQkiSGksICV2LiBXZWxjb21lISIsCgkJIkdyZWF0IHRvIHNlZSB5b3UsICV2ISIsCgkJIkhhaWwsICV2ISBXZWxsIG1ldCEiLAoJfQoKCS8vIFJldHVybiBvbmUgb2YgdGhlIG1lc3NhZ2UgZm9ybWF0cyBzZWxlY3RlZCBhdCByYW5kb20uCglyZXR1cm4gZm9ybWF0c1tyYW5kLkludG4obGVuKGZvcm1hdHMpKV0KfQo=" data-upload-term=".term1"><code class="language-go">package greetings
 
-<b style="color:darkblue">import (</b>
-<b style="color:darkblue">	&#34;errors&#34;</b>
-<b style="color:darkblue">	&#34;fmt&#34;</b>
-<b style="color:darkblue">	&#34;math/rand&#34;</b>
-<b style="color:darkblue">)</b>
+<b>import (</b>
+<b>	&#34;errors&#34;</b>
+<b>	&#34;fmt&#34;</b>
+<b>	&#34;math/rand&#34;</b>
+<b>)</b>
 
 // Hello returns a greeting for the named person.
-<b style="color:darkblue">func Hello(name string) (string, error) {</b>
-<b style="color:darkblue">	// If no name was given, return an error with a message.</b>
-<b style="color:darkblue">	if name == &#34;&#34; {</b>
-<b style="color:darkblue">		return name, errors.New(&#34;empty name&#34;)</b>
-<b style="color:darkblue">	}</b>
-<b style="color:darkblue">	// Create a message using a random format.</b>
-<b style="color:darkblue">	message := fmt.Sprintf(randomFormat(), name)</b>
-<b style="color:darkblue">	return message, nil</b>
+<b>func Hello(name string) (string, error) {</b>
+<b>	// If no name was given, return an error with a message.</b>
+<b>	if name == &#34;&#34; {</b>
+<b>		return name, errors.New(&#34;empty name&#34;)</b>
+<b>	}</b>
+<b>	// Create a message using a random format.</b>
+<b>	message := fmt.Sprintf(randomFormat(), name)</b>
+<b>	return message, nil</b>
 }
-<b style="color:darkblue"></b>
-<b style="color:darkblue">// init sets initial values for variables used in the function.</b>
-<b style="color:darkblue">func init() {</b>
-<b style="color:darkblue">	// For truly random greetings, import &#34;time&#34; and replace the call</b>
-<b style="color:darkblue">	// to rand.Seed with:</b>
-<b style="color:darkblue">	//</b>
-<b style="color:darkblue">	// rand.Seed(time.Now().UnixNano())</b>
-<b style="color:darkblue">	//</b>
-<b style="color:darkblue">	// Calling rand.Seed with a constant value means that we always</b>
-<b style="color:darkblue">	// generate the same pseudo-random sequence.</b>
-<b style="color:darkblue">	rand.Seed(1)</b>
-<b style="color:darkblue">}</b>
-<b style="color:darkblue"></b>
-<b style="color:darkblue">// randomFormat returns one of a set of greeting messages. The returned</b>
-<b style="color:darkblue">// message is selected at random.</b>
-<b style="color:darkblue">func randomFormat() string {</b>
-<b style="color:darkblue">	// A slice of message formats.</b>
-<b style="color:darkblue">	formats := []string{</b>
-<b style="color:darkblue">		&#34;Hi, %v. Welcome!&#34;,</b>
-<b style="color:darkblue">		&#34;Great to see you, %v!&#34;,</b>
-<b style="color:darkblue">		&#34;Hail, %v! Well met!&#34;,</b>
-<b style="color:darkblue">	}</b>
-<b style="color:darkblue"></b>
-<b style="color:darkblue">	// Return one of the message formats selected at random.</b>
-<b style="color:darkblue">	return formats[rand.Intn(len(formats))]</b>
-<b style="color:darkblue">}</b>
+<b></b>
+<b>// init sets initial values for variables used in the function.</b>
+<b>func init() {</b>
+<b>	// For truly random greetings, import &#34;time&#34; and replace the call</b>
+<b>	// to rand.Seed with:</b>
+<b>	//</b>
+<b>	// rand.Seed(time.Now().UnixNano())</b>
+<b>	//</b>
+<b>	// Calling rand.Seed with a constant value means that we always</b>
+<b>	// generate the same pseudo-random sequence.</b>
+<b>	rand.Seed(1)</b>
+<b>}</b>
+<b></b>
+<b>// randomFormat returns one of a set of greeting messages. The returned</b>
+<b>// message is selected at random.</b>
+<b>func randomFormat() string {</b>
+<b>	// A slice of message formats.</b>
+<b>	formats := []string{</b>
+<b>		&#34;Hi, %v. Welcome!&#34;,</b>
+<b>		&#34;Great to see you, %v!&#34;,</b>
+<b>		&#34;Hail, %v! Well met!&#34;,</b>
+<b>	}</b>
+<b></b>
+<b>	// Return one of the message formats selected at random.</b>
+<b>	return formats[rand.Intn(len(formats))]</b>
+<b>}</b>
 </code></pre>
 
 In this code, you:
@@ -532,7 +532,7 @@ func main() {
 	log.SetFlags(0)
 
 	// Request a greeting message.
-<b style="color:darkblue">	message, err := greetings.Hello(&#34;Gladys&#34;)</b>
+<b>	message, err := greetings.Hello(&#34;Gladys&#34;)</b>
 	// If an error was returned, print it to the console and
 	// exit the program.
 	if err != nil {
@@ -600,25 +600,25 @@ func Hello(name string) (string, error) {
 	return message, nil
 }
 
-<b style="color:darkblue">// Hellos returns a map that associates each of the named people</b>
-<b style="color:darkblue">// with a greeting message.</b>
-<b style="color:darkblue">func Hellos(names []string) (map[string]string, error) {</b>
-<b style="color:darkblue">	// A map to associate names with messages.</b>
-<b style="color:darkblue">	messages := make(map[string]string)</b>
-<b style="color:darkblue">	// Loop through the received slice of names, calling</b>
-<b style="color:darkblue">	// the Hello function to get a message for each name.</b>
-<b style="color:darkblue">	for _, name := range names {</b>
-<b style="color:darkblue">		message, err := Hello(name)</b>
-<b style="color:darkblue">		if err != nil {</b>
-<b style="color:darkblue">			return nil, err</b>
-<b style="color:darkblue">		}</b>
-<b style="color:darkblue">		// In the map, associate the retrieved message with</b>
-<b style="color:darkblue">		// the name.</b>
-<b style="color:darkblue">		messages[name] = message</b>
-<b style="color:darkblue">	}</b>
-<b style="color:darkblue">	return messages, nil</b>
-<b style="color:darkblue">}</b>
-<b style="color:darkblue"></b>
+<b>// Hellos returns a map that associates each of the named people</b>
+<b>// with a greeting message.</b>
+<b>func Hellos(names []string) (map[string]string, error) {</b>
+<b>	// A map to associate names with messages.</b>
+<b>	messages := make(map[string]string)</b>
+<b>	// Loop through the received slice of names, calling</b>
+<b>	// the Hello function to get a message for each name.</b>
+<b>	for _, name := range names {</b>
+<b>		message, err := Hello(name)</b>
+<b>		if err != nil {</b>
+<b>			return nil, err</b>
+<b>		}</b>
+<b>		// In the map, associate the retrieved message with</b>
+<b>		// the name.</b>
+<b>		messages[name] = message</b>
+<b>	}</b>
+<b>	return messages, nil</b>
+<b>}</b>
+<b></b>
 // init sets initial values for variables used in the function.
 func init() {
 	// For truly random greetings, import &#34;time&#34; and replace the call
@@ -710,17 +710,17 @@ func main() {
 	log.SetPrefix(&#34;greetings: &#34;)
 	log.SetFlags(0)
 
-<b style="color:darkblue">	// A slice of names.</b>
-<b style="color:darkblue">	names := []string{&#34;Gladys&#34;, &#34;Samantha&#34;, &#34;Darrin&#34;}</b>
-<b style="color:darkblue"></b>
-<b style="color:darkblue">	// Request greeting messages for the names.</b>
-<b style="color:darkblue">	messages, err := greetings.Hellos(names)</b>
+<b>	// A slice of names.</b>
+<b>	names := []string{&#34;Gladys&#34;, &#34;Samantha&#34;, &#34;Darrin&#34;}</b>
+<b></b>
+<b>	// Request greeting messages for the names.</b>
+<b>	messages, err := greetings.Hellos(names)</b>
 	if err != nil {
 		log.Fatal(err)
 	}
-<b style="color:darkblue">	// If no error was returned, print the returned map of</b>
-<b style="color:darkblue">	// messages to the console.</b>
-<b style="color:darkblue">	fmt.Println(messages)</b>
+<b>	// If no error was returned, print the returned map of</b>
+<b>	// messages to the console.</b>
+<b>	fmt.Println(messages)</b>
 }
 </code></pre>
 
@@ -843,8 +843,8 @@ func Hello(name string) (string, error) {
 		return name, errors.New(&#34;empty name&#34;)
 	}
 	// Create a message using a random format.
-<b style="color:darkblue">	// message := fmt.Sprintf(randomFormat(), name)</b>
-<b style="color:darkblue">	message := fmt.Sprint(randomFormat())</b>
+<b>	// message := fmt.Sprintf(randomFormat(), name)</b>
+<b>	message := fmt.Sprint(randomFormat())</b>
 	return message, nil
 }
 
@@ -928,7 +928,7 @@ func Hello(name string) (string, error) {
 		return name, errors.New(&#34;empty name&#34;)
 	}
 	// Create a message using a random format.
-<b style="color:darkblue">	message := fmt.Sprintf(randomFormat(), name)</b>
+<b>	message := fmt.Sprintf(randomFormat(), name)</b>
 	return message, nil
 }
 

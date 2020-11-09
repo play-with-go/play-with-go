@@ -97,17 +97,17 @@ import &#34;fmt&#34;
 
 type Pill int
 
-<b style="color:darkblue">func (p Pill) String() string {</b>
-<b style="color:darkblue">	switch p {</b>
-<b style="color:darkblue">	case Placebo:</b>
-<b style="color:darkblue">		return &#34;Placebo&#34;</b>
-<b style="color:darkblue">	case Ibuprofen:</b>
-<b style="color:darkblue">		return &#34;Ibuprofen&#34;</b>
-<b style="color:darkblue">	default:</b>
-<b style="color:darkblue">		panic(fmt.Errorf(&#34;unknown Pill value %v&#34;, p))</b>
-<b style="color:darkblue">	}</b>
-<b style="color:darkblue">}</b>
-<b style="color:darkblue"></b>
+<b>func (p Pill) String() string {</b>
+<b>	switch p {</b>
+<b>	case Placebo:</b>
+<b>		return &#34;Placebo&#34;</b>
+<b>	case Ibuprofen:</b>
+<b>		return &#34;Ibuprofen&#34;</b>
+<b>	default:</b>
+<b>		panic(fmt.Errorf(&#34;unknown Pill value %v&#34;, p))</b>
+<b>	}</b>
+<b>}</b>
+<b></b>
 const (
 	Placebo Pill = iota
 	Ibuprofen
@@ -193,8 +193,8 @@ With the package dependency declared, you can now add a dependency on the module
 $ go get golang.org/x/tools/cmd/stringer@v0.0.0-20201105220310-78b158585360
 go: downloading golang.org/x/tools v0.0.0-20201105220310-78b158585360
 go: found golang.org/x/tools/cmd/stringer in golang.org/x/tools v0.0.0-20201105220310-78b158585360
-go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
 go: downloading golang.org/x/mod v0.3.0
+go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
 ```
 {:data-command-src="Z28gZ2V0IGdvbGFuZy5vcmcveC90b29scy9jbWQvc3RyaW5nZXJAdjAuMC4wLTIwMjAxMTA1MjIwMzEwLTc4YjE1ODU4NTM2MAo="}
 
@@ -312,8 +312,8 @@ generation step needed for your project:
 
 import &#34;fmt&#34;
 
-<b style="color:darkblue">//go:generate go run golang.org/x/tools/cmd/stringer -type=Pill</b>
-<b style="color:darkblue"></b>
+<b>//go:generate go run golang.org/x/tools/cmd/stringer -type=Pill</b>
+<b></b>
 type Pill int
 
 const (
@@ -346,12 +346,12 @@ type Pill int
 const (
 	Placebo Pill = iota
 	Ibuprofen
-<b style="color:darkblue">	Paracetamol</b>
+<b>	Paracetamol</b>
 )
 
 func main() {
 	fmt.Printf(&#34;For headaches, take %v\n&#34;, Ibuprofen)
-<b style="color:darkblue">	fmt.Printf(&#34;For a fever, take %v\n&#34;, Paracetamol)</b>
+<b>	fmt.Printf(&#34;For a fever, take %v\n&#34;, Paracetamol)</b>
 }
 </code></pre>
 

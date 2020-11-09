@@ -65,8 +65,8 @@ If a later code block updates a file, we typically highlight the bits that have 
 <pre data-upload-path="L2hvbWUvZ29waGVyL2hlbGxv" data-upload-src="UkVBRE1FLm1k:VGhpcyBpcyBSRUFETUUubWQuCgpIZWxsbywgZ29waGVyIQoKV2UgbWFkZSBhIGNoYW5nZSEK" data-upload-term=".term1"><code class="language-md">This is README.md.
 
 Hello, gopher!
-<b style="color:darkblue"></b>
-<b style="color:darkblue">We made a change!</b>
+<b></b>
+<b>We made a change!</b>
 </code></pre>
 
 Now that we have uploaded `README.md` we can run another command to show us its contents:

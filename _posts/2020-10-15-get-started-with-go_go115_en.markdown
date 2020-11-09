@@ -105,10 +105,10 @@ Let's import the `rsc.io/quote` package and add a call to its `Go` function:
 
 import &#34;fmt&#34;
 
-<b style="color:darkblue">import &#34;rsc.io/quote&#34;</b>
-<b style="color:darkblue"></b>
+<b>import &#34;rsc.io/quote&#34;</b>
+<b></b>
 func main() {
-<b style="color:darkblue">	fmt.Println(quote.Go())</b>
+<b>	fmt.Println(quote.Go())</b>
 }
 </code></pre>
 
