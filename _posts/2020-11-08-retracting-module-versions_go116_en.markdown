@@ -40,7 +40,7 @@ This guide is running using:
 
 ```.term1
 $ go version
-go version devel +3ef8562c9c Thu Nov 5 02:48:05 2020 +0000 linux/amd64
+go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
 ```
 {:data-command-src="Z28gdmVyc2lvbgo="}
 
@@ -365,7 +365,6 @@ Let's follow the advice of the warning message, and return to the latest un-retr
 
 ```.term1
 $ go get {% raw %}{{{.PROVERB}}}{% endraw %}@latest
-go: {% raw %}{{{.PROVERB}}}{% endraw %} latest => v0.3.0
 ```
 {:data-command-src="Z28gZ2V0IHt7ey5QUk9WRVJCfX19QGxhdGVzdAo="}
 

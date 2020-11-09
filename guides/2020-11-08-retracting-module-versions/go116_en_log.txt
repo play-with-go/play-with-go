@@ -1,5 +1,5 @@
 $ go version
-go version devel +3ef8562c9c Thu Nov 5 02:48:05 2020 +0000 linux/amd64
+go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
 $ mkdir /home/gopher/proverb
 $ cd /home/gopher/proverb
 $ git init -q
@@ -143,7 +143,6 @@ $ go list -m -u all
 gopher
 {{{.PROVERB}}} v0.2.0 (retracted) [v0.3.0]
 $ go get {{{.PROVERB}}}@latest
-go: {{{.PROVERB}}} latest => v0.3.0
 $ cd /home/gopher/proverb
 $ cat <<EOD > /home/gopher/proverb/proverb.go
 package proverb

@@ -106,7 +106,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go116: {
-			Image: "playwithgo/go1.16-3ef8562c9c@sha256:10a860b1e127f7f4b1e0c5e8403347a643122aff6e94b1b51452f84827f5b79f"
+			Image: "playwithgo/go1.16-tip@sha256:4f6f3820ad3d6c30b623eabe688bfd073eeb4a52c284c80b3e6bc4a3b8cded2a"
 		}
 	}
 	Name: "term1"
@@ -582,17 +582,11 @@ Steps: {
 	}
 	gopher_use_latest_unretracted: {
 		Stmts: [{
-			ComparisonOutput: """
-
-				go: {{{.PROVERB}}} latest => v0.3.0
-				"""
-			Output: """
-				go: {{{.PROVERB}}} latest => v0.3.0
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go get {{{.PROVERB}}}@latest"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "go get {{{.PROVERB}}}@latest"
+			Negated:          false
 		}]
 		Order:           28
 		InformationOnly: false
@@ -1336,11 +1330,11 @@ Steps: {
 	goversion: {
 		Stmts: [{
 			ComparisonOutput: """
-				go version devel +3ef8562c9c Thu Nov 5 02:48:05 2020 +0000 linux/amd64
+				go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
 
 				"""
 			Output: """
-				go version devel +3ef8562c9c Thu Nov 5 02:48:05 2020 +0000 linux/amd64
+				go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
 
 				"""
 			ExitCode: 0
@@ -1355,5 +1349,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "dc3db26b4d69640fb022c4c8f48a35f5aa1b49dbc3303ff361a3af178a2cb142"
+Hash: "f4baaa3196feac2bf6c83cd65d748b32db603366901a8524869190a418fce84a"
 Delims: ["{{{", "}}}"]
