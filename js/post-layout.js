@@ -15,7 +15,7 @@ function replaceInText(element, replacements) {
 
 function login() {
   localStorage.setItem("authenticated", false);
-  document.location.href = "/welcome.html";
+  document.location.href = "index.html";
 }
 var siteUrl = "{{ site.url }}";
 var fontChanged = false;
