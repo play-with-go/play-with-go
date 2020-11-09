@@ -62,6 +62,27 @@ Steps: {
 		StepType:        1
 		Name:            "gogetquote"
 	}
+	gomodinit: {
+		Stmts: [{
+			ComparisonOutput: """
+				go: creating new go.mod: module hello
+
+				"""
+			Output: """
+				go: creating new go.mod: module hello
+
+				"""
+			ExitCode: 0
+			CmdStr:   "go mod init hello"
+			Negated:  false
+		}]
+		Order:           6
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "gomodinit"
+	}
 	update_hello: {
 		Order: 5
 		Source: """
@@ -200,27 +221,6 @@ Steps: {
 		StepType:        1
 		Name:            "goversion"
 	}
-	gomodinit: {
-		Stmts: [{
-			ComparisonOutput: """
-				go: creating new go.mod: module hello
-
-				"""
-			Output: """
-				go: creating new go.mod: module hello
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go mod init hello"
-			Negated:  false
-		}]
-		Order:           6
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gomodinit"
-	}
 }
-Hash: "c0c84dedce91b0acc224f72640a55a96a0497e6972b0feeac3c3e5fa4610c3aa"
+Hash: "acc7bf8fae3fb6d081dff19764abed3ded6dcd745ddc0f9a06010c4b26f21ae2"
 Delims: ["{{{", "}}}"]

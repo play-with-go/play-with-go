@@ -165,7 +165,7 @@ Update `proverb.go` as follows:
 
 // Go returns a Go proverb
 func Go() string {
-<b style="color:darkblue">	return &#34;Concurrency is parallelism.&#34;</b>
+<b>	return &#34;Concurrency is parallelism.&#34;</b>
 }
 </code></pre>
 
@@ -260,7 +260,7 @@ Fix the bug in `proverb.go`:
 
 // Go returns a Go proverb
 func Go() string {
-<b style="color:darkblue">	return &#34;Concurrency is not parallelism.&#34;</b>
+<b>	return &#34;Concurrency is not parallelism.&#34;</b>
 }
 </code></pre>
 
@@ -387,11 +387,11 @@ Update `proverb.go` as follows:
 func Go() string {
 	return &#34;Concurrency is not parallelism.&#34;
 }
-<b style="color:darkblue"></b>
-<b style="color:darkblue">// Life returns a proverb useful for day-to-day living</b>
-<b style="color:darkblue">func Life() string {</b>
-<b style="color:darkblue">	return &#34;A bird in the hand is worth two in the bush.&#34;</b>
-<b style="color:darkblue">}</b>
+<b></b>
+<b>// Life returns a proverb useful for day-to-day living</b>
+<b>func Life() string {</b>
+<b>	return &#34;A bird in the hand is worth two in the bush.&#34;</b>
+<b>}</b>
 </code></pre>
 
 Commit and push this updated version:
@@ -439,10 +439,10 @@ range](https://en.wikipedia.org/wiki/Interval_(mathematics)). Make this change b
 
 go 1.16
 
-<b style="color:darkblue">retract (</b>
-<b style="color:darkblue">	v0.2.0 // Go proverb was totally wrong</b>
-<b style="color:darkblue">	[v1.0.0, v1.0.1] // published v1 too early</b>
-<b style="color:darkblue">)</b>
+<b>retract (</b>
+<b>	v0.2.0 // Go proverb was totally wrong</b>
+<b>	[v1.0.0, v1.0.1] // published v1 too early</b>
+<b>)</b>
 </code></pre>
 
 Commit, tag, push and publish `v1.0.1`:
@@ -522,8 +522,8 @@ import (
 )
 
 func main() {
-<b style="color:darkblue">	fmt.Printf(&#34;Go proverb: %v\n&#34;, proverb.Go())</b>
-<b style="color:darkblue">	fmt.Printf(&#34;Life advice: %v\n&#34;, proverb.Life())</b>
+<b>	fmt.Printf(&#34;Go proverb: %v\n&#34;, proverb.Go())</b>
+<b>	fmt.Printf(&#34;Life advice: %v\n&#34;, proverb.Life())</b>
 }
 </code></pre>
 
