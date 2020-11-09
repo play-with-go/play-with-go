@@ -23,13 +23,29 @@
             </g>
         </svg>
         </a>
+
       <div class="btn-group"> 
+       
+        <!-- We only want to show this nav-bar in the post page -->
+        <a href="https://github.com/play-with-go/play-with-go" target="_blank">
+          <button type="button" class="btn btn-lg btn-navbar fa fa-github" aria-hidden="true">
+          </button>
+        </a>
+
+        <a href="https://twitter.com/playwithgo" target="_blank">
+          <button type="button" class="btn btn-lg btn-navbar fa fa-twitter" aria-hidden="true">
+          </button>
+        </a> 
+
+        {% if page.layout == 'post' %}
         <button type="button" class="btn btn-lg btn-secondary btn-toggle btn-mode fa dark-mode" data-toggle="button">
         </button>
 
         <button type="button" id="help" class="btn btn-lg btn-link" style="color: white;">
           Help &nbsp <span class="btn-label"><i class="fa fa-question-circle"></i></span>
         </button>
+        {% endif %}
+      
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <!--<div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">-->
