@@ -4,7 +4,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.2@sha256:4f5346af0d93f50c974d9be2f2f31c55d2f953da9437aac990d30a50e3d591a5"
+			Image: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
 		}
 	}
 	Name: "term1"
@@ -18,6 +18,10 @@ Env: []
 Steps: {
 	run_hello_again: {
 		Stmts: [{
+			ComparisonOutput: """
+				Don't communicate by sharing memory, share memory by communicating.
+
+				"""
 			Output: """
 				Don't communicate by sharing memory, share memory by communicating.
 
@@ -35,6 +39,12 @@ Steps: {
 	}
 	gogetquote: {
 		Stmts: [{
+			ComparisonOutput: """
+
+				go: downloading golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
+				go: downloading rsc.io/quote v1.5.2
+				go: downloading rsc.io/sampler v1.3.0
+				"""
 			Output: """
 				go: downloading rsc.io/quote v1.5.2
 				go: downloading rsc.io/sampler v1.3.0
@@ -51,6 +61,27 @@ Steps: {
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "gogetquote"
+	}
+	gomodinit: {
+		Stmts: [{
+			ComparisonOutput: """
+				go: creating new go.mod: module hello
+
+				"""
+			Output: """
+				go: creating new go.mod: module hello
+
+				"""
+			ExitCode: 0
+			CmdStr:   "go mod init hello"
+			Negated:  false
+		}]
+		Order:           6
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "gomodinit"
 	}
 	update_hello: {
 		Order: 5
@@ -87,6 +118,10 @@ Steps: {
 	}
 	run_hello: {
 		Stmts: [{
+			ComparisonOutput: """
+				Hello, World!
+
+				"""
 			Output: """
 				Hello, World!
 
@@ -125,15 +160,17 @@ Steps: {
 	}
 	mkdir_hello: {
 		Stmts: [{
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "mkdir /home/gopher/hello"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "mkdir /home/gopher/hello"
+			Negated:          false
 		}, {
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "cd /home/gopher/hello"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "cd /home/gopher/hello"
+			Negated:          false
 		}]
 		Order:           2
 		InformationOnly: false
@@ -144,6 +181,10 @@ Steps: {
 	}
 	pwd_home: {
 		Stmts: [{
+			ComparisonOutput: """
+				/home/gopher
+
+				"""
 			Output: """
 				/home/gopher
 
@@ -161,8 +202,12 @@ Steps: {
 	}
 	goversion: {
 		Stmts: [{
+			ComparisonOutput: """
+				go version go1.15.3 linux/amd64
+
+				"""
 			Output: """
-				go version go1.15.2 linux/amd64
+				go version go1.15.3 linux/amd64
 
 				"""
 			ExitCode: 0
@@ -176,23 +221,6 @@ Steps: {
 		StepType:        1
 		Name:            "goversion"
 	}
-	gomodinit: {
-		Stmts: [{
-			Output: """
-				go: creating new go.mod: module hello
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go mod init hello"
-			Negated:  false
-		}]
-		Order:           6
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gomodinit"
-	}
 }
-Hash: "f0d25abe21edf8e2d1621cd9cbc9e674989355de4385a0afee0febe06371b3b8"
+Hash: "acc7bf8fae3fb6d081dff19764abed3ded6dcd745ddc0f9a06010c4b26f21ae2"
 Delims: ["{{{", "}}}"]
