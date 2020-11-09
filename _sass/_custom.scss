@@ -6,11 +6,10 @@ font-size: 68px
 }
 
 .welcome-par {
-    margin-top: 20px;
-    margin-bottom: 40px;
-    font-size: 18px
-    
-    }
+margin-top: 20px;
+margin-bottom: 40px;
+font-size: 18px
+}
 
 .btn-welcome {
 text-emphasis-color: var(--navbar-color);
@@ -37,3 +36,50 @@ background-color: transparent;
  }
 }
 
+.card-pad {
+  margin-top: 45px;
+  margin-bottom: 5px;
+}
+
+.hero-container {
+  height: 35vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  text-align: center !important;
+  align-content: center !important;
+}
+
+.hero {
+  background: url(../images/.png) no-repeat ;
+  background-size: contain;
+  height: 100%;
+  width: 100%;
+  transition: transform 2s;
+
+}
+
+
+.hero-stuff {
+  position: absolute;
+  top: 0px;
+  left: 60px;
+}
+
+.hero-title { 
+  font-size: 56px
+  }
+
+
+.card-deck{
+  border: 1px solid rgba(0,0,0,.125);
+  background-color: #fafafa80;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: .25rem;
+}
+
+.sub-cards {
+  align-content: center;
+  text-align: center;
+  }
