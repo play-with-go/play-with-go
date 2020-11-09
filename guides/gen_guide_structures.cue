@@ -150,7 +150,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go116: {
-				Image: "playwithgo/go1.16-3ef8562c9c@sha256:10a860b1e127f7f4b1e0c5e8403347a643122aff6e94b1b51452f84827f5b79f"
+				Image: "playwithgo/go1.16-tip@sha256:4f6f3820ad3d6c30b623eabe688bfd073eeb4a52c284c80b3e6bc4a3b8cded2a"
 			}
 		}
 	}]
