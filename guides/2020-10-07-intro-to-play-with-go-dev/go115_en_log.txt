@@ -1,0 +1,36 @@
+$ whoami
+gopher
+$ pwd
+/home/gopher
+$ echo "Hello, world!"
+Hello, world!
+$ mkdir hello
+$ cd hello
+$ cat <<EOD > /home/gopher/hello/README.md
+This is README.md.
+
+Hello, gopher!
+
+EOD
+$ cat <<EOD > /home/gopher/hello/README.md
+This is README.md.
+
+Hello, gopher!
+
+We made a change!
+
+EOD
+$ cat README.md
+This is README.md.
+
+Hello, gopher!
+
+We made a change!
+
+$ git init -q
+$ git remote add origin https://{{{.REPO1}}}.git
+$ git add README.md
+$ git commit -q -m 'Initial commit'
+$ git push -q origin main
+remote: . Processing 1 references        
+remote: Processed 1 references in total        

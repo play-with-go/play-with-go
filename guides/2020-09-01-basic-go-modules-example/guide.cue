@@ -27,7 +27,7 @@ Scenarios: go115: preguide.#Scenario & {
 
 Terminals: term1: preguide.#Terminal & {
 	Description: "The main terminal"
-	Scenarios: go115: Image: #go115LatestImage
+	Scenarios: go115: Image: _#go115LatestImage
 }
 
 Steps: create_module: preguide.#Command & {

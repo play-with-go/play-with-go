@@ -17,7 +17,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.3@sha256:11deba7fe9cf24fb92e0dcc4f0c1edfc18d0c1766cb538cd7044b1677464c1dc"
+				Image: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
 			}
 		}
 	}]
@@ -45,7 +45,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.3@sha256:11deba7fe9cf24fb92e0dcc4f0c1edfc18d0c1766cb538cd7044b1677464c1dc"
+				Image: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
 			}
 		}
 	}]
@@ -63,7 +63,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.3@sha256:11deba7fe9cf24fb92e0dcc4f0c1edfc18d0c1766cb538cd7044b1677464c1dc"
+				Image: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
 			}
 		}
 	}]
@@ -94,7 +94,35 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.3@sha256:11deba7fe9cf24fb92e0dcc4f0c1edfc18d0c1766cb538cd7044b1677464c1dc"
+				Image: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
+			}
+		}
+	}]
+	Scenarios: [{
+		Name:        "go115"
+		Description: "Go 1.15"
+	}]
+	Networks: ["playwithgo_pwg"]
+	Env: []
+}
+"2020-11-05-tools-as-dependencies": {
+	Delims: ["{{{", "}}}"]
+	Presteps: [{
+		Package: "github.com/play-with-go/gitea"
+		Path:    "/newuser"
+		Args: {
+			Repos: [{
+				Pattern: "painkiller"
+				Var:     "PAINKILLER"
+			}]
+		}
+	}]
+	Terminals: [{
+		Name:        "term1"
+		Description: "The main terminal"
+		Scenarios: {
+			go115: {
+				Image: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
 			}
 		}
 	}]

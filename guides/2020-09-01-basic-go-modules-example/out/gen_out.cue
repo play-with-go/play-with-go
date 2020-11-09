@@ -7,8 +7,8 @@ Presteps: [{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20201022142910-d10ca95000af",
-		    "Sum": "h1:ySGH/7q+r35IS+ERMpxhhl9q0B7846YzYqKl0yoY0WQ=",
+		    "Version": "v0.0.0-20201106060436-cd0e98fe53f4",
+		    "Sum": "h1:gsIXEg+J3mOTHm32E8Kuqat+6YaB/2MnlwDvpYFD8Aw=",
 		    "Replace": null
 		  },
 		  "Deps": [
@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201103153210-3be40d648376",
-		      "Sum": "h1:82xCx/VpW9vY25t2q1D8N8rcG50urcpmwLLD8CJqTI4=",
+		      "Version": "v0.0.2-0.20201107174800-297fd9277bf2",
+		      "Sum": "h1:9Ru1VngeDDAAGRhA0/Gx8vU1sL923QereBzdkfvot/I=",
 		      "Replace": null
 		    },
 		    {
@@ -106,7 +106,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.3@sha256:11deba7fe9cf24fb92e0dcc4f0c1edfc18d0c1766cb538cd7044b1677464c1dc"
+			Image: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
 		}
 	}
 	Name: "term1"
@@ -120,6 +120,10 @@ Env: []
 Steps: {
 	mod1_pseudoversion: {
 		Stmts: [{
+			ComparisonOutput: """
+				v0.0.0-20060102150405-abcedf12345
+
+				"""
 			Output: """
 				v0.0.0-20060102150405-abcedf12345
 
@@ -138,16 +142,22 @@ Steps: {
 	}
 	use_module: {
 		Stmts: [{
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "mkdir /home/gopher/mod2"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "mkdir /home/gopher/mod2"
+			Negated:          false
 		}, {
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "cd /home/gopher/mod2"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "cd /home/gopher/mod2"
+			Negated:          false
 		}, {
+			ComparisonOutput: """
+				go: creating new go.mod: module mod.com
+
+				"""
 			Output: """
 				go: creating new go.mod: module mod.com
 
@@ -156,6 +166,11 @@ Steps: {
 			CmdStr:   "go mod init mod.com"
 			Negated:  false
 		}, {
+			ComparisonOutput: """
+
+				go: downloading {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
+				go: {{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcedf12345
+				"""
 			Output: """
 				go: downloading {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
 				go: {{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcedf12345
@@ -165,6 +180,10 @@ Steps: {
 			CmdStr:   "go get {{{.REPO1}}}"
 			Negated:  false
 		}, {
+			ComparisonOutput: """
+				Hello, world!
+
+				"""
 			Output: """
 				Hello, world!
 
@@ -182,16 +201,23 @@ Steps: {
 	}
 	commit_and_push: {
 		Stmts: [{
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "git add README.md main.go"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git add README.md main.go"
+			Negated:          false
 		}, {
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "git commit -q -m \"Initial commit\""
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git commit -q -m \"Initial commit\""
+			Negated:          false
 		}, {
+			ComparisonOutput: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
 			Output: """
 				remote: . Processing 1 references        
 				remote: Processed 1 references in total        
@@ -243,16 +269,22 @@ Steps: {
 	}
 	create_module: {
 		Stmts: [{
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "mkdir /home/gopher/mod1"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "mkdir /home/gopher/mod1"
+			Negated:          false
 		}, {
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "cd /home/gopher/mod1"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "cd /home/gopher/mod1"
+			Negated:          false
 		}, {
+			ComparisonOutput: """
+				Initialized empty Git repository in /home/gopher/mod1/.git/
+
+				"""
 			Output: """
 				Initialized empty Git repository in /home/gopher/mod1/.git/
 
@@ -261,11 +293,16 @@ Steps: {
 			CmdStr:   "git init"
 			Negated:  false
 		}, {
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "git remote add origin https://{{{.REPO1}}}.git"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git remote add origin https://{{{.REPO1}}}.git"
+			Negated:          false
 		}, {
+			ComparisonOutput: """
+				go: creating new go.mod: module {{{.REPO1}}}
+
+				"""
 			Output: """
 				go: creating new go.mod: module {{{.REPO1}}}
 
@@ -282,5 +319,5 @@ Steps: {
 		Name:            "create_module"
 	}
 }
-Hash: "ddf5e80bcd4aad6465b85b5fdbab6cb7485903e88ff672e980963df7db7df142"
+Hash: "11b57ca2700ad8d3d8acfc7eb066be64cc4c8c23272b66092990b3bcbb131026"
 Delims: ["{{{", "}}}"]
