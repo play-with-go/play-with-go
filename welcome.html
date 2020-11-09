@@ -5,6 +5,10 @@ layout: default
 
 
 <script charset="utf-8">
+  if (localStorage.getItem("authenticated")) {
+    document.location.href = "index.html";
+  }
+
   function performLogin(provider) {
     var width = screen.width * 0.6;
     var height = screen.height * 0.6;
