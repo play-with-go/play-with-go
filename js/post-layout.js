@@ -15,13 +15,13 @@ function replaceInText(element, replacements) {
 
 function login() {
   localStorage.setItem("authenticated", false);
-  document.location.href = "index.html";
+  document.location.href = "/index.html";
 }
 var siteUrl = "{{ site.url }}";
 var fontChanged = false;
 var pwd = new PWD();
 
-pwd.on("instanceNew", function(instance) {
+pwd.on("instanceCreate", function(instance) {
   instance.terms[0].write(`$ \r\n`);
 });
 pwd.on("unauthorized", function() {

@@ -4,7 +4,7 @@ layout: tutorials
 
 
 <script charset="utf-8">
-  if (localStorage.getItem("authenticated")) {
+  if (localStorage.getItem("authenticated") == "true") {
     document.location.href = "home.html";
   }
   function performLogin(provider) {
