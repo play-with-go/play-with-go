@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201109160446-77a916b167d9",
-		      "Sum": "h1:E2dkjlgnh2AGF0pPeF7jZGhYdgIkYuq2Us3pUdVaeak=",
+		      "Version": "v0.0.2-0.20201110085855-05e8567752d1",
+		      "Sum": "h1:rvEXeGah7m7NTmqzOxP7wq+YV9UNxSKJQfI+N7Tpe/U=",
 		      "Replace": null
 		    },
 		    {
@@ -223,6 +223,21 @@ Steps: {
 		StepType:        1
 		Name:            "gopher_list_proverb_v101_retracted"
 	}
+	gopher_sleep_on_proxy_again: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "sleep 1m"
+			Negated:          false
+		}]
+		Order:           39
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "gopher_sleep_on_proxy_again"
+	}
 	gopher_use_v101: {
 		Stmts: [{
 			ComparisonOutput: """
@@ -269,49 +284,12 @@ Steps: {
 			CmdStr:   "go get {{{.PROVERB}}}@v0.4.0"
 			Negated:  false
 		}]
-		Order:           39
+		Order:           38
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "gopher_use_v101"
-	}
-	gopher_sleep_on_proxy_v101: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr: """
-				(
-				\ti=0
-				\tj=0
-				\twhile true; do
-				\t\tx="$(go list -x -m -retracted -versions {{{.PROVERB}}})"
-				\t\techo "$x"
-				\t\tif echo "$x" | grep v1.0.0 | grep v0.4.0 | grep v1.0.1; then
-				\t\t\tj=$((j + 1))
-				\t\telse
-				\t\t\tj=0
-				\t\t\ti=$((i + 1))
-				\t\tfi
-				\t\tif [ "$j" == "10" ]; then
-				\t\t\tbreak
-				\t\tfi
-				\t\tif [ "$i" == "120" ]; then
-				\t\t\texit 1
-				\t\tfi
-				\t\tsleep 1s
-				\tdone
-				) >/dev/null 2>&1
-				"""
-			Negated: false
-		}]
-		Order:           38
-		InformationOnly: true
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_sleep_on_proxy_v101"
 	}
 	temp_get_v101: {
 		Stmts: [{
@@ -326,7 +304,7 @@ Steps: {
 				\tgo get -x {{{.PROVERB}}}@v0.4.0
 				\tgo get -x {{{.PROVERB}}}@v1.0.0
 				\tgo get -x {{{.PROVERB}}}@v1.0.1
-
+				\tsleep 1m
 				) >/dev/null 2>&1
 				"""
 			Negated: false
@@ -709,33 +687,11 @@ Steps: {
 			ComparisonOutput: ""
 			Output:           ""
 			ExitCode:         0
-			CmdStr: """
-				(
-				\ti=0
-				\tj=0
-				\twhile true; do
-				\t\tx="$(go list -x -m -retracted -versions {{{.PROVERB}}})"
-				\t\techo "$x"
-				\t\tif echo "$x" | grep v0.3.0; then
-				\t\t\tj=$((j + 1))
-				\t\telse
-				\t\t\tj=0
-				\t\t\ti=$((i + 1))
-				\t\tfi
-				\t\tif [ "$j" == "10" ]; then
-				\t\t\tbreak
-				\t\tfi
-				\t\tif [ "$i" == "120" ]; then
-				\t\t\texit 1
-				\t\tfi
-				\t\tsleep 1s
-				\tdone
-				) >/dev/null 2>&1
-				"""
-			Negated: false
+			CmdStr:           "sleep 1m"
+			Negated:          false
 		}]
 		Order:           22
-		InformationOnly: true
+		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
@@ -1349,5 +1305,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "e497f99efe1697c19338d1410f4e60afca57cffe079967ce63f353306938b33f"
+Hash: "31bd0d40e684a50b0450917aa902f5d6230d73013338c16b4a393cd48e4e739c"
 Delims: ["{{{", "}}}"]

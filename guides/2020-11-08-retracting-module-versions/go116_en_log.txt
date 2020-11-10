@@ -109,27 +109,7 @@ $ go get {{{.PROVERB}}}@v0.3.0
 go: downloading {{{.PROVERB}}} v0.3.0
 $ go run .
 Concurrency is not parallelism.
-$ (
-	i=0
-	j=0
-	while true; do
-		x="$(go list -x -m -retracted -versions {{{.PROVERB}}})"
-		echo "$x"
-		if echo "$x" | grep v0.3.0; then
-			j=$((j + 1))
-		else
-			j=0
-			i=$((i + 1))
-		fi
-		if [ "$j" == "10" ]; then
-			break
-		fi
-		if [ "$i" == "120" ]; then
-			exit 1
-		fi
-		sleep 1s
-	done
-) >/dev/null 2>&1
+$ sleep 1m
 $ go list -m -versions {{{.PROVERB}}}
 {{{.PROVERB}}} v0.1.0 v0.3.0
 $ go list -m -versions -retracted {{{.PROVERB}}}
@@ -199,28 +179,7 @@ $ (
 	go get -x {{{.PROVERB}}}@v0.4.0
 	go get -x {{{.PROVERB}}}@v1.0.0
 	go get -x {{{.PROVERB}}}@v1.0.1
-
-) >/dev/null 2>&1
-$ (
-	i=0
-	j=0
-	while true; do
-		x="$(go list -x -m -retracted -versions {{{.PROVERB}}})"
-		echo "$x"
-		if echo "$x" | grep v1.0.0 | grep v0.4.0 | grep v1.0.1; then
-			j=$((j + 1))
-		else
-			j=0
-			i=$((i + 1))
-		fi
-		if [ "$j" == "10" ]; then
-			break
-		fi
-		if [ "$i" == "120" ]; then
-			exit 1
-		fi
-		sleep 1s
-	done
+	sleep 1m
 ) >/dev/null 2>&1
 $ go get {{{.PROVERB}}}@v1.0.0
 go: downloading {{{.PROVERB}}} v1.0.0
@@ -232,6 +191,7 @@ go: warning: {{{.PROVERB}}}@v1.0.1 is retracted: published v1 too early
 go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
 $ go get {{{.PROVERB}}}@v0.4.0
 go: downloading {{{.PROVERB}}} v0.4.0
+$ sleep 1m
 $ go list -m -versions -retracted {{{.PROVERB}}}
 {{{.PROVERB}}} v0.1.0 v0.2.0 v0.3.0 v0.4.0 v1.0.0 v1.0.1
 $ go list -m -versions {{{.PROVERB}}}

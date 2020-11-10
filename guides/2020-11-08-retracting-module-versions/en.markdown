@@ -174,6 +174,18 @@ So what exactly has happened to `<!--ref:proverb_v020-->`? Remember, you can't s
 `<!--ref:proverb-->` module, since it remains available on module proxies.  Let's use `<!--ref:cmdgo.list-->` to dig a
 bit deeper.
 
+But first you need to wait for the proxy to update its state:
+
+<!--step:gopher_sleep_on_proxy-->
+
+Why? The FAQ on the [proxy website](https://proxy.golang.org/) explains:
+
+> In order to improve the proxy's caching and serving latencies, new versions may not show up right away. If you want new
+code to be immediately available in the mirror, then first make sure there is a semantically versioned tag for this
+revision in the underlying source repository. Then explicitly request that version via go get module@version. After one
+minute for caches to expire, the go command will see that tagged version. If this doesn't work for you, please file an
+issue.
+
 List the non-retracted, "usable" versions of the `<!--ref: proverb_mod-->` module known to the proxy:
 
 <!--step: gopher_list_proverb-->
@@ -264,6 +276,10 @@ _Note: you might not see the warning about either `<!--ref: proverb_v100-->` or 
 retracted versions. proxy.golang.org automatically updates periodically; depending on how lucky you are, an automatic
 update may have occurred in the time since you published `<!--ref: proverb_v101-->` in which case you will see the
 warning message, or it may not._
+
+Now that you have pulled these versions through the proxy, wait for the proxy cache to update:
+
+<!--step:gopher_sleep_on_proxy_again-->
 
 List all versions of the `<!--ref: proverb_mod-->` known to the proxy, including the retracted ones:
 
