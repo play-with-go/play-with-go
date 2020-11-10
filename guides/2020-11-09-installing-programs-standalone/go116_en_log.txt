@@ -1,0 +1,27 @@
+$ go version
+go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
+$ (
+	cd $(mktemp -d)
+	GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6
+)
+go: downloading honnef.co/go/tools v0.0.1-2020.1.6
+go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
+go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
+go: downloading github.com/BurntSushi/toml v0.3.1
+$ go install honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6
+$ go env GOPATH
+/home/gopher/go
+$ go env GOBIN
+
+$ export PATH="$(go env GOPATH)/bin:$PATH"
+$ which staticcheck
+/home/gopher/go/bin/staticcheck
+$ staticcheck -version
+staticcheck 2020.1.6
+$ go version -m $(which staticcheck)
+/home/gopher/go/bin/staticcheck: devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000
+	path	honnef.co/go/tools/cmd/staticcheck
+	mod	honnef.co/go/tools	v0.0.1-2020.1.6	h1:W18jzjh8mfPez+AwGLxmOImucz/IFjpNlrKVnaj2YVc=
+	dep	github.com/BurntSushi/toml	v0.3.1	h1:WXkYYl6Yr3qBf1K79EBnL4mak0OimBfB0XUf9Vl28OQ=
+	dep	golang.org/x/tools	v0.0.0-20200410194907-79a7a3126eef	h1:RHORRhs540cYZYrzgU2CPUyykkwZM78hGdzocOo9P8A=
+	dep	golang.org/x/xerrors	v0.0.0-20191204190536-9bdfabe68543	h1:E7g+9GITq07hpfrRu66IVDexMakfv52eLZ2CXBWiKr4=

@@ -1,0 +1,542 @@
+$ go version
+go version go1.15.3 linux/amd64
+$ pwd
+/home/gopher
+$ mkdir /home/gopher/greetings
+$ cd /home/gopher/greetings
+$ go mod init {{{.GREETINGS}}}
+go: creating new go.mod: module {{{.GREETINGS}}}
+$ cat go.mod
+module {{{.GREETINGS}}}
+
+go 1.15
+$ cat <<EOD > /home/gopher/greetings/greetings.go
+package greetings
+
+import "fmt"
+
+// Hello returns a greeting for the named person.
+func Hello(name string) string {
+	// Return a greeting that embeds the name in a message.
+	message := fmt.Sprintf("Hi, %v. Welcome!", name)
+	return message
+}
+
+EOD
+$ cat <<EOD > /home/gopher/greetings/greetings.go
+package greetings
+
+import "fmt"
+
+// Hello returns a greeting for the named person.
+func Hello(name string) string {
+	// Return a greeting that embeds the name in a message.
+	var message string
+	message = fmt.Sprintf("Hi, %v. Welcome!", name)
+	return message
+}
+
+EOD
+$ git init -q
+$ git remote add origin https://{{{.GREETINGS}}}.git
+$ git add greetings.go
+$ git commit -q -m 'Initial commit'
+$ git push -q origin main
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ mkdir /home/gopher/hello
+$ cd /home/gopher/hello
+$ go mod init {{{.HELLO}}}
+go: creating new go.mod: module {{{.HELLO}}}
+$ go get {{{.GREETINGS}}}
+go: downloading {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
+go: {{{.GREETINGS}}} upgrade => v0.0.0-20060102150405-abcedf12345
+$ go list -m -f {{.Version}} {{{.GREETINGS}}}
+v0.0.0-20060102150405-abcedf12345
+$ cat <<EOD > /home/gopher/hello/hello.go
+package main
+
+import (
+	"fmt"
+
+	"{{{.GREETINGS}}}"
+)
+
+func main() {
+	// Get a greeting message and print it.
+	message := greetings.Hello("Gladys")
+	fmt.Println(message)
+}
+
+EOD
+$ go build
+$ ./hello
+Hi, Gladys. Welcome!
+$ cd /home/gopher/greetings
+$ cat <<EOD > /home/gopher/greetings/greetings.go
+package greetings
+
+import (
+	"errors"
+	"fmt"
+)
+
+// Hello returns a greeting for the named person.
+func Hello(name string) (string, error) {
+	// If no name was given, return an error with a message.
+	if name == "" {
+		return "", errors.New("empty name")
+	}
+
+	// If a name was received, return a value that embeds the name
+	// in a greeting message.
+	message := fmt.Sprintf("Hi, %v. Welcome!", name)
+	return message, nil
+}
+
+EOD
+$ git add greetings.go
+$ git commit -q -m 'Added error handling'
+$ greetings_error_commit=$(git rev-parse HEAD)
+$ git rev-parse HEAD
+v0.0.0-20060102150405-abcedf12345
+$ git push -q origin main
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ cd /home/gopher/hello
+$ go get {{{.GREETINGS}}}@$greetings_error_commit
+go: {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
+go: downloading {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
+$ go list -m -f {{.Version}} {{{.GREETINGS}}}
+v0.0.0-20060102150405-abcedf12345
+$ cat <<EOD > /home/gopher/hello/hello.go
+package main
+
+import (
+	"fmt"
+	"log"
+
+	"{{{.GREETINGS}}}"
+)
+
+func main() {
+	// Set properties of the predefined Logger, including
+	// the log entry prefix and a flag to disable printing
+	// the time, source file, and line number.
+	log.SetPrefix("greetings: ")
+	log.SetFlags(0)
+
+	// Request a greeting message.
+	message, err := greetings.Hello("")
+	// If an error was returned, print it to the console and
+	// exit the program.
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// If no error was returned, print the returned message
+	// to the console.
+	fmt.Println(message)
+}
+
+EOD
+$ go run hello.go
+greetings: empty name
+exit status 1
+$ cd /home/gopher/greetings
+$ cat <<EOD > /home/gopher/greetings/greetings.go
+package greetings
+
+import (
+	"errors"
+	"fmt"
+	"math/rand"
+)
+
+// Hello returns a greeting for the named person.
+func Hello(name string) (string, error) {
+	// If no name was given, return an error with a message.
+	if name == "" {
+		return name, errors.New("empty name")
+	}
+	// Create a message using a random format.
+	message := fmt.Sprintf(randomFormat(), name)
+	return message, nil
+}
+
+// init sets initial values for variables used in the function.
+func init() {
+	// For truly random greetings, import "time" and replace the call
+	// to rand.Seed with:
+	//
+	// rand.Seed(time.Now().UnixNano())
+	//
+	// Calling rand.Seed with a constant value means that we always
+	// generate the same pseudo-random sequence.
+	rand.Seed(1)
+}
+
+// randomFormat returns one of a set of greeting messages. The returned
+// message is selected at random.
+func randomFormat() string {
+	// A slice of message formats.
+	formats := []string{
+		"Hi, %v. Welcome!",
+		"Great to see you, %v!",
+		"Hail, %v! Well met!",
+	}
+
+	// Return one of the message formats selected at random.
+	return formats[rand.Intn(len(formats))]
+}
+
+EOD
+$ git add greetings.go
+$ git commit -q -m 'Added random format'
+$ greetings_random_commit=$(git rev-parse HEAD)
+$ git rev-parse HEAD
+v0.0.0-20060102150405-abcedf12345
+$ git push -q origin main
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ cd /home/gopher/hello
+$ go get {{{.GREETINGS}}}@$greetings_random_commit
+go: {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
+go: downloading {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
+$ go list -m -f {{.Version}} {{{.GREETINGS}}}
+v0.0.0-20060102150405-abcedf12345
+$ cat <<EOD > /home/gopher/hello/hello.go
+package main
+
+import (
+	"fmt"
+	"log"
+
+	"{{{.GREETINGS}}}"
+)
+
+func main() {
+	// Set properties of the predefined Logger, including
+	// the log entry prefix and a flag to disable printing
+	// the time, source file, and line number.
+	log.SetPrefix("greetings: ")
+	log.SetFlags(0)
+
+	// Request a greeting message.
+	message, err := greetings.Hello("Gladys")
+	// If an error was returned, print it to the console and
+	// exit the program.
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// If no error was returned, print the returned message
+	// to the console.
+	fmt.Println(message)
+}
+
+EOD
+$ go run hello.go
+Hail, Gladys! Well met!
+$ go run hello.go
+Hail, Gladys! Well met!
+$ cd /home/gopher/greetings
+$ cat <<EOD > /home/gopher/greetings/greetings.go
+package greetings
+
+import (
+	"errors"
+	"fmt"
+	"math/rand"
+)
+
+// Hello returns a greeting for the named person.
+func Hello(name string) (string, error) {
+	// If no name was given, return an error with a message.
+	if name == "" {
+		return name, errors.New("empty name")
+	}
+	// Create a message using a random format.
+	message := fmt.Sprintf(randomFormat(), name)
+	return message, nil
+}
+
+// Hellos returns a map that associates each of the named people
+// with a greeting message.
+func Hellos(names []string) (map[string]string, error) {
+	// A map to associate names with messages.
+	messages := make(map[string]string)
+	// Loop through the received slice of names, calling
+	// the Hello function to get a message for each name.
+	for _, name := range names {
+		message, err := Hello(name)
+		if err != nil {
+			return nil, err
+		}
+		// In the map, associate the retrieved message with
+		// the name.
+		messages[name] = message
+	}
+	return messages, nil
+}
+
+// init sets initial values for variables used in the function.
+func init() {
+	// For truly random greetings, import "time" and replace the call
+	// to rand.Seed with:
+	//
+	// rand.Seed(time.Now().UnixNano())
+	//
+	// Calling rand.Seed with a constant value means that we always
+	// generate the same pseudo-random sequence.
+	rand.Seed(1)
+}
+
+// randomFormat returns one of a set of greeting messages. The returned
+// message is selected at random.
+func randomFormat() string {
+	// A slice of message formats.
+	formats := []string{
+		"Hi, %v. Welcome!",
+		"Great to see you, %v!",
+		"Hail, %v! Well met!",
+	}
+
+	// Return one of the message formats selected at random.
+	return formats[rand.Intn(len(formats))]
+}
+
+EOD
+$ cd /home/gopher/hello
+$ go mod edit -replace {{{.GREETINGS}}}=/home/gopher/greetings
+$ cat go.mod
+module {{{.HELLO}}}
+
+go 1.15
+
+require {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
+
+replace {{{.GREETINGS}}} => /home/gopher/greetings
+$ cat <<EOD > /home/gopher/hello/hello.go
+package main
+
+import (
+	"fmt"
+	"log"
+
+	"{{{.GREETINGS}}}"
+)
+
+func main() {
+	// Set properties of the predefined Logger, including
+	// the log entry prefix and a flag to disable printing
+	// the time, source file, and line number.
+	log.SetPrefix("greetings: ")
+	log.SetFlags(0)
+
+	// A slice of names.
+	names := []string{"Gladys", "Samantha", "Darrin"}
+
+	// Request greeting messages for the names.
+	messages, err := greetings.Hellos(names)
+	if err != nil {
+		log.Fatal(err)
+	}
+	// If no error was returned, print the returned map of
+	// messages to the console.
+	fmt.Println(messages)
+}
+
+EOD
+$ go run hello.go
+map[Darrin:Hail, Darrin! Well met! Gladys:Hail, Gladys! Well met! Samantha:Hi, Samantha. Welcome!]
+$ cd /home/gopher/greetings
+$ cat <<EOD > /home/gopher/greetings/greetings_test.go
+package greetings
+
+import (
+	"regexp"
+	"testing"
+)
+
+// TestHelloName calls greetings.Hello with a name, checking
+// for a valid return value.
+func TestHelloName(t *testing.T) {
+	name := "Gladys"
+	want := regexp.MustCompile(`\b` + name + `\b`)
+	msg, err := Hello(name)
+	if !want.MatchString(msg) || err != nil {
+		t.Fatalf(`Hello("Gladys") = %q, %v, want match for %#q, <nil>`, msg, err, want)
+	}
+}
+
+// TestHelloEmpty calls greetings.Hello with an empty string,
+// checking for an error.
+func TestHelloEmpty(t *testing.T) {
+	msg, err := Hello("")
+	if msg != "" || err == nil {
+		t.Fatalf(`Hello("") = %q, %v, want "", error`, msg, err)
+	}
+}
+
+EOD
+$ go test
+PASS
+ok  	{{{.GREETINGS}}}	0.042s
+$ go test -v
+=== RUN   TestHelloName
+--- PASS: TestHelloName (0.042s)
+=== RUN   TestHelloEmpty
+--- PASS: TestHelloEmpty (0.042s)
+PASS
+ok  	{{{.GREETINGS}}}	0.042s
+$ cat <<EOD > /home/gopher/greetings/greetings.go
+package greetings
+
+import (
+	"errors"
+	"fmt"
+	"math/rand"
+)
+
+// Hello returns a greeting for the named person.
+func Hello(name string) (string, error) {
+	// If no name was given, return an error with a message.
+	if name == "" {
+		return name, errors.New("empty name")
+	}
+	// Create a message using a random format.
+	// message := fmt.Sprintf(randomFormat(), name)
+	message := fmt.Sprint(randomFormat())
+	return message, nil
+}
+
+// Hellos returns a map that associates each of the named people
+// with a greeting message.
+func Hellos(names []string) (map[string]string, error) {
+	// A map to associate names with messages.
+	messages := make(map[string]string)
+	// Loop through the received slice of names, calling
+	// the Hello function to get a message for each name.
+	for _, name := range names {
+		message, err := Hello(name)
+		if err != nil {
+			return nil, err
+		}
+		// In the map, associate the retrieved message with
+		// the name.
+		messages[name] = message
+	}
+	return messages, nil
+}
+
+// init sets initial values for variables used in the function.
+func init() {
+	// For truly random greetings, import "time" and replace the call
+	// to rand.Seed with:
+	//
+	// rand.Seed(time.Now().UnixNano())
+	//
+	// Calling rand.Seed with a constant value means that we always
+	// generate the same pseudo-random sequence.
+	rand.Seed(1)
+}
+
+// randomFormat returns one of a set of greeting messages. The returned
+// message is selected at random.
+func randomFormat() string {
+	// A slice of message formats.
+	formats := []string{
+		"Hi, %v. Welcome!",
+		"Great to see you, %v!",
+		"Hail, %v! Well met!",
+	}
+
+	// Return one of the message formats selected at random.
+	return formats[rand.Intn(len(formats))]
+}
+
+EOD
+$ go test
+--- FAIL: TestHelloName (0.042s)
+    greetings_test.go:15: Hello("Gladys") = "Hail, %v! Well met!", <nil>, want match for `\bGladys\b`, <nil>
+FAIL
+exit status 1
+FAIL	{{{.GREETINGS}}}	0.042s
+$ cat <<EOD > /home/gopher/greetings/greetings.go
+package greetings
+
+import (
+	"errors"
+	"fmt"
+	"math/rand"
+)
+
+// Hello returns a greeting for the named person.
+func Hello(name string) (string, error) {
+	// If no name was given, return an error with a message.
+	if name == "" {
+		return name, errors.New("empty name")
+	}
+	// Create a message using a random format.
+	message := fmt.Sprintf(randomFormat(), name)
+	return message, nil
+}
+
+// Hellos returns a map that associates each of the named people
+// with a greeting message.
+func Hellos(names []string) (map[string]string, error) {
+	// A map to associate names with messages.
+	messages := make(map[string]string)
+	// Loop through the received slice of names, calling
+	// the Hello function to get a message for each name.
+	for _, name := range names {
+		message, err := Hello(name)
+		if err != nil {
+			return nil, err
+		}
+		// In the map, associate the retrieved message with
+		// the name.
+		messages[name] = message
+	}
+	return messages, nil
+}
+
+// init sets initial values for variables used in the function.
+func init() {
+	// For truly random greetings, import "time" and replace the call
+	// to rand.Seed with:
+	//
+	// rand.Seed(time.Now().UnixNano())
+	//
+	// Calling rand.Seed with a constant value means that we always
+	// generate the same pseudo-random sequence.
+	rand.Seed(1)
+}
+
+// randomFormat returns one of a set of greeting messages. The returned
+// message is selected at random.
+func randomFormat() string {
+	// A slice of message formats.
+	formats := []string{
+		"Hi, %v. Welcome!",
+		"Great to see you, %v!",
+		"Hail, %v! Well met!",
+	}
+
+	// Return one of the message formats selected at random.
+	return formats[rand.Intn(len(formats))]
+}
+
+EOD
+$ go test
+PASS
+ok  	{{{.GREETINGS}}}	0.042s
+$ cd /home/gopher/hello
+$ go list -f '{{.Target}}'
+/home/gopher/go/bin/hello
+$ goinstalldir="$(dirname "$(go list -f '{{.Target}}')")"
+$ export PATH="$goinstalldir:$PATH"
+$ go install
+$ hello
+map[Darrin:Hail, Darrin! Well met! Gladys:Hail, Gladys! Well met! Samantha:Hi, Samantha. Welcome!]

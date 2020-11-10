@@ -161,6 +161,24 @@ package guides
 	Networks: ["playwithgo_pwg"]
 	Env: []
 }
+"2020-11-09-installing-programs-standalone": {
+	Delims: ["{{{", "}}}"]
+	Terminals: [{
+		Name:        "term1"
+		Description: "The main terminal"
+		Scenarios: {
+			go116: {
+				Image: "playwithgo/go1.16-tip@sha256:4f6f3820ad3d6c30b623eabe688bfd073eeb4a52c284c80b3e6bc4a3b8cded2a"
+			}
+		}
+	}]
+	Scenarios: [{
+		Name:        "go116"
+		Description: "Go 1.16"
+	}]
+	Networks: ["playwithgo_pwg"]
+	Env: []
+}
 "2020-11-09-using-staticcheck": {
 	Delims: ["{{{", "}}}"]
 	Terminals: [{
