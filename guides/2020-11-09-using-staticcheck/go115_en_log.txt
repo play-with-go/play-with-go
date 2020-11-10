@@ -1,0 +1,309 @@
+$ go version
+go version go1.15.3 linux/amd64
+$ (
+	cd $(mktemp -d)
+	GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6
+)
+go: downloading honnef.co/go/tools v0.0.1-2020.1.6
+go: found honnef.co/go/tools/cmd/staticcheck in honnef.co/go/tools v0.0.1-2020.1.6
+go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
+go: downloading github.com/BurntSushi/toml v0.3.1
+go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
+$ go env GOPATH
+/home/gopher/go
+$ go env GOBIN
+
+$ export PATH="$(go env GOPATH)/bin:$PATH"
+$ which staticcheck
+/home/gopher/go/bin/staticcheck
+$ staticcheck -version
+staticcheck 2020.1.6
+$ mkdir /home/gopher/pets
+$ cd /home/gopher/pets
+$ go mod init pets
+go: creating new go.mod: module pets
+$ cat <<EOD > /home/gopher/pets/pets.go
+package pets
+
+import (
+	"errors"
+	"fmt"
+)
+
+type Animal int
+
+const (
+	Dog Animal = iota
+	Snake
+)
+
+type Pet struct {
+	Kind Animal
+	Name string
+}
+
+func (p Pet) Walk() error {
+	switch p.Kind {
+	case Dog:
+		fmt.Printf("Will take %v for a walk around the block\n")
+	default:
+		return errors.New(fmt.Sprintf("Cannot take %v for a walk", p.Name))
+	}
+	return nil
+}
+
+func (self Pet) String() string {
+	return fmt.Sprintf("%s", self.Name)
+}
+
+EOD
+$ go build
+$ staticcheck .
+pets.go:23:14: Printf format %v reads arg #1, but call has only 0 args (SA5009)
+pets.go:25:10: should use fmt.Errorf(...) instead of errors.New(fmt.Sprintf(...)) (S1028)
+pets.go:30:7: receiver name should be a reflection of its identity; don't use generic names such as "this" or "self" (ST1006)
+pets.go:31:9: the argument is already a string, there's no need to use fmt.Sprintf (S1025)
+$ cat <<EOD > /home/gopher/pets/pets.go
+package pets
+
+import (
+	"fmt"
+)
+
+type Animal int
+
+const (
+	Dog Animal = iota
+	Snake
+)
+
+type Pet struct {
+	Kind Animal
+	Name string
+}
+
+func (p Pet) Walk() error {
+	switch p.Kind {
+	case Dog:
+		fmt.Printf("Will take %v for a walk around the block\n", p.Name)
+	default:
+		return fmt.Errorf("cannot take %v for a walk", p.Name)
+	}
+	return nil
+}
+
+func (p Pet) String() string {
+	return p.Name
+}
+
+EOD
+$ staticcheck .
+$ cat <<EOD > /home/gopher/pets/staticcheck.conf
+checks = ["inherit", "ST1000"]
+
+EOD
+$ staticcheck .
+pets.go:1:1: at least one file in a package should have a package comment (ST1000)
+$ cat <<EOD > /home/gopher/pets/pets.go
+// Package pets contains useful functionality for pet owners
+package pets
+
+import (
+	"fmt"
+)
+
+type Animal int
+
+const (
+	Dog Animal = iota
+	Snake
+)
+
+type Pet struct {
+	Kind Animal
+	Name string
+}
+
+func (p Pet) Walk() error {
+	switch p.Kind {
+	case Dog:
+		fmt.Printf("Will take %v for a walk around the block\n", p.Name)
+	default:
+		return fmt.Errorf("cannot take %v for a walk", p.Name)
+	}
+	return nil
+}
+
+func (p Pet) String() string {
+	return p.Name
+}
+
+EOD
+$ staticcheck .
+$ cat <<EOD > /home/gopher/pets/pets.go
+// Package pets contains useful functionality for pet owners
+package pets
+
+import (
+	"fmt"
+)
+
+type Animal int
+
+const (
+	Dog Animal = iota
+	Snake
+)
+
+type Pet struct {
+	Kind Animal
+	Name string
+}
+
+func (p Pet) Walk() error {
+	switch p.Kind {
+	case Dog:
+		fmt.Printf("Will take %v for a walk around the block\n", p.Name)
+	default:
+		return fmt.Errorf("cannot take %v for a walk", p.Name)
+	}
+	return nil
+}
+
+func (p Pet) Feed(food string) {
+	food = food
+	fmt.Printf("Feeding %v some %v\n", p.Name, food)
+}
+
+func (p Pet) String() string {
+	return p.Name
+}
+
+EOD
+$ staticcheck .
+pets.go:31:2: self-assignment of food to food (SA4018)
+$ cat <<EOD > /home/gopher/pets/pets.go
+// Package pets contains useful functionality for pet owners
+package pets
+
+import (
+	"fmt"
+)
+
+type Animal int
+
+const (
+	Dog Animal = iota
+	Snake
+)
+
+type Pet struct {
+	Kind Animal
+	Name string
+}
+
+func (p Pet) Walk() error {
+	switch p.Kind {
+	case Dog:
+		fmt.Printf("Will take %v for a walk around the block\n", p.Name)
+	default:
+		return fmt.Errorf("cannot take %v for a walk", p.Name)
+	}
+	return nil
+}
+
+func (p Pet) Feed(food string) {
+	//lint:ignore SA4018 trying out line-based linter directives
+	food = food
+	fmt.Printf("Feeding %v some %v\n", p.Name, food)
+}
+
+func (p Pet) String() string {
+	return p.Name
+}
+
+EOD
+$ staticcheck .
+$ cat <<EOD > /home/gopher/pets/pets.go
+// Package pets contains useful functionality for pet owners
+package pets
+
+import (
+	"fmt"
+)
+
+//lint:file-ignore SA4018 trying out file-based linter directives
+
+type Animal int
+
+const (
+	Dog Animal = iota
+	Snake
+)
+
+type Pet struct {
+	Kind Animal
+	Name string
+}
+
+func (p Pet) Walk() error {
+	switch p.Kind {
+	case Dog:
+		fmt.Printf("Will take %v for a walk around the block\n", p.Name)
+	default:
+		return fmt.Errorf("cannot take %v for a walk", p.Name)
+	}
+	return nil
+}
+
+func (p Pet) Feed(food string) {
+	food = food
+	fmt.Printf("Feeding %v some %v\n", p.Name, food)
+}
+
+func (p Pet) String() string {
+	return p.Name
+}
+
+EOD
+$ staticcheck .
+$ cat <<EOD > /home/gopher/pets/pets.go
+// Package pets contains useful functionality for pet owners
+package pets
+
+import (
+	"fmt"
+)
+
+type Animal int
+
+const (
+	Dog Animal = iota
+	Snake
+)
+
+type Pet struct {
+	Kind Animal
+	Name string
+}
+
+func (p Pet) Walk() error {
+	switch p.Kind {
+	case Dog:
+		fmt.Printf("Will take %v for a walk around the block\n", p.Name)
+	default:
+		return fmt.Errorf("cannot take %v for a walk", p.Name)
+	}
+	return nil
+}
+
+func (p Pet) Feed(food string) {
+	fmt.Printf("Feeding %v some %v\n", p.Name, food)
+}
+
+func (p Pet) String() string {
+	return p.Name
+}
+
+EOD
+$ staticcheck .
