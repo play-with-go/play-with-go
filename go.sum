@@ -421,8 +421,8 @@ github.com/play-with-docker/play-with-docker v0.0.3-0.20201025222131-e8486b8100e
 github.com/play-with-go/gitea v0.0.0-20201106060436-cd0e98fe53f4 h1:gsIXEg+J3mOTHm32E8Kuqat+6YaB/2MnlwDvpYFD8Aw=
 github.com/play-with-go/gitea v0.0.0-20201106060436-cd0e98fe53f4/go.mod h1:mD4+vK9cH9dCfgegi5Z9+KSg79O9f0lOhg0sN8vve5M=
 github.com/play-with-go/preguide v0.0.2-0.20200929132054-e0f48a7f7b23/go.mod h1:jkhBBbIBioAzKiRo5Rr9r03tqglgUdPZAVIpBBw7aDU=
-github.com/play-with-go/preguide v0.0.2-0.20201109160446-77a916b167d9 h1:E2dkjlgnh2AGF0pPeF7jZGhYdgIkYuq2Us3pUdVaeak=
-github.com/play-with-go/preguide v0.0.2-0.20201109160446-77a916b167d9/go.mod h1:lv5Qk1Wnsv9GMU/yVkuZGlxlHIkdCxniAyq3p6O1stA=
+github.com/play-with-go/preguide v0.0.2-0.20201110085855-05e8567752d1 h1:rvEXeGah7m7NTmqzOxP7wq+YV9UNxSKJQfI+N7Tpe/U=
+github.com/play-with-go/preguide v0.0.2-0.20201110085855-05e8567752d1/go.mod h1:lv5Qk1Wnsv9GMU/yVkuZGlxlHIkdCxniAyq3p6O1stA=
 github.com/pmezard/go-difflib v0.0.0-20151028094244-d8ed2627bdf0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=

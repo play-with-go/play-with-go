@@ -39,6 +39,9 @@ _#commonDefs: {
 		tag:      "git tag"
 		revparse: "git rev-parse"
 	}
+	proxygolangorg: {
+		waitforcache: "1m" // value passed to Unix sleep
+	}
 }
 
 // _#waitForVersion: preguide.#Command & {

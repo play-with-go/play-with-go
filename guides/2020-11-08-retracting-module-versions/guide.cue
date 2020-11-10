@@ -233,9 +233,10 @@ Steps: gopher_run_v030: preguide.#Command & {
 		"""
 }
 
-Steps: gopher_sleep_on_proxy: _#waitForVersion & {
-	_#module: Defs.proverb_mod
-	_#versions: [Defs.proverb_v030]
+Steps: gopher_sleep_on_proxy: preguide.#Command & {
+	Source: """
+		sleep \(Defs.proxygolangorg.waitforcache)
+		"""
 }
 
 Steps: gopher_list_proverb: preguide.#Command & {
@@ -363,14 +364,9 @@ Steps: temp_get_v101: preguide.#Command & {
 			\(Defs.cmdgo.get) -x \(Defs.proverb_mod)@\(Defs.proverb_v040)
 			\(Defs.cmdgo.get) -x \(Defs.proverb_mod)@\(Defs.proverb_v100)
 			\(Defs.cmdgo.get) -x \(Defs.proverb_mod)@\(Defs.proverb_v101)
-
+			sleep \(Defs.proxygolangorg.waitforcache)
 		) > /dev/null 2>&1
 		"""
-}
-
-Steps: gopher_sleep_on_proxy_v101: _#waitForVersion & {
-	_#module: Defs.proverb_mod
-	_#versions: [Defs.proverb_v100, Defs.proverb_v040, Defs.proverb_v101]
 }
 
 Steps: gopher_use_v101: preguide.#Command & {
@@ -378,6 +374,12 @@ Steps: gopher_use_v101: preguide.#Command & {
 		\(Defs.cmdgo.get) \(Defs.proverb_mod)@\(Defs.proverb_v100)
 		\(Defs.cmdgo.get) \(Defs.proverb_mod)@\(Defs.proverb_v101)
 		\(Defs.cmdgo.get) \(Defs.proverb_mod)@\(Defs.proverb_v040)
+		"""
+}
+
+Steps: gopher_sleep_on_proxy_again: preguide.#Command & {
+	Source: """
+		sleep \(Defs.proxygolangorg.waitforcache)
 		"""
 }
 

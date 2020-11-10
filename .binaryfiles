@@ -1,6 +1,7 @@
 favicon.ico
 fonts/hinted-Geomanist-Book.ttf
 images/dark.png
+images/github.png
 images/index.png
 images/overview.png
 images/play-with-go.graffle
@@ -10,6 +11,5 @@ images/recurso.png
 images/resizer.png
 images/screenshot.png
 images/success.png
-images/github.png
 images/terminal.png
 images/welcome.png

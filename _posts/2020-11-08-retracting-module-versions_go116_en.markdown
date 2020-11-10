@@ -306,6 +306,21 @@ So what exactly has happened to `v0.2.0`? Remember, you can't simply delete a ve
 `proverb` module, since it remains available on module proxies.  Let's use `go list` to dig a
 bit deeper.
 
+But first you need to wait for the proxy to update its state:
+
+```.term1
+$ sleep 1m
+```
+{:data-command-src="c2xlZXAgMW0K"}
+
+Why? The FAQ on the [proxy website](https://proxy.golang.org/) explains:
+
+> In order to improve the proxy's caching and serving latencies, new versions may not show up right away. If you want new
+code to be immediately available in the mirror, then first make sure there is a semantically versioned tag for this
+revision in the underlying source repository. Then explicitly request that version via go get module@version. After one
+minute for caches to expire, the go command will see that tagged version. If this doesn't work for you, please file an
+issue.
+
 List the non-retracted, "usable" versions of the `{% raw %}{{{.PROVERB}}}{% endraw %}` module known to the proxy:
 
 ```.term1
@@ -488,6 +503,13 @@ _Note: you might not see the warning about either `v1.0.0` or `v1.0.1` being
 retracted versions. proxy.golang.org automatically updates periodically; depending on how lucky you are, an automatic
 update may have occurred in the time since you published `v1.0.1` in which case you will see the
 warning message, or it may not._
+
+Now that you have pulled these versions through the proxy, wait for the proxy cache to update:
+
+```.term1
+$ sleep 1m
+```
+{:data-command-src="c2xlZXAgMW0K"}
 
 List all versions of the `{% raw %}{{{.PROVERB}}}{% endraw %}` known to the proxy, including the retracted ones:
 
