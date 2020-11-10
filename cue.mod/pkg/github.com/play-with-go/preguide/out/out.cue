@@ -49,10 +49,11 @@ _stepCommon: {
 }
 
 #Stmt: {
-	Negated:  bool
-	CmdStr:   string
-	ExitCode: int
-	Output:   string
+	Negated:          bool
+	CmdStr:           string
+	ExitCode:         int
+	Output:           string
+	ComparisonOutput: string
 }
 
 #UploadStep: {

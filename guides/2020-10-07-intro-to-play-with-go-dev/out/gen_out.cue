@@ -7,8 +7,8 @@ Presteps: [{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20201022142910-d10ca95000af",
-		    "Sum": "h1:ySGH/7q+r35IS+ERMpxhhl9q0B7846YzYqKl0yoY0WQ=",
+		    "Version": "v0.0.0-20201106060436-cd0e98fe53f4",
+		    "Sum": "h1:gsIXEg+J3mOTHm32E8Kuqat+6YaB/2MnlwDvpYFD8Aw=",
 		    "Replace": null
 		  },
 		  "Deps": [
@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201103153210-3be40d648376",
-		      "Sum": "h1:82xCx/VpW9vY25t2q1D8N8rcG50urcpmwLLD8CJqTI4=",
+		      "Version": "v0.0.2-0.20201109160446-77a916b167d9",
+		      "Sum": "h1:E2dkjlgnh2AGF0pPeF7jZGhYdgIkYuq2Us3pUdVaeak=",
 		      "Replace": null
 		    },
 		    {
@@ -106,7 +106,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.2@sha256:4f5346af0d93f50c974d9be2f2f31c55d2f953da9437aac990d30a50e3d591a5"
+			Image: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
 		}
 	}
 	Name: "term1"
@@ -120,6 +120,11 @@ Env: []
 Steps: {
 	gitpush: {
 		Stmts: [{
+			ComparisonOutput: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
 			Output: """
 				remote: . Processing 1 references        
 				remote: Processed 1 references in total        
@@ -138,15 +143,17 @@ Steps: {
 	}
 	gitadd: {
 		Stmts: [{
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "git add README.md"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git add README.md"
+			Negated:          false
 		}, {
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "git commit -q -m 'Initial commit'"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git commit -q -m 'Initial commit'"
+			Negated:          false
 		}]
 		Order:           7
 		InformationOnly: false
@@ -157,15 +164,17 @@ Steps: {
 	}
 	gitinit: {
 		Stmts: [{
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "git init -q"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git init -q"
+			Negated:          false
 		}, {
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "git remote add origin https://{{{.REPO1}}}.git"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git remote add origin https://{{{.REPO1}}}.git"
+			Negated:          false
 		}]
 		Order:           6
 		InformationOnly: false
@@ -176,6 +185,15 @@ Steps: {
 	}
 	cat_readme: {
 		Stmts: [{
+			ComparisonOutput: """
+				This is README.md.
+
+				Hello, gopher!
+
+				We made a change!
+
+
+				"""
 			Output: """
 				This is README.md.
 
@@ -240,15 +258,17 @@ Steps: {
 	}
 	multiple_commands: {
 		Stmts: [{
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "mkdir hello"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "mkdir hello"
+			Negated:          false
 		}, {
-			Output:   ""
-			ExitCode: 0
-			CmdStr:   "cd hello"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "cd hello"
+			Negated:          false
 		}]
 		Order:           2
 		InformationOnly: false
@@ -259,6 +279,10 @@ Steps: {
 	}
 	echo_hello: {
 		Stmts: [{
+			ComparisonOutput: """
+				Hello, world!
+
+				"""
 			Output: """
 				Hello, world!
 
@@ -276,6 +300,10 @@ Steps: {
 	}
 	whoami: {
 		Stmts: [{
+			ComparisonOutput: """
+				gopher
+
+				"""
 			Output: """
 				gopher
 
@@ -284,6 +312,10 @@ Steps: {
 			CmdStr:   "whoami"
 			Negated:  false
 		}, {
+			ComparisonOutput: """
+				/home/gopher
+
+				"""
 			Output: """
 				/home/gopher
 
@@ -300,5 +332,5 @@ Steps: {
 		Name:            "whoami"
 	}
 }
-Hash: "497c34fd82e3482bae4976b6a1f058cd65b774da6b4151184afc25378dbe209b"
+Hash: "14b338300e8499c48b5686d8831ee95b11f2d1d05d607accb0624476c8c15080"
 Delims: ["{{{", "}}}"]

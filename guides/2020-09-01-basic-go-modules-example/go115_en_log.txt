@@ -1,0 +1,35 @@
+$ mkdir /home/gopher/mod1
+$ cd /home/gopher/mod1
+$ git init -q
+$ git remote add origin https://{{{.REPO1}}}.git
+$ go mod init {{{.REPO1}}}
+go: creating new go.mod: module {{{.REPO1}}}
+$ cat <<EOD > /home/gopher/mod1/README.md
+## `{{{.REPO1}}}`
+EOD
+$ cat <<EOD > /home/gopher/mod1/main.go
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello, world!")
+}
+
+EOD
+$ git add README.md main.go
+$ git commit -q -m "Initial commit"
+$ git push -q origin main
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ mkdir /home/gopher/mod2
+$ cd /home/gopher/mod2
+$ go mod init mod.com
+go: creating new go.mod: module mod.com
+$ go get {{{.REPO1}}}
+go: downloading {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
+go: {{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcedf12345
+$ go run {{{.REPO1}}}
+Hello, world!
+$ go list -m -f {{.Version}} {{{.REPO1}}}
+v0.0.0-20060102150405-abcedf12345

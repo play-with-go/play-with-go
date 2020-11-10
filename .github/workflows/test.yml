@@ -8,6 +8,8 @@ on:
   pull_request:
     branches:
     - '**'
+  schedule:
+  - cron: 0 9 * * *
 env:
   PREGUIDE_DEBUG: true
   PREGUIDE_SKIP_CACHE: true
@@ -52,6 +54,7 @@ jobs:
     - name: Race check re-generating guides
       run: go run -race github.com/play-with-go/preguide/cmd/preguide gen -out ../_posts
       working-directory: ./guides
+      if: ${{ github.event_name == 'schedule' }}
     - name: Re-generate everything else
       run: _scripts/generateEverythingElse.sh
     - name: Tidy

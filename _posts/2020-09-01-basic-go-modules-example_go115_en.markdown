@@ -17,13 +17,12 @@ Create a module:
 ```.term1
 $ mkdir /home/gopher/mod1
 $ cd /home/gopher/mod1
-$ git init
-Initialized empty Git repository in /home/gopher/mod1/.git/
+$ git init -q
 $ git remote add origin https://{% raw %}{{{.REPO1}}}{% endraw %}.git
 $ go mod init {% raw %}{{{.REPO1}}}{% endraw %}
 go: creating new go.mod: module {% raw %}{{{.REPO1}}}{% endraw %}
 ```
-{:data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL21vZDEKY2QgL2hvbWUvZ29waGVyL21vZDEKZ2l0IGluaXQKZ2l0IHJlbW90ZSBhZGQgb3JpZ2luIGh0dHBzOi8ve3t7LlJFUE8xfX19LmdpdApnbyBtb2QgaW5pdCB7e3suUkVQTzF9fX0K"}
+{:data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL21vZDEKY2QgL2hvbWUvZ29waGVyL21vZDEKZ2l0IGluaXQgLXEKZ2l0IHJlbW90ZSBhZGQgb3JpZ2luIGh0dHBzOi8ve3t7LlJFUE8xfX19LmdpdApnbyBtb2QgaW5pdCB7e3suUkVQTzF9fX0K"}
 
 Write a readme:
 

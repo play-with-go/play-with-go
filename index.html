@@ -1,20 +1,72 @@
 ---
-layout: page
+layout: tutorials
 ---
 
 
+<script charset="utf-8">
+  if (localStorage.getItem("authenticated") == "true") {
+    document.location.href = "home.html";
+  }
+  function performLogin(provider) {
+    var width = screen.width * 0.6;
+    var height = screen.height * 0.6;
+    var x = screen.width / 2 - width / 2;
+    var y = screen.height / 2 - height / 2;
 
-<div class="tags-expo">
-  {% assign categories = site.categories %}
-  <div class="tags-expo-section">
-    {% for cat in categories %}
-    <ul class="tags-expo-posts">
-      {% for post in cat[1] %}
-      <li>
-        <a class="post-title" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-      </li>
-      {% endfor %}
-    </ul>
-    {% endfor %}
+    window.open(
+        "{{site.pwdurl}}" + 
+        "/oauth/providers/"+provider+"/login",
+      "PWDLogin",
+      "width=" + width + ",height=" + height + ",left=" + x + ",top=" + y
+    );
+    var eventMethod = window.addEventListener
+      ? "addEventListener"
+      : "attachEvent";
+    var eventer = window[eventMethod];
+    var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+    // Listen to message from child window
+    eventer(
+      messageEvent,
+      function (e) {
+        if (e.data === "done") {
+          localStorage.setItem("authenticated", true);
+          document.location.href = "home.html"
+        }
+      },
+      false
+    );
+  }
+</script>
+
+<div style="background: linear-gradient(0deg, var(--docker-color), var(--navbar-color)); height: auto;">
+  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
+    <main role="main" class="inner cover">
+      <h1 class="cover-heading welcome-title" style="color: seashell;">Play with Go</h1>
+      <p class="lead welcome-par" style="color: seashell;">
+        Hands-on Golang Tutorials to learn from anywhere.</br>
+        It all starts with just a few minutes a day.
+      </p> 
+        <div class="container">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-xs">
+            <button onclick="performLogin('google')" class="btn np-login btn-primary btn-welcome">
+              <img class="img-fluid" src="{{site.baseurl}}/images/google.svg" alt="Text"/>
+              <span>Sign-in with Google</span>
+              </button>
+              </div>
+
+
+            <div class="col-xs">
+            <button onclick="performLogin('github')" class="btn np-login btn-primary btn-welcome">
+              <img src="{{site.baseurl}}/images/github.svg" alt="Text"/>
+              <span>Sign-in with Github</span>
+              </button> 
+            </div>           
+            </div>
+          </div>
+       <img class="img-fluid" alt="Responsive image" src="{{site.baseurl}}/images/playgo.png"/>
+    </main>
   </div>
 </div>
+
+
