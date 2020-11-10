@@ -73,7 +73,6 @@ guideRequest.onload = function() {
 		});
 	}
   $("pre").on("click", function() {
-    console.log('clicked');
     $(this).addClass("completed");
   });
 	pwd.newSession(guideDetails.Terminals, { baseUrl: "{{site.pwdurl}}", oauthProvider: 'google', Networks: guideDetails.Networks, Envs: guideDetails.Env });
