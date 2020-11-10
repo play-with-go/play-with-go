@@ -15,6 +15,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/controller/Dockerfile
+    image: playwithgo/controller
     ports:
       - "8081:8080"
     networks:
@@ -38,6 +39,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/cmd_gitea/Dockerfile
+    image: playwithgo/cmd_gitea
     networks:
       - pwg
     environment:
