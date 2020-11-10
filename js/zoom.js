@@ -14,7 +14,7 @@ $(() => {
       localStorage.setItem(STORAGE_NAME, true);
     }
     setTimeout(() => pwd.resize(), 300);
-    ga("send", "event", "Nav", "text-size", wasActive ? "enabled" : "disabled");
+    //ga("send", "event", "Nav", "text-size", wasActive ? "enabled" : "disabled");
   });
 
   if (savedStatus) {

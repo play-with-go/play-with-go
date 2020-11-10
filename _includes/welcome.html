@@ -66,11 +66,11 @@
 
 <script>
   if (localStorage.getItem("skipTutorial") === null) {
-    ga('send', 'event', 'Welcome', 'skip-wizard');
+    //ga('send', 'event', 'Welcome', 'skip-wizard');
     $('#welcomeModal').modal();
   }
   $('#welcomeModal').on('hidden.bs.modal', function (e) {
-    ga('send', 'event', 'Welcome', 'skip-wizard');
+    //ga('send', 'event', 'Welcome', 'skip-wizard');
     localStorage.setItem("skipTutorial", true);
   })
   $('#welcomeNext').click(function() {

@@ -101,11 +101,11 @@ $(() => {
 
   $newQuiz.find(".finish-quiz").click(() => {
     $("#congratz-modal").modal();
-    ga('send', 'event', 'Quiz', 'end');
+    //ga('send', 'event', 'Quiz', 'end');
   });
 
   $newQuiz.submit(e => {
-    ga('send', 'event', 'Quiz', 'start');
+    //ga('send', 'event', 'Quiz', 'start');
     e.preventDefault();
     $newQuiz.addClass("show-answers");
     const dataToSend = $(e.target).serializeArray();
