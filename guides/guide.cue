@@ -28,6 +28,8 @@ _#commonDefs: {
 		list:     "go list"
 		install:  "go install"
 		generate: "go generate"
+		env:      "go env"
+		build:    "go build"
 		vlatest:  "latest"
 	}
 	git: {
