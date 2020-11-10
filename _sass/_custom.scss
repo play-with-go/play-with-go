@@ -1,13 +1,13 @@
 
 
 .welcome-title {
-margin-top: 100px;
+margin-top: 5px;
 font-size: 68px
 }
 
 .welcome-par {
 margin-top: 20px;
-margin-bottom: 40px;
+margin-bottom: 25px;
 font-size: 18px
 }
 
@@ -15,6 +15,7 @@ font-size: 18px
 text-emphasis-color: var(--navbar-color);
 background-color: #ffffff60;
 color: white !important;
+margin: 15px;
 }
 .btn-welcome > img,
 .btn-welcome > span {
@@ -77,6 +78,7 @@ background-color: transparent;
   padding-left: 20px;
   padding-right: 20px;
   border-radius: .25rem;
+  padding-bottom: 40px;
 }
 
 .sub-cards {

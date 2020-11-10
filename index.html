@@ -46,21 +46,27 @@ layout: tutorials
         Hands-on Golang Tutorials to learn from anywhere.</br>
         It all starts with just a few minutes a day.
       </p> 
-        <div class="lead">
+        <div class="container">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-xs">
             <button onclick="performLogin('google')" class="btn np-login btn-primary btn-welcome">
               <img class="img-fluid" src="{{site.baseurl}}/images/google.svg" alt="Text"/>
               <span>Sign-in with Google</span>
               </button>
-            <span style="color: seashell;"> - </span>
+              </div>
+
+
+            <div class="col-xs">
             <button onclick="performLogin('github')" class="btn np-login btn-primary btn-welcome">
               <img src="{{site.baseurl}}/images/github.svg" alt="Text"/>
               <span>Sign-in with Github</span>
-              </button>            
+              </button> 
+            </div>           
             </div>
-       <img src="{{site.baseurl}}/images/playgo.png"/>
+          </div>
+       <img class="img-fluid" alt="Responsive image" src="{{site.baseurl}}/images/playgo.png"/>
     </main>
   </div>
 </div>
-
 
 
