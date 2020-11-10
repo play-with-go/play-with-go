@@ -20,6 +20,7 @@
   --feedbak-footer: #26343B;
   --quote-color: #71a6bf;
   --modal-bg-color: #FFFFFF;
+  --code-bold-color: #006763;
 
   .dark-mode{
       --navbar-color: #26343B;
@@ -30,6 +31,7 @@
       --expand-color: #C0C8CD;
       --pre-bgcolor: #0A121B;
       --pre-color: #B3E1DF;
+      --code-bold-color: #009bcc;
       --drawer-bgcolor: #072336;
       --terminal-text-color: #fafafa;
       --card-bgcolor: #0A121B;
@@ -203,7 +205,6 @@ code[class*="."] {
   cursor: pointer;
 }
 
-
 pre:not(.highlight) {
   color: var(--pre-color);
   background-color: var(--pre-bgcolor);
@@ -215,6 +216,9 @@ pre:not(.highlight) {
   word-break: normal !important;
   word-wrap: break-word;
   position: relative;
+  code b {
+      color: var(--code-bold-color);
+  }
 }
 
 pre.completed {
