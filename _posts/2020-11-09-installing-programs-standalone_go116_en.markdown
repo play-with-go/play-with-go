@@ -1,8 +1,9 @@
 ---
-categories: beginner
 guide: 2020-11-09-installing-programs-standalone
 lang: en
 layout: post
+category: Category 2
+difficulty: Advanced
 title: Installing Go programs standalone
 ---
 

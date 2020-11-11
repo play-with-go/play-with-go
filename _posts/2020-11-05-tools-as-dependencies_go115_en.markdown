@@ -1,8 +1,9 @@
 ---
-categories: beginner
 guide: 2020-11-05-tools-as-dependencies
 lang: en
 layout: post
+category: Category 2 
+difficulty: Beginner
 title: Developer tools as module dependencies
 ---
 

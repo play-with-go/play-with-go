@@ -1,11 +1,11 @@
 ---
-layout: tutorials
+layout: plain
 ---
 
 
 <script charset="utf-8">
   if (localStorage.getItem("authenticated") == "true") {
-    document.location.href = "home.html";
+    document.location.href = "guides.html";
   }
   function performLogin(provider) {
     var width = screen.width * 0.6;
@@ -30,7 +30,7 @@ layout: tutorials
       function (e) {
         if (e.data === "done") {
           localStorage.setItem("authenticated", true);
-          document.location.href = "home.html"
+          document.location.href = "guides.html"
         }
       },
       false
@@ -38,31 +38,29 @@ layout: tutorials
   }
 </script>
 
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
-  <main role="main" class="inner cover">
-    <h1 class="cover-heading welcome-title" style="color: seashell;">Play with Go</h1>
-    <p class="lead welcome-par" style="color: seashell;">
-      Hands-on Golang Tutorials to learn from anywhere.</br>
-      It all starts with just a few minutes a day.
-    </p> 
-      <div class="container">
-        <div class="row align-items-center justify-content-center">
-          <div class="col-xs">
-          <button onclick="performLogin('google')" class="btn np-login btn-primary btn-welcome">
-            <img class="img-fluid" src="{{site.baseurl}}/images/google.svg" alt="Text"/>
-            <span>Sign-in with Google</span>
-            </button>
-            </div>
-
-
-          <div class="col-xs">
-          <button onclick="performLogin('github')" class="btn np-login btn-primary btn-welcome">
-            <img src="{{site.baseurl}}/images/github.svg" alt="Text"/>
-            <span>Sign-in with Github</span>
-            </button> 
-          </div>           
+<div class="text-center">
+  <h1 class="cover-heading welcome-title" style="color: seashell;">Play with Go</h1>
+  <p class="lead welcome-par" style="color: seashell;">
+    Hands-on Golang Tutorials to learn from anywhere.</br>
+    It all starts with just a few minutes a day.
+  </p> 
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-xs">
+        <button onclick="performLogin('google')" class="btn np-login btn-primary btn-welcome">
+          <img class="img-fluid" src="{{site.baseurl}}/images/google.svg" alt="Text"/>
+          <span>Sign-in with Google</span>
+          </button>
           </div>
+
+
+        <div class="col-xs">
+        <button onclick="performLogin('github')" class="btn np-login btn-primary btn-welcome">
+          <img src="{{site.baseurl}}/images/github.svg" alt="Text"/>
+          <span>Sign-in with Github</span>
+          </button> 
+        </div>           
         </div>
-     <img class="img-fluid" alt="Responsive image" src="{{site.baseurl}}/images/playgo.png"/>
-  </main>
+      </div>
+   <img class="img-fluid" alt="Responsive image" src="{{site.baseurl}}/images/playgo.png"/>
 </div>

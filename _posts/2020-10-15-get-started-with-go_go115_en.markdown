@@ -1,8 +1,9 @@
 ---
-categories: beginner
 guide: 2020-10-15-get-started-with-go
 lang: en
 layout: post
+category: Category 1
+difficulty: Beginner
 title: 'Tutorial: Get started with Go'
 ---
 

@@ -1,8 +1,9 @@
 ---
-categories: intermediate
 guide: 2020-11-08-retracting-module-versions
 lang: en
 layout: post
+category: Others
+difficulty: Advanced
 title: Retracting Module Versions
 ---
 

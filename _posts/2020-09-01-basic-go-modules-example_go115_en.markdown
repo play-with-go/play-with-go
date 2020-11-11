@@ -1,8 +1,9 @@
 ---
-categories: intermediate
 guide: 2020-09-01-basic-go-modules-example
 lang: en
 layout: post
+category: Category 1
+difficulty: Beginner
 tags:
 - modules
 - tools

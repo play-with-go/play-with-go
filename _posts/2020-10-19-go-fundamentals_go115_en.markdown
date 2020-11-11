@@ -1,8 +1,9 @@
 ---
-categories: beginner
 guide: 2020-10-19-go-fundamentals
 lang: en
 layout: post
+category: Others
+difficulty: Intermediate
 title: 'Tutorial: Go fundamentals'
 ---
 
