@@ -11,6 +11,8 @@ _#workflows: [
 
 #testWorkflow: json.#Workflow & {
 	env: {
+		DOCKER_HUB_USER:                    "playwithgopher"
+		DOCKER_HUB_TOKEN:                   "${{ secrets.DOCKER_HUB_TOKEN }}"
 		PREGUIDE_DEBUG:                     true
 		PREGUIDE_SKIP_CACHE:                true
 		PLAYWITHGODEV_CONTRIBUTOR_USER:     "playwithgopher_github"
@@ -99,7 +101,10 @@ test: {
 	name: "Test"
 	#testWorkflow
 	on: {
-		push: branches: ["main"]
+		push: {
+			branches: ["main"]
+			tags: ["v*"]
+		}
 		pull_request: branches: ["**"]
 		schedule: [{cron: "0 9 * * *"}]
 	}
