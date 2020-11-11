@@ -43,6 +43,8 @@ layout: plain
             {% assign words = post.content | strip_html | number_of_words %}
             {{ words | divided_by: 180 | plus: 1 }} min read.
             </p>
+          </div>
+          <div class="card-footer text-center">
             <a href="{{ site.baseurl }}{{ post.url }}" class="card-link">Start tutorial</a>
           </div>
         </div>
