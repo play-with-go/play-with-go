@@ -38,29 +38,33 @@ layout: plain
   }
 </script>
 
-<div class="text-center">
-  <h1 class="cover-heading welcome-title" style="color: seashell;">Play with Go</h1>
-  <p class="lead welcome-par" style="color: seashell;">
-    Hands-on Golang Tutorials to learn from anywhere.</br>
-    It all starts with just a few minutes a day.
-  </p> 
-    <div class="container">
-      <div class="row align-items-center justify-content-center">
-        <div class="col-xs">
-        <button onclick="performLogin('google')" class="btn np-login btn-primary btn-welcome">
-          <img class="img-fluid" src="{{site.baseurl}}/images/google.svg" alt="Text"/>
-          <span>Sign-in with Google</span>
-          </button>
+<div class="landing" style="height: 100%">
+  <div class="container" >
+    <div class="text-center">
+      <h1 class="cover-heading welcome-title" style="color: seashell;">Play with Go</h1>
+      <p class="lead welcome-par" style="color: seashell;">
+        Hands-on Golang Tutorials to learn from anywhere.</br>
+        It all starts with just a few minutes a day.
+      </p> 
+        <div class="container">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-xs">
+            <button onclick="performLogin('google')" class="btn np-login btn-primary btn-welcome">
+              <img class="img-fluid" src="{{site.baseurl}}/images/google.svg" alt="Text"/>
+              <span>Sign-in with Google</span>
+              </button>
+              </div>
+
+
+            <div class="col-xs">
+            <button onclick="performLogin('github')" class="btn np-login btn-primary btn-welcome">
+              <img src="{{site.baseurl}}/images/github.svg" alt="Text"/>
+              <span>Sign-in with Github</span>
+              </button> 
+            </div>           
+            </div>
           </div>
-
-
-        <div class="col-xs">
-        <button onclick="performLogin('github')" class="btn np-login btn-primary btn-welcome">
-          <img src="{{site.baseurl}}/images/github.svg" alt="Text"/>
-          <span>Sign-in with Github</span>
-          </button> 
-        </div>           
-        </div>
-      </div>
-   <img class="img-fluid" alt="Responsive image" src="{{site.baseurl}}/images/playgo.png"/>
+       <img class="img-fluid" alt="Responsive image" src="{{site.baseurl}}/images/playgo.png"/>
+    </div>
+  </div>
 </div>
