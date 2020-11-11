@@ -24,7 +24,7 @@ Steps: {
 			CmdStr:           "staticcheck ."
 			Negated:          false
 		}]
-		Order:           22
+		Order:           23
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -32,7 +32,7 @@ Steps: {
 		Name:            "pets_staticcheck_final"
 	}
 	pets_go_final: {
-		Order: 21
+		Order: 22
 		Source: """
 			// Package pets contains useful functionality for pet owners
 			package pets
@@ -131,7 +131,7 @@ Steps: {
 			CmdStr:           "staticcheck ."
 			Negated:          false
 		}]
-		Order:           20
+		Order:           21
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -139,7 +139,7 @@ Steps: {
 		Name:            "pets_staticcheck_check_sa4018_still_ignored"
 	}
 	pets_go_file_ignore_sa4018: {
-		Order: 19
+		Order: 20
 		Source: """
 			// Package pets contains useful functionality for pet owners
 			package pets
@@ -240,7 +240,7 @@ Steps: {
 			CmdStr:           "staticcheck ."
 			Negated:          false
 		}]
-		Order:           18
+		Order:           19
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -248,7 +248,7 @@ Steps: {
 		Name:            "pets_staticcheck_check_sa4018_ignored"
 	}
 	pets_go_ignore_sa4018: {
-		Order: 17
+		Order: 18
 		Source: """
 			// Package pets contains useful functionality for pet owners
 			package pets
@@ -353,7 +353,7 @@ Steps: {
 			CmdStr:   "staticcheck ."
 			Negated:  true
 		}]
-		Order:           16
+		Order:           17
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -361,7 +361,7 @@ Steps: {
 		Name:            "pets_staticcheck_check_feed"
 	}
 	pets_go_feed: {
-		Order: 15
+		Order: 16
 		Source: """
 			// Package pets contains useful functionality for pet owners
 			package pets
@@ -454,7 +454,7 @@ Steps: {
 			CmdStr:           "staticcheck ."
 			Negated:          false
 		}]
-		Order:           14
+		Order:           15
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -462,7 +462,7 @@ Steps: {
 		Name:            "pets_staticcheck_st1000_fixed"
 	}
 	pets_go_with_package_comment: {
-		Order: 13
+		Order: 14
 		Source: """
 			// Package pets contains useful functionality for pet owners
 			package pets
@@ -555,7 +555,7 @@ Steps: {
 			CmdStr:   "staticcheck ."
 			Negated:  true
 		}]
-		Order:           12
+		Order:           13
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -563,7 +563,7 @@ Steps: {
 		Name:            "pets_staticcheck_st1000_enabled"
 	}
 	staticcheck_config_initial: {
-		Order: 11
+		Order: 12
 		Source: """
 			checks = ["inherit", "ST1000"]
 
@@ -585,7 +585,7 @@ Steps: {
 			CmdStr:           "staticcheck ."
 			Negated:          false
 		}]
-		Order:           10
+		Order:           11
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -593,7 +593,7 @@ Steps: {
 		Name:            "pets_staticcheck_fixed"
 	}
 	pets_go_fixed: {
-		Order: 9
+		Order: 10
 		Source: """
 			package pets
 
@@ -671,6 +671,35 @@ Steps: {
 		Terminal: "term1"
 		StepType: 2
 		Name:     "pets_go_fixed"
+	}
+	staticcheck_explain: {
+		Stmts: [{
+			ComparisonOutput: """
+				Invalid Printf call
+
+				Available since
+				    2019.2
+
+
+				"""
+			Output: """
+				Invalid Printf call
+
+				Available since
+				    2019.2
+
+
+				"""
+			ExitCode: 0
+			CmdStr:   "staticcheck -explain SA5009"
+			Negated:  false
+		}]
+		Order:           9
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "staticcheck_explain"
 	}
 	pets_staticcheck_initial: {
 		Stmts: [{
@@ -930,5 +959,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "c1c19ac756ef192efb027b781284a997be8c662f05ad59717e9c6343b2b5f919"
+Hash: "72fbdb4e8b2fa0eb55c42466a0b9cc7983d58608c37f0970a59ff3929059b30a"
 Delims: ["{{{", "}}}"]

@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Using Staticcheck: static analysis for the win"
-excerpt: "Find bugs and performance issues while enforcing style rules"
-category: Category 2
+title:  "How to use and tweak Staticcheck"
+excerpt: "Using static analysis to automatically find bugs and performance optimizations."
+category: Next steps
 difficulty: Intermediate
 ---
 
@@ -21,7 +21,7 @@ editor](https://github.com/golang/tools/blob/master/gopls/doc/settings.md#static
 
 Staticcheck is open source and offered completely free of charge. Sponsors guarantee its continued development. The
 `play-with-go.dev` project is proud to sponsor the Staticcheck project. If you, your employer or your company use
-Staticcheck please consider [sponsoring](https://staticcheck.io/sponsors) the project.
+Staticcheck please consider [sponsoring](https://github.com/sponsors/dominikh) the project.
 
 This guide gets you up and running with Staticcheck by analysing the `<!--ref: pets_mod-->` module.
 
@@ -70,7 +70,7 @@ Time to create an initial version of the `<!--ref: pets-->` module:
 
 <!--step: pets_init-->
 
-Because you are not going to publish this module (or import import the `<!--ref:pets-->` package, it's just a toy
+Because you are not going to publish this module (or import the `<!--ref:pets-->` package; it's just a toy
 example), you do not need to initialise this directory as a `git` repository and can give the module whatever path you
 like. Here, simply `<!--ref: pets-->`.
 
@@ -103,7 +103,10 @@ listed below:
 * Stylistic issues `ST1???`
 
 The Staticcheck website [lists and documents all the categories and checks](https://staticcheck.io/docs/checks). Many of
-the checks even have examples.
+the checks even have examples. You can also use the `<!--ref:staticcheck_explain_flag-->` flag to get details at the command
+line:
+
+<!--step: staticcheck_explain-->
 
 Let's consider one of the problems reported, [`ST1006`](https://staticcheck.io/docs/checks#ST1006), documented as "Poorly
 chosen receiver name". The Staticcheck check documentation quotes from the [Go Code Review Comments
@@ -121,7 +124,7 @@ almost every line of every method of the type; familiarity admits
 brevity. Be consistent, too: if you call the receiver "c" in one
 method, don't call it "cl" in another.
 
-Each error message explains the problem, but also indicate how to fix the problem. Let's fix up `<!--ref:pets_go-->`:
+Each error message explains the problem, but also indicates how to fix the problem. Let's fix up `<!--ref:pets_go-->`:
 
 <!--step:pets_go_fixed-->
 

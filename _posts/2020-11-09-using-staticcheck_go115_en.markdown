@@ -1,11 +1,11 @@
 ---
-category: Category 2
+category: Next steps
 difficulty: Intermediate
-excerpt: Find bugs and performance issues while enforcing style rules
+excerpt: Using static analysis to automatically find bugs and performance optimizations.
 guide: 2020-11-09-using-staticcheck
 lang: en
 layout: post
-title: 'Using Staticcheck: static analysis for the win'
+title: How to use and tweak Staticcheck
 ---
 
 _By [Dominik Honnef](https://dominik.honnef.co/), author of Staticcheck._
@@ -23,7 +23,7 @@ editor](https://github.com/golang/tools/blob/master/gopls/doc/settings.md#static
 
 Staticcheck is open source and offered completely free of charge. Sponsors guarantee its continued development. The
 `play-with-go.dev` project is proud to sponsor the Staticcheck project. If you, your employer or your company use
-Staticcheck please consider [sponsoring](https://staticcheck.io/sponsors) the project.
+Staticcheck please consider [sponsoring](https://github.com/sponsors/dominikh) the project.
 
 This guide gets you up and running with Staticcheck by analysing the `pets` module.
 
@@ -108,7 +108,7 @@ go: creating new go.mod: module pets
 ```
 {:data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL3BldHMKY2QgL2hvbWUvZ29waGVyL3BldHMKZ28gbW9kIGluaXQgcGV0cwo="}
 
-Because you are not going to publish this module (or import import the `pets` package, it's just a toy
+Because you are not going to publish this module (or import the `pets` package; it's just a toy
 example), you do not need to initialise this directory as a `git` repository and can give the module whatever path you
 like. Here, simply `pets`.
 
@@ -183,7 +183,18 @@ listed below:
 * Stylistic issues `ST1???`
 
 The Staticcheck website [lists and documents all the categories and checks](https://staticcheck.io/docs/checks). Many of
-the checks even have examples.
+the checks even have examples. You can also use the `-explain` flag to get details at the command
+line:
+
+```.term1
+$ staticcheck -explain SA5009
+Invalid Printf call
+
+Available since
+    2019.2
+
+```
+{:data-command-src="c3RhdGljY2hlY2sgLWV4cGxhaW4gU0E1MDA5Cg=="}
 
 Let's consider one of the problems reported, [`ST1006`](https://staticcheck.io/docs/checks#ST1006), documented as "Poorly
 chosen receiver name". The Staticcheck check documentation quotes from the [Go Code Review Comments
@@ -201,7 +212,7 @@ almost every line of every method of the type; familiarity admits
 brevity. Be consistent, too: if you call the receiver "c" in one
 method, don't call it "cl" in another.
 
-Each error message explains the problem, but also indicate how to fix the problem. Let's fix up `pets.go`:
+Each error message explains the problem, but also indicates how to fix the problem. Let's fix up `pets.go`:
 
 <pre data-upload-path="L2hvbWUvZ29waGVyL3BldHM=" data-upload-src="cGV0cy5nbw==:cGFja2FnZSBwZXRzCgppbXBvcnQgKAoJImZtdCIKKQoKdHlwZSBBbmltYWwgaW50Cgpjb25zdCAoCglEb2cgQW5pbWFsID0gaW90YQoJU25ha2UKKQoKdHlwZSBQZXQgc3RydWN0IHsKCUtpbmQgQW5pbWFsCglOYW1lIHN0cmluZwp9CgpmdW5jIChwIFBldCkgV2FsaygpIGVycm9yIHsKCXN3aXRjaCBwLktpbmQgewoJY2FzZSBEb2c6CgkJZm10LlByaW50ZigiV2lsbCB0YWtlICV2IGZvciBhIHdhbGsgYXJvdW5kIHRoZSBibG9ja1xuIiwgcC5OYW1lKQoJZGVmYXVsdDoKCQlyZXR1cm4gZm10LkVycm9yZigiY2Fubm90IHRha2UgJXYgZm9yIGEgd2FsayIsIHAuTmFtZSkKCX0KCXJldHVybiBuaWwKfQoKZnVuYyAocCBQZXQpIFN0cmluZygpIHN0cmluZyB7CglyZXR1cm4gcC5OYW1lCn0K" data-upload-term=".term1"><code class="language-go">package pets
 

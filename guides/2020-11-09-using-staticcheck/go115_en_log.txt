@@ -63,6 +63,12 @@ pets.go:23:14: Printf format %v reads arg #1, but call has only 0 args (SA5009)
 pets.go:25:10: should use fmt.Errorf(...) instead of errors.New(fmt.Sprintf(...)) (S1028)
 pets.go:30:7: receiver name should be a reflection of its identity; don't use generic names such as "this" or "self" (ST1006)
 pets.go:31:9: the argument is already a string, there's no need to use fmt.Sprintf (S1025)
+$ staticcheck -explain SA5009
+Invalid Printf call
+
+Available since
+    2019.2
+
 $ cat <<EOD > /home/gopher/pets/pets.go
 package pets
 
