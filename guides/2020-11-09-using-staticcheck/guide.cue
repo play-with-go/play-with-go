@@ -6,14 +6,16 @@ import (
 
 Defs: {
 	_#commonDefs
-	staticcheck_version: "v0.0.1-2020.1.6"
-	staticcheck_conf:    "staticcheck.conf"
-	staticcheck_st1000:  "ST1000"
-	staticcheck_sa4018:  "SA4018"
-	pets:                "pets"
-	pets_dir:            "/home/gopher/\(pets)"
-	pets_go:             "\(pets).go"
-	pets_mod:            "\(pets)"
+	staticcheck_version:      "v0.0.1-2020.1.6"
+	staticcheck_conf:         "staticcheck.conf"
+	staticcheck_st1000:       "ST1000"
+	staticcheck_sa4018:       "SA4018"
+	staticcheck_sa5009:       "SA5009"
+	staticcheck_explain_flag: "-explain"
+	pets:                     "pets"
+	pets_dir:                 "/home/gopher/\(pets)"
+	pets_go:                  "\(pets).go"
+	pets_mod:                 "\(pets)"
 }
 
 Scenarios: go115: preguide.#Scenario & {
@@ -114,6 +116,12 @@ Steps: pets_build_initial: preguide.#Command & {
 Steps: pets_staticcheck_initial: preguide.#Command & {
 	Source: """
 		! staticcheck .
+		"""
+}
+
+Steps: staticcheck_explain: preguide.#Command & {
+	Source: """
+		staticcheck \(Defs.staticcheck_explain_flag) \(Defs.staticcheck_sa5009)
 		"""
 }
 
