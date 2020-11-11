@@ -2,7 +2,7 @@
 layout: post
 title:  "Installing Go programs standalone"
 excerpt: "Simple easy-to-remember way to install Go programs"
-category: Category 2
+category: What's coming in Go 1.16
 difficulty: Beginner
 ---
 

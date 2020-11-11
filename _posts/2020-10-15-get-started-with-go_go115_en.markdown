@@ -1,7 +1,8 @@
 ---
-category: Category 1
+category: Start here
 difficulty: Beginner
-excerpt: A brief introduction to Go programming language
+excerpt: You've completed the Go tour, so what next? This guide gives a brief introduction
+  to Go programming
 guide: 2020-10-15-get-started-with-go
 lang: en
 layout: post

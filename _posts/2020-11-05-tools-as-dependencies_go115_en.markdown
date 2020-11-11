@@ -1,5 +1,5 @@
 ---
-category: Category 2
+category: Next steps
 difficulty: Intermediate
 excerpt: Ensure all developers use the same version of each developer tool
 guide: 2020-11-05-tools-as-dependencies

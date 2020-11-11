@@ -2,8 +2,8 @@
 layout: post
 title:  "Retracting Module Versions"
 excerpt: "Learn how to flag modules that shouldn't be used"
-category: Others
-difficulty: Advanced
+category: What's coming in Go 1.16
+difficulty: Intermediate
 ---
 
 _Note: this is a preview of a `cmd/go` feature that is due to land in Go 1.16_

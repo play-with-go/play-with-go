@@ -1,9 +1,9 @@
 ---
 layout: post
 title:  "Tutorial: Get started with Go"
-excerpt: "A brief introduction to Go programming language"
-category: Category 1
+excerpt: "You've completed the Go tour, so what next? This guide gives a brief introduction to Go programming"
 difficulty: Beginner
+category: Start here
 ---
 
 _This tutorial is based on the official ["Getting started"](https://golang.org/doc/tutorial/getting-started.html)

@@ -14,7 +14,6 @@ _#workflows: [
 		DOCKER_HUB_USER:                    "playwithgopher"
 		DOCKER_HUB_TOKEN:                   "${{ secrets.DOCKER_HUB_TOKEN }}"
 		PREGUIDE_DEBUG:                     true
-		PREGUIDE_SKIP_CACHE:                true
 		PLAYWITHGODEV_CONTRIBUTOR_USER:     "playwithgopher_github"
 		PLAYWITHGODEV_CONTRIBUTOR_PASSWORD: "${{ secrets.PLAYWITHGODEV_CONTRIBUTOR_PASSWORD }}"
 		PLAYWITHGOPHER_GITHUB_PAT:          "${{ secrets.PLAYWITHGOPHER_GITHUB_PAT }}"
