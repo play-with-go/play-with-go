@@ -1,7 +1,9 @@
 ---
 layout: post
 title:  "Developer tools as module dependencies"
-categories: beginner
+excerpt: "Ensure all developers use the same version of each developer tool"
+difficulty: Intermediate
+category: Category 2
 ---
 
 Go modules support developer tools (commands) as dependencies. For example, your project might require a tool to help

@@ -34,10 +34,10 @@ layout: plain
     <div class="row card-deck">
       {% for post in cat[1] %}
       <div class="col-md-4 card-pad">
-        <div class="card">
+        <div class="card h-100">
           <div class="card-body">
             <h5 class="card-title">{{ post.title }}</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-text">{{ post.excerpt }}</p>
             <p class="card-text time"><i class="fa fa-graduation-cap" aria-hidden="true"></i>   {{post.difficulty}}</p>
             <p class="card-text time" title="Estimated read time"> <i class="fa fa-clock-o" aria-hidden="true"></i> 
             {% assign words = post.content | strip_html | number_of_words %}

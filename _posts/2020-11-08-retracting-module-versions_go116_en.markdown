@@ -1,9 +1,10 @@
 ---
+category: Others
+difficulty: Advanced
+excerpt: Learn how to flag modules that shouldn't be used
 guide: 2020-11-08-retracting-module-versions
 lang: en
 layout: post
-category: Others
-difficulty: Advanced
 title: Retracting Module Versions
 ---
 

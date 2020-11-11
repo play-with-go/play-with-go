@@ -1,7 +1,9 @@
 ---
 layout: post
 title:  "Using Staticcheck: static analysis for the win"
-categories: intermediate
+excerpt: "Find bugs and performance issues while enforcing style rules"
+category: Category 2
+difficulty: Intermediate
 ---
 
 _By [Dominik Honnef](https://dominik.honnef.co/), author of Staticcheck._
