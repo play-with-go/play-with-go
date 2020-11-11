@@ -44,8 +44,8 @@ background-color: transparent;
 
 
 .card-deck{
-  border: 1px solid rgba(0,0,0,.125);
-  background-color: #fafafa80;
+  border: none ;
+  background-color: transparent;
   padding-left: 20px;
   padding-right: 20px;
   border-radius: .25rem;
@@ -54,5 +54,23 @@ background-color: transparent;
 
 .landing {
     background: linear-gradient(0deg, var(--docker-color), var(--navbar-color));
+}
+
+.catego {
+font-family: 'Work Sans', sans-serif;
+font-size: 20px;
+color: seashell;
+font-weight: 500;
+
+}
+
+.line {
+  border-color: rgba(255, 245, 238, 0.6);
+
+}
+
+.time {
+  font-size: 14px;
+  font-family: 'Work Sans', sans-serif;
 }
 
