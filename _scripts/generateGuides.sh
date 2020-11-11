@@ -7,4 +7,10 @@ eval "$($( command cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd 
 
 cd "$( command cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )/.."
 
+# Only force the skip of cache on main
+if [ "${GITHUB_REF:-}" == "refs/heads/main" ]
+then
+	export PREGUIDE_SKIP_CACHE=true
+fi
+
 go generate -tags guides ./guides

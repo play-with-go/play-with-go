@@ -1,9 +1,9 @@
 ---
 layout: post
 title:  "An introduction to play-with-go.dev guides"
-excerpt: "Learn how to write or contribute to play-with-go tutorials"
-difficulty: Intermediate
-category: Others
+excerpt: "Learn about how to get the most out of play-with-go.dev guides"
+difficulty: Beginner
+category: Start here
 ---
 
 [`play-with-go.dev`](https://play-with-go.dev/) is a series of interactive browser-based guides that lead you on a tour

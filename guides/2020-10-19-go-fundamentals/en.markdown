@@ -3,7 +3,7 @@ layout: post
 title:  "Tutorial: Go fundamentals"
 excerpt: "Primer on creating and using go modules"
 difficulty: Beginner
-category: Category 2
+category: Start here
 ---
 
 _This tutorial is based on the official ["Create a module"](https://golang.org/doc/tutorial/create-module) tutorial._

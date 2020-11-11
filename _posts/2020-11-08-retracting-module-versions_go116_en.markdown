@@ -1,6 +1,6 @@
 ---
-category: Others
-difficulty: Advanced
+category: What's coming in Go 1.16
+difficulty: Intermediate
 excerpt: Learn how to flag modules that shouldn't be used
 guide: 2020-11-08-retracting-module-versions
 lang: en

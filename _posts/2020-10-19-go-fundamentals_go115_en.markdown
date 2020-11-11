@@ -1,5 +1,5 @@
 ---
-category: Category 2
+category: Start here
 difficulty: Beginner
 excerpt: Primer on creating and using go modules
 guide: 2020-10-19-go-fundamentals

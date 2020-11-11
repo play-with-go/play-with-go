@@ -1,5 +1,5 @@
 ---
-category: Category 2
+category: What's coming in Go 1.16
 difficulty: Beginner
 excerpt: Simple easy-to-remember way to install Go programs
 guide: 2020-11-09-installing-programs-standalone
