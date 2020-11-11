@@ -7,8 +7,8 @@ Presteps: [{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20201106060436-cd0e98fe53f4",
-		    "Sum": "h1:gsIXEg+J3mOTHm32E8Kuqat+6YaB/2MnlwDvpYFD8Aw=",
+		    "Version": "v0.0.0-20201111211636-d5c2d11ae999",
+		    "Sum": "h1:onJu544F8EHf+VAWAS8W5BUyrmadeKU/vwayWws1pJ4=",
 		    "Replace": null
 		  },
 		  "Deps": [
@@ -96,9 +96,11 @@ Presteps: [{
 	Args: {
 		Repos: [{
 			Var:     "GREETINGS"
+			Private: false
 			Pattern: "greetings"
 		}, {
 			Var:     "HELLO"
+			Private: false
 			Pattern: "hello"
 		}]
 	}
@@ -1678,6 +1680,27 @@ Steps: {
 		StepType:        1
 		Name:            "gomodinit_hello"
 	}
+	mkdir_hello: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "mkdir /home/gopher/hello"
+			Negated:          false
+		}, {
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "cd /home/gopher/hello"
+			Negated:          false
+		}]
+		Order:           10
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "mkdir_hello"
+	}
 	greetings_gitpush: {
 		Stmts: [{
 			ComparisonOutput: """
@@ -1872,27 +1895,6 @@ Steps: {
 		StepType:        1
 		Name:            "mkdir_greetings"
 	}
-	mkdir_hello: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "mkdir /home/gopher/hello"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "cd /home/gopher/hello"
-			Negated:          false
-		}]
-		Order:           10
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "mkdir_hello"
-	}
 	pwd_home: {
 		Stmts: [{
 			ComparisonOutput: """
@@ -1936,5 +1938,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "6a780b9e1ae1a47854d9f9ace3e12cd660fd5b933baf0078401f6c21b0f70f10"
+Hash: "0cfc00e88c440495946c295d620ad3fa36898773e5dce9dd5a2980b40bdb0830"
 Delims: ["{{{", "}}}"]
