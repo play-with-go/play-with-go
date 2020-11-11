@@ -2,7 +2,9 @@
 layout: post
 title:  "A simple Go modules guide"
 tags: [modules, tools, versioning]
-categories: intermediate
+category: Category 1
+excerpt: "Learn the basics on how to work with Go modules"
+difficulty: Beginner
 terms: 1
 toc: true
 ---

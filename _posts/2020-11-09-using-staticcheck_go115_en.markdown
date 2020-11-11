@@ -1,5 +1,7 @@
 ---
-categories: intermediate
+category: Category 2
+difficulty: Intermediate
+excerpt: Find bugs and performance issues while enforcing style rules
 guide: 2020-11-09-using-staticcheck
 lang: en
 layout: post

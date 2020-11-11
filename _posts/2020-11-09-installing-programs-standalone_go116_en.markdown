@@ -1,5 +1,7 @@
 ---
-categories: beginner
+category: Category 2
+difficulty: Beginner
+excerpt: Simple easy-to-remember way to install Go programs
 guide: 2020-11-09-installing-programs-standalone
 lang: en
 layout: post

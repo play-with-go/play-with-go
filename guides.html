@@ -1,0 +1,60 @@
+---
+permalink: /guides
+layout: plain
+---
+
+<div class="landing">
+  <div class="container">
+    <div class="row d-flex align-items-center">
+      <div class="col-lg-7 col-md-9 ">
+        <h1 style="color: #FDDD00;">
+            Hi Friend! <br>
+            Welcome to Play with Go</h1>
+        <p class="lead welcome-par" style="color: seashell;" >
+            Join these challenges and learn how to build and   
+            share a containerized app and so much more. 
+            Sounds fun? <br> Get started now!</p>
+      </div>
+      <div class="col-lg-5">
+        <div class="d-none d-lg-block"> 
+          <img src="{{site.baseurl}}/images/gopher.png">
+        </div>
+      </div>
+    </div>
+  
+
+    {% assign categories = site.categories %}
+
+    {% for cat in categories %}
+    <div class="row">
+      <div class="col"><hr class="line"></div>
+      <div class="col-auto catego">{{cat[0]}}</div>
+      <div class="col"><hr class="line"></div>
+    </div>
+
+    <div class="row card-deck">
+      {% for post in cat[1] %}
+      <div class="col-md-4 card-pad">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.excerpt }}</p>
+            <p class="card-text time"><i class="fa fa-graduation-cap" aria-hidden="true"></i>   {{post.difficulty}}</p>
+            <p class="card-text time" title="Estimated read time"> <i class="fa fa-clock-o" aria-hidden="true"></i> 
+            {% assign words = post.content | strip_html | number_of_words %}
+            {{ words | divided_by: 180 | plus: 1 }} min read.
+            </p>
+          </div>
+          <div class="card-footer fofo">
+            <a href="{{ site.baseurl }}{{ post.url }}" class="card-link">Start tutorial</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+  </div>
+</div>
+
+

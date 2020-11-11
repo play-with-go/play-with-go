@@ -1,7 +1,9 @@
 ---
 layout: post
 title:  "Installing Go programs standalone"
-categories: beginner
+excerpt: "Simple easy-to-remember way to install Go programs"
+category: Category 2
+difficulty: Beginner
 ---
 
 _By [Daniel Martí](https://twitter.com/mvdan_)_

@@ -1,5 +1,7 @@
 ---
-categories: intermediate
+category: Category 1
+difficulty: Beginner
+excerpt: Learn the basics on how to work with Go modules
 guide: 2020-09-01-basic-go-modules-example
 lang: en
 layout: post

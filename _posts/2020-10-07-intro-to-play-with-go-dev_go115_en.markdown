@@ -1,5 +1,7 @@
 ---
-categories: beginner
+category: Others
+difficulty: Intermediate
+excerpt: Learn how to write or contribute to play-with-go tutorials
 guide: 2020-10-07-intro-to-play-with-go-dev
 lang: en
 layout: post
