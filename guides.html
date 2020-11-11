@@ -31,6 +31,10 @@ layout: plain
             <h5 class="card-title">{{ post.title }}</h5>
             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
             <p class="card-text">{{post.difficulty}}</p>
+            <p class="card-text" title="Estimated read time">
+            {% assign words = post.content | strip_html | number_of_words %}
+            {{ words | divided_by: 180 | plus: 1 }} min read.
+            </p>
             <a href="{{ site.baseurl }}{{ post.url }}" class="card-link">Start tutorial</a>
           </div>
         </div>
