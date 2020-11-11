@@ -21,6 +21,9 @@
   --quote-color: #71a6bf;
   --modal-bg-color: #FFFFFF;
   --code-bold-color: #006763;
+  --pre-completed: #E1E9E8;
+
+  
 
   .dark-mode{
       --navbar-color: #26343B;
@@ -37,6 +40,7 @@
       --card-bgcolor: #0A121B;
       --disabled-bgcolor: #26343B;
       --modal-bg-color: #26343B;
+      --pre-completed: #98bfbd;
 
   }
 }
@@ -222,7 +226,7 @@ pre:not(.highlight) {
 }
 
 pre.completed {
-    background-color: #E1E9E8;
+    background-color: var(--pre-completed);
     color: #1a6866;
     ::before {
         content: "✓";
