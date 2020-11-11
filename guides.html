@@ -1,0 +1,38 @@
+---
+permalink: /guides
+layout: plain
+---
+<div class="text-center">
+  <main role="main" class="inner cover">
+    <h1 style="color: #FDDD00;">Hi Friend! Welcome to Play with Go</h1>
+    <p class="lead welcome-par" style="color: seashell;">
+      Join these challenges and learn how to build and share a containerized app</br>
+      and so much more. Sounds fun? Get started now!</p>
+    </p>
+</div>
+
+  
+{% assign categories = site.categories %}
+
+{% for cat in categories %}
+<div class="row">
+  <div class="col"><hr></div>
+  <div class="col-auto">{{cat[0]}}</div>
+  <div class="col"><hr></div>
+</div>
+
+<div class="row card-deck">
+  {% for post in cat[1] %}
+    <div class="col-md-4 card-pad">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <p class="card-text">{{post.difficulty}}</p>
+          <a href="{{ site.baseurl }}{{ post.url }}" class="card-link">Start tutorial</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endfor %}
