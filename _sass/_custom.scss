@@ -9,6 +9,7 @@ font-size: 68px
 margin-top: 20px;
 margin-bottom: 25px;
 font-size: 18px
+te
 }
 
 .btn-welcome {
@@ -72,4 +73,33 @@ font-weight: 500;
 .time {
   font-size: 14px;
   font-family: 'Work Sans', sans-serif;
+}
+
+.fofo{
+background-color:  #00ADD8;
+}
+
+.card-link {
+  color: seashell !important;
+  &:hover {
+    color: #FDDD00 !important;
+    font-weight: 500;
+  }
+}
+
+.card {
+  border: none;
+  font-family: 'Work Sans', sans-serif;
+  box-shadow: 0 6px 12px rgba(42, 46, 49, 0.089);
+
+}
+
+
+.card-text {
+  font-size: 14px;
+}
+
+.card-title {
+  font-size: 28px;
+
 }

@@ -222,7 +222,7 @@ pre:not(.highlight) {
 }
 
 pre.completed {
-    background-color: #e9f5f4;
+    background-color: #E1E9E8;
     color: #1a6866;
     ::before {
         content: "✓";
@@ -788,5 +788,5 @@ color: #00758D;
 }
 
 a {
-  color: var(--docker-color) !important;
+  color: var(--docker-color);
 }
