@@ -65,7 +65,7 @@ Steps: proverb_go_initial: preguide.#Upload & {
 
 		// Go returns a Go proverb
 		func Go() string {
-			return "Don't communicate by sharing memory, shard memory by communicating."
+			return "Don't communicate by sharing memory, share memory by communicating."
 		}
 
 		"""

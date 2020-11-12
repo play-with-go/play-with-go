@@ -1033,7 +1033,7 @@ Steps: {
 
 				// Go returns a Go proverb
 				func Go() string {
-				\treturn "Don't communicate by sharing memory, shard memory by communicating."
+				\treturn "Don't communicate by sharing memory, share memory by communicating."
 				}
 
 				"""
@@ -1063,11 +1063,11 @@ Steps: {
 	gopher_run_initial: {
 		Stmts: [{
 			ComparisonOutput: """
-				Don't communicate by sharing memory, shard memory by communicating.
+				Don't communicate by sharing memory, share memory by communicating.
 
 				"""
 			Output: """
-				Don't communicate by sharing memory, shard memory by communicating.
+				Don't communicate by sharing memory, share memory by communicating.
 
 				"""
 			ExitCode: 0
@@ -1231,7 +1231,7 @@ Steps: {
 
 			// Go returns a Go proverb
 			func Go() string {
-			\treturn "Don't communicate by sharing memory, shard memory by communicating."
+			\treturn "Don't communicate by sharing memory, share memory by communicating."
 			}
 
 			"""
@@ -1311,5 +1311,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "3f2162d48b339bdfb64b0aa99ba6c1a33a6f3c57bcf51bdd839f7e6dafa8e636"
+Hash: "85360e76c7c9979a507d20c7ae9485035d754922dd231f87a4e73e08cc6087d6"
 Delims: ["{{{", "}}}"]

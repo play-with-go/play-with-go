@@ -11,7 +11,7 @@ package proverb
 
 // Go returns a Go proverb
 func Go() string {
-	return "Don't communicate by sharing memory, shard memory by communicating."
+	return "Don't communicate by sharing memory, share memory by communicating."
 }
 
 EOD
@@ -45,7 +45,7 @@ EOD
 $ go get {{{.PROVERB}}}@v0.1.0
 go: downloading {{{.PROVERB}}} v0.1.0
 $ go run .
-Don't communicate by sharing memory, shard memory by communicating.
+Don't communicate by sharing memory, share memory by communicating.
 $ cd /home/gopher/proverb
 $ cat <<EOD > /home/gopher/proverb/proverb.go
 package proverb
