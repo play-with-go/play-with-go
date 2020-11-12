@@ -41,6 +41,12 @@ This guide walks you through how to use module retractions. In the guide you wil
 * `gopher`, a simple `main` package that uses `{% raw %}{{{.PROVERB}}}{% endraw %}`. You will not publish this module; it
   will be local-only.
 
+### Prerequisites
+
+You should already have completed:
+
+* The [Go fundamentals Tutorial](/go-fundamentals_go115_en)
+
 This guide is running using:
 
 ```.term1
@@ -65,11 +71,11 @@ go: creating new go.mod: module {% raw %}{{{.PROVERB}}}{% endraw %}
 
 Create an initial version with a `Go` function that returns a Go proverb in the file `proverb.go`:
 
-<pre data-upload-path="L2hvbWUvZ29waGVyL3Byb3ZlcmI=" data-upload-src="cHJvdmVyYi5nbw==:cGFja2FnZSBwcm92ZXJiCgovLyBHbyByZXR1cm5zIGEgR28gcHJvdmVyYgpmdW5jIEdvKCkgc3RyaW5nIHsKCXJldHVybiAiRG9uJ3QgY29tbXVuaWNhdGUgYnkgc2hhcmluZyBtZW1vcnksIHNoYXJkIG1lbW9yeSBieSBjb21tdW5pY2F0aW5nLiIKfQo=" data-upload-term=".term1"><code class="language-go">package proverb
+<pre data-upload-path="L2hvbWUvZ29waGVyL3Byb3ZlcmI=" data-upload-src="cHJvdmVyYi5nbw==:cGFja2FnZSBwcm92ZXJiCgovLyBHbyByZXR1cm5zIGEgR28gcHJvdmVyYgpmdW5jIEdvKCkgc3RyaW5nIHsKCXJldHVybiAiRG9uJ3QgY29tbXVuaWNhdGUgYnkgc2hhcmluZyBtZW1vcnksIHNoYXJlIG1lbW9yeSBieSBjb21tdW5pY2F0aW5nLiIKfQo=" data-upload-term=".term1"><code class="language-go">package proverb
 
 // Go returns a Go proverb
 func Go() string {
-	return &#34;Don&#39;t communicate by sharing memory, shard memory by communicating.&#34;
+	return &#34;Don&#39;t communicate by sharing memory, share memory by communicating.&#34;
 }
 </code></pre>
 
@@ -146,7 +152,7 @@ Run to make sure everything works:
 
 ```.term1
 $ go run .
-Don't communicate by sharing memory, shard memory by communicating.
+Don't communicate by sharing memory, share memory by communicating.
 ```
 {:data-command-src="Z28gcnVuIC4K"}
 

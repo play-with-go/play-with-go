@@ -39,6 +39,12 @@ This guide walks you through how to use module retractions. In the guide you wil
 * `<!--ref:gopher-->`, a simple `main` package that uses `<!--ref:proverb_mod-->`. You will not publish this module; it
   will be local-only.
 
+### Prerequisites
+
+You should already have completed:
+
+* The [Go fundamentals Tutorial](/go-fundamentals_go115_en)
+
 This guide is running using:
 
 <!--step: goversion-->
