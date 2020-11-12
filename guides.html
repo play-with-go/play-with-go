@@ -27,17 +27,17 @@ layout: plain
     </div>
 
 
-    {% assign categories = site.categories %}
+    {% assign categories = site.guides-categories %}
 
     {% for cat in categories %}
     <div class="row">
       <div class="col"><hr class="line"></div>
-      <div class="col-auto catego">{{cat[0]}}</div>
+      <div class="col-auto catego">{{cat}}</div>
       <div class="col"><hr class="line"></div>
     </div>
 
     <div class="row card-deck">
-      {% for post in cat[1] %}
+      {% for post in site.categories[cat] %}
       <div class="col-md-4 card-pad">
         <div class="card h-100">
           <div class="card-body">
