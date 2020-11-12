@@ -53,6 +53,9 @@ func (r *runner) mainerr() (err error) {
 		raise("controller not provided with any -prestepconfig flags")
 	}
 
+	config, err := r.loadConfig()
+	check(err, "failed to load config: %v", err)
+
 	http.HandleFunc("/", func(resp http.ResponseWriter, req *http.Request) {
 		defer r.handleKnownRequest(resp)
 		if !strings.HasPrefix(req.URL.Path, "/guides") {
@@ -106,11 +109,6 @@ func (r *runner) mainerr() (err error) {
 			raiseHTTP(http.StatusBadRequest, "must be a POST request")
 		}
 
-		c, err := r.loadConfig()
-		if err != nil {
-			raiseHTTP(http.StatusInternalServerError, "failed to load config: %v", err)
-		}
-
 		var guideReq struct {
 			// Guide is the guide name
 			Guide string
@@ -134,7 +132,7 @@ func (r *runner) mainerr() (err error) {
 		}
 
 		// Resolve the guide configuration
-		guideConfig, ok := c.guides[guideReq.Guide]
+		guideConfig, ok := config.guides[guideReq.Guide]
 		if !ok {
 			raiseHTTP(http.StatusInternalServerError, "failed to find guide configuration for %v", pretty.Sprint(guideReq))
 		}
@@ -148,7 +146,7 @@ func (r *runner) mainerr() (err error) {
 		}
 		var presteps []deployedPrestep
 		for _, ps := range guideConfig.Presteps {
-			endpoint, ok := c.presteps[ps.Package]
+			endpoint, ok := config.presteps[ps.Package]
 			if !ok {
 				raiseHTTP(http.StatusInternalServerError, "failed to find prestep deployment configuration for %q (for guide %q)", ps.Package, guideReq.Guide)
 			}
