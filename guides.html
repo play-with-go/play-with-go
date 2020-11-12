@@ -43,11 +43,26 @@ layout: plain
           <div class="card-body">
             <h5 class="card-title">{{ post.title }}</h5>
             <p class="card-text">{{ post.excerpt }}</p>
-            <p class="card-text time"><i class="fa fa-graduation-cap" aria-hidden="true"></i>   {{post.difficulty}}</p>
-            <p class="card-text time" title="Estimated read time"> <i class="fa fa-clock-o" aria-hidden="true"></i>
-            {% assign words = post.content | strip_html | number_of_words %}
-            {{ words | divided_by: 180 | plus: 1 }} min read.
-            </p>
+            <div class="row">
+              <div class="col-1">
+                <i class="fa fa-graduation-cap" aria-hidden="true"></i>   
+              </div>
+              <div class="col">
+                <p class="card-text d-inline time">   {{post.difficulty}}.</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-1">
+                <i class="fa fa-clock-o" style="margin-left: 3px;" aria-hidden="true"></i>
+              </div>
+              <div class="col">
+                <p class="card-text time d-inline" title="Estimated read time"> 
+                {% assign words = post.content | strip_html | number_of_words %}
+                {{ words | divided_by: 180 | plus: 1 }} min read.
+                </p>
+              </div>
+            </div>
+            
           </div>
           <div class="card-footer fofo">
             <a href="{{ site.baseurl }}{{ post.url }}" class="card-link">Start tutorial</a>
