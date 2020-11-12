@@ -34,7 +34,7 @@ layout: default
             <div class="splitter"></div>
             <div class="tab-content" id="myTabContent">
                 {% for i in (1..terms) %}
-                <div class="tab-pane show term{{i}} {% if forloop.first %}active{% endif %}" id="term{{i}}" role="tabpanel" aria-labelledby="term{{i}}-tab"></div>
+                <div class="tab-pane show term{{i}} {% if forloop.first %}active{% endif %}" id="term{{i}}" role="tabpanel" aria-labelledby="term{{i}}-tab"><div class="term-init">Initializing environment, hold a few seconds please...</div></div>
                 {% endfor %}
             </div>
         </div>
