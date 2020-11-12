@@ -171,6 +171,14 @@ Steps: gopher_get_public_initial: preguide.#Command & {
 		"""
 }
 
+Steps: public_pseudo_version: preguide.#Command & {
+	InformationOnly: true
+	RandomReplace:   "v0.0.0-\(_#StablePsuedoversionSuffix)"
+	Source:          """
+		\(Defs.cmdgo.list) -m -f {{.Version}} \(Defs.public_mod)
+		"""
+}
+
 Steps: gopher_get_private_initial: preguide.#Command & {
 	Source: """
 		! \(Defs.cmdgo.get) \(Defs.private_mod)
@@ -205,6 +213,14 @@ Steps: goprivate_set_private: preguide.#Command & {
 Steps: gopher_get_private_goprivate: preguide.#Command & {
 	Source: """
 		\(Defs.cmdgo.get) \(Defs.private_mod)
+		"""
+}
+
+Steps: private_pseudo_version: preguide.#Command & {
+	InformationOnly: true
+	RandomReplace:   "v0.0.0-\(_#StablePsuedoversionSuffix)"
+	Source:          """
+		\(Defs.cmdgo.list) -m -f {{.Version}} \(Defs.private_mod)
 		"""
 }
 

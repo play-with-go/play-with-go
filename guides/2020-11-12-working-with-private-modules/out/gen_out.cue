@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201112105706-464aa7e03365",
-		      "Sum": "h1:rIO+qeZcanEl9kEkrVEASR1EnjRZFW4cljBwiM7Iq7E=",
+		      "Version": "v0.0.2-0.20201112161106-44ae5cf00b09",
+		      "Sum": "h1:LKXLc0HG6uyfja8SUdSwjRefOn6t34hnxzdCTMzqunI=",
 		      "Replace": null
 		    },
 		    {
@@ -139,30 +139,52 @@ Steps: {
 			CmdStr:   "go run ."
 			Negated:  false
 		}]
-		Order:           20
+		Order:           22
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "gopher_run"
 	}
+	private_pseudo_version: {
+		Stmts: [{
+			ComparisonOutput: """
+				v0.0.0-20060102150405-abcedf12345
+
+				"""
+			Output: """
+				v0.0.0-20060102150405-abcedf12345
+
+				"""
+			ExitCode: 0
+			CmdStr:   "go list -m -f {{.Version}} {{{.PRIVATE}}}"
+			Negated:  false
+		}]
+		Order:           21
+		InformationOnly: true
+		DoNotTrim:       false
+		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "private_pseudo_version"
+	}
 	gopher_get_private_goprivate: {
 		Stmts: [{
 			ComparisonOutput: """
 
-				go: downloading {{{.PRIVATE}}} v0.0.0-20201112145352-806167d7acb5
-				go: {{{.PRIVATE}}} upgrade => v0.0.0-20201112145352-806167d7acb5
+				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
+				go: {{{.PRIVATE}}} upgrade => v0.0.0-20060102150405-abcedf12345
 				"""
 			Output: """
-				go: downloading {{{.PRIVATE}}} v0.0.0-20201112145352-806167d7acb5
-				go: {{{.PRIVATE}}} upgrade => v0.0.0-20201112145352-806167d7acb5
+				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
+				go: {{{.PRIVATE}}} upgrade => v0.0.0-20060102150405-abcedf12345
 
 				"""
 			ExitCode: 0
 			CmdStr:   "go get {{{.PRIVATE}}}"
 			Negated:  false
 		}]
-		Order:           19
+		Order:           20
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -177,7 +199,7 @@ Steps: {
 			CmdStr:           "go env -w GOPRIVATE={{{.PRIVATE}}}"
 			Negated:          false
 		}]
-		Order:           18
+		Order:           19
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -189,16 +211,16 @@ Steps: {
 			ComparisonOutput: """
 
 				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
-				\tnot found: {{{.PRIVATE}}}@v0.0.0-20201112145352-806167d7acb5: invalid version: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /tmp/gopath/pkg/mod/cache/vcs/1579f2974f18ae2d93ad89f8eb7e23c7e418fa4b40c77b48fd0ac1a2e489856f: exit status 128:
+				\tnot found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 				\tserver response:
-				go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20201112145352-806167d7acb5: verifying module: {{{.PRIVATE}}}@v0.0.0-20201112145352-806167d7acb5: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20201112145352-806167d7acb5: 410 Gone
-				go: downloading {{{.PRIVATE}}} v0.0.0-20201112145352-806167d7acb5
+				go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 410 Gone
+				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
 				"""
 			Output: """
-				go: downloading {{{.PRIVATE}}} v0.0.0-20201112145352-806167d7acb5
-				go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20201112145352-806167d7acb5: verifying module: {{{.PRIVATE}}}@v0.0.0-20201112145352-806167d7acb5: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20201112145352-806167d7acb5: 410 Gone
+				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
+				go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 410 Gone
 				\tserver response:
-				\tnot found: {{{.PRIVATE}}}@v0.0.0-20201112145352-806167d7acb5: invalid version: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /tmp/gopath/pkg/mod/cache/vcs/1579f2974f18ae2d93ad89f8eb7e23c7e418fa4b40c77b48fd0ac1a2e489856f: exit status 128:
+				\tnot found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
 
 				"""
@@ -206,7 +228,7 @@ Steps: {
 			CmdStr:   "go get {{{.PRIVATE}}}"
 			Negated:  true
 		}]
-		Order:           16
+		Order:           17
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -221,7 +243,7 @@ Steps: {
 			CmdStr:           "go env -w GOPROXY="
 			Negated:          false
 		}]
-		Order:           15
+		Order:           16
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -235,14 +257,14 @@ Steps: {
 				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
 				\tConfirm the import path was entered correctly.
 				\tIf this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
-				\tnot found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/1579f2974f18ae2d93ad89f8eb7e23c7e418fa4b40c77b48fd0ac1a2e489856f: exit status 128:
+				\tnot found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 				\tserver response:
 				go get {{{.PRIVATE}}}: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 410 Gone
 				"""
 			Output: """
 				go get {{{.PRIVATE}}}: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 410 Gone
 				\tserver response:
-				\tnot found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/1579f2974f18ae2d93ad89f8eb7e23c7e418fa4b40c77b48fd0ac1a2e489856f: exit status 128:
+				\tnot found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
 				\tConfirm the import path was entered correctly.
 				\tIf this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
@@ -252,23 +274,45 @@ Steps: {
 			CmdStr:   "go get {{{.PRIVATE}}}"
 			Negated:  true
 		}]
-		Order:           14
+		Order:           15
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "gopher_get_private_initial"
 	}
+	public_pseudo_version: {
+		Stmts: [{
+			ComparisonOutput: """
+				v0.0.0-20060102150405-abcedf12345
+
+				"""
+			Output: """
+				v0.0.0-20060102150405-abcedf12345
+
+				"""
+			ExitCode: 0
+			CmdStr:   "go list -m -f {{.Version}} {{{.PUBLIC}}}"
+			Negated:  false
+		}]
+		Order:           14
+		InformationOnly: true
+		DoNotTrim:       false
+		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "public_pseudo_version"
+	}
 	gopher_get_public_initial: {
 		Stmts: [{
 			ComparisonOutput: """
 
-				go: downloading {{{.PUBLIC}}} v0.0.0-20201112145351-6c967f8a533a
-				go: {{{.PUBLIC}}} upgrade => v0.0.0-20201112145351-6c967f8a533a
+				go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
+				go: {{{.PUBLIC}}} upgrade => v0.0.0-20060102150405-abcedf12345
 				"""
 			Output: """
-				go: downloading {{{.PUBLIC}}} v0.0.0-20201112145351-6c967f8a533a
-				go: {{{.PUBLIC}}} upgrade => v0.0.0-20201112145351-6c967f8a533a
+				go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
+				go: {{{.PUBLIC}}} upgrade => v0.0.0-20060102150405-abcedf12345
 
 				"""
 			ExitCode: 0
@@ -399,33 +443,6 @@ Steps: {
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "go_env_check_goproxy"
-	}
-	gopher_go_initial: {
-		Order: 8
-		Source: """
-			package main
-
-			import (
-			\t"fmt"
-
-			\t"{{{.PUBLIC}}}"
-			\t"{{{.PRIVATE}}}"
-			)
-
-			func main() {
-			\tfmt.Printf("public.Message(): %v\\n", public.Message())
-			\tfmt.Printf("private.Secret(): %v\\n", private.Secret())
-			}
-
-			"""
-		Renderer: {
-			RendererType: 1
-		}
-		Language: "go"
-		Target:   "/home/gopher/gopher/gopher.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "gopher_go_initial"
 	}
 	gopher_init: {
 		Stmts: [{
@@ -658,27 +675,6 @@ Steps: {
 		StepType:        1
 		Name:            "public_init"
 	}
-	goversion: {
-		Stmts: [{
-			ComparisonOutput: """
-				go version go1.15.3 linux/amd64
-
-				"""
-			Output: """
-				go version go1.15.3 linux/amd64
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go version"
-			Negated:  false
-		}]
-		Order:           0
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "goversion"
-	}
 	go_help_modprivate: {
 		Stmts: [{
 			ComparisonOutput: """
@@ -773,13 +769,61 @@ Steps: {
 			CmdStr:   "go help module-private"
 			Negated:  false
 		}]
-		Order:           17
+		Order:           18
 		InformationOnly: true
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "go_help_modprivate"
 	}
+	gopher_go_initial: {
+		Order: 8
+		Source: """
+			package main
+
+			import (
+			\t"fmt"
+
+			\t"{{{.PUBLIC}}}"
+			\t"{{{.PRIVATE}}}"
+			)
+
+			func main() {
+			\tfmt.Printf("public.Message(): %v\\n", public.Message())
+			\tfmt.Printf("private.Secret(): %v\\n", private.Secret())
+			}
+
+			"""
+		Renderer: {
+			RendererType: 1
+		}
+		Language: "go"
+		Target:   "/home/gopher/gopher/gopher.go"
+		Terminal: "term1"
+		StepType: 2
+		Name:     "gopher_go_initial"
+	}
+	goversion: {
+		Stmts: [{
+			ComparisonOutput: """
+				go version go1.15.3 linux/amd64
+
+				"""
+			Output: """
+				go version go1.15.3 linux/amd64
+
+				"""
+			ExitCode: 0
+			CmdStr:   "go version"
+			Negated:  false
+		}]
+		Order:           0
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "goversion"
+	}
 }
-Hash: "97acfd3823aa162014df60580ecdd53ff64dfefefc1710024493d383885bca1c"
+Hash: "c48c3cc74bed64075c34d9c375a4e1af669c9546567226ce4f27b7f29431c6d0"
 Delims: ["{{{", "}}}"]

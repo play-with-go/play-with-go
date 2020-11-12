@@ -86,21 +86,23 @@ of the named environment variables to the given values.
 For more about environment variables, see 'go help environment'.
 $ go env -w GOPROXY=https://proxy.golang.org
 $ go get {{{.PUBLIC}}}
-go: downloading {{{.PUBLIC}}} v0.0.0-20201112145351-6c967f8a533a
-go: {{{.PUBLIC}}} upgrade => v0.0.0-20201112145351-6c967f8a533a
+go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
+go: {{{.PUBLIC}}} upgrade => v0.0.0-20060102150405-abcedf12345
+$ go list -m -f {{.Version}} {{{.PUBLIC}}}
+v0.0.0-20060102150405-abcedf12345
 $ go get {{{.PRIVATE}}}
 go get {{{.PRIVATE}}}: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 410 Gone
 	server response:
-	not found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/1579f2974f18ae2d93ad89f8eb7e23c7e418fa4b40c77b48fd0ac1a2e489856f: exit status 128:
+	not found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 		fatal: could not read Username for 'https://gopher.live': terminal prompts disabled
 	Confirm the import path was entered correctly.
 	If this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
 $ go env -w GOPROXY=
 $ go get {{{.PRIVATE}}}
-go: downloading {{{.PRIVATE}}} v0.0.0-20201112145352-806167d7acb5
-go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20201112145352-806167d7acb5: verifying module: {{{.PRIVATE}}}@v0.0.0-20201112145352-806167d7acb5: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20201112145352-806167d7acb5: 410 Gone
+go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
+go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 410 Gone
 	server response:
-	not found: {{{.PRIVATE}}}@v0.0.0-20201112145352-806167d7acb5: invalid version: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /tmp/gopath/pkg/mod/cache/vcs/1579f2974f18ae2d93ad89f8eb7e23c7e418fa4b40c77b48fd0ac1a2e489856f: exit status 128:
+	not found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 		fatal: could not read Username for 'https://gopher.live': terminal prompts disabled
 $ go help module-private
 The go command defaults to downloading modules from the public Go module
@@ -146,8 +148,10 @@ The 'go env -w' command (see 'go help env') can be used to set these variables
 for future go command invocations.
 $ go env -w GOPRIVATE={{{.PRIVATE}}}
 $ go get {{{.PRIVATE}}}
-go: downloading {{{.PRIVATE}}} v0.0.0-20201112145352-806167d7acb5
-go: {{{.PRIVATE}}} upgrade => v0.0.0-20201112145352-806167d7acb5
+go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
+go: {{{.PRIVATE}}} upgrade => v0.0.0-20060102150405-abcedf12345
+$ go list -m -f {{.Version}} {{{.PRIVATE}}}
+v0.0.0-20060102150405-abcedf12345
 $ go run .
 public.Message(): This is a public safety announcement!
 private.Secret(): This is a top secret message... for your eyes only
