@@ -104,7 +104,7 @@ remote: Processed 1 references in total
 ### The `gopher` module
 
 Now create a `gopher` module to try out the `public` and `private` modules. Unlike
-the `public` and `private` modules, you will not publisht the `gopher` module; it
+the `public` and `private` modules, you will not publish the `gopher` module; it
 will be local only:
 
 ```.term1
