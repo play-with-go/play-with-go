@@ -1,0 +1,271 @@
+---
+category: Next steps
+difficulty: Intermediate
+excerpt: How to create, publish and work with non-public modules in your team.
+guide: 2020-11-12-working-with-private-modules
+lang: en
+layout: post
+title: Working with private modules
+---
+
+The `go` command defaults to downloading modules from the public Go module mirror at
+[proxy.golang.org](https://proxy.golang.org). It also defaults to validating downloaded modules, regardless of source,
+against the public Go checksum database at [sum.golang.org](https://sum.golang.org).  These defaults work well for
+publicly available source code.
+
+But what happens if you and your fellow developers need to work with private modules?
+
+This guide explains how to work with private modules. In the guide you will create three modules:
+
+* `{% raw %}{{{.PUBLIC}}}{% endraw %}`, a publicly accessible module that provides a `Message()` function
+* `{% raw %}{{{.PRIVATE}}}{% endraw %}`, a private module that provides a `Secret()` function
+* `gopher`, a local-only module that uses `public` and `private` modules
+
+### Prerequisites
+
+You should already have completed:
+
+* The [Go fundamentals Tutorial](/go-fundamentals_go115_en)
+
+This guide is running using:
+
+```.term1
+$ go version
+go version go1.15.3 linux/amd64
+```
+{:data-command-src="Z28gdmVyc2lvbgo="}
+
+### The `public` and `private` modules
+
+Start by initialising your  `public` module:
+
+```.term1
+$ mkdir /home/gopher/public
+$ cd /home/gopher/public
+$ go mod init public
+go: creating new go.mod: module public
+$ git init -q
+$ git remote add origin https://{% raw %}{{{.PUBLIC}}}{% endraw %}.git
+```
+{:data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL3B1YmxpYwpjZCAvaG9tZS9nb3BoZXIvcHVibGljCmdvIG1vZCBpbml0IHB1YmxpYwpnaXQgaW5pdCAtcQpnaXQgcmVtb3RlIGFkZCBvcmlnaW4gaHR0cHM6Ly97e3suUFVCTElDfX19LmdpdAo="}
+
+Create an initial version of the `Message()` in `public.go`:
+
+<pre data-upload-path="L2hvbWUvZ29waGVyL3B1YmxpYw==" data-upload-src="cHVibGljLmdv:cGFja2FnZSBwdWJsaWMKCmZ1bmMgTWVzc2FnZSgpIHN0cmluZyB7CglyZXR1cm4gIlRoaXMgaXMgYSBwdWJsaWMgc2FmZXR5IGFubm91bmNlbWVudCEiCn0K" data-upload-term=".term1"><code class="language-go">package public
+
+func Message() string {
+	return &#34;This is a public safety announcement!&#34;
+}
+</code></pre>
+
+Commit and push this initial version:
+
+```.term1
+$ git add public.go
+$ git commit -q -m 'Initial commit of public module'
+$ git push -q origin main
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+```
+{:data-command-src="Z2l0IGFkZCBwdWJsaWMuZ28KZ2l0IGNvbW1pdCAtcSAtbSAnSW5pdGlhbCBjb21taXQgb2YgcHVibGljIG1vZHVsZScKZ2l0IHB1c2ggLXEgb3JpZ2luIG1haW4K"}
+
+Now do the same for the `private` module:
+
+```.term1
+$ mkdir /home/gopher/private
+$ cd /home/gopher/private
+$ go mod init private
+go: creating new go.mod: module private
+$ git init -q
+$ git remote add origin https://{% raw %}{{{.PRIVATE}}}{% endraw %}.git
+```
+{:data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL3ByaXZhdGUKY2QgL2hvbWUvZ29waGVyL3ByaXZhdGUKZ28gbW9kIGluaXQgcHJpdmF0ZQpnaXQgaW5pdCAtcQpnaXQgcmVtb3RlIGFkZCBvcmlnaW4gaHR0cHM6Ly97e3suUFJJVkFURX19fS5naXQK"}
+
+Create an initial version of the `Secret()` in `private.go`:
+
+<pre data-upload-path="L2hvbWUvZ29waGVyL3ByaXZhdGU=" data-upload-src="cHJpdmF0ZS5nbw==:cGFja2FnZSBwcml2YXRlCgpmdW5jIFNlY3JldCgpIHN0cmluZyB7CglyZXR1cm4gIlRoaXMgaXMgYSB0b3Agc2VjcmV0IG1lc3NhZ2UuLi4gZm9yIHlvdXIgZXllcyBvbmx5Igp9Cg==" data-upload-term=".term1"><code class="language-go">package private
+
+func Secret() string {
+	return &#34;This is a top secret message... for your eyes only&#34;
+}
+</code></pre>
+
+Commit and push this initial version:
+
+```.term1
+$ git add private.go
+$ git commit -q -m 'Initial commit of private module'
+$ git push -q origin main
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+```
+{:data-command-src="Z2l0IGFkZCBwcml2YXRlLmdvCmdpdCBjb21taXQgLXEgLW0gJ0luaXRpYWwgY29tbWl0IG9mIHByaXZhdGUgbW9kdWxlJwpnaXQgcHVzaCAtcSBvcmlnaW4gbWFpbgo="}
+
+### The `gopher` module
+
+Now create a `gopher` module to try out the `public` and `private` modules. Unlike
+the `public` and `private` modules, you will not publisht the `gopher` module; it
+will be local only:
+
+```.term1
+$ mkdir /home/gopher/gopher
+$ cd /home/gopher/gopher
+$ go mod init gopher
+go: creating new go.mod: module gopher
+```
+{:data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL2dvcGhlcgpjZCAvaG9tZS9nb3BoZXIvZ29waGVyCmdvIG1vZCBpbml0IGdvcGhlcgo="}
+
+Create an initial version of a `main` package that uses the two modules, in `gopher.go`:
+
+<pre data-upload-path="L2hvbWUvZ29waGVyL2dvcGhlcg==" data-upload-src="Z29waGVyLmdv:cGFja2FnZSBtYWluCgppbXBvcnQgKAoJImZtdCIKCgkie3t7LlBVQkxJQ319fSIKCSJ7e3suUFJJVkFURX19fSIKKQoKZnVuYyBtYWluKCkgewoJZm10LlByaW50ZigicHVibGljLk1lc3NhZ2UoKTogJXZcbiIsIHB1YmxpYy5NZXNzYWdlKCkpCglmbXQuUHJpbnRmKCJwcml2YXRlLlNlY3JldCgpOiAldlxuIiwgcHJpdmF0ZS5TZWNyZXQoKSkKfQo=" data-upload-term=".term1"><code class="language-go">package main
+
+import (
+	&#34;fmt&#34;
+
+	&#34;{% raw %}{{{.PUBLIC}}}{% endraw %}&#34;
+	&#34;{% raw %}{{{.PRIVATE}}}{% endraw %}&#34;
+)
+
+func main() {
+	fmt.Printf(&#34;public.Message(): %v\n&#34;, public.Message())
+	fmt.Printf(&#34;private.Secret(): %v\n&#34;, private.Secret())
+}
+</code></pre>
+
+At this point, let's take a small diversion to talk about proxies.
+
+### Module proxies
+
+The `go` command can fetch modules from a proxy or connect to source control
+servers directly, according to the setting of the `GOPROXY` environment
+variable (see `go help env`). You can see the default setting for `GOPROXY` by inspecting
+the output of `go env`:
+
+```.term1
+$ go env GOPROXY
+https://proxy.golang.org,direct
+```
+{:data-command-src="Z28gZW52IEdPUFJPWFkK"}
+
+This means it will try the Go module mirror run by Google and fall back to a direct connection if the proxy reports that
+it does not have the module (HTTP error 404 or 410).
+
+The `go` command also defaults to validating downloaded modules, regardless of source,
+against the public Go checksum database at [sum.golang.org](https://sum.golang.org), something that is controlled by the
+`GOSUMDB` environment variable. You can see the default for `GOSUMDB` by checking the
+output of `go env`:
+
+```.term1
+$ go env GOSUMDB
+sum.golang.org
+```
+{:data-command-src="Z28gZW52IEdPU1VNREIK"}
+
+Because your session is already configured with authentication credentials for the source control system that hosts
+`{% raw %}{{{.PRIVATE}}}{% endraw %}`, attempting to `go get` that module will succeed because the `go` command will
+fall back to the `direct` mode.
+
+Let's simulate getting our module dependencies with no credentials by setting `GOPROXY` to only use the
+public proxy, using the `go env` command:
+
+```.term1
+$ go env -w GOPROXY=https://proxy.golang.org
+```
+{:data-command-src="Z28gZW52IC13IEdPUFJPWFk9aHR0cHM6Ly9wcm94eS5nb2xhbmcub3JnCg=="}
+
+Add a dependency on the `public` module:
+
+```.term1
+$ go get {% raw %}{{{.PUBLIC}}}{% endraw %}
+go: downloading {% raw %}{{{.PUBLIC}}}{% endraw %} v0.0.0-20201112145351-6c967f8a533a
+go: {% raw %}{{{.PUBLIC}}}{% endraw %} upgrade => v0.0.0-20201112145351-6c967f8a533a
+```
+{:data-command-src="Z28gZ2V0IHt7ey5QVUJMSUN9fX0K"}
+
+As expected, that succeeded.
+
+Try to add a dependency on the `private` module:
+
+```.term1
+$ go get {% raw %}{{{.PRIVATE}}}{% endraw %}
+go get {% raw %}{{{.PRIVATE}}}{% endraw %}: module {% raw %}{{{.PRIVATE}}}{% endraw %}: reading https://proxy.golang.org/{% raw %}{{{.PRIVATE}}}{% endraw %}/@v/list: 410 Gone
+	server response:
+	not found: module {% raw %}{{{.PRIVATE}}}{% endraw %}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/1579f2974f18ae2d93ad89f8eb7e23c7e418fa4b40c77b48fd0ac1a2e489856f: exit status 128:
+		fatal: could not read Username for 'https://gopher.live': terminal prompts disabled
+	Confirm the import path was entered correctly.
+	If this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
+```
+{:data-command-src="Z28gZ2V0IHt7ey5QUklWQVRFfX19Cg=="}
+
+Thankfully, this failed.
+
+Let's return `GOPROXY` to its default value:
+
+```.term1
+$ go env -w GOPROXY=
+```
+{:data-command-src="Z28gZW52IC13IEdPUFJPWFk9Cg=="}
+
+And try once again to add a dependency on the `private` module:
+
+```.term1
+$ go get {% raw %}{{{.PRIVATE}}}{% endraw %}
+go: downloading {% raw %}{{{.PRIVATE}}}{% endraw %} v0.0.0-20201112145352-806167d7acb5
+go get {% raw %}{{{.PRIVATE}}}{% endraw %}: {% raw %}{{{.PRIVATE}}}{% endraw %}@v0.0.0-20201112145352-806167d7acb5: verifying module: {% raw %}{{{.PRIVATE}}}{% endraw %}@v0.0.0-20201112145352-806167d7acb5: reading https://sum.golang.org/lookup/{% raw %}{{{.PRIVATE}}}{% endraw %}@v0.0.0-20201112145352-806167d7acb5: 410 Gone
+	server response:
+	not found: {% raw %}{{{.PRIVATE}}}{% endraw %}@v0.0.0-20201112145352-806167d7acb5: invalid version: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /tmp/gopath/pkg/mod/cache/vcs/1579f2974f18ae2d93ad89f8eb7e23c7e418fa4b40c77b48fd0ac1a2e489856f: exit status 128:
+		fatal: could not read Username for 'https://gopher.live': terminal prompts disabled
+```
+{:data-command-src="Z28gZ2V0IHt7ey5QUklWQVRFfX19Cg=="}
+
+This fails because the checksum database is not able to access your `private` module. But it's worse than
+that, because the `go` command "leaked" a request for `{% raw %}{{{.PRIVATE}}}{% endraw %}` to the public proxy. This might well be
+fine for a trusted proxy like the Google proxy, but it isn't always the case.
+
+### The `GOPRIVATE` environment variable
+
+The `GOPRIVATE` environment variable controls which modules the `go` command
+considers to be private (not available publicly) and should therefore not use the
+proxy or checksum database. The variable is a comma-separated list of
+glob patterns (in the syntax of Go's [`path.Match`](https://pkg.go.dev/path#Match)) of module path prefixes.
+
+Let's tell the `go` command that `{% raw %}{{{.PRIVATE}}}{% endraw %}` by setting the `GOPRIVATE` environment
+variable:
+
+```.term1
+$ go env -w GOPRIVATE={% raw %}{{{.PRIVATE}}}{% endraw %}
+```
+{:data-command-src="Z28gZW52IC13IEdPUFJJVkFURT17e3suUFJJVkFURX19fQo="}
+
+Try to get the latest version of the `private` module again (remember, the `public` module
+succeeded):
+
+```.term1
+$ go get {% raw %}{{{.PRIVATE}}}{% endraw %}
+go: downloading {% raw %}{{{.PRIVATE}}}{% endraw %} v0.0.0-20201112145352-806167d7acb5
+go: {% raw %}{{{.PRIVATE}}}{% endraw %} upgrade => v0.0.0-20201112145352-806167d7acb5
+```
+{:data-command-src="Z28gZ2V0IHt7ey5QUklWQVRFfX19Cg=="}
+
+Success! As a final check, run the `gopher` module `main` package:
+
+```.term1
+$ go run .
+public.Message(): This is a public safety announcement!
+private.Secret(): This is a top secret message... for your eyes only
+```
+{:data-command-src="Z28gcnVuIC4K"}
+
+For more details on the `GOPRIVATE` environment variable and the values it can take, see
+`go help module-private`, which also includes examples of how to use the `*` glob to match multiple sub domains
+or modules.
+
+The `GONOPROXY` and `GONOSUMDB` environment variables can be used for more fine
+grained control. Again, see `go help module-private` for more information.
+
+### Conclusion
+
+This guide has provided you with a brief introduction to handling private modules.
+
+
+<script>let pageGuide="2020-11-12-working-with-private-modules"; let pageLanguage="en"; let pageScenario="go115";</script>
