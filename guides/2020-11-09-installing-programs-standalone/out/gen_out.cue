@@ -121,13 +121,8 @@ Steps: {
 
 				"""
 			ExitCode: 0
-			CmdStr: """
-				(
-				\tcd $(mktemp -d)
-				\tGO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6
-				)
-				"""
-			Negated: false
+			CmdStr:   "(cd $(mktemp -d); GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6)"
+			Negated:  false
 		}]
 		Order:           1
 		InformationOnly: false
@@ -206,5 +201,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "1f8d538927f896b50df9179ee35bb04d1dd7ac219134130cce81b0ea976dd1ae"
+Hash: "8809e4efa10940e57134e43daccdf28839f8baced68bd42707ab1b243145a08c"
 Delims: ["{{{", "}}}"]

@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201112161106-44ae5cf00b09",
-		      "Sum": "h1:LKXLc0HG6uyfja8SUdSwjRefOn6t34hnxzdCTMzqunI=",
+		      "Version": "v0.0.2-0.20201112230714-c751dc0412a4",
+		      "Sum": "h1:FXhUsHjzpBC9Q0ywpnKhyk9mV12dnhxanUitpWHLKxI=",
 		      "Replace": null
 		    },
 		    {
@@ -297,18 +297,8 @@ Steps: {
 			ComparisonOutput: ""
 			Output:           ""
 			ExitCode:         0
-			CmdStr: """
-				(
-				\tcd $(mktemp -d)
-				\texport GOPATH=$(mktemp -d)
-				\tgo mod init mod.com
-				\tgo get -x {{{.PROVERB}}}@v0.4.0
-				\tgo get -x {{{.PROVERB}}}@v1.0.0
-				\tgo get -x {{{.PROVERB}}}@v1.0.1
-				\tsleep 1m
-				) >/dev/null 2>&1
-				"""
-			Negated: false
+			CmdStr:           "(cd $(mktemp -d); export GOPATH=$(mktemp -d); go mod init mod.com; go get -x {{{.PROVERB}}}@v0.4.0; go get -x {{{.PROVERB}}}@v1.0.0; go get -x {{{.PROVERB}}}@v1.0.1; sleep 1m) >/dev/null 2>&1"
+			Negated:          false
 		}]
 		Order:           37
 		InformationOnly: true
@@ -1311,5 +1301,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "85360e76c7c9979a507d20c7ae9485035d754922dd231f87a4e73e08cc6087d6"
+Hash: "8c7cb6d7e3ecb0b6fc9bc084a0eab7ce7e0153cee7d07990b389f5a31324ff99"
 Delims: ["{{{", "}}}"]

@@ -41,16 +41,13 @@ Prior to Go 1.16, tool authors who wanted to provide installation instructions i
 advised to use something like this:
 
 ```.term1
-$ (
-	cd $(mktemp -d)
-	GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6
-)
+$ (cd $(mktemp -d); GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6)
 go: downloading honnef.co/go/tools v0.0.1-2020.1.6
 go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
 go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
 go: downloading github.com/BurntSushi/toml v0.3.1
 ```
-{:data-command-src="KAoJY2QgJChta3RlbXAgLWQpCglHTzExMU1PRFVMRT1vbiBnbyBnZXQgaG9ubmVmLmNvL2dvL3Rvb2xzL2NtZC9zdGF0aWNjaGVja0B2MC4wLjEtMjAyMC4xLjYKKQo="}
+{:data-command-src="KGNkICQobWt0ZW1wIC1kKTsgR08xMTFNT0RVTEU9b24gZ28gZ2V0IGhvbm5lZi5jby9nby90b29scy9jbWQvc3RhdGljY2hlY2tAdjAuMC4xLTIwMjAuMS42KQo="}
 
 There are a number of problems with this:
 
