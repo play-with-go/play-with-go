@@ -1,15 +1,16 @@
 
 
 .welcome-title {
-margin-top: 5px;
 font-size: 68px
 }
 
 .welcome-par {
 margin-top: 20px;
 margin-bottom: 25px;
-font-size: 18px
-te
+font-size: 18px;
+  b {
+    font-weight: bold;
+  }
 }
 
 .btn-welcome {
@@ -25,10 +26,10 @@ margin: 15px;
 
 .btn-navbar{
 color: white;
-font-size: 28px !important;
+font-size: 24px !important;
 background-color: transparent;
   border: transparent;
-  padding: 8px 16px;
+  padding: 8px;
   &:hover {
    color: #FDDD00;
    background-color: transparent;
@@ -75,15 +76,12 @@ font-weight: 500;
   font-family: 'Work Sans', sans-serif;
 }
 
-.fofo{
-background-color:  #00ADD8;
-}
 
 .card-link {
-  color: seashell !important;
+  font-weight: 500;
   &:hover {
     color: #FDDD00 !important;
-    font-weight: 500;
+  
   }
 }
 
@@ -100,6 +98,39 @@ background-color:  #00ADD8;
 }
 
 .card-title {
-  font-size: 28px;
+  font-size: 24px;
 
+}
+
+.mt-8{
+  margin-top: 80px !important;
+
+}
+
+.mt-4{
+  margin-top: 40px !important;
+
+}
+
+.nav-link{
+  font-family: 'Work Sans', sans-serif;
+  color: seashell;
+  &:hover {
+    color: #FDDD00;
+  }
+}
+
+.about{
+border-right: 1px solid rgba(255, 245, 238, 0.329);
+margin-right: 8px;
+
+}
+
+
+.guides-hero{
+  padding-left: 50px;
+}
+
+.title-guides{
+font-size: 46px;
 }
