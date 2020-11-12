@@ -7,8 +7,8 @@ Presteps: [{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20201111211636-d5c2d11ae999",
-		    "Sum": "h1:onJu544F8EHf+VAWAS8W5BUyrmadeKU/vwayWws1pJ4=",
+		    "Version": "v0.0.0-20201112105710-13a90a7e8526",
+		    "Sum": "h1:0JH9kWYqa8pAgFfmX70kBO1IbtWPOdtUPxkfvFOB0Oo=",
 		    "Replace": null
 		  },
 		  "Deps": [
@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201110085855-05e8567752d1",
-		      "Sum": "h1:rvEXeGah7m7NTmqzOxP7wq+YV9UNxSKJQfI+N7Tpe/U=",
+		      "Version": "v0.0.2-0.20201112105706-464aa7e03365",
+		      "Sum": "h1:rIO+qeZcanEl9kEkrVEASR1EnjRZFW4cljBwiM7Iq7E=",
 		      "Replace": null
 		    },
 		    {
@@ -1938,5 +1938,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "0cfc00e88c440495946c295d620ad3fa36898773e5dce9dd5a2980b40bdb0830"
+Hash: "17fe96bddae374019fde3b8f75686ef50d439c61f93d871797da70b3a35d847d"
 Delims: ["{{{", "}}}"]
