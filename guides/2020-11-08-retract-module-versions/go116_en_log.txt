@@ -83,7 +83,8 @@ module {{{.PROVERB}}}
 
 go 1.16
 
-retract v0.2.0 // Go proverb was totally wrong
+// Go proverb was totally wrong
+retract v0.2.0
 
 EOD
 $ cat <<EOD > /home/gopher/proverb/proverb.go
@@ -157,8 +158,11 @@ module {{{.PROVERB}}}
 go 1.16
 
 retract (
-	v0.2.0 // Go proverb was totally wrong
-	[v1.0.0, v1.0.1] // published v1 too early
+	// Go proverb was totally wrong
+	v0.2.0
+
+	// Published v1 too early
+	[v1.0.0, v1.0.1]
 )
 
 EOD
@@ -183,11 +187,11 @@ $ (
 ) >/dev/null 2>&1
 $ go get {{{.PROVERB}}}@v1.0.0
 go: downloading {{{.PROVERB}}} v1.0.0
-go: warning: {{{.PROVERB}}}@v1.0.0 is retracted: published v1 too early
+go: warning: {{{.PROVERB}}}@v1.0.0 is retracted: Published v1 too early
 go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
 $ go get {{{.PROVERB}}}@v1.0.1
 go: downloading {{{.PROVERB}}} v1.0.1
-go: warning: {{{.PROVERB}}}@v1.0.1 is retracted: published v1 too early
+go: warning: {{{.PROVERB}}}@v1.0.1 is retracted: Published v1 too early
 go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
 $ go get {{{.PROVERB}}}@v0.4.0
 go: downloading {{{.PROVERB}}} v0.4.0
