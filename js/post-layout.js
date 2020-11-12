@@ -23,6 +23,9 @@ var pwd = new PWD();
 
 pwd.on("instanceCreate", function(instance) {
   instance.terms[0].write(`$ \r\n`);
+  $("pre").on("click", function() {
+    $(this).addClass("completed");
+  });
 });
 pwd.on("unauthorized", function() {
   login();
@@ -75,9 +78,6 @@ guideRequest.onload = function() {
 
     });
   }
-  $("pre").on("click", function() {
-    $(this).addClass("completed");
-  });
   pwd.newSession(guideDetails.Terminals, { baseUrl: "{{site.pwdurl}}", Networks: guideDetails.Networks, Envs: guideDetails.Env }, function(err) {
     if (err) {
       $(".term-init").text("Error initializing environment, please try again or submit an issue if problem persists.");
