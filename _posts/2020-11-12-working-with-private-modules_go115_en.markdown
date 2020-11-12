@@ -177,8 +177,8 @@ Add a dependency on the `public` module:
 
 ```.term1
 $ go get {% raw %}{{{.PUBLIC}}}{% endraw %}
-go: downloading {% raw %}{{{.PUBLIC}}}{% endraw %} v0.0.0-20201112145351-6c967f8a533a
-go: {% raw %}{{{.PUBLIC}}}{% endraw %} upgrade => v0.0.0-20201112145351-6c967f8a533a
+go: downloading {% raw %}{{{.PUBLIC}}}{% endraw %} v0.0.0-20060102150405-abcedf12345
+go: {% raw %}{{{.PUBLIC}}}{% endraw %} upgrade => v0.0.0-20060102150405-abcedf12345
 ```
 {:data-command-src="Z28gZ2V0IHt7ey5QVUJMSUN9fX0K"}
 
@@ -190,7 +190,7 @@ Try to add a dependency on the `private` module:
 $ go get {% raw %}{{{.PRIVATE}}}{% endraw %}
 go get {% raw %}{{{.PRIVATE}}}{% endraw %}: module {% raw %}{{{.PRIVATE}}}{% endraw %}: reading https://proxy.golang.org/{% raw %}{{{.PRIVATE}}}{% endraw %}/@v/list: 410 Gone
 	server response:
-	not found: module {% raw %}{{{.PRIVATE}}}{% endraw %}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/1579f2974f18ae2d93ad89f8eb7e23c7e418fa4b40c77b48fd0ac1a2e489856f: exit status 128:
+	not found: module {% raw %}{{{.PRIVATE}}}{% endraw %}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 		fatal: could not read Username for 'https://gopher.live': terminal prompts disabled
 	Confirm the import path was entered correctly.
 	If this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
@@ -210,10 +210,10 @@ And try once again to add a dependency on the `private` module:
 
 ```.term1
 $ go get {% raw %}{{{.PRIVATE}}}{% endraw %}
-go: downloading {% raw %}{{{.PRIVATE}}}{% endraw %} v0.0.0-20201112145352-806167d7acb5
-go get {% raw %}{{{.PRIVATE}}}{% endraw %}: {% raw %}{{{.PRIVATE}}}{% endraw %}@v0.0.0-20201112145352-806167d7acb5: verifying module: {% raw %}{{{.PRIVATE}}}{% endraw %}@v0.0.0-20201112145352-806167d7acb5: reading https://sum.golang.org/lookup/{% raw %}{{{.PRIVATE}}}{% endraw %}@v0.0.0-20201112145352-806167d7acb5: 410 Gone
+go: downloading {% raw %}{{{.PRIVATE}}}{% endraw %} v0.0.0-20060102150405-abcedf12345
+go get {% raw %}{{{.PRIVATE}}}{% endraw %}: {% raw %}{{{.PRIVATE}}}{% endraw %}@v0.0.0-20060102150405-abcedf12345: verifying module: {% raw %}{{{.PRIVATE}}}{% endraw %}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{% raw %}{{{.PRIVATE}}}{% endraw %}@v0.0.0-20060102150405-abcedf12345: 410 Gone
 	server response:
-	not found: {% raw %}{{{.PRIVATE}}}{% endraw %}@v0.0.0-20201112145352-806167d7acb5: invalid version: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /tmp/gopath/pkg/mod/cache/vcs/1579f2974f18ae2d93ad89f8eb7e23c7e418fa4b40c77b48fd0ac1a2e489856f: exit status 128:
+	not found: {% raw %}{{{.PRIVATE}}}{% endraw %}@v0.0.0-20060102150405-abcedf12345: invalid version: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 		fatal: could not read Username for 'https://gopher.live': terminal prompts disabled
 ```
 {:data-command-src="Z28gZ2V0IHt7ey5QUklWQVRFfX19Cg=="}
@@ -242,8 +242,8 @@ succeeded):
 
 ```.term1
 $ go get {% raw %}{{{.PRIVATE}}}{% endraw %}
-go: downloading {% raw %}{{{.PRIVATE}}}{% endraw %} v0.0.0-20201112145352-806167d7acb5
-go: {% raw %}{{{.PRIVATE}}}{% endraw %} upgrade => v0.0.0-20201112145352-806167d7acb5
+go: downloading {% raw %}{{{.PRIVATE}}}{% endraw %} v0.0.0-20060102150405-abcedf12345
+go: {% raw %}{{{.PRIVATE}}}{% endraw %} upgrade => v0.0.0-20060102150405-abcedf12345
 ```
 {:data-command-src="Z28gZ2V0IHt7ey5QUklWQVRFfX19Cg=="}
 
