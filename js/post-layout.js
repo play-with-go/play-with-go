@@ -34,6 +34,9 @@ var guideRequest = new XMLHttpRequest();
 guideRequest.open('POST', '{{ site.controllerurl }}');
 guideRequest.withCredentials = true;
 guideRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+guideRequest.onerror = function() {
+  $(".term-init").text("Error initializing environment, please raise an issue using the help link.");
+}
 guideRequest.onload = function() {
   // TODO: error handling
   if (guideRequest.status > 500) {
