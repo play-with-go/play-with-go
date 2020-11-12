@@ -245,11 +245,11 @@ Steps: {
 
 				go: downloading {{{.PROVERB}}} v1.0.0
 				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
-				go: warning: {{{.PROVERB}}}@v1.0.0 is retracted: published v1 too early
+				go: warning: {{{.PROVERB}}}@v1.0.0 is retracted: Published v1 too early
 				"""
 			Output: """
 				go: downloading {{{.PROVERB}}} v1.0.0
-				go: warning: {{{.PROVERB}}}@v1.0.0 is retracted: published v1 too early
+				go: warning: {{{.PROVERB}}}@v1.0.0 is retracted: Published v1 too early
 				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
 
 				"""
@@ -261,11 +261,11 @@ Steps: {
 
 				go: downloading {{{.PROVERB}}} v1.0.1
 				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
-				go: warning: {{{.PROVERB}}}@v1.0.1 is retracted: published v1 too early
+				go: warning: {{{.PROVERB}}}@v1.0.1 is retracted: Published v1 too early
 				"""
 			Output: """
 				go: downloading {{{.PROVERB}}} v1.0.1
-				go: warning: {{{.PROVERB}}}@v1.0.1 is retracted: published v1 too early
+				go: warning: {{{.PROVERB}}}@v1.0.1 is retracted: Published v1 too early
 				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
 
 				"""
@@ -395,8 +395,11 @@ Steps: {
 			go 1.16
 
 			retract (
-			\tv0.2.0 // Go proverb was totally wrong
-			\t[v1.0.0, v1.0.1] // published v1 too early
+			\t// Go proverb was totally wrong
+			\tv0.2.0
+
+			\t// Published v1 too early
+			\t[v1.0.0, v1.0.1]
 			)
 
 			"""
@@ -406,7 +409,8 @@ Steps: {
 
 				go 1.16
 
-				retract v0.2.0 // Go proverb was totally wrong
+				// Go proverb was totally wrong
+				retract v0.2.0
 
 				"""
 			RendererType: 3
@@ -837,7 +841,8 @@ Steps: {
 
 			go 1.16
 
-			retract v0.2.0 // Go proverb was totally wrong
+			// Go proverb was totally wrong
+			retract v0.2.0
 
 			"""
 		Renderer: {
@@ -1306,5 +1311,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "874566453dd4141222f87f21abdf4cdc4ccdd0450e67404ae155e899d5701c7f"
+Hash: "70d2415616bf607ead39fa345677539a8e02e3127caa76b208a892c6e1cf676f"
 Delims: ["{{{", "}}}"]

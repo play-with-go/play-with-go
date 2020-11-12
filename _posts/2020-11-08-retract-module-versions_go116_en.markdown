@@ -2,11 +2,14 @@
 category: What's coming in Go 1.16
 difficulty: Intermediate
 excerpt: Learn how to flag modules that shouldn't be used
-guide: 2020-11-08-retracting-module-versions
+guide: 2020-11-08-retract-module-versions
 lang: en
 layout: post
-title: Retracting Module Versions
+title: Retract Module Versions
 ---
+
+_By [Jay Conrod](https://twitter.com/jayconrod), software engineer on the [Go](https://golang.org/) tools team, and
+principal author of module retraction in the `go` command._
 
 _Note: this is a preview of a `cmd/go` feature that is due to land in Go 1.16_
 
@@ -31,7 +34,7 @@ Retracted versions should remain available in module proxies and origin reposito
 versions should continue to work. However, users should be notified when they depend on a retracted version (either
 directly or indirectly). It should also be difficult to unintentionally upgrade to a retracted version.
 
-This guide walks you through how to use module retractions. In the guide you will create two packages:
+This guide walks you through how to use module retractions. In the guide you will create two modules:
 
 * `{% raw %}{{{.PROVERB}}}{% endraw %}` (part of a module at the same path) that provides various different wise proverbs. You will
   publish a number of versions of this module.
@@ -46,7 +49,7 @@ go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
 ```
 {:data-command-src="Z28gdmVyc2lvbgo="}
 
-### The `proverb` package
+### The `proverb` module
 
 Start by initialising your `proverb` module:
 
@@ -93,11 +96,11 @@ remote: Processed 1 references in total
 {:data-command-src="Z2l0IHRhZyB2MC4xLjAKZ2l0IHB1c2ggLXEgb3JpZ2luIHYwLjEuMAo="}
 
 With the first version of the `proverb` module published, it's time to create a first cut of your
-`gopher` package
+`gopher` module.
 
-### The `gopher` package
+### The `gopher` module
 
-You are not going to publish the `gopher` package, so the setup is simpler:
+You are not going to publish the `gopher` module, so the setup is simpler:
 
 ```.term1
 $ mkdir /home/gopher/gopher
@@ -205,19 +208,20 @@ Concurrency is parallelism.
 ```
 {:data-command-src="Y2QgL2hvbWUvZ29waGVyL2dvcGhlcgpnbyBnZXQge3t7LlBST1ZFUkJ9fX1AdjAuMi4wCmdvIHJ1biAuCg=="}
 
-Oops! That doesn't look right. Looks like we made a mistake with the changes in `v0.2.0`. You can
-surely publish a new version of the `proverb` module to correct the mistake, but can you be sure nobody will
-ever depend on this broken version?
+Oops! That doesn't look right: the proverb should read _"Concurrency is **not** parallelism."_ Looks like you made a
+mistake with the changes in `v0.2.0`. You can surely publish a new version of the `proverb`
+module to correct the mistake, but how can you prevent your users from depending on this broken version?
 
 Module retraction to the rescue.
 
 ### Retracting module versions
 
 A module author can retract a version of a module by adding a `retract` directive to the `go.mod` file. The `retract`
-directive simply lists retracted versions.
+directive simply lists retracted versions. The `go` command reads retractions from the highest release version of the
+module.
 
-To retract `v0.2.0` of the `proverb` module, you will publish `v0.3.0`.
-This new version will also fix the bug we found in `v0.2.0`.
+To retract `v0.2.0` of the `proverb` module, you will therefore publish
+`v0.3.0`. This new version will also fix the bug you found in `v0.2.0`.
 
 Return to the `proverb` module:
 
@@ -249,12 +253,16 @@ retract v0.2.0
 As is best practice, add a comment to the `retract` directive documenting why the retraction was
 necessary:
 
-<pre data-upload-path="L2hvbWUvZ29waGVyL3Byb3ZlcmI=" data-upload-src="Z28ubW9k:bW9kdWxlIHt7ey5QUk9WRVJCfX19CgpnbyAxLjE2CgpyZXRyYWN0IHYwLjIuMCAvLyBHbyBwcm92ZXJiIHdhcyB0b3RhbGx5IHdyb25nCg==" data-upload-term=".term1"><code class="language-mod">module {% raw %}{{{.PROVERB}}}{% endraw %}
+<pre data-upload-path="L2hvbWUvZ29waGVyL3Byb3ZlcmI=" data-upload-src="Z28ubW9k:bW9kdWxlIHt7ey5QUk9WRVJCfX19CgpnbyAxLjE2CgovLyBHbyBwcm92ZXJiIHdhcyB0b3RhbGx5IHdyb25nCnJldHJhY3QgdjAuMi4wCg==" data-upload-term=".term1"><code class="language-mod">module {% raw %}{{{.PROVERB}}}{% endraw %}
 
 go 1.16
 
-retract v0.2.0 // Go proverb was totally wrong
+// Go proverb was totally wrong
+retract v0.2.0
 </code></pre>
+
+The comment may be shown by tools like `go get` and `go list`. It will be shown by
+[`gorelease`](https://pkg.go.dev/golang.org/x/exp/cmd/gorelease) and [`pkg.go.dev`](https://pkg.go.dev/) later on, too.
 
 Fix the bug in `proverb.go`:
 
@@ -331,9 +339,6 @@ $ go list -m -versions {% raw %}{{{.PROVERB}}}{% endraw %}
 ```
 {:data-command-src="Z28gbGlzdCAtbSAtdmVyc2lvbnMge3t7LlBST1ZFUkJ9fX0K"}
 
-_Note: there may be some delay whilst proxy.golang.org updates to reflect the new version information. Hence you might
-need to re-try this command to see the `v0.3.0` version listed in the output, as above._
-
 Notice that the newly published `v0.3.0` is in this list, but `v0.2.0` is not.
 
 List _all_ versions versions (including any that are retracted):
@@ -344,7 +349,7 @@ $ go list -m -versions -retracted {% raw %}{{{.PROVERB}}}{% endraw %}
 ```
 {:data-command-src="Z28gbGlzdCAtbSAtdmVyc2lvbnMgLXJldHJhY3RlZCB7e3suUFJPVkVSQn19fQo="}
 
-Ah, there is our mischievous `v0.2.0`.
+Ah, there is the mischievous `v0.2.0`.
 
 So what would happen if you were to rely on the now retracted `v0.2.0`?
 
@@ -452,13 +457,16 @@ need to retract version `v1.0.1`. You do so using a [closed
 range](https://en.wikipedia.org/wiki/Interval_(mathematics)). Make this change by hand by editing the
 `proverb` `go.mod` file, commenting the `retract` directive as is best practice:
 
-<pre data-upload-path="L2hvbWUvZ29waGVyL3Byb3ZlcmI=" data-upload-src="Z28ubW9k:bW9kdWxlIHt7ey5QUk9WRVJCfX19CgpnbyAxLjE2CgpyZXRyYWN0ICgKCXYwLjIuMCAvLyBHbyBwcm92ZXJiIHdhcyB0b3RhbGx5IHdyb25nCglbdjEuMC4wLCB2MS4wLjFdIC8vIHB1Ymxpc2hlZCB2MSB0b28gZWFybHkKKQo=" data-upload-term=".term1"><code class="language-mod">module {% raw %}{{{.PROVERB}}}{% endraw %}
+<pre data-upload-path="L2hvbWUvZ29waGVyL3Byb3ZlcmI=" data-upload-src="Z28ubW9k:bW9kdWxlIHt7ey5QUk9WRVJCfX19CgpnbyAxLjE2CgpyZXRyYWN0ICgKCS8vIEdvIHByb3ZlcmIgd2FzIHRvdGFsbHkgd3JvbmcKCXYwLjIuMAoKCS8vIFB1Ymxpc2hlZCB2MSB0b28gZWFybHkKCVt2MS4wLjAsIHYxLjAuMV0KKQo=" data-upload-term=".term1"><code class="language-mod">module {% raw %}{{{.PROVERB}}}{% endraw %}
 
 go 1.16
 
 <b>retract (</b>
-<b>	v0.2.0 // Go proverb was totally wrong</b>
-<b>	[v1.0.0, v1.0.1] // published v1 too early</b>
+<b>	// Go proverb was totally wrong</b>
+<b>	v0.2.0</b>
+<b></b>
+<b>	// Published v1 too early</b>
+<b>	[v1.0.0, v1.0.1]</b>
 <b>)</b>
 </code></pre>
 
@@ -490,11 +498,11 @@ Ensure proxy.golang.org is aware of the new versions of `proverb` you just publi
 ```.term1
 $ go get {% raw %}{{{.PROVERB}}}{% endraw %}@v1.0.0
 go: downloading {% raw %}{{{.PROVERB}}}{% endraw %} v1.0.0
-go: warning: {% raw %}{{{.PROVERB}}}{% endraw %}@v1.0.0 is retracted: published v1 too early
+go: warning: {% raw %}{{{.PROVERB}}}{% endraw %}@v1.0.0 is retracted: Published v1 too early
 go: run 'go get {% raw %}{{{.PROVERB}}}{% endraw %}@latest' to switch to the latest unretracted version
 $ go get {% raw %}{{{.PROVERB}}}{% endraw %}@v1.0.1
 go: downloading {% raw %}{{{.PROVERB}}}{% endraw %} v1.0.1
-go: warning: {% raw %}{{{.PROVERB}}}{% endraw %}@v1.0.1 is retracted: published v1 too early
+go: warning: {% raw %}{{{.PROVERB}}}{% endraw %}@v1.0.1 is retracted: Published v1 too early
 go: run 'go get {% raw %}{{{.PROVERB}}}{% endraw %}@latest' to switch to the latest unretracted version
 $ go get {% raw %}{{{.PROVERB}}}{% endraw %}@v0.4.0
 go: downloading {% raw %}{{{.PROVERB}}}{% endraw %} v0.4.0
@@ -520,10 +528,6 @@ $ go list -m -versions -retracted {% raw %}{{{.PROVERB}}}{% endraw %}
 {% raw %}{{{.PROVERB}}}{% endraw %} v0.1.0 v0.2.0 v0.3.0 v0.4.0 v1.0.0 v1.0.1
 ```
 {:data-command-src="Z28gbGlzdCAtbSAtdmVyc2lvbnMgLXJldHJhY3RlZCB7e3suUFJPVkVSQn19fQo="}
-
-_Note: there may be some delay whilst proxy.golang.org updates to reflect the new version information. Hence you might
-need to re-try this command to see versions `v0.4.0`, `v1.0.0` and
-`v1.0.1` listed in the output, as above._
 
 List the non-retracted versions of the `{% raw %}{{{.PROVERB}}}{% endraw %}` known to the proxy:
 
@@ -560,9 +564,12 @@ Life advice: A bird in the hand is worth two in the bush.
 ```
 {:data-command-src="Z28gcnVuIC4K"}
 
+Note that when you come to publish the "real" `v1.0.0` of the `proverb` module, it must
+be published as `v1.0.2` since you cannot change or delete versions (retracted or not).
+
 ### Conclusion
 
 That's it! This guide has introduced module retraction, demonstrating how to retract a simple bad version, as well as
 retracting an accidental `v1`. For more information on module retraction, see [the modules
 reference](https://golang.org/ref/mod).
-<script>let pageGuide="2020-11-08-retracting-module-versions"; let pageLanguage="en"; let pageScenario="go116";</script>
+<script>let pageGuide="2020-11-08-retract-module-versions"; let pageLanguage="en"; let pageScenario="go116";</script>

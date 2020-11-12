@@ -138,7 +138,7 @@ package guides
 	Networks: ["playwithgo_pwg"]
 	Env: []
 }
-"2020-11-08-retracting-module-versions": {
+"2020-11-08-retract-module-versions": {
 	Delims: ["{{{", "}}}"]
 	Presteps: [{
 		Package: "github.com/play-with-go/gitea"
