@@ -10,10 +10,7 @@ layout: plain
         <h1 class= "title-guides" style="color: #FDDD00;">
             Welcome to Play with Go</h1>
         <p class="lead welcome-par" style="color: seashell;" >
-           <b>play-with-go.dev</b> covers the
-            various subcommands of the <b>go</b> command,
-            <b>staticcheck</b> and many other tools that will make
-            writing Go programs that much easier and fun!
+          A series of hands-on, interactive, browser-based guides that introduce the tools required to work with the Go programming language.
       </div>
       <div class="col-lg-5">
         <div class="d-none d-lg-block">
@@ -41,7 +38,7 @@ layout: plain
             <p class="card-text">{{ post.excerpt }}</p>
             <div class="row">
               <div class="col-1">
-                <i class="fa fa-graduation-cap" aria-hidden="true"></i>   
+                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
               </div>
               <div class="col">
                 <p class="card-text d-inline time">   {{post.difficulty}}.</p>
@@ -52,13 +49,13 @@ layout: plain
                 <i class="fa fa-clock-o" style="margin-left: 3px;" aria-hidden="true"></i>
               </div>
               <div class="col">
-                <p class="card-text time d-inline" title="Estimated read time"> 
+                <p class="card-text time d-inline" title="Estimated read time">
                 {% assign words = post.content | strip_html | number_of_words %}
                 {{ words | divided_by: 180 | plus: 1 | times: 2 }} min read.
                 </p>
               </div>
             </div>
-            
+
           </div>
           <div class="card-footer fofo">
             <a href="{{ site.baseurl }}{{ post.url }}" class="card-link">Start tutorial</a>

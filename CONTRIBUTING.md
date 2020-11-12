@@ -107,7 +107,8 @@ SDK](https://github.com/play-with-docker/sdk) to initialise the required termina
 ## Writing/maintaining guides
 
 The best way to learn how to write a guide for `play-with-go.dev` is to follow a guide that explains the process from
-start to finish. That guide can be found here: https://play-with-go.dev/writing-play-with-go-guides.
+start to finish. That guide can be found here _(link to follow - blocked on
+[#64](https://github.com/play-with-go/play-with-go/issues/64))_
 
 When you come to write a guide you will need to do so in your local development environment. We now explain the required
 setup for local development.
@@ -131,14 +132,15 @@ requesting contributor access.
 Run the environment in one terminal:
 
 ```
+./_scripts/dc.sh build
 ./_scripts/dc.sh up
 ```
 
 ### You're ready to start writing guides!
 
-At this point you're ready to start writing guides. As a reminder, refer back to the guide that explains [how to write
-`play-with-go.dev` guides](https://play-with-go.dev/writing-play-with-go-guides) for a step-by-step explanation of the
-process and concepts involved.
+At this point you're ready to start writing guides. As a reminder, refer back to the guide that explains how to write
+`play-with-go.dev` guides (link to follow - blocked on [#64](https://github.com/play-with-go/play-with-go/issues/64))
+for a step-by-step explanation of the process and concepts involved.
 
 ## I'm stuck/lost/other
 
