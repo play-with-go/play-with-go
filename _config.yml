@@ -17,6 +17,11 @@ url: "https://play-with-go.dev" # the base hostname & protocol for your site
 #sidebar
 default-image: https://blog.golang.org/gopher/gopher.png # If there is no featured image in a post then this image will be showed. Also on all pages this image will be showed. Use a 500x250 image.
 
+guides-categories:
+  - "Start here"
+  - "Next steps"
+  - "What's coming in Go 1.16"
+
 #footer
 built-by: The play-with-go.dev Authors
 copyright:
@@ -59,7 +64,7 @@ plugins_dir:
 
 
 #sdkbaseurl: http://localhost:8080
-sdkbaseurl: https://unpkg.com/pwd-sdk@0.0.9
+sdkbaseurl: https://unpkg.com/pwd-sdk@0.0.10
 pwdurl: http://localhost
 controllerurl: http://localhost:8081/guides
 

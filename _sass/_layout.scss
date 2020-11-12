@@ -23,7 +23,7 @@
   --code-bold-color: #006763;
   --pre-completed: #E1E9E8;
 
-  
+
 
   .dark-mode{
       --navbar-color: #26343B;
@@ -45,16 +45,13 @@
   }
 }
 
-@font-face {
-  font-family: "Geomanist";
-  src: url("../fonts/hinted-Geomanist-Book.ttf");
-}
 
 html,
 body {
   height: 100%;
   background-color: var(--page-bgcolor);
   text-rendering: geometricPrecision;
+  font-family: 'Work Sans', sans-serif;
 }
 
 img {
@@ -215,7 +212,7 @@ pre:not(.highlight) {
   cursor: pointer;
   font-size: 14px;
   border-radius: 4px;
-  padding: 16px 8px 16px 8px;
+  padding: 5px 8px 5px 8px;
   display: block;
   word-break: normal !important;
   word-wrap: break-word;
@@ -230,7 +227,6 @@ pre.completed {
     color: #1a6866;
     ::before {
         content: "✓";
-        font-family: 'Roboto', sans-serif;
         line-height: 22px;
         font-size: 18px;
         text-align: center;
@@ -334,7 +330,6 @@ i.fa-expand {
   //padding-top: 8px;
   // background-color: var(--term-color);
   h2 {
-    font-family: 'Work Sans', sans-serif;
     font-size: 32px;
     font-weight: normal;
     font-style: normal;
@@ -345,7 +340,6 @@ i.fa-expand {
   }
 
   p {
-    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 400;
     font-style: normal;
@@ -365,7 +359,6 @@ h2,
 h3,
 h4
 h5 {
-  font-family: 'Work Sans', sans-serif;
   letter-spacing: 0.5px;
   font-weight: 500;
 }
@@ -405,7 +398,6 @@ h4 {
 
 
 p {
-  font-family: 'Work Sans', sans-serif;
   font-size: 16px;
   font-weight: normal;
   font-style: normal;
@@ -499,7 +491,6 @@ li {
     margin-bottom: 0;
     width: 100%;
     height: 40px;
-    font-family: 'Work Sans', sans-serif;
     font-size: 32px;
     font-weight: normal;
     font-style: normal;
@@ -514,7 +505,6 @@ li {
     margin-bottom: 0;
     width: 100%;
     height: 48px;
-    font-family: 'Work Sans', sans-serif;
     font-size: 16px;
     font-weight: 600;
     font-style: normal;
@@ -533,7 +523,6 @@ li {
       background-color: var(--docker-color);
       margin: 0 50px;
       text-transform: uppercase;
-      font-family: 'Work Sans', sans-serif;
       font-size: 13.7px;
       font-weight: 600;
       font-style: normal;
