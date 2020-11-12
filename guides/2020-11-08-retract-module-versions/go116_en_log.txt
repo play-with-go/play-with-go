@@ -176,15 +176,7 @@ $ git push -q origin v1.0.1
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
 $ cd /home/gopher/gopher
-$ (
-	cd $(mktemp -d)
-	export GOPATH=$(mktemp -d)
-	go mod init mod.com
-	go get -x {{{.PROVERB}}}@v0.4.0
-	go get -x {{{.PROVERB}}}@v1.0.0
-	go get -x {{{.PROVERB}}}@v1.0.1
-	sleep 1m
-) >/dev/null 2>&1
+$ (cd $(mktemp -d); export GOPATH=$(mktemp -d); go mod init mod.com; go get -x {{{.PROVERB}}}@v0.4.0; go get -x {{{.PROVERB}}}@v1.0.0; go get -x {{{.PROVERB}}}@v1.0.1; sleep 1m) >/dev/null 2>&1
 $ go get {{{.PROVERB}}}@v1.0.0
 go: downloading {{{.PROVERB}}} v1.0.0
 go: warning: {{{.PROVERB}}}@v1.0.0 is retracted: Published v1 too early
