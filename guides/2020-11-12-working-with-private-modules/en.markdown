@@ -58,7 +58,7 @@ Commit and push this initial version:
 ### The `<!--ref:gopher-->` module
 
 Now create a `<!--ref: gopher-->` module to try out the `<!--ref: public-->` and `<!--ref:private-->` modules. Unlike
-the `<!--ref: public-->` and `<!--ref:private-->` modules, you will not publisht the `<!--ref: gopher-->` module; it
+the `<!--ref: public-->` and `<!--ref:private-->` modules, you will not publish the `<!--ref: gopher-->` module; it
 will be local only:
 
 <!--step: gopher_init-->
