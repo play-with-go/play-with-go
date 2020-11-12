@@ -1,0 +1,153 @@
+$ go version
+go version go1.15.3 linux/amd64
+$ mkdir /home/gopher/public
+$ cd /home/gopher/public
+$ go mod init public
+go: creating new go.mod: module public
+$ git init -q
+$ git remote add origin https://{{{.PUBLIC}}}.git
+$ cat <<EOD > /home/gopher/public/public.go
+package public
+
+func Message() string {
+	return "This is a public safety announcement!"
+}
+
+EOD
+$ git add public.go
+$ git commit -q -m 'Initial commit of public module'
+$ git push -q origin main
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ mkdir /home/gopher/private
+$ cd /home/gopher/private
+$ go mod init private
+go: creating new go.mod: module private
+$ git init -q
+$ git remote add origin https://{{{.PRIVATE}}}.git
+$ cat <<EOD > /home/gopher/private/private.go
+package private
+
+func Secret() string {
+	return "This is a top secret message... for your eyes only"
+}
+
+EOD
+$ git add private.go
+$ git commit -q -m 'Initial commit of private module'
+$ git push -q origin main
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ mkdir /home/gopher/gopher
+$ cd /home/gopher/gopher
+$ go mod init gopher
+go: creating new go.mod: module gopher
+$ cat <<EOD > /home/gopher/gopher/gopher.go
+package main
+
+import (
+	"fmt"
+
+	"{{{.PUBLIC}}}"
+	"{{{.PRIVATE}}}"
+)
+
+func main() {
+	fmt.Printf("public.Message(): %v\n", public.Message())
+	fmt.Printf("private.Secret(): %v\n", private.Secret())
+}
+
+EOD
+$ go env GOPROXY
+https://proxy.golang.org,direct
+$ go env GOSUMDB
+sum.golang.org
+$ go help env
+usage: go env [-json] [-u] [-w] [var ...]
+
+Env prints Go environment information.
+
+By default env prints information as a shell script
+(on Windows, a batch file). If one or more variable
+names is given as arguments, env prints the value of
+each named variable on its own line.
+
+The -json flag prints the environment in JSON format
+instead of as a shell script.
+
+The -u flag requires one or more arguments and unsets
+the default setting for the named environment variables,
+if one has been set with 'go env -w'.
+
+The -w flag requires one or more arguments of the
+form NAME=VALUE and changes the default settings
+of the named environment variables to the given values.
+
+For more about environment variables, see 'go help environment'.
+$ go env -w GOPROXY=https://proxy.golang.org
+$ go get {{{.PUBLIC}}}
+go: downloading {{{.PUBLIC}}} v0.0.0-20201112145351-6c967f8a533a
+go: {{{.PUBLIC}}} upgrade => v0.0.0-20201112145351-6c967f8a533a
+$ go get {{{.PRIVATE}}}
+go get {{{.PRIVATE}}}: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 410 Gone
+	server response:
+	not found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/1579f2974f18ae2d93ad89f8eb7e23c7e418fa4b40c77b48fd0ac1a2e489856f: exit status 128:
+		fatal: could not read Username for 'https://gopher.live': terminal prompts disabled
+	Confirm the import path was entered correctly.
+	If this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
+$ go env -w GOPROXY=
+$ go get {{{.PRIVATE}}}
+go: downloading {{{.PRIVATE}}} v0.0.0-20201112145352-806167d7acb5
+go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20201112145352-806167d7acb5: verifying module: {{{.PRIVATE}}}@v0.0.0-20201112145352-806167d7acb5: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20201112145352-806167d7acb5: 410 Gone
+	server response:
+	not found: {{{.PRIVATE}}}@v0.0.0-20201112145352-806167d7acb5: invalid version: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /tmp/gopath/pkg/mod/cache/vcs/1579f2974f18ae2d93ad89f8eb7e23c7e418fa4b40c77b48fd0ac1a2e489856f: exit status 128:
+		fatal: could not read Username for 'https://gopher.live': terminal prompts disabled
+$ go help module-private
+The go command defaults to downloading modules from the public Go module
+mirror at proxy.golang.org. It also defaults to validating downloaded modules,
+regardless of source, against the public Go checksum database at sum.golang.org.
+These defaults work well for publicly available source code.
+
+The GOPRIVATE environment variable controls which modules the go command
+considers to be private (not available publicly) and should therefore not use the
+proxy or checksum database. The variable is a comma-separated list of
+glob patterns (in the syntax of Go's path.Match) of module path prefixes.
+For example,
+
+	GOPRIVATE=*.corp.example.com,rsc.io/private
+
+causes the go command to treat as private any module with a path prefix
+matching either pattern, including git.corp.example.com/xyzzy, rsc.io/private,
+and rsc.io/private/quux.
+
+The GOPRIVATE environment variable may be used by other tools as well to
+identify non-public modules. For example, an editor could use GOPRIVATE
+to decide whether to hyperlink a package import to a godoc.org page.
+
+For fine-grained control over module download and validation, the GONOPROXY
+and GONOSUMDB environment variables accept the same kind of glob list
+and override GOPRIVATE for the specific decision of whether to use the proxy
+and checksum database, respectively.
+
+For example, if a company ran a module proxy serving private modules,
+users would configure go using:
+
+	GOPRIVATE=*.corp.example.com
+	GOPROXY=proxy.example.com
+	GONOPROXY=none
+
+This would tell the go command and other tools that modules beginning with
+a corp.example.com subdomain are private but that the company proxy should
+be used for downloading both public and private modules, because
+GONOPROXY has been set to a pattern that won't match any modules,
+overriding GOPRIVATE.
+
+The 'go env -w' command (see 'go help env') can be used to set these variables
+for future go command invocations.
+$ go env -w GOPRIVATE={{{.PRIVATE}}}
+$ go get {{{.PRIVATE}}}
+go: downloading {{{.PRIVATE}}} v0.0.0-20201112145352-806167d7acb5
+go: {{{.PRIVATE}}} upgrade => v0.0.0-20201112145352-806167d7acb5
+$ go run .
+public.Message(): This is a public safety announcement!
+private.Secret(): This is a top secret message... for your eyes only

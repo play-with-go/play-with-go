@@ -18,6 +18,9 @@ _#golangToolsLatest: "v0.0.0-20201105220310-78b158585360"
 _#StablePsuedoversionSuffix: "20060102150405-abcedf12345"
 
 _#commonDefs: {
+	pwg: {
+		gopher_live: "gopher.live"
+	}
 	cmdgo: {
 		modinit:     "go mod init"
 		modedit:     "go mod edit"
@@ -29,10 +32,16 @@ _#commonDefs: {
 		install:     "go install"
 		generate:    "go generate"
 		env:         "go env"
+		help:        "go help"
 		build:       "go build"
 		version:     "go version"
 		vlatest:     "latest"
 		GO111MODULE: "GO111MODULE"
+		GOPROXY:     "GOPROXY"
+		GONOPROXY:   "GONOPROXY"
+		GOSUMDB:     "GOSUMDB"
+		GONOSUMDB:   "GONOSUMDB"
+		GOPRIVATE:   "GOPRIVATE"
 	}
 	git: {
 		add:      "git add"
