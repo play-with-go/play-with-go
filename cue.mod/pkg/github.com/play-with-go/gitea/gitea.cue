@@ -13,3 +13,4 @@ _#gitea: preguide.#Prestep & {
 
 // Establish the default value for the pattern
 #Repo: Pattern: *"*" | string
+#Repo: Private: *false | bool

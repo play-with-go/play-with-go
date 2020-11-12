@@ -8,6 +8,7 @@ package guides
 		Args: {
 			Repos: [{
 				Pattern: "mod1"
+				Private: false
 				Var:     "REPO1"
 			}]
 		}
@@ -36,6 +37,7 @@ package guides
 		Args: {
 			Repos: [{
 				Pattern: "hello"
+				Private: false
 				Var:     "REPO1"
 			}]
 		}
@@ -82,9 +84,11 @@ package guides
 		Args: {
 			Repos: [{
 				Pattern: "greetings"
+				Private: false
 				Var:     "GREETINGS"
 			}, {
 				Pattern: "hello"
+				Private: false
 				Var:     "HELLO"
 			}]
 		}
@@ -113,6 +117,7 @@ package guides
 		Args: {
 			Repos: [{
 				Pattern: "painkiller"
+				Private: false
 				Var:     "PAINKILLER"
 			}]
 		}
@@ -141,6 +146,7 @@ package guides
 		Args: {
 			Repos: [{
 				Pattern: "proverb"
+				Private: false
 				Var:     "PROVERB"
 			}]
 		}

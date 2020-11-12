@@ -7,8 +7,8 @@ Presteps: [{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20201106060436-cd0e98fe53f4",
-		    "Sum": "h1:gsIXEg+J3mOTHm32E8Kuqat+6YaB/2MnlwDvpYFD8Aw=",
+		    "Version": "v0.0.0-20201111211636-d5c2d11ae999",
+		    "Sum": "h1:onJu544F8EHf+VAWAS8W5BUyrmadeKU/vwayWws1pJ4=",
 		    "Replace": null
 		  },
 		  "Deps": [
@@ -96,6 +96,7 @@ Presteps: [{
 	Args: {
 		Repos: [{
 			Var:     "PROVERB"
+			Private: false
 			Pattern: "proverb"
 		}]
 	}
@@ -1305,5 +1306,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "31bd0d40e684a50b0450917aa902f5d6230d73013338c16b4a393cd48e4e739c"
+Hash: "874566453dd4141222f87f21abdf4cdc4ccdd0450e67404ae155e899d5701c7f"
 Delims: ["{{{", "}}}"]
