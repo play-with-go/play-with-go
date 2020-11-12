@@ -3,7 +3,7 @@ category: Start here
 difficulty: Beginner
 excerpt: You've completed the Go tour, so what next? This guide gives a brief introduction
   to Go programming
-guide: 2020-10-15-get-started-with-go
+guide: 2019-10-15-get-started-with-go
 lang: en
 layout: post
 title: 'Tutorial: Get started with Go'
@@ -158,4 +158,4 @@ Notice that your code calls the Go function, printing a clever message about com
 
 With this quick introduction, you learned some of the basics. To write some more code with another tutorial, take a look at [Create a Go module](/create-a-go-module).
 
-<script>let pageGuide="2020-10-15-get-started-with-go"; let pageLanguage="en"; let pageScenario="go115";</script>
+<script>let pageGuide="2019-10-15-get-started-with-go"; let pageLanguage="en"; let pageScenario="go115";</script>
