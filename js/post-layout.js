@@ -115,7 +115,6 @@ $(document).ready(function() {
     const terminalOpened = leftPanel.is(":hidden");
     // add compress icon if leftPanel is open
     $(this).toggleClass("fa-compress", terminalOpened);
-    setMenuButtonIcon();
     pwd.resize();
   });
 
