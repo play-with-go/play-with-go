@@ -1,5 +1,56 @@
 package guides
 
+"2018-10-19-go-fundamentals": {
+	Delims: ["{{{", "}}}"]
+	Presteps: [{
+		Package: "github.com/play-with-go/gitea"
+		Path:    "/newuser"
+		Args: {
+			Repos: [{
+				Pattern: "greetings"
+				Private: false
+				Var:     "GREETINGS"
+			}, {
+				Pattern: "hello"
+				Private: false
+				Var:     "HELLO"
+			}]
+		}
+	}]
+	Terminals: [{
+		Name:        "term1"
+		Description: "The main terminal"
+		Scenarios: {
+			go115: {
+				Image: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
+			}
+		}
+	}]
+	Scenarios: [{
+		Name:        "go115"
+		Description: "Go 1.15"
+	}]
+	Networks: ["playwithgo_pwg"]
+	Env: []
+}
+"2019-10-15-get-started-with-go": {
+	Delims: ["{{{", "}}}"]
+	Terminals: [{
+		Name:        "term1"
+		Description: "The main terminal"
+		Scenarios: {
+			go115: {
+				Image: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
+			}
+		}
+	}]
+	Scenarios: [{
+		Name:        "go115"
+		Description: "Go 1.15"
+	}]
+	Networks: ["playwithgo_pwg"]
+	Env: []
+}
 "2020-09-01-basic-go-modules-example": {
 	Delims: ["{{{", "}}}"]
 	Presteps: [{
@@ -39,57 +90,6 @@ package guides
 				Pattern: "hello"
 				Private: false
 				Var:     "REPO1"
-			}]
-		}
-	}]
-	Terminals: [{
-		Name:        "term1"
-		Description: "The main terminal"
-		Scenarios: {
-			go115: {
-				Image: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
-			}
-		}
-	}]
-	Scenarios: [{
-		Name:        "go115"
-		Description: "Go 1.15"
-	}]
-	Networks: ["playwithgo_pwg"]
-	Env: []
-}
-"2020-10-15-get-started-with-go": {
-	Delims: ["{{{", "}}}"]
-	Terminals: [{
-		Name:        "term1"
-		Description: "The main terminal"
-		Scenarios: {
-			go115: {
-				Image: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
-			}
-		}
-	}]
-	Scenarios: [{
-		Name:        "go115"
-		Description: "Go 1.15"
-	}]
-	Networks: ["playwithgo_pwg"]
-	Env: []
-}
-"2020-10-19-go-fundamentals": {
-	Delims: ["{{{", "}}}"]
-	Presteps: [{
-		Package: "github.com/play-with-go/gitea"
-		Path:    "/newuser"
-		Args: {
-			Repos: [{
-				Pattern: "greetings"
-				Private: false
-				Var:     "GREETINGS"
-			}, {
-				Pattern: "hello"
-				Private: false
-				Var:     "HELLO"
 			}]
 		}
 	}]

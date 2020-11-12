@@ -2,7 +2,7 @@
 category: Start here
 difficulty: Beginner
 excerpt: Primer on creating and using go modules
-guide: 2020-10-19-go-fundamentals
+guide: 2018-10-19-go-fundamentals
 lang: en
 layout: post
 title: 'Tutorial: Go fundamentals'
@@ -1040,4 +1040,4 @@ map[Darrin:Hail, Darrin! Well met! Gladys:Hail, Gladys! Well met! Samantha:Hi, S
 {:data-command-src="aGVsbG8K"}
 
 That wraps up this Go tutorial!
-<script>let pageGuide="2020-10-19-go-fundamentals"; let pageLanguage="en"; let pageScenario="go115";</script>
+<script>let pageGuide="2018-10-19-go-fundamentals"; let pageLanguage="en"; let pageScenario="go115";</script>
