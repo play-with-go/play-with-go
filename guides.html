@@ -58,7 +58,7 @@ layout: plain
               <div class="col">
                 <p class="card-text time d-inline" title="Estimated read time"> 
                 {% assign words = post.content | strip_html | number_of_words %}
-                {{ words | divided_by: 180 | plus: 1 }} min read.
+                {{ words | divided_by: 180 | plus: 1 | times: 2 }} min read.
                 </p>
               </div>
             </div>
