@@ -16,7 +16,7 @@ can include at the top of their `README.md` explaining how to install the tool.
 
 Go 1.16 introduces a new way to install Go programs directly with the `go` command. This guide
 introduces the new mode of `<!--ref:cmdgo.install-->` using the example of
-[`<!--ref:staticcheck_pkg-->`](https://staticcheck.io/), and is suitable for both end users and tool authors.
+[`<!--ref:mkcert_pkg-->`](https://mkcert.io/), and is suitable for both end users and tool authors.
 
 ### Prerequisites
 
@@ -35,7 +35,7 @@ This guide is running with:
 
 Currently, tool authors who want to provide installation instructions in their projects' `README.md` typically include:
 
-<!--step: go115_staticcheck_get-->
+<!--step: go115_mkcert_get-->
 
 There are a number of problems with this approach:
 
@@ -49,7 +49,7 @@ There are a number of problems with this approach:
 Prior to Go 1.16, the general advice to fix the first two problems was to use a snippet
 which runs `<!--ref:cmdgo.get-->` in module mode and outside any module, by using a temporary directory:
 
-<!--step: go115_staticcheck_modules_get-->
+<!--step: go115_mkcert_modules_get-->
 
 However, this new approach had its own problems:
 
@@ -64,26 +64,26 @@ instructions which are meant to be brief and easy to follow.
 In Go 1.16, the `<!--ref:cmdgo.install-->` command is now used to install programs directly, i.e. regardless of the current
 module context:
 
-<!--step: go116_staticcheck_install-->
+<!--step: go116_mkcert_install-->
 
-For the purposes of this guide you are using a specific version (`<!--ref: staticcheck_version-->`). Alternatively,
+For the purposes of this guide you are using a specific version (`<!--ref: mkcert_version-->`). Alternatively,
 the special `<!--ref:cmdgo.vlatest-->` version can be used to install the latest release.
 
 Much like the previous behaviour of `<!--ref:cmdgo.get-->`, `<!--ref:cmdgo.install-->` places binaries in `$GOPATH/bin`,
 or in `$GOBIN` if set. See the _"Setting up your `PATH`"_ section in [Installing Go](/installing-go_go115_en) to ensure
 your `PATH` is set correctly.
 
-Verify that `<!--ref:staticcheck-->` is now on your `PATH`:
+Verify that `<!--ref:mkcert-->` is now on your `PATH`:
 
-<!--step: which_staticcheck-->
+<!--step: which_mkcert-->
 
-Run `<!--ref:staticcheck-->` to check everything is working:
+Run `<!--ref:mkcert-->` to check everything is working:
 
-<!--step: run_staticcheck-->
+<!--step: run_mkcert-->
 
 You can also use `<!--ref:cmdgo.version-->` to see the module dependencies used in building the program:
 
-<!--step: goversion_staticcheck-->
+<!--step: goversion_mkcert-->
 
 To eliminate redundancy and confusion, using `<!--ref:cmdgo.get-->` to build or
 install programs is being deprecated in Go 1.16.
