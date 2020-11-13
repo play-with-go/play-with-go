@@ -1,20 +1,24 @@
 $ go version
 go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
-$ go get honnef.co/go/tools/cmd/staticcheck
-go: downloading honnef.co/go/tools v0.0.1-2020.1.6
-go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
-go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
+$ go get filippo.io/mkcert
+go: downloading filippo.io/mkcert v1.4.2
+go: downloading golang.org/x/net v0.0.0-20190620200207-3b0461eec859
+go: downloading golang.org/x/tools v0.0.0-20191108193012-7d206e10da11
+go: downloading honnef.co/go/tools v0.0.0-20191107024926-a9480a3ec3bc
+go: downloading howett.net/plist v0.0.0-20181124034731-591f970eefbb
+go: downloading software.sslmate.com/src/go-pkcs12 v0.0.0-20180114231543-2291e8f0f237
+go: downloading golang.org/x/text v0.3.0
 go: downloading github.com/BurntSushi/toml v0.3.1
-$ (cd $(mktemp -d); GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6)
-$ go install honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6
-$ which staticcheck
-/home/gopher/go/bin/staticcheck
-$ staticcheck -version
-staticcheck 2020.1.6
-$ go version -m $(which staticcheck)
-/home/gopher/go/bin/staticcheck: devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000
-	path	honnef.co/go/tools/cmd/staticcheck
-	mod	honnef.co/go/tools	v0.0.1-2020.1.6	h1:W18jzjh8mfPez+AwGLxmOImucz/IFjpNlrKVnaj2YVc=
-	dep	github.com/BurntSushi/toml	v0.3.1	h1:WXkYYl6Yr3qBf1K79EBnL4mak0OimBfB0XUf9Vl28OQ=
-	dep	golang.org/x/tools	v0.0.0-20200410194907-79a7a3126eef	h1:RHORRhs540cYZYrzgU2CPUyykkwZM78hGdzocOo9P8A=
-	dep	golang.org/x/xerrors	v0.0.0-20191204190536-9bdfabe68543	h1:E7g+9GITq07hpfrRu66IVDexMakfv52eLZ2CXBWiKr4=
+$ (cd $(mktemp -d); GO111MODULE=on go get filippo.io/mkcert@v1.4.2)
+$ go install filippo.io/mkcert@v1.4.2
+$ which mkcert
+/home/gopher/go/bin/mkcert
+$ mkcert -version
+v1.4.2
+$ go version -m $(which mkcert)
+/home/gopher/go/bin/mkcert: devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000
+	path	filippo.io/mkcert
+	mod	filippo.io/mkcert	v1.4.2	h1:7mWofpFS4gzQS5bhE3KYBwzfceIPy2KJ4tMT31aPNeY=
+	dep	golang.org/x/net	v0.0.0-20190620200207-3b0461eec859	h1:R/3boaszxrf1GEUWTVDzSKVwLmSJpwZ1yqXm8j0v2QI=
+	dep	golang.org/x/text	v0.3.0	h1:g61tztE5qeGQ89tm6NTjjM9VPIm088od1l6aSorWRWg=
+	dep	software.sslmate.com/src/go-pkcs12	v0.0.0-20180114231543-2291e8f0f237	h1:iAEkCBPbRaflBgZ7o9gjVUuWuvWeV4sytFWg9o+Pj2k=

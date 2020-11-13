@@ -16,28 +16,28 @@ Scenarios: [{
 Networks: ["playwithgo_pwg"]
 Env: []
 Steps: {
-	goversion_staticcheck: {
+	goversion_mkcert: {
 		Stmts: [{
 			ComparisonOutput: """
-				/home/gopher/go/bin/staticcheck: devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000
-				\tpath\thonnef.co/go/tools/cmd/staticcheck
-				\tmod\thonnef.co/go/tools\tv0.0.1-2020.1.6\th1:W18jzjh8mfPez+AwGLxmOImucz/IFjpNlrKVnaj2YVc=
-				\tdep\tgithub.com/BurntSushi/toml\tv0.3.1\th1:WXkYYl6Yr3qBf1K79EBnL4mak0OimBfB0XUf9Vl28OQ=
-				\tdep\tgolang.org/x/tools\tv0.0.0-20200410194907-79a7a3126eef\th1:RHORRhs540cYZYrzgU2CPUyykkwZM78hGdzocOo9P8A=
-				\tdep\tgolang.org/x/xerrors\tv0.0.0-20191204190536-9bdfabe68543\th1:E7g+9GITq07hpfrRu66IVDexMakfv52eLZ2CXBWiKr4=
+				/home/gopher/go/bin/mkcert: devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000
+				\tpath\tfilippo.io/mkcert
+				\tmod\tfilippo.io/mkcert\tv1.4.2\th1:7mWofpFS4gzQS5bhE3KYBwzfceIPy2KJ4tMT31aPNeY=
+				\tdep\tgolang.org/x/net\tv0.0.0-20190620200207-3b0461eec859\th1:R/3boaszxrf1GEUWTVDzSKVwLmSJpwZ1yqXm8j0v2QI=
+				\tdep\tgolang.org/x/text\tv0.3.0\th1:g61tztE5qeGQ89tm6NTjjM9VPIm088od1l6aSorWRWg=
+				\tdep\tsoftware.sslmate.com/src/go-pkcs12\tv0.0.0-20180114231543-2291e8f0f237\th1:iAEkCBPbRaflBgZ7o9gjVUuWuvWeV4sytFWg9o+Pj2k=
 
 				"""
 			Output: """
-				/home/gopher/go/bin/staticcheck: devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000
-				\tpath\thonnef.co/go/tools/cmd/staticcheck
-				\tmod\thonnef.co/go/tools\tv0.0.1-2020.1.6\th1:W18jzjh8mfPez+AwGLxmOImucz/IFjpNlrKVnaj2YVc=
-				\tdep\tgithub.com/BurntSushi/toml\tv0.3.1\th1:WXkYYl6Yr3qBf1K79EBnL4mak0OimBfB0XUf9Vl28OQ=
-				\tdep\tgolang.org/x/tools\tv0.0.0-20200410194907-79a7a3126eef\th1:RHORRhs540cYZYrzgU2CPUyykkwZM78hGdzocOo9P8A=
-				\tdep\tgolang.org/x/xerrors\tv0.0.0-20191204190536-9bdfabe68543\th1:E7g+9GITq07hpfrRu66IVDexMakfv52eLZ2CXBWiKr4=
+				/home/gopher/go/bin/mkcert: devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000
+				\tpath\tfilippo.io/mkcert
+				\tmod\tfilippo.io/mkcert\tv1.4.2\th1:7mWofpFS4gzQS5bhE3KYBwzfceIPy2KJ4tMT31aPNeY=
+				\tdep\tgolang.org/x/net\tv0.0.0-20190620200207-3b0461eec859\th1:R/3boaszxrf1GEUWTVDzSKVwLmSJpwZ1yqXm8j0v2QI=
+				\tdep\tgolang.org/x/text\tv0.3.0\th1:g61tztE5qeGQ89tm6NTjjM9VPIm088od1l6aSorWRWg=
+				\tdep\tsoftware.sslmate.com/src/go-pkcs12\tv0.0.0-20180114231543-2291e8f0f237\th1:iAEkCBPbRaflBgZ7o9gjVUuWuvWeV4sytFWg9o+Pj2k=
 
 				"""
 			ExitCode: 0
-			CmdStr:   "go version -m $(which staticcheck)"
+			CmdStr:   "go version -m $(which mkcert)"
 			Negated:  false
 		}]
 		Order:           6
@@ -45,20 +45,20 @@ Steps: {
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "goversion_staticcheck"
+		Name:            "goversion_mkcert"
 	}
-	run_staticcheck: {
+	run_mkcert: {
 		Stmts: [{
 			ComparisonOutput: """
-				staticcheck 2020.1.6
+				v1.4.2
 
 				"""
 			Output: """
-				staticcheck 2020.1.6
+				v1.4.2
 
 				"""
 			ExitCode: 0
-			CmdStr:   "staticcheck -version"
+			CmdStr:   "mkcert -version"
 			Negated:  false
 		}]
 		Order:           5
@@ -66,20 +66,20 @@ Steps: {
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "run_staticcheck"
+		Name:            "run_mkcert"
 	}
-	which_staticcheck: {
+	which_mkcert: {
 		Stmts: [{
 			ComparisonOutput: """
-				/home/gopher/go/bin/staticcheck
+				/home/gopher/go/bin/mkcert
 
 				"""
 			Output: """
-				/home/gopher/go/bin/staticcheck
+				/home/gopher/go/bin/mkcert
 
 				"""
 			ExitCode: 0
-			CmdStr:   "which staticcheck"
+			CmdStr:   "which mkcert"
 			Negated:  false
 		}]
 		Order:           4
@@ -87,14 +87,14 @@ Steps: {
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "which_staticcheck"
+		Name:            "which_mkcert"
 	}
-	go116_staticcheck_install: {
+	go116_mkcert_install: {
 		Stmts: [{
 			ComparisonOutput: ""
 			Output:           ""
 			ExitCode:         0
-			CmdStr:           "go install honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6"
+			CmdStr:           "go install filippo.io/mkcert@v1.4.2"
 			Negated:          false
 		}]
 		Order:           3
@@ -102,14 +102,14 @@ Steps: {
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "go116_staticcheck_install"
+		Name:            "go116_mkcert_install"
 	}
-	go115_staticcheck_modules_get: {
+	go115_mkcert_modules_get: {
 		Stmts: [{
 			ComparisonOutput: ""
 			Output:           ""
 			ExitCode:         0
-			CmdStr:           "(cd $(mktemp -d); GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6)"
+			CmdStr:           "(cd $(mktemp -d); GO111MODULE=on go get filippo.io/mkcert@v1.4.2)"
 			Negated:          false
 		}]
 		Order:           2
@@ -117,26 +117,34 @@ Steps: {
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "go115_staticcheck_modules_get"
+		Name:            "go115_mkcert_modules_get"
 	}
-	go115_staticcheck_get: {
+	go115_mkcert_get: {
 		Stmts: [{
 			ComparisonOutput: """
 
+				go: downloading filippo.io/mkcert v1.4.2
 				go: downloading github.com/BurntSushi/toml v0.3.1
-				go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
-				go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
-				go: downloading honnef.co/go/tools v0.0.1-2020.1.6
+				go: downloading golang.org/x/net v0.0.0-20190620200207-3b0461eec859
+				go: downloading golang.org/x/text v0.3.0
+				go: downloading golang.org/x/tools v0.0.0-20191108193012-7d206e10da11
+				go: downloading honnef.co/go/tools v0.0.0-20191107024926-a9480a3ec3bc
+				go: downloading howett.net/plist v0.0.0-20181124034731-591f970eefbb
+				go: downloading software.sslmate.com/src/go-pkcs12 v0.0.0-20180114231543-2291e8f0f237
 				"""
 			Output: """
-				go: downloading honnef.co/go/tools v0.0.1-2020.1.6
-				go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
-				go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
+				go: downloading filippo.io/mkcert v1.4.2
+				go: downloading golang.org/x/net v0.0.0-20190620200207-3b0461eec859
+				go: downloading golang.org/x/tools v0.0.0-20191108193012-7d206e10da11
+				go: downloading honnef.co/go/tools v0.0.0-20191107024926-a9480a3ec3bc
+				go: downloading howett.net/plist v0.0.0-20181124034731-591f970eefbb
+				go: downloading software.sslmate.com/src/go-pkcs12 v0.0.0-20180114231543-2291e8f0f237
+				go: downloading golang.org/x/text v0.3.0
 				go: downloading github.com/BurntSushi/toml v0.3.1
 
 				"""
 			ExitCode: 0
-			CmdStr:   "go get honnef.co/go/tools/cmd/staticcheck"
+			CmdStr:   "go get filippo.io/mkcert"
 			Negated:  false
 		}]
 		Order:           1
@@ -144,7 +152,7 @@ Steps: {
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "go115_staticcheck_get"
+		Name:            "go115_mkcert_get"
 	}
 	goversion: {
 		Stmts: [{
@@ -168,5 +176,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "94cde6bab4c997128f516a6425713437875f4ca689dfcda136580ac1bf72a207"
+Hash: "bfb746c5c08e37a9bf1d16bf846dd6cba8f2867fd13604cdcbf7c926caf2bb0b"
 Delims: ["{{{", "}}}"]

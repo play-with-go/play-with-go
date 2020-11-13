@@ -18,7 +18,7 @@ can include at the top of their `README.md` explaining how to install the tool.
 
 Go 1.16 introduces a new way to install Go programs directly with the `go` command. This guide
 introduces the new mode of `go install` using the example of
-[`honnef.co/go/tools/cmd/staticcheck`](https://staticcheck.io/), and is suitable for both end users and tool authors.
+[`filippo.io/mkcert`](https://mkcert.io/), and is suitable for both end users and tool authors.
 
 ### Prerequisites
 
@@ -42,13 +42,17 @@ go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
 Currently, tool authors who want to provide installation instructions in their projects' `README.md` typically include:
 
 ```.term1
-$ go get honnef.co/go/tools/cmd/staticcheck
-go: downloading honnef.co/go/tools v0.0.1-2020.1.6
-go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
-go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
+$ go get filippo.io/mkcert
+go: downloading filippo.io/mkcert v1.4.2
+go: downloading golang.org/x/net v0.0.0-20190620200207-3b0461eec859
+go: downloading golang.org/x/tools v0.0.0-20191108193012-7d206e10da11
+go: downloading honnef.co/go/tools v0.0.0-20191107024926-a9480a3ec3bc
+go: downloading howett.net/plist v0.0.0-20181124034731-591f970eefbb
+go: downloading software.sslmate.com/src/go-pkcs12 v0.0.0-20180114231543-2291e8f0f237
+go: downloading golang.org/x/text v0.3.0
 go: downloading github.com/BurntSushi/toml v0.3.1
 ```
-{:data-command-src="Z28gZ2V0IGhvbm5lZi5jby9nby90b29scy9jbWQvc3RhdGljY2hlY2sK"}
+{:data-command-src="Z28gZ2V0IGZpbGlwcG8uaW8vbWtjZXJ0Cg=="}
 
 There are a number of problems with this approach:
 
@@ -63,9 +67,9 @@ Prior to Go 1.16, the general advice to fix the first two problems was to use a 
 which runs `go get` in module mode and outside any module, by using a temporary directory:
 
 ```.term1
-$ (cd $(mktemp -d); GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6)
+$ (cd $(mktemp -d); GO111MODULE=on go get filippo.io/mkcert@v1.4.2)
 ```
-{:data-command-src="KGNkICQobWt0ZW1wIC1kKTsgR08xMTFNT0RVTEU9b24gZ28gZ2V0IGhvbm5lZi5jby9nby90b29scy9jbWQvc3RhdGljY2hlY2tAdjAuMC4xLTIwMjAuMS42KQo="}
+{:data-command-src="KGNkICQobWt0ZW1wIC1kKTsgR08xMTFNT0RVTEU9b24gZ28gZ2V0IGZpbGlwcG8uaW8vbWtjZXJ0QHYxLjQuMikK"}
 
 However, this new approach had its own problems:
 
@@ -81,45 +85,45 @@ In Go 1.16, the `go install` command is now used to install programs directly, i
 module context:
 
 ```.term1
-$ go install honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6
+$ go install filippo.io/mkcert@v1.4.2
 ```
-{:data-command-src="Z28gaW5zdGFsbCBob25uZWYuY28vZ28vdG9vbHMvY21kL3N0YXRpY2NoZWNrQHYwLjAuMS0yMDIwLjEuNgo="}
+{:data-command-src="Z28gaW5zdGFsbCBmaWxpcHBvLmlvL21rY2VydEB2MS40LjIK"}
 
-For the purposes of this guide you are using a specific version (`v0.0.1-2020.1.6`). Alternatively,
+For the purposes of this guide you are using a specific version (`v1.4.2`). Alternatively,
 the special `latest` version can be used to install the latest release.
 
 Much like the previous behaviour of `go get`, `go install` places binaries in `$GOPATH/bin`,
 or in `$GOBIN` if set. See the _"Setting up your `PATH`"_ section in [Installing Go](/installing-go_go115_en) to ensure
 your `PATH` is set correctly.
 
-Verify that `staticcheck` is now on your `PATH`:
+Verify that `mkcert` is now on your `PATH`:
 
 ```.term1
-$ which staticcheck
-/home/gopher/go/bin/staticcheck
+$ which mkcert
+/home/gopher/go/bin/mkcert
 ```
-{:data-command-src="d2hpY2ggc3RhdGljY2hlY2sK"}
+{:data-command-src="d2hpY2ggbWtjZXJ0Cg=="}
 
-Run `staticcheck` to check everything is working:
+Run `mkcert` to check everything is working:
 
 ```.term1
-$ staticcheck -version
-staticcheck 2020.1.6
+$ mkcert -version
+v1.4.2
 ```
-{:data-command-src="c3RhdGljY2hlY2sgLXZlcnNpb24K"}
+{:data-command-src="bWtjZXJ0IC12ZXJzaW9uCg=="}
 
 You can also use `go version` to see the module dependencies used in building the program:
 
 ```.term1
-$ go version -m $(which staticcheck)
-/home/gopher/go/bin/staticcheck: devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000
-	path	honnef.co/go/tools/cmd/staticcheck
-	mod	honnef.co/go/tools	v0.0.1-2020.1.6	h1:W18jzjh8mfPez+AwGLxmOImucz/IFjpNlrKVnaj2YVc=
-	dep	github.com/BurntSushi/toml	v0.3.1	h1:WXkYYl6Yr3qBf1K79EBnL4mak0OimBfB0XUf9Vl28OQ=
-	dep	golang.org/x/tools	v0.0.0-20200410194907-79a7a3126eef	h1:RHORRhs540cYZYrzgU2CPUyykkwZM78hGdzocOo9P8A=
-	dep	golang.org/x/xerrors	v0.0.0-20191204190536-9bdfabe68543	h1:E7g+9GITq07hpfrRu66IVDexMakfv52eLZ2CXBWiKr4=
+$ go version -m $(which mkcert)
+/home/gopher/go/bin/mkcert: devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000
+	path	filippo.io/mkcert
+	mod	filippo.io/mkcert	v1.4.2	h1:7mWofpFS4gzQS5bhE3KYBwzfceIPy2KJ4tMT31aPNeY=
+	dep	golang.org/x/net	v0.0.0-20190620200207-3b0461eec859	h1:R/3boaszxrf1GEUWTVDzSKVwLmSJpwZ1yqXm8j0v2QI=
+	dep	golang.org/x/text	v0.3.0	h1:g61tztE5qeGQ89tm6NTjjM9VPIm088od1l6aSorWRWg=
+	dep	software.sslmate.com/src/go-pkcs12	v0.0.0-20180114231543-2291e8f0f237	h1:iAEkCBPbRaflBgZ7o9gjVUuWuvWeV4sytFWg9o+Pj2k=
 ```
-{:data-command-src="Z28gdmVyc2lvbiAtbSAkKHdoaWNoIHN0YXRpY2NoZWNrKQo="}
+{:data-command-src="Z28gdmVyc2lvbiAtbSAkKHdoaWNoIG1rY2VydCkK"}
 
 To eliminate redundancy and confusion, using `go get` to build or
 install programs is being deprecated in Go 1.16.

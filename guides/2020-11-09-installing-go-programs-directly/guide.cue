@@ -6,10 +6,10 @@ import (
 
 Defs: {
 	_#commonDefs
-	staticcheck:         "staticcheck"
-	staticcheck_pkg:     "honnef.co/go/tools/cmd/staticcheck"
-	staticcheck_version: "v0.0.1-2020.1.6"
-	mktemp:              "mktemp -d"
+	mkcert:         "mkcert"
+	mkcert_pkg:     "filippo.io/mkcert"
+	mkcert_version: "v1.4.2"
+	mktemp:         "mktemp -d"
 }
 
 Scenarios: go116: preguide.#Scenario & {
@@ -27,38 +27,38 @@ Steps: goversion: preguide.#Command & {
 		"""
 }
 
-Steps: go115_staticcheck_get: preguide.#Command & {
+Steps: go115_mkcert_get: preguide.#Command & {
 	Source: """
-		go get \(Defs.staticcheck_pkg)
+		go get \(Defs.mkcert_pkg)
 		"""
 }
 
-Steps: go115_staticcheck_modules_get: preguide.#Command & {
+Steps: go115_mkcert_modules_get: preguide.#Command & {
 	Source: """
-		(cd $(\(Defs.mktemp)); GO111MODULE=on go get \(Defs.staticcheck_pkg)@\(Defs.staticcheck_version))
+		(cd $(\(Defs.mktemp)); GO111MODULE=on go get \(Defs.mkcert_pkg)@\(Defs.mkcert_version))
 		"""
 }
 
-Steps: go116_staticcheck_install: preguide.#Command & {
+Steps: go116_mkcert_install: preguide.#Command & {
 	Source: """
-		go install \(Defs.staticcheck_pkg)@\(Defs.staticcheck_version)
+		go install \(Defs.mkcert_pkg)@\(Defs.mkcert_version)
 		"""
 }
 
-Steps: which_staticcheck: preguide.#Command & {
+Steps: which_mkcert: preguide.#Command & {
 	Source: """
-		which \(Defs.staticcheck)
+		which \(Defs.mkcert)
 		"""
 }
 
-Steps: run_staticcheck: preguide.#Command & {
+Steps: run_mkcert: preguide.#Command & {
 	Source: """
-		\(Defs.staticcheck) -version
+		\(Defs.mkcert) -version
 		"""
 }
 
-Steps: goversion_staticcheck: preguide.#Command & {
+Steps: goversion_mkcert: preguide.#Command & {
 	Source: """
-		\(Defs.cmdgo.version) -m $(which \(Defs.staticcheck))
+		\(Defs.cmdgo.version) -m $(which \(Defs.mkcert))
 		"""
 }
