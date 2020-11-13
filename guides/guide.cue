@@ -10,7 +10,7 @@ Networks: *["playwithgo_pwg"] | [...string]
 
 Delims: ["{{{", "}}}"]
 
-_#go115LatestImage: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
+_#go115LatestImage: "playwithgo/go1.15.5@sha256:dc9f16061410f8763d0b550d138e904cb753f06f1bc992c389715439030136b2"
 _#go116LatestImage: "playwithgo/go1.16-tip@sha256:4f6f3820ad3d6c30b623eabe688bfd073eeb4a52c284c80b3e6bc4a3b8cded2a"
 
 _#golangToolsLatest: "v0.0.0-20201105220310-78b158585360"
@@ -18,6 +18,9 @@ _#golangToolsLatest: "v0.0.0-20201105220310-78b158585360"
 _#StablePsuedoversionSuffix: "20060102150405-abcedf12345"
 
 _#commonDefs: {
+	pwg: {
+		gopher_live: "gopher.live"
+	}
 	cmdgo: {
 		modinit:     "go mod init"
 		modedit:     "go mod edit"
@@ -29,10 +32,16 @@ _#commonDefs: {
 		install:     "go install"
 		generate:    "go generate"
 		env:         "go env"
+		help:        "go help"
 		build:       "go build"
 		version:     "go version"
 		vlatest:     "latest"
 		GO111MODULE: "GO111MODULE"
+		GOPROXY:     "GOPROXY"
+		GONOPROXY:   "GONOPROXY"
+		GOSUMDB:     "GOSUMDB"
+		GONOSUMDB:   "GONOSUMDB"
+		GOPRIVATE:   "GOPRIVATE"
 	}
 	git: {
 		add:      "git add"

@@ -27,7 +27,13 @@ Steps: goversion: preguide.#Command & {
 		"""
 }
 
-Steps: go115_staticcheck_install: preguide.#Command & {
+Steps: go115_staticcheck_get: preguide.#Command & {
+	Source: """
+		go get \(Defs.staticcheck_pkg)
+		"""
+}
+
+Steps: go115_staticcheck_modules_get: preguide.#Command & {
 	Source: """
 		(cd $(\(Defs.mktemp)); GO111MODULE=on go get \(Defs.staticcheck_pkg)@\(Defs.staticcheck_version))
 		"""

@@ -1,4 +1,5 @@
 .progress-bar {
+  z-index: 1;
   height: 4px;
   background-color: var(--aqua);
   transition: all 0.2s;
@@ -7,7 +8,6 @@
 
   &[data-progress]:after {
     content: attr(data-progress) "%";
-    font-family: "Geomanist";
     font-size: 14px;
     padding: 5px 8px 3px;
     vertical-align: middle;

@@ -26,6 +26,7 @@ Defs: {
 	proverb_v040: "v0.4.0"
 	proverb_v100: "v1.0.0"
 	proverb_v101: "v1.0.1"
+	proverb_v102: "v1.0.2"
 	gopher:       "gopher"
 	gopher_mod:   gopher
 	gopher_dir:   "/home/gopher/\(gopher)"
@@ -64,7 +65,7 @@ Steps: proverb_go_initial: preguide.#Upload & {
 
 		// Go returns a Go proverb
 		func Go() string {
-			return "Don't communicate by sharing memory, shard memory by communicating."
+			return "Don't communicate by sharing memory, share memory by communicating."
 		}
 
 		"""
@@ -191,7 +192,8 @@ Steps: proverb_comment_retraction: preguide.#Upload & {
 
 		go 1.16
 
-		retract \(Defs.proverb_v020) // Go proverb was totally wrong
+		// Go proverb was totally wrong
+		retract \(Defs.proverb_v020)
 
 		"""
 }
@@ -331,8 +333,11 @@ Steps: proverb_retract_v100: preguide.#Upload & {
 		go 1.16
 
 		retract (
-			\(Defs.proverb_v020) // Go proverb was totally wrong
-			[\(Defs.proverb_v100), \(Defs.proverb_v101)] // published v1 too early
+			// Go proverb was totally wrong
+			\(Defs.proverb_v020)
+
+			// Published v1 too early
+			[\(Defs.proverb_v100), \(Defs.proverb_v101)]
 		)
 
 		"""

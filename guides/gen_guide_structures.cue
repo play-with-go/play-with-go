@@ -1,5 +1,56 @@
 package guides
 
+"2018-10-19-go-fundamentals": {
+	Delims: ["{{{", "}}}"]
+	Presteps: [{
+		Package: "github.com/play-with-go/gitea"
+		Path:    "/newuser"
+		Args: {
+			Repos: [{
+				Pattern: "greetings"
+				Private: false
+				Var:     "GREETINGS"
+			}, {
+				Pattern: "hello"
+				Private: false
+				Var:     "HELLO"
+			}]
+		}
+	}]
+	Terminals: [{
+		Name:        "term1"
+		Description: "The main terminal"
+		Scenarios: {
+			go115: {
+				Image: "playwithgo/go1.15.5@sha256:dc9f16061410f8763d0b550d138e904cb753f06f1bc992c389715439030136b2"
+			}
+		}
+	}]
+	Scenarios: [{
+		Name:        "go115"
+		Description: "Go 1.15"
+	}]
+	Networks: ["playwithgo_pwg"]
+	Env: []
+}
+"2019-10-15-get-started-with-go": {
+	Delims: ["{{{", "}}}"]
+	Terminals: [{
+		Name:        "term1"
+		Description: "The main terminal"
+		Scenarios: {
+			go115: {
+				Image: "playwithgo/go1.15.5@sha256:dc9f16061410f8763d0b550d138e904cb753f06f1bc992c389715439030136b2"
+			}
+		}
+	}]
+	Scenarios: [{
+		Name:        "go115"
+		Description: "Go 1.15"
+	}]
+	Networks: ["playwithgo_pwg"]
+	Env: []
+}
 "2020-09-01-basic-go-modules-example": {
 	Delims: ["{{{", "}}}"]
 	Presteps: [{
@@ -18,7 +69,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
+				Image: "playwithgo/go1.15.5@sha256:dc9f16061410f8763d0b550d138e904cb753f06f1bc992c389715439030136b2"
 			}
 		}
 	}]
@@ -47,58 +98,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
-			}
-		}
-	}]
-	Scenarios: [{
-		Name:        "go115"
-		Description: "Go 1.15"
-	}]
-	Networks: ["playwithgo_pwg"]
-	Env: []
-}
-"2020-10-15-get-started-with-go": {
-	Delims: ["{{{", "}}}"]
-	Terminals: [{
-		Name:        "term1"
-		Description: "The main terminal"
-		Scenarios: {
-			go115: {
-				Image: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
-			}
-		}
-	}]
-	Scenarios: [{
-		Name:        "go115"
-		Description: "Go 1.15"
-	}]
-	Networks: ["playwithgo_pwg"]
-	Env: []
-}
-"2020-10-19-go-fundamentals": {
-	Delims: ["{{{", "}}}"]
-	Presteps: [{
-		Package: "github.com/play-with-go/gitea"
-		Path:    "/newuser"
-		Args: {
-			Repos: [{
-				Pattern: "greetings"
-				Private: false
-				Var:     "GREETINGS"
-			}, {
-				Pattern: "hello"
-				Private: false
-				Var:     "HELLO"
-			}]
-		}
-	}]
-	Terminals: [{
-		Name:        "term1"
-		Description: "The main terminal"
-		Scenarios: {
-			go115: {
-				Image: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
+				Image: "playwithgo/go1.15.5@sha256:dc9f16061410f8763d0b550d138e904cb753f06f1bc992c389715439030136b2"
 			}
 		}
 	}]
@@ -127,7 +127,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
+				Image: "playwithgo/go1.15.5@sha256:dc9f16061410f8763d0b550d138e904cb753f06f1bc992c389715439030136b2"
 			}
 		}
 	}]
@@ -138,7 +138,7 @@ package guides
 	Networks: ["playwithgo_pwg"]
 	Env: []
 }
-"2020-11-08-retracting-module-versions": {
+"2020-11-08-retract-module-versions": {
 	Delims: ["{{{", "}}}"]
 	Presteps: [{
 		Package: "github.com/play-with-go/gitea"
@@ -167,7 +167,7 @@ package guides
 	Networks: ["playwithgo_pwg"]
 	Env: []
 }
-"2020-11-09-installing-programs-standalone": {
+"2020-11-09-installing-go-programs-directly": {
 	Delims: ["{{{", "}}}"]
 	Terminals: [{
 		Name:        "term1"
@@ -192,7 +192,40 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
+				Image: "playwithgo/go1.15.5@sha256:dc9f16061410f8763d0b550d138e904cb753f06f1bc992c389715439030136b2"
+			}
+		}
+	}]
+	Scenarios: [{
+		Name:        "go115"
+		Description: "Go 1.15"
+	}]
+	Networks: ["playwithgo_pwg"]
+	Env: []
+}
+"2020-11-12-working-with-private-modules": {
+	Delims: ["{{{", "}}}"]
+	Presteps: [{
+		Package: "github.com/play-with-go/gitea"
+		Path:    "/newuser"
+		Args: {
+			Repos: [{
+				Pattern: "public"
+				Private: false
+				Var:     "PUBLIC"
+			}, {
+				Pattern: "private"
+				Private: true
+				Var:     "PRIVATE"
+			}]
+		}
+	}]
+	Terminals: [{
+		Name:        "term1"
+		Description: "The main terminal"
+		Scenarios: {
+			go115: {
+				Image: "playwithgo/go1.15.5@sha256:dc9f16061410f8763d0b550d138e904cb753f06f1bc992c389715439030136b2"
 			}
 		}
 	}]

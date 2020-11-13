@@ -37,7 +37,7 @@ This guide is running using:
 
 ```.term1
 $ go version
-go version go1.15.3 linux/amd64
+go version go1.15.5 linux/amd64
 ```
 {:data-command-src="Z28gdmVyc2lvbgo="}
 
@@ -49,17 +49,14 @@ module dependency, please see the ["Developer tools as module dependencies" guid
 Use `go get` to install Staticcheck:
 
 ```.term1
-$ (
-	cd $(mktemp -d)
-	GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6
-)
+$ (cd $(mktemp -d); GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6)
 go: downloading honnef.co/go/tools v0.0.1-2020.1.6
 go: found honnef.co/go/tools/cmd/staticcheck in honnef.co/go/tools v0.0.1-2020.1.6
 go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
 go: downloading github.com/BurntSushi/toml v0.3.1
 go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
 ```
-{:data-command-src="KAoJY2QgJChta3RlbXAgLWQpCglHTzExMU1PRFVMRT1vbiBnbyBnZXQgaG9ubmVmLmNvL2dvL3Rvb2xzL2NtZC9zdGF0aWNjaGVja0B2MC4wLjEtMjAyMC4xLjYKKQo="}
+{:data-command-src="KGNkICQobWt0ZW1wIC1kKTsgR08xMTFNT0RVTEU9b24gZ28gZ2V0IGhvbm5lZi5jby9nby90b29scy9jbWQvc3RhdGljY2hlY2tAdjAuMC4xLTIwMjAuMS42KQo="}
 
 _Note: so that this guide remains reproducible we have spcified an explicit version, `v0.0.1-2020.1.6`.
 When running yourself you could use the special version `latest`._

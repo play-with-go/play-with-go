@@ -7,8 +7,8 @@ Presteps: [{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20201111211636-d5c2d11ae999",
-		    "Sum": "h1:onJu544F8EHf+VAWAS8W5BUyrmadeKU/vwayWws1pJ4=",
+		    "Version": "v0.0.0-20201112105710-13a90a7e8526",
+		    "Sum": "h1:0JH9kWYqa8pAgFfmX70kBO1IbtWPOdtUPxkfvFOB0Oo=",
 		    "Replace": null
 		  },
 		  "Deps": [
@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201110085855-05e8567752d1",
-		      "Sum": "h1:rvEXeGah7m7NTmqzOxP7wq+YV9UNxSKJQfI+N7Tpe/U=",
+		      "Version": "v0.0.2-0.20201112230714-c751dc0412a4",
+		      "Sum": "h1:FXhUsHjzpBC9Q0ywpnKhyk9mV12dnhxanUitpWHLKxI=",
 		      "Replace": null
 		    },
 		    {
@@ -107,7 +107,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
+			Image: "playwithgo/go1.15.5@sha256:dc9f16061410f8763d0b550d138e904cb753f06f1bc992c389715439030136b2"
 		}
 	}
 	Name: "term1"
@@ -314,5 +314,5 @@ Steps: {
 		Name:            "create_module"
 	}
 }
-Hash: "7e568d5e83231ef0689cbfa2e07c7776a55d7534172c21cf32a1534116442498"
+Hash: "826b72ce0c164bec1142d8386e8a76aa53dbdb7145ab5ec5331ac7ccd6f211f3"
 Delims: ["{{{", "}}}"]

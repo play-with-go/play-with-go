@@ -1,6 +1,7 @@
 
 
 .welcome-title {
+margin-top: 5px;
 font-size: 68px
 }
 
@@ -81,7 +82,7 @@ font-weight: 500;
   font-weight: 500;
   &:hover {
     color: #FDE966 !important;
-  
+
   }
 }
 
@@ -133,4 +134,9 @@ margin-right: 8px;
 
 .title-guides{
 font-size: 46px;
+}
+
+.term-init {
+    color: white;
+    margin-top: 10px;
 }

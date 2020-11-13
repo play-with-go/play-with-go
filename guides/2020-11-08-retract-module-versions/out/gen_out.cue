@@ -7,8 +7,8 @@ Presteps: [{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20201111211636-d5c2d11ae999",
-		    "Sum": "h1:onJu544F8EHf+VAWAS8W5BUyrmadeKU/vwayWws1pJ4=",
+		    "Version": "v0.0.0-20201112105710-13a90a7e8526",
+		    "Sum": "h1:0JH9kWYqa8pAgFfmX70kBO1IbtWPOdtUPxkfvFOB0Oo=",
 		    "Replace": null
 		  },
 		  "Deps": [
@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201110085855-05e8567752d1",
-		      "Sum": "h1:rvEXeGah7m7NTmqzOxP7wq+YV9UNxSKJQfI+N7Tpe/U=",
+		      "Version": "v0.0.2-0.20201112230714-c751dc0412a4",
+		      "Sum": "h1:FXhUsHjzpBC9Q0ywpnKhyk9mV12dnhxanUitpWHLKxI=",
 		      "Replace": null
 		    },
 		    {
@@ -245,11 +245,11 @@ Steps: {
 
 				go: downloading {{{.PROVERB}}} v1.0.0
 				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
-				go: warning: {{{.PROVERB}}}@v1.0.0 is retracted: published v1 too early
+				go: warning: {{{.PROVERB}}}@v1.0.0 is retracted: Published v1 too early
 				"""
 			Output: """
 				go: downloading {{{.PROVERB}}} v1.0.0
-				go: warning: {{{.PROVERB}}}@v1.0.0 is retracted: published v1 too early
+				go: warning: {{{.PROVERB}}}@v1.0.0 is retracted: Published v1 too early
 				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
 
 				"""
@@ -261,11 +261,11 @@ Steps: {
 
 				go: downloading {{{.PROVERB}}} v1.0.1
 				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
-				go: warning: {{{.PROVERB}}}@v1.0.1 is retracted: published v1 too early
+				go: warning: {{{.PROVERB}}}@v1.0.1 is retracted: Published v1 too early
 				"""
 			Output: """
 				go: downloading {{{.PROVERB}}} v1.0.1
-				go: warning: {{{.PROVERB}}}@v1.0.1 is retracted: published v1 too early
+				go: warning: {{{.PROVERB}}}@v1.0.1 is retracted: Published v1 too early
 				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
 
 				"""
@@ -297,18 +297,8 @@ Steps: {
 			ComparisonOutput: ""
 			Output:           ""
 			ExitCode:         0
-			CmdStr: """
-				(
-				\tcd $(mktemp -d)
-				\texport GOPATH=$(mktemp -d)
-				\tgo mod init mod.com
-				\tgo get -x {{{.PROVERB}}}@v0.4.0
-				\tgo get -x {{{.PROVERB}}}@v1.0.0
-				\tgo get -x {{{.PROVERB}}}@v1.0.1
-				\tsleep 1m
-				) >/dev/null 2>&1
-				"""
-			Negated: false
+			CmdStr:           "(cd $(mktemp -d); export GOPATH=$(mktemp -d); go mod init mod.com; go get -x {{{.PROVERB}}}@v0.4.0; go get -x {{{.PROVERB}}}@v1.0.0; go get -x {{{.PROVERB}}}@v1.0.1; sleep 1m) >/dev/null 2>&1"
+			Negated:          false
 		}]
 		Order:           37
 		InformationOnly: true
@@ -395,8 +385,11 @@ Steps: {
 			go 1.16
 
 			retract (
-			\tv0.2.0 // Go proverb was totally wrong
-			\t[v1.0.0, v1.0.1] // published v1 too early
+			\t// Go proverb was totally wrong
+			\tv0.2.0
+
+			\t// Published v1 too early
+			\t[v1.0.0, v1.0.1]
 			)
 
 			"""
@@ -406,7 +399,8 @@ Steps: {
 
 				go 1.16
 
-				retract v0.2.0 // Go proverb was totally wrong
+				// Go proverb was totally wrong
+				retract v0.2.0
 
 				"""
 			RendererType: 3
@@ -837,7 +831,8 @@ Steps: {
 
 			go 1.16
 
-			retract v0.2.0 // Go proverb was totally wrong
+			// Go proverb was totally wrong
+			retract v0.2.0
 
 			"""
 		Renderer: {
@@ -1028,7 +1023,7 @@ Steps: {
 
 				// Go returns a Go proverb
 				func Go() string {
-				\treturn "Don't communicate by sharing memory, shard memory by communicating."
+				\treturn "Don't communicate by sharing memory, share memory by communicating."
 				}
 
 				"""
@@ -1058,11 +1053,11 @@ Steps: {
 	gopher_run_initial: {
 		Stmts: [{
 			ComparisonOutput: """
-				Don't communicate by sharing memory, shard memory by communicating.
+				Don't communicate by sharing memory, share memory by communicating.
 
 				"""
 			Output: """
-				Don't communicate by sharing memory, shard memory by communicating.
+				Don't communicate by sharing memory, share memory by communicating.
 
 				"""
 			ExitCode: 0
@@ -1226,7 +1221,7 @@ Steps: {
 
 			// Go returns a Go proverb
 			func Go() string {
-			\treturn "Don't communicate by sharing memory, shard memory by communicating."
+			\treturn "Don't communicate by sharing memory, share memory by communicating."
 			}
 
 			"""
@@ -1306,5 +1301,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "874566453dd4141222f87f21abdf4cdc4ccdd0450e67404ae155e899d5701c7f"
+Hash: "8c7cb6d7e3ecb0b6fc9bc084a0eab7ce7e0153cee7d07990b389f5a31324ff99"
 Delims: ["{{{", "}}}"]

@@ -4,7 +4,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.3@sha256:0212016958cbedb4297dd05407256f3f92dbbac4dd7f5ccf514117e79c6c92d2"
+			Image: "playwithgo/go1.15.5@sha256:dc9f16061410f8763d0b550d138e904cb753f06f1bc992c389715439030136b2"
 		}
 	}
 	Name: "term1"
@@ -922,13 +922,8 @@ Steps: {
 
 				"""
 			ExitCode: 0
-			CmdStr: """
-				(
-				\tcd $(mktemp -d)
-				\tGO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6
-				)
-				"""
-			Negated: false
+			CmdStr:   "(cd $(mktemp -d); GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6)"
+			Negated:  false
 		}]
 		Order:           1
 		InformationOnly: false
@@ -940,11 +935,11 @@ Steps: {
 	goversion: {
 		Stmts: [{
 			ComparisonOutput: """
-				go version go1.15.3 linux/amd64
+				go version go1.15.5 linux/amd64
 
 				"""
 			Output: """
-				go version go1.15.3 linux/amd64
+				go version go1.15.5 linux/amd64
 
 				"""
 			ExitCode: 0
@@ -959,5 +954,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "72fbdb4e8b2fa0eb55c42466a0b9cc7983d58608c37f0970a59ff3929059b30a"
+Hash: "470d56304d4c837371ca3434bc0fb792f73941a23129904857824728dc825ae4"
 Delims: ["{{{", "}}}"]

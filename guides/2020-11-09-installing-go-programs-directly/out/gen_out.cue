@@ -40,7 +40,7 @@ Steps: {
 			CmdStr:   "go version -m $(which staticcheck)"
 			Negated:  false
 		}]
-		Order:           7
+		Order:           8
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -61,7 +61,7 @@ Steps: {
 			CmdStr:   "staticcheck -version"
 			Negated:  false
 		}]
-		Order:           6
+		Order:           7
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -82,12 +82,69 @@ Steps: {
 			CmdStr:   "which staticcheck"
 			Negated:  false
 		}]
-		Order:           5
+		Order:           6
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "which_staticcheck"
+	}
+	go116_staticcheck_install: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "go install honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6"
+			Negated:          false
+		}]
+		Order:           3
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "go116_staticcheck_install"
+	}
+	go115_staticcheck_modules_get: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "(cd $(mktemp -d); GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6)"
+			Negated:          false
+		}]
+		Order:           2
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "go115_staticcheck_modules_get"
+	}
+	go115_staticcheck_get: {
+		Stmts: [{
+			ComparisonOutput: """
+
+				go: downloading github.com/BurntSushi/toml v0.3.1
+				go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
+				go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
+				go: downloading honnef.co/go/tools v0.0.1-2020.1.6
+				"""
+			Output: """
+				go: downloading honnef.co/go/tools v0.0.1-2020.1.6
+				go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
+				go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
+				go: downloading github.com/BurntSushi/toml v0.3.1
+
+				"""
+			ExitCode: 0
+			CmdStr:   "go get honnef.co/go/tools/cmd/staticcheck"
+			Negated:  false
+		}]
+		Order:           1
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "go115_staticcheck_get"
 	}
 	path_add_gopath_bin: {
 		Stmts: [{
@@ -97,7 +154,7 @@ Steps: {
 			CmdStr:           "export PATH=\"$(go env GOPATH)/bin:$PATH\""
 			Negated:          false
 		}]
-		Order:           4
+		Order:           5
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -130,59 +187,12 @@ Steps: {
 			CmdStr:   "go env GOBIN"
 			Negated:  false
 		}]
-		Order:           3
+		Order:           4
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "go_env_gopath"
-	}
-	go116_staticcheck_install: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "go install honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6"
-			Negated:          false
-		}]
-		Order:           2
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "go116_staticcheck_install"
-	}
-	go115_staticcheck_install: {
-		Stmts: [{
-			ComparisonOutput: """
-				go: downloading honnef.co/go/tools v0.0.1-2020.1.6
-				go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
-				go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
-				go: downloading github.com/BurntSushi/toml v0.3.1
-
-				"""
-			Output: """
-				go: downloading honnef.co/go/tools v0.0.1-2020.1.6
-				go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
-				go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
-				go: downloading github.com/BurntSushi/toml v0.3.1
-
-				"""
-			ExitCode: 0
-			CmdStr: """
-				(
-				\tcd $(mktemp -d)
-				\tGO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6
-				)
-				"""
-			Negated: false
-		}]
-		Order:           1
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "go115_staticcheck_install"
 	}
 	goversion: {
 		Stmts: [{
@@ -206,5 +216,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "fdaa33ae7daeccdc96640e057922f15073244a7845194b92f91f73aab4b2422c"
+Hash: "645255512d780199575ca715edda87d58ce8eebd36fb9469fc3b37860ddcb3a9"
 Delims: ["{{{", "}}}"]

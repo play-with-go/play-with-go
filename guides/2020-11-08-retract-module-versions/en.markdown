@@ -1,10 +1,13 @@
 ---
 layout: post
-title:  "Retracting Module Versions"
+title:  "Retract Module Versions"
 excerpt: "Learn how to flag modules that shouldn't be used"
 category: What's coming in Go 1.16
 difficulty: Intermediate
 ---
+
+_By [Jay Conrod](https://twitter.com/jayconrod), software engineer on the [Go](https://golang.org/) tools team, and
+principal author of module retraction in the `go` command._
 
 _Note: this is a preview of a `cmd/go` feature that is due to land in Go 1.16_
 
@@ -29,18 +32,24 @@ Retracted versions should remain available in module proxies and origin reposito
 versions should continue to work. However, users should be notified when they depend on a retracted version (either
 directly or indirectly). It should also be difficult to unintentionally upgrade to a retracted version.
 
-This guide walks you through how to use module retractions. In the guide you will create two packages:
+This guide walks you through how to use module retractions. In the guide you will create two modules:
 
 * `<!--ref:proverb_mod-->` (part of a module at the same path) that provides various different wise proverbs. You will
   publish a number of versions of this module.
 * `<!--ref:gopher-->`, a simple `main` package that uses `<!--ref:proverb_mod-->`. You will not publish this module; it
   will be local-only.
 
+### Prerequisites
+
+You should already have completed:
+
+* The [Go fundamentals Tutorial](/go-fundamentals_go115_en)
+
 This guide is running using:
 
 <!--step: goversion-->
 
-### The `<!--ref:proverb-->` package
+### The `<!--ref:proverb-->` module
 
 Start by initialising your `<!--ref:proverb-->` module:
 
@@ -60,11 +69,11 @@ is not yet stable:
 <!--step: proverb_tag_v010-->
 
 With the first version of the `<!--ref:proverb-->` module published, it's time to create a first cut of your
-`<!--ref:gopher-->` package
+`<!--ref:gopher-->` module.
 
-### The `<!--ref:gopher-->` package
+### The `<!--ref:gopher-->` module
 
-You are not going to publish the `<!--ref:gopher-->` package, so the setup is simpler:
+You are not going to publish the `<!--ref:gopher-->` module, so the setup is simpler:
 
 <!--step: gopher_create-->
 
@@ -118,19 +127,20 @@ try this out:
 
 <!--step: gopher_use_v020-->
 
-Oops! That doesn't look right. Looks like we made a mistake with the changes in `<!--ref:proverb_v020-->`. You can
-surely publish a new version of the `<!--ref:proverb-->` module to correct the mistake, but can you be sure nobody will
-ever depend on this broken version?
+Oops! That doesn't look right: the proverb should read _"Concurrency is **not** parallelism."_ Looks like you made a
+mistake with the changes in `<!--ref:proverb_v020-->`. You can surely publish a new version of the `<!--ref:proverb-->`
+module to correct the mistake, but how can you prevent your users from depending on this broken version?
 
 Module retraction to the rescue.
 
 ### Retracting module versions
 
 A module author can retract a version of a module by adding a `retract` directive to the `go.mod` file. The `retract`
-directive simply lists retracted versions.
+directive simply lists retracted versions. The `go` command reads retractions from the highest release version of the
+module.
 
-To retract `<!--ref:proverb_v020-->` of the `<!--ref:proverb-->` module, you will publish `<!--ref:proverb_v030-->`.
-This new version will also fix the bug we found in `<!--ref: proverb_v020-->`.
+To retract `<!--ref:proverb_v020-->` of the `<!--ref:proverb-->` module, you will therefore publish
+`<!--ref:proverb_v030-->`. This new version will also fix the bug you found in `<!--ref: proverb_v020-->`.
 
 Return to the `<!--ref: proverb-->` module:
 
@@ -149,6 +159,9 @@ As is best practice, add a comment to the `retract` directive documenting why th
 necessary:
 
 <!--step: proverb_comment_retraction-->
+
+The comment may be shown by tools like `<!--ref:cmdgo.get-->` and `<!--ref:cmdgo.list-->`. It will be shown by
+[`gorelease`](https://pkg.go.dev/golang.org/x/exp/cmd/gorelease) and [`pkg.go.dev`](https://pkg.go.dev/) later on, too.
 
 Fix the bug in `<!--ref:proverb_go-->`:
 
@@ -192,16 +205,13 @@ List the non-retracted, "usable" versions of the `<!--ref: proverb_mod-->` modul
 
 <!--step: gopher_list_proverb-->
 
-_Note: there may be some delay whilst proxy.golang.org updates to reflect the new version information. Hence you might
-need to re-try this command to see the `<!--ref:proverb_v030-->` version listed in the output, as above._
-
 Notice that the newly published `<!--ref:proverb_v030-->` is in this list, but `<!--ref:proverb_v020-->` is not.
 
 List _all_ versions versions (including any that are retracted):
 
 <!--step: gopher_list_proverb_retracted-->
 
-Ah, there is our mischievous `<!--ref:proverb_v020-->`.
+Ah, there is the mischievous `<!--ref:proverb_v020-->`.
 
 So what would happen if you were to rely on the now retracted `<!--ref:proverb_v020-->`?
 
@@ -287,10 +297,6 @@ List all versions of the `<!--ref: proverb_mod-->` known to the proxy, including
 
 <!--step: gopher_list_proverb_v101_retracted-->
 
-_Note: there may be some delay whilst proxy.golang.org updates to reflect the new version information. Hence you might
-need to re-try this command to see versions `<!--ref:proverb_v040-->`, `<!--ref:proverb_v100-->` and
-`<!--ref:proverb_v101-->` listed in the output, as above._
-
 List the non-retracted versions of the `<!--ref: proverb_mod-->` known to the proxy:
 
 <!--step: gopher_list_proverb_v101_nonretracted-->
@@ -304,6 +310,9 @@ Update `<!--ref: gopher_go-->` to use the new proverb:
 Finally, run `<!--ref:gopher-->` to verify everything works:
 
 <!--step: gopher_run_life_proverb-->
+
+Note that when you come to publish the "real" `<!--ref: proverb_v100-->` of the `<!--ref:proverb-->` module, it must
+be published as `<!--ref:proverb_v102-->` since you cannot change or delete versions (retracted or not).
 
 ### Conclusion
 

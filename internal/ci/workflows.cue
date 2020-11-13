@@ -23,7 +23,7 @@ _#workflows: [
 		strategy: {
 			"fail-fast": false
 			matrix: {
-				go_version: ["1.15.2"]
+				go_version: ["1.15.4"]
 			}
 		}
 		"runs-on": "${{ matrix.os }}"
