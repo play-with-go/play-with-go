@@ -167,7 +167,7 @@ package guides
 	Networks: ["playwithgo_pwg"]
 	Env: []
 }
-"2020-11-09-installing-programs-standalone": {
+"2020-11-09-installing-go-programs-directly": {
 	Delims: ["{{{", "}}}"]
 	Terminals: [{
 		Name:        "term1"
