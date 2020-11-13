@@ -140,3 +140,11 @@ font-size: 46px;
     color: white;
     margin-top: 10px;
 }
+
+.guides-link a {
+    color: white;
+    font-weight: bold;
+    &:hover {
+        color: #FCE337;
+    }
+}
