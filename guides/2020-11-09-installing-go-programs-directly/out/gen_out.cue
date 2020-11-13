@@ -168,5 +168,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "6a0c8cc94a88713623c5057a6754f428a8e8e33d634a0ac69f9fd513b90b8fd6"
+Hash: "94cde6bab4c997128f516a6425713437875f4ca689dfcda136580ac1bf72a207"
 Delims: ["{{{", "}}}"]
