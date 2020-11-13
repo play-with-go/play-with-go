@@ -109,6 +109,14 @@ func (r *runner) mainerr() (err error) {
 			raiseHTTP(http.StatusBadRequest, "must be a POST request")
 		}
 
+		if *r.fUnsafe {
+			// Reload config on each request in dev mode
+			config, err = r.loadConfig()
+			if err != nil {
+				raiseHTTP(http.StatusInternalServerError, "failed to load config: %v", err)
+			}
+		}
+
 		var guideReq struct {
 			// Guide is the guide name
 			Guide string
