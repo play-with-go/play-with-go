@@ -23,7 +23,7 @@ var pwd = new PWD();
 
 pwd.on("instanceCreate", function(instance) {
   instance.terms[0].write(`$ \r\n`);
-  $("pre").on("click", function() {
+  $("pre[data-upload-src], pre[data-command-src]").on("click", function() {
     $(this).addClass("completed");
   });
 });
