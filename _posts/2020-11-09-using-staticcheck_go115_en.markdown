@@ -31,7 +31,8 @@ This guide gets you up and running with Staticcheck by analysing the `pets` modu
 
 You should already have completed:
 
-* The [Go fundamentals Tutorial](/go-fundamentals_go115_en)
+* [Go fundamentals](/go-fundamentals_go115_en)
+* [Installing Go](/installing-go_go115_en)
 
 This guide is running using:
 
@@ -61,35 +62,24 @@ go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
 _Note: so that this guide remains reproducible we have spcified an explicit version, `v0.0.1-2020.1.6`.
 When running yourself you could use the special version `latest`._
 
-The rather ugly use of a temporary directory ensures that `go get` is run outside of a module. When run
-outside of a module, `go get` installs binaries to `$GOPATH/bin`, or `$GOBIN` if set.
+The rather ugly use of a temporary directory ensures that `go get` is run outside of a module.  See the
+_"Setting up your `PATH`"_ section in [Installing Go](/installing-go_go115_en) to ensure your `PATH` is set correctly.
 
-Confirm your setup using `go env`:
-
-```.term1
-$ go env GOPATH
-/home/gopher/go
-$ go env GOBIN
-
-```
-{:data-command-src="Z28gZW52IEdPUEFUSApnbyBlbnYgR09CSU4K"}
-
-So `GOBIN` is not set. As a one off, add `$GOPATH/bin` to your `PATH`:
-
-```.term1
-$ export PATH="$(go env GOPATH)/bin:$PATH"
-```
-{:data-command-src="ZXhwb3J0IFBBVEg9IiQoZ28gZW52IEdPUEFUSCkvYmluOiRQQVRIIgo="}
-
-Finally, check that `staticcheck` can be resolved from your `PATH`:
+Check that `staticcheck` is on your `PATH`:
 
 ```.term1
 $ which staticcheck
 /home/gopher/go/bin/staticcheck
+```
+{:data-command-src="d2hpY2ggc3RhdGljY2hlY2sK"}
+
+Run `staticcheck` as a quick check:
+
+```.term1
 $ staticcheck -version
 staticcheck 2020.1.6
 ```
-{:data-command-src="d2hpY2ggc3RhdGljY2hlY2sKc3RhdGljY2hlY2sgLXZlcnNpb24K"}
+{:data-command-src="c3RhdGljY2hlY2sgLXZlcnNpb24K"}
 
 You're all set!
 

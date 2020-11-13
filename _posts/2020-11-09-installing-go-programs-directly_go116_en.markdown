@@ -8,7 +8,8 @@ layout: post
 title: Installing Go programs directly
 ---
 
-_By [Daniel Martí](https://mvdan.cc), contributor to Go, maintainer of [`encoding/json`](https://pkg.go.dev/encoding/json), and tool author._
+_By [Daniel Martí](https://mvdan.cc), contributor to Go, maintainer of
+[`encoding/json`](https://pkg.go.dev/encoding/json), and tool author._
 
 _Note: this is a preview of a `cmd/go` feature that is due to land in Go 1.16_
 
@@ -26,6 +27,7 @@ You should already have completed:
 * [The Go Tour](https://tour.golang.org/)
 * [An introduction to play-with-go.dev guides](/intro-to-play-with-go-dev/)
 * [Tutorial: Get started with Go](/get-started-with-go/)
+* [Installing Go](/installing-go_go115_en)
 
 This guide is running with:
 
@@ -37,8 +39,7 @@ go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
 
 ### Background
 
-Typically, tool authors who wanted to provide installation instructions in their
-projects' `README.md` would include:
+Currently, tool authors who want to provide installation instructions in their projects' `README.md` typically include:
 
 ```.term1
 $ go get honnef.co/go/tools/cmd/staticcheck
@@ -87,23 +88,9 @@ $ go install honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6
 For the purposes of this guide you are using a specific version (`v0.0.1-2020.1.6`). Alternatively,
 the special `latest` version can be used to install the latest release.
 
-Much like the previous behaviour of `go get`, `go install` places binaries in
-`$GOPATH/bin`, or in `$GOBIN` if set. Let's confirm your setup using `go env`:
-
-```.term1
-$ go env GOPATH
-/home/gopher/go
-$ go env GOBIN
-
-```
-{:data-command-src="Z28gZW52IEdPUEFUSApnbyBlbnYgR09CSU4K"}
-
-`GOBIN` is not set. Therefore as a one off, add `$GOPATH/bin` to your `PATH`:
-
-```.term1
-$ export PATH="$(go env GOPATH)/bin:$PATH"
-```
-{:data-command-src="ZXhwb3J0IFBBVEg9IiQoZ28gZW52IEdPUEFUSCkvYmluOiRQQVRIIgo="}
+Much like the previous behaviour of `go get`, `go install` places binaries in `$GOPATH/bin`,
+or in `$GOBIN` if set. See the _"Setting up your `PATH`"_ section in [Installing Go](/installing-go_go115_en) to ensure
+your `PATH` is set correctly.
 
 Verify that `staticcheck` is now on your `PATH`:
 
@@ -136,4 +123,8 @@ $ go version -m $(which staticcheck)
 
 To eliminate redundancy and confusion, using `go get` to build or
 install programs is being deprecated in Go 1.16.
+
+### Conclusion
+
+That's it! Time to sit back and wait for the release of Go 1.16!
 <script>let pageGuide="2020-11-09-installing-go-programs-directly"; let pageLanguage="en"; let pageScenario="go116";</script>
