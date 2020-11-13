@@ -43,7 +43,7 @@ This guide walks you through how to use module retractions. In the guide you wil
 
 You should already have completed:
 
-* The [Go fundamentals Tutorial](/go-fundamentals_go115_en)
+* [Go Fundamentals](/go-fundamentals_go115_en)
 
 This guide is running using:
 
@@ -319,3 +319,7 @@ be published as `<!--ref:proverb_v102-->` since you cannot change or delete vers
 That's it! This guide has introduced module retraction, demonstrating how to retract a simple bad version, as well as
 retracting an accidental `v1`. For more information on module retraction, see [the modules
 reference](https://golang.org/ref/mod).
+
+As a next step you might like to consider:
+
+* [Installing Go programs directly](/installing-go-programs-directly_go116_en/)

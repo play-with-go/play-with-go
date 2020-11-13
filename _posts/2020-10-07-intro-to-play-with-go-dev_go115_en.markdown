@@ -39,10 +39,10 @@ Throughout each guide (prose) you will see clickable _command_ and _code_ blocks
 command block:
 
 ```.term1
-$ echo "Hello, world!"
-Hello, world!
+$ echo '*** !!! CLICK ME !!! ***'
+*** !!! CLICK ME !!! ***
 ```
-{:data-command-src="ZWNobyAiSGVsbG8sIHdvcmxkISIK"}
+{:data-command-src="ZWNobyAnKioqICEhISBDTElDSyBNRSAhISEgKioqJwo="}
 
 Clicking on command block causes those commands to run in the interactive terminal on the right hand side. Command
 blocks are indicated by a `$` sign at the beginning of a line; the output from that command (if there is any) will be on
@@ -128,4 +128,10 @@ Don't worry, there are people who can help! Either head over to `#play-with-go` 
 Slack](https://gophers.slack.com/) ([sign-up](https://invite.slack.golangbridge.org/)) or [raise an
 issue](https://github.com/play-with-go/play-with-go/issues/new?title=help:&labels=question) in our GitHub issue tracker.
 
+### Next steps
+
+As a next step you might like to consider:
+
+* [Get started with Go](/get-started-with-go_go115_en/)
+* [Go Fundamentals](/go-fundamentals_go115_en)
 <script>let pageGuide="2020-10-07-intro-to-play-with-go-dev"; let pageLanguage="en"; let pageScenario="go115";</script>

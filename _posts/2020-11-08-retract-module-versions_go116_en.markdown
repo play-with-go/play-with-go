@@ -45,7 +45,7 @@ This guide walks you through how to use module retractions. In the guide you wil
 
 You should already have completed:
 
-* The [Go fundamentals Tutorial](/go-fundamentals_go115_en)
+* [Go Fundamentals](/go-fundamentals_go115_en)
 
 This guide is running using:
 
@@ -578,4 +578,8 @@ be published as `v1.0.2` since you cannot change or delete versions (retracted o
 That's it! This guide has introduced module retraction, demonstrating how to retract a simple bad version, as well as
 retracting an accidental `v1`. For more information on module retraction, see [the modules
 reference](https://golang.org/ref/mod).
+
+As a next step you might like to consider:
+
+* [Installing Go programs directly](/installing-go-programs-directly_go116_en/)
 <script>let pageGuide="2020-11-08-retract-module-versions"; let pageLanguage="en"; let pageScenario="go116";</script>

@@ -2,8 +2,8 @@ $ whoami
 gopher
 $ pwd
 /home/gopher
-$ echo "Hello, world!"
-Hello, world!
+$ echo '*** !!! CLICK ME !!! ***'
+*** !!! CLICK ME !!! ***
 $ mkdir hello
 $ cd hello
 $ cat <<EOD > /home/gopher/hello/README.md

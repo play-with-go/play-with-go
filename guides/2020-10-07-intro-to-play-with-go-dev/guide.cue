@@ -41,7 +41,7 @@ Steps: whoami: preguide.#Command & {
 
 Steps: echo_hello: preguide.#Command & {
 	Source: """
-		echo "Hello, world!"
+		echo '*** !!! CLICK ME !!! ***'
 		"""
 }
 

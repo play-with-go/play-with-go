@@ -6,8 +6,8 @@ category: What's coming in Go 1.16
 difficulty: Beginner
 ---
 
-_By [Daniel Martí](https://mvdan.cc), contributor to Go, maintainer of
-[`encoding/json`](https://pkg.go.dev/encoding/json), and tool author._
+_By [Daniel Martí](https://mvdan.cc), Go contributor, maintainer of [`encoding/json`](https://pkg.go.dev/encoding/json),
+and tool author._
 
 _Note: this is a preview of a `cmd/go` feature that is due to land in Go 1.16_
 
@@ -22,10 +22,7 @@ introduces the new mode of `<!--ref:cmdgo.install-->` using the example of
 
 You should already have completed:
 
-* [The Go Tour](https://tour.golang.org/)
-* [An introduction to play-with-go.dev guides](/intro-to-play-with-go-dev/)
-* [Tutorial: Get started with Go](/get-started-with-go/)
-* [Installing Go](/installing-go_go115_en)
+* [Go Fundamentals](/go-fundamentals_go115_en)
 
 This guide is running with:
 
@@ -91,3 +88,7 @@ install programs is being deprecated in Go 1.16.
 ### Conclusion
 
 That's it! Time to sit back and wait for the release of Go 1.16!
+
+As a next step you might like to consider:
+
+* [Retract Module Versions](/retract-module-versions_go116_en/)

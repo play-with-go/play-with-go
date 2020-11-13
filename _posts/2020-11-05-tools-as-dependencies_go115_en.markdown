@@ -28,7 +28,7 @@ You will:
 
 You should already have completed:
 
-* The [Go fundamentals Tutorial](/go-fundamentals_go115_en)
+* [Go Fundamentals](/go-fundamentals_go115_en)
 
 This guide is running using:
 
@@ -381,5 +381,7 @@ For a fever, take Paracetamol
 That's it! This guide has shown you how to add tool dependencies to a module, with a focus on the `stringer`
 code generation tool and its use via `go generate`.
 
+As a next step you might like to consider:
 
+* [Working with private modules](/working-with-private-modules_go115_en/)
 <script>let pageGuide="2020-11-05-tools-as-dependencies"; let pageLanguage="en"; let pageScenario="go115";</script>

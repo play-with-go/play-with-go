@@ -6,6 +6,8 @@ difficulty: Intermediate
 category: Next steps
 ---
 
+_By [Paul Jolly](https://twitter.com/_myitcv), Go contributor, and co-creator of `play-with-go.dev`._
+
 The `go` command defaults to downloading modules from the public Go module mirror at
 [proxy.golang.org](https://proxy.golang.org). It also defaults to validating downloaded modules, regardless of source,
 against the public Go checksum database at [sum.golang.org](https://sum.golang.org).  These defaults work well for
@@ -23,7 +25,7 @@ This guide explains how to work with private modules. In the guide you will crea
 
 You should already have completed:
 
-* The [Go fundamentals Tutorial](/go-fundamentals_go115_en)
+* [Go Fundamentals](/go-fundamentals_go115_en)
 
 This guide is running using:
 
@@ -46,6 +48,11 @@ Commit and push this initial version:
 Now do the same for the `<!--ref:private-->` module:
 
 <!--step: private_init-->
+
+_Note: the `<!--ref:private-->` source code repository at <!--ref:private_vcs--> was automatically created for you when this
+guide loaded, much like <!--ref:public_vcs--> was created for the `<!--ref:public-->` module. However, the
+`<!--ref:private-->` module repository was marked as `Private: true`, hence authenticated access is required to access
+<!--ref:private_vcs-->._
 
 Create an initial version of the `<!--ref:private_secret-->` in `<!--ref: private_go-->`:
 
@@ -153,4 +160,8 @@ grained control. Again, see `<!--ref:go_help_modprivate-->` for more information
 
 This guide has provided you with a brief introduction to handling private modules.
 
+As a next step you might like to consider:
 
+* [Developer tools as module dependencies](/tools-as-dependencies_go115_en/)
+* [How to use and tweak Staticcheck](/using-staticcheck_go115_en/)
+* [Installing Go](/installing-go_go115_en/)

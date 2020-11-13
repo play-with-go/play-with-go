@@ -6,13 +6,13 @@ excerpt: You've completed the Go tour, so what next? This guide gives a brief in
 guide: 2019-10-15-get-started-with-go
 lang: en
 layout: post
-title: 'Tutorial: Get started with Go'
+title: Get started with Go
 ---
 
-_This tutorial is based on the official ["Getting started"](https://golang.org/doc/tutorial/getting-started.html)
+_This guide is based on the official ["Getting started"](https://golang.org/doc/tutorial/getting-started.html)
 tutorial._
 
-In this tutorial we present a brief introduction to Go programming. You will:
+In this guide we present a brief introduction to Go programming. You will:
 
 * Write some simple "Hello, world" code
 * Use the `go` command to run your code
@@ -154,8 +154,12 @@ Don't communicate by sharing memory, share memory by communicating.
 
 Notice that your code calls the Go function, printing a clever message about communication.
 
-### Write more code
+### Conclusion
 
-With this quick introduction, you learned some of the basics. To write some more code with another tutorial, take a look at [Create a Go module](/create-a-go-module).
+With this quick introduction, you learned some of the basics.
+
+As a next step you might like to consider:
+
+* [Go Fundamentals](/go-fundamentals_go115_en)
 
 <script>let pageGuide="2019-10-15-get-started-with-go"; let pageLanguage="en"; let pageScenario="go115";</script>

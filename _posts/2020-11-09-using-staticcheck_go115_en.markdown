@@ -32,7 +32,6 @@ This guide gets you up and running with Staticcheck by analysing the `pets` modu
 You should already have completed:
 
 * [Go fundamentals](/go-fundamentals_go115_en)
-* [Installing Go](/installing-go_go115_en)
 
 This guide is running using:
 
@@ -542,6 +541,12 @@ This guide has provided you with an introduction to Staticcheck, and the power o
 * the ["Developer tools as module dependencies" guide](/tools-as-dependencies_go115_en) guide to see how to add tools
   like Staticcheck to a project.
 * the [Staticcheck documentation](https://staticcheck.io/docs) for more details about Staticcheck itself.
+
+As a next step you might like to consider:
+
+* [Developer tools as module dependencies](/tools-as-dependencies_go115_en/)
+* [Working with private modules](/working-with-private-modules_go115_en/)
+* [Installing Go](/installing-go_go115_en/)
 
 
 

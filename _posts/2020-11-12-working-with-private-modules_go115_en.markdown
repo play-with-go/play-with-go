@@ -8,6 +8,8 @@ layout: post
 title: Working with private modules
 ---
 
+_By [Paul Jolly](https://twitter.com/_myitcv), Go contributor, and co-creator of `play-with-go.dev`._
+
 The `go` command defaults to downloading modules from the public Go module mirror at
 [proxy.golang.org](https://proxy.golang.org). It also defaults to validating downloaded modules, regardless of source,
 against the public Go checksum database at [sum.golang.org](https://sum.golang.org).  These defaults work well for
@@ -25,7 +27,7 @@ This guide explains how to work with private modules. In the guide you will crea
 
 You should already have completed:
 
-* The [Go fundamentals Tutorial](/go-fundamentals_go115_en)
+* [Go Fundamentals](/go-fundamentals_go115_en)
 
 This guide is running using:
 
@@ -80,6 +82,11 @@ $ git init -q
 $ git remote add origin https://{% raw %}{{{.PRIVATE}}}{% endraw %}.git
 ```
 {:data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL3ByaXZhdGUKY2QgL2hvbWUvZ29waGVyL3ByaXZhdGUKZ28gbW9kIGluaXQgcHJpdmF0ZQpnaXQgaW5pdCAtcQpnaXQgcmVtb3RlIGFkZCBvcmlnaW4gaHR0cHM6Ly97e3suUFJJVkFURX19fS5naXQK"}
+
+_Note: the `private` source code repository at https://{% raw %}{{{.PRIVATE}}}{% endraw %}.git was automatically created for you when this
+guide loaded, much like https://{% raw %}{{{.PUBLIC}}}{% endraw %}.git was created for the `public` module. However, the
+`private` module repository was marked as `Private: true`, hence authenticated access is required to access
+https://{% raw %}{{{.PRIVATE}}}{% endraw %}.git._
 
 Create an initial version of the `Secret()` in `private.go`:
 
@@ -267,5 +274,9 @@ grained control. Again, see `go help module-private` for more information.
 
 This guide has provided you with a brief introduction to handling private modules.
 
+As a next step you might like to consider:
 
+* [Developer tools as module dependencies](/tools-as-dependencies_go115_en/)
+* [How to use and tweak Staticcheck](/using-staticcheck_go115_en/)
+* [Installing Go](/installing-go_go115_en/)
 <script>let pageGuide="2020-11-12-working-with-private-modules"; let pageLanguage="en"; let pageScenario="go115";</script>

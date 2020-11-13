@@ -52,7 +52,7 @@ Steps: {
 		StepType:        1
 		Name:            "source_profile_again"
 	}
-	add_gopath_bin_to_path: {
+	add_gobin_bin_to_path: {
 		Stmts: [{
 			ComparisonOutput: ""
 			Output:           ""
@@ -65,7 +65,7 @@ Steps: {
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "add_gopath_bin_to_path"
+		Name:            "add_gobin_bin_to_path"
 	}
 	gobin_not_set: {
 		Stmts: [{
@@ -88,7 +88,7 @@ Steps: {
 		StepType:        1
 		Name:            "gobin_not_set"
 	}
-	go_env_check_gopath_again: {
+	go_env_check_gobin_again: {
 		Stmts: [{
 			ComparisonOutput: """
 
@@ -107,9 +107,9 @@ Steps: {
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "go_env_check_gopath_again"
+		Name:            "go_env_check_gobin_again"
 	}
-	go_env_unset_gopath: {
+	go_env_unset_gobin: {
 		Stmts: [{
 			ComparisonOutput: ""
 			Output:           ""
@@ -122,7 +122,7 @@ Steps: {
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "go_env_unset_gopath"
+		Name:            "go_env_unset_gobin"
 	}
 	go_env_env: {
 		Stmts: [{
@@ -145,14 +145,14 @@ Steps: {
 		StepType:        1
 		Name:            "go_env_env"
 	}
-	go_env_check_gopath: {
+	go_env_check_gobin: {
 		Stmts: [{
 			ComparisonOutput: """
-				/path/to/my/gopath
+				/path/to/my/gobin
 
 				"""
 			Output: """
-				/path/to/my/gopath
+				/path/to/my/gobin
 
 				"""
 			ExitCode: 0
@@ -164,14 +164,14 @@ Steps: {
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "go_env_check_gopath"
+		Name:            "go_env_check_gobin"
 	}
-	go_env_set_gopath: {
+	go_env_set_gobin: {
 		Stmts: [{
 			ComparisonOutput: ""
 			Output:           ""
 			ExitCode:         0
-			CmdStr:           "go env -w GOBIN=/path/to/my/gopath"
+			CmdStr:           "go env -w GOBIN=/path/to/my/gobin"
 			Negated:          false
 		}]
 		Order:           8
@@ -179,9 +179,9 @@ Steps: {
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "go_env_set_gopath"
+		Name:            "go_env_set_gobin"
 	}
-	go_env_gopath: {
+	go_env_gobin: {
 		Stmts: [{
 			ComparisonOutput: """
 
@@ -200,7 +200,7 @@ Steps: {
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "go_env_gopath"
+		Name:            "go_env_gobin"
 	}
 	go_env: {
 		Stmts: [{
@@ -453,5 +453,5 @@ Steps: {
 		Name:            "go_help_env"
 	}
 }
-Hash: "b583bcaaaf837280b8a31192962ea384b6da4242c915017bacf541bd608a0adf"
+Hash: "b438fd27e430896b997c769e718a3b41f577ff994d8e4c5cbf2824148c2fceb8"
 Delims: ["{{{", "}}}"]

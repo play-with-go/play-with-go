@@ -1,21 +1,21 @@
 ---
 layout: post
-title:  "Tutorial: Go fundamentals"
+title:  "Go fundamentals"
 excerpt: "Primer on creating and using go modules"
 difficulty: Beginner
 category: Start here
 ---
 
-_This tutorial is based on the official ["Create a module"](https://golang.org/doc/tutorial/create-module) tutorial._
+_This guide is based on the official ["Create a module"](https://golang.org/doc/tutorial/create-module) tutorial._
 
-This tutorial introduces a few fundamental features of the Go language. If you're just getting started with Go, be sure
-to take a look at the [getting started tutorial](/get-started-with-go/), which introduces the go command, Go modules,
+This guide introduces a few fundamental features of the Go language. If you're just getting started with Go, be sure
+to take a look at the ["Get Started with Go" guide](/get-started-with-go/), which introduces the go command, Go modules,
 and very simple Go code.
 
-In this tutorial you'll create two modules. The first is a library which is intended to be imported by other libraries
+In this guide you'll create two modules. The first is a library which is intended to be imported by other libraries
 or applications. The second is a caller application which will use the first.
 
-This tutorial's sequence includes six brief topics that each illustrate a different part of the language.
+This guide's sequence includes six brief topics that each illustrate a different part of the language.
 
 1. Create a module -- Write a small module with functions you can call from another module.
 1. Call your code from another module -- Import and use your new module.
@@ -36,7 +36,7 @@ You should already have completed:
 
 * [The Go Tour](https://tour.golang.org/)
 * [An introduction to play-with-go.dev guides](/intro-to-play-with-go-dev/)
-* [Tutorial: Get started with Go](/get-started-with-go/)
+* [Get started with Go](/get-started-with-go/)
 
 This guide is running using:
 
@@ -462,4 +462,11 @@ Run your application by simply typing its name:
 
 <!--step: hello_run_by_name-->
 
-That wraps up this Go tutorial!
+### Conclusion
+
+That wraps up this guide!
+
+As a next step you might like to consider:
+
+* [Installing Go](/installing-go_go115_en/)
+* [Working with private modules](/working-with-private-modules_go115_en/)
