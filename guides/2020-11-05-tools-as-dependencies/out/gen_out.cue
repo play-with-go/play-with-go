@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201112230714-c751dc0412a4",
-		      "Sum": "h1:FXhUsHjzpBC9Q0ywpnKhyk9mV12dnhxanUitpWHLKxI=",
+		      "Version": "v0.0.2-0.20201113144501-5beb41f95c7a",
+		      "Sum": "h1:yYwj/qiirnfPpJeBDKA5ZUqSSk3dzOyLTdptFyZOvgA=",
 		      "Replace": null
 		    },
 		    {
@@ -501,8 +501,8 @@ Steps: {
 			Output: """
 				go: downloading golang.org/x/tools v0.0.0-20201105220310-78b158585360
 				go: found golang.org/x/tools/cmd/stringer in golang.org/x/tools v0.0.0-20201105220310-78b158585360
-				go: downloading golang.org/x/mod v0.3.0
 				go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
+				go: downloading golang.org/x/mod v0.3.0
 
 				"""
 			ExitCode: 0
@@ -774,5 +774,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "3a29232b661745aac39bf3c624fdfaa6c0b8cacbe30ef96960e5729478c68de3"
+Hash: "20a06dad01614ead3075831db0505cab28752e4e3364f950f2bbcf8801ca69e5"
 Delims: ["{{{", "}}}"]
