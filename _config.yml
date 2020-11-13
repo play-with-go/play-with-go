@@ -15,7 +15,7 @@ baseurl: # the subpath of your site, e.g. /blog
 url: "https://play-with-go.dev" # the base hostname & protocol for your site
 
 #sidebar
-default-image: https://blog.golang.org/gopher/gopher.png # If there is no featured image in a post then this image will be showed. Also on all pages this image will be showed. Use a 500x250 image.
+default-image: https://play-with-go.dev/images/playgo.png # If there is no featured image in a post then this image will be showed. Also on all pages this image will be showed. Use a 500x250 image.
 
 guides-categories:
   - "Start here"
