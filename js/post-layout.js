@@ -78,7 +78,7 @@ guideRequest.onload = function() {
 
     });
   }
-  pwd.newSession(guideDetails.Terminals, { baseUrl: "{{site.pwdurl}}", Networks: guideDetails.Networks, Envs: guideDetails.Env }, function(err) {
+  pwd.newSession(guideDetails.Terminals, {baseUrl: "{{site.pwdurl}}", Networks: guideDetails.Networks, Envs: guideDetails.Env }, function(err) {
     if (err) {
       $(".term-init").text("Error initializing environment, please try again or submit an issue if problem persists.");
       return
