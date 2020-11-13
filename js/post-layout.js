@@ -23,6 +23,9 @@ var pwd = new PWD();
 
 pwd.on("instanceCreate", function(instance) {
   instance.terms[0].write(`$ \r\n`);
+  $("pre[data-upload-src], pre[data-command-src]").on("click", function() {
+    $(this).addClass("completed");
+  });
 });
 pwd.on("unauthorized", function() {
   login();
@@ -34,6 +37,9 @@ var guideRequest = new XMLHttpRequest();
 guideRequest.open('POST', '{{ site.controllerurl }}');
 guideRequest.withCredentials = true;
 guideRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+guideRequest.onerror = function() {
+  $(".term-init").text("Error initializing environment, please raise an issue using the help link.");
+}
 guideRequest.onload = function() {
   // TODO: error handling
   if (guideRequest.status > 500) {
@@ -72,9 +78,6 @@ guideRequest.onload = function() {
 
     });
   }
-  $("pre").on("click", function() {
-    $(this).addClass("completed");
-  });
   pwd.newSession(guideDetails.Terminals, { baseUrl: "{{site.pwdurl}}", Networks: guideDetails.Networks, Envs: guideDetails.Env }, function(err) {
     if (err) {
       $(".term-init").text("Error initializing environment, please try again or submit an issue if problem persists.");
@@ -115,7 +118,6 @@ $(document).ready(function() {
     const terminalOpened = leftPanel.is(":hidden");
     // add compress icon if leftPanel is open
     $(this).toggleClass("fa-compress", terminalOpened);
-    setMenuButtonIcon();
     pwd.resize();
   });
 

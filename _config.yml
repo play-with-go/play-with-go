@@ -64,7 +64,7 @@ plugins_dir:
 
 
 #sdkbaseurl: http://localhost:8080
-sdkbaseurl: https://unpkg.com/pwd-sdk@0.0.10
+sdkbaseurl: https://unpkg.com/pwd-sdk@0.0.11
 pwdurl: http://localhost
 controllerurl: http://localhost:8081/guides
 

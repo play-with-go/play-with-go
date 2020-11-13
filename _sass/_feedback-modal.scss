@@ -5,14 +5,12 @@
 }
 
 .feedback-title {
-  font-family: Geomanist;
   font-size: 24px;
   color: var(--titles-color);
 }
 .feedback-text,
 .feedback-modal-footer-text,
 .feedback-textarea {
-  font-family: "Open Sans";
   line-height: 1.5;
   letter-spacing: 0.15px;
   font-size: 16px;
@@ -27,7 +25,6 @@
 
 .close-button,
 .send-button {
-  font-family: "Open Sans";
   font-size: 13.7px;
   font-weight: 600;
 }
@@ -37,6 +34,7 @@
 
 .feedback-textarea {
   border: solid 1px rgba(0, 0, 0, 0.32);
+  border-radius: 0 0 .3em .3em;
 }
 
 .feedback-modal-footer {
@@ -48,7 +46,6 @@
 }
 
 .feedback-modal-footer-title {
-  font-family: Geomanist;
   font-size: 20px;
   color: var(--titles-color);
 }
