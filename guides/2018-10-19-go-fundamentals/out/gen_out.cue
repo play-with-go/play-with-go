@@ -111,7 +111,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.5@sha256:8d50772f8623566fa9cfa98d2a975d49cc44824c6f202ee65ab1cadf915a4445"
+			Image: "playwithgo/go1.15.5@sha256:775d58902ad62778a02f1a6772ef8bd405e819430498985635076d48e4a78b72"
 		}
 	}
 	Name: "term1"
@@ -1680,6 +1680,27 @@ Steps: {
 		StepType:        1
 		Name:            "gomodinit_hello"
 	}
+	mkdir_hello: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "mkdir /home/gopher/hello"
+			Negated:          false
+		}, {
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "cd /home/gopher/hello"
+			Negated:          false
+		}]
+		Order:           10
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "mkdir_hello"
+	}
 	greetings_gitpush: {
 		Stmts: [{
 			ComparisonOutput: """
@@ -1874,27 +1895,6 @@ Steps: {
 		StepType:        1
 		Name:            "mkdir_greetings"
 	}
-	mkdir_hello: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "mkdir /home/gopher/hello"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "cd /home/gopher/hello"
-			Negated:          false
-		}]
-		Order:           10
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "mkdir_hello"
-	}
 	pwd_home: {
 		Stmts: [{
 			ComparisonOutput: """
@@ -1938,5 +1938,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "379af8377001b55330a1396a43f0521ce8c6641eedfb648fb0c5b4da3870272e"
+Hash: "442d7db162550e871446c85fb8001bd8beee93011f5d859f55d53df02a66e4be"
 Delims: ["{{{", "}}}"]
