@@ -10,8 +10,10 @@ Networks: *["playwithgo_pwg"] | [...string]
 
 Delims: ["{{{", "}}}"]
 
-_#go115LatestImage: "playwithgo/go1.15.5@sha256:775d58902ad62778a02f1a6772ef8bd405e819430498985635076d48e4a78b72"
-_#go116LatestImage: "playwithgo/go1.16-tip@sha256:16217b6c274599d12d201fab7bf41f151bf0793875b804406946c62150ad3707"
+_#installGo:          "playwithgo/installgo1.15.5@sha256:fe24d516a510c9939fc3657a8c5fb8278315e2486ed94a55ea79ed6a0a74f199"
+_#go115LatestVersion: "go1.15.5"
+_#go115LatestImage:   "playwithgo/go1.15.5@sha256:775d58902ad62778a02f1a6772ef8bd405e819430498985635076d48e4a78b72"
+_#go116LatestImage:   "playwithgo/go1.16-tip@sha256:16217b6c274599d12d201fab7bf41f151bf0793875b804406946c62150ad3707"
 
 _#golangToolsLatest: "v0.0.0-20201105220310-78b158585360"
 
@@ -38,6 +40,9 @@ _#commonDefs: {
 		vlatest:     "latest"
 		GO111MODULE: "GO111MODULE"
 		GOPROXY:     "GOPROXY"
+		GOPATH:      "GOPATH"
+		GOBIN:       "GOBIN"
+		GOENV:       "GOENV"
 		GONOPROXY:   "GONOPROXY"
 		GOSUMDB:     "GOSUMDB"
 		GONOSUMDB:   "GONOSUMDB"

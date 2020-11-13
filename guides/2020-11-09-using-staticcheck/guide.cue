@@ -39,22 +39,14 @@ Steps: staticcheck_install: preguide.#Command & {
 		"""
 }
 
-Steps: go_env_gopath: preguide.#Command & {
-	Source: """
-		\(Defs.cmdgo.env) GOPATH
-		\(Defs.cmdgo.env) GOBIN
-		"""
-}
-
-Steps: path_add_gopath_bin: preguide.#Command & {
-	Source: """
-		export PATH="$(go env GOPATH)/bin:$PATH"
-		"""
-}
-
 Steps: staticcheck_check_on_path: preguide.#Command & {
 	Source: """
 		which staticcheck
+		"""
+}
+
+Steps: staticcheck_version: preguide.#Command & {
+	Source: """
 		staticcheck -version
 		"""
 }

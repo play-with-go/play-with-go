@@ -7,7 +7,7 @@ layout: default
 
 
     <div class="panel-left">
-        
+
         <article class="post content" itemscope itemtype="http://schema.org/BlogPosting">
             <header class="post-header">
                 <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
@@ -35,7 +35,7 @@ layout: default
             <div class="splitter"></div>
             <div class="tab-content" id="myTabContent">
                 {% for i in (1..terms) %}
-                <div class="tab-pane show term{{i}} {% if forloop.first %}active{% endif %}" id="term{{i}}" role="tabpanel" aria-labelledby="term{{i}}-tab"><div class="term-init">Initializing environment, hold a few seconds please...</div></div>
+                <div class="tab-pane show term{{i}} {% if forloop.first %}active{% endif %}" id="term{{i}}" role="tabpanel" aria-labelledby="term{{i}}-tab"><div class="term-init">Initializing remote session...</div></div>
                 {% endfor %}
             </div>
         </div>

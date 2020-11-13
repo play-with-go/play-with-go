@@ -24,7 +24,7 @@ Steps: {
 			CmdStr:           "staticcheck ."
 			Negated:          false
 		}]
-		Order:           23
+		Order:           22
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -32,7 +32,7 @@ Steps: {
 		Name:            "pets_staticcheck_final"
 	}
 	pets_go_final: {
-		Order: 22
+		Order: 21
 		Source: """
 			// Package pets contains useful functionality for pet owners
 			package pets
@@ -131,7 +131,7 @@ Steps: {
 			CmdStr:           "staticcheck ."
 			Negated:          false
 		}]
-		Order:           21
+		Order:           20
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -139,7 +139,7 @@ Steps: {
 		Name:            "pets_staticcheck_check_sa4018_still_ignored"
 	}
 	pets_go_file_ignore_sa4018: {
-		Order: 20
+		Order: 19
 		Source: """
 			// Package pets contains useful functionality for pet owners
 			package pets
@@ -240,7 +240,7 @@ Steps: {
 			CmdStr:           "staticcheck ."
 			Negated:          false
 		}]
-		Order:           19
+		Order:           18
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -248,7 +248,7 @@ Steps: {
 		Name:            "pets_staticcheck_check_sa4018_ignored"
 	}
 	pets_go_ignore_sa4018: {
-		Order: 18
+		Order: 17
 		Source: """
 			// Package pets contains useful functionality for pet owners
 			package pets
@@ -353,7 +353,7 @@ Steps: {
 			CmdStr:   "staticcheck ."
 			Negated:  true
 		}]
-		Order:           17
+		Order:           16
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -361,7 +361,7 @@ Steps: {
 		Name:            "pets_staticcheck_check_feed"
 	}
 	pets_go_feed: {
-		Order: 16
+		Order: 15
 		Source: """
 			// Package pets contains useful functionality for pet owners
 			package pets
@@ -454,7 +454,7 @@ Steps: {
 			CmdStr:           "staticcheck ."
 			Negated:          false
 		}]
-		Order:           15
+		Order:           14
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -462,7 +462,7 @@ Steps: {
 		Name:            "pets_staticcheck_st1000_fixed"
 	}
 	pets_go_with_package_comment: {
-		Order: 14
+		Order: 13
 		Source: """
 			// Package pets contains useful functionality for pet owners
 			package pets
@@ -555,7 +555,7 @@ Steps: {
 			CmdStr:   "staticcheck ."
 			Negated:  true
 		}]
-		Order:           13
+		Order:           12
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -563,7 +563,7 @@ Steps: {
 		Name:            "pets_staticcheck_st1000_enabled"
 	}
 	staticcheck_config_initial: {
-		Order: 12
+		Order: 11
 		Source: """
 			checks = ["inherit", "ST1000"]
 
@@ -585,7 +585,7 @@ Steps: {
 			CmdStr:           "staticcheck ."
 			Negated:          false
 		}]
-		Order:           11
+		Order:           10
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -593,7 +593,7 @@ Steps: {
 		Name:            "pets_staticcheck_fixed"
 	}
 	pets_go_fixed: {
-		Order: 10
+		Order: 9
 		Source: """
 			package pets
 
@@ -694,7 +694,7 @@ Steps: {
 			CmdStr:   "staticcheck -explain SA5009"
 			Negated:  false
 		}]
-		Order:           9
+		Order:           8
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -721,7 +721,7 @@ Steps: {
 			CmdStr:   "staticcheck ."
 			Negated:  true
 		}]
-		Order:           8
+		Order:           7
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -736,7 +736,7 @@ Steps: {
 			CmdStr:           "go build"
 			Negated:          false
 		}]
-		Order:           7
+		Order:           6
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -744,7 +744,7 @@ Steps: {
 		Name:            "pets_build_initial"
 	}
 	pets_go_initial: {
-		Order: 6
+		Order: 5
 		Source: """
 			package pets
 
@@ -815,7 +815,7 @@ Steps: {
 			CmdStr:   "go mod init pets"
 			Negated:  false
 		}]
-		Order:           5
+		Order:           4
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -835,73 +835,13 @@ Steps: {
 			ExitCode: 0
 			CmdStr:   "which staticcheck"
 			Negated:  false
-		}, {
-			ComparisonOutput: """
-				staticcheck 2020.1.6
-
-				"""
-			Output: """
-				staticcheck 2020.1.6
-
-				"""
-			ExitCode: 0
-			CmdStr:   "staticcheck -version"
-			Negated:  false
-		}]
-		Order:           4
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "staticcheck_check_on_path"
-	}
-	path_add_gopath_bin: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "export PATH=\"$(go env GOPATH)/bin:$PATH\""
-			Negated:          false
-		}]
-		Order:           3
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "path_add_gopath_bin"
-	}
-	go_env_gopath: {
-		Stmts: [{
-			ComparisonOutput: """
-				/home/gopher/go
-
-				"""
-			Output: """
-				/home/gopher/go
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go env GOPATH"
-			Negated:  false
-		}, {
-			ComparisonOutput: """
-
-
-				"""
-			Output: """
-
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go env GOBIN"
-			Negated:  false
 		}]
 		Order:           2
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "go_env_gopath"
+		Name:            "staticcheck_check_on_path"
 	}
 	staticcheck_install: {
 		Stmts: [{
@@ -953,6 +893,27 @@ Steps: {
 		StepType:        1
 		Name:            "goversion"
 	}
+	staticcheck_version: {
+		Stmts: [{
+			ComparisonOutput: """
+				staticcheck 2020.1.6
+
+				"""
+			Output: """
+				staticcheck 2020.1.6
+
+				"""
+			ExitCode: 0
+			CmdStr:   "staticcheck -version"
+			Negated:  false
+		}]
+		Order:           3
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "staticcheck_version"
+	}
 }
-Hash: "d92bda4470457f0deb3d213b6c30b869fc97bac1e7ea0362fed14c97d90109a6"
+Hash: "f1dd321b4a1a81e681c611ec0bad52cdb7ab429dd2721e5410a6dddf636923a1"
 Delims: ["{{{", "}}}"]

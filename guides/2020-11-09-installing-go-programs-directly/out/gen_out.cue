@@ -40,7 +40,7 @@ Steps: {
 			CmdStr:   "go version -m $(which staticcheck)"
 			Negated:  false
 		}]
-		Order:           8
+		Order:           6
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -61,7 +61,7 @@ Steps: {
 			CmdStr:   "staticcheck -version"
 			Negated:  false
 		}]
-		Order:           7
+		Order:           5
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -82,7 +82,7 @@ Steps: {
 			CmdStr:   "which staticcheck"
 			Negated:  false
 		}]
-		Order:           6
+		Order:           4
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -146,54 +146,6 @@ Steps: {
 		StepType:        1
 		Name:            "go115_staticcheck_get"
 	}
-	path_add_gopath_bin: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "export PATH=\"$(go env GOPATH)/bin:$PATH\""
-			Negated:          false
-		}]
-		Order:           5
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "path_add_gopath_bin"
-	}
-	go_env_gopath: {
-		Stmts: [{
-			ComparisonOutput: """
-				/home/gopher/go
-
-				"""
-			Output: """
-				/home/gopher/go
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go env GOPATH"
-			Negated:  false
-		}, {
-			ComparisonOutput: """
-
-
-				"""
-			Output: """
-
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go env GOBIN"
-			Negated:  false
-		}]
-		Order:           4
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "go_env_gopath"
-	}
 	goversion: {
 		Stmts: [{
 			ComparisonOutput: """
@@ -216,5 +168,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "6ea371db94b6b638846738d98c7882ff339712deae3d264e40f221230b66aeb8"
+Hash: "6a0c8cc94a88713623c5057a6754f428a8e8e33d634a0ac69f9fd513b90b8fd6"
 Delims: ["{{{", "}}}"]

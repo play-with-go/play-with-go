@@ -29,7 +29,8 @@ This guide gets you up and running with Staticcheck by analysing the `<!--ref: p
 
 You should already have completed:
 
-* The [Go fundamentals Tutorial](/go-fundamentals_go115_en)
+* [Go fundamentals](/go-fundamentals_go115_en)
+* [Installing Go](/installing-go_go115_en)
 
 This guide is running using:
 
@@ -47,20 +48,16 @@ Use `<!--ref: cmdgo.get-->` to install Staticcheck:
 _Note: so that this guide remains reproducible we have spcified an explicit version, `<!--ref: staticcheck_version-->`.
 When running yourself you could use the special version `<!--ref:cmdgo.vlatest-->`._
 
-The rather ugly use of a temporary directory ensures that `<!--ref:cmdgo.get-->` is run outside of a module. When run
-outside of a module, `<!--ref:cmdgo.get-->` installs binaries to `$GOPATH/bin`, or `$GOBIN` if set.
+The rather ugly use of a temporary directory ensures that `<!--ref:cmdgo.get-->` is run outside of a module.  See the
+_"Setting up your `PATH`"_ section in [Installing Go](/installing-go_go115_en) to ensure your `PATH` is set correctly.
 
-Confirm your setup using `<!--ref:cmdgo.env-->`:
-
-<!--step: go_env_gopath-->
-
-So `GOBIN` is not set. As a one off, add `$GOPATH/bin` to your `PATH`:
-
-<!--step: path_add_gopath_bin-->
-
-Finally, check that `staticcheck` can be resolved from your `PATH`:
+Check that `staticcheck` is on your `PATH`:
 
 <!--step: staticcheck_check_on_path-->
+
+Run `staticcheck` as a quick check:
+
+<!--step: staticcheck_version-->
 
 You're all set!
 

@@ -1,0 +1,81 @@
+$ pwd
+/home/gopher
+$ wget -q https://golang.org/dl/go1.15.5.linux-amd64.tar.gz
+$ sudo tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz
+$ echo export PATH="/usr/local/go/bin:$PATH" >>$HOME/.profile
+$ source $HOME/.profile
+$ go version
+go version go1.15.5 linux/amd64
+$ go env
+GO111MODULE=""
+GOARCH="amd64"
+GOBIN=""
+GOCACHE="/home/gopher/.cache/go-build"
+GOENV="/home/gopher/.config/go/env"
+GOEXE=""
+GOFLAGS=""
+GOHOSTARCH="amd64"
+GOHOSTOS="linux"
+GOINSECURE=""
+GOMODCACHE="/home/gopher/go/pkg/mod"
+GONOPROXY=""
+GONOSUMDB=""
+GOOS="linux"
+GOPATH="/home/gopher/go"
+GOPRIVATE=""
+GOPROXY="https://proxy.golang.org,direct"
+GOROOT="/usr/local/go"
+GOSUMDB="sum.golang.org"
+GOTMPDIR=""
+GOTOOLDIR="/usr/local/go/pkg/tool/linux_amd64"
+GCCGO="gccgo"
+AR="ar"
+CC="gcc"
+CXX="g++"
+CGO_ENABLED="1"
+GOMOD=""
+CGO_CFLAGS="-g -O2"
+CGO_CPPFLAGS=""
+CGO_CXXFLAGS="-g -O2"
+CGO_FFLAGS="-g -O2"
+CGO_LDFLAGS="-g -O2"
+PKG_CONFIG="pkg-config"
+GOGCCFLAGS="-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build065527569=/tmp/go-build -gno-record-gcc-switches"
+$ go env GOBIN
+
+$ go env -w GOBIN=/path/to/my/gopath
+$ go env GOBIN
+/path/to/my/gopath
+$ go env GOENV
+/home/gopher/.config/go/env
+$ go env -w GOBIN=
+$ go env GOBIN
+
+$ go help env
+usage: go env [-json] [-u] [-w] [var ...]
+
+Env prints Go environment information.
+
+By default env prints information as a shell script
+(on Windows, a batch file). If one or more variable
+names is given as arguments, env prints the value of
+each named variable on its own line.
+
+The -json flag prints the environment in JSON format
+instead of as a shell script.
+
+The -u flag requires one or more arguments and unsets
+the default setting for the named environment variables,
+if one has been set with 'go env -w'.
+
+The -w flag requires one or more arguments of the
+form NAME=VALUE and changes the default settings
+of the named environment variables to the given values.
+
+For more about environment variables, see 'go help environment'.
+$ go env GOBIN
+
+$ echo export PATH="$(go env GOPATH)/bin:$PATH" >>$HOME/.profile
+$ source $HOME/.profile
+$ echo $PATH
+/home/gopher/go/bin:/usr/local/go/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games

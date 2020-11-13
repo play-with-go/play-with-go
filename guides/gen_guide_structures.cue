@@ -51,6 +51,24 @@ package guides
 	Networks: ["playwithgo_pwg"]
 	Env: []
 }
+"2020-08-13-installing-go": {
+	Delims: ["{{{", "}}}"]
+	Terminals: [{
+		Name:        "term1"
+		Description: "The main terminal"
+		Scenarios: {
+			go115: {
+				Image: "playwithgo/installgo1.15.5@sha256:fe24d516a510c9939fc3657a8c5fb8278315e2486ed94a55ea79ed6a0a74f199"
+			}
+		}
+	}]
+	Scenarios: [{
+		Name:        "go115"
+		Description: "Go 1.15"
+	}]
+	Networks: ["playwithgo_pwg"]
+	Env: []
+}
 "2020-09-01-basic-go-modules-example": {
 	Delims: ["{{{", "}}}"]
 	Presteps: [{
