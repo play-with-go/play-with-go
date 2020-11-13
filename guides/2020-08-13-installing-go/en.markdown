@@ -13,6 +13,14 @@ The official [_Download and Install_](https://golang.org/doc/install) instructio
 This guide walks you through those steps, discusses the Go environment, and also explains how to setup your `PATH` for
 running any Go programs you install.
 
+### Prerequisites
+
+You should already have completed:
+
+* [The Go Tour](https://tour.golang.org/)
+* [An introduction to play-with-go.dev guides](/intro-to-play-with-go-dev/)
+* [Get started with Go](/get-started-with-go/)
+
 ### Installing Go
 
 _Note: this guide is running on Linux. For Mac or Windows steps, see the official [Download and
@@ -54,15 +62,15 @@ Let's examine the default settings in your setup:
 
 To see the effective setting of a specific variable, for example `GOBIN`, you can run:
 
-<!--step: go_env_gopath-->
+<!--step: go_env_gobin-->
 
 To change the default setting of a variable, for example `GOBIN`, you can run:
 
-<!--step: go_env_set_gopath-->
+<!--step: go_env_set_gobin-->
 
 Check the new value is set:
 
-<!--step: go_env_check_gopath-->
+<!--step: go_env_check_gobin-->
 
 Defaults changed in this way
 are recorded in a Go environment configuration file stored in the
@@ -78,11 +86,11 @@ Note, you cannot change the default location of the configuration file.
 
 Unset `GOBIN`, returning to its default value:
 
-<!--step: go_env_unset_gopath-->
+<!--step: go_env_unset_gobin-->
 
 Check the effective value of `GOBIN` now:
 
-<!--step: go_env_check_gopath_again-->
+<!--step: go_env_check_gobin_again-->
 
 That is to say, `GOBIN` is not set by default.
 
@@ -99,7 +107,7 @@ _Note: this section applies to Linux and Mac users only._
 
 So you need to add `$GOPATH/bin` to your profile `PATH`:
 
-<!--step: add_gopath_bin_to_path-->
+<!--step: add_gobin_bin_to_path-->
 
 Source your profile again to test the new settings:
 
@@ -112,3 +120,7 @@ Verify the new setting of `PATH`:
 ### Conclusion
 
 That's it! You're all set for working with Go on your local system.
+
+As a next step you might like to consider:
+
+* [Go Fundamentals](/go-fundamentals_go115_en)

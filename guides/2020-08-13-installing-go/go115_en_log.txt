@@ -43,9 +43,9 @@ PKG_CONFIG="pkg-config"
 GOGCCFLAGS="-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build -gno-record-gcc-switches"
 $ go env GOBIN
 
-$ go env -w GOBIN=/path/to/my/gopath
+$ go env -w GOBIN=/path/to/my/gobin
 $ go env GOBIN
-/path/to/my/gopath
+/path/to/my/gobin
 $ go env GOENV
 /home/gopher/.config/go/env
 $ go env -w GOBIN=

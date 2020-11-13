@@ -26,7 +26,7 @@ You will:
 
 You should already have completed:
 
-* The [Go fundamentals Tutorial](/go-fundamentals_go115_en)
+* [Go Fundamentals](/go-fundamentals_go115_en)
 
 This guide is running using:
 
@@ -181,4 +181,6 @@ Finally, check your program's output:
 That's it! This guide has shown you how to add tool dependencies to a module, with a focus on the `<!--ref:stringer-->`
 code generation tool and its use via `<!--ref: cmdgo.generate-->`.
 
+As a next step you might like to consider:
 
+* [Working with private modules](/working-with-private-modules_go115_en/)

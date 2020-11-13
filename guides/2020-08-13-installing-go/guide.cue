@@ -61,19 +61,19 @@ Steps: go_env: preguide.#Command & {
 		"""
 }
 
-Steps: go_env_gopath: preguide.#Command & {
+Steps: go_env_gobin: preguide.#Command & {
 	Source: """
 		\(Defs.cmdgo.env) GOBIN
 		"""
 }
 
-Steps: go_env_set_gopath: preguide.#Command & {
+Steps: go_env_set_gobin: preguide.#Command & {
 	Source: """
-		\(Defs.cmdgo.env) -w GOBIN=/path/to/my/gopath
+		\(Defs.cmdgo.env) -w GOBIN=/path/to/my/gobin
 		"""
 }
 
-Steps: go_env_check_gopath: preguide.#Command & {
+Steps: go_env_check_gobin: preguide.#Command & {
 	Source: """
 		\(Defs.cmdgo.env) GOBIN
 		"""
@@ -85,13 +85,13 @@ Steps: go_env_env: preguide.#Command & {
 		"""
 }
 
-Steps: go_env_unset_gopath: preguide.#Command & {
+Steps: go_env_unset_gobin: preguide.#Command & {
 	Source: """
 		\(Defs.cmdgo.env) -w GOBIN=
 		"""
 }
 
-Steps: go_env_check_gopath_again: preguide.#Command & {
+Steps: go_env_check_gobin_again: preguide.#Command & {
 	Source: """
 		\(Defs.cmdgo.env) GOBIN
 		"""
@@ -110,7 +110,7 @@ Steps: gobin_not_set: preguide.#Command & {
 		"""
 }
 
-Steps: add_gopath_bin_to_path: preguide.#Command & {
+Steps: add_gobin_bin_to_path: preguide.#Command & {
 	Source: """
 		echo export PATH="$(go env GOPATH)/bin:$PATH" >> $HOME/.profile
 		"""

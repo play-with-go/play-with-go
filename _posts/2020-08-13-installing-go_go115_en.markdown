@@ -15,6 +15,14 @@ The official [_Download and Install_](https://golang.org/doc/install) instructio
 This guide walks you through those steps, discusses the Go environment, and also explains how to setup your `PATH` for
 running any Go programs you install.
 
+### Prerequisites
+
+You should already have completed:
+
+* [The Go Tour](https://tour.golang.org/)
+* [An introduction to play-with-go.dev guides](/intro-to-play-with-go-dev/)
+* [Get started with Go](/get-started-with-go/)
+
 ### Installing Go
 
 _Note: this guide is running on Linux. For Mac or Windows steps, see the official [Download and
@@ -122,15 +130,15 @@ $ go env GOBIN
 To change the default setting of a variable, for example `GOBIN`, you can run:
 
 ```.term1
-$ go env -w GOBIN=/path/to/my/gopath
+$ go env -w GOBIN=/path/to/my/gobin
 ```
-{:data-command-src="Z28gZW52IC13IEdPQklOPS9wYXRoL3RvL215L2dvcGF0aAo="}
+{:data-command-src="Z28gZW52IC13IEdPQklOPS9wYXRoL3RvL215L2dvYmluCg=="}
 
 Check the new value is set:
 
 ```.term1
 $ go env GOBIN
-/path/to/my/gopath
+/path/to/my/gobin
 ```
 {:data-command-src="Z28gZW52IEdPQklOCg=="}
 
@@ -207,4 +215,8 @@ $ echo $PATH
 ### Conclusion
 
 That's it! You're all set for working with Go on your local system.
+
+As a next step you might like to consider:
+
+* [Go Fundamentals](/go-fundamentals_go115_en)
 <script>let pageGuide="2020-08-13-installing-go"; let pageLanguage="en"; let pageScenario="go115";</script>

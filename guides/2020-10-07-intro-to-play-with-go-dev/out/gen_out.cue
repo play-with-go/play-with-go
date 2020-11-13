@@ -281,15 +281,15 @@ Steps: {
 	echo_hello: {
 		Stmts: [{
 			ComparisonOutput: """
-				Hello, world!
+				*** !!! CLICK ME !!! ***
 
 				"""
 			Output: """
-				Hello, world!
+				*** !!! CLICK ME !!! ***
 
 				"""
 			ExitCode: 0
-			CmdStr:   "echo \"Hello, world!\""
+			CmdStr:   "echo '*** !!! CLICK ME !!! ***'"
 			Negated:  false
 		}]
 		Order:           1
@@ -333,5 +333,5 @@ Steps: {
 		Name:            "whoami"
 	}
 }
-Hash: "9b6b89159544b07eca8982b487ce9ebe4936f21017439ff602357a35950592e3"
+Hash: "2fd15f4017b006f360d908c1c13670e0c7d4b8a83b6cb27829c0527382b36652"
 Delims: ["{{{", "}}}"]

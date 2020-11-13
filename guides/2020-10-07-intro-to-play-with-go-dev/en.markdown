@@ -82,3 +82,9 @@ Don't worry, there are people who can help! Either head over to `#play-with-go` 
 Slack](https://gophers.slack.com/) ([sign-up](https://invite.slack.golangbridge.org/)) or [raise an
 issue](https://github.com/play-with-go/play-with-go/issues/new?title=help:&labels=question) in our GitHub issue tracker.
 
+### Next steps
+
+As a next step you might like to consider:
+
+* [Get started with Go](/get-started-with-go_go115_en/)
+* [Go Fundamentals](/go-fundamentals_go115_en)
