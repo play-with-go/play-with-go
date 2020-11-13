@@ -107,7 +107,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.5@sha256:dc9f16061410f8763d0b550d138e904cb753f06f1bc992c389715439030136b2"
+			Image: "playwithgo/go1.15.5@sha256:8d50772f8623566fa9cfa98d2a975d49cc44824c6f202ee65ab1cadf915a4445"
 		}
 	}
 	Name: "term1"
@@ -333,5 +333,5 @@ Steps: {
 		Name:            "whoami"
 	}
 }
-Hash: "4768f7af48a9c0c8c7fccb111086dff6114c63f25673494e7f7c366b601cdefe"
+Hash: "eb75a596e64b9f617d36ce3913cd1cc045c0ffe034f4303f91a2853f8c5b9d1d"
 Delims: ["{{{", "}}}"]
