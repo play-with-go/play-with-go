@@ -181,6 +181,27 @@ Steps: {
 		StepType:        1
 		Name:            "go_env_set_gopath"
 	}
+	go_env_gopath: {
+		Stmts: [{
+			ComparisonOutput: """
+
+
+				"""
+			Output: """
+
+
+				"""
+			ExitCode: 0
+			CmdStr:   "go env GOBIN"
+			Negated:  false
+		}]
+		Order:           7
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "go_env_gopath"
+	}
 	go_env: {
 		Stmts: [{
 			ComparisonOutput: """
@@ -217,7 +238,7 @@ Steps: {
 				CGO_FFLAGS="-g -O2"
 				CGO_LDFLAGS="-g -O2"
 				PKG_CONFIG="pkg-config"
-				GOGCCFLAGS="-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build065527569=/tmp/go-build -gno-record-gcc-switches"
+				GOGCCFLAGS="-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build -gno-record-gcc-switches"
 
 				"""
 			Output: """
@@ -254,7 +275,7 @@ Steps: {
 				CGO_FFLAGS="-g -O2"
 				CGO_LDFLAGS="-g -O2"
 				PKG_CONFIG="pkg-config"
-				GOGCCFLAGS="-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build065527569=/tmp/go-build -gno-record-gcc-switches"
+				GOGCCFLAGS="-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build -gno-record-gcc-switches"
 
 				"""
 			ExitCode: 0
@@ -431,27 +452,6 @@ Steps: {
 		StepType:        1
 		Name:            "go_help_env"
 	}
-	go_env_gopath: {
-		Stmts: [{
-			ComparisonOutput: """
-
-
-				"""
-			Output: """
-
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go env GOBIN"
-			Negated:  false
-		}]
-		Order:           7
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "go_env_gopath"
-	}
 }
-Hash: "afcb4456998950b070263cc416fba263f54c3ba99b2dcaa7ee36558205daba69"
+Hash: "b583bcaaaf837280b8a31192962ea384b6da4242c915017bacf541bd608a0adf"
 Delims: ["{{{", "}}}"]
