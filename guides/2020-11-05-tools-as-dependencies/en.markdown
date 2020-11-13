@@ -6,9 +6,12 @@ difficulty: Intermediate
 category: Next steps
 ---
 
+_By [Jon Calhoun](https://twitter.com/joncalhoun), creator of [Gophercises](https://gophercises.com/) and other Go
+courses and learning material._
+
 Go modules support developer tools (commands) as dependencies. For example, your project might require a tool to help
 with code generation, or to lint/vet your code for correctness. Adding developer tool dependencies ensures that all
-develpoers use the same version of each tool.
+developers use the same version of each tool.
 
 This guide shows you how to manage developer tool dependencies with a Go module, specifically the code generator[
 `<!--ref: stringer-->`](https://pkg.go.dev/golang.org/x/tools/cmd/stringer).
