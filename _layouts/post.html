@@ -44,6 +44,8 @@ layout: default
 </div>
 
 <script>
+    $(window).off('beforeunload');
+
     var imageName = "{{page.image}}";
     (function() {
         var font3 = document.createElement('link');
