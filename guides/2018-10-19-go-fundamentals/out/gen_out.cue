@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201113173758-55344b71e1f1",
-		      "Sum": "h1:f1pScvGkB4iHBkEg6hqTy8+Rt9RSmVYRvAioCMaZP5Y=",
+		      "Version": "v0.0.2-0.20201116062456-45ff413dbe24",
+		      "Sum": "h1:STaaU0wNC/wE8sAgdTyeGBU8YtpQsu/G7a+eOx24qsM=",
 		      "Replace": null
 		    },
 		    {
@@ -1680,27 +1680,6 @@ Steps: {
 		StepType:        1
 		Name:            "gomodinit_hello"
 	}
-	mkdir_hello: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "mkdir /home/gopher/hello"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "cd /home/gopher/hello"
-			Negated:          false
-		}]
-		Order:           10
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "mkdir_hello"
-	}
 	greetings_gitpush: {
 		Stmts: [{
 			ComparisonOutput: """
@@ -1895,6 +1874,27 @@ Steps: {
 		StepType:        1
 		Name:            "mkdir_greetings"
 	}
+	mkdir_hello: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "mkdir /home/gopher/hello"
+			Negated:          false
+		}, {
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "cd /home/gopher/hello"
+			Negated:          false
+		}]
+		Order:           10
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "mkdir_hello"
+	}
 	pwd_home: {
 		Stmts: [{
 			ComparisonOutput: """
@@ -1938,5 +1938,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "331a515e90ca8aba40d66866d7d6a505fb7b823f56399577a7b8ed6009fce8fa"
+Hash: "af5afd9a2dc92e7d25438d84a42683b3112502d8293af6386977ff2f1f6d9d53"
 Delims: ["{{{", "}}}"]
