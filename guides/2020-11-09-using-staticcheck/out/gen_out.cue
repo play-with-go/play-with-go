@@ -872,27 +872,6 @@ Steps: {
 		StepType:        1
 		Name:            "staticcheck_install"
 	}
-	goversion: {
-		Stmts: [{
-			ComparisonOutput: """
-				go version go1.15.5 linux/amd64
-
-				"""
-			Output: """
-				go version go1.15.5 linux/amd64
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go version"
-			Negated:  false
-		}]
-		Order:           0
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "goversion"
-	}
 	staticcheck_version: {
 		Stmts: [{
 			ComparisonOutput: """
@@ -914,6 +893,27 @@ Steps: {
 		StepType:        1
 		Name:            "staticcheck_version"
 	}
+	goversion: {
+		Stmts: [{
+			ComparisonOutput: """
+				go version go1.15.5 linux/amd64
+
+				"""
+			Output: """
+				go version go1.15.5 linux/amd64
+
+				"""
+			ExitCode: 0
+			CmdStr:   "go version"
+			Negated:  false
+		}]
+		Order:           0
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "goversion"
+	}
 }
-Hash: "ef5808a481442497a44bc4fe18927d300b9b23b57ae74718c61e49c2a5965097"
+Hash: "675d39a1a4852e069cfecc561fcb425e8a7c405f6b15379e047a3ec1b205a8ee"
 Delims: ["{{{", "}}}"]
