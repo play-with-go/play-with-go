@@ -99,7 +99,7 @@ versions over time, and you can upgrade your code to use the improved versions. 
 [pkg.go.dev](https://pkg.go.dev) to discover published modules whose packages have functions you can use in your own
 code.
 
-_Modules can contain multiple packackages. In the case of the the `rsc.io/quote` module, it contains just one package:
+_Modules can contain multiple packages. In the case of the the `rsc.io/quote` module, it contains just one package:
 `rsc.io/quote`._
 
 Let's import the `rsc.io/quote` package and add a call to its `Go` function:
