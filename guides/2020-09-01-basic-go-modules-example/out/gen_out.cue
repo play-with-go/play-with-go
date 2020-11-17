@@ -1,14 +1,14 @@
 package out
 
 Presteps: [{
-	Variables: ["GITEA_USERNAME", "GITEA_PASSWORD", "REPO1"]
+	Variables: ["GITEA_USERNAME", "GITEA_PRIV_KEY", "GITEA_PUB_KEY", "GITEA_KEYSCAN", "REPO1"]
 	Version: """
 		{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20201112105710-13a90a7e8526",
-		    "Sum": "h1:0JH9kWYqa8pAgFfmX70kBO1IbtWPOdtUPxkfvFOB0Oo=",
+		    "Version": "v0.0.0-20201117212359-e8c942fd23b1",
+		    "Sum": "h1:GF1ytqY5ImU/VwbxBRfry/sOIsXpZWwxUM50WNRySeo=",
 		    "Replace": null
 		  },
 		  "Deps": [
@@ -61,6 +61,12 @@ Presteps: [{
 		      "Replace": null
 		    },
 		    {
+		      "Path": "golang.org/x/crypto",
+		      "Version": "v0.0.0-20191011191535-87dc89f01550",
+		      "Sum": "h1:ObdrDkeb4kJdCP557AjRjq69pTHfNouLtWZG7j9rPN8=",
+		      "Replace": null
+		    },
+		    {
 		      "Path": "golang.org/x/net",
 		      "Version": "v0.0.0-20200602114024-627f9648deb9",
 		      "Sum": "h1:pNX+40auqi2JqRfOP1akLGtYcn15TUbkhwuCO3foqqM=",
@@ -107,7 +113,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.5@sha256:775d58902ad62778a02f1a6772ef8bd405e819430498985635076d48e4a78b72"
+			Image: "playwithgo/go1.15.5@sha256:2cc72c6bf72ce59de8aff52f7bbb0603926dbdd70473ec7f8b9f8310edf57ba4"
 		}
 	}
 	Name: "term1"
@@ -314,5 +320,5 @@ Steps: {
 		Name:            "create_module"
 	}
 }
-Hash: "c5ab576df4a34ba2e39358acab9823ecc0d58308eb473310e5cf209992d92d86"
+Hash: "1bc63c44e0eb7d76d3bbc049da1e1f672451d24e3407272849661587c1626ca0"
 Delims: ["{{{", "}}}"]
