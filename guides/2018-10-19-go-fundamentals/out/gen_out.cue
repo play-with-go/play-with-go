@@ -20,8 +20,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "cuelang.org/go",
-		      "Version": "v0.3.0-alpha4",
-		      "Sum": "h1:BIPutFX2WhHXwERWZka8PZBxcl6amdKO0Vry4n5qUEc=",
+		      "Version": "v0.3.0-alpha4.0.20201116194914-7463d11dea50",
+		      "Sum": "h1:8FV7bhN9Nn6aq8Zkj/2nHefqGKoCbdRJ2g4NVovgZoE=",
 		      "Replace": null
 		    },
 		    {
@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201116062456-45ff413dbe24",
-		      "Sum": "h1:STaaU0wNC/wE8sAgdTyeGBU8YtpQsu/G7a+eOx24qsM=",
+		      "Version": "v0.0.2-0.20201117112654-4255ecbeb4b8",
+		      "Sum": "h1:DIICou/VD7X3MnXPBY53FiFyIBFA9fm/kU+HkPYKuLo=",
 		      "Replace": null
 		    },
 		    {
@@ -1680,6 +1680,27 @@ Steps: {
 		StepType:        1
 		Name:            "gomodinit_hello"
 	}
+	mkdir_hello: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "mkdir /home/gopher/hello"
+			Negated:          false
+		}, {
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "cd /home/gopher/hello"
+			Negated:          false
+		}]
+		Order:           10
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "mkdir_hello"
+	}
 	greetings_gitpush: {
 		Stmts: [{
 			ComparisonOutput: """
@@ -1874,27 +1895,6 @@ Steps: {
 		StepType:        1
 		Name:            "mkdir_greetings"
 	}
-	mkdir_hello: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "mkdir /home/gopher/hello"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "cd /home/gopher/hello"
-			Negated:          false
-		}]
-		Order:           10
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "mkdir_hello"
-	}
 	pwd_home: {
 		Stmts: [{
 			ComparisonOutput: """
@@ -1938,5 +1938,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "af5afd9a2dc92e7d25438d84a42683b3112502d8293af6386977ff2f1f6d9d53"
+Hash: "c60012cd5793a882de7c656f2f9d6e04eab4d349230f9c6da1b6013ce304791e"
 Delims: ["{{{", "}}}"]

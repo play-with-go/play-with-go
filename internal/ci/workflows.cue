@@ -2,8 +2,8 @@ package ci
 
 import "github.com/SchemaStore/schemastore/src/schemas/json"
 
-_#workflows: [...{file: string, schema: json.#Workflow}]
-_#workflows: [
+#workflows: [...{file: string, schema: json.#Workflow}]
+#workflows: [
 	{file: "test.yml", schema:    test},
 	{file: "testmac.yml", schema: testmac},
 	{file: "wip.yml", schema:     wip},
