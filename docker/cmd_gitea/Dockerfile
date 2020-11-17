@@ -12,12 +12,12 @@ COPY . .
 
 RUN --mount=type=cache,target=/root/.cache/go go build github.com/play-with-go/gitea/cmd/gitea
 
-# playwithgo/customca
-FROM playwithgo/customca@sha256:590cf82229b9338a48520c4042f718b8e11380e389cfc4be21791736e9ff94ea
+# buildpack-deps:buster-scm - because for now we need ssh-keyscan
+FROM buildpack-deps@sha256:f010c9887ecea10d052247ef8befb79c2d17ea3f92ab6cb05039caab757fb14e
 
 RUN mkdir /runbin
 
 COPY --from=stage1 /go/gitea /runbin
 COPY ./docker/cmd_gitea/playwithgo-entrypoint.sh /playwithgo-entrypoint.sh
 
-ENTRYPOINT ["/usr/bin/entrypoint.sh", "/playwithgo-entrypoint.sh"]
+ENTRYPOINT ["/playwithgo-entrypoint.sh"]

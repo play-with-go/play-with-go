@@ -1,14 +1,14 @@
 package out
 
 Presteps: [{
-	Variables: ["GITEA_USERNAME", "GITEA_PASSWORD", "PAINKILLER"]
+	Variables: ["GITEA_USERNAME", "GITEA_PRIV_KEY", "GITEA_PUB_KEY", "GITEA_KEYSCAN", "PAINKILLER"]
 	Version: """
 		{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20201112105710-13a90a7e8526",
-		    "Sum": "h1:0JH9kWYqa8pAgFfmX70kBO1IbtWPOdtUPxkfvFOB0Oo=",
+		    "Version": "v0.0.0-20201117212359-e8c942fd23b1",
+		    "Sum": "h1:GF1ytqY5ImU/VwbxBRfry/sOIsXpZWwxUM50WNRySeo=",
 		    "Replace": null
 		  },
 		  "Deps": [
@@ -61,6 +61,12 @@ Presteps: [{
 		      "Replace": null
 		    },
 		    {
+		      "Path": "golang.org/x/crypto",
+		      "Version": "v0.0.0-20191011191535-87dc89f01550",
+		      "Sum": "h1:ObdrDkeb4kJdCP557AjRjq69pTHfNouLtWZG7j9rPN8=",
+		      "Replace": null
+		    },
+		    {
 		      "Path": "golang.org/x/net",
 		      "Version": "v0.0.0-20200602114024-627f9648deb9",
 		      "Sum": "h1:pNX+40auqi2JqRfOP1akLGtYcn15TUbkhwuCO3foqqM=",
@@ -107,7 +113,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.5@sha256:775d58902ad62778a02f1a6772ef8bd405e819430498985635076d48e4a78b72"
+			Image: "playwithgo/go1.15.5@sha256:2cc72c6bf72ce59de8aff52f7bbb0603926dbdd70473ec7f8b9f8310edf57ba4"
 		}
 	}
 	Name: "term1"
@@ -501,8 +507,8 @@ Steps: {
 			Output: """
 				go: downloading golang.org/x/tools v0.0.0-20201105220310-78b158585360
 				go: found golang.org/x/tools/cmd/stringer in golang.org/x/tools v0.0.0-20201105220310-78b158585360
-				go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
 				go: downloading golang.org/x/mod v0.3.0
+				go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
 
 				"""
 			ExitCode: 0
@@ -774,5 +780,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "b0eca2f23fa786fb60cdae0c14f609cb4a99b9823e12f392952e2dedcad89818"
+Hash: "c6affe542756f0f596a2293ac5cd44534727541f57a63c161f80402a51ab209f"
 Delims: ["{{{", "}}}"]
