@@ -12,7 +12,7 @@ command: gengithub: {
 		stdout: string
 	}
 	// Loop appears to work around cuelang.org/issue/525
-	for w in _#workflows {
+	for w in #workflows {
 		"write \(w.file)": file.Create & {
 			filename: "../../.github/workflows/\(w.file)"
 			contents: """
