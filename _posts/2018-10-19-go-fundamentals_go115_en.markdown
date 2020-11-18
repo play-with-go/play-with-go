@@ -147,7 +147,8 @@ func Hello(name string) string {
 * Return the formatted greeting text to the caller.
 
 For people to be able to use your module you need to publish it. You publish a module by pushing a commit to a version
-control system like [GitHub](https://github.com/). You will publish your module to [`{% raw %}{{{.GREETINGS}}}{% endraw %}`](https://{% raw %}{{{.GREETINGS}}}{% endraw %}.git).
+control system like [GitHub](https://github.com/). You will publish your module to
+[`{% raw %}{{{.GREETINGS}}}{% endraw %}`](https://{% raw %}{{{.GREETINGS}}}{% endraw %}.git).
 
 Initialise a local  `git` repository for your `greetings` module:
 
@@ -178,7 +179,8 @@ remote: Processed 1 references in total
 
 ### Call your code from another module
 
-You'll now write code that you can execute as an application, which makes calls to the `Hello` function in the `greetings` module you published to `{% raw %}{{{.GREETINGS}}}{% endraw %}`.
+You'll now write code that you can execute as an application, which makes calls to the `Hello` function in the
+`greetings` module you published to `{% raw %}{{{.GREETINGS}}}{% endraw %}`.
 
 Create the directory `/home/gopher/hello` for your Go module source code. This is where you'll write your caller.
 
@@ -378,7 +380,8 @@ func main() {
 
 In this code, you:
 
-* Configure the [`log` package](https://golang.org/pkg/log/) to print the command name (`"greetings: "`) at the start of its log messages, without a time stamp or source file information.
+* Configure the [`log` package](https://golang.org/pkg/log/) to print the command name (`"greetings: "`)
+  at the start of its log messages, without a time stamp or source file information.
 * Assign both of the `Hello` return values, including the error, to variables.
 * Change the `Hello` argument from Gladys’s name to an empty string, so you can try out your error-handling code.
 * Look for a non-nil error value. There's no sense continuing in this case.

@@ -13,6 +13,7 @@ Defs: {
 	vcsurl:      "https://\(fullmodpath).git"
 	readme:      "README.md"
 	readmepath:  "/home/gopher/hello/\(readme)"
+	username:    "{{{.GITEA_USERNAME}}}"
 }
 
 Presteps: [gitea.#PrestepNewUser & {
