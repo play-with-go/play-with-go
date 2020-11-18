@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201118092925-fce461f5635f",
-		      "Sum": "h1:zxijrOjGkwsssW3/huiVMjDKgFP193VK7oYIb8q+kiE=",
+		      "Version": "v0.0.2-0.20201118142545-df04cc2bd48d",
+		      "Sum": "h1:k9oJNAeTJNRlf+oIyb6tFalKxoCFsfua4GuX54DKQig=",
 		      "Replace": null
 		    },
 		    {
@@ -320,5 +320,5 @@ Steps: {
 		Name:            "create_module"
 	}
 }
-Hash: "b22d7de7f81352158f9232ce2be0c971eddabc845dec8b7962b6974c04aa71bd"
+Hash: "c9ced9d0de984a4e04f247ab3e4627ab58f910e8cbc6eb02153425baa3c659e1"
 Delims: ["{{{", "}}}"]
