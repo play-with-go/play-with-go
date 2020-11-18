@@ -16,6 +16,7 @@ Presteps: [gitea.#PrestepNewUser & {
 
 Defs: {
 	_#commonDefs
+	username:            "{{{.GITEA_USERNAME}}}"
 	greetings:           "greetings"
 	greetings_vcs:       "https://\(greetings_mod).git"
 	greetings_mod:       "{{{.GREETINGS}}}"

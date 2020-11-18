@@ -15,8 +15,8 @@ Users need a simple, easy-to-remember way to install Go programs. Similarly, too
 can include at the top of their `README.md` explaining how to install the tool.
 
 Go 1.16 introduces a new way to install Go programs directly with the `go` command. This guide
-introduces the new mode of `<!--ref:cmdgo.install-->` using the example of
-[`<!--ref:mkcert_pkg-->`](https://mkcert.io/), and is suitable for both end users and tool authors.
+introduces the new mode of `{{{ .cmdgo.install }}}` using the example of
+[`{{{ .mkcert_pkg }}}`](https://mkcert.io/), and is suitable for both end users and tool authors.
 
 ### Prerequisites
 
@@ -26,27 +26,27 @@ You should already have completed:
 
 This guide is running with:
 
-<!--step: goversion-->
+{{{ step "goversion" }}}
 
 ### Background
 
 Currently, tool authors who want to provide installation instructions in their projects' `README.md` typically include:
 
-<!--step: go115_mkcert_get-->
+{{{ step "go115_mkcert_get" }}}
 
 There are a number of problems with this approach:
 
-* A user might run the above `<!--ref:cmdgo.get-->` within a module, which would
+* A user might run the above `{{{ .cmdgo.get }}}` within a module, which would
   update the current module's dependencies, rather than just installing the tool directly.
-* `<!--ref:cmdgo.get-->` might not be running in module mode at all, for example
-  if the user previously modified `<!--ref:cmdgo.GO111MODULE-->`.
-* The use of `<!--ref:cmdgo.get-->` is confusing; it is used to download and install executables,
+* `{{{ .cmdgo.get }}}` might not be running in module mode at all, for example
+  if the user previously modified `{{{ .cmdgo.GO111MODULE }}}`.
+* The use of `{{{ .cmdgo.get }}}` is confusing; it is used to download and install executables,
   but it's also responsible for managing dependencies in `go.mod` files.
 
 Prior to Go 1.16, the general advice to fix the first two problems was to use a snippet
-which runs `<!--ref:cmdgo.get-->` in module mode and outside any module, by using a temporary directory:
+which runs `{{{ .cmdgo.get }}}` in module mode and outside any module, by using a temporary directory:
 
-<!--step: go115_mkcert_modules_get-->
+{{{ step "go115_mkcert_modules_get" }}}
 
 However, this new approach had its own problems:
 
@@ -56,33 +56,33 @@ However, this new approach had its own problems:
 It is clear that neither method is satisfactory, especially for `README.md`
 instructions which are meant to be brief and easy to follow.
 
-### `<!--ref:cmdgo.install-->` in Go 1.16
+### `{{{ .cmdgo.install }}}` in Go 1.16
 
-In Go 1.16, the `<!--ref:cmdgo.install-->` command is now used to install programs directly, i.e. regardless of the current
+In Go 1.16, the `{{{ .cmdgo.install }}}` command is now used to install programs directly, i.e. regardless of the current
 module context:
 
-<!--step: go116_mkcert_install-->
+{{{ step "go116_mkcert_install" }}}
 
-For the purposes of this guide you are using a specific version (`<!--ref: mkcert_version-->`). Alternatively,
-the special `<!--ref:cmdgo.vlatest-->` version can be used to install the latest release.
+For the purposes of this guide you are using a specific version (`{{{ .mkcert_version }}}`). Alternatively,
+the special `{{{ .cmdgo.vlatest }}}` version can be used to install the latest release.
 
-Much like the previous behaviour of `<!--ref:cmdgo.get-->`, `<!--ref:cmdgo.install-->` places binaries in `$GOPATH/bin`,
+Much like the previous behaviour of `{{{ .cmdgo.get }}}`, `{{{ .cmdgo.install }}}` places binaries in `$GOPATH/bin`,
 or in `$GOBIN` if set. See the _"Setting up your `PATH`"_ section in [Installing Go](/installing-go_go115_en) to ensure
 your `PATH` is set correctly.
 
-Verify that `<!--ref:mkcert-->` is now on your `PATH`:
+Verify that `{{{ .mkcert }}}` is now on your `PATH`:
 
-<!--step: which_mkcert-->
+{{{ step "which_mkcert" }}}
 
-Run `<!--ref:mkcert-->` to check everything is working:
+Run `{{{ .mkcert }}}` to check everything is working:
 
-<!--step: run_mkcert-->
+{{{ step "run_mkcert" }}}
 
-You can also use `<!--ref:cmdgo.version-->` to see the module dependencies used in building the program:
+You can also use `{{{ .cmdgo.version }}}` to see the module dependencies used in building the program:
 
-<!--step: goversion_mkcert-->
+{{{ step "goversion_mkcert" }}}
 
-To eliminate redundancy and confusion, using `<!--ref:cmdgo.get-->` to build or
+To eliminate redundancy and confusion, using `{{{ .cmdgo.get }}}` to build or
 install programs is being deprecated in Go 1.16.
 
 ### Conclusion

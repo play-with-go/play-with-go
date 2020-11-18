@@ -25,52 +25,52 @@ remotes sessions._
 
 For Go-related guides, the remote session runs with a user and working directory as follows:
 
-<!--step: whoami-->
+{{{ step "whoami" }}}
 
 Throughout each guide (prose) you will see clickable _command_ and _code_ blocks. For example, click on the following
 command block:
 
-<!--step: echo_hello -->
+{{{ step "echo_hello" }}}
 
 Clicking on command block causes those commands to run in the interactive terminal on the right hand side. Command
 blocks are indicated by a `$` sign at the beginning of a line; the output from that command (if there is any) will be on
 the lines that follow. Command blocks can contain multiple commands:
 
-<!--step: multiple_commands -->
+{{{ step "multiple_commands" }}}
 
 You can also upload code/content to our interactive session using code blocks. Click on the following code block to
-upload contents to `<!--ref: readme -->`:
+upload contents to `{{{ .readme }}}`:
 
-<!--step: upload_readme -->
+{{{ step "upload_readme" }}}
 
 If a later code block updates a file, we typically highlight the bits that have changed:
 
-<!--step: upload_readme_again -->
+{{{ step "upload_readme_again" }}}
 
-Now that we have uploaded `<!--ref: readme -->` we can run another command to show us its contents:
+Now that we have uploaded `{{{ .readme }}}` we can run another command to show us its contents:
 
-<!--step: cat_readme -->
+{{{ step "cat_readme" }}}
 
 ### Remote source code repositories
 
 Some guides need you to publish code to a remote source code repository. For such guides, a unique user is automatically
 created for you in the [`gopher.live`](https://gopher.live) [`gitea`](https://gitea.io) instance. Repostitories are
-created beneath that user account. For example, for this guide we have created the unique user `{{{.GITEA_USERNAME}}}`
-and a repository called `<!--ref:modname-->`.
+created beneath that user account. For example, for this guide we have created the unique user `{{{.username}}}`
+and a repository called `{{{ .modname }}}`.
 
-Let's add the `<!--ref:readme-->` file we created earlier to this remote repository.
+Let's add the `{{{ .readme }}}` file we created earlier to this remote repository.
 
 Initialise a local `git` repository and add the remote:
 
-<!--step: gitinit-->
+{{{ step "gitinit" }}}
 
-Add and commit the `<!--ref:readme-->` file we created earlier:
+Add and commit the `{{{ .readme }}}` file we created earlier:
 
-<!--step: gitadd-->
+{{{ step "gitadd" }}}
 
 Push the commit to the remote repository:
 
-<!--step: gitpush-->
+{{{ step "gitpush" }}}
 
 It's as easy as that. Authentication is taken care of for you. The user and repository will be destroyed after 3 hours
 along with the guide session.

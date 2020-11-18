@@ -23,7 +23,7 @@ Staticcheck is open source and offered completely free of charge. Sponsors guara
 `play-with-go.dev` project is proud to sponsor the Staticcheck project. If you, your employer or your company use
 Staticcheck please consider [sponsoring](https://github.com/sponsors/dominikh) the project.
 
-This guide gets you up and running with Staticcheck by analysing the `<!--ref: pets_mod-->` module.
+This guide gets you up and running with Staticcheck by analysing the `{{{ .pets_mod }}}` module.
 
 ### Prerequisites
 
@@ -33,57 +33,57 @@ You should already have completed:
 
 This guide is running using:
 
-<!--step: goversion-->
+{{{ step "goversion" }}}
 
 ### Installing Staticcheck
 
 In this guide you will install Staticcheck to your `PATH`. For details on how to add development tools as a project
 module dependency, please see the ["Developer tools as module dependencies" guide](/tools-as-dependencies_go115_en).
 
-Use `<!--ref: cmdgo.get-->` to install Staticcheck:
+Use `{{{ .cmdgo.get }}}` to install Staticcheck:
 
-<!--step: staticcheck_install-->
+{{{ step "staticcheck_install" }}}
 
-_Note: so that this guide remains reproducible we have spcified an explicit version, `<!--ref: staticcheck_version-->`.
-When running yourself you could use the special version `<!--ref:cmdgo.vlatest-->`._
+_Note: so that this guide remains reproducible we have spcified an explicit version, `{{{ .staticcheck_version }}}`.
+When running yourself you could use the special version `{{{ .cmdgo.vlatest }}}`._
 
-The rather ugly use of a temporary directory ensures that `<!--ref:cmdgo.get-->` is run outside of a module.  See the
+The rather ugly use of a temporary directory ensures that `{{{ .cmdgo.get }}}` is run outside of a module.  See the
 _"Setting up your `PATH`"_ section in [Installing Go](/installing-go_go115_en) to ensure your `PATH` is set correctly.
 
 Check that `staticcheck` is on your `PATH`:
 
-<!--step: staticcheck_check_on_path-->
+{{{ step "staticcheck_check_on_path" }}}
 
 Run `staticcheck` as a quick check:
 
-<!--step: staticcheck_version-->
+{{{ step "staticcheck_version" }}}
 
 You're all set!
 
-### Create the `<!--ref:pets-->` module
+### Create the `{{{ .pets }}}` module
 
-Time to create an initial version of the `<!--ref: pets-->` module:
+Time to create an initial version of the `{{{ .pets }}}` module:
 
-<!--step: pets_init-->
+{{{ step "pets_init" }}}
 
-Because you are not going to publish this module (or import the `<!--ref:pets-->` package; it's just a toy
+Because you are not going to publish this module (or import the `{{{ .pets }}}` package; it's just a toy
 example), you do not need to initialise this directory as a `git` repository and can give the module whatever path you
-like. Here, simply `<!--ref: pets-->`.
+like. Here, simply `{{{ .pets }}}`.
 
-Create an inital version of the `<!--ref:pets-->` package in `<!--ref:pets_go-->`:
+Create an inital version of the `{{{ .pets }}}` package in `{{{ .pets_go }}}`:
 
-<!--step: pets_go_initial-->
+{{{ step "pets_go_initial" }}}
 
 This code looks sensible enough. Build it to confirm there are no compile errors:
 
-<!--step: pets_build_initial-->
+{{{ step "pets_build_initial" }}}
 
 All good. Or is it? Let's run Staticcheck to see what it thinks.
 
 Staticcheck can be run on code in several ways, mimicking the way the official Go tools work. At its core, it expects to
-be run on well-formed Go packages. So let's run it on the current package, the `<!--ref:pets-->` package:
+be run on well-formed Go packages. So let's run it on the current package, the `{{{ .pets }}}` package:
 
-<!--step: pets_staticcheck_initial-->
+{{{ step "pets_staticcheck_initial" }}}
 
 Oh dear, Staticcheck has found some issues!
 
@@ -99,10 +99,10 @@ listed below:
 * Stylistic issues `ST1???`
 
 The Staticcheck website [lists and documents all the categories and checks](https://staticcheck.io/docs/checks). Many of
-the checks even have examples. You can also use the `<!--ref:staticcheck_explain_flag-->` flag to get details at the command
+the checks even have examples. You can also use the `{{{ .staticcheck_explain_flag }}}` flag to get details at the command
 line:
 
-<!--step: staticcheck_explain-->
+{{{ step "staticcheck_explain" }}}
 
 Let's consider one of the problems reported, [`ST1006`](https://staticcheck.io/docs/checks#ST1006), documented as "Poorly
 chosen receiver name". The Staticcheck check documentation quotes from the [Go Code Review Comments
@@ -120,13 +120,13 @@ almost every line of every method of the type; familiarity admits
 brevity. Be consistent, too: if you call the receiver "c" in one
 method, don't call it "cl" in another.
 
-Each error message explains the problem, but also indicates how to fix the problem. Let's fix up `<!--ref:pets_go-->`:
+Each error message explains the problem, but also indicates how to fix the problem. Let's fix up `{{{ .pets_go }}}`:
 
-<!--step:pets_go_fixed-->
+{{{ step "pets_go_fixed" }}}
 
 And re-run Staticcheck to confirm:
 
-<!--step:pets_staticcheck_fixed-->
+{{{ step "pets_staticcheck_fixed" }}}
 
 Excellent, much better.
 
@@ -135,43 +135,43 @@ Excellent, much better.
 Staticcheck works out of the box with some sensible, battle-tested defaults. However, various aspects of Staticcheck can
 be customized with configuration files.
 
-Whilst fixing up the problems Staticcheck reported, you notice that the `<!--ref:pets-->` package is missing a package
+Whilst fixing up the problems Staticcheck reported, you notice that the `{{{ .pets }}}` package is missing a package
 comment. You also happened to notice on the Staticcheck website that check
-[`<!--ref:staticcheck_st1000-->`](https://staticcheck.io/docs/checks#<!--ref:staticcheck_st1000-->) covers exactly this
+[`{{{ .staticcheck_st1000 }}}`](https://staticcheck.io/docs/checks#{{{ .staticcheck_st1000 }}}) covers exactly this
 case, but that it is not enabled by default.
 
-Staticcheck configuration files are named `<!--ref:staticcheck_conf-->` and contain
+Staticcheck configuration files are named `{{{ .staticcheck_conf }}}` and contain
 [TOML](https://github.com/toml-lang/toml).
 
-Let's create a Staticcheck configuration file to enable check `<!--ref:staticcheck_st1000-->`, inheriting from the
+Let's create a Staticcheck configuration file to enable check `{{{ .staticcheck_st1000 }}}`, inheriting from the
 Staticcheck defaults:
 
-<!--step: staticcheck_config_initial-->
+{{{ step "staticcheck_config_initial" }}}
 
-Re-run Staticcheck to verify `<!--ref:staticcheck_st1000-->` is reported:
+Re-run Staticcheck to verify `{{{ .staticcheck_st1000 }}}` is reported:
 
-<!--step: pets_staticcheck_st1000_enabled-->
+{{{ step "pets_staticcheck_st1000_enabled" }}}
 
-Excellent. Add a package comment to `<!--ref:pets_go-->` to fix the problem:
+Excellent. Add a package comment to `{{{ .pets_go }}}` to fix the problem:
 
 
-<!--step: pets_go_with_package_comment-->
+{{{ step "pets_go_with_package_comment" }}}
 
 Re-run Staticcheck to confirm there are no further problems:
 
-<!--step: pets_staticcheck_st1000_fixed-->
+{{{ step "pets_staticcheck_st1000_fixed" }}}
 
 
 ### Ignoring problems
 
 Before going much further, you decide it's probably a good idea to be able to feed a pet, and so make the following
-change to `<!--ref:pets_go-->`:
+change to `{{{ .pets_go }}}`:
 
-<!--step: pets_go_feed-->
+{{{ step "pets_go_feed" }}}
 
 Re-run Staticcheck to verify all is still fine:
 
-<!--step: pets_staticcheck_check_feed-->
+{{{ step "pets_staticcheck_check_feed" }}}
 
 Oops, that was careless. Whilst it's clear how you would fix this problem (and you really should!), is it possible to
 tell Staticcheck to ignore problems of this kind?
@@ -187,35 +187,35 @@ cases, there are several ways of ignoring unwanted problems.
 This is not a rare or corner case, but let's use it as an opportunity to demonstrate linter directives.
 
 The most fine-grained way of ignoring reported problems is to annotate the offending lines of code with linter directives. Let's
-ignore `<!--ref:staticcheck_sa4018-->` using a line directive, updating `<!--ref:pets_go-->`:
+ignore `{{{ .staticcheck_sa4018 }}}` using a line directive, updating `{{{ .pets_go }}}`:
 
-<!--step: pets_go_ignore_sa4018-->
+{{{ step "pets_go_ignore_sa4018" }}}
 
 Verify that Staticcheck no longer complains:
 
-<!--step: pets_staticcheck_check_sa4018_ignored-->
+{{{ step "pets_staticcheck_check_sa4018_ignored" }}}
 
 In some cases, however, you may want to disable checks for an entire file. For example, code generation may leave behind
 a lot of unused code, as it simplifies the generation process. Instead of manually annotating every instance of unused
 code, the code generator can inject a single, file-wide ignore directive to ignore the problem.
 
-Let's change the line-based linter directive to a file-based one in `<!--ref:pets_go-->`:
+Let's change the line-based linter directive to a file-based one in `{{{ .pets_go }}}`:
 
-<!--step: pets_go_file_ignore_sa4018-->
+{{{ step "pets_go_file_ignore_sa4018" }}}
 
 Verify that Staticcheck continues to ignore this check:
 
-<!--step: pets_staticcheck_check_sa4018_still_ignored-->
+{{{ step "pets_staticcheck_check_sa4018_still_ignored" }}}
 
 Great. That's both line and file-based linter directives covered, demonstrating how to ignore certain problems.
 
 Finally, let's remove the linter directive, and fix up your code:
 
-<!--step: pets_go_final-->
+{{{ step "pets_go_final" }}}
 
 And check that Staticcheck is happy one last time:
 
-<!--step: pets_staticcheck_final-->
+{{{ step "pets_staticcheck_final" }}}
 
 We can now be sure of lots of happy pets!
 
