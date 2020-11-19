@@ -44,12 +44,12 @@ Start by initialising your  `public` module:
 ```.term1
 $ mkdir /home/gopher/public
 $ cd /home/gopher/public
-$ go mod init public
-go: creating new go.mod: module public
+$ go mod init {% raw %}{{{.PUBLIC}}}{% endraw %}
+go: creating new go.mod: module {% raw %}{{{.PUBLIC}}}{% endraw %}
 $ git init -q
 $ git remote add origin https://{% raw %}{{{.PUBLIC}}}{% endraw %}.git
 ```
-{:data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL3B1YmxpYwpjZCAvaG9tZS9nb3BoZXIvcHVibGljCmdvIG1vZCBpbml0IHB1YmxpYwpnaXQgaW5pdCAtcQpnaXQgcmVtb3RlIGFkZCBvcmlnaW4gaHR0cHM6Ly97e3suUFVCTElDfX19LmdpdAo="}
+{:data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL3B1YmxpYwpjZCAvaG9tZS9nb3BoZXIvcHVibGljCmdvIG1vZCBpbml0IHt7ey5QVUJMSUN9fX0KZ2l0IGluaXQgLXEKZ2l0IHJlbW90ZSBhZGQgb3JpZ2luIGh0dHBzOi8ve3t7LlBVQkxJQ319fS5naXQK"}
 
 Create an initial version of the `Message()` in `public.go`:
 
@@ -63,25 +63,25 @@ func Message() string {
 Commit and push this initial version:
 
 ```.term1
-$ git add public.go
+$ git add public.go go.mod
 $ git commit -q -m 'Initial commit of public module'
 $ git push -q origin main
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
 ```
-{:data-command-src="Z2l0IGFkZCBwdWJsaWMuZ28KZ2l0IGNvbW1pdCAtcSAtbSAnSW5pdGlhbCBjb21taXQgb2YgcHVibGljIG1vZHVsZScKZ2l0IHB1c2ggLXEgb3JpZ2luIG1haW4K"}
+{:data-command-src="Z2l0IGFkZCBwdWJsaWMuZ28gZ28ubW9kCmdpdCBjb21taXQgLXEgLW0gJ0luaXRpYWwgY29tbWl0IG9mIHB1YmxpYyBtb2R1bGUnCmdpdCBwdXNoIC1xIG9yaWdpbiBtYWluCg=="}
 
 Now do the same for the `private` module:
 
 ```.term1
 $ mkdir /home/gopher/private
 $ cd /home/gopher/private
-$ go mod init private
-go: creating new go.mod: module private
+$ go mod init {% raw %}{{{.PRIVATE}}}{% endraw %}
+go: creating new go.mod: module {% raw %}{{{.PRIVATE}}}{% endraw %}
 $ git init -q
 $ git remote add origin https://{% raw %}{{{.PRIVATE}}}{% endraw %}.git
 ```
-{:data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL3ByaXZhdGUKY2QgL2hvbWUvZ29waGVyL3ByaXZhdGUKZ28gbW9kIGluaXQgcHJpdmF0ZQpnaXQgaW5pdCAtcQpnaXQgcmVtb3RlIGFkZCBvcmlnaW4gaHR0cHM6Ly97e3suUFJJVkFURX19fS5naXQK"}
+{:data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL3ByaXZhdGUKY2QgL2hvbWUvZ29waGVyL3ByaXZhdGUKZ28gbW9kIGluaXQge3t7LlBSSVZBVEV9fX0KZ2l0IGluaXQgLXEKZ2l0IHJlbW90ZSBhZGQgb3JpZ2luIGh0dHBzOi8ve3t7LlBSSVZBVEV9fX0uZ2l0Cg=="}
 
 _Note: the `private` source code repository at https://{% raw %}{{{.PRIVATE}}}{% endraw %}.git was automatically created for you when this
 guide loaded, much like https://{% raw %}{{{.PUBLIC}}}{% endraw %}.git was created for the `public` module. However, the
@@ -100,13 +100,13 @@ func Secret() string {
 Commit and push this initial version:
 
 ```.term1
-$ git add private.go
+$ git add private.go go.mod
 $ git commit -q -m 'Initial commit of private module'
 $ git push -q origin main
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
 ```
-{:data-command-src="Z2l0IGFkZCBwcml2YXRlLmdvCmdpdCBjb21taXQgLXEgLW0gJ0luaXRpYWwgY29tbWl0IG9mIHByaXZhdGUgbW9kdWxlJwpnaXQgcHVzaCAtcSBvcmlnaW4gbWFpbgo="}
+{:data-command-src="Z2l0IGFkZCBwcml2YXRlLmdvIGdvLm1vZApnaXQgY29tbWl0IC1xIC1tICdJbml0aWFsIGNvbW1pdCBvZiBwcml2YXRlIG1vZHVsZScKZ2l0IHB1c2ggLXEgb3JpZ2luIG1haW4K"}
 
 ### The `gopher` module
 

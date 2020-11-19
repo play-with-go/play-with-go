@@ -2,8 +2,8 @@ $ go version
 go version go1.15.5 linux/amd64
 $ mkdir /home/gopher/public
 $ cd /home/gopher/public
-$ go mod init public
-go: creating new go.mod: module public
+$ go mod init {{{.PUBLIC}}}
+go: creating new go.mod: module {{{.PUBLIC}}}
 $ git init -q
 $ git remote add origin https://{{{.PUBLIC}}}.git
 $ cat <<EOD > /home/gopher/public/public.go
@@ -14,15 +14,15 @@ func Message() string {
 }
 
 EOD
-$ git add public.go
+$ git add public.go go.mod
 $ git commit -q -m 'Initial commit of public module'
 $ git push -q origin main
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
 $ mkdir /home/gopher/private
 $ cd /home/gopher/private
-$ go mod init private
-go: creating new go.mod: module private
+$ go mod init {{{.PRIVATE}}}
+go: creating new go.mod: module {{{.PRIVATE}}}
 $ git init -q
 $ git remote add origin https://{{{.PRIVATE}}}.git
 $ cat <<EOD > /home/gopher/private/private.go
@@ -33,7 +33,7 @@ func Secret() string {
 }
 
 EOD
-$ git add private.go
+$ git add private.go go.mod
 $ git commit -q -m 'Initial commit of private module'
 $ git push -q origin main
 remote: . Processing 1 references        

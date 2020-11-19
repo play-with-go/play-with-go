@@ -488,7 +488,7 @@ Steps: {
 			ComparisonOutput: ""
 			Output:           ""
 			ExitCode:         0
-			CmdStr:           "git add private.go"
+			CmdStr:           "git add private.go go.mod"
 			Negated:          false
 		}, {
 			ComparisonOutput: ""
@@ -552,15 +552,15 @@ Steps: {
 			Negated:          false
 		}, {
 			ComparisonOutput: """
-				go: creating new go.mod: module private
+				go: creating new go.mod: module {{{.PRIVATE}}}
 
 				"""
 			Output: """
-				go: creating new go.mod: module private
+				go: creating new go.mod: module {{{.PRIVATE}}}
 
 				"""
 			ExitCode: 0
-			CmdStr:   "go mod init private"
+			CmdStr:   "go mod init {{{.PRIVATE}}}"
 			Negated:  false
 		}, {
 			ComparisonOutput: ""
@@ -587,7 +587,7 @@ Steps: {
 			ComparisonOutput: ""
 			Output:           ""
 			ExitCode:         0
-			CmdStr:           "git add public.go"
+			CmdStr:           "git add public.go go.mod"
 			Negated:          false
 		}, {
 			ComparisonOutput: ""
@@ -651,15 +651,15 @@ Steps: {
 			Negated:          false
 		}, {
 			ComparisonOutput: """
-				go: creating new go.mod: module public
+				go: creating new go.mod: module {{{.PUBLIC}}}
 
 				"""
 			Output: """
-				go: creating new go.mod: module public
+				go: creating new go.mod: module {{{.PUBLIC}}}
 
 				"""
 			ExitCode: 0
-			CmdStr:   "go mod init public"
+			CmdStr:   "go mod init {{{.PUBLIC}}}"
 			Negated:  false
 		}, {
 			ComparisonOutput: ""
@@ -831,5 +831,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "b36b596c992ffd674c04a549d541eb79b3b170978d2187bd32bd13abf0c24fb2"
+Hash: "ed339105de4ec3c3cc8979d4f4ec5ddb598fd7e8f7f6a6650d0b9c6fe347d987"
 Delims: ["{{{", "}}}"]

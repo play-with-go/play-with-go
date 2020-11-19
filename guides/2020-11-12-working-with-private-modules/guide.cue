@@ -56,7 +56,7 @@ Steps: public_init: preguide.#Command & {
 	Source: """
 		mkdir \(Defs.public_dir)
 		cd \(Defs.public_dir)
-		\(Defs.cmdgo.modinit) \(Defs.public)
+		\(Defs.cmdgo.modinit) \(Defs.public_mod)
 		\(Defs.git.init)
 		\(Defs.git.remote) add origin \(Defs.public_vcs)
 		"""
@@ -76,7 +76,7 @@ Steps: public_go_initial: preguide.#Upload & {
 
 Steps: public_initial_commit: preguide.#Command & {
 	Source: """
-		\(Defs.git.add) \(Defs.public_go)
+		\(Defs.git.add) \(Defs.public_go) go.mod
 		\(Defs.git.commit) -m 'Initial commit of \(Defs.public) module'
 		\(Defs.git.push) origin main
 		"""
@@ -86,7 +86,7 @@ Steps: private_init: preguide.#Command & {
 	Source: """
 		mkdir \(Defs.private_dir)
 		cd \(Defs.private_dir)
-		\(Defs.cmdgo.modinit) \(Defs.private)
+		\(Defs.cmdgo.modinit) \(Defs.private_mod)
 		\(Defs.git.init)
 		\(Defs.git.remote) add origin \(Defs.private_vcs)
 		"""
@@ -106,7 +106,7 @@ Steps: private_go_initial: preguide.#Upload & {
 
 Steps: private_initial_commit: preguide.#Command & {
 	Source: """
-		\(Defs.git.add) \(Defs.private_go)
+		\(Defs.git.add) \(Defs.private_go) go.mod
 		\(Defs.git.commit) -m 'Initial commit of \(Defs.private) module'
 		\(Defs.git.push) origin main
 		"""
