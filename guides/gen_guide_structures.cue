@@ -254,4 +254,37 @@ package guides
 	Networks: ["playwithgo_pwg"]
 	Env: []
 }
+"2020-11-19-major-version-repository-structure": {
+	Delims: ["{{{", "}}}"]
+	Presteps: [{
+		Package: "github.com/play-with-go/gitea"
+		Path:    "/newuser"
+		Args: {
+			Repos: [{
+				Pattern: "branch"
+				Private: false
+				Var:     "BRANCH"
+			}, {
+				Pattern: "subdir"
+				Private: false
+				Var:     "SUBDIR"
+			}]
+		}
+	}]
+	Terminals: [{
+		Name:        "term1"
+		Description: "The main terminal"
+		Scenarios: {
+			go115: {
+				Image: "playwithgo/go1.15.5@sha256:2cc72c6bf72ce59de8aff52f7bbb0603926dbdd70473ec7f8b9f8310edf57ba4"
+			}
+		}
+	}]
+	Scenarios: [{
+		Name:        "go115"
+		Description: "Go 1.15"
+	}]
+	Networks: ["playwithgo_pwg"]
+	Env: []
+}
 

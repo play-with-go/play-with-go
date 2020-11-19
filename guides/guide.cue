@@ -56,6 +56,7 @@ _#commonDefs: {
 		push:     "git push -q"
 		tag:      "git tag"
 		revparse: "git rev-parse"
+		branch:   "git branch"
 	}
 	proxygolangorg: {
 		waitforcache: "1m" // value passed to Unix sleep

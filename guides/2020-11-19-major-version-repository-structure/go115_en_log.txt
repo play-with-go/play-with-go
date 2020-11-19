@@ -1,0 +1,135 @@
+$ go version
+go version go1.15.5 linux/amd64
+$ mkdir /home/gopher/branch
+$ cd /home/gopher/branch
+$ go mod init {{{.BRANCH}}}
+go: creating new go.mod: module {{{.BRANCH}}}
+$ git init -q
+$ git remote add origin https://{{{.BRANCH}}}.git
+$ cat <<EOD > /home/gopher/branch/branch.go
+// /home/gopher/branch/branch.go
+
+package branch
+
+const Message = "branch v1"
+
+EOD
+$ git add branch.go go.mod
+$ git commit -q -m 'Initial commit of branch module'
+$ git tag v1.0.0
+$ git push -q origin main v1.0.0
+remote: .. Processing 2 references        
+remote: Processed 2 references in total        
+$ git branch main.v1
+$ git push -q origin main.v1
+remote: 
+remote: Create a new pull request for 'main.v1':        
+remote:   https://{{{.BRANCH}}}/compare/main...main.v1        
+remote: 
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ cat <<EOD > /home/gopher/branch/go.mod
+// /home/gopher/branch/go.mod
+
+module {{{.BRANCH}}}/v2
+
+go 1.15
+
+EOD
+$ cat <<EOD > /home/gopher/branch/branch.go
+// /home/gopher/branch/branch.go
+
+package branch
+
+const Message = "branch v2"
+
+EOD
+$ git add branch.go go.mod
+$ git commit -q -m 'v2 commit of branch module'
+$ git tag v2.0.0
+$ git push -q origin main v2.0.0
+remote: .. Processing 2 references        
+remote: Processed 2 references in total        
+$ mkdir /home/gopher/subdir
+$ cd /home/gopher/subdir
+$ go mod init {{{.SUBDIR}}}
+go: creating new go.mod: module {{{.SUBDIR}}}
+$ git init -q
+$ git remote add origin https://{{{.SUBDIR}}}.git
+$ cat <<EOD > /home/gopher/subdir/subdir.go
+// /home/gopher/subdir/subdir.go
+
+package subdir
+
+const Message = "subdir v1"
+
+EOD
+$ git add subdir.go go.mod
+$ git commit -q -m 'Initial commit of subdir module'
+$ git tag v1.0.0
+$ git push -q origin main v1.0.0
+remote: .. Processing 2 references        
+remote: Processed 2 references in total        
+$ mkdir v2
+$ cp go.mod subdir.go v2
+$ cat <<EOD > /home/gopher/subdir/v2/go.mod
+// /home/gopher/subdir/v2/go.mod
+
+module {{{.SUBDIR}}}/v2
+
+go 1.15
+
+EOD
+$ cat <<EOD > /home/gopher/subdir/v2/subdir.go
+// /home/gopher/subdir/v2/subdir.go
+
+package subdir
+
+const Message = "subdir v2"
+
+EOD
+$ git add v2
+$ git commit -q -m 'v2 commit of subdir module'
+$ git tag v2.0.0
+$ git push -q origin main v2.0.0
+remote: .. Processing 2 references        
+remote: Processed 2 references in total        
+$ mkdir /home/gopher/gopher
+$ cd /home/gopher/gopher
+$ go mod init gopher
+go: creating new go.mod: module gopher
+$ cat <<EOD > /home/gopher/gopher/gopher.go
+// /home/gopher/gopher/gopher.go
+
+package main
+
+import (
+	"fmt"
+
+	branch "{{{.BRANCH}}}"
+	branch_v2 "{{{.BRANCH}}}/v2"
+	subdir "{{{.SUBDIR}}}"
+	subdir_v2 "{{{.SUBDIR}}}/v2"
+)
+
+func main() {
+	fmt.Printf("branch.Message: %v\n", branch.Message)
+	fmt.Printf("branch/v2.Message: %v\n", branch_v2.Message)
+	fmt.Printf("subdir.Message: %v\n", subdir.Message)
+	fmt.Printf("subdir/v2.Message: %v\n", subdir_v2.Message)
+}
+
+EOD
+$ go get {{{.BRANCH}}}@v1.0.0
+go: downloading {{{.BRANCH}}} v1.0.0
+$ go get {{{.BRANCH}}}/v2@v2.0.0
+go: downloading {{{.BRANCH}}}/v2 v2.0.0
+$ go get {{{.SUBDIR}}}@v1.0.0
+go: downloading {{{.SUBDIR}}} v1.0.0
+$ go get {{{.SUBDIR}}}/v2@v2.0.0
+go: downloading {{{.SUBDIR}}}/v2 v2.0.0
+$ go run .
+branch.Message: branch v1
+branch/v2.Message: branch v2
+subdir.Message: subdir v1
+subdir/v2.Message: subdir v2
