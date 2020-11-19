@@ -28,7 +28,7 @@ jobs:
         go_version:
         - 1.15.4
         os:
-        - ubuntu-latest
+        - ubuntu-18.04
     runs-on: ${{ matrix.os }}
     steps:
     - name: Checkout code
