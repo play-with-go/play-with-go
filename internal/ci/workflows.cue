@@ -107,7 +107,7 @@ test: {
 		pull_request: branches: ["**"]
 		schedule: [{cron: "0 9 * * *"}]
 	}
-	jobs: test: strategy: matrix: os: ["ubuntu-latest"]
+	jobs: test: strategy: matrix: os: ["ubuntu-18.04"]
 }
 
 testmac: {
@@ -128,7 +128,7 @@ wip: json.#Workflow & {
 		env: {
 			GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 		}
-		"runs-on": "ubuntu-latest"
+		"runs-on": "ubuntu-18.04"
 		steps: [{
 			uses: "myitcv/wip@v1.0.0"
 			with: {
