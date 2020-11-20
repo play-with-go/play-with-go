@@ -145,7 +145,7 @@ Steps: {
 			CmdStr:   "go run ."
 			Negated:  false
 		}]
-		Order:           22
+		Order:           24
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -166,7 +166,7 @@ Steps: {
 			CmdStr:   "go list -m -f {{.Version}} {{{.PRIVATE}}}"
 			Negated:  false
 		}]
-		Order:           21
+		Order:           23
 		InformationOnly: true
 		DoNotTrim:       false
 		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
@@ -190,7 +190,7 @@ Steps: {
 			CmdStr:   "go get {{{.PRIVATE}}}"
 			Negated:  false
 		}]
-		Order:           20
+		Order:           22
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -205,7 +205,7 @@ Steps: {
 			CmdStr:           "go env -w GOPRIVATE={{{.PRIVATE}}}"
 			Negated:          false
 		}]
-		Order:           19
+		Order:           21
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -234,7 +234,7 @@ Steps: {
 			CmdStr:   "go get {{{.PRIVATE}}}"
 			Negated:  true
 		}]
-		Order:           17
+		Order:           19
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -249,7 +249,7 @@ Steps: {
 			CmdStr:           "go env -w GOPROXY="
 			Negated:          false
 		}]
-		Order:           16
+		Order:           18
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -280,7 +280,7 @@ Steps: {
 			CmdStr:   "go get {{{.PRIVATE}}}"
 			Negated:  true
 		}]
-		Order:           15
+		Order:           17
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -301,7 +301,7 @@ Steps: {
 			CmdStr:   "go list -m -f {{.Version}} {{{.PUBLIC}}}"
 			Negated:  false
 		}]
-		Order:           14
+		Order:           16
 		InformationOnly: true
 		DoNotTrim:       false
 		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
@@ -325,7 +325,7 @@ Steps: {
 			CmdStr:   "go get {{{.PUBLIC}}}"
 			Negated:  false
 		}]
-		Order:           13
+		Order:           15
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -340,7 +340,7 @@ Steps: {
 			CmdStr:           "go env -w GOPROXY=https://proxy.golang.org"
 			Negated:          false
 		}]
-		Order:           12
+		Order:           14
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -401,7 +401,7 @@ Steps: {
 			CmdStr:   "go help env"
 			Negated:  false
 		}]
-		Order:           11
+		Order:           13
 		InformationOnly: true
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -422,7 +422,7 @@ Steps: {
 			CmdStr:   "go env GOSUMDB"
 			Negated:  false
 		}]
-		Order:           10
+		Order:           12
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -443,12 +443,39 @@ Steps: {
 			CmdStr:   "go env GOPROXY"
 			Negated:  false
 		}]
-		Order:           9
+		Order:           11
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "go_env_check_goproxy"
+	}
+	gopher_go_initial: {
+		Order: 10
+		Source: """
+			package main
+
+			import (
+			\t"fmt"
+
+			\t"{{{.PUBLIC}}}"
+			\t"{{{.PRIVATE}}}"
+			)
+
+			func main() {
+			\tfmt.Printf("public.Message(): %v\\n", public.Message())
+			\tfmt.Printf("private.Secret(): %v\\n", private.Secret())
+			}
+
+			"""
+		Renderer: {
+			RendererType: 1
+		}
+		Language: "go"
+		Target:   "/home/gopher/gopher/gopher.go"
+		Terminal: "term1"
+		StepType: 2
+		Name:     "gopher_go_initial"
 	}
 	gopher_init: {
 		Stmts: [{
@@ -476,12 +503,27 @@ Steps: {
 			CmdStr:   "go mod init gopher"
 			Negated:  false
 		}]
-		Order:           7
+		Order:           9
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "gopher_init"
+	}
+	private_check_initial_porcelain: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			Negated:          false
+		}]
+		Order:           8
+		InformationOnly: true
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "private_check_initial_porcelain"
 	}
 	private_initial_commit: {
 		Stmts: [{
@@ -511,7 +553,7 @@ Steps: {
 			CmdStr:   "git push -q origin main"
 			Negated:  false
 		}]
-		Order:           6
+		Order:           7
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -519,7 +561,7 @@ Steps: {
 		Name:            "private_initial_commit"
 	}
 	private_go_initial: {
-		Order: 5
+		Order: 6
 		Source: """
 			package private
 
@@ -575,12 +617,27 @@ Steps: {
 			CmdStr:           "git remote add origin https://{{{.PRIVATE}}}.git"
 			Negated:          false
 		}]
-		Order:           4
+		Order:           5
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "private_init"
+	}
+	public_check_initial_porcelain: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			Negated:          false
+		}]
+		Order:           4
+		InformationOnly: true
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "public_check_initial_porcelain"
 	}
 	public_initial_commit: {
 		Stmts: [{
@@ -681,6 +738,27 @@ Steps: {
 		StepType:        1
 		Name:            "public_init"
 	}
+	goversion: {
+		Stmts: [{
+			ComparisonOutput: """
+				go version go1.15.5 linux/amd64
+
+				"""
+			Output: """
+				go version go1.15.5 linux/amd64
+
+				"""
+			ExitCode: 0
+			CmdStr:   "go version"
+			Negated:  false
+		}]
+		Order:           0
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "goversion"
+	}
 	go_help_modprivate: {
 		Stmts: [{
 			ComparisonOutput: """
@@ -775,61 +853,13 @@ Steps: {
 			CmdStr:   "go help module-private"
 			Negated:  false
 		}]
-		Order:           18
+		Order:           20
 		InformationOnly: true
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "go_help_modprivate"
 	}
-	gopher_go_initial: {
-		Order: 8
-		Source: """
-			package main
-
-			import (
-			\t"fmt"
-
-			\t"{{{.PUBLIC}}}"
-			\t"{{{.PRIVATE}}}"
-			)
-
-			func main() {
-			\tfmt.Printf("public.Message(): %v\\n", public.Message())
-			\tfmt.Printf("private.Secret(): %v\\n", private.Secret())
-			}
-
-			"""
-		Renderer: {
-			RendererType: 1
-		}
-		Language: "go"
-		Target:   "/home/gopher/gopher/gopher.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "gopher_go_initial"
-	}
-	goversion: {
-		Stmts: [{
-			ComparisonOutput: """
-				go version go1.15.5 linux/amd64
-
-				"""
-			Output: """
-				go version go1.15.5 linux/amd64
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go version"
-			Negated:  false
-		}]
-		Order:           0
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "goversion"
-	}
 }
-Hash: "ed339105de4ec3c3cc8979d4f4ec5ddb598fd7e8f7f6a6650d0b9c6fe347d987"
+Hash: "4e123ad2f4678f98223cb3f582ad168816ed7b3e9f5d3626629770544a23b2d4"
 Delims: ["{{{", "}}}"]

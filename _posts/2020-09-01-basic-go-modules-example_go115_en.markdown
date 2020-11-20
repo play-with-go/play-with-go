@@ -39,13 +39,13 @@ func main() {
 Commit and push:
 
 ```.term1
-$ git add README.md main.go
+$ git add go.mod README.md main.go
 $ git commit -q -m "Initial commit"
 $ git push -q origin main
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
 ```
-{:data-command-src="Z2l0IGFkZCBSRUFETUUubWQgbWFpbi5nbwpnaXQgY29tbWl0IC1xIC1tICJJbml0aWFsIGNvbW1pdCIKZ2l0IHB1c2ggLXEgb3JpZ2luIG1haW4K"}
+{:data-command-src="Z2l0IGFkZCBnby5tb2QgUkVBRE1FLm1kIG1haW4uZ28KZ2l0IGNvbW1pdCAtcSAtbSAiSW5pdGlhbCBjb21taXQiCmdpdCBwdXNoIC1xIG9yaWdpbiBtYWluCg=="}
 
 Use the module:
 

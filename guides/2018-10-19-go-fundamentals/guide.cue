@@ -116,8 +116,15 @@ Steps: greetings_gitinit: preguide.#Command & {
 
 Steps: greetings_gitadd: preguide.#Command & {
 	Source: """
-		\(Defs.git.add) \(Defs.greetings_go)
+		\(Defs.git.add) go.mod \(Defs.greetings_go)
 		\(Defs.git.commit) -m 'Initial commit'
+		"""
+}
+
+Steps: greetings_check_porcelain: preguide.#Command & {
+	InformationOnly: true
+	Source: """
+		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 
@@ -218,6 +225,13 @@ Steps: commit_greetings_error_handling: preguide.#Command & {
 	Source: """
 		\(Defs.git.add) \(Defs.greetings_go)
 		\(Defs.git.commit) -m 'Added error handling'
+		"""
+}
+
+Steps: greetings_check_error_handling_porcelain: preguide.#Command & {
+	InformationOnly: true
+	Source: """
+		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 
@@ -365,6 +379,13 @@ Steps: greeings_commit_random: preguide.#Command & {
 	Source: """
 		\(Defs.git.add) \(Defs.greetings_go)
 		\(Defs.git.commit) -m 'Added random format'
+		"""
+}
+
+Steps: greetings_check_random_porcelain: preguide.#Command & {
+	InformationOnly: true
+	Source: """
+		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 

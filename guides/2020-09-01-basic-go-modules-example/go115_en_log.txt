@@ -17,11 +17,12 @@ func main() {
 }
 
 EOD
-$ git add README.md main.go
+$ git add go.mod README.md main.go
 $ git commit -q -m "Initial commit"
 $ git push -q origin main
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
+$ [ "$(git status --porcelain)" == "" ] || (git status && false)
 $ mkdir /home/gopher/mod2
 $ cd /home/gopher/mod2
 $ go mod init mod.com

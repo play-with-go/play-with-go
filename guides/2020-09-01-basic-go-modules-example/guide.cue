@@ -64,9 +64,16 @@ Steps: create_main: preguide.#Upload & {
 
 Steps: commit_and_push: preguide.#Command & {
 	Source: """
-		\(Defs.git.add) README.md main.go
+		\(Defs.git.add) go.mod README.md main.go
 		\(Defs.git.commit) -m "Initial commit"
 		\(Defs.git.push) origin main
+		"""
+}
+
+Steps: check_porcelain: preguide.#Command & {
+	InformationOnly: true
+	Source: """
+		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 

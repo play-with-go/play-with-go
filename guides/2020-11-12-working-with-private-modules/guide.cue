@@ -82,6 +82,13 @@ Steps: public_initial_commit: preguide.#Command & {
 		"""
 }
 
+Steps: public_check_initial_porcelain: preguide.#Command & {
+	InformationOnly: true
+	Source: """
+		[ "$(git status --porcelain)" == "" ] || (git status && false)
+		"""
+}
+
 Steps: private_init: preguide.#Command & {
 	Source: """
 		mkdir \(Defs.private_dir)
@@ -109,6 +116,13 @@ Steps: private_initial_commit: preguide.#Command & {
 		\(Defs.git.add) \(Defs.private_go) go.mod
 		\(Defs.git.commit) -m 'Initial commit of \(Defs.private) module'
 		\(Defs.git.push) origin main
+		"""
+}
+
+Steps: private_check_initial_porcelain: preguide.#Command & {
+	InformationOnly: true
+	Source: """
+		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 

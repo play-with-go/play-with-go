@@ -139,7 +139,7 @@ Steps: {
 			CmdStr:   "go list -m -f {{.Version}} {{{.REPO1}}}"
 			Negated:  false
 		}]
-		Order:           5
+		Order:           6
 		InformationOnly: true
 		DoNotTrim:       false
 		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
@@ -199,19 +199,34 @@ Steps: {
 			CmdStr:   "go run {{{.REPO1}}}"
 			Negated:  false
 		}]
-		Order:           4
+		Order:           5
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "use_module"
 	}
+	check_porcelain: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			Negated:          false
+		}]
+		Order:           4
+		InformationOnly: true
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "check_porcelain"
+	}
 	commit_and_push: {
 		Stmts: [{
 			ComparisonOutput: ""
 			Output:           ""
 			ExitCode:         0
-			CmdStr:           "git add README.md main.go"
+			CmdStr:           "git add go.mod README.md main.go"
 			Negated:          false
 		}, {
 			ComparisonOutput: ""
@@ -320,5 +335,5 @@ Steps: {
 		Name:            "create_module"
 	}
 }
-Hash: "088d3bd3b5fc11021bafe5764fdb2e527f5ea4753ba8698fe5278ffee9a8144e"
+Hash: "a9ec65f3024c4cde951248811d28536a8e0bcfd721e5a3fe60f6323f66252835"
 Delims: ["{{{", "}}}"]

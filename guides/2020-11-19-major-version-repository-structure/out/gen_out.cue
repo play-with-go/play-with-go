@@ -149,7 +149,7 @@ Steps: {
 			CmdStr:   "go run ."
 			Negated:  false
 		}]
-		Order:           18
+		Order:           22
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -206,7 +206,7 @@ Steps: {
 			CmdStr:   "go get {{{.SUBDIR}}}/v2@v2.0.0"
 			Negated:  false
 		}]
-		Order:           17
+		Order:           21
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -214,7 +214,7 @@ Steps: {
 		Name:            "gopher_get_deps"
 	}
 	gopher_go_initial: {
-		Order: 16
+		Order: 20
 		Source: """
 			// /home/gopher/gopher/gopher.go
 
@@ -272,12 +272,27 @@ Steps: {
 			CmdStr:   "go mod init gopher"
 			Negated:  false
 		}]
-		Order:           15
+		Order:           19
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "gopher_init"
+	}
+	subdir_check_v2_porcelain: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			Negated:          false
+		}]
+		Order:           18
+		InformationOnly: true
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "subdir_check_v2_porcelain"
 	}
 	subdir_v2_commit: {
 		Stmts: [{
@@ -313,7 +328,7 @@ Steps: {
 			CmdStr:   "git push -q origin main v2.0.0"
 			Negated:  false
 		}]
-		Order:           14
+		Order:           17
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -321,7 +336,7 @@ Steps: {
 		Name:            "subdir_v2_commit"
 	}
 	subdir_go_v2: {
-		Order: 13
+		Order: 16
 		Source: """
 			// /home/gopher/subdir/v2/subdir.go
 
@@ -331,15 +346,7 @@ Steps: {
 
 			"""
 		Renderer: {
-			Pre: """
-				// /home/gopher/subdir/subdir.go
-
-				package subdir
-
-				const Message = "subdir v1"
-
-				"""
-			RendererType: 3
+			RendererType: 1
 		}
 		Language: "go"
 		Target:   "/home/gopher/subdir/v2/subdir.go"
@@ -348,7 +355,7 @@ Steps: {
 		Name:     "subdir_go_v2"
 	}
 	subdir_go_mod_v2: {
-		Order: 12
+		Order: 15
 		Source: """
 			// /home/gopher/subdir/v2/go.mod
 
@@ -380,12 +387,27 @@ Steps: {
 			CmdStr:           "cp go.mod subdir.go v2"
 			Negated:          false
 		}]
-		Order:           11
+		Order:           14
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "subdir_create_v2_subdir"
+	}
+	subdir_check_initial_porcelain: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			Negated:          false
+		}]
+		Order:           13
+		InformationOnly: true
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "subdir_check_initial_porcelain"
 	}
 	subdir_initial_commit: {
 		Stmts: [{
@@ -421,7 +443,7 @@ Steps: {
 			CmdStr:   "git push -q origin main v1.0.0"
 			Negated:  false
 		}]
-		Order:           10
+		Order:           12
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -429,7 +451,7 @@ Steps: {
 		Name:            "subdir_initial_commit"
 	}
 	subdir_go_initial: {
-		Order: 9
+		Order: 11
 		Source: """
 			// /home/gopher/subdir/subdir.go
 
@@ -485,12 +507,27 @@ Steps: {
 			CmdStr:           "git remote add origin https://{{{.SUBDIR}}}.git"
 			Negated:          false
 		}]
-		Order:           8
+		Order:           10
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "subdir_init"
+	}
+	branch_check_v2_porcelain: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			Negated:          false
+		}]
+		Order:           9
+		InformationOnly: true
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "branch_check_v2_porcelain"
 	}
 	branch_v2_commit: {
 		Stmts: [{
@@ -526,7 +563,7 @@ Steps: {
 			CmdStr:   "git push -q origin main v2.0.0"
 			Negated:  false
 		}]
-		Order:           7
+		Order:           8
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -534,7 +571,7 @@ Steps: {
 		Name:            "branch_v2_commit"
 	}
 	branch_go_v2: {
-		Order: 6
+		Order: 7
 		Source: """
 			// /home/gopher/branch/branch.go
 
@@ -544,15 +581,7 @@ Steps: {
 
 			"""
 		Renderer: {
-			Pre: """
-				// /home/gopher/branch/branch.go
-
-				package branch
-
-				const Message = "branch v1"
-
-				"""
-			RendererType: 3
+			RendererType: 1
 		}
 		Language: "go"
 		Target:   "/home/gopher/branch/branch.go"
@@ -561,7 +590,7 @@ Steps: {
 		Name:     "branch_go_v2"
 	}
 	branch_go_mod_v2: {
-		Order: 5
+		Order: 6
 		Source: """
 			// /home/gopher/branch/go.mod
 
@@ -609,12 +638,27 @@ Steps: {
 			CmdStr:   "git push -q origin main.v1"
 			Negated:  false
 		}]
-		Order:           4
+		Order:           5
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "branch_create_v1_branch"
+	}
+	branch_check_initial_porcelain: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			Negated:          false
+		}]
+		Order:           4
+		InformationOnly: true
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "branch_check_initial_porcelain"
 	}
 	branch_initial_commit: {
 		Stmts: [{
@@ -743,5 +787,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "5e79c75bc1c0ac090da76b2cc7da8bda2cfd00ed65227a0324a129a44d5d772e"
+Hash: "1f6ace51229a5fb4060202db5d821f811a2108e9c03c4a3a07ccf4051a72f675"
 Delims: ["{{{", "}}}"]

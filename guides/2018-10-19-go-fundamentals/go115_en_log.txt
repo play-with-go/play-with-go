@@ -39,8 +39,9 @@ func Hello(name string) string {
 EOD
 $ git init -q
 $ git remote add origin https://{{{.GREETINGS}}}.git
-$ git add greetings.go
+$ git add go.mod greetings.go
 $ git commit -q -m 'Initial commit'
+$ [ "$(git status --porcelain)" == "" ] || (git status && false)
 $ git push -q origin main
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
@@ -97,6 +98,7 @@ func Hello(name string) (string, error) {
 EOD
 $ git add greetings.go
 $ git commit -q -m 'Added error handling'
+$ [ "$(git status --porcelain)" == "" ] || (git status && false)
 $ greetings_error_commit=$(git rev-parse HEAD)
 $ git rev-parse HEAD
 v0.0.0-20060102150405-abcedf12345
@@ -193,6 +195,7 @@ func randomFormat() string {
 EOD
 $ git add greetings.go
 $ git commit -q -m 'Added random format'
+$ [ "$(git status --porcelain)" == "" ] || (git status && false)
 $ greetings_random_commit=$(git rev-parse HEAD)
 $ git rev-parse HEAD
 v0.0.0-20060102150405-abcedf12345
