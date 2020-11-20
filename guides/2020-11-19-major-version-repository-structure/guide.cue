@@ -81,6 +81,13 @@ Steps: branch_initial_commit: preguide.#Command & {
 		"""
 }
 
+Steps: branch_check_initial_porcelain: preguide.#Command & {
+	InformationOnly: true
+	Source: """
+		[ "$(git status --porcelain)" == "" ] || (git status && false)
+		"""
+}
+
 Steps: branch_create_v1_branch: preguide.#Command & {
 	Source: """
 		\(Defs.git.branch) main.v1
@@ -121,6 +128,13 @@ Steps: branch_v2_commit: preguide.#Command & {
 		"""
 }
 
+Steps: branch_check_v2_porcelain: preguide.#Command & {
+	InformationOnly: true
+	Source: """
+		[ "$(git status --porcelain)" == "" ] || (git status && false)
+		"""
+}
+
 Steps: subdir_init: preguide.#Command & {
 	Source: """
 		mkdir \(Defs.subdir_dir)
@@ -149,6 +163,13 @@ Steps: subdir_initial_commit: preguide.#Command & {
 		\(Defs.git.commit) -m 'Initial commit of \(Defs.subdir) module'
 		\(Defs.git.tag) v1.0.0
 		\(Defs.git.push) origin main v1.0.0
+		"""
+}
+
+Steps: subdir_check_initial_porcelain: preguide.#Command & {
+	InformationOnly: true
+	Source: """
+		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 
@@ -189,6 +210,13 @@ Steps: subdir_v2_commit: preguide.#Command & {
 		\(Defs.git.commit) -m 'v2 commit of \(Defs.subdir) module'
 		\(Defs.git.tag) v2.0.0
 		\(Defs.git.push) origin main v2.0.0
+		"""
+}
+
+Steps: subdir_check_v2_porcelain: preguide.#Command & {
+	InformationOnly: true
+	Source: """
+		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 

@@ -143,7 +143,7 @@ Steps: {
 			CmdStr:   "hello"
 			Negated:  false
 		}]
-		Order:           55
+		Order:           58
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -158,7 +158,7 @@ Steps: {
 			CmdStr:           "go install"
 			Negated:          false
 		}]
-		Order:           54
+		Order:           57
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -179,7 +179,7 @@ Steps: {
 			CmdStr:           "export PATH=\"$goinstalldir:$PATH\""
 			Negated:          false
 		}]
-		Order:           53
+		Order:           56
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -200,7 +200,7 @@ Steps: {
 			CmdStr:   "go list -f '{{.Target}}'"
 			Negated:  false
 		}]
-		Order:           52
+		Order:           55
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -215,7 +215,7 @@ Steps: {
 			CmdStr:           "cd /home/gopher/hello"
 			Negated:          false
 		}]
-		Order:           51
+		Order:           54
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -238,7 +238,7 @@ Steps: {
 			CmdStr:   "go test"
 			Negated:  false
 		}]
-		Order:           50
+		Order:           53
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -246,7 +246,7 @@ Steps: {
 		Name:            "greetings_check_tests_pass"
 	}
 	greetings_go_restore: {
-		Order: 49
+		Order: 52
 		Source: """
 			package greetings
 
@@ -411,7 +411,7 @@ Steps: {
 			CmdStr:   "go test"
 			Negated:  true
 		}]
-		Order:           48
+		Order:           51
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -419,7 +419,7 @@ Steps: {
 		Name:            "greetings_run_tests_fail"
 	}
 	greetings_go_break: {
-		Order: 47
+		Order: 50
 		Source: """
 			package greetings
 
@@ -600,7 +600,7 @@ Steps: {
 			CmdStr:   "go test -v"
 			Negated:  false
 		}]
-		Order:           46
+		Order:           49
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -608,7 +608,7 @@ Steps: {
 		Name:            "greetings_run_tests"
 	}
 	greetings_create_greetings_test_go: {
-		Order: 45
+		Order: 48
 		Source: """
 			package greetings
 
@@ -655,7 +655,7 @@ Steps: {
 			CmdStr:           "cd /home/gopher/greetings"
 			Negated:          false
 		}]
-		Order:           44
+		Order:           47
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -676,7 +676,7 @@ Steps: {
 			CmdStr:   "go run hello.go"
 			Negated:  false
 		}]
-		Order:           43
+		Order:           46
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -684,7 +684,7 @@ Steps: {
 		Name:            "hello_run_multiple"
 	}
 	hello_go_call_multiple: {
-		Order: 42
+		Order: 45
 		Source: """
 			package main
 
@@ -782,7 +782,7 @@ Steps: {
 			CmdStr:   "cat go.mod"
 			Negated:  false
 		}]
-		Order:           41
+		Order:           44
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -797,7 +797,7 @@ Steps: {
 			CmdStr:           "go mod edit -replace {{{.GREETINGS}}}=/home/gopher/greetings"
 			Negated:          false
 		}]
-		Order:           40
+		Order:           43
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -812,7 +812,7 @@ Steps: {
 			CmdStr:           "cd /home/gopher/hello"
 			Negated:          false
 		}]
-		Order:           39
+		Order:           42
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -820,7 +820,7 @@ Steps: {
 		Name:            "hello_use_multiple"
 	}
 	greetings_go_multiple_people: {
-		Order: 38
+		Order: 41
 		Source: """
 			package greetings
 
@@ -951,7 +951,7 @@ Steps: {
 			CmdStr:           "cd /home/gopher/greetings"
 			Negated:          false
 		}]
-		Order:           37
+		Order:           40
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -984,7 +984,7 @@ Steps: {
 			CmdStr:   "go run hello.go"
 			Negated:  false
 		}]
-		Order:           36
+		Order:           39
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -992,7 +992,7 @@ Steps: {
 		Name:            "hello_run_random"
 	}
 	hello_go_readd_gladys: {
-		Order: 35
+		Order: 38
 		Source: """
 			package main
 
@@ -1078,7 +1078,7 @@ Steps: {
 			CmdStr:   "go list -m -f {{.Version}} {{{.GREETINGS}}}"
 			Negated:  false
 		}]
-		Order:           34
+		Order:           37
 		InformationOnly: true
 		DoNotTrim:       false
 		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
@@ -1108,7 +1108,7 @@ Steps: {
 			CmdStr:   "go get {{{.GREETINGS}}}@$greetings_random_commit"
 			Negated:  false
 		}]
-		Order:           33
+		Order:           36
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -1131,7 +1131,7 @@ Steps: {
 			CmdStr:   "git push -q origin main"
 			Negated:  false
 		}]
-		Order:           32
+		Order:           35
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -1152,7 +1152,7 @@ Steps: {
 			CmdStr:   "git rev-parse HEAD"
 			Negated:  false
 		}]
-		Order:           31
+		Order:           34
 		InformationOnly: true
 		DoNotTrim:       false
 		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
@@ -1168,12 +1168,27 @@ Steps: {
 			CmdStr:           "greetings_random_commit=$(git rev-parse HEAD)"
 			Negated:          false
 		}]
-		Order:           30
+		Order:           33
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "greetings_random_commit"
+	}
+	greetings_check_random_porcelain: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			Negated:          false
+		}]
+		Order:           32
+		InformationOnly: true
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "greetings_check_random_porcelain"
 	}
 	greeings_commit_random: {
 		Stmts: [{
@@ -1189,7 +1204,7 @@ Steps: {
 			CmdStr:           "git commit -q -m 'Added random format'"
 			Negated:          false
 		}]
-		Order:           29
+		Order:           31
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -1197,7 +1212,7 @@ Steps: {
 		Name:            "greeings_commit_random"
 	}
 	update_greetings_go_random: {
-		Order: 28
+		Order: 30
 		Source: """
 			package greetings
 
@@ -1275,7 +1290,7 @@ Steps: {
 			CmdStr:           "cd /home/gopher/greetings"
 			Negated:          false
 		}]
-		Order:           27
+		Order:           29
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -1298,7 +1313,7 @@ Steps: {
 			CmdStr:   "go run hello.go"
 			Negated:  true
 		}]
-		Order:           26
+		Order:           28
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -1306,7 +1321,7 @@ Steps: {
 		Name:            "run_hello_error"
 	}
 	update_hello_go_error: {
-		Order: 25
+		Order: 27
 		Source: """
 			package main
 
@@ -1377,7 +1392,7 @@ Steps: {
 			CmdStr:   "go list -m -f {{.Version}} {{{.GREETINGS}}}"
 			Negated:  false
 		}]
-		Order:           24
+		Order:           26
 		InformationOnly: true
 		DoNotTrim:       false
 		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
@@ -1401,7 +1416,7 @@ Steps: {
 			CmdStr:   "go get {{{.GREETINGS}}}@$greetings_error_commit"
 			Negated:  false
 		}]
-		Order:           23
+		Order:           25
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -1416,7 +1431,7 @@ Steps: {
 			CmdStr:           "cd /home/gopher/hello"
 			Negated:          false
 		}]
-		Order:           22
+		Order:           24
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -1439,7 +1454,7 @@ Steps: {
 			CmdStr:   "git push -q origin main"
 			Negated:  false
 		}]
-		Order:           21
+		Order:           23
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -1460,7 +1475,7 @@ Steps: {
 			CmdStr:   "git rev-parse HEAD"
 			Negated:  false
 		}]
-		Order:           20
+		Order:           22
 		InformationOnly: true
 		DoNotTrim:       false
 		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
@@ -1476,12 +1491,27 @@ Steps: {
 			CmdStr:           "greetings_error_commit=$(git rev-parse HEAD)"
 			Negated:          false
 		}]
-		Order:           19
+		Order:           21
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "greetings_error_commit"
+	}
+	greetings_check_error_handling_porcelain: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			Negated:          false
+		}]
+		Order:           20
+		InformationOnly: true
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "greetings_check_error_handling_porcelain"
 	}
 	commit_greetings_error_handling: {
 		Stmts: [{
@@ -1497,7 +1527,7 @@ Steps: {
 			CmdStr:           "git commit -q -m 'Added error handling'"
 			Negated:          false
 		}]
-		Order:           18
+		Order:           19
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -1505,7 +1535,7 @@ Steps: {
 		Name:            "commit_greetings_error_handling"
 	}
 	update_greetings_go: {
-		Order: 17
+		Order: 18
 		Source: """
 			package greetings
 
@@ -1559,7 +1589,7 @@ Steps: {
 			CmdStr:           "cd /home/gopher/greetings"
 			Negated:          false
 		}]
-		Order:           16
+		Order:           17
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -1586,7 +1616,7 @@ Steps: {
 			CmdStr:   "./hello"
 			Negated:  false
 		}]
-		Order:           15
+		Order:           16
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -1594,7 +1624,7 @@ Steps: {
 		Name:            "buildrun_hello"
 	}
 	create_hellogo: {
-		Order: 14
+		Order: 15
 		Source: """
 			package main
 
@@ -1634,7 +1664,7 @@ Steps: {
 			CmdStr:   "go list -m -f {{.Version}} {{{.GREETINGS}}}"
 			Negated:  false
 		}]
-		Order:           13
+		Order:           14
 		InformationOnly: true
 		DoNotTrim:       false
 		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
@@ -1658,7 +1688,7 @@ Steps: {
 			CmdStr:   "go get {{{.GREETINGS}}}"
 			Negated:  false
 		}]
-		Order:           12
+		Order:           13
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -1679,7 +1709,7 @@ Steps: {
 			CmdStr:   "go mod init {{{.HELLO}}}"
 			Negated:  false
 		}]
-		Order:           11
+		Order:           12
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -1700,7 +1730,7 @@ Steps: {
 			CmdStr:           "cd /home/gopher/hello"
 			Negated:          false
 		}]
-		Order:           10
+		Order:           11
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -1723,19 +1753,34 @@ Steps: {
 			CmdStr:   "git push -q origin main"
 			Negated:  false
 		}]
-		Order:           9
+		Order:           10
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "greetings_gitpush"
 	}
+	greetings_check_porcelain: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			Negated:          false
+		}]
+		Order:           9
+		InformationOnly: true
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "greetings_check_porcelain"
+	}
 	greetings_gitadd: {
 		Stmts: [{
 			ComparisonOutput: ""
 			Output:           ""
 			ExitCode:         0
-			CmdStr:           "git add greetings.go"
+			CmdStr:           "git add go.mod greetings.go"
 			Negated:          false
 		}, {
 			ComparisonOutput: ""
@@ -1944,5 +1989,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "27c26bc97a3d22b1b112069921e7b4fc79d6e8009cf112876d82cf143055f471"
+Hash: "5787d51f21cb5b6a43bd4f5166e4835fbad8690bea70607fcbf340c1be64a46f"
 Delims: ["{{{", "}}}"]

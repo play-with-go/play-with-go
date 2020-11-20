@@ -161,10 +161,10 @@ $ git remote add origin https://{% raw %}{{{.GREETINGS}}}{% endraw %}.git
 Add and commit the `greetings.go` file you created earlier:
 
 ```.term1
-$ git add greetings.go
+$ git add go.mod greetings.go
 $ git commit -q -m 'Initial commit'
 ```
-{:data-command-src="Z2l0IGFkZCBncmVldGluZ3MuZ28KZ2l0IGNvbW1pdCAtcSAtbSAnSW5pdGlhbCBjb21taXQnCg=="}
+{:data-command-src="Z2l0IGFkZCBnby5tb2QgZ3JlZXRpbmdzLmdvCmdpdCBjb21taXQgLXEgLW0gJ0luaXRpYWwgY29tbWl0Jwo="}
 
 Publish this commit by pushing it to the remote repository:
 

@@ -19,6 +19,7 @@ $ git commit -q -m 'Initial commit of public module'
 $ git push -q origin main
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
+$ [ "$(git status --porcelain)" == "" ] || (git status && false)
 $ mkdir /home/gopher/private
 $ cd /home/gopher/private
 $ go mod init {{{.PRIVATE}}}
@@ -38,6 +39,7 @@ $ git commit -q -m 'Initial commit of private module'
 $ git push -q origin main
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
+$ [ "$(git status --porcelain)" == "" ] || (git status && false)
 $ mkdir /home/gopher/gopher
 $ cd /home/gopher/gopher
 $ go mod init gopher

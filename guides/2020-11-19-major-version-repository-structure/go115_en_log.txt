@@ -20,6 +20,7 @@ $ git tag v1.0.0
 $ git push -q origin main v1.0.0
 remote: .. Processing 2 references        
 remote: Processed 2 references in total        
+$ [ "$(git status --porcelain)" == "" ] || (git status && false)
 $ git branch main.v1
 $ git push -q origin main.v1
 remote: 
@@ -50,6 +51,7 @@ $ git tag v2.0.0
 $ git push -q origin main v2.0.0
 remote: .. Processing 2 references        
 remote: Processed 2 references in total        
+$ [ "$(git status --porcelain)" == "" ] || (git status && false)
 $ mkdir /home/gopher/subdir
 $ cd /home/gopher/subdir
 $ go mod init {{{.SUBDIR}}}
@@ -70,6 +72,7 @@ $ git tag v1.0.0
 $ git push -q origin main v1.0.0
 remote: .. Processing 2 references        
 remote: Processed 2 references in total        
+$ [ "$(git status --porcelain)" == "" ] || (git status && false)
 $ mkdir v2
 $ cp go.mod subdir.go v2
 $ cat <<EOD > /home/gopher/subdir/v2/go.mod
@@ -94,6 +97,7 @@ $ git tag v2.0.0
 $ git push -q origin main v2.0.0
 remote: .. Processing 2 references        
 remote: Processed 2 references in total        
+$ [ "$(git status --porcelain)" == "" ] || (git status && false)
 $ mkdir /home/gopher/gopher
 $ cd /home/gopher/gopher
 $ go mod init gopher

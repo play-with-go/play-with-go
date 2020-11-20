@@ -79,6 +79,13 @@ Steps: proverb_initial_commit: preguide.#Command & {
 		"""
 }
 
+Steps: proverb_check_initial_porcelain: preguide.#Command & {
+	InformationOnly: true
+	Source: """
+		[ "$(git status --porcelain)" == "" ] || (git status && false)
+		"""
+}
+
 Steps: proverb_tag_v010: preguide.#Command & {
 	Source: """
 		\(Defs.git.tag) \(Defs.proverb_v010)
@@ -152,6 +159,13 @@ Steps: proverb_concurrency_commit: preguide.#Command & {
 		"""
 }
 
+Steps: proverb_check_concurrency_porcelain: preguide.#Command & {
+	InformationOnly: true
+	Source: """
+		[ "$(git status --porcelain)" == "" ] || (git status && false)
+		"""
+}
+
 Steps: proverb_tag_v020: preguide.#Command & {
 	Source: """
 		\(Defs.git.tag) \(Defs.proverb_v020)
@@ -219,6 +233,13 @@ Steps: proverb_tag_v030: preguide.#Command & {
 		\(Defs.git.push) origin main
 		\(Defs.git.tag) \(Defs.proverb_v030)
 		\(Defs.git.push) origin \(Defs.proverb_v030)
+		"""
+}
+
+Steps: proverb_check_v030_porcelain: preguide.#Command & {
+	InformationOnly: true
+	Source: """
+		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 
@@ -310,6 +331,13 @@ Steps: proverb_life_commit: preguide.#Command & {
 		"""
 }
 
+Steps: proverb_check_v100_porcelain: preguide.#Command & {
+	InformationOnly: true
+	Source: """
+		[ "$(git status --porcelain)" == "" ] || (git status && false)
+		"""
+}
+
 Steps: proverb_tag_v100: preguide.#Command & {
 	Source: """
 		\(Defs.git.tag) \(Defs.proverb_v100)
@@ -350,6 +378,13 @@ Steps: proverb_tag_v101: preguide.#Command & {
 		\(Defs.git.push) origin main
 		\(Defs.git.tag) \(Defs.proverb_v101)
 		\(Defs.git.push) origin \(Defs.proverb_v101)
+		"""
+}
+
+Steps: proverb_check_v101_porcelain: preguide.#Command & {
+	InformationOnly: true
+	Source: """
+		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 

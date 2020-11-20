@@ -141,7 +141,7 @@ Steps: {
 			CmdStr:   "go run ."
 			Negated:  false
 		}]
-		Order:           43
+		Order:           48
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -149,7 +149,7 @@ Steps: {
 		Name:            "gopher_run_life_proverb"
 	}
 	gopher_go_update_life_proverb: {
-		Order: 42
+		Order: 47
 		Source: """
 			package main
 
@@ -202,7 +202,7 @@ Steps: {
 			CmdStr:   "go list -m -versions {{{.PROVERB}}}"
 			Negated:  false
 		}]
-		Order:           41
+		Order:           46
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -223,7 +223,7 @@ Steps: {
 			CmdStr:   "go list -m -versions -retracted {{{.PROVERB}}}"
 			Negated:  false
 		}]
-		Order:           40
+		Order:           45
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -238,7 +238,7 @@ Steps: {
 			CmdStr:           "sleep 1m"
 			Negated:          false
 		}]
-		Order:           39
+		Order:           44
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -291,7 +291,7 @@ Steps: {
 			CmdStr:   "go get {{{.PROVERB}}}@v0.4.0"
 			Negated:  false
 		}]
-		Order:           38
+		Order:           43
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -306,7 +306,7 @@ Steps: {
 			CmdStr:           "(cd $(mktemp -d); export GOPATH=$(mktemp -d); go mod init mod.com; go get -x {{{.PROVERB}}}@v0.4.0; go get -x {{{.PROVERB}}}@v1.0.0; go get -x {{{.PROVERB}}}@v1.0.1; sleep 1m) >/dev/null 2>&1"
 			Negated:          false
 		}]
-		Order:           37
+		Order:           42
 		InformationOnly: true
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -321,12 +321,27 @@ Steps: {
 			CmdStr:           "cd /home/gopher/gopher"
 			Negated:          false
 		}]
-		Order:           36
+		Order:           41
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "gopher_cd_use_v100"
+	}
+	proverb_check_v101_porcelain: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			Negated:          false
+		}]
+		Order:           40
+		InformationOnly: true
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "proverb_check_v101_porcelain"
 	}
 	proverb_tag_v101: {
 		Stmts: [{
@@ -376,7 +391,7 @@ Steps: {
 			CmdStr:   "git push -q origin v1.0.1"
 			Negated:  false
 		}]
-		Order:           35
+		Order:           39
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -384,7 +399,7 @@ Steps: {
 		Name:            "proverb_tag_v101"
 	}
 	proverb_retract_v100: {
-		Order: 34
+		Order: 38
 		Source: """
 			module {{{.PROVERB}}}
 
@@ -439,7 +454,7 @@ Steps: {
 			CmdStr:   "git push -q origin v0.4.0"
 			Negated:  false
 		}]
-		Order:           33
+		Order:           37
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -468,12 +483,27 @@ Steps: {
 			CmdStr:   "git push -q origin v1.0.0"
 			Negated:  false
 		}]
-		Order:           32
+		Order:           36
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "proverb_tag_v100"
+	}
+	proverb_check_v100_porcelain: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			Negated:          false
+		}]
+		Order:           35
+		InformationOnly: true
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "proverb_check_v100_porcelain"
 	}
 	proverb_life_commit: {
 		Stmts: [{
@@ -503,7 +533,7 @@ Steps: {
 			CmdStr:   "git push -q origin main"
 			Negated:  false
 		}]
-		Order:           31
+		Order:           34
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -511,7 +541,7 @@ Steps: {
 		Name:            "proverb_life_commit"
 	}
 	proverb_go_life_advice: {
-		Order: 30
+		Order: 33
 		Source: """
 			package proverb
 
@@ -552,7 +582,7 @@ Steps: {
 			CmdStr:           "cd /home/gopher/proverb"
 			Negated:          false
 		}]
-		Order:           29
+		Order:           32
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -567,7 +597,7 @@ Steps: {
 			CmdStr:           "go get {{{.PROVERB}}}@latest"
 			Negated:          false
 		}]
-		Order:           28
+		Order:           31
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -590,7 +620,7 @@ Steps: {
 			CmdStr:   "go list -m -u all"
 			Negated:  false
 		}]
-		Order:           27
+		Order:           30
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -611,7 +641,7 @@ Steps: {
 			CmdStr:   "go run ."
 			Negated:  false
 		}]
-		Order:           26
+		Order:           29
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -634,7 +664,7 @@ Steps: {
 			CmdStr:   "go get {{{.PROVERB}}}@v0.2.0"
 			Negated:  false
 		}]
-		Order:           25
+		Order:           28
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -655,7 +685,7 @@ Steps: {
 			CmdStr:   "go list -m -versions -retracted {{{.PROVERB}}}"
 			Negated:  false
 		}]
-		Order:           24
+		Order:           27
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -676,7 +706,7 @@ Steps: {
 			CmdStr:   "go list -m -versions {{{.PROVERB}}}"
 			Negated:  false
 		}]
-		Order:           23
+		Order:           26
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -691,7 +721,7 @@ Steps: {
 			CmdStr:           "sleep 1m"
 			Negated:          false
 		}]
-		Order:           22
+		Order:           25
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -712,7 +742,7 @@ Steps: {
 			CmdStr:   "go run ."
 			Negated:  false
 		}]
-		Order:           21
+		Order:           24
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -739,12 +769,27 @@ Steps: {
 			CmdStr:   "go get {{{.PROVERB}}}@v0.3.0"
 			Negated:  false
 		}]
-		Order:           20
+		Order:           23
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "gopher_use_v030"
+	}
+	proverb_check_v030_porcelain: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			Negated:          false
+		}]
+		Order:           22
+		InformationOnly: true
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "proverb_check_v030_porcelain"
 	}
 	proverb_tag_v030: {
 		Stmts: [{
@@ -794,7 +839,7 @@ Steps: {
 			CmdStr:   "git push -q origin v0.3.0"
 			Negated:  false
 		}]
-		Order:           19
+		Order:           21
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -802,7 +847,7 @@ Steps: {
 		Name:            "proverb_tag_v030"
 	}
 	proverb_go_fix_concurrency_bug: {
-		Order: 18
+		Order: 20
 		Source: """
 			package proverb
 
@@ -831,7 +876,7 @@ Steps: {
 		Name:     "proverb_go_fix_concurrency_bug"
 	}
 	proverb_comment_retraction: {
-		Order: 17
+		Order: 19
 		Source: """
 			module {{{.PROVERB}}}
 
@@ -872,7 +917,7 @@ Steps: {
 			CmdStr:   "cat go.mod"
 			Negated:  false
 		}]
-		Order:           16
+		Order:           18
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -887,7 +932,7 @@ Steps: {
 			CmdStr:           "go mod edit -retract=v0.2.0"
 			Negated:          false
 		}]
-		Order:           15
+		Order:           17
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -902,7 +947,7 @@ Steps: {
 			CmdStr:           "cd /home/gopher/proverb"
 			Negated:          false
 		}]
-		Order:           14
+		Order:           16
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -941,7 +986,7 @@ Steps: {
 			CmdStr:   "go run ."
 			Negated:  false
 		}]
-		Order:           13
+		Order:           15
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -970,12 +1015,27 @@ Steps: {
 			CmdStr:   "git push -q origin v0.2.0"
 			Negated:  false
 		}]
-		Order:           12
+		Order:           14
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "proverb_tag_v020"
+	}
+	proverb_check_concurrency_porcelain: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			Negated:          false
+		}]
+		Order:           13
+		InformationOnly: true
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "proverb_check_concurrency_porcelain"
 	}
 	proverb_concurrency_commit: {
 		Stmts: [{
@@ -1005,7 +1065,7 @@ Steps: {
 			CmdStr:   "git push -q origin main"
 			Negated:  false
 		}]
-		Order:           11
+		Order:           12
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -1013,7 +1073,7 @@ Steps: {
 		Name:            "proverb_concurrency_commit"
 	}
 	proverb_go_concurrency: {
-		Order: 10
+		Order: 11
 		Source: """
 			package proverb
 
@@ -1049,7 +1109,7 @@ Steps: {
 			CmdStr:           "cd /home/gopher/proverb"
 			Negated:          false
 		}]
-		Order:           9
+		Order:           10
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -1070,7 +1130,7 @@ Steps: {
 			CmdStr:   "go run ."
 			Negated:  false
 		}]
-		Order:           8
+		Order:           9
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -1091,7 +1151,7 @@ Steps: {
 			CmdStr:   "go get {{{.PROVERB}}}@v0.1.0"
 			Negated:  false
 		}]
-		Order:           7
+		Order:           8
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -1099,7 +1159,7 @@ Steps: {
 		Name:            "gopher_add_dep_proverb_v010"
 	}
 	gopher_go_initial: {
-		Order: 6
+		Order: 7
 		Source: """
 			package main
 
@@ -1149,7 +1209,7 @@ Steps: {
 			CmdStr:   "go mod init gopher"
 			Negated:  false
 		}]
-		Order:           5
+		Order:           6
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
@@ -1178,12 +1238,27 @@ Steps: {
 			CmdStr:   "git push -q origin v0.1.0"
 			Negated:  false
 		}]
-		Order:           4
+		Order:           5
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
 		Name:            "proverb_tag_v010"
+	}
+	proverb_check_initial_porcelain: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			Negated:          false
+		}]
+		Order:           4
+		InformationOnly: true
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "proverb_check_initial_porcelain"
 	}
 	proverb_initial_commit: {
 		Stmts: [{
@@ -1307,5 +1382,5 @@ Steps: {
 		Name:            "goversion"
 	}
 }
-Hash: "796d275e2f3e824ad23d4202962fab23f95fbc0eb211b886ce9bca904d8baf9f"
+Hash: "e36bea24accec0d78bcb20aba4528ea785ef6a3533677ea86ba33051fbcd92fe"
 Delims: ["{{{", "}}}"]
