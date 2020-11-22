@@ -16,108 +16,26 @@ Scenarios: [{
 Networks: ["playwithgo_pwg"]
 Env: []
 Steps: {
-	goversion_mkcert: {
+	goversion: {
 		Stmts: [{
 			ComparisonOutput: """
-				/home/gopher/go/bin/mkcert: devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000
-				\tpath\tfilippo.io/mkcert
-				\tmod\tfilippo.io/mkcert\tv1.4.2\th1:7mWofpFS4gzQS5bhE3KYBwzfceIPy2KJ4tMT31aPNeY=
-				\tdep\tgolang.org/x/net\tv0.0.0-20190620200207-3b0461eec859\th1:R/3boaszxrf1GEUWTVDzSKVwLmSJpwZ1yqXm8j0v2QI=
-				\tdep\tgolang.org/x/text\tv0.3.0\th1:g61tztE5qeGQ89tm6NTjjM9VPIm088od1l6aSorWRWg=
-				\tdep\tsoftware.sslmate.com/src/go-pkcs12\tv0.0.0-20180114231543-2291e8f0f237\th1:iAEkCBPbRaflBgZ7o9gjVUuWuvWeV4sytFWg9o+Pj2k=
+				go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
 
 				"""
 			Output: """
-				/home/gopher/go/bin/mkcert: devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000
-				\tpath\tfilippo.io/mkcert
-				\tmod\tfilippo.io/mkcert\tv1.4.2\th1:7mWofpFS4gzQS5bhE3KYBwzfceIPy2KJ4tMT31aPNeY=
-				\tdep\tgolang.org/x/net\tv0.0.0-20190620200207-3b0461eec859\th1:R/3boaszxrf1GEUWTVDzSKVwLmSJpwZ1yqXm8j0v2QI=
-				\tdep\tgolang.org/x/text\tv0.3.0\th1:g61tztE5qeGQ89tm6NTjjM9VPIm088od1l6aSorWRWg=
-				\tdep\tsoftware.sslmate.com/src/go-pkcs12\tv0.0.0-20180114231543-2291e8f0f237\th1:iAEkCBPbRaflBgZ7o9gjVUuWuvWeV4sytFWg9o+Pj2k=
+				go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
 
 				"""
 			ExitCode: 0
-			CmdStr:   "go version -m $(which mkcert)"
+			CmdStr:   "go version"
 			Negated:  false
 		}]
-		Order:           6
+		Order:           0
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "goversion_mkcert"
-	}
-	run_mkcert: {
-		Stmts: [{
-			ComparisonOutput: """
-				v1.4.2
-
-				"""
-			Output: """
-				v1.4.2
-
-				"""
-			ExitCode: 0
-			CmdStr:   "mkcert -version"
-			Negated:  false
-		}]
-		Order:           5
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "run_mkcert"
-	}
-	which_mkcert: {
-		Stmts: [{
-			ComparisonOutput: """
-				/home/gopher/go/bin/mkcert
-
-				"""
-			Output: """
-				/home/gopher/go/bin/mkcert
-
-				"""
-			ExitCode: 0
-			CmdStr:   "which mkcert"
-			Negated:  false
-		}]
-		Order:           4
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "which_mkcert"
-	}
-	go116_mkcert_install: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "go install filippo.io/mkcert@v1.4.2"
-			Negated:          false
-		}]
-		Order:           3
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "go116_mkcert_install"
-	}
-	go115_mkcert_modules_get: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "(cd $(mktemp -d); GO111MODULE=on go get filippo.io/mkcert@v1.4.2)"
-			Negated:          false
-		}]
-		Order:           2
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "go115_mkcert_modules_get"
+		Name:            "goversion"
 	}
 	go115_mkcert_get: {
 		Stmts: [{
@@ -154,27 +72,109 @@ Steps: {
 		StepType:        1
 		Name:            "go115_mkcert_get"
 	}
-	goversion: {
+	go115_mkcert_modules_get: {
 		Stmts: [{
-			ComparisonOutput: """
-				go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
-
-				"""
-			Output: """
-				go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go version"
-			Negated:  false
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "(cd $(mktemp -d); GO111MODULE=on go get filippo.io/mkcert@v1.4.2)"
+			Negated:          false
 		}]
-		Order:           0
+		Order:           2
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "goversion"
+		Name:            "go115_mkcert_modules_get"
+	}
+	go116_mkcert_install: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "go install filippo.io/mkcert@v1.4.2"
+			Negated:          false
+		}]
+		Order:           3
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "go116_mkcert_install"
+	}
+	which_mkcert: {
+		Stmts: [{
+			ComparisonOutput: """
+				/home/gopher/go/bin/mkcert
+
+				"""
+			Output: """
+				/home/gopher/go/bin/mkcert
+
+				"""
+			ExitCode: 0
+			CmdStr:   "which mkcert"
+			Negated:  false
+		}]
+		Order:           4
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "which_mkcert"
+	}
+	run_mkcert: {
+		Stmts: [{
+			ComparisonOutput: """
+				v1.4.2
+
+				"""
+			Output: """
+				v1.4.2
+
+				"""
+			ExitCode: 0
+			CmdStr:   "mkcert -version"
+			Negated:  false
+		}]
+		Order:           5
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "run_mkcert"
+	}
+	goversion_mkcert: {
+		Stmts: [{
+			ComparisonOutput: """
+				/home/gopher/go/bin/mkcert: devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000
+				\tpath\tfilippo.io/mkcert
+				\tmod\tfilippo.io/mkcert\tv1.4.2\th1:7mWofpFS4gzQS5bhE3KYBwzfceIPy2KJ4tMT31aPNeY=
+				\tdep\tgolang.org/x/net\tv0.0.0-20190620200207-3b0461eec859\th1:R/3boaszxrf1GEUWTVDzSKVwLmSJpwZ1yqXm8j0v2QI=
+				\tdep\tgolang.org/x/text\tv0.3.0\th1:g61tztE5qeGQ89tm6NTjjM9VPIm088od1l6aSorWRWg=
+				\tdep\tsoftware.sslmate.com/src/go-pkcs12\tv0.0.0-20180114231543-2291e8f0f237\th1:iAEkCBPbRaflBgZ7o9gjVUuWuvWeV4sytFWg9o+Pj2k=
+
+				"""
+			Output: """
+				/home/gopher/go/bin/mkcert: devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000
+				\tpath\tfilippo.io/mkcert
+				\tmod\tfilippo.io/mkcert\tv1.4.2\th1:7mWofpFS4gzQS5bhE3KYBwzfceIPy2KJ4tMT31aPNeY=
+				\tdep\tgolang.org/x/net\tv0.0.0-20190620200207-3b0461eec859\th1:R/3boaszxrf1GEUWTVDzSKVwLmSJpwZ1yqXm8j0v2QI=
+				\tdep\tgolang.org/x/text\tv0.3.0\th1:g61tztE5qeGQ89tm6NTjjM9VPIm088od1l6aSorWRWg=
+				\tdep\tsoftware.sslmate.com/src/go-pkcs12\tv0.0.0-20180114231543-2291e8f0f237\th1:iAEkCBPbRaflBgZ7o9gjVUuWuvWeV4sytFWg9o+Pj2k=
+
+				"""
+			ExitCode: 0
+			CmdStr:   "go version -m $(which mkcert)"
+			Negated:  false
+		}]
+		Order:           6
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "goversion_mkcert"
 	}
 }
-Hash: "a3527fa0d8841acd284638d035633a42e32234bd21fb2e32fe110d75e22ea7ec"
+Hash: "bc5e1654e738aca45731f2606c7e8e89f2f7d9848ec6d366a990802a81241c7c"
 Delims: ["{{{", "}}}"]

@@ -20,8 +20,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "cuelang.org/go",
-		      "Version": "v0.3.0-alpha4.0.20201116194914-7463d11dea50",
-		      "Sum": "h1:8FV7bhN9Nn6aq8Zkj/2nHefqGKoCbdRJ2g4NVovgZoE=",
+		      "Version": "v0.3.0-alpha5",
+		      "Sum": "h1:8gY9P7bZ3EsET3t0Y0tS2rtGo8qka7jbSu5pfjl07lw=",
 		      "Replace": null
 		    },
 		    {
@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201119122857-9e30f7d3a1b3",
-		      "Sum": "h1:6cyGYETrxQ78IelgO4KSOt+G4Zk9b4QVf0vsaq8TjSQ=",
+		      "Version": "v0.0.2-0.20201122075247-51479e851521",
+		      "Sum": "h1:Hca+b8vCHDFnsaceMW8mYHkD8WmAxHtguXmpNmrk0gI=",
 		      "Replace": null
 		    },
 		    {
@@ -125,186 +125,6 @@ Scenarios: [{
 Networks: ["playwithgo_pwg"]
 Env: []
 Steps: {
-	gitpush: {
-		Stmts: [{
-			ComparisonOutput: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
-			Output: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
-			ExitCode: 0
-			CmdStr:   "git push -q origin main"
-			Negated:  false
-		}]
-		Order:           8
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gitpush"
-	}
-	gitadd: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git add README.md"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git commit -q -m 'Initial commit'"
-			Negated:          false
-		}]
-		Order:           7
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gitadd"
-	}
-	gitinit: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git init -q"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git remote add origin https://{{{.REPO1}}}.git"
-			Negated:          false
-		}]
-		Order:           6
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gitinit"
-	}
-	cat_readme: {
-		Stmts: [{
-			ComparisonOutput: """
-				This is README.md.
-
-				Hello, gopher!
-
-				We made a change!
-
-
-				"""
-			Output: """
-				This is README.md.
-
-				Hello, gopher!
-
-				We made a change!
-
-
-				"""
-			ExitCode: 0
-			CmdStr:   "cat README.md"
-			Negated:  false
-		}]
-		Order:           5
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "cat_readme"
-	}
-	upload_readme_again: {
-		Order: 4
-		Source: """
-			This is README.md.
-
-			Hello, gopher!
-
-			We made a change!
-
-			"""
-		Renderer: {
-			Pre: """
-				This is README.md.
-
-				Hello, gopher!
-
-				"""
-			RendererType: 3
-		}
-		Language: "md"
-		Target:   "/home/gopher/hello/README.md"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "upload_readme_again"
-	}
-	upload_readme: {
-		Order: 3
-		Source: """
-			This is README.md.
-
-			Hello, gopher!
-
-			"""
-		Renderer: {
-			RendererType: 1
-		}
-		Language: "md"
-		Target:   "/home/gopher/hello/README.md"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "upload_readme"
-	}
-	multiple_commands: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "mkdir hello"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "cd hello"
-			Negated:          false
-		}]
-		Order:           2
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "multiple_commands"
-	}
-	echo_hello: {
-		Stmts: [{
-			ComparisonOutput: """
-				*** !!! CLICK ME !!! ***
-
-				"""
-			Output: """
-				*** !!! CLICK ME !!! ***
-
-				"""
-			ExitCode: 0
-			CmdStr:   "echo '*** !!! CLICK ME !!! ***'"
-			Negated:  false
-		}]
-		Order:           1
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "echo_hello"
-	}
 	whoami: {
 		Stmts: [{
 			ComparisonOutput: """
@@ -338,6 +158,186 @@ Steps: {
 		StepType:        1
 		Name:            "whoami"
 	}
+	echo_hello: {
+		Stmts: [{
+			ComparisonOutput: """
+				*** !!! CLICK ME !!! ***
+
+				"""
+			Output: """
+				*** !!! CLICK ME !!! ***
+
+				"""
+			ExitCode: 0
+			CmdStr:   "echo '*** !!! CLICK ME !!! ***'"
+			Negated:  false
+		}]
+		Order:           1
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "echo_hello"
+	}
+	multiple_commands: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "mkdir hello"
+			Negated:          false
+		}, {
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "cd hello"
+			Negated:          false
+		}]
+		Order:           2
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "multiple_commands"
+	}
+	upload_readme: {
+		Order: 3
+		Source: """
+			This is README.md.
+
+			Hello, gopher!
+
+			"""
+		Renderer: {
+			RendererType: 1
+		}
+		Language: "md"
+		Target:   "/home/gopher/hello/README.md"
+		Terminal: "term1"
+		StepType: 2
+		Name:     "upload_readme"
+	}
+	upload_readme_again: {
+		Order: 4
+		Source: """
+			This is README.md.
+
+			Hello, gopher!
+
+			We made a change!
+
+			"""
+		Renderer: {
+			Pre: """
+				This is README.md.
+
+				Hello, gopher!
+
+				"""
+			RendererType: 3
+		}
+		Language: "md"
+		Target:   "/home/gopher/hello/README.md"
+		Terminal: "term1"
+		StepType: 2
+		Name:     "upload_readme_again"
+	}
+	cat_readme: {
+		Stmts: [{
+			ComparisonOutput: """
+				This is README.md.
+
+				Hello, gopher!
+
+				We made a change!
+
+
+				"""
+			Output: """
+				This is README.md.
+
+				Hello, gopher!
+
+				We made a change!
+
+
+				"""
+			ExitCode: 0
+			CmdStr:   "cat README.md"
+			Negated:  false
+		}]
+		Order:           5
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "cat_readme"
+	}
+	gitinit: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git init -q"
+			Negated:          false
+		}, {
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git remote add origin https://{{{.REPO1}}}.git"
+			Negated:          false
+		}]
+		Order:           6
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "gitinit"
+	}
+	gitadd: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git add README.md"
+			Negated:          false
+		}, {
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git commit -q -m 'Initial commit'"
+			Negated:          false
+		}]
+		Order:           7
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "gitadd"
+	}
+	gitpush: {
+		Stmts: [{
+			ComparisonOutput: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
+			Output: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
+			ExitCode: 0
+			CmdStr:   "git push -q origin main"
+			Negated:  false
+		}]
+		Order:           8
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "gitpush"
+	}
 }
-Hash: "b054aca8586d294b694610f003a7270d458430a37648aa8d7cd5d7aa2b48b6bc"
+Hash: "1646b617a48474374110a11c0f90233d738b73b6208b8ce420d7c53854d003a9"
 Delims: ["{{{", "}}}"]

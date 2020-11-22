@@ -16,28 +16,73 @@ Scenarios: [{
 Networks: ["playwithgo_pwg"]
 Env: []
 Steps: {
-	echo_path: {
+	start_dir: {
 		Stmts: [{
 			ComparisonOutput: """
-				/home/gopher/go/bin:/usr/local/go/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+				/home/gopher
 
 				"""
 			Output: """
-				/home/gopher/go/bin:/usr/local/go/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+				/home/gopher
 
 				"""
 			ExitCode: 0
-			CmdStr:   "echo $PATH"
+			CmdStr:   "pwd"
 			Negated:  false
 		}]
-		Order:           17
+		Order:           0
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "echo_path"
+		Name:            "start_dir"
 	}
-	source_profile_again: {
+	download_go: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "wget -q https://golang.org/dl/go1.15.5.linux-amd64.tar.gz"
+			Negated:          false
+		}]
+		Order:           1
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "download_go"
+	}
+	install_go: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "sudo tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz"
+			Negated:          false
+		}]
+		Order:           2
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "install_go"
+	}
+	add_install_to_path: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "echo export PATH=\"/usr/local/go/bin:$PATH\" >>$HOME/.profile"
+			Negated:          false
+		}]
+		Order:           3
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "add_install_to_path"
+	}
+	source_profile: {
 		Stmts: [{
 			ComparisonOutput: ""
 			Output:           ""
@@ -45,162 +90,33 @@ Steps: {
 			CmdStr:           "source $HOME/.profile"
 			Negated:          false
 		}]
-		Order:           16
+		Order:           4
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "source_profile_again"
+		Name:            "source_profile"
 	}
-	add_gobin_bin_to_path: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "echo export PATH=\"$(go env GOPATH)/bin:$PATH\" >>$HOME/.profile"
-			Negated:          false
-		}]
-		Order:           15
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "add_gobin_bin_to_path"
-	}
-	gobin_not_set: {
+	go_version: {
 		Stmts: [{
 			ComparisonOutput: """
-
+				go version go1.15.5 linux/amd64
 
 				"""
 			Output: """
-
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go env GOBIN"
-			Negated:  false
-		}]
-		Order:           14
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gobin_not_set"
-	}
-	go_env_check_gobin_again: {
-		Stmts: [{
-			ComparisonOutput: """
-
-
-				"""
-			Output: """
-
+				go version go1.15.5 linux/amd64
 
 				"""
 			ExitCode: 0
-			CmdStr:   "go env GOBIN"
+			CmdStr:   "go version"
 			Negated:  false
 		}]
-		Order:           12
+		Order:           5
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "go_env_check_gobin_again"
-	}
-	go_env_unset_gobin: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "go env -w GOBIN="
-			Negated:          false
-		}]
-		Order:           11
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "go_env_unset_gobin"
-	}
-	go_env_env: {
-		Stmts: [{
-			ComparisonOutput: """
-				/home/gopher/.config/go/env
-
-				"""
-			Output: """
-				/home/gopher/.config/go/env
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go env GOENV"
-			Negated:  false
-		}]
-		Order:           10
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "go_env_env"
-	}
-	go_env_check_gobin: {
-		Stmts: [{
-			ComparisonOutput: """
-				/path/to/my/gobin
-
-				"""
-			Output: """
-				/path/to/my/gobin
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go env GOBIN"
-			Negated:  false
-		}]
-		Order:           9
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "go_env_check_gobin"
-	}
-	go_env_set_gobin: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "go env -w GOBIN=/path/to/my/gobin"
-			Negated:          false
-		}]
-		Order:           8
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "go_env_set_gobin"
-	}
-	go_env_gobin: {
-		Stmts: [{
-			ComparisonOutput: """
-
-
-				"""
-			Output: """
-
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go env GOBIN"
-			Negated:  false
-		}]
-		Order:           7
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "go_env_gobin"
+		Name:            "go_version"
 	}
 	go_env: {
 		Stmts: [{
@@ -289,107 +205,119 @@ Steps: {
 		StepType:        1
 		Name:            "go_env"
 	}
-	go_version: {
+	go_env_gobin: {
 		Stmts: [{
 			ComparisonOutput: """
-				go version go1.15.5 linux/amd64
+
 
 				"""
 			Output: """
-				go version go1.15.5 linux/amd64
+
 
 				"""
 			ExitCode: 0
-			CmdStr:   "go version"
+			CmdStr:   "go env GOBIN"
 			Negated:  false
 		}]
-		Order:           5
+		Order:           7
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "go_version"
+		Name:            "go_env_gobin"
 	}
-	source_profile: {
+	go_env_set_gobin: {
 		Stmts: [{
 			ComparisonOutput: ""
 			Output:           ""
 			ExitCode:         0
-			CmdStr:           "source $HOME/.profile"
+			CmdStr:           "go env -w GOBIN=/path/to/my/gobin"
 			Negated:          false
 		}]
-		Order:           4
+		Order:           8
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "source_profile"
+		Name:            "go_env_set_gobin"
 	}
-	add_install_to_path: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "echo export PATH=\"/usr/local/go/bin:$PATH\" >>$HOME/.profile"
-			Negated:          false
-		}]
-		Order:           3
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "add_install_to_path"
-	}
-	install_go: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "sudo tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz"
-			Negated:          false
-		}]
-		Order:           2
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "install_go"
-	}
-	download_go: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "wget -q https://golang.org/dl/go1.15.5.linux-amd64.tar.gz"
-			Negated:          false
-		}]
-		Order:           1
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "download_go"
-	}
-	start_dir: {
+	go_env_check_gobin: {
 		Stmts: [{
 			ComparisonOutput: """
-				/home/gopher
+				/path/to/my/gobin
 
 				"""
 			Output: """
-				/home/gopher
+				/path/to/my/gobin
 
 				"""
 			ExitCode: 0
-			CmdStr:   "pwd"
+			CmdStr:   "go env GOBIN"
 			Negated:  false
 		}]
-		Order:           0
+		Order:           9
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "start_dir"
+		Name:            "go_env_check_gobin"
+	}
+	go_env_env: {
+		Stmts: [{
+			ComparisonOutput: """
+				/home/gopher/.config/go/env
+
+				"""
+			Output: """
+				/home/gopher/.config/go/env
+
+				"""
+			ExitCode: 0
+			CmdStr:   "go env GOENV"
+			Negated:  false
+		}]
+		Order:           10
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "go_env_env"
+	}
+	go_env_unset_gobin: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "go env -w GOBIN="
+			Negated:          false
+		}]
+		Order:           11
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "go_env_unset_gobin"
+	}
+	go_env_check_gobin_again: {
+		Stmts: [{
+			ComparisonOutput: """
+
+
+				"""
+			Output: """
+
+
+				"""
+			ExitCode: 0
+			CmdStr:   "go env GOBIN"
+			Negated:  false
+		}]
+		Order:           12
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "go_env_check_gobin_again"
 	}
 	go_help_env: {
 		Stmts: [{
@@ -452,6 +380,78 @@ Steps: {
 		StepType:        1
 		Name:            "go_help_env"
 	}
+	gobin_not_set: {
+		Stmts: [{
+			ComparisonOutput: """
+
+
+				"""
+			Output: """
+
+
+				"""
+			ExitCode: 0
+			CmdStr:   "go env GOBIN"
+			Negated:  false
+		}]
+		Order:           14
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "gobin_not_set"
+	}
+	add_gobin_bin_to_path: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "echo export PATH=\"$(go env GOPATH)/bin:$PATH\" >>$HOME/.profile"
+			Negated:          false
+		}]
+		Order:           15
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "add_gobin_bin_to_path"
+	}
+	source_profile_again: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "source $HOME/.profile"
+			Negated:          false
+		}]
+		Order:           16
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "source_profile_again"
+	}
+	echo_path: {
+		Stmts: [{
+			ComparisonOutput: """
+				/home/gopher/go/bin:/usr/local/go/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+
+				"""
+			Output: """
+				/home/gopher/go/bin:/usr/local/go/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+
+				"""
+			ExitCode: 0
+			CmdStr:   "echo $PATH"
+			Negated:  false
+		}]
+		Order:           17
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "echo_path"
+	}
 }
-Hash: "8ac28a31eeb2b0209a44cd5ba9485cb35ddf9bc650ecd8e1ae8b02f1e7d94e44"
+Hash: "17b4840e5b4ad94c8d0ebceaf69ed13f15cc4869a08e7c61333aa8704f554d25"
 Delims: ["{{{", "}}}"]

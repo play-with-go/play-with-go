@@ -40,8 +40,8 @@ contrib.go.opencensus.io/integrations/ocsql v0.1.4/go.mod h1:8DsSdjz3F+APR+0z0Wk
 contrib.go.opencensus.io/resource v0.0.0-20190131005048-21591786a5e0/go.mod h1:F361eGI91LCmW1I/Saf+rX0+OFcigGlFvXwEGEnkRLA=
 cuelang.org/go v0.3.0-alpha3 h1:CxqJByVB1t6kcgcVnBYfcxWmzcupeepnoaI1CKaOC7U=
 cuelang.org/go v0.3.0-alpha3/go.mod h1:un6c4wnW3jEIrp97ARM3eJOlIJojP61ASQTRHyR0uiE=
-cuelang.org/go v0.3.0-alpha4.0.20201116194914-7463d11dea50 h1:8FV7bhN9Nn6aq8Zkj/2nHefqGKoCbdRJ2g4NVovgZoE=
-cuelang.org/go v0.3.0-alpha4.0.20201116194914-7463d11dea50/go.mod h1:un6c4wnW3jEIrp97ARM3eJOlIJojP61ASQTRHyR0uiE=
+cuelang.org/go v0.3.0-alpha5 h1:8gY9P7bZ3EsET3t0Y0tS2rtGo8qka7jbSu5pfjl07lw=
+cuelang.org/go v0.3.0-alpha5/go.mod h1:NwRWsRzQvqkhCHdkIjFBKo9ujPd1OQLZzugDjElHh8Q=
 dmitri.shuralyov.com/gpu/mtl v0.0.0-20190408044501-666a987793e9/go.mod h1:H6x//7gZCb22OMCxBHrMx7a5I7Hp++hsVxbQ4BYO7hU=
 docker.io/go-docker v1.0.0 h1:VdXS/aNYQxyA9wdLD5z8Q8Ro688/hG8HzKxYVEVbE6s=
 docker.io/go-docker v1.0.0/go.mod h1:7tiAn5a0LFmjbPDbyTPOaTTOuG1ZRNXdPA6RvKY+fpY=
@@ -425,8 +425,8 @@ github.com/play-with-docker/play-with-docker v0.0.3-0.20201025222131-e8486b8100e
 github.com/play-with-go/gitea v0.0.0-20201117212359-e8c942fd23b1 h1:GF1ytqY5ImU/VwbxBRfry/sOIsXpZWwxUM50WNRySeo=
 github.com/play-with-go/gitea v0.0.0-20201117212359-e8c942fd23b1/go.mod h1:u2EwEyaJW1TLsVERI3nAQHW6k/N1tBGvuI9jT9q5lP0=
 github.com/play-with-go/preguide v0.0.2-0.20200929132054-e0f48a7f7b23/go.mod h1:jkhBBbIBioAzKiRo5Rr9r03tqglgUdPZAVIpBBw7aDU=
-github.com/play-with-go/preguide v0.0.2-0.20201119122857-9e30f7d3a1b3 h1:6cyGYETrxQ78IelgO4KSOt+G4Zk9b4QVf0vsaq8TjSQ=
-github.com/play-with-go/preguide v0.0.2-0.20201119122857-9e30f7d3a1b3/go.mod h1:glq7imC+HiFSk1WAQ48uTuiTReVKxTl36A6JwIsdRPU=
+github.com/play-with-go/preguide v0.0.2-0.20201122075247-51479e851521 h1:Hca+b8vCHDFnsaceMW8mYHkD8WmAxHtguXmpNmrk0gI=
+github.com/play-with-go/preguide v0.0.2-0.20201122075247-51479e851521/go.mod h1:BP/erWoHufPAH3N3LELZp4/h2AIvnDSKbsszy+bqgmM=
 github.com/pmezard/go-difflib v0.0.0-20151028094244-d8ed2627bdf0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=

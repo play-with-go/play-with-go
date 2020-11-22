@@ -20,8 +20,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "cuelang.org/go",
-		      "Version": "v0.3.0-alpha4.0.20201116194914-7463d11dea50",
-		      "Sum": "h1:8FV7bhN9Nn6aq8Zkj/2nHefqGKoCbdRJ2g4NVovgZoE=",
+		      "Version": "v0.3.0-alpha5",
+		      "Sum": "h1:8gY9P7bZ3EsET3t0Y0tS2rtGo8qka7jbSu5pfjl07lw=",
 		      "Replace": null
 		    },
 		    {
@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201119122857-9e30f7d3a1b3",
-		      "Sum": "h1:6cyGYETrxQ78IelgO4KSOt+G4Zk9b4QVf0vsaq8TjSQ=",
+		      "Version": "v0.0.2-0.20201122075247-51479e851521",
+		      "Sum": "h1:Hca+b8vCHDFnsaceMW8mYHkD8WmAxHtguXmpNmrk0gI=",
 		      "Replace": null
 		    },
 		    {
@@ -129,223 +129,356 @@ Scenarios: [{
 Networks: ["playwithgo_pwg"]
 Env: []
 Steps: {
-	gopher_run: {
+	goversion: {
 		Stmts: [{
 			ComparisonOutput: """
-				public.Message(): This is a public safety announcement!
-				private.Secret(): This is a top secret message... for your eyes only
+				go version go1.15.5 linux/amd64
 
 				"""
 			Output: """
-				public.Message(): This is a public safety announcement!
-				private.Secret(): This is a top secret message... for your eyes only
+				go version go1.15.5 linux/amd64
 
 				"""
 			ExitCode: 0
-			CmdStr:   "go run ."
+			CmdStr:   "go version"
 			Negated:  false
 		}]
-		Order:           24
+		Order:           0
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "gopher_run"
+		Name:            "goversion"
 	}
-	private_pseudo_version: {
+	public_init: {
 		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "mkdir /home/gopher/public"
+			Negated:          false
+		}, {
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "cd /home/gopher/public"
+			Negated:          false
+		}, {
 			ComparisonOutput: """
-				v0.0.0-20060102150405-abcedf12345
+				go: creating new go.mod: module {{{.PUBLIC}}}
 
 				"""
 			Output: """
-				v0.0.0-20060102150405-abcedf12345
+				go: creating new go.mod: module {{{.PUBLIC}}}
 
 				"""
 			ExitCode: 0
-			CmdStr:   "go list -m -f {{.Version}} {{{.PRIVATE}}}"
+			CmdStr:   "go mod init {{{.PUBLIC}}}"
+			Negated:  false
+		}, {
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git init -q"
+			Negated:          false
+		}, {
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git remote add origin https://{{{.PUBLIC}}}.git"
+			Negated:          false
+		}]
+		Order:           1
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "public_init"
+	}
+	public_go_initial: {
+		Order: 2
+		Source: """
+			package public
+
+			func Message() string {
+			\treturn "This is a public safety announcement!"
+			}
+
+			"""
+		Renderer: {
+			RendererType: 1
+		}
+		Language: "go"
+		Target:   "/home/gopher/public/public.go"
+		Terminal: "term1"
+		StepType: 2
+		Name:     "public_go_initial"
+	}
+	public_initial_commit: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git add public.go go.mod"
+			Negated:          false
+		}, {
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git commit -q -m 'Initial commit of public module'"
+			Negated:          false
+		}, {
+			ComparisonOutput: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
+			Output: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
+			ExitCode: 0
+			CmdStr:   "git push -q origin main"
 			Negated:  false
 		}]
-		Order:           23
+		Order:           3
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "public_initial_commit"
+	}
+	public_check_initial_porcelain: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			Negated:          false
+		}]
+		Order:           4
 		InformationOnly: true
 		DoNotTrim:       false
-		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "private_pseudo_version"
+		Name:            "public_check_initial_porcelain"
 	}
-	gopher_get_private_goprivate: {
-		Stmts: [{
-			ComparisonOutput: """
-
-				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
-				go: {{{.PRIVATE}}} upgrade => v0.0.0-20060102150405-abcedf12345
-				"""
-			Output: """
-				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
-				go: {{{.PRIVATE}}} upgrade => v0.0.0-20060102150405-abcedf12345
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go get {{{.PRIVATE}}}"
-			Negated:  false
-		}]
-		Order:           22
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_get_private_goprivate"
-	}
-	goprivate_set_private: {
+	private_init: {
 		Stmts: [{
 			ComparisonOutput: ""
 			Output:           ""
 			ExitCode:         0
-			CmdStr:           "go env -w GOPRIVATE={{{.PRIVATE}}}"
+			CmdStr:           "mkdir /home/gopher/private"
 			Negated:          false
-		}]
-		Order:           21
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "goprivate_set_private"
-	}
-	gopher_get_private_direct: {
-		Stmts: [{
+		}, {
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "cd /home/gopher/private"
+			Negated:          false
+		}, {
 			ComparisonOutput: """
+				go: creating new go.mod: module {{{.PRIVATE}}}
 
-				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
-				\tnot found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
-				\tserver response:
-				go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 410 Gone
-				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
 				"""
 			Output: """
-				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
-				go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 410 Gone
-				\tserver response:
-				\tnot found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
-				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
+				go: creating new go.mod: module {{{.PRIVATE}}}
 
 				"""
-			ExitCode: 1
-			CmdStr:   "go get {{{.PRIVATE}}}"
-			Negated:  true
+			ExitCode: 0
+			CmdStr:   "go mod init {{{.PRIVATE}}}"
+			Negated:  false
+		}, {
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git init -q"
+			Negated:          false
+		}, {
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git remote add origin https://{{{.PRIVATE}}}.git"
+			Negated:          false
 		}]
-		Order:           19
+		Order:           5
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "gopher_get_private_direct"
+		Name:            "private_init"
 	}
-	goproxy_proxy_default: {
+	private_go_initial: {
+		Order: 6
+		Source: """
+			package private
+
+			func Secret() string {
+			\treturn "This is a top secret message... for your eyes only"
+			}
+
+			"""
+		Renderer: {
+			RendererType: 1
+		}
+		Language: "go"
+		Target:   "/home/gopher/private/private.go"
+		Terminal: "term1"
+		StepType: 2
+		Name:     "private_go_initial"
+	}
+	private_initial_commit: {
 		Stmts: [{
 			ComparisonOutput: ""
 			Output:           ""
 			ExitCode:         0
-			CmdStr:           "go env -w GOPROXY="
+			CmdStr:           "git add private.go go.mod"
 			Negated:          false
-		}]
-		Order:           18
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "goproxy_proxy_default"
-	}
-	gopher_get_private_initial: {
-		Stmts: [{
+		}, {
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "git commit -q -m 'Initial commit of private module'"
+			Negated:          false
+		}, {
 			ComparisonOutput: """
-
-				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
-				\tConfirm the import path was entered correctly.
-				\tIf this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
-				\tnot found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
-				\tserver response:
-				go get {{{.PRIVATE}}}: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 410 Gone
-				"""
-			Output: """
-				go get {{{.PRIVATE}}}: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 410 Gone
-				\tserver response:
-				\tnot found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
-				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
-				\tConfirm the import path was entered correctly.
-				\tIf this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
-
-				"""
-			ExitCode: 1
-			CmdStr:   "go get {{{.PRIVATE}}}"
-			Negated:  true
-		}]
-		Order:           17
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_get_private_initial"
-	}
-	public_pseudo_version: {
-		Stmts: [{
-			ComparisonOutput: """
-				v0.0.0-20060102150405-abcedf12345
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
 
 				"""
 			Output: """
-				v0.0.0-20060102150405-abcedf12345
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
 
 				"""
 			ExitCode: 0
-			CmdStr:   "go list -m -f {{.Version}} {{{.PUBLIC}}}"
+			CmdStr:   "git push -q origin main"
 			Negated:  false
 		}]
-		Order:           16
+		Order:           7
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "private_initial_commit"
+	}
+	private_check_initial_porcelain: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			Negated:          false
+		}]
+		Order:           8
 		InformationOnly: true
 		DoNotTrim:       false
-		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "public_pseudo_version"
+		Name:            "private_check_initial_porcelain"
 	}
-	gopher_get_public_initial: {
-		Stmts: [{
-			ComparisonOutput: """
-
-				go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
-				go: {{{.PUBLIC}}} upgrade => v0.0.0-20060102150405-abcedf12345
-				"""
-			Output: """
-				go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
-				go: {{{.PUBLIC}}} upgrade => v0.0.0-20060102150405-abcedf12345
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go get {{{.PUBLIC}}}"
-			Negated:  false
-		}]
-		Order:           15
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_get_public_initial"
-	}
-	goproxy_proxy_only: {
+	gopher_init: {
 		Stmts: [{
 			ComparisonOutput: ""
 			Output:           ""
 			ExitCode:         0
-			CmdStr:           "go env -w GOPROXY=https://proxy.golang.org"
+			CmdStr:           "mkdir /home/gopher/gopher"
 			Negated:          false
+		}, {
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "cd /home/gopher/gopher"
+			Negated:          false
+		}, {
+			ComparisonOutput: """
+				go: creating new go.mod: module gopher
+
+				"""
+			Output: """
+				go: creating new go.mod: module gopher
+
+				"""
+			ExitCode: 0
+			CmdStr:   "go mod init gopher"
+			Negated:  false
 		}]
-		Order:           14
+		Order:           9
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "goproxy_proxy_only"
+		Name:            "gopher_init"
+	}
+	gopher_go_initial: {
+		Order: 10
+		Source: """
+			package main
+
+			import (
+			\t"fmt"
+
+			\t"{{{.PUBLIC}}}"
+			\t"{{{.PRIVATE}}}"
+			)
+
+			func main() {
+			\tfmt.Printf("public.Message(): %v\\n", public.Message())
+			\tfmt.Printf("private.Secret(): %v\\n", private.Secret())
+			}
+
+			"""
+		Renderer: {
+			RendererType: 1
+		}
+		Language: "go"
+		Target:   "/home/gopher/gopher/gopher.go"
+		Terminal: "term1"
+		StepType: 2
+		Name:     "gopher_go_initial"
+	}
+	go_env_check_goproxy: {
+		Stmts: [{
+			ComparisonOutput: """
+				https://proxy.golang.org,direct
+
+				"""
+			Output: """
+				https://proxy.golang.org,direct
+
+				"""
+			ExitCode: 0
+			CmdStr:   "go env GOPROXY"
+			Negated:  false
+		}]
+		Order:           11
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "go_env_check_goproxy"
+	}
+	go_env_check_gosumdb: {
+		Stmts: [{
+			ComparisonOutput: """
+				sum.golang.org
+
+				"""
+			Output: """
+				sum.golang.org
+
+				"""
+			ExitCode: 0
+			CmdStr:   "go env GOSUMDB"
+			Negated:  false
+		}]
+		Order:           12
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "go_env_check_gosumdb"
 	}
 	go_env_check: {
 		Stmts: [{
@@ -408,356 +541,140 @@ Steps: {
 		StepType:        1
 		Name:            "go_env_check"
 	}
-	go_env_check_gosumdb: {
-		Stmts: [{
-			ComparisonOutput: """
-				sum.golang.org
-
-				"""
-			Output: """
-				sum.golang.org
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go env GOSUMDB"
-			Negated:  false
-		}]
-		Order:           12
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "go_env_check_gosumdb"
-	}
-	go_env_check_goproxy: {
-		Stmts: [{
-			ComparisonOutput: """
-				https://proxy.golang.org,direct
-
-				"""
-			Output: """
-				https://proxy.golang.org,direct
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go env GOPROXY"
-			Negated:  false
-		}]
-		Order:           11
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "go_env_check_goproxy"
-	}
-	gopher_go_initial: {
-		Order: 10
-		Source: """
-			package main
-
-			import (
-			\t"fmt"
-
-			\t"{{{.PUBLIC}}}"
-			\t"{{{.PRIVATE}}}"
-			)
-
-			func main() {
-			\tfmt.Printf("public.Message(): %v\\n", public.Message())
-			\tfmt.Printf("private.Secret(): %v\\n", private.Secret())
-			}
-
-			"""
-		Renderer: {
-			RendererType: 1
-		}
-		Language: "go"
-		Target:   "/home/gopher/gopher/gopher.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "gopher_go_initial"
-	}
-	gopher_init: {
+	goproxy_proxy_only: {
 		Stmts: [{
 			ComparisonOutput: ""
 			Output:           ""
 			ExitCode:         0
-			CmdStr:           "mkdir /home/gopher/gopher"
+			CmdStr:           "go env -w GOPROXY=https://proxy.golang.org"
 			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "cd /home/gopher/gopher"
-			Negated:          false
-		}, {
-			ComparisonOutput: """
-				go: creating new go.mod: module gopher
-
-				"""
-			Output: """
-				go: creating new go.mod: module gopher
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go mod init gopher"
-			Negated:  false
 		}]
-		Order:           9
+		Order:           14
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "gopher_init"
+		Name:            "goproxy_proxy_only"
 	}
-	private_check_initial_porcelain: {
+	gopher_get_public_initial: {
 		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
-			Negated:          false
+			ComparisonOutput: """
+
+				go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
+				go: {{{.PUBLIC}}} upgrade => v0.0.0-20060102150405-abcedf12345
+				"""
+			Output: """
+				go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
+				go: {{{.PUBLIC}}} upgrade => v0.0.0-20060102150405-abcedf12345
+
+				"""
+			ExitCode: 0
+			CmdStr:   "go get {{{.PUBLIC}}}"
+			Negated:  false
 		}]
-		Order:           8
+		Order:           15
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "gopher_get_public_initial"
+	}
+	public_pseudo_version: {
+		Stmts: [{
+			ComparisonOutput: """
+				v0.0.0-20060102150405-abcedf12345
+
+				"""
+			Output: """
+				v0.0.0-20060102150405-abcedf12345
+
+				"""
+			ExitCode: 0
+			CmdStr:   "go list -m -f {{.Version}} {{{.PUBLIC}}}"
+			Negated:  false
+		}]
+		Order:           16
 		InformationOnly: true
 		DoNotTrim:       false
+		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "private_check_initial_porcelain"
+		Name:            "public_pseudo_version"
 	}
-	private_initial_commit: {
+	gopher_get_private_initial: {
 		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git add private.go go.mod"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git commit -q -m 'Initial commit of private module'"
-			Negated:          false
-		}, {
 			ComparisonOutput: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
 
+				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
+				\tConfirm the import path was entered correctly.
+				\tIf this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
+				\tnot found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
+				\tserver response:
+				go get {{{.PRIVATE}}}: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 410 Gone
 				"""
 			Output: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
+				go get {{{.PRIVATE}}}: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 410 Gone
+				\tserver response:
+				\tnot found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
+				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
+				\tConfirm the import path was entered correctly.
+				\tIf this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
 
 				"""
-			ExitCode: 0
-			CmdStr:   "git push -q origin main"
-			Negated:  false
+			ExitCode: 1
+			CmdStr:   "go get {{{.PRIVATE}}}"
+			Negated:  true
 		}]
-		Order:           7
+		Order:           17
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "private_initial_commit"
+		Name:            "gopher_get_private_initial"
 	}
-	private_go_initial: {
-		Order: 6
-		Source: """
-			package private
-
-			func Secret() string {
-			\treturn "This is a top secret message... for your eyes only"
-			}
-
-			"""
-		Renderer: {
-			RendererType: 1
-		}
-		Language: "go"
-		Target:   "/home/gopher/private/private.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "private_go_initial"
-	}
-	private_init: {
+	goproxy_proxy_default: {
 		Stmts: [{
 			ComparisonOutput: ""
 			Output:           ""
 			ExitCode:         0
-			CmdStr:           "mkdir /home/gopher/private"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "cd /home/gopher/private"
-			Negated:          false
-		}, {
-			ComparisonOutput: """
-				go: creating new go.mod: module {{{.PRIVATE}}}
-
-				"""
-			Output: """
-				go: creating new go.mod: module {{{.PRIVATE}}}
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go mod init {{{.PRIVATE}}}"
-			Negated:  false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git init -q"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git remote add origin https://{{{.PRIVATE}}}.git"
+			CmdStr:           "go env -w GOPROXY="
 			Negated:          false
 		}]
-		Order:           5
+		Order:           18
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "private_init"
+		Name:            "goproxy_proxy_default"
 	}
-	public_check_initial_porcelain: {
+	gopher_get_private_direct: {
 		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
-			Negated:          false
-		}]
-		Order:           4
-		InformationOnly: true
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "public_check_initial_porcelain"
-	}
-	public_initial_commit: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git add public.go go.mod"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git commit -q -m 'Initial commit of public module'"
-			Negated:          false
-		}, {
 			ComparisonOutput: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
 
+				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
+				\tnot found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
+				\tserver response:
+				go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 410 Gone
+				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
 				"""
 			Output: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
+				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
+				go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 410 Gone
+				\tserver response:
+				\tnot found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
+				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
 
 				"""
-			ExitCode: 0
-			CmdStr:   "git push -q origin main"
-			Negated:  false
+			ExitCode: 1
+			CmdStr:   "go get {{{.PRIVATE}}}"
+			Negated:  true
 		}]
-		Order:           3
+		Order:           19
 		InformationOnly: false
 		DoNotTrim:       false
 		Terminal:        "term1"
 		StepType:        1
-		Name:            "public_initial_commit"
-	}
-	public_go_initial: {
-		Order: 2
-		Source: """
-			package public
-
-			func Message() string {
-			\treturn "This is a public safety announcement!"
-			}
-
-			"""
-		Renderer: {
-			RendererType: 1
-		}
-		Language: "go"
-		Target:   "/home/gopher/public/public.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "public_go_initial"
-	}
-	public_init: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "mkdir /home/gopher/public"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "cd /home/gopher/public"
-			Negated:          false
-		}, {
-			ComparisonOutput: """
-				go: creating new go.mod: module {{{.PUBLIC}}}
-
-				"""
-			Output: """
-				go: creating new go.mod: module {{{.PUBLIC}}}
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go mod init {{{.PUBLIC}}}"
-			Negated:  false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git init -q"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git remote add origin https://{{{.PUBLIC}}}.git"
-			Negated:          false
-		}]
-		Order:           1
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "public_init"
-	}
-	goversion: {
-		Stmts: [{
-			ComparisonOutput: """
-				go version go1.15.5 linux/amd64
-
-				"""
-			Output: """
-				go version go1.15.5 linux/amd64
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go version"
-			Negated:  false
-		}]
-		Order:           0
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "goversion"
+		Name:            "gopher_get_private_direct"
 	}
 	go_help_modprivate: {
 		Stmts: [{
@@ -860,6 +777,89 @@ Steps: {
 		StepType:        1
 		Name:            "go_help_modprivate"
 	}
+	goprivate_set_private: {
+		Stmts: [{
+			ComparisonOutput: ""
+			Output:           ""
+			ExitCode:         0
+			CmdStr:           "go env -w GOPRIVATE={{{.PRIVATE}}}"
+			Negated:          false
+		}]
+		Order:           21
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "goprivate_set_private"
+	}
+	gopher_get_private_goprivate: {
+		Stmts: [{
+			ComparisonOutput: """
+
+				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
+				go: {{{.PRIVATE}}} upgrade => v0.0.0-20060102150405-abcedf12345
+				"""
+			Output: """
+				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
+				go: {{{.PRIVATE}}} upgrade => v0.0.0-20060102150405-abcedf12345
+
+				"""
+			ExitCode: 0
+			CmdStr:   "go get {{{.PRIVATE}}}"
+			Negated:  false
+		}]
+		Order:           22
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "gopher_get_private_goprivate"
+	}
+	private_pseudo_version: {
+		Stmts: [{
+			ComparisonOutput: """
+				v0.0.0-20060102150405-abcedf12345
+
+				"""
+			Output: """
+				v0.0.0-20060102150405-abcedf12345
+
+				"""
+			ExitCode: 0
+			CmdStr:   "go list -m -f {{.Version}} {{{.PRIVATE}}}"
+			Negated:  false
+		}]
+		Order:           23
+		InformationOnly: true
+		DoNotTrim:       false
+		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "private_pseudo_version"
+	}
+	gopher_run: {
+		Stmts: [{
+			ComparisonOutput: """
+				public.Message(): This is a public safety announcement!
+				private.Secret(): This is a top secret message... for your eyes only
+
+				"""
+			Output: """
+				public.Message(): This is a public safety announcement!
+				private.Secret(): This is a top secret message... for your eyes only
+
+				"""
+			ExitCode: 0
+			CmdStr:   "go run ."
+			Negated:  false
+		}]
+		Order:           24
+		InformationOnly: false
+		DoNotTrim:       false
+		Terminal:        "term1"
+		StepType:        1
+		Name:            "gopher_run"
+	}
 }
-Hash: "4e123ad2f4678f98223cb3f582ad168816ed7b3e9f5d3626629770544a23b2d4"
+Hash: "6bca03c0e7011b388535bf41c9bf6b77e727feeb1333f45274c3027bac315063"
 Delims: ["{{{", "}}}"]
