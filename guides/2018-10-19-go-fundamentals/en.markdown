@@ -325,7 +325,7 @@ In this code, you:
 * Have the new `Hellos` function call the existing `Hello` function. This leaves both functions in place.
 * Create a `messages` [map](https://blog.golang.org/map) to associate each of the received names (as a key) with a
   generated message (as a value). In Go, you initialize a map with the following syntax:
-`make(map[key-type]value-type`).  You have the `Hello` function return this map to the caller.
+`make(map[key-type]value-type)`.  You have the `Hello` function return this map to the caller.
 * Loop through the names your function received, checking that each has a non-empty value, then associate a message with
   each. In this `for` loop, `range` returns two values: the index of the current item in the loop and a copy of the
 item's value. You don't need the index, so you use the Go [blank identifier (an
