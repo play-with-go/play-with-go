@@ -818,14 +818,14 @@ The tests should pass:
 ```.term1
 $ go test
 PASS
-ok  	{% raw %}{{{.GREETINGS}}}{% endraw %}	0.042s
+ok  	{% raw %}{{{.GREETINGS}}}{% endraw %}	0.002s
 $ go test -v
 === RUN   TestHelloName
---- PASS: TestHelloName (0.042s)
+--- PASS: TestHelloName (0.00s)
 === RUN   TestHelloEmpty
---- PASS: TestHelloEmpty (0.042s)
+--- PASS: TestHelloEmpty (0.00s)
 PASS
-ok  	{% raw %}{{{.GREETINGS}}}{% endraw %}	0.042s
+ok  	{% raw %}{{{.GREETINGS}}}{% endraw %}	0.002s
 ```
 {:data-command-src="Z28gdGVzdApnbyB0ZXN0IC12Cg=="}
 
@@ -908,11 +908,11 @@ a lot of tests. The `TestHelloName` test should fail -- `TestHelloEmpty` still p
 
 ```.term1
 $ go test
---- FAIL: TestHelloName (0.042s)
+--- FAIL: TestHelloName (0.00s)
     greetings_test.go:15: Hello("Gladys") = "Hail, %v! Well met!", <nil>, want match for `\bGladys\b`, <nil>
 FAIL
 exit status 1
-FAIL	{% raw %}{{{.GREETINGS}}}{% endraw %}	0.042s
+FAIL	{% raw %}{{{.GREETINGS}}}{% endraw %}	0.002s
 ```
 {:data-command-src="Z28gdGVzdAo="}
 
@@ -988,7 +988,7 @@ And re-run `go test` to verify our change:
 ```.term1
 $ go test
 PASS
-ok  	{% raw %}{{{.GREETINGS}}}{% endraw %}	0.042s
+ok  	{% raw %}{{{.GREETINGS}}}{% endraw %}	0.002s
 ```
 {:data-command-src="Z28gdGVzdAo="}
 

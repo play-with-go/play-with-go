@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201122075247-51479e851521",
-		      "Sum": "h1:Hca+b8vCHDFnsaceMW8mYHkD8WmAxHtguXmpNmrk0gI=",
+		      "Version": "v0.0.2-0.20201123103050-d71a1f64a6fa",
+		      "Sum": "h1:9KuD6NosvGFf+In9ZnAInK+HclwHvSZY733tR5ZXcxo=",
 		      "Replace": null
 		    },
 		    {
@@ -1382,5 +1382,5 @@ Steps: {
 		Name:            "gopher_run_life_proverb"
 	}
 }
-Hash: "ec077aa5c4de4e33480343ff7670a53a2cbb4fff4aa2b903de048d447c44a029"
+Hash: "331f0655a2131069cb8f677dccc14c97d49cdf78c54dbc54d3d3efa289c54dde"
 Delims: ["{{{", "}}}"]
