@@ -176,5 +176,5 @@ Steps: {
 		Name:            "goversion_mkcert"
 	}
 }
-Hash: "f1ab402970a3ab6701aa6ac6c634d161a56c9368402a48eeec1ef4b0fbfe0e69"
+Hash: "28a40c900a5c50396f48983ef9d54a3ddb7bdcebb1a5015275cd5bcf4d7fb52d"
 Delims: ["{{{", "}}}"]
