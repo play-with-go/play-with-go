@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201122075247-51479e851521",
-		      "Sum": "h1:Hca+b8vCHDFnsaceMW8mYHkD8WmAxHtguXmpNmrk0gI=",
+		      "Version": "v0.0.2-0.20201123103050-d71a1f64a6fa",
+		      "Sum": "h1:9KuD6NosvGFf+In9ZnAInK+HclwHvSZY733tR5ZXcxo=",
 		      "Replace": null
 		    },
 		    {
@@ -787,5 +787,5 @@ Steps: {
 		Name:            "gopher_run"
 	}
 }
-Hash: "091111583743730d3e2fbd93d64b4caa5f5f8447bbf196082b69b0c2f74c1b2e"
+Hash: "ee36a2a498ebe4889e69a69a72ecf3cd5e0cfe1512b5e0752cb544d894a353d8"
 Delims: ["{{{", "}}}"]

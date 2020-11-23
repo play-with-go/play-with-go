@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201122075247-51479e851521",
-		      "Sum": "h1:Hca+b8vCHDFnsaceMW8mYHkD8WmAxHtguXmpNmrk0gI=",
+		      "Version": "v0.0.2-0.20201123103050-d71a1f64a6fa",
+		      "Sum": "h1:9KuD6NosvGFf+In9ZnAInK+HclwHvSZY733tR5ZXcxo=",
 		      "Replace": null
 		    },
 		    {
@@ -1514,12 +1514,12 @@ Steps: {
 		Stmts: [{
 			ComparisonOutput: """
 				PASS
-				ok  \t{{{.GREETINGS}}}\t0.042s
+				ok  \t{{{.GREETINGS}}}\tN.NNs
 
 				"""
 			Output: """
 				PASS
-				ok  \t{{{.GREETINGS}}}\t0.042s
+				ok  \t{{{.GREETINGS}}}\t0.002s
 
 				"""
 			ExitCode: 0
@@ -1528,20 +1528,20 @@ Steps: {
 		}, {
 			ComparisonOutput: """
 				=== RUN   TestHelloName
-				--- PASS: TestHelloName (0.042s)
+				--- PASS: TestHelloName (N.NNs)
 				=== RUN   TestHelloEmpty
-				--- PASS: TestHelloEmpty (0.042s)
+				--- PASS: TestHelloEmpty (N.NNs)
 				PASS
-				ok  \t{{{.GREETINGS}}}\t0.042s
+				ok  \t{{{.GREETINGS}}}\tN.NNs
 
 				"""
 			Output: """
 				=== RUN   TestHelloName
-				--- PASS: TestHelloName (0.042s)
+				--- PASS: TestHelloName (0.00s)
 				=== RUN   TestHelloEmpty
-				--- PASS: TestHelloEmpty (0.042s)
+				--- PASS: TestHelloEmpty (0.00s)
 				PASS
-				ok  \t{{{.GREETINGS}}}\t0.042s
+				ok  \t{{{.GREETINGS}}}\t0.002s
 
 				"""
 			ExitCode: 0
@@ -1702,19 +1702,19 @@ Steps: {
 	greetings_run_tests_fail: {
 		Stmts: [{
 			ComparisonOutput: """
-				--- FAIL: TestHelloName (0.042s)
+				--- FAIL: TestHelloName (N.NNs)
 				    greetings_test.go:15: Hello("Gladys") = "Hail, %v! Well met!", <nil>, want match for `\\bGladys\\b`, <nil>
 				FAIL
 				exit status 1
-				FAIL\t{{{.GREETINGS}}}\t0.042s
+				FAIL\t{{{.GREETINGS}}}\tN.NNs
 
 				"""
 			Output: """
-				--- FAIL: TestHelloName (0.042s)
+				--- FAIL: TestHelloName (0.00s)
 				    greetings_test.go:15: Hello("Gladys") = "Hail, %v! Well met!", <nil>, want match for `\\bGladys\\b`, <nil>
 				FAIL
 				exit status 1
-				FAIL\t{{{.GREETINGS}}}\t0.042s
+				FAIL\t{{{.GREETINGS}}}\t0.002s
 
 				"""
 			ExitCode: 1
@@ -1876,12 +1876,12 @@ Steps: {
 		Stmts: [{
 			ComparisonOutput: """
 				PASS
-				ok  \t{{{.GREETINGS}}}\t0.042s
+				ok  \t{{{.GREETINGS}}}\tN.NNs
 
 				"""
 			Output: """
 				PASS
-				ok  \t{{{.GREETINGS}}}\t0.042s
+				ok  \t{{{.GREETINGS}}}\t0.002s
 
 				"""
 			ExitCode: 0
@@ -1989,5 +1989,5 @@ Steps: {
 		Name:            "hello_run_by_name"
 	}
 }
-Hash: "75cf66dabd4cd3ad7b9be537f9247c1e885639d0ae32fd02927be229ca5854b1"
+Hash: "44d441e14bf17790648b52585bd9c277778ed229b9f8a1ecb49500d52453ccdf"
 Delims: ["{{{", "}}}"]
