@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201123103050-d71a1f64a6fa",
-		      "Sum": "h1:9KuD6NosvGFf+In9ZnAInK+HclwHvSZY733tR5ZXcxo=",
+		      "Version": "v0.0.2-0.20201123125600-bcc70045611e",
+		      "Sum": "h1:qO8GiXVWiA6gBAhuc1AF+rPdEcki7pWfby/y+D8HX9g=",
 		      "Replace": null
 		    },
 		    {
@@ -1541,7 +1541,7 @@ Steps: {
 				=== RUN   TestHelloEmpty
 				--- PASS: TestHelloEmpty (0.00s)
 				PASS
-				ok  \t{{{.GREETINGS}}}\t0.002s
+				ok  \t{{{.GREETINGS}}}\t0.003s
 
 				"""
 			ExitCode: 0
@@ -1989,5 +1989,5 @@ Steps: {
 		Name:            "hello_run_by_name"
 	}
 }
-Hash: "44d441e14bf17790648b52585bd9c277778ed229b9f8a1ecb49500d52453ccdf"
+Hash: "0b43de8211d2573444035aba168566fc17f817a33e4ae3ef185a5d2063fa027b"
 Delims: ["{{{", "}}}"]
