@@ -117,7 +117,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.5@sha256:2cc72c6bf72ce59de8aff52f7bbb0603926dbdd70473ec7f8b9f8310edf57ba4"
+			Image: "playwithgo/go1.15.5@sha256:1c332c6b4e73dee8075badc66fe23c7fe51c44ddd2becb6cffc2db81bdaa0b06"
 		}
 	}
 	Name: "term1"
@@ -861,5 +861,5 @@ Steps: {
 		Name:            "gopher_run"
 	}
 }
-Hash: "1dc01ea250c6e66395a3b4d1897a926f2eee87bbafca9e3168abacc7e117997c"
+Hash: "e219cf9867e90ef030a09d9e94abc0c3fe79c83743d663564fbf169bd0420d9a"
 Delims: ["{{{", "}}}"]
