@@ -113,7 +113,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.5@sha256:2cc72c6bf72ce59de8aff52f7bbb0603926dbdd70473ec7f8b9f8310edf57ba4"
+			Image: "playwithgo/go1.15.5@sha256:1c332c6b4e73dee8075badc66fe23c7fe51c44ddd2becb6cffc2db81bdaa0b06"
 		}
 	}
 	Name: "term1"
@@ -339,5 +339,5 @@ Steps: {
 		Name:            "gitpush"
 	}
 }
-Hash: "98aa7beef15efc64b013e1397df4d47701673c94472f9615074fe5b1163e324b"
+Hash: "6154c247da2e98ee19aa706063dfbd52269dac7e41fa65def7c63bf01a5b6abd"
 Delims: ["{{{", "}}}"]

@@ -113,7 +113,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.5@sha256:2cc72c6bf72ce59de8aff52f7bbb0603926dbdd70473ec7f8b9f8310edf57ba4"
+			Image: "playwithgo/go1.15.5@sha256:1c332c6b4e73dee8075badc66fe23c7fe51c44ddd2becb6cffc2db81bdaa0b06"
 		}
 	}
 	Name: "term1"
@@ -780,5 +780,5 @@ Steps: {
 		Name:            "painkiller_check_fever_advice"
 	}
 }
-Hash: "2755ad32bb8831d151dadcf2aa01272990f1b7f7fffe85572761f805be9bf65d"
+Hash: "1bd757fb50cdadb711b9d893237aec29c2b540e0df711537ef5ebdcc7bdebcc9"
 Delims: ["{{{", "}}}"]

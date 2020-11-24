@@ -392,7 +392,7 @@ $ go test -v
 === RUN   TestHelloEmpty
 --- PASS: TestHelloEmpty (0.00s)
 PASS
-ok  	{{{.GREETINGS}}}	0.003s
+ok  	{{{.GREETINGS}}}	0.002s
 $ cat <<EOD > /home/gopher/greetings/greetings.go
 package greetings
 

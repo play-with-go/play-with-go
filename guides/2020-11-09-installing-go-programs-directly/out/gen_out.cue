@@ -4,7 +4,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go116: {
-			Image: "playwithgo/go1.16-tip@sha256:32d8ed6e153b937670343af5132bc62ac2b6ac2eb5ba82adc761775897f33f16"
+			Image: "playwithgo/go1.16-tip@sha256:af9da82837751157485d9c2008b4ad950037502d9d18715cb1e617f4b2d6f169"
 		}
 	}
 	Name: "term1"
@@ -176,5 +176,5 @@ Steps: {
 		Name:            "goversion_mkcert"
 	}
 }
-Hash: "28a40c900a5c50396f48983ef9d54a3ddb7bdcebb1a5015275cd5bcf4d7fb52d"
+Hash: "f824051f1210794edf43a5d84cd61d8559f382f150540111ed0c7c50100df97b"
 Delims: ["{{{", "}}}"]

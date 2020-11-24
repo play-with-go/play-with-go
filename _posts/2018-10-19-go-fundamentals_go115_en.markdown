@@ -825,7 +825,7 @@ $ go test -v
 === RUN   TestHelloEmpty
 --- PASS: TestHelloEmpty (0.00s)
 PASS
-ok  	{% raw %}{{{.GREETINGS}}}{% endraw %}	0.003s
+ok  	{% raw %}{{{.GREETINGS}}}{% endraw %}	0.002s
 ```
 {:data-command-src="Z28gdGVzdApnbyB0ZXN0IC12Cg=="}
 

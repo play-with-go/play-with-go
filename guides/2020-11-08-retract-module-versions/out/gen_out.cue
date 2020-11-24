@@ -113,7 +113,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go116: {
-			Image: "playwithgo/go1.16-tip@sha256:32d8ed6e153b937670343af5132bc62ac2b6ac2eb5ba82adc761775897f33f16"
+			Image: "playwithgo/go1.16-tip@sha256:af9da82837751157485d9c2008b4ad950037502d9d18715cb1e617f4b2d6f169"
 		}
 	}
 	Name: "term1"
@@ -1382,5 +1382,5 @@ Steps: {
 		Name:            "gopher_run_life_proverb"
 	}
 }
-Hash: "46bcf38b81c7e4d97c6c8037b08d243e2a49a967f8cdbec60c91a1ae1ba002e7"
+Hash: "c820dcaec2cdcd99a597313c82c436ec28367e7257a74ed04e15d9500e2f493c"
 Delims: ["{{{", "}}}"]
