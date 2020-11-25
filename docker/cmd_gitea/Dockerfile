@@ -8,7 +8,7 @@ ENV GOMODCACHE=/root/.cache/go/gomodcache
 ENV CGO_ENABLED=0
 ENV GOPATH=
 
-COPY . .
+COPY go.mod go.sum .
 
 RUN --mount=type=cache,target=/root/.cache/go go build github.com/play-with-go/gitea/cmd/gitea
 
