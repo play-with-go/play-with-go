@@ -34,6 +34,10 @@ Currently, tool authors who want to provide installation instructions in their p
 
 {{{ step "go115_mkcert_get" }}}
 
+_Note: most `README.md` instructions that use `{{{ .cmdgo.get }}}` do not specify a version. This results in the latest
+version of a package being fetched. A specific version, `{{{.mkcert_version}}}`, is used here to ensure this guide
+remains reproducible._
+
 There are a number of problems with this approach:
 
 * A user might run the above `{{{ .cmdgo.get }}}` within a module, which would

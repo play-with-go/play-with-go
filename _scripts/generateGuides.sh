@@ -13,12 +13,4 @@ then
 	export PREGUIDE_SKIP_CACHE=true
 fi
 
-function join_by { local d=$1; shift; local f=$1; shift; printf %s "$f" "${@/#/$d}"; }
-
-run=""
-if [ "$#" != "0" ]
-then
-	export PREGUIDE_RUN="$(join_by '|' "$@")"
-fi
-
 go generate -tags guides ./guides

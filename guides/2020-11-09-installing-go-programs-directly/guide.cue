@@ -29,7 +29,7 @@ Steps: goversion: preguide.#Command & {
 
 Steps: go115_mkcert_get: preguide.#Command & {
 	Source: """
-		go get \(Defs.mkcert_pkg)
+		go get \(Defs.mkcert_pkg)@\(Defs.mkcert_version)
 		"""
 }
 
