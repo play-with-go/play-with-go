@@ -35,11 +35,9 @@ You should already have completed:
 
 This guide is running using:
 
-```.term1
-$ go version
+<pre data-command-src="Z28gdmVyc2lvbgo="><code class="language-.term1">$ go version
 go version go1.15.5 linux/amd64
-```
-{:data-command-src="Z28gdmVyc2lvbgo="}
+</code></pre>
 
 ### Installing Staticcheck
 
@@ -48,15 +46,13 @@ module dependency, please see the ["Developer tools as module dependencies" guid
 
 Use `go get` to install Staticcheck:
 
-```.term1
-$ (cd $(mktemp -d); GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6)
+<pre data-command-src="KGNkICQobWt0ZW1wIC1kKTsgR08xMTFNT0RVTEU9b24gZ28gZ2V0IGhvbm5lZi5jby9nby90b29scy9jbWQvc3RhdGljY2hlY2tAdjAuMC4xLTIwMjAuMS42KQo="><code class="language-.term1">$ (cd $(mktemp -d); GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6)
 go: downloading honnef.co/go/tools v0.0.1-2020.1.6
 go: found honnef.co/go/tools/cmd/staticcheck in honnef.co/go/tools v0.0.1-2020.1.6
 go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
 go: downloading github.com/BurntSushi/toml v0.3.1
 go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
-```
-{:data-command-src="KGNkICQobWt0ZW1wIC1kKTsgR08xMTFNT0RVTEU9b24gZ28gZ2V0IGhvbm5lZi5jby9nby90b29scy9jbWQvc3RhdGljY2hlY2tAdjAuMC4xLTIwMjAuMS42KQo="}
+</code></pre>
 
 _Note: so that this guide remains reproducible we have spcified an explicit version, `v0.0.1-2020.1.6`.
 When running yourself you could use the special version `latest`._
@@ -66,19 +62,15 @@ _"Setting up your `PATH`"_ section in [Installing Go](/installing-go_go115_en) t
 
 Check that `staticcheck` is on your `PATH`:
 
-```.term1
-$ which staticcheck
+<pre data-command-src="d2hpY2ggc3RhdGljY2hlY2sK"><code class="language-.term1">$ which staticcheck
 /home/gopher/go/bin/staticcheck
-```
-{:data-command-src="d2hpY2ggc3RhdGljY2hlY2sK"}
+</code></pre>
 
 Run `staticcheck` as a quick check:
 
-```.term1
-$ staticcheck -version
+<pre data-command-src="c3RhdGljY2hlY2sgLXZlcnNpb24K"><code class="language-.term1">$ staticcheck -version
 staticcheck 2020.1.6
-```
-{:data-command-src="c3RhdGljY2hlY2sgLXZlcnNpb24K"}
+</code></pre>
 
 You're all set!
 
@@ -86,13 +78,11 @@ You're all set!
 
 Time to create an initial version of the `pets` module:
 
-```.term1
-$ mkdir /home/gopher/pets
+<pre data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL3BldHMKY2QgL2hvbWUvZ29waGVyL3BldHMKZ28gbW9kIGluaXQgcGV0cwo="><code class="language-.term1">$ mkdir /home/gopher/pets
 $ cd /home/gopher/pets
 $ go mod init pets
 go: creating new go.mod: module pets
-```
-{:data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL3BldHMKY2QgL2hvbWUvZ29waGVyL3BldHMKZ28gbW9kIGluaXQgcGV0cwo="}
+</code></pre>
 
 Because you are not going to publish this module (or import the `pets` package; it's just a toy
 example), you do not need to initialise this directory as a `git` repository and can give the module whatever path you
@@ -114,46 +104,42 @@ const (
 	Snake
 )
 
-type Pet struct {
+type Pet struct &#123;
 	Kind Animal
 	Name string
-}
+&#125;
 
-func (p Pet) Walk() error {
-	switch p.Kind {
+func (p Pet) Walk() error &#123;
+	switch p.Kind &#123;
 	case Dog:
 		fmt.Printf(&#34;Will take %v for a walk around the block\n&#34;)
 	default:
 		return errors.New(fmt.Sprintf(&#34;Cannot take %v for a walk&#34;, p.Name))
-	}
+	&#125;
 	return nil
-}
+&#125;
 
-func (self Pet) String() string {
+func (self Pet) String() string &#123;
 	return fmt.Sprintf(&#34;%s&#34;, self.Name)
-}
+&#125;
 </code></pre>
 
 This code looks sensible enough. Build it to confirm there are no compile errors:
 
-```.term1
-$ go build
-```
-{:data-command-src="Z28gYnVpbGQK"}
+<pre data-command-src="Z28gYnVpbGQK"><code class="language-.term1">$ go build
+</code></pre>
 
 All good. Or is it? Let's run Staticcheck to see what it thinks.
 
 Staticcheck can be run on code in several ways, mimicking the way the official Go tools work. At its core, it expects to
 be run on well-formed Go packages. So let's run it on the current package, the `pets` package:
 
-```.term1
-$ staticcheck .
+<pre data-command-src="c3RhdGljY2hlY2sgLgo="><code class="language-.term1">$ staticcheck .
 pets.go:23:14: Printf format %v reads arg #1, but call has only 0 args (SA5009)
 pets.go:25:10: should use fmt.Errorf(...) instead of errors.New(fmt.Sprintf(...)) (S1028)
-pets.go:30:7: receiver name should be a reflection of its identity; don't use generic names such as "this" or "self" (ST1006)
-pets.go:31:9: the argument is already a string, there's no need to use fmt.Sprintf (S1025)
-```
-{:data-command-src="c3RhdGljY2hlY2sgLgo="}
+pets.go:30:7: receiver name should be a reflection of its identity; don&#39;t use generic names such as &#34;this&#34; or &#34;self&#34; (ST1006)
+pets.go:31:9: the argument is already a string, there&#39;s no need to use fmt.Sprintf (S1025)
+</code></pre>
 
 Oh dear, Staticcheck has found some issues!
 
@@ -172,15 +158,13 @@ The Staticcheck website [lists and documents all the categories and checks](http
 the checks even have examples. You can also use the `-explain` flag to get details at the command
 line:
 
-```.term1
-$ staticcheck -explain SA5009
+<pre data-command-src="c3RhdGljY2hlY2sgLWV4cGxhaW4gU0E1MDA5Cg=="><code class="language-.term1">$ staticcheck -explain SA5009
 Invalid Printf call
 
 Available since
     2019.2
 
-```
-{:data-command-src="c3RhdGljY2hlY2sgLWV4cGxhaW4gU0E1MDA5Cg=="}
+</code></pre>
 
 Let's consider one of the problems reported, [`ST1006`](https://staticcheck.io/docs/checks#ST1006), documented as "Poorly
 chosen receiver name". The Staticcheck check documentation quotes from the [Go Code Review Comments
@@ -213,32 +197,30 @@ const (
 	Snake
 )
 
-type Pet struct {
+type Pet struct &#123;
 	Kind Animal
 	Name string
-}
+&#125;
 
-func (p Pet) Walk() error {
-	switch p.Kind {
+func (p Pet) Walk() error &#123;
+	switch p.Kind &#123;
 	case Dog:
 <b>		fmt.Printf(&#34;Will take %v for a walk around the block\n&#34;, p.Name)</b>
 	default:
 <b>		return fmt.Errorf(&#34;cannot take %v for a walk&#34;, p.Name)</b>
-	}
+	&#125;
 	return nil
-}
+&#125;
 
-<b>func (p Pet) String() string {</b>
+<b>func (p Pet) String() string &#123;</b>
 <b>	return p.Name</b>
-}
+&#125;
 </code></pre>
 
 And re-run Staticcheck to confirm:
 
-```.term1
-$ staticcheck .
-```
-{:data-command-src="c3RhdGljY2hlY2sgLgo="}
+<pre data-command-src="c3RhdGljY2hlY2sgLgo="><code class="language-.term1">$ staticcheck .
+</code></pre>
 
 Excellent, much better.
 
@@ -258,16 +240,14 @@ Staticcheck configuration files are named `staticcheck.conf` and contain
 Let's create a Staticcheck configuration file to enable check `ST1000`, inheriting from the
 Staticcheck defaults:
 
-<pre data-upload-path="L2hvbWUvZ29waGVyL3BldHM=" data-upload-src="c3RhdGljY2hlY2suY29uZg==:Y2hlY2tzID0gWyJpbmhlcml0IiwgIlNUMTAwMCJdCg==" data-upload-term=".term1"><code class="language-conf">checks = [&#34;inherit&#34;, &#34;ST1000&#34;]
+<pre data-upload-path="L2hvbWUvZ29waGVyL3BldHM=" data-upload-src="c3RhdGljY2hlY2suY29uZg==:Y2hlY2tzID0gWyJpbmhlcml0IiwgIlNUMTAwMCJdCg==" data-upload-term=".term1"><code class="language-toml">checks = [&#34;inherit&#34;, &#34;ST1000&#34;]
 </code></pre>
 
 Re-run Staticcheck to verify `ST1000` is reported:
 
-```.term1
-$ staticcheck .
+<pre data-command-src="c3RhdGljY2hlY2sgLgo="><code class="language-.term1">$ staticcheck .
 pets.go:1:1: at least one file in a package should have a package comment (ST1000)
-```
-{:data-command-src="c3RhdGljY2hlY2sgLgo="}
+</code></pre>
 
 Excellent. Add a package comment to `pets.go` to fix the problem:
 
@@ -286,32 +266,30 @@ const (
 	Snake
 )
 
-type Pet struct {
+type Pet struct &#123;
 	Kind Animal
 	Name string
-}
+&#125;
 
-func (p Pet) Walk() error {
-	switch p.Kind {
+func (p Pet) Walk() error &#123;
+	switch p.Kind &#123;
 	case Dog:
 		fmt.Printf(&#34;Will take %v for a walk around the block\n&#34;, p.Name)
 	default:
 		return fmt.Errorf(&#34;cannot take %v for a walk&#34;, p.Name)
-	}
+	&#125;
 	return nil
-}
+&#125;
 
-func (p Pet) String() string {
+func (p Pet) String() string &#123;
 	return p.Name
-}
+&#125;
 </code></pre>
 
 Re-run Staticcheck to confirm there are no further problems:
 
-```.term1
-$ staticcheck .
-```
-{:data-command-src="c3RhdGljY2hlY2sgLgo="}
+<pre data-command-src="c3RhdGljY2hlY2sgLgo="><code class="language-.term1">$ staticcheck .
+</code></pre>
 
 
 ### Ignoring problems
@@ -333,38 +311,36 @@ const (
 	Snake
 )
 
-type Pet struct {
+type Pet struct &#123;
 	Kind Animal
 	Name string
-}
+&#125;
 
-func (p Pet) Walk() error {
-	switch p.Kind {
+func (p Pet) Walk() error &#123;
+	switch p.Kind &#123;
 	case Dog:
 		fmt.Printf(&#34;Will take %v for a walk around the block\n&#34;, p.Name)
 	default:
 		return fmt.Errorf(&#34;cannot take %v for a walk&#34;, p.Name)
-	}
+	&#125;
 	return nil
-}
+&#125;
 
-<b>func (p Pet) Feed(food string) {</b>
+<b>func (p Pet) Feed(food string) &#123;</b>
 <b>	food = food</b>
 <b>	fmt.Printf(&#34;Feeding %v some %v\n&#34;, p.Name, food)</b>
-<b>}</b>
+<b>&#125;</b>
 <b></b>
-func (p Pet) String() string {
+func (p Pet) String() string &#123;
 	return p.Name
-}
+&#125;
 </code></pre>
 
 Re-run Staticcheck to verify all is still fine:
 
-```.term1
-$ staticcheck .
+<pre data-command-src="c3RhdGljY2hlY2sgLgo="><code class="language-.term1">$ staticcheck .
 pets.go:31:2: self-assignment of food to food (SA4018)
-```
-{:data-command-src="c3RhdGljY2hlY2sgLgo="}
+</code></pre>
 
 Oops, that was careless. Whilst it's clear how you would fix this problem (and you really should!), is it possible to
 tell Staticcheck to ignore problems of this kind?
@@ -396,38 +372,36 @@ const (
 	Snake
 )
 
-type Pet struct {
+type Pet struct &#123;
 	Kind Animal
 	Name string
-}
+&#125;
 
-func (p Pet) Walk() error {
-	switch p.Kind {
+func (p Pet) Walk() error &#123;
+	switch p.Kind &#123;
 	case Dog:
 		fmt.Printf(&#34;Will take %v for a walk around the block\n&#34;, p.Name)
 	default:
 		return fmt.Errorf(&#34;cannot take %v for a walk&#34;, p.Name)
-	}
+	&#125;
 	return nil
-}
+&#125;
 
-func (p Pet) Feed(food string) {
+func (p Pet) Feed(food string) &#123;
 <b>	//lint:ignore SA4018 trying out line-based linter directives</b>
 	food = food
 	fmt.Printf(&#34;Feeding %v some %v\n&#34;, p.Name, food)
-}
+&#125;
 
-func (p Pet) String() string {
+func (p Pet) String() string &#123;
 	return p.Name
-}
+&#125;
 </code></pre>
 
 Verify that Staticcheck no longer complains:
 
-```.term1
-$ staticcheck .
-```
-{:data-command-src="c3RhdGljY2hlY2sgLgo="}
+<pre data-command-src="c3RhdGljY2hlY2sgLgo="><code class="language-.term1">$ staticcheck .
+</code></pre>
 
 In some cases, however, you may want to disable checks for an entire file. For example, code generation may leave behind
 a lot of unused code, as it simplifies the generation process. Instead of manually annotating every instance of unused
@@ -451,37 +425,35 @@ const (
 	Snake
 )
 
-type Pet struct {
+type Pet struct &#123;
 	Kind Animal
 	Name string
-}
+&#125;
 
-func (p Pet) Walk() error {
-	switch p.Kind {
+func (p Pet) Walk() error &#123;
+	switch p.Kind &#123;
 	case Dog:
 		fmt.Printf(&#34;Will take %v for a walk around the block\n&#34;, p.Name)
 	default:
 		return fmt.Errorf(&#34;cannot take %v for a walk&#34;, p.Name)
-	}
+	&#125;
 	return nil
-}
+&#125;
 
-func (p Pet) Feed(food string) {
+func (p Pet) Feed(food string) &#123;
 	food = food
 	fmt.Printf(&#34;Feeding %v some %v\n&#34;, p.Name, food)
-}
+&#125;
 
-func (p Pet) String() string {
+func (p Pet) String() string &#123;
 	return p.Name
-}
+&#125;
 </code></pre>
 
 Verify that Staticcheck continues to ignore this check:
 
-```.term1
-$ staticcheck .
-```
-{:data-command-src="c3RhdGljY2hlY2sgLgo="}
+<pre data-command-src="c3RhdGljY2hlY2sgLgo="><code class="language-.term1">$ staticcheck .
+</code></pre>
 
 Great. That's both line and file-based linter directives covered, demonstrating how to ignore certain problems.
 
@@ -501,36 +473,34 @@ const (
 	Snake
 )
 
-type Pet struct {
+type Pet struct &#123;
 	Kind Animal
 	Name string
-}
+&#125;
 
-func (p Pet) Walk() error {
-	switch p.Kind {
+func (p Pet) Walk() error &#123;
+	switch p.Kind &#123;
 	case Dog:
 		fmt.Printf(&#34;Will take %v for a walk around the block\n&#34;, p.Name)
 	default:
 		return fmt.Errorf(&#34;cannot take %v for a walk&#34;, p.Name)
-	}
+	&#125;
 	return nil
-}
+&#125;
 
-func (p Pet) Feed(food string) {
+func (p Pet) Feed(food string) &#123;
 	fmt.Printf(&#34;Feeding %v some %v\n&#34;, p.Name, food)
-}
+&#125;
 
-func (p Pet) String() string {
+func (p Pet) String() string &#123;
 	return p.Name
-}
+&#125;
 </code></pre>
 
 And check that Staticcheck is happy one last time:
 
-```.term1
-$ staticcheck .
-```
-{:data-command-src="c3RhdGljY2hlY2sgLgo="}
+<pre data-command-src="c3RhdGljY2hlY2sgLgo="><code class="language-.term1">$ staticcheck .
+</code></pre>
 
 We can now be sure of lots of happy pets!
 

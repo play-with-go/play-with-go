@@ -96,8 +96,9 @@ Steps: branch_create_v1_branch: preguide.#Command & {
 }
 
 Steps: branch_go_mod_v2: preguide.#Upload & {
-	Target: "\(Defs.branch_dir)/go.mod"
-	Source: #"""
+	Target:   "\(Defs.branch_dir)/go.mod"
+	Language: "go.mod"
+	Source:   #"""
 		// \#(Defs.branch_dir)/go.mod
 
 		module \#(Defs.branch_mod)/v2
@@ -181,8 +182,9 @@ Steps: subdir_create_v2_subdir: preguide.#Command & {
 }
 
 Steps: subdir_go_mod_v2: preguide.#Upload & {
-	Target: "\(Defs.subdir_dir)/v2/go.mod"
-	Source: #"""
+	Target:   "\(Defs.subdir_dir)/v2/go.mod"
+	Language: "go.mod"
+	Source:   #"""
 		// \#(Defs.subdir_dir)/v2/go.mod
 
 		module \#(Defs.subdir_mod)/v2

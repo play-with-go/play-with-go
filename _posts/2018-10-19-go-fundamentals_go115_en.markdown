@@ -42,11 +42,9 @@ You should already have completed:
 
 This guide is running using:
 
-```.term1
-$ go version
+<pre data-command-src="Z28gdmVyc2lvbgo="><code class="language-.term1">$ go version
 go version go1.15.5 linux/amd64
-```
-{:data-command-src="Z28gdmVyc2lvbgo="}
+</code></pre>
 
 ### Create a module that others can use
 
@@ -63,40 +61,32 @@ into production use.
 
 As with all play-with-go.dev guides, you start in your home directory:
 
-```.term1
-$ pwd
+<pre data-command-src="cHdkCg=="><code class="language-.term1">$ pwd
 /home/gopher
-```
-{:data-command-src="cHdkCg=="}
+</code></pre>
 
 Create a `greetings` directory for your Go module source code. This is where you'll write your module code:
 
-```.term1
-$ mkdir /home/gopher/greetings
+<pre data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL2dyZWV0aW5ncwpjZCAvaG9tZS9nb3BoZXIvZ3JlZXRpbmdzCg=="><code class="language-.term1">$ mkdir /home/gopher/greetings
 $ cd /home/gopher/greetings
-```
-{:data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL2dyZWV0aW5ncwpjZCAvaG9tZS9nb3BoZXIvZ3JlZXRpbmdzCg=="}
+</code></pre>
 
 Start your module using the [`go mod init`
 command](https://golang.org/cmd/go/#hdr-Initialize_new_module_in_current_directory) to create a `go.mod` file.  In this
 guide you will publish your greetings module to `{% raw %}{{{.GREETINGS}}}{% endraw %}`:
 
-```.term1
-$ go mod init {% raw %}{{{.GREETINGS}}}{% endraw %}
-go: creating new go.mod: module {% raw %}{{{.GREETINGS}}}{% endraw %}
-```
-{:data-command-src="Z28gbW9kIGluaXQge3t7LkdSRUVUSU5HU319fQo="}
+<pre data-command-src="Z28gbW9kIGluaXQge3t7LkdSRUVUSU5HU319fQo="><code class="language-.term1">$ go mod init &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;
+go: creating new go.mod: module &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;
+</code></pre>
 
 The `go mod init` command creates a `go.mod` file that identifies your code as a module that might be used from
 other code.  The file you just created includes only the name of your module and the Go version your code supports:
 
-```.term1
-$ cat go.mod
-module {% raw %}{{{.GREETINGS}}}{% endraw %}
+<pre data-command-src="Y2F0IGdvLm1vZAo="><code class="language-.term1">$ cat go.mod
+module &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;
 
 go 1.15
-```
-{:data-command-src="Y2F0IGdvLm1vZAo="}
+</code></pre>
 
 As you add dependencies -- meaning packages from other modules -- the `go.mod` file will list the specific module
 versions to use.  This keeps builds reproducible and gives you direct control over which module versions to use.
@@ -108,11 +98,11 @@ Now let's create greetings.go:
 import &#34;fmt&#34;
 
 // Hello returns a greeting for the named person.
-func Hello(name string) string {
+func Hello(name string) string &#123;
 	// Return a greeting that embeds the name in a message.
 	message := fmt.Sprintf(&#34;Hi, %v. Welcome!&#34;, name)
 	return message
-}
+&#125;
 </code></pre>
 
 This is the first code for your module. It returns a greeting to any caller that asks for one. You'll write code that
@@ -133,12 +123,12 @@ In this code, you:
 import &#34;fmt&#34;
 
 // Hello returns a greeting for the named person.
-func Hello(name string) string {
+func Hello(name string) string &#123;
 	// Return a greeting that embeds the name in a message.
 <b>	var message string</b>
 <b>	message = fmt.Sprintf(&#34;Hi, %v. Welcome!&#34;, name)</b>
 	return message
-}
+&#125;
 </code></pre>
 
 * Use the `fmt` package's [`Sprintf`](https://pkg.go.dev/fmt#Sprintf) function to create a greeting message. The first
@@ -152,28 +142,22 @@ control system like [GitHub](https://github.com/). You will publish your module 
 
 Initialise a local  `git` repository for your `greetings` module:
 
-```.term1
-$ git init -q
-$ git remote add origin https://{% raw %}{{{.GREETINGS}}}{% endraw %}.git
-```
-{:data-command-src="Z2l0IGluaXQgLXEKZ2l0IHJlbW90ZSBhZGQgb3JpZ2luIGh0dHBzOi8ve3t7LkdSRUVUSU5HU319fS5naXQK"}
+<pre data-command-src="Z2l0IGluaXQgLXEKZ2l0IHJlbW90ZSBhZGQgb3JpZ2luIGh0dHBzOi8ve3t7LkdSRUVUSU5HU319fS5naXQK"><code class="language-.term1">$ git init -q
+$ git remote add origin https://&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;.git
+</code></pre>
 
 Add and commit the `greetings.go` file you created earlier:
 
-```.term1
-$ git add go.mod greetings.go
-$ git commit -q -m 'Initial commit'
-```
-{:data-command-src="Z2l0IGFkZCBnby5tb2QgZ3JlZXRpbmdzLmdvCmdpdCBjb21taXQgLXEgLW0gJ0luaXRpYWwgY29tbWl0Jwo="}
+<pre data-command-src="Z2l0IGFkZCBnby5tb2QgZ3JlZXRpbmdzLmdvCmdpdCBjb21taXQgLXEgLW0gJ0luaXRpYWwgY29tbWl0Jwo="><code class="language-.term1">$ git add go.mod greetings.go
+$ git commit -q -m &#39;Initial commit&#39;
+</code></pre>
 
 Publish this commit by pushing it to the remote repository:
 
-```.term1
-$ git push -q origin main
+<pre data-command-src="Z2l0IHB1c2ggLXEgb3JpZ2luIG1haW4K"><code class="language-.term1">$ git push -q origin main
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
-```
-{:data-command-src="Z2l0IHB1c2ggLXEgb3JpZ2luIG1haW4K"}
+</code></pre>
 
 
 
@@ -184,39 +168,31 @@ You'll now write code that you can execute as an application, which makes calls 
 
 Create the directory `/home/gopher/hello` for your Go module source code. This is where you'll write your caller.
 
-```.term1
-$ mkdir /home/gopher/hello
+<pre data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL2hlbGxvCmNkIC9ob21lL2dvcGhlci9oZWxsbwo="><code class="language-.term1">$ mkdir /home/gopher/hello
 $ cd /home/gopher/hello
-```
-{:data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL2hlbGxvCmNkIC9ob21lL2dvcGhlci9oZWxsbwo="}
+</code></pre>
 
 Create a new module for this `hello` package using the `go mod init` command to create a `go.mod`
 file as you did before, but this time using the unique path for the `hello` module:
 
-```.term1
-$ go mod init {% raw %}{{{.HELLO}}}{% endraw %}
-go: creating new go.mod: module {% raw %}{{{.HELLO}}}{% endraw %}
-```
-{:data-command-src="Z28gbW9kIGluaXQge3t7LkhFTExPfX19Cg=="}
+<pre data-command-src="Z28gbW9kIGluaXQge3t7LkhFTExPfX19Cg=="><code class="language-.term1">$ go mod init &#123;&#123;&#123;.HELLO&#125;&#125;&#125;
+go: creating new go.mod: module &#123;&#123;&#123;.HELLO&#125;&#125;&#125;
+</code></pre>
 
 Declare a dependency on `{% raw %}{{{.GREETINGS}}}{% endraw %}` using [`go get`](https://golang.org/ref/mod#go-get):
 
-```.term1
-$ go get {% raw %}{{{.GREETINGS}}}{% endraw %}
-go: downloading {% raw %}{{{.GREETINGS}}}{% endraw %} v0.0.0-20060102150405-abcedf12345
-go: {% raw %}{{{.GREETINGS}}}{% endraw %} upgrade => v0.0.0-20060102150405-abcedf12345
-```
-{:data-command-src="Z28gZ2V0IHt7ey5HUkVFVElOR1N9fX0K"}
+<pre data-command-src="Z28gZ2V0IHt7ey5HUkVFVElOR1N9fX0K"><code class="language-.term1">$ go get &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;
+go: downloading &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345
+go: &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125; upgrade =&gt; v0.0.0-20060102150405-abcedf12345
+</code></pre>
 
 Without any version specified, `go get` will retrieve the latest version of the `greetings` module. And
 because you didn't publish a specific version, `go get` resolves a [pseudo
 version](https://golang.org/ref/mod#pseudo-versions) from the commit you pushed, specifically:
 
-```.term1
-$ go list -m -f {% raw %}{{{% endraw %}.Version{% raw %}}}{% endraw %} {% raw %}{{{.GREETINGS}}}{% endraw %}
+<pre data-command-src="Z28gbGlzdCAtbSAtZiB7ey5WZXJzaW9ufX0ge3t7LkdSRUVUSU5HU319fQo="><code class="language-.term1">$ go list -m -f &#123;&#123;.Version&#125;&#125; &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;
 v0.0.0-20060102150405-abcedf12345
-```
-{:data-command-src="Z28gbGlzdCAtbSAtZiB7ey5WZXJzaW9ufX0ge3t7LkdSRUVUSU5HU319fQo="}
+</code></pre>
 
 Create `hello.go` as follows:
 
@@ -225,14 +201,14 @@ Create `hello.go` as follows:
 import (
 	&#34;fmt&#34;
 
-	&#34;{% raw %}{{{.GREETINGS}}}{% endraw %}&#34;
+	&#34;&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;&#34;
 )
 
-func main() {
+func main() &#123;
 	// Get a greeting message and print it.
 	message := greetings.Hello(&#34;Gladys&#34;)
 	fmt.Println(message)
-}
+&#125;
 </code></pre>
 
 In this code, you:
@@ -246,12 +222,10 @@ console).
 
 Build and run your program:
 
-```.term1
-$ go build
+<pre data-command-src="Z28gYnVpbGQKLi9oZWxsbwo="><code class="language-.term1">$ go build
 $ ./hello
 Hi, Gladys. Welcome!
-```
-{:data-command-src="Z28gYnVpbGQKLi9oZWxsbwo="}
+</code></pre>
 
 Congrats! You've written two functioning modules. Next you'll add some error handling.
 
@@ -262,10 +236,8 @@ the `greetings` module, then handle it in the caller.
 
 Return to the `greetings` module directory:
 
-```.term1
-$ cd /home/gopher/greetings
-```
-{:data-command-src="Y2QgL2hvbWUvZ29waGVyL2dyZWV0aW5ncwo="}
+<pre data-command-src="Y2QgL2hvbWUvZ29waGVyL2dyZWV0aW5ncwo="><code class="language-.term1">$ cd /home/gopher/greetings
+</code></pre>
 
 There's no sense sending a greeting back if you don't know who to greet. Return an error to the caller if the name is
 empty. Update `greetings.go` as follows:
@@ -278,17 +250,17 @@ empty. Update `greetings.go` as follows:
 <b>)</b>
 
 // Hello returns a greeting for the named person.
-<b>func Hello(name string) (string, error) {</b>
+<b>func Hello(name string) (string, error) &#123;</b>
 <b>	// If no name was given, return an error with a message.</b>
-<b>	if name == &#34;&#34; {</b>
+<b>	if name == &#34;&#34; &#123;</b>
 <b>		return &#34;&#34;, errors.New(&#34;empty name&#34;)</b>
-<b>	}</b>
+<b>	&#125;</b>
 <b></b>
 <b>	// If a name was received, return a value that embeds the name</b>
 <b>	// in a greeting message.</b>
 <b>	message := fmt.Sprintf(&#34;Hi, %v. Welcome!&#34;, name)</b>
 <b>	return message, nil</b>
-}
+&#125;
 </code></pre>
 
 In this code, you:
@@ -306,45 +278,35 @@ pushed. Therefore, you need to publish a new version of the `greetings` module.
 
 Add and commit the changes we made to `greetings.go`:
 
-```.term1
-$ git add greetings.go
-$ git commit -q -m 'Added error handling'
-```
-{:data-command-src="Z2l0IGFkZCBncmVldGluZ3MuZ28KZ2l0IGNvbW1pdCAtcSAtbSAnQWRkZWQgZXJyb3IgaGFuZGxpbmcnCg=="}
+<pre data-command-src="Z2l0IGFkZCBncmVldGluZ3MuZ28KZ2l0IGNvbW1pdCAtcSAtbSAnQWRkZWQgZXJyb3IgaGFuZGxpbmcnCg=="><code class="language-.term1">$ git add greetings.go
+$ git commit -q -m &#39;Added error handling&#39;
+</code></pre>
 
 Note the id of the commit we just created:
 
-```.term1
-$ greetings_error_commit=$(git rev-parse HEAD)
-```
-{:data-command-src="Z3JlZXRpbmdzX2Vycm9yX2NvbW1pdD0kKGdpdCByZXYtcGFyc2UgSEVBRCkK"}
+<pre data-command-src="Z3JlZXRpbmdzX2Vycm9yX2NvbW1pdD0kKGdpdCByZXYtcGFyc2UgSEVBRCkK"><code class="language-.term1">$ greetings_error_commit=$(git rev-parse HEAD)
+</code></pre>
 
 Republish the `greetings` module:
 
-```.term1
-$ git push -q origin main
+<pre data-command-src="Z2l0IHB1c2ggLXEgb3JpZ2luIG1haW4K"><code class="language-.term1">$ git push -q origin main
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
-```
-{:data-command-src="Z2l0IHB1c2ggLXEgb3JpZ2luIG1haW4K"}
+</code></pre>
 
 Return to the `hello` module directory to now use this new version:
 
-```.term1
-$ cd /home/gopher/hello
-```
-{:data-command-src="Y2QgL2hvbWUvZ29waGVyL2hlbGxvCg=="}
+<pre data-command-src="Y2QgL2hvbWUvZ29waGVyL2hlbGxvCg=="><code class="language-.term1">$ cd /home/gopher/hello
+</code></pre>
 
 By default, `go get` uses [`proxy.golang.org`](https://proxy.golang.org/) to resolve and download modules. In order to
 improve the proxy's caching and serving latencies, new versions may not show up right away. Therefore, to be sure you do
 not resolve a stale latest version, use the latest commit of the `greetings` module as an explicit version:
 
-```.term1
-$ go get {% raw %}{{{.GREETINGS}}}{% endraw %}@$greetings_error_commit
-go: {% raw %}{{{.GREETINGS}}}{% endraw %} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
-go: downloading {% raw %}{{{.GREETINGS}}}{% endraw %} v0.0.0-20060102150405-abcedf12345
-```
-{:data-command-src="Z28gZ2V0IHt7ey5HUkVFVElOR1N9fX1AJGdyZWV0aW5nc19lcnJvcl9jb21taXQK"}
+<pre data-command-src="Z28gZ2V0IHt7ey5HUkVFVElOR1N9fX1AJGdyZWV0aW5nc19lcnJvcl9jb21taXQK"><code class="language-.term1">$ go get &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;@$greetings_error_commit
+go: &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345 =&gt; v0.0.0-20060102150405-abcedf12345
+go: downloading &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345
+</code></pre>
 
 In your hello.go, handle the error now returned by the `Hello` function, along with the non-error value:
 
@@ -354,10 +316,10 @@ import (
 	&#34;fmt&#34;
 <b>	&#34;log&#34;</b>
 
-	&#34;{% raw %}{{{.GREETINGS}}}{% endraw %}&#34;
+	&#34;&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;&#34;
 )
 
-func main() {
+func main() &#123;
 <b>	// Set properties of the predefined Logger, including</b>
 <b>	// the log entry prefix and a flag to disable printing</b>
 <b>	// the time, source file, and line number.</b>
@@ -368,14 +330,14 @@ func main() {
 <b>	message, err := greetings.Hello(&#34;&#34;)</b>
 <b>	// If an error was returned, print it to the console and</b>
 <b>	// exit the program.</b>
-<b>	if err != nil {</b>
+<b>	if err != nil &#123;</b>
 <b>		log.Fatal(err)</b>
-<b>	}</b>
+<b>	&#125;</b>
 <b></b>
 <b>	// If no error was returned, print the returned message</b>
 <b>	// to the console.</b>
 	fmt.Println(message)
-}
+&#125;
 </code></pre>
 
 In this code, you:
@@ -390,12 +352,10 @@ In this code, you:
 
 Run hello.go to confirm that the code works; now that you're passing in an empty name, you'll get an error:
 
-```.term1
-$ go run hello.go
+<pre data-command-src="Z28gcnVuIGhlbGxvLmdvCg=="><code class="language-.term1">$ go run hello.go
 greetings: empty name
 exit status 1
-```
-{:data-command-src="Z28gcnVuIGhlbGxvLmdvCg=="}
+</code></pre>
 
 That's essentially how error handling in Go works: Return an error as a value so the caller can check for it. It's
 pretty simple.
@@ -411,10 +371,8 @@ contain three greeting messages, then have your code return one of the messages 
 
 Return to the `greetings` module:
 
-```.term1
-$ cd /home/gopher/greetings
-```
-{:data-command-src="Y2QgL2hvbWUvZ29waGVyL2dyZWV0aW5ncwo="}
+<pre data-command-src="Y2QgL2hvbWUvZ29waGVyL2dyZWV0aW5ncwo="><code class="language-.term1">$ cd /home/gopher/greetings
+</code></pre>
 
 Update `greetings.go` as follows:
 
@@ -427,18 +385,18 @@ Update `greetings.go` as follows:
 <b>)</b>
 
 // Hello returns a greeting for the named person.
-<b>func Hello(name string) (string, error) {</b>
+<b>func Hello(name string) (string, error) &#123;</b>
 <b>	// If no name was given, return an error with a message.</b>
-<b>	if name == &#34;&#34; {</b>
+<b>	if name == &#34;&#34; &#123;</b>
 <b>		return name, errors.New(&#34;empty name&#34;)</b>
-<b>	}</b>
+<b>	&#125;</b>
 <b>	// Create a message using a random format.</b>
 <b>	message := fmt.Sprintf(randomFormat(), name)</b>
 <b>	return message, nil</b>
-}
+&#125;
 <b></b>
 <b>// init sets initial values for variables used in the function.</b>
-<b>func init() {</b>
+<b>func init() &#123;</b>
 <b>	// For truly random greetings, import &#34;time&#34; and replace the call</b>
 <b>	// to rand.Seed with:</b>
 <b>	//</b>
@@ -447,21 +405,21 @@ Update `greetings.go` as follows:
 <b>	// Calling rand.Seed with a constant value means that we always</b>
 <b>	// generate the same pseudo-random sequence.</b>
 <b>	rand.Seed(1)</b>
-<b>}</b>
+<b>&#125;</b>
 <b></b>
 <b>// randomFormat returns one of a set of greeting messages. The returned</b>
 <b>// message is selected at random.</b>
-<b>func randomFormat() string {</b>
+<b>func randomFormat() string &#123;</b>
 <b>	// A slice of message formats.</b>
-<b>	formats := []string{</b>
+<b>	formats := []string&#123;</b>
 <b>		&#34;Hi, %v. Welcome!&#34;,</b>
 <b>		&#34;Great to see you, %v!&#34;,</b>
 <b>		&#34;Hail, %v! Well met!&#34;,</b>
-<b>	}</b>
+<b>	&#125;</b>
 <b></b>
 <b>	// Return one of the message formats selected at random.</b>
 <b>	return formats[rand.Intn(len(formats))]</b>
-<b>}</b>
+<b>&#125;</b>
 </code></pre>
 
 In this code, you:
@@ -486,37 +444,29 @@ module.
 
 Add and commit the changes you just made:
 
-```.term1
-$ git add greetings.go
-$ git commit -q -m 'Added random format'
-```
-{:data-command-src="Z2l0IGFkZCBncmVldGluZ3MuZ28KZ2l0IGNvbW1pdCAtcSAtbSAnQWRkZWQgcmFuZG9tIGZvcm1hdCcK"}
+<pre data-command-src="Z2l0IGFkZCBncmVldGluZ3MuZ28KZ2l0IGNvbW1pdCAtcSAtbSAnQWRkZWQgcmFuZG9tIGZvcm1hdCcK"><code class="language-.term1">$ git add greetings.go
+$ git commit -q -m &#39;Added random format&#39;
+</code></pre>
 
 Note the id of the commit we just created:
 
-```.term1
-$ greetings_random_commit=$(git rev-parse HEAD)
-```
-{:data-command-src="Z3JlZXRpbmdzX3JhbmRvbV9jb21taXQ9JChnaXQgcmV2LXBhcnNlIEhFQUQpCg=="}
+<pre data-command-src="Z3JlZXRpbmdzX3JhbmRvbV9jb21taXQ9JChnaXQgcmV2LXBhcnNlIEhFQUQpCg=="><code class="language-.term1">$ greetings_random_commit=$(git rev-parse HEAD)
+</code></pre>
 
 Republish the `greetings` module:
 
-```.term1
-$ git push -q origin main
+<pre data-command-src="Z2l0IHB1c2ggLXEgb3JpZ2luIG1haW4K"><code class="language-.term1">$ git push -q origin main
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
-```
-{:data-command-src="Z2l0IHB1c2ggLXEgb3JpZ2luIG1haW4K"}
+</code></pre>
 
 Return to the `hello` module directory and use this new version:
 
-```.term1
-$ cd /home/gopher/hello
-$ go get {% raw %}{{{.GREETINGS}}}{% endraw %}@$greetings_random_commit
-go: {% raw %}{{{.GREETINGS}}}{% endraw %} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
-go: downloading {% raw %}{{{.GREETINGS}}}{% endraw %} v0.0.0-20060102150405-abcedf12345
-```
-{:data-command-src="Y2QgL2hvbWUvZ29waGVyL2hlbGxvCmdvIGdldCB7e3suR1JFRVRJTkdTfX19QCRncmVldGluZ3NfcmFuZG9tX2NvbW1pdAo="}
+<pre data-command-src="Y2QgL2hvbWUvZ29waGVyL2hlbGxvCmdvIGdldCB7e3suR1JFRVRJTkdTfX19QCRncmVldGluZ3NfcmFuZG9tX2NvbW1pdAo="><code class="language-.term1">$ cd /home/gopher/hello
+$ go get &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;@$greetings_random_commit
+go: &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345 =&gt; v0.0.0-20060102150405-abcedf12345
+go: downloading &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345
+</code></pre>
 
 Re-add Gladys's name as an argument to the `Hello` function call in `hello.go`:
 
@@ -526,10 +476,10 @@ import (
 	&#34;fmt&#34;
 	&#34;log&#34;
 
-	&#34;{% raw %}{{{.GREETINGS}}}{% endraw %}&#34;
+	&#34;&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;&#34;
 )
 
-func main() {
+func main() &#123;
 	// Set properties of the predefined Logger, including
 	// the log entry prefix and a flag to disable printing
 	// the time, source file, and line number.
@@ -540,26 +490,24 @@ func main() {
 <b>	message, err := greetings.Hello(&#34;Gladys&#34;)</b>
 	// If an error was returned, print it to the console and
 	// exit the program.
-	if err != nil {
+	if err != nil &#123;
 		log.Fatal(err)
-	}
+	&#125;
 
 	// If no error was returned, print the returned message
 	// to the console.
 	fmt.Println(message)
-}
+&#125;
 </code></pre>
 
 Run `hello.go` to confirm the code works. Notice that because of the constant seed, running the program
 always gives the same greeting format. We will come back to that shortly:
 
-```.term1
-$ go run hello.go
+<pre data-command-src="Z28gcnVuIGhlbGxvLmdvCmdvIHJ1biBoZWxsby5nbwo="><code class="language-.term1">$ go run hello.go
 Hail, Gladys! Well met!
 $ go run hello.go
 Hail, Gladys! Well met!
-```
-{:data-command-src="Z28gcnVuIGhlbGxvLmdvCmdvIHJ1biBoZWxsby5nbwo="}
+</code></pre>
 
 That's an introduction to a Go slice. To get even more use out of this type, you'll use a slice to greet multiple
 people, where we will start to see some "real" pseudo-random greetings!
@@ -572,10 +520,8 @@ multiple-value output.
 
 Change back to the `greetings` module:
 
-```.term1
-$ cd /home/gopher/greetings
-```
-{:data-command-src="Y2QgL2hvbWUvZ29waGVyL2dyZWV0aW5ncwo="}
+<pre data-command-src="Y2QgL2hvbWUvZ29waGVyL2dyZWV0aW5ncwo="><code class="language-.term1">$ cd /home/gopher/greetings
+</code></pre>
 
 To do this, you'll need to pass a set of names to a function that can return a greeting for each of them. Changing the
 `Hello` function's parameter from a single name to a set of names would change the function signature. Given that you
@@ -595,37 +541,37 @@ import (
 )
 
 // Hello returns a greeting for the named person.
-func Hello(name string) (string, error) {
+func Hello(name string) (string, error) &#123;
 	// If no name was given, return an error with a message.
-	if name == &#34;&#34; {
+	if name == &#34;&#34; &#123;
 		return name, errors.New(&#34;empty name&#34;)
-	}
+	&#125;
 	// Create a message using a random format.
 	message := fmt.Sprintf(randomFormat(), name)
 	return message, nil
-}
+&#125;
 
 <b>// Hellos returns a map that associates each of the named people</b>
 <b>// with a greeting message.</b>
-<b>func Hellos(names []string) (map[string]string, error) {</b>
+<b>func Hellos(names []string) (map[string]string, error) &#123;</b>
 <b>	// A map to associate names with messages.</b>
 <b>	messages := make(map[string]string)</b>
 <b>	// Loop through the received slice of names, calling</b>
 <b>	// the Hello function to get a message for each name.</b>
-<b>	for _, name := range names {</b>
+<b>	for _, name := range names &#123;</b>
 <b>		message, err := Hello(name)</b>
-<b>		if err != nil {</b>
+<b>		if err != nil &#123;</b>
 <b>			return nil, err</b>
-<b>		}</b>
+<b>		&#125;</b>
 <b>		// In the map, associate the retrieved message with</b>
 <b>		// the name.</b>
 <b>		messages[name] = message</b>
-<b>	}</b>
+<b>	&#125;</b>
 <b>	return messages, nil</b>
-<b>}</b>
+<b>&#125;</b>
 <b></b>
 // init sets initial values for variables used in the function.
-func init() {
+func init() &#123;
 	// For truly random greetings, import &#34;time&#34; and replace the call
 	// to rand.Seed with:
 	//
@@ -634,21 +580,21 @@ func init() {
 	// Calling rand.Seed with a constant value means that we always
 	// generate the same pseudo-random sequence.
 	rand.Seed(1)
-}
+&#125;
 
 // randomFormat returns one of a set of greeting messages. The returned
 // message is selected at random.
-func randomFormat() string {
+func randomFormat() string &#123;
 	// A slice of message formats.
-	formats := []string{
+	formats := []string&#123;
 		&#34;Hi, %v. Welcome!&#34;,
 		&#34;Great to see you, %v!&#34;,
 		&#34;Hail, %v! Well met!&#34;,
-	}
+	&#125;
 
 	// Return one of the message formats selected at random.
 	return formats[rand.Intn(len(formats))]
-}
+&#125;
 </code></pre>
 
 In this code, you:
@@ -670,31 +616,25 @@ to use a local directory instead of a published module.
 
 First return to the `hello` module:
 
-```.term1
-$ cd /home/gopher/hello
-```
-{:data-command-src="Y2QgL2hvbWUvZ29waGVyL2hlbGxvCg=="}
+<pre data-command-src="Y2QgL2hvbWUvZ29waGVyL2hlbGxvCg=="><code class="language-.term1">$ cd /home/gopher/hello
+</code></pre>
 
 Now add a `replace` directive using `go mod edit`:
 
-```.term1
-$ go mod edit -replace {% raw %}{{{.GREETINGS}}}{% endraw %}=/home/gopher/greetings
-```
-{:data-command-src="Z28gbW9kIGVkaXQgLXJlcGxhY2Uge3t7LkdSRUVUSU5HU319fT0vaG9tZS9nb3BoZXIvZ3JlZXRpbmdzCg=="}
+<pre data-command-src="Z28gbW9kIGVkaXQgLXJlcGxhY2Uge3t7LkdSRUVUSU5HU319fT0vaG9tZS9nb3BoZXIvZ3JlZXRpbmdzCg=="><code class="language-.term1">$ go mod edit -replace &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;=/home/gopher/greetings
+</code></pre>
 
 We can see the result in the `hello` module `go.mod` file:
 
-```.term1
-$ cat go.mod
-module {% raw %}{{{.HELLO}}}{% endraw %}
+<pre data-command-src="Y2F0IGdvLm1vZAo="><code class="language-.term1">$ cat go.mod
+module &#123;&#123;&#123;.HELLO&#125;&#125;&#125;
 
 go 1.15
 
-require {% raw %}{{{.GREETINGS}}}{% endraw %} v0.0.0-20060102150405-abcedf12345
+require &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345
 
-replace {% raw %}{{{.GREETINGS}}}{% endraw %} => /home/gopher/greetings
-```
-{:data-command-src="Y2F0IGdvLm1vZAo="}
+replace &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125; =&gt; /home/gopher/greetings
+</code></pre>
 
 In your `hello.go` calling code, pass a slice of names, then print the contents of the names/messages map you
 get back:
@@ -705,10 +645,10 @@ import (
 	&#34;fmt&#34;
 	&#34;log&#34;
 
-	&#34;{% raw %}{{{.GREETINGS}}}{% endraw %}&#34;
+	&#34;&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;&#34;
 )
 
-func main() {
+func main() &#123;
 	// Set properties of the predefined Logger, including
 	// the log entry prefix and a flag to disable printing
 	// the time, source file, and line number.
@@ -716,17 +656,17 @@ func main() {
 	log.SetFlags(0)
 
 <b>	// A slice of names.</b>
-<b>	names := []string{&#34;Gladys&#34;, &#34;Samantha&#34;, &#34;Darrin&#34;}</b>
+<b>	names := []string&#123;&#34;Gladys&#34;, &#34;Samantha&#34;, &#34;Darrin&#34;&#125;</b>
 <b></b>
 <b>	// Request greeting messages for the names.</b>
 <b>	messages, err := greetings.Hellos(names)</b>
-	if err != nil {
+	if err != nil &#123;
 		log.Fatal(err)
-	}
+	&#125;
 <b>	// If no error was returned, print the returned map of</b>
 <b>	// messages to the console.</b>
 <b>	fmt.Println(messages)</b>
-}
+&#125;
 </code></pre>
 
 With these changes, you:
@@ -737,11 +677,9 @@ With these changes, you:
 Run `hello.go` to confirm that the code works, the output should be a string representation of the map
 associating names with messages:
 
-```.term1
-$ go run hello.go
+<pre data-command-src="Z28gcnVuIGhlbGxvLmdvCg=="><code class="language-.term1">$ go run hello.go
 map[Darrin:Hail, Darrin! Well met! Gladys:Hail, Gladys! Well met! Samantha:Hi, Samantha. Welcome!]
-```
-{:data-command-src="Z28gcnVuIGhlbGxvLmdvCg=="}
+</code></pre>
 
 This section introduced maps for representing name/value pairs. It also introduced the idea of preserving backward
 compatibility by implementing a new function for new or changed functionality in a module. In the next section, you'll
@@ -759,10 +697,8 @@ Go's built-in support for unit testing makes it easier to test as you go. Specif
 
 Return to the `greetings` module:
 
-```.term1
-$ cd /home/gopher/greetings
-```
-{:data-command-src="Y2QgL2hvbWUvZ29waGVyL2dyZWV0aW5ncwo="}
+<pre data-command-src="Y2QgL2hvbWUvZ29waGVyL2dyZWV0aW5ncwo="><code class="language-.term1">$ cd /home/gopher/greetings
+</code></pre>
 
 Create a file called `greetings_test.go`:
 
@@ -775,23 +711,23 @@ import (
 
 // TestHelloName calls greetings.Hello with a name, checking
 // for a valid return value.
-func TestHelloName(t *testing.T) {
+func TestHelloName(t *testing.T) &#123;
 	name := &#34;Gladys&#34;
 	want := regexp.MustCompile(`\b` + name + `\b`)
 	msg, err := Hello(name)
-	if !want.MatchString(msg) || err != nil {
+	if !want.MatchString(msg) || err != nil &#123;
 		t.Fatalf(`Hello(&#34;Gladys&#34;) = %q, %v, want match for %#q, &lt;nil&gt;`, msg, err, want)
-	}
-}
+	&#125;
+&#125;
 
 // TestHelloEmpty calls greetings.Hello with an empty string,
 // checking for an error.
-func TestHelloEmpty(t *testing.T) {
+func TestHelloEmpty(t *testing.T) &#123;
 	msg, err := Hello(&#34;&#34;)
-	if msg != &#34;&#34; || err == nil {
+	if msg != &#34;&#34; || err == nil &#123;
 		t.Fatalf(`Hello(&#34;&#34;) = %q, %v, want &#34;&#34;, error`, msg, err)
-	}
-}
+	&#125;
+&#125;
 </code></pre>
 
 If this code, you:
@@ -815,19 +751,17 @@ At the command line in the greetings directory, run the `go test` command to exe
 
 The tests should pass:
 
-```.term1
-$ go test
+<pre data-command-src="Z28gdGVzdApnbyB0ZXN0IC12Cg=="><code class="language-.term1">$ go test
 PASS
-ok  	{% raw %}{{{.GREETINGS}}}{% endraw %}	0.002s
+ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.002s
 $ go test -v
 === RUN   TestHelloName
 --- PASS: TestHelloName (0.00s)
 === RUN   TestHelloEmpty
 --- PASS: TestHelloEmpty (0.00s)
 PASS
-ok  	{% raw %}{{{.GREETINGS}}}{% endraw %}	0.002s
-```
-{:data-command-src="Z28gdGVzdApnbyB0ZXN0IC12Cg=="}
+ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.002s
+</code></pre>
 
 You will now break the `greetings.Hello` function to view a failing test. The `TestHelloName` test function
 checks the return value for the name you specified as a `Hello` function parameter. To view a failing test result, change
@@ -842,38 +776,38 @@ import (
 )
 
 // Hello returns a greeting for the named person.
-func Hello(name string) (string, error) {
+func Hello(name string) (string, error) &#123;
 	// If no name was given, return an error with a message.
-	if name == &#34;&#34; {
+	if name == &#34;&#34; &#123;
 		return name, errors.New(&#34;empty name&#34;)
-	}
+	&#125;
 	// Create a message using a random format.
 <b>	// message := fmt.Sprintf(randomFormat(), name)</b>
 <b>	message := fmt.Sprint(randomFormat())</b>
 	return message, nil
-}
+&#125;
 
 // Hellos returns a map that associates each of the named people
 // with a greeting message.
-func Hellos(names []string) (map[string]string, error) {
+func Hellos(names []string) (map[string]string, error) &#123;
 	// A map to associate names with messages.
 	messages := make(map[string]string)
 	// Loop through the received slice of names, calling
 	// the Hello function to get a message for each name.
-	for _, name := range names {
+	for _, name := range names &#123;
 		message, err := Hello(name)
-		if err != nil {
+		if err != nil &#123;
 			return nil, err
-		}
+		&#125;
 		// In the map, associate the retrieved message with
 		// the name.
 		messages[name] = message
-	}
+	&#125;
 	return messages, nil
-}
+&#125;
 
 // init sets initial values for variables used in the function.
-func init() {
+func init() &#123;
 	// For truly random greetings, import &#34;time&#34; and replace the call
 	// to rand.Seed with:
 	//
@@ -882,21 +816,21 @@ func init() {
 	// Calling rand.Seed with a constant value means that we always
 	// generate the same pseudo-random sequence.
 	rand.Seed(1)
-}
+&#125;
 
 // randomFormat returns one of a set of greeting messages. The returned
 // message is selected at random.
-func randomFormat() string {
+func randomFormat() string &#123;
 	// A slice of message formats.
-	formats := []string{
+	formats := []string&#123;
 		&#34;Hi, %v. Welcome!&#34;,
 		&#34;Great to see you, %v!&#34;,
 		&#34;Hail, %v! Well met!&#34;,
-	}
+	&#125;
 
 	// Return one of the message formats selected at random.
 	return formats[rand.Intn(len(formats))]
-}
+&#125;
 </code></pre>
 
 Note that the highlighted lines change the value that the function returns, as if the `name` argument had been
@@ -906,15 +840,13 @@ At the command line in the greetings directory, run `go test` to execute the tes
 without the `-v` flag. The output will include results for only the tests that failed, which can be useful when you have
 a lot of tests. The `TestHelloName` test should fail -- `TestHelloEmpty` still passes:
 
-```.term1
-$ go test
+<pre data-command-src="Z28gdGVzdAo="><code class="language-.term1">$ go test
 --- FAIL: TestHelloName (0.00s)
-    greetings_test.go:15: Hello("Gladys") = "Hail, %v! Well met!", <nil>, want match for `\bGladys\b`, <nil>
+    greetings_test.go:15: Hello(&#34;Gladys&#34;) = &#34;Hail, %v! Well met!&#34;, &lt;nil&gt;, want match for `\bGladys\b`, &lt;nil&gt;
 FAIL
 exit status 1
-FAIL	{% raw %}{{{.GREETINGS}}}{% endraw %}	0.002s
-```
-{:data-command-src="Z28gdGVzdAo="}
+FAIL	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.002s
+</code></pre>
 
 Let's restore `greetings.Hello` to a working state
 
@@ -927,37 +859,37 @@ import (
 )
 
 // Hello returns a greeting for the named person.
-func Hello(name string) (string, error) {
+func Hello(name string) (string, error) &#123;
 	// If no name was given, return an error with a message.
-	if name == &#34;&#34; {
+	if name == &#34;&#34; &#123;
 		return name, errors.New(&#34;empty name&#34;)
-	}
+	&#125;
 	// Create a message using a random format.
 <b>	message := fmt.Sprintf(randomFormat(), name)</b>
 	return message, nil
-}
+&#125;
 
 // Hellos returns a map that associates each of the named people
 // with a greeting message.
-func Hellos(names []string) (map[string]string, error) {
+func Hellos(names []string) (map[string]string, error) &#123;
 	// A map to associate names with messages.
 	messages := make(map[string]string)
 	// Loop through the received slice of names, calling
 	// the Hello function to get a message for each name.
-	for _, name := range names {
+	for _, name := range names &#123;
 		message, err := Hello(name)
-		if err != nil {
+		if err != nil &#123;
 			return nil, err
-		}
+		&#125;
 		// In the map, associate the retrieved message with
 		// the name.
 		messages[name] = message
-	}
+	&#125;
 	return messages, nil
-}
+&#125;
 
 // init sets initial values for variables used in the function.
-func init() {
+func init() &#123;
 	// For truly random greetings, import &#34;time&#34; and replace the call
 	// to rand.Seed with:
 	//
@@ -966,31 +898,29 @@ func init() {
 	// Calling rand.Seed with a constant value means that we always
 	// generate the same pseudo-random sequence.
 	rand.Seed(1)
-}
+&#125;
 
 // randomFormat returns one of a set of greeting messages. The returned
 // message is selected at random.
-func randomFormat() string {
+func randomFormat() string &#123;
 	// A slice of message formats.
-	formats := []string{
+	formats := []string&#123;
 		&#34;Hi, %v. Welcome!&#34;,
 		&#34;Great to see you, %v!&#34;,
 		&#34;Hail, %v! Well met!&#34;,
-	}
+	&#125;
 
 	// Return one of the message formats selected at random.
 	return formats[rand.Intn(len(formats))]
-}
+&#125;
 </code></pre>
 
 And re-run `go test` to verify our change:
 
-```.term1
-$ go test
+<pre data-command-src="Z28gdGVzdAo="><code class="language-.term1">$ go test
 PASS
-ok  	{% raw %}{{{.GREETINGS}}}{% endraw %}	0.002s
-```
-{:data-command-src="Z28gdGVzdAo="}
+ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.002s
+</code></pre>
 
 This section introduced Go's built-in support for unit testing. In the next section, you'll see how to compile and
 install your code to run it locally.
@@ -1004,43 +934,33 @@ executable where you can run it.
 
 Change to the directory that contains the `hello` module:
 
-```.term1
-$ cd /home/gopher/hello
-```
-{:data-command-src="Y2QgL2hvbWUvZ29waGVyL2hlbGxvCg=="}
+<pre data-command-src="Y2QgL2hvbWUvZ29waGVyL2hlbGxvCg=="><code class="language-.term1">$ cd /home/gopher/hello
+</code></pre>
 
 Discover the Go install path, where the `go` command will install the current package:
 
-```.term1
-$ go list -f '{% raw %}{{{% endraw %}.Target{% raw %}}}{% endraw %}'
+<pre data-command-src="Z28gbGlzdCAtZiAne3suVGFyZ2V0fX0nCg=="><code class="language-.term1">$ go list -f &#39;&#123;&#123;.Target&#125;&#125;&#39;
 /home/gopher/go/bin/hello
-```
-{:data-command-src="Z28gbGlzdCAtZiAne3suVGFyZ2V0fX0nCg=="}
+</code></pre>
 
 Add the Go install directory to your system's shell path (this is generally a one-off step, you won't need to do this
 for other programs). That way, you'll be able to run your program's executable without specifying where the executable
 is:
 
-```.term1
-$ goinstalldir="$(dirname "$(go list -f '{% raw %}{{{% endraw %}.Target{% raw %}}}{% endraw %}')")"
-$ export PATH="$goinstalldir:$PATH"
-```
-{:data-command-src="Z29pbnN0YWxsZGlyPSIkKGRpcm5hbWUgIiQoZ28gbGlzdCAtZiAne3suVGFyZ2V0fX0nKSIpIgpleHBvcnQgUEFUSD0iJGdvaW5zdGFsbGRpcjokUEFUSCIK"}
+<pre data-command-src="Z29pbnN0YWxsZGlyPSIkKGRpcm5hbWUgIiQoZ28gbGlzdCAtZiAne3suVGFyZ2V0fX0nKSIpIgpleHBvcnQgUEFUSD0iJGdvaW5zdGFsbGRpcjokUEFUSCIK"><code class="language-.term1">$ goinstalldir=&#34;$(dirname &#34;$(go list -f &#39;&#123;&#123;.Target&#125;&#125;&#39;)&#34;)&#34;
+$ export PATH=&#34;$goinstalldir:$PATH&#34;
+</code></pre>
 
 Once you've updated the shell path, run the `go install` command to compile and install the package:
 
-```.term1
-$ go install
-```
-{:data-command-src="Z28gaW5zdGFsbAo="}
+<pre data-command-src="Z28gaW5zdGFsbAo="><code class="language-.term1">$ go install
+</code></pre>
 
 Run your application by simply typing its name:
 
-```.term1
-$ hello
+<pre data-command-src="aGVsbG8K"><code class="language-.term1">$ hello
 map[Darrin:Hail, Darrin! Well met! Gladys:Hail, Gladys! Well met! Samantha:Hi, Samantha. Welcome!]
-```
-{:data-command-src="aGVsbG8K"}
+</code></pre>
 
 ### Conclusion
 

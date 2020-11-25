@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201123125600-bcc70045611e",
-		      "Sum": "h1:qO8GiXVWiA6gBAhuc1AF+rPdEcki7pWfby/y+D8HX9g=",
+		      "Version": "v0.0.2-0.20201127055619-8777d2847809",
+		      "Sum": "h1:AFGAfyRMZ71UMh26WqlC1eWG379ulXpMZD357jL0tVk=",
 		      "Replace": null
 		    },
 		    {
@@ -625,7 +625,7 @@ Steps: {
 		Renderer: {
 			RendererType: 1
 		}
-		Language: "mod"
+		Language: "go.mod"
 		Target:   "/home/gopher/proverb/go.mod"
 		Terminal: "term1"
 		StepType: 2
@@ -1102,7 +1102,7 @@ Steps: {
 				"""
 			RendererType: 3
 		}
-		Language: "mod"
+		Language: "go.mod"
 		Target:   "/home/gopher/proverb/go.mod"
 		Terminal: "term1"
 		StepType: 2
@@ -1382,5 +1382,5 @@ Steps: {
 		Name:            "gopher_run_life_proverb"
 	}
 }
-Hash: "c820dcaec2cdcd99a597313c82c436ec28367e7257a74ed04e15d9500e2f493c"
+Hash: "9bd2a732fa03ae36178e6a5645af4a5db233eeb35cf00accf6a37ba21e071041"
 Delims: ["{{{", "}}}"]

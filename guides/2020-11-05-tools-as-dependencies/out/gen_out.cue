@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201123125600-bcc70045611e",
-		      "Sum": "h1:qO8GiXVWiA6gBAhuc1AF+rPdEcki7pWfby/y+D8HX9g=",
+		      "Version": "v0.0.2-0.20201127055619-8777d2847809",
+		      "Sum": "h1:AFGAfyRMZ71UMh26WqlC1eWG379ulXpMZD357jL0tVk=",
 		      "Replace": null
 		    },
 		    {
@@ -780,5 +780,5 @@ Steps: {
 		Name:            "painkiller_check_fever_advice"
 	}
 }
-Hash: "1bd757fb50cdadb711b9d893237aec29c2b540e0df711537ef5ebdcc7bdebcc9"
+Hash: "2052857141c6a876a0e2160c5a9b3dd97f69583b6ffa68928a5759ad144fcbb3"
 Delims: ["{{{", "}}}"]
