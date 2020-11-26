@@ -1,7 +1,15 @@
 package out
 
 Presteps: [{
-	Variables: ["GITEA_USERNAME", "GITEA_PRIV_KEY", "GITEA_PUB_KEY", "GITEA_KEYSCAN", "REPO1"]
+	Package: "github.com/play-with-go/gitea"
+	Path:    "/newuser"
+	Args: {
+		Repos: [{
+			Pattern: "mod1"
+			Private: false
+			Var:     "REPO1"
+		}]
+	}
 	Version: """
 		{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
@@ -20,8 +28,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "cuelang.org/go",
-		      "Version": "v0.3.0-alpha5",
-		      "Sum": "h1:8gY9P7bZ3EsET3t0Y0tS2rtGo8qka7jbSu5pfjl07lw=",
+		      "Version": "v0.3.0-alpha5.0.20201125190328-110d0bffb886",
+		      "Sum": "h1:AH0SmnFFudNmu7ZFcKV8aNOAiPC/3nC5M9zfh50pLzk=",
 		      "Replace": null
 		    },
 		    {
@@ -56,8 +64,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201127063021-618bc89b79b5",
-		      "Sum": "h1:D8LWv2UGZd6JG8fIg1ASdBr0K7gLhthZ0UcBmGNbI4A=",
+		      "Version": "v0.0.2-0.20201127064237-60c1cbc298ce",
+		      "Sum": "h1:G+SARY3jyPp4RLbXTusrALhXMDY4JaslhkXoDx0MmdI=",
 		      "Replace": null
 		    },
 		    {
@@ -99,92 +107,91 @@ Presteps: [{
 		  ]
 		}
 		"""
-	Args: {
-		Repos: [{
-			Var:     "REPO1"
-			Private: false
-			Pattern: "mod1"
-		}]
-	}
-	Package: "github.com/play-with-go/gitea"
-	Path:    "/newuser"
+	Variables: ["GITEA_USERNAME", "GITEA_PRIV_KEY", "GITEA_PUB_KEY", "GITEA_KEYSCAN", "REPO1"]
 }]
 Terminals: [{
+	Name:        "term1"
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
 			Image: "playwithgo/go1.15.5@sha256:1c332c6b4e73dee8075badc66fe23c7fe51c44ddd2becb6cffc2db81bdaa0b06"
 		}
 	}
-	Name: "term1"
 }]
 Scenarios: [{
-	Description: "Go 1.15"
 	Name:        "go115"
+	Description: "Go 1.15"
 }]
 Networks: ["playwithgo_pwg"]
 Env: []
 FilenameComment: false
 Steps: {
 	create_module: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "create_module"
+		Order:           0
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
+			Negated:          false
 			CmdStr:           "mkdir /home/gopher/mod1"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
 			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:          false
 			CmdStr:           "cd /home/gopher/mod1"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
 			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:          false
 			CmdStr:           "git init -q"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
 			ExitCode:         0
-			CmdStr:           "git remote add origin https://{{{.REPO1}}}.git"
-			Negated:          false
+			Output:           ""
+			ComparisonOutput: ""
 		}, {
-			ComparisonOutput: """
-				go: creating new go.mod: module {{{.REPO1}}}
-
-				"""
+			Negated:          false
+			CmdStr:           "git remote add origin https://{{{.REPO1}}}.git"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:  false
+			CmdStr:   "go mod init {{{.REPO1}}}"
+			ExitCode: 0
 			Output: """
 				go: creating new go.mod: module {{{.REPO1}}}
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go mod init {{{.REPO1}}}"
-			Negated:  false
+			ComparisonOutput: """
+				go: creating new go.mod: module {{{.REPO1}}}
+
+				"""
 		}]
-		Order:           0
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "create_module"
 	}
 	create_readme: {
-		Order:  1
-		Source: "## `{{{.REPO1}}}`"
+		StepType: 2
+		Name:     "create_readme"
+		Order:    1
+		Terminal: "term1"
+		Language: "md"
 		Renderer: {
 			RendererType: 1
 		}
-		Language: "md"
-		Target:   "/home/gopher/mod1/README.md"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "create_readme"
+		Source: "## `{{{.REPO1}}}`"
+		Target: "/home/gopher/mod1/README.md"
 	}
 	create_main: {
-		Order: 2
+		StepType: 2
+		Name:     "create_main"
+		Order:    2
+		Terminal: "term1"
+		Language: "go"
+		Renderer: {
+			RendererType: 1
+		}
 		Source: """
 			package main
 
@@ -195,146 +202,139 @@ Steps: {
 			}
 
 			"""
-		Renderer: {
-			RendererType: 1
-		}
-		Language: "go"
-		Target:   "/home/gopher/mod1/main.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "create_main"
+		Target: "/home/gopher/mod1/main.go"
 	}
 	commit_and_push: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "commit_and_push"
+		Order:           3
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
+			Negated:          false
 			CmdStr:           "git add go.mod README.md main.go"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
 			ExitCode:         0
-			CmdStr:           "git commit -q -m \"Initial commit\""
-			Negated:          false
+			Output:           ""
+			ComparisonOutput: ""
 		}, {
-			ComparisonOutput: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
+			Negated:          false
+			CmdStr:           "git commit -q -m \"Initial commit\""
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:  false
+			CmdStr:   "git push -q origin main"
+			ExitCode: 0
 			Output: """
 				remote: . Processing 1 references        
 				remote: Processed 1 references in total        
 
 				"""
-			ExitCode: 0
-			CmdStr:   "git push -q origin main"
-			Negated:  false
+			ComparisonOutput: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
 		}]
-		Order:           3
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "commit_and_push"
 	}
 	check_porcelain: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
-			Negated:          false
-		}]
-		Order:           4
-		InformationOnly: true
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: true
 		Name:            "check_porcelain"
+		Order:           4
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	use_module: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "mkdir /home/gopher/mod2"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "cd /home/gopher/mod2"
-			Negated:          false
-		}, {
-			ComparisonOutput: """
-				go: creating new go.mod: module mod.com
-
-				"""
-			Output: """
-				go: creating new go.mod: module mod.com
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go mod init mod.com"
-			Negated:  false
-		}, {
-			ComparisonOutput: """
-
-				go: downloading {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
-				go: {{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcedf12345
-				"""
-			Output: """
-				go: downloading {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
-				go: {{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcedf12345
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go get {{{.REPO1}}}"
-			Negated:  false
-		}, {
-			ComparisonOutput: """
-				Hello, world!
-
-				"""
-			Output: """
-				Hello, world!
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go run {{{.REPO1}}}"
-			Negated:  false
-		}]
-		Order:           5
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "use_module"
+		Order:           5
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "mkdir /home/gopher/mod2"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:          false
+			CmdStr:           "cd /home/gopher/mod2"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:  false
+			CmdStr:   "go mod init mod.com"
+			ExitCode: 0
+			Output: """
+				go: creating new go.mod: module mod.com
+
+				"""
+			ComparisonOutput: """
+				go: creating new go.mod: module mod.com
+
+				"""
+		}, {
+			Negated:  false
+			CmdStr:   "go get {{{.REPO1}}}"
+			ExitCode: 0
+			Output: """
+				go: downloading {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
+				go: {{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcedf12345
+
+				"""
+			ComparisonOutput: """
+
+				go: downloading {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
+				go: {{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcedf12345
+				"""
+		}, {
+			Negated:  false
+			CmdStr:   "go run {{{.REPO1}}}"
+			ExitCode: 0
+			Output: """
+				Hello, world!
+
+				"""
+			ComparisonOutput: """
+				Hello, world!
+
+				"""
+		}]
 	}
 	mod1_pseudoversion: {
+		StepType:        1
+		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
+		DoNotTrim:       false
+		InformationOnly: true
+		Name:            "mod1_pseudoversion"
+		Order:           6
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				v0.0.0-20060102150405-abcedf12345
-
-				"""
+			Negated:  false
+			CmdStr:   "go list -m -f {{.Version}} {{{.REPO1}}}"
+			ExitCode: 0
 			Output: """
 				v0.0.0-20060102150405-abcedf12345
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go list -m -f {{.Version}} {{{.REPO1}}}"
-			Negated:  false
+			ComparisonOutput: """
+				v0.0.0-20060102150405-abcedf12345
+
+				"""
 		}]
-		Order:           6
-		InformationOnly: true
-		DoNotTrim:       false
-		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "mod1_pseudoversion"
 	}
 }
-Hash: "65394bbe4ff91387360dc29d68c24bc3fc84411ea8dd8ee0e5c44f0ff5efa775"
+Hash: "6dae6cc137006281bdb78c5857a7146e5f8614398e177e1d470f88d763337940"
 Delims: ["{{{", "}}}"]

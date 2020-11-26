@@ -1,7 +1,15 @@
 package out
 
 Presteps: [{
-	Variables: ["GITEA_USERNAME", "GITEA_PRIV_KEY", "GITEA_PUB_KEY", "GITEA_KEYSCAN", "PROVERB"]
+	Package: "github.com/play-with-go/gitea"
+	Path:    "/newuser"
+	Args: {
+		Repos: [{
+			Pattern: "proverb"
+			Private: false
+			Var:     "PROVERB"
+		}]
+	}
 	Version: """
 		{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
@@ -20,8 +28,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "cuelang.org/go",
-		      "Version": "v0.3.0-alpha5",
-		      "Sum": "h1:8gY9P7bZ3EsET3t0Y0tS2rtGo8qka7jbSu5pfjl07lw=",
+		      "Version": "v0.3.0-alpha5.0.20201125190328-110d0bffb886",
+		      "Sum": "h1:AH0SmnFFudNmu7ZFcKV8aNOAiPC/3nC5M9zfh50pLzk=",
 		      "Replace": null
 		    },
 		    {
@@ -56,8 +64,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201127063021-618bc89b79b5",
-		      "Sum": "h1:D8LWv2UGZd6JG8fIg1ASdBr0K7gLhthZ0UcBmGNbI4A=",
+		      "Version": "v0.0.2-0.20201127064237-60c1cbc298ce",
+		      "Sum": "h1:G+SARY3jyPp4RLbXTusrALhXMDY4JaslhkXoDx0MmdI=",
 		      "Replace": null
 		    },
 		    {
@@ -99,101 +107,100 @@ Presteps: [{
 		  ]
 		}
 		"""
-	Args: {
-		Repos: [{
-			Var:     "PROVERB"
-			Private: false
-			Pattern: "proverb"
-		}]
-	}
-	Package: "github.com/play-with-go/gitea"
-	Path:    "/newuser"
+	Variables: ["GITEA_USERNAME", "GITEA_PRIV_KEY", "GITEA_PUB_KEY", "GITEA_KEYSCAN", "PROVERB"]
 }]
 Terminals: [{
+	Name:        "term1"
 	Description: "The main terminal"
 	Scenarios: {
 		go116: {
 			Image: "playwithgo/go1.16-tip@sha256:af9da82837751157485d9c2008b4ad950037502d9d18715cb1e617f4b2d6f169"
 		}
 	}
-	Name: "term1"
 }]
 Scenarios: [{
-	Description: "Go 1.16"
 	Name:        "go116"
+	Description: "Go 1.16"
 }]
 Networks: ["playwithgo_pwg"]
 Env: []
 FilenameComment: false
 Steps: {
 	goversion: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "goversion"
+		Order:           0
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
-
-				"""
+			Negated:  false
+			CmdStr:   "go version"
+			ExitCode: 0
 			Output: """
 				go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go version"
-			Negated:  false
+			ComparisonOutput: """
+				go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
+
+				"""
 		}]
-		Order:           0
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "goversion"
 	}
 	proverb_create: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "proverb_create"
+		Order:           1
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
+			Negated:          false
 			CmdStr:           "mkdir /home/gopher/proverb"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
 			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:          false
 			CmdStr:           "cd /home/gopher/proverb"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
 			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:          false
 			CmdStr:           "git init -q"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
 			ExitCode:         0
-			CmdStr:           "git remote add origin https://{{{.PROVERB}}}.git"
-			Negated:          false
+			Output:           ""
+			ComparisonOutput: ""
 		}, {
-			ComparisonOutput: """
-				go: creating new go.mod: module {{{.PROVERB}}}
-
-				"""
+			Negated:          false
+			CmdStr:           "git remote add origin https://{{{.PROVERB}}}.git"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:  false
+			CmdStr:   "go mod init {{{.PROVERB}}}"
+			ExitCode: 0
 			Output: """
 				go: creating new go.mod: module {{{.PROVERB}}}
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go mod init {{{.PROVERB}}}"
-			Negated:  false
+			ComparisonOutput: """
+				go: creating new go.mod: module {{{.PROVERB}}}
+
+				"""
 		}]
-		Order:           1
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "proverb_create"
 	}
 	proverb_go_initial: {
-		Order: 2
+		StepType: 2
+		Name:     "proverb_go_initial"
+		Order:    2
+		Terminal: "term1"
+		Language: "go"
+		Renderer: {
+			RendererType: 1
+		}
 		Source: """
 			package proverb
 
@@ -203,129 +210,129 @@ Steps: {
 			}
 
 			"""
+		Target: "/home/gopher/proverb/proverb.go"
+	}
+	proverb_initial_commit: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "proverb_initial_commit"
+		Order:           3
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "git add -A"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:          false
+			CmdStr:           "git commit -q -m \"Initial commit\""
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:  false
+			CmdStr:   "git push -q origin main"
+			ExitCode: 0
+			Output: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
+			ComparisonOutput: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
+		}]
+	}
+	proverb_check_initial_porcelain: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: true
+		Name:            "proverb_check_initial_porcelain"
+		Order:           4
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
+	}
+	proverb_tag_v010: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "proverb_tag_v010"
+		Order:           5
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "git tag v0.1.0"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:  false
+			CmdStr:   "git push -q origin v0.1.0"
+			ExitCode: 0
+			Output: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
+			ComparisonOutput: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
+		}]
+	}
+	gopher_create: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_create"
+		Order:           6
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "mkdir /home/gopher/gopher"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:          false
+			CmdStr:           "cd /home/gopher/gopher"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:  false
+			CmdStr:   "go mod init gopher"
+			ExitCode: 0
+			Output: """
+				go: creating new go.mod: module gopher
+
+				"""
+			ComparisonOutput: """
+				go: creating new go.mod: module gopher
+
+				"""
+		}]
+	}
+	gopher_go_initial: {
+		StepType: 2
+		Name:     "gopher_go_initial"
+		Order:    7
+		Terminal: "term1"
+		Language: "go"
 		Renderer: {
 			RendererType: 1
 		}
-		Language: "go"
-		Target:   "/home/gopher/proverb/proverb.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "proverb_go_initial"
-	}
-	proverb_initial_commit: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git add -A"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git commit -q -m \"Initial commit\""
-			Negated:          false
-		}, {
-			ComparisonOutput: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
-			Output: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
-			ExitCode: 0
-			CmdStr:   "git push -q origin main"
-			Negated:  false
-		}]
-		Order:           3
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "proverb_initial_commit"
-	}
-	proverb_check_initial_porcelain: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
-			Negated:          false
-		}]
-		Order:           4
-		InformationOnly: true
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "proverb_check_initial_porcelain"
-	}
-	proverb_tag_v010: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git tag v0.1.0"
-			Negated:          false
-		}, {
-			ComparisonOutput: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
-			Output: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
-			ExitCode: 0
-			CmdStr:   "git push -q origin v0.1.0"
-			Negated:  false
-		}]
-		Order:           5
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "proverb_tag_v010"
-	}
-	gopher_create: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "mkdir /home/gopher/gopher"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "cd /home/gopher/gopher"
-			Negated:          false
-		}, {
-			ComparisonOutput: """
-				go: creating new go.mod: module gopher
-
-				"""
-			Output: """
-				go: creating new go.mod: module gopher
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go mod init gopher"
-			Negated:  false
-		}]
-		Order:           6
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_create"
-	}
-	gopher_go_initial: {
-		Order: 7
 		Source: """
 			package main
 
@@ -340,84 +347,73 @@ Steps: {
 			}
 
 			"""
-		Renderer: {
-			RendererType: 1
-		}
-		Language: "go"
-		Target:   "/home/gopher/gopher/gopher.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "gopher_go_initial"
+		Target: "/home/gopher/gopher/gopher.go"
 	}
 	gopher_add_dep_proverb_v010: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_add_dep_proverb_v010"
+		Order:           8
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-
-				go: downloading {{{.PROVERB}}} v0.1.0
-				"""
+			Negated:  false
+			CmdStr:   "go get {{{.PROVERB}}}@v0.1.0"
+			ExitCode: 0
 			Output: """
 				go: downloading {{{.PROVERB}}} v0.1.0
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go get {{{.PROVERB}}}@v0.1.0"
-			Negated:  false
+			ComparisonOutput: """
+
+				go: downloading {{{.PROVERB}}} v0.1.0
+				"""
 		}]
-		Order:           8
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_add_dep_proverb_v010"
 	}
 	gopher_run_initial: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_run_initial"
+		Order:           9
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				Don't communicate by sharing memory, share memory by communicating.
-
-				"""
+			Negated:  false
+			CmdStr:   "go run ."
+			ExitCode: 0
 			Output: """
 				Don't communicate by sharing memory, share memory by communicating.
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go run ."
-			Negated:  false
+			ComparisonOutput: """
+				Don't communicate by sharing memory, share memory by communicating.
+
+				"""
 		}]
-		Order:           9
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_run_initial"
 	}
 	proverb_cd_concurrency_change: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "cd /home/gopher/proverb"
-			Negated:          false
-		}]
-		Order:           10
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "proverb_cd_concurrency_change"
+		Order:           10
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "cd /home/gopher/proverb"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	proverb_go_concurrency: {
-		Order: 11
-		Source: """
-			package proverb
-
-			// Go returns a Go proverb
-			func Go() string {
-			\treturn "Concurrency is parallelism."
-			}
-
-			"""
+		StepType: 2
+		Name:     "proverb_go_concurrency"
+		Order:    11
+		Terminal: "term1"
+		Language: "go"
 		Renderer: {
+			RendererType: 3
 			Pre: """
 				package proverb
 
@@ -427,172 +423,177 @@ Steps: {
 				}
 
 				"""
-			RendererType: 3
 		}
-		Language: "go"
-		Target:   "/home/gopher/proverb/proverb.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "proverb_go_concurrency"
+		Source: """
+			package proverb
+
+			// Go returns a Go proverb
+			func Go() string {
+			\treturn "Concurrency is parallelism."
+			}
+
+			"""
+		Target: "/home/gopher/proverb/proverb.go"
 	}
 	proverb_concurrency_commit: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "proverb_concurrency_commit"
+		Order:           12
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
+			Negated:          false
 			CmdStr:           "git add -A"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
 			ExitCode:         0
-			CmdStr:           "git commit -q -m \"Switch Go proverb to something more famous\""
-			Negated:          false
+			Output:           ""
+			ComparisonOutput: ""
 		}, {
-			ComparisonOutput: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
+			Negated:          false
+			CmdStr:           "git commit -q -m \"Switch Go proverb to something more famous\""
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:  false
+			CmdStr:   "git push -q origin main"
+			ExitCode: 0
 			Output: """
 				remote: . Processing 1 references        
 				remote: Processed 1 references in total        
 
 				"""
-			ExitCode: 0
-			CmdStr:   "git push -q origin main"
-			Negated:  false
+			ComparisonOutput: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
 		}]
-		Order:           12
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "proverb_concurrency_commit"
 	}
 	proverb_check_concurrency_porcelain: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
-			Negated:          false
-		}]
-		Order:           13
-		InformationOnly: true
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: true
 		Name:            "proverb_check_concurrency_porcelain"
+		Order:           13
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	proverb_tag_v020: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "proverb_tag_v020"
+		Order:           14
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git tag v0.2.0"
 			Negated:          false
+			CmdStr:           "git tag v0.2.0"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
 		}, {
-			ComparisonOutput: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
+			Negated:  false
+			CmdStr:   "git push -q origin v0.2.0"
+			ExitCode: 0
 			Output: """
 				remote: . Processing 1 references        
 				remote: Processed 1 references in total        
 
 				"""
-			ExitCode: 0
-			CmdStr:   "git push -q origin v0.2.0"
-			Negated:  false
+			ComparisonOutput: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
 		}]
-		Order:           14
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "proverb_tag_v020"
 	}
 	gopher_use_v020: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "cd /home/gopher/gopher"
-			Negated:          false
-		}, {
-			ComparisonOutput: """
-
-				go: downloading {{{.PROVERB}}} v0.2.0
-				"""
-			Output: """
-				go: downloading {{{.PROVERB}}} v0.2.0
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go get {{{.PROVERB}}}@v0.2.0"
-			Negated:  false
-		}, {
-			ComparisonOutput: """
-				Concurrency is parallelism.
-
-				"""
-			Output: """
-				Concurrency is parallelism.
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go run ."
-			Negated:  false
-		}]
-		Order:           15
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "gopher_use_v020"
+		Order:           15
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "cd /home/gopher/gopher"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:  false
+			CmdStr:   "go get {{{.PROVERB}}}@v0.2.0"
+			ExitCode: 0
+			Output: """
+				go: downloading {{{.PROVERB}}} v0.2.0
+
+				"""
+			ComparisonOutput: """
+
+				go: downloading {{{.PROVERB}}} v0.2.0
+				"""
+		}, {
+			Negated:  false
+			CmdStr:   "go run ."
+			ExitCode: 0
+			Output: """
+				Concurrency is parallelism.
+
+				"""
+			ComparisonOutput: """
+				Concurrency is parallelism.
+
+				"""
+		}]
 	}
 	proverb_return_to_retract_v020: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "cd /home/gopher/proverb"
-			Negated:          false
-		}]
-		Order:           16
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "proverb_return_to_retract_v020"
+		Order:           16
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "cd /home/gopher/proverb"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	proverb_retract_v020: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "go mod edit -retract=v0.2.0"
-			Negated:          false
-		}]
-		Order:           17
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "proverb_retract_v020"
+		Order:           17
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "go mod edit -retract=v0.2.0"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	proverb_cat_v020_retract: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "proverb_cat_v020_retract"
+		Order:           18
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				module {{{.PROVERB}}}
-
-				go 1.16
-
-				retract v0.2.0
-
-				"""
+			Negated:  false
+			CmdStr:   "cat go.mod"
+			ExitCode: 0
 			Output: """
 				module {{{.PROVERB}}}
 
@@ -601,19 +602,25 @@ Steps: {
 				retract v0.2.0
 
 				"""
-			ExitCode: 0
-			CmdStr:   "cat go.mod"
-			Negated:  false
+			ComparisonOutput: """
+				module {{{.PROVERB}}}
+
+				go 1.16
+
+				retract v0.2.0
+
+				"""
 		}]
-		Order:           18
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "proverb_cat_v020_retract"
 	}
 	proverb_comment_retraction: {
-		Order: 19
+		StepType: 2
+		Name:     "proverb_comment_retraction"
+		Order:    19
+		Terminal: "term1"
+		Language: "go.mod"
+		Renderer: {
+			RendererType: 1
+		}
 		Source: """
 			module {{{.PROVERB}}}
 
@@ -623,27 +630,16 @@ Steps: {
 			retract v0.2.0
 
 			"""
-		Renderer: {
-			RendererType: 1
-		}
-		Language: "go.mod"
-		Target:   "/home/gopher/proverb/go.mod"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "proverb_comment_retraction"
+		Target: "/home/gopher/proverb/go.mod"
 	}
 	proverb_go_fix_concurrency_bug: {
-		Order: 20
-		Source: """
-			package proverb
-
-			// Go returns a Go proverb
-			func Go() string {
-			\treturn "Concurrency is not parallelism."
-			}
-
-			"""
+		StepType: 2
+		Name:     "proverb_go_fix_concurrency_bug"
+		Order:    20
+		Terminal: "term1"
+		Language: "go"
 		Renderer: {
+			RendererType: 3
 			Pre: """
 				package proverb
 
@@ -653,288 +649,308 @@ Steps: {
 				}
 
 				"""
-			RendererType: 3
 		}
-		Language: "go"
-		Target:   "/home/gopher/proverb/proverb.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "proverb_go_fix_concurrency_bug"
+		Source: """
+			package proverb
+
+			// Go returns a Go proverb
+			func Go() string {
+			\treturn "Concurrency is not parallelism."
+			}
+
+			"""
+		Target: "/home/gopher/proverb/proverb.go"
 	}
 	proverb_tag_v030: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git add -A"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git commit -q -m \"Fix severe error in Go proverb\""
-			Negated:          false
-		}, {
-			ComparisonOutput: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
-			Output: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
-			ExitCode: 0
-			CmdStr:   "git push -q origin main"
-			Negated:  false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git tag v0.3.0"
-			Negated:          false
-		}, {
-			ComparisonOutput: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
-			Output: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
-			ExitCode: 0
-			CmdStr:   "git push -q origin v0.3.0"
-			Negated:  false
-		}]
-		Order:           21
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "proverb_tag_v030"
+		Order:           21
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "git add -A"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:          false
+			CmdStr:           "git commit -q -m \"Fix severe error in Go proverb\""
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:  false
+			CmdStr:   "git push -q origin main"
+			ExitCode: 0
+			Output: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
+			ComparisonOutput: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
+		}, {
+			Negated:          false
+			CmdStr:           "git tag v0.3.0"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:  false
+			CmdStr:   "git push -q origin v0.3.0"
+			ExitCode: 0
+			Output: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
+			ComparisonOutput: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
+		}]
 	}
 	proverb_check_v030_porcelain: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
-			Negated:          false
-		}]
-		Order:           22
-		InformationOnly: true
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: true
 		Name:            "proverb_check_v030_porcelain"
+		Order:           22
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	gopher_use_v030: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_use_v030"
+		Order:           23
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "cd /home/gopher/gopher"
 			Negated:          false
+			CmdStr:           "cd /home/gopher/gopher"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
 		}, {
-			ComparisonOutput: """
-
-				go: downloading {{{.PROVERB}}} v0.3.0
-				"""
+			Negated:  false
+			CmdStr:   "go get {{{.PROVERB}}}@v0.3.0"
+			ExitCode: 0
 			Output: """
 				go: downloading {{{.PROVERB}}} v0.3.0
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go get {{{.PROVERB}}}@v0.3.0"
-			Negated:  false
+			ComparisonOutput: """
+
+				go: downloading {{{.PROVERB}}} v0.3.0
+				"""
 		}]
-		Order:           23
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_use_v030"
 	}
 	gopher_run_v030: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_run_v030"
+		Order:           24
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				Concurrency is not parallelism.
-
-				"""
+			Negated:  false
+			CmdStr:   "go run ."
+			ExitCode: 0
 			Output: """
 				Concurrency is not parallelism.
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go run ."
-			Negated:  false
+			ComparisonOutput: """
+				Concurrency is not parallelism.
+
+				"""
 		}]
-		Order:           24
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_run_v030"
 	}
 	gopher_sleep_on_proxy: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "sleep 1m"
-			Negated:          false
-		}]
-		Order:           25
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "gopher_sleep_on_proxy"
+		Order:           25
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "sleep 1m"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	gopher_list_proverb: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_list_proverb"
+		Order:           26
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				{{{.PROVERB}}} v0.1.0 v0.3.0
-
-				"""
+			Negated:  false
+			CmdStr:   "go list -m -versions {{{.PROVERB}}}"
+			ExitCode: 0
 			Output: """
 				{{{.PROVERB}}} v0.1.0 v0.3.0
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go list -m -versions {{{.PROVERB}}}"
-			Negated:  false
+			ComparisonOutput: """
+				{{{.PROVERB}}} v0.1.0 v0.3.0
+
+				"""
 		}]
-		Order:           26
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_list_proverb"
 	}
 	gopher_list_proverb_retracted: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_list_proverb_retracted"
+		Order:           27
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				{{{.PROVERB}}} v0.1.0 v0.2.0 v0.3.0
-
-				"""
+			Negated:  false
+			CmdStr:   "go list -m -versions -retracted {{{.PROVERB}}}"
+			ExitCode: 0
 			Output: """
 				{{{.PROVERB}}} v0.1.0 v0.2.0 v0.3.0
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go list -m -versions -retracted {{{.PROVERB}}}"
-			Negated:  false
+			ComparisonOutput: """
+				{{{.PROVERB}}} v0.1.0 v0.2.0 v0.3.0
+
+				"""
 		}]
-		Order:           27
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_list_proverb_retracted"
 	}
 	gopher_use_retracted_v020: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_use_retracted_v020"
+		Order:           28
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-
-				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
-				go: warning: {{{.PROVERB}}}@v0.2.0 is retracted: Go proverb was totally wrong
-				"""
+			Negated:  false
+			CmdStr:   "go get {{{.PROVERB}}}@v0.2.0"
+			ExitCode: 0
 			Output: """
 				go: warning: {{{.PROVERB}}}@v0.2.0 is retracted: Go proverb was totally wrong
 				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go get {{{.PROVERB}}}@v0.2.0"
-			Negated:  false
+			ComparisonOutput: """
+
+				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
+				go: warning: {{{.PROVERB}}}@v0.2.0 is retracted: Go proverb was totally wrong
+				"""
 		}]
-		Order:           28
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_use_retracted_v020"
 	}
 	gopher_run_retracted_v020: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_run_retracted_v020"
+		Order:           29
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				Concurrency is parallelism.
-
-				"""
+			Negated:  false
+			CmdStr:   "go run ."
+			ExitCode: 0
 			Output: """
 				Concurrency is parallelism.
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go run ."
-			Negated:  false
+			ComparisonOutput: """
+				Concurrency is parallelism.
+
+				"""
 		}]
-		Order:           29
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_run_retracted_v020"
 	}
 	gopher_list_versions: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_list_versions"
+		Order:           30
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				gopher
-				{{{.PROVERB}}} v0.2.0 (retracted) [v0.3.0]
-
-				"""
+			Negated:  false
+			CmdStr:   "go list -m -u all"
+			ExitCode: 0
 			Output: """
 				gopher
 				{{{.PROVERB}}} v0.2.0 (retracted) [v0.3.0]
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go list -m -u all"
-			Negated:  false
+			ComparisonOutput: """
+				gopher
+				{{{.PROVERB}}} v0.2.0 (retracted) [v0.3.0]
+
+				"""
 		}]
-		Order:           30
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_list_versions"
 	}
 	gopher_use_latest_unretracted: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "go get {{{.PROVERB}}}@latest"
-			Negated:          false
-		}]
-		Order:           31
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "gopher_use_latest_unretracted"
+		Order:           31
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "go get {{{.PROVERB}}}@latest"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	proverb_return_life: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "cd /home/gopher/proverb"
-			Negated:          false
-		}]
-		Order:           32
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "proverb_return_life"
+		Order:           32
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "cd /home/gopher/proverb"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	proverb_go_life_advice: {
-		Order: 33
+		StepType: 2
+		Name:     "proverb_go_life_advice"
+		Order:    33
+		Terminal: "term1"
+		Language: "go"
+		Renderer: {
+			RendererType: 3
+			Pre: """
+				package proverb
+
+				// Go returns a Go proverb
+				func Go() string {
+				\treturn "Concurrency is not parallelism."
+				}
+
+				"""
+		}
 		Source: """
 			package proverb
 
@@ -949,134 +965,134 @@ Steps: {
 			}
 
 			"""
-		Renderer: {
-			Pre: """
-				package proverb
-
-				// Go returns a Go proverb
-				func Go() string {
-				\treturn "Concurrency is not parallelism."
-				}
-
-				"""
-			RendererType: 3
-		}
-		Language: "go"
-		Target:   "/home/gopher/proverb/proverb.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "proverb_go_life_advice"
+		Target: "/home/gopher/proverb/proverb.go"
 	}
 	proverb_life_commit: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "proverb_life_commit"
+		Order:           34
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
+			Negated:          false
 			CmdStr:           "git add -A"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
 			ExitCode:         0
-			CmdStr:           "git commit -q -m \"Add Life() proverb\""
-			Negated:          false
+			Output:           ""
+			ComparisonOutput: ""
 		}, {
-			ComparisonOutput: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
+			Negated:          false
+			CmdStr:           "git commit -q -m \"Add Life() proverb\""
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:  false
+			CmdStr:   "git push -q origin main"
+			ExitCode: 0
 			Output: """
 				remote: . Processing 1 references        
 				remote: Processed 1 references in total        
 
 				"""
-			ExitCode: 0
-			CmdStr:   "git push -q origin main"
-			Negated:  false
+			ComparisonOutput: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
 		}]
-		Order:           34
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "proverb_life_commit"
 	}
 	proverb_check_v100_porcelain: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
-			Negated:          false
-		}]
-		Order:           35
-		InformationOnly: true
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: true
 		Name:            "proverb_check_v100_porcelain"
+		Order:           35
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	proverb_tag_v100: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "proverb_tag_v100"
+		Order:           36
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git tag v1.0.0"
 			Negated:          false
+			CmdStr:           "git tag v1.0.0"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
 		}, {
-			ComparisonOutput: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
+			Negated:  false
+			CmdStr:   "git push -q origin v1.0.0"
+			ExitCode: 0
 			Output: """
 				remote: . Processing 1 references        
 				remote: Processed 1 references in total        
 
 				"""
-			ExitCode: 0
-			CmdStr:   "git push -q origin v1.0.0"
-			Negated:  false
+			ComparisonOutput: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
 		}]
-		Order:           36
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "proverb_tag_v100"
 	}
 	proverb_tag_v040: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "proverb_tag_v040"
+		Order:           37
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git tag v0.4.0"
 			Negated:          false
+			CmdStr:           "git tag v0.4.0"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
 		}, {
-			ComparisonOutput: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
+			Negated:  false
+			CmdStr:   "git push -q origin v0.4.0"
+			ExitCode: 0
 			Output: """
 				remote: . Processing 1 references        
 				remote: Processed 1 references in total        
 
 				"""
-			ExitCode: 0
-			CmdStr:   "git push -q origin v0.4.0"
-			Negated:  false
+			ComparisonOutput: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
 		}]
-		Order:           37
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "proverb_tag_v040"
 	}
 	proverb_retract_v100: {
-		Order: 38
+		StepType: 2
+		Name:     "proverb_retract_v100"
+		Order:    38
+		Terminal: "term1"
+		Language: "go.mod"
+		Renderer: {
+			RendererType: 3
+			Pre: """
+				module {{{.PROVERB}}}
+
+				go 1.16
+
+				// Go proverb was totally wrong
+				retract v0.2.0
+
+				"""
+		}
 		Source: """
 			module {{{.PROVERB}}}
 
@@ -1091,236 +1107,241 @@ Steps: {
 			)
 
 			"""
-		Renderer: {
-			Pre: """
-				module {{{.PROVERB}}}
-
-				go 1.16
-
-				// Go proverb was totally wrong
-				retract v0.2.0
-
-				"""
-			RendererType: 3
-		}
-		Language: "go.mod"
-		Target:   "/home/gopher/proverb/go.mod"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "proverb_retract_v100"
+		Target: "/home/gopher/proverb/go.mod"
 	}
 	proverb_tag_v101: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git add -A"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git commit -q -m \"Retract [v1.0.0, v1.0.1]\""
-			Negated:          false
-		}, {
-			ComparisonOutput: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
-			Output: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
-			ExitCode: 0
-			CmdStr:   "git push -q origin main"
-			Negated:  false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git tag v1.0.1"
-			Negated:          false
-		}, {
-			ComparisonOutput: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
-			Output: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
-			ExitCode: 0
-			CmdStr:   "git push -q origin v1.0.1"
-			Negated:  false
-		}]
-		Order:           39
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "proverb_tag_v101"
+		Order:           39
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "git add -A"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:          false
+			CmdStr:           "git commit -q -m \"Retract [v1.0.0, v1.0.1]\""
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:  false
+			CmdStr:   "git push -q origin main"
+			ExitCode: 0
+			Output: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
+			ComparisonOutput: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
+		}, {
+			Negated:          false
+			CmdStr:           "git tag v1.0.1"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:  false
+			CmdStr:   "git push -q origin v1.0.1"
+			ExitCode: 0
+			Output: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
+			ComparisonOutput: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
+		}]
 	}
 	proverb_check_v101_porcelain: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
-			Negated:          false
-		}]
-		Order:           40
-		InformationOnly: true
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: true
 		Name:            "proverb_check_v101_porcelain"
+		Order:           40
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	gopher_cd_use_v100: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "cd /home/gopher/gopher"
-			Negated:          false
-		}]
-		Order:           41
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "gopher_cd_use_v100"
+		Order:           41
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "cd /home/gopher/gopher"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	temp_get_v101: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "(cd $(mktemp -d); export GOPATH=$(mktemp -d); go mod init mod.com; go get -x {{{.PROVERB}}}@v0.4.0; go get -x {{{.PROVERB}}}@v1.0.0; go get -x {{{.PROVERB}}}@v1.0.1; sleep 1m) >/dev/null 2>&1"
-			Negated:          false
-		}]
-		Order:           42
-		InformationOnly: true
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: true
 		Name:            "temp_get_v101"
+		Order:           42
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "(cd $(mktemp -d); export GOPATH=$(mktemp -d); go mod init mod.com; go get -x {{{.PROVERB}}}@v0.4.0; go get -x {{{.PROVERB}}}@v1.0.0; go get -x {{{.PROVERB}}}@v1.0.1; sleep 1m) >/dev/null 2>&1"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	gopher_use_v101: {
-		Stmts: [{
-			ComparisonOutput: """
-
-				go: downloading {{{.PROVERB}}} v1.0.0
-				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
-				go: warning: {{{.PROVERB}}}@v1.0.0 is retracted: Published v1 too early
-				"""
-			Output: """
-				go: downloading {{{.PROVERB}}} v1.0.0
-				go: warning: {{{.PROVERB}}}@v1.0.0 is retracted: Published v1 too early
-				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go get {{{.PROVERB}}}@v1.0.0"
-			Negated:  false
-		}, {
-			ComparisonOutput: """
-
-				go: downloading {{{.PROVERB}}} v1.0.1
-				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
-				go: warning: {{{.PROVERB}}}@v1.0.1 is retracted: Published v1 too early
-				"""
-			Output: """
-				go: downloading {{{.PROVERB}}} v1.0.1
-				go: warning: {{{.PROVERB}}}@v1.0.1 is retracted: Published v1 too early
-				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go get {{{.PROVERB}}}@v1.0.1"
-			Negated:  false
-		}, {
-			ComparisonOutput: """
-
-				go: downloading {{{.PROVERB}}} v0.4.0
-				"""
-			Output: """
-				go: downloading {{{.PROVERB}}} v0.4.0
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go get {{{.PROVERB}}}@v0.4.0"
-			Negated:  false
-		}]
-		Order:           43
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "gopher_use_v101"
+		Order:           43
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:  false
+			CmdStr:   "go get {{{.PROVERB}}}@v1.0.0"
+			ExitCode: 0
+			Output: """
+				go: downloading {{{.PROVERB}}} v1.0.0
+				go: warning: {{{.PROVERB}}}@v1.0.0 is retracted: Published v1 too early
+				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
+
+				"""
+			ComparisonOutput: """
+
+				go: downloading {{{.PROVERB}}} v1.0.0
+				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
+				go: warning: {{{.PROVERB}}}@v1.0.0 is retracted: Published v1 too early
+				"""
+		}, {
+			Negated:  false
+			CmdStr:   "go get {{{.PROVERB}}}@v1.0.1"
+			ExitCode: 0
+			Output: """
+				go: downloading {{{.PROVERB}}} v1.0.1
+				go: warning: {{{.PROVERB}}}@v1.0.1 is retracted: Published v1 too early
+				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
+
+				"""
+			ComparisonOutput: """
+
+				go: downloading {{{.PROVERB}}} v1.0.1
+				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
+				go: warning: {{{.PROVERB}}}@v1.0.1 is retracted: Published v1 too early
+				"""
+		}, {
+			Negated:  false
+			CmdStr:   "go get {{{.PROVERB}}}@v0.4.0"
+			ExitCode: 0
+			Output: """
+				go: downloading {{{.PROVERB}}} v0.4.0
+
+				"""
+			ComparisonOutput: """
+
+				go: downloading {{{.PROVERB}}} v0.4.0
+				"""
+		}]
 	}
 	gopher_sleep_on_proxy_again: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "sleep 1m"
-			Negated:          false
-		}]
-		Order:           44
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "gopher_sleep_on_proxy_again"
+		Order:           44
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "sleep 1m"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	gopher_list_proverb_v101_retracted: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_list_proverb_v101_retracted"
+		Order:           45
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				{{{.PROVERB}}} v0.1.0 v0.2.0 v0.3.0 v0.4.0 v1.0.0 v1.0.1
-
-				"""
+			Negated:  false
+			CmdStr:   "go list -m -versions -retracted {{{.PROVERB}}}"
+			ExitCode: 0
 			Output: """
 				{{{.PROVERB}}} v0.1.0 v0.2.0 v0.3.0 v0.4.0 v1.0.0 v1.0.1
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go list -m -versions -retracted {{{.PROVERB}}}"
-			Negated:  false
+			ComparisonOutput: """
+				{{{.PROVERB}}} v0.1.0 v0.2.0 v0.3.0 v0.4.0 v1.0.0 v1.0.1
+
+				"""
 		}]
-		Order:           45
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_list_proverb_v101_retracted"
 	}
 	gopher_list_proverb_v101_nonretracted: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_list_proverb_v101_nonretracted"
+		Order:           46
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				{{{.PROVERB}}} v0.1.0 v0.3.0 v0.4.0
-
-				"""
+			Negated:  false
+			CmdStr:   "go list -m -versions {{{.PROVERB}}}"
+			ExitCode: 0
 			Output: """
 				{{{.PROVERB}}} v0.1.0 v0.3.0 v0.4.0
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go list -m -versions {{{.PROVERB}}}"
-			Negated:  false
+			ComparisonOutput: """
+				{{{.PROVERB}}} v0.1.0 v0.3.0 v0.4.0
+
+				"""
 		}]
-		Order:           46
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_list_proverb_v101_nonretracted"
 	}
 	gopher_go_update_life_proverb: {
-		Order: 47
+		StepType: 2
+		Name:     "gopher_go_update_life_proverb"
+		Order:    47
+		Terminal: "term1"
+		Language: "go"
+		Renderer: {
+			RendererType: 3
+			Pre: """
+				package main
+
+				import (
+				\t"fmt"
+
+				\t"{{{.PROVERB}}}"
+				)
+
+				func main() {
+				\tfmt.Println(proverb.Go())
+				}
+
+				"""
+		}
 		Source: """
 			package main
 
@@ -1336,52 +1357,31 @@ Steps: {
 			}
 
 			"""
-		Renderer: {
-			Pre: """
-				package main
-
-				import (
-				\t"fmt"
-
-				\t"{{{.PROVERB}}}"
-				)
-
-				func main() {
-				\tfmt.Println(proverb.Go())
-				}
-
-				"""
-			RendererType: 3
-		}
-		Language: "go"
-		Target:   "/home/gopher/gopher/gopher.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "gopher_go_update_life_proverb"
+		Target: "/home/gopher/gopher/gopher.go"
 	}
 	gopher_run_life_proverb: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_run_life_proverb"
+		Order:           48
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				Go proverb: Concurrency is not parallelism.
-				Life advice: A bird in the hand is worth two in the bush.
-
-				"""
+			Negated:  false
+			CmdStr:   "go run ."
+			ExitCode: 0
 			Output: """
 				Go proverb: Concurrency is not parallelism.
 				Life advice: A bird in the hand is worth two in the bush.
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go run ."
-			Negated:  false
+			ComparisonOutput: """
+				Go proverb: Concurrency is not parallelism.
+				Life advice: A bird in the hand is worth two in the bush.
+
+				"""
 		}]
-		Order:           48
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_run_life_proverb"
 	}
 }
-Hash: "046a3276da5f2e431b3adee33b32adee0a509592eda843975d4bbb62e95b98d9"
+Hash: "87d884ec82f3351831926578efe25bbdacf9b0f7f4b964f658f48791fe9c968d"
 Delims: ["{{{", "}}}"]

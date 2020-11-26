@@ -1,7 +1,15 @@
 package out
 
 Presteps: [{
-	Variables: ["GITEA_USERNAME", "GITEA_PRIV_KEY", "GITEA_PUB_KEY", "GITEA_KEYSCAN", "PAINKILLER"]
+	Package: "github.com/play-with-go/gitea"
+	Path:    "/newuser"
+	Args: {
+		Repos: [{
+			Pattern: "painkiller"
+			Private: false
+			Var:     "PAINKILLER"
+		}]
+	}
 	Version: """
 		{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
@@ -20,8 +28,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "cuelang.org/go",
-		      "Version": "v0.3.0-alpha5",
-		      "Sum": "h1:8gY9P7bZ3EsET3t0Y0tS2rtGo8qka7jbSu5pfjl07lw=",
+		      "Version": "v0.3.0-alpha5.0.20201125190328-110d0bffb886",
+		      "Sum": "h1:AH0SmnFFudNmu7ZFcKV8aNOAiPC/3nC5M9zfh50pLzk=",
 		      "Replace": null
 		    },
 		    {
@@ -56,8 +64,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201127063021-618bc89b79b5",
-		      "Sum": "h1:D8LWv2UGZd6JG8fIg1ASdBr0K7gLhthZ0UcBmGNbI4A=",
+		      "Version": "v0.0.2-0.20201127064237-60c1cbc298ce",
+		      "Sum": "h1:G+SARY3jyPp4RLbXTusrALhXMDY4JaslhkXoDx0MmdI=",
 		      "Replace": null
 		    },
 		    {
@@ -99,89 +107,88 @@ Presteps: [{
 		  ]
 		}
 		"""
-	Args: {
-		Repos: [{
-			Var:     "PAINKILLER"
-			Private: false
-			Pattern: "painkiller"
-		}]
-	}
-	Package: "github.com/play-with-go/gitea"
-	Path:    "/newuser"
+	Variables: ["GITEA_USERNAME", "GITEA_PRIV_KEY", "GITEA_PUB_KEY", "GITEA_KEYSCAN", "PAINKILLER"]
 }]
 Terminals: [{
+	Name:        "term1"
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
 			Image: "playwithgo/go1.15.5@sha256:1c332c6b4e73dee8075badc66fe23c7fe51c44ddd2becb6cffc2db81bdaa0b06"
 		}
 	}
-	Name: "term1"
 }]
 Scenarios: [{
-	Description: "Go 1.15"
 	Name:        "go115"
+	Description: "Go 1.15"
 }]
 Networks: ["playwithgo_pwg"]
 Env: []
 FilenameComment: false
 Steps: {
 	goversion: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "goversion"
+		Order:           0
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				go version go1.15.5 linux/amd64
-
-				"""
+			Negated:  false
+			CmdStr:   "go version"
+			ExitCode: 0
 			Output: """
 				go version go1.15.5 linux/amd64
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go version"
-			Negated:  false
+			ComparisonOutput: """
+				go version go1.15.5 linux/amd64
+
+				"""
 		}]
-		Order:           0
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "goversion"
 	}
 	painkiller_go_mod_init: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "painkiller_go_mod_init"
+		Order:           1
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
+			Negated:          false
 			CmdStr:           "mkdir painkiller"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
 			ExitCode:         0
-			CmdStr:           "cd painkiller"
-			Negated:          false
+			Output:           ""
+			ComparisonOutput: ""
 		}, {
-			ComparisonOutput: """
-				go: creating new go.mod: module painkiller
-
-				"""
+			Negated:          false
+			CmdStr:           "cd painkiller"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:  false
+			CmdStr:   "go mod init painkiller"
+			ExitCode: 0
 			Output: """
 				go: creating new go.mod: module painkiller
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go mod init painkiller"
-			Negated:  false
+			ComparisonOutput: """
+				go: creating new go.mod: module painkiller
+
+				"""
 		}]
-		Order:           1
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "painkiller_go_mod_init"
 	}
 	basic_app: {
-		Order: 2
+		StepType: 2
+		Name:     "basic_app"
+		Order:    2
+		Terminal: "term1"
+		Language: "go"
+		Renderer: {
+			RendererType: 1
+		}
 		Source: """
 			package main
 
@@ -199,38 +206,55 @@ Steps: {
 			}
 
 			"""
-		Renderer: {
-			RendererType: 1
-		}
-		Language: "go"
-		Target:   "/home/gopher/painkiller/painkiller.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "basic_app"
+		Target: "/home/gopher/painkiller/painkiller.go"
 	}
 	painkiller_run_basic: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "painkiller_run_basic"
+		Order:           3
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				For headaches, take 1
-
-				"""
+			Negated:  false
+			CmdStr:   "go run ."
+			ExitCode: 0
 			Output: """
 				For headaches, take 1
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go run ."
-			Negated:  false
+			ComparisonOutput: """
+				For headaches, take 1
+
+				"""
 		}]
-		Order:           3
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "painkiller_run_basic"
 	}
 	manual_string: {
-		Order: 4
+		StepType: 2
+		Name:     "manual_string"
+		Order:    4
+		Terminal: "term1"
+		Language: "go"
+		Renderer: {
+			RendererType: 3
+			Pre: """
+				package main
+
+				import "fmt"
+
+				type Pill int
+
+				const (
+				\tPlacebo Pill = iota
+				\tIbuprofen
+				)
+
+				func main() {
+				\tfmt.Printf("For headaches, take %v\\n", Ibuprofen)
+				}
+
+				"""
+		}
 		Source: """
 			package main
 
@@ -259,73 +283,37 @@ Steps: {
 			}
 
 			"""
-		Renderer: {
-			Pre: """
-				package main
-
-				import "fmt"
-
-				type Pill int
-
-				const (
-				\tPlacebo Pill = iota
-				\tIbuprofen
-				)
-
-				func main() {
-				\tfmt.Printf("For headaches, take %v\\n", Ibuprofen)
-				}
-
-				"""
-			RendererType: 3
-		}
-		Language: "go"
-		Target:   "/home/gopher/painkiller/painkiller.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "manual_string"
+		Target: "/home/gopher/painkiller/painkiller.go"
 	}
 	painkiller_run_manual_string: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "painkiller_run_manual_string"
+		Order:           5
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				For headaches, take Ibuprofen
-
-				"""
+			Negated:  false
+			CmdStr:   "go run ."
+			ExitCode: 0
 			Output: """
 				For headaches, take Ibuprofen
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go run ."
-			Negated:  false
+			ComparisonOutput: """
+				For headaches, take Ibuprofen
+
+				"""
 		}]
-		Order:           5
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "painkiller_run_manual_string"
 	}
 	painkiller_remove_hand_written_string: {
-		Order: 6
-		Source: """
-			package main
-
-			import "fmt"
-
-			type Pill int
-
-			const (
-			\tPlacebo Pill = iota
-			\tIbuprofen
-			)
-
-			func main() {
-			\tfmt.Printf("For headaches, take %v\\n", Ibuprofen)
-			}
-
-			"""
+		StepType: 2
+		Name:     "painkiller_remove_hand_written_string"
+		Order:    6
+		Terminal: "term1"
+		Language: "go"
 		Renderer: {
+			RendererType: 3
 			Pre: """
 				package main
 
@@ -354,16 +342,35 @@ Steps: {
 				}
 
 				"""
-			RendererType: 3
 		}
-		Language: "go"
-		Target:   "/home/gopher/painkiller/painkiller.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "painkiller_remove_hand_written_string"
+		Source: """
+			package main
+
+			import "fmt"
+
+			type Pill int
+
+			const (
+			\tPlacebo Pill = iota
+			\tIbuprofen
+			)
+
+			func main() {
+			\tfmt.Printf("For headaches, take %v\\n", Ibuprofen)
+			}
+
+			"""
+		Target: "/home/gopher/painkiller/painkiller.go"
 	}
 	tools_go_initial: {
-		Order: 7
+		StepType: 2
+		Name:     "tools_go_initial"
+		Order:    7
+		Terminal: "term1"
+		Language: "go"
+		Renderer: {
+			RendererType: 1
+		}
 		Source: """
 			// +build tools
 
@@ -374,24 +381,19 @@ Steps: {
 			)
 
 			"""
-		Renderer: {
-			RendererType: 1
-		}
-		Language: "go"
-		Target:   "/home/gopher/painkiller/tools.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "tools_go_initial"
+		Target: "/home/gopher/painkiller/tools.go"
 	}
 	stringer_go_get: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "stringer_go_get"
+		Order:           8
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-
-				go: downloading golang.org/x/mod v0.3.0
-				go: downloading golang.org/x/tools v0.0.0-20201105220310-78b158585360
-				go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
-				go: found golang.org/x/tools/cmd/stringer in golang.org/x/tools v0.0.0-20201105220310-78b158585360
-				"""
+			Negated:  false
+			CmdStr:   "go get golang.org/x/tools/cmd/stringer@v0.0.0-20201105220310-78b158585360"
+			ExitCode: 0
 			Output: """
 				go: downloading golang.org/x/tools v0.0.0-20201105220310-78b158585360
 				go: found golang.org/x/tools/cmd/stringer in golang.org/x/tools v0.0.0-20201105220310-78b158585360
@@ -399,27 +401,26 @@ Steps: {
 				go: downloading golang.org/x/mod v0.3.0
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go get golang.org/x/tools/cmd/stringer@v0.0.0-20201105220310-78b158585360"
-			Negated:  false
+			ComparisonOutput: """
+
+				go: downloading golang.org/x/mod v0.3.0
+				go: downloading golang.org/x/tools v0.0.0-20201105220310-78b158585360
+				go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
+				go: found golang.org/x/tools/cmd/stringer in golang.org/x/tools v0.0.0-20201105220310-78b158585360
+				"""
 		}]
-		Order:           8
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "stringer_go_get"
 	}
 	painkiller_cat_go_mod: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "painkiller_cat_go_mod"
+		Order:           9
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				module painkiller
-
-				go 1.15
-
-				require golang.org/x/tools v0.0.0-20201105220310-78b158585360 // indirect
-
-				"""
+			Negated:  false
+			CmdStr:   "cat go.mod"
+			ExitCode: 0
 			Output: """
 				module painkiller
 
@@ -428,53 +429,42 @@ Steps: {
 				require golang.org/x/tools v0.0.0-20201105220310-78b158585360 // indirect
 
 				"""
-			ExitCode: 0
-			CmdStr:   "cat go.mod"
-			Negated:  false
+			ComparisonOutput: """
+				module painkiller
+
+				go 1.15
+
+				require golang.org/x/tools v0.0.0-20201105220310-78b158585360 // indirect
+
+				"""
 		}]
-		Order:           9
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "painkiller_cat_go_mod"
 	}
 	painkiller_go_mod_tidy: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "go mod tidy"
-			Negated:          false
-		}]
-		Order:           10
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "painkiller_go_mod_tidy"
+		Order:           10
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "go mod tidy"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	stringer_help: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "stringer_help"
+		Order:           11
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				Usage of stringer:
-				\tstringer [flags] -type T [directory]
-				\tstringer [flags] -type T files... # Must be a single package
-				For more information, see:
-				\thttps://pkg.go.dev/golang.org/x/tools/cmd/stringer
-				Flags:
-				  -linecomment
-				    \tuse line comment text as printed text when present
-				  -output string
-				    \toutput file name; default srcdir/<type>_string.go
-				  -tags string
-				    \tcomma-separated list of build tags to apply
-				  -trimprefix prefix
-				    \ttrim the prefix from the generated constant names
-				  -type string
-				    \tcomma-separated list of type names; must be set
-
-				"""
+			Negated:  false
+			CmdStr:   "go run golang.org/x/tools/cmd/stringer -help"
+			ExitCode: 0
 			Output: """
 				Usage of stringer:
 				\tstringer [flags] -type T [directory]
@@ -494,82 +484,74 @@ Steps: {
 				    \tcomma-separated list of type names; must be set
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go run golang.org/x/tools/cmd/stringer -help"
-			Negated:  false
+			ComparisonOutput: """
+				Usage of stringer:
+				\tstringer [flags] -type T [directory]
+				\tstringer [flags] -type T files... # Must be a single package
+				For more information, see:
+				\thttps://pkg.go.dev/golang.org/x/tools/cmd/stringer
+				Flags:
+				  -linecomment
+				    \tuse line comment text as printed text when present
+				  -output string
+				    \toutput file name; default srcdir/<type>_string.go
+				  -tags string
+				    \tcomma-separated list of build tags to apply
+				  -trimprefix prefix
+				    \ttrim the prefix from the generated constant names
+				  -type string
+				    \tcomma-separated list of type names; must be set
+
+				"""
 		}]
-		Order:           11
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "stringer_help"
 	}
 	stringer_run_by_hand: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "go run golang.org/x/tools/cmd/stringer -type Pill"
-			Negated:          false
-		}]
-		Order:           12
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "stringer_run_by_hand"
+		Order:           12
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "go run golang.org/x/tools/cmd/stringer -type Pill"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	stringer_ls_output: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "stringer_ls_output"
+		Order:           13
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				go.mod\tgo.sum\tpainkiller.go  pill_string.go  tools.go
-
-				"""
+			Negated:  false
+			CmdStr:   "ls"
+			ExitCode: 0
 			Output: """
 				go.mod\tgo.sum\tpainkiller.go  pill_string.go  tools.go
 
 				"""
-			ExitCode: 0
-			CmdStr:   "ls"
-			Negated:  false
+			ComparisonOutput: """
+				go.mod\tgo.sum\tpainkiller.go  pill_string.go  tools.go
+
+				"""
 		}]
-		Order:           13
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "stringer_ls_output"
 	}
 	stringer_cat_generated: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "stringer_cat_generated"
+		Order:           14
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				// Code generated by "stringer -type Pill"; DO NOT EDIT.
-
-				package main
-
-				import "strconv"
-
-				func _() {
-				\t// An "invalid array index" compiler error signifies that the constant values have changed.
-				\t// Re-run the stringer command to generate them again.
-				\tvar x [1]struct{}
-				\t_ = x[Placebo-0]
-				\t_ = x[Ibuprofen-1]
-				}
-
-				const _Pill_name = "PlaceboIbuprofen"
-
-				var _Pill_index = [...]uint8{0, 7, 16}
-
-				func (i Pill) String() string {
-				\tif i < 0 || i >= Pill(len(_Pill_index)-1) {
-				\t\treturn "Pill(" + strconv.FormatInt(int64(i), 10) + ")"
-				\t}
-				\treturn _Pill_name[_Pill_index[i]:_Pill_index[i+1]]
-				}
-
-				"""
+			Negated:  false
+			CmdStr:   "cat pill_string.go"
+			ExitCode: 0
 			Output: """
 				// Code generated by "stringer -type Pill"; DO NOT EDIT.
 
@@ -597,40 +579,82 @@ Steps: {
 				}
 
 				"""
-			ExitCode: 0
-			CmdStr:   "cat pill_string.go"
-			Negated:  false
+			ComparisonOutput: """
+				// Code generated by "stringer -type Pill"; DO NOT EDIT.
+
+				package main
+
+				import "strconv"
+
+				func _() {
+				\t// An "invalid array index" compiler error signifies that the constant values have changed.
+				\t// Re-run the stringer command to generate them again.
+				\tvar x [1]struct{}
+				\t_ = x[Placebo-0]
+				\t_ = x[Ibuprofen-1]
+				}
+
+				const _Pill_name = "PlaceboIbuprofen"
+
+				var _Pill_index = [...]uint8{0, 7, 16}
+
+				func (i Pill) String() string {
+				\tif i < 0 || i >= Pill(len(_Pill_index)-1) {
+				\t\treturn "Pill(" + strconv.FormatInt(int64(i), 10) + ")"
+				\t}
+				\treturn _Pill_name[_Pill_index[i]:_Pill_index[i+1]]
+				}
+
+				"""
 		}]
-		Order:           14
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "stringer_cat_generated"
 	}
 	painkiller_check_stringer: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "painkiller_check_stringer"
+		Order:           15
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				For headaches, take Ibuprofen
-
-				"""
+			Negated:  false
+			CmdStr:   "go run ."
+			ExitCode: 0
 			Output: """
 				For headaches, take Ibuprofen
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go run ."
-			Negated:  false
+			ComparisonOutput: """
+				For headaches, take Ibuprofen
+
+				"""
 		}]
-		Order:           15
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "painkiller_check_stringer"
 	}
 	painkiller_add_gogenerate_directive: {
-		Order: 16
+		StepType: 2
+		Name:     "painkiller_add_gogenerate_directive"
+		Order:    16
+		Terminal: "term1"
+		Language: "go"
+		Renderer: {
+			RendererType: 3
+			Pre: """
+				package main
+
+				import "fmt"
+
+				type Pill int
+
+				const (
+				\tPlacebo Pill = iota
+				\tIbuprofen
+				)
+
+				func main() {
+				\tfmt.Printf("For headaches, take %v\\n", Ibuprofen)
+				}
+
+				"""
+		}
 		Source: """
 			package main
 
@@ -650,11 +674,37 @@ Steps: {
 			}
 
 			"""
+		Target: "/home/gopher/painkiller/painkiller.go"
+	}
+	painkiller_gogenerate: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "painkiller_gogenerate"
+		Order:           17
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "go generate ."
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
+	}
+	painkiller_add_fever_advice: {
+		StepType: 2
+		Name:     "painkiller_add_fever_advice"
+		Order:    18
+		Terminal: "term1"
+		Language: "go"
 		Renderer: {
+			RendererType: 3
 			Pre: """
 				package main
 
 				import "fmt"
+
+				//go:generate go run golang.org/x/tools/cmd/stringer -type=Pill
 
 				type Pill int
 
@@ -668,31 +718,7 @@ Steps: {
 				}
 
 				"""
-			RendererType: 3
 		}
-		Language: "go"
-		Target:   "/home/gopher/painkiller/painkiller.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "painkiller_add_gogenerate_directive"
-	}
-	painkiller_gogenerate: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "go generate ."
-			Negated:          false
-		}]
-		Order:           17
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "painkiller_gogenerate"
-	}
-	painkiller_add_fever_advice: {
-		Order: 18
 		Source: """
 			package main
 
@@ -714,72 +740,46 @@ Steps: {
 			}
 
 			"""
-		Renderer: {
-			Pre: """
-				package main
-
-				import "fmt"
-
-				//go:generate go run golang.org/x/tools/cmd/stringer -type=Pill
-
-				type Pill int
-
-				const (
-				\tPlacebo Pill = iota
-				\tIbuprofen
-				)
-
-				func main() {
-				\tfmt.Printf("For headaches, take %v\\n", Ibuprofen)
-				}
-
-				"""
-			RendererType: 3
-		}
-		Language: "go"
-		Target:   "/home/gopher/painkiller/painkiller.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "painkiller_add_fever_advice"
+		Target: "/home/gopher/painkiller/painkiller.go"
 	}
 	painkiller_gogenerate_again: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "go generate ."
-			Negated:          false
-		}]
-		Order:           19
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "painkiller_gogenerate_again"
+		Order:           19
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "go generate ."
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	painkiller_check_fever_advice: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "painkiller_check_fever_advice"
+		Order:           20
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				For headaches, take Ibuprofen
-				For a fever, take Paracetamol
-
-				"""
+			Negated:  false
+			CmdStr:   "go run ."
+			ExitCode: 0
 			Output: """
 				For headaches, take Ibuprofen
 				For a fever, take Paracetamol
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go run ."
-			Negated:  false
+			ComparisonOutput: """
+				For headaches, take Ibuprofen
+				For a fever, take Paracetamol
+
+				"""
 		}]
-		Order:           20
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "painkiller_check_fever_advice"
 	}
 }
-Hash: "50577c8ee2d73ac731c10cc6955a3243380353c3a395b95417c842099bb619c2"
+Hash: "14a7900b97614ab637e04172c750aded1d82e6f002b6b9772d849415f52e1e6d"
 Delims: ["{{{", "}}}"]
