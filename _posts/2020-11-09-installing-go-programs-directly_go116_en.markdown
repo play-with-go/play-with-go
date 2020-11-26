@@ -39,7 +39,7 @@ go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
 Currently, tool authors who want to provide installation instructions in their projects' `README.md` typically include:
 
 ```.term1
-$ go get filippo.io/mkcert
+$ go get filippo.io/mkcert@v1.4.2
 go: downloading filippo.io/mkcert v1.4.2
 go: downloading golang.org/x/net v0.0.0-20190620200207-3b0461eec859
 go: downloading golang.org/x/tools v0.0.0-20191108193012-7d206e10da11
@@ -49,7 +49,11 @@ go: downloading software.sslmate.com/src/go-pkcs12 v0.0.0-20180114231543-2291e8f
 go: downloading golang.org/x/text v0.3.0
 go: downloading github.com/BurntSushi/toml v0.3.1
 ```
-{:data-command-src="Z28gZ2V0IGZpbGlwcG8uaW8vbWtjZXJ0Cg=="}
+{:data-command-src="Z28gZ2V0IGZpbGlwcG8uaW8vbWtjZXJ0QHYxLjQuMgo="}
+
+_Note: most `README.md` instructions that use `go get` do not specify a version. This results in the latest
+version of a package being fetched. A specific version, `v1.4.2`, is used here to ensure this guide
+remains reproducible._
 
 There are a number of problems with this approach:
 

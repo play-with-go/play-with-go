@@ -62,7 +62,7 @@ Steps: {
 
 				"""
 			ExitCode: 0
-			CmdStr:   "go get filippo.io/mkcert"
+			CmdStr:   "go get filippo.io/mkcert@v1.4.2"
 			Negated:  false
 		}]
 		Order:           1
@@ -176,5 +176,5 @@ Steps: {
 		Name:            "goversion_mkcert"
 	}
 }
-Hash: "f824051f1210794edf43a5d84cd61d8559f382f150540111ed0c7c50100df97b"
+Hash: "1739e133d061bb8431773e7d302071e5ce59745763f6bca5732fe1a1284d3c64"
 Delims: ["{{{", "}}}"]

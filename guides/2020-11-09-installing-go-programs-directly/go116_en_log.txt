@@ -1,6 +1,6 @@
 $ go version
 go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
-$ go get filippo.io/mkcert
+$ go get filippo.io/mkcert@v1.4.2
 go: downloading filippo.io/mkcert v1.4.2
 go: downloading golang.org/x/net v0.0.0-20190620200207-3b0461eec859
 go: downloading golang.org/x/tools v0.0.0-20191108193012-7d206e10da11
