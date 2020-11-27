@@ -27,32 +27,26 @@ remotes sessions._
 
 For Go-related guides, the remote session runs with a user and working directory as follows:
 
-```.term1
-$ whoami
+<pre data-command-src="d2hvYW1pCnB3ZAo="><code class="language-.term1">$ whoami
 gopher
 $ pwd
 /home/gopher
-```
-{:data-command-src="d2hvYW1pCnB3ZAo="}
+</code></pre>
 
 Throughout each guide (prose) you will see clickable _command_ and _code_ blocks. For example, click on the following
 command block:
 
-```.term1
-$ echo '*** !!! CLICK ME !!! ***'
+<pre data-command-src="ZWNobyAnKioqICEhISBDTElDSyBNRSAhISEgKioqJwo="><code class="language-.term1">$ echo &#39;*** !!! CLICK ME !!! ***&#39;
 *** !!! CLICK ME !!! ***
-```
-{:data-command-src="ZWNobyAnKioqICEhISBDTElDSyBNRSAhISEgKioqJwo="}
+</code></pre>
 
 Clicking on command block causes those commands to run in the interactive terminal on the right hand side. Command
 blocks are indicated by a `$` sign at the beginning of a line; the output from that command (if there is any) will be on
 the lines that follow. Command blocks can contain multiple commands:
 
-```.term1
-$ mkdir hello
+<pre data-command-src="bWtkaXIgaGVsbG8KY2QgaGVsbG8K"><code class="language-.term1">$ mkdir hello
 $ cd hello
-```
-{:data-command-src="bWtkaXIgaGVsbG8KY2QgaGVsbG8K"}
+</code></pre>
 
 You can also upload code/content to our interactive session using code blocks. Click on the following code block to
 upload contents to `README.md`:
@@ -73,16 +67,14 @@ Hello, gopher!
 
 Now that we have uploaded `README.md` we can run another command to show us its contents:
 
-```.term1
-$ cat README.md
+<pre data-command-src="Y2F0IFJFQURNRS5tZAo="><code class="language-.term1">$ cat README.md
 This is README.md.
 
 Hello, gopher!
 
 We made a change!
 
-```
-{:data-command-src="Y2F0IFJFQURNRS5tZAo="}
+</code></pre>
 
 ### Remote source code repositories
 
@@ -95,28 +87,22 @@ Let's add the `README.md` file we created earlier to this remote repository.
 
 Initialise a local `git` repository and add the remote:
 
-```.term1
-$ git init -q
-$ git remote add origin https://{% raw %}{{{.REPO1}}}{% endraw %}.git
-```
-{:data-command-src="Z2l0IGluaXQgLXEKZ2l0IHJlbW90ZSBhZGQgb3JpZ2luIGh0dHBzOi8ve3t7LlJFUE8xfX19LmdpdAo="}
+<pre data-command-src="Z2l0IGluaXQgLXEKZ2l0IHJlbW90ZSBhZGQgb3JpZ2luIGh0dHBzOi8ve3t7LlJFUE8xfX19LmdpdAo="><code class="language-.term1">$ git init -q
+$ git remote add origin https://&#123;&#123;&#123;.REPO1&#125;&#125;&#125;.git
+</code></pre>
 
 Add and commit the `README.md` file we created earlier:
 
-```.term1
-$ git add README.md
-$ git commit -q -m 'Initial commit'
-```
-{:data-command-src="Z2l0IGFkZCBSRUFETUUubWQKZ2l0IGNvbW1pdCAtcSAtbSAnSW5pdGlhbCBjb21taXQnCg=="}
+<pre data-command-src="Z2l0IGFkZCBSRUFETUUubWQKZ2l0IGNvbW1pdCAtcSAtbSAnSW5pdGlhbCBjb21taXQnCg=="><code class="language-.term1">$ git add README.md
+$ git commit -q -m &#39;Initial commit&#39;
+</code></pre>
 
 Push the commit to the remote repository:
 
-```.term1
-$ git push -q origin main
+<pre data-command-src="Z2l0IHB1c2ggLXEgb3JpZ2luIG1haW4K"><code class="language-.term1">$ git push -q origin main
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
-```
-{:data-command-src="Z2l0IHB1c2ggLXEgb3JpZ2luIG1haW4K"}
+</code></pre>
 
 It's as easy as that. Authentication is taken care of for you. The user and repository will be destroyed after 3 hours
 along with the guide session.

@@ -362,7 +362,7 @@ Steps: {
 		Renderer: {
 			RendererType: 1
 		}
-		Language: "conf"
+		Language: "toml"
 		Target:   "/home/gopher/pets/staticcheck.conf"
 		Terminal: "term1"
 		StepType: 2
@@ -915,5 +915,5 @@ Steps: {
 		Name:            "pets_staticcheck_final"
 	}
 }
-Hash: "e56f27d285fb477248bd07704378cd3acb9f5835105fff145c04a89d31b41c3b"
+Hash: "d873acc14957482352f68b4b861e6cf69c88b5cf3c706d57eff0406fe3e91b70"
 Delims: ["{{{", "}}}"]

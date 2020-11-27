@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201123125600-bcc70045611e",
-		      "Sum": "h1:qO8GiXVWiA6gBAhuc1AF+rPdEcki7pWfby/y+D8HX9g=",
+		      "Version": "v0.0.2-0.20201127055619-8777d2847809",
+		      "Sum": "h1:AFGAfyRMZ71UMh26WqlC1eWG379ulXpMZD357jL0tVk=",
 		      "Replace": null
 		    },
 		    {
@@ -320,7 +320,7 @@ Steps: {
 		Renderer: {
 			RendererType: 1
 		}
-		Language: "mod"
+		Language: "go.mod"
 		Target:   "/home/gopher/branch/go.mod"
 		Terminal: "term1"
 		StepType: 2
@@ -555,7 +555,7 @@ Steps: {
 		Renderer: {
 			RendererType: 1
 		}
-		Language: "mod"
+		Language: "go.mod"
 		Target:   "/home/gopher/subdir/v2/go.mod"
 		Terminal: "term1"
 		StepType: 2
@@ -787,5 +787,5 @@ Steps: {
 		Name:            "gopher_run"
 	}
 }
-Hash: "580b65cadd6ac86a999db2908b36036cfa827ec77c78ed3c2262f2e2b2169918"
+Hash: "a2f223c85a2ae39aa8086c9704b61e91e9e12b66f470217048c051772f6b1d1d"
 Delims: ["{{{", "}}}"]

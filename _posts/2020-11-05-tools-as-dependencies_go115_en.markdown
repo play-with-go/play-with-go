@@ -32,24 +32,20 @@ You should already have completed:
 
 This guide is running using:
 
-```.term1
-$ go version
+<pre data-command-src="Z28gdmVyc2lvbgo="><code class="language-.term1">$ go version
 go version go1.15.5 linux/amd64
-```
-{:data-command-src="Z28gdmVyc2lvbgo="}
+</code></pre>
 
 ### Why `stringer`?
 
 Let's motivate the use of `stringer` by getting started on your project. Your project will be a simple command line
 application that gives advice on what painkillers to take for certain ailments. So let's name your module accordingly:
 
-```.term1
-$ mkdir painkiller
+<pre data-command-src="bWtkaXIgcGFpbmtpbGxlcgpjZCBwYWlua2lsbGVyCmdvIG1vZCBpbml0IHBhaW5raWxsZXIK"><code class="language-.term1">$ mkdir painkiller
 $ cd painkiller
 $ go mod init painkiller
 go: creating new go.mod: module painkiller
-```
-{:data-command-src="bWtkaXIgcGFpbmtpbGxlcgpjZCBwYWlua2lsbGVyCmdvIG1vZCBpbml0IHBhaW5raWxsZXIK"}
+</code></pre>
 
 Start with a basic version of your application. Given that you are writing a command line application, you need to
 declare a `main` package; do so in a file named `painkiller.go`:
@@ -65,9 +61,9 @@ const (
 	Ibuprofen
 )
 
-func main() {
+func main() &#123;
 	fmt.Printf(&#34;For headaches, take %v\n&#34;, Ibuprofen)
-}
+&#125;
 </code></pre>
 
 This first version of your app provides some basic advice on what to take for headaches. Using integer types provides a
@@ -75,11 +71,9 @@ nice convenient way to define a sequence of constant values. Here you define the
 
 Run the program to see its output:
 
-```.term1
-$ go run .
+<pre data-command-src="Z28gcnVuIC4K"><code class="language-.term1">$ go run .
 For headaches, take 1
-```
-{:data-command-src="Z28gcnVuIC4K"}
+</code></pre>
 
 Hmm, that's not particularly user friendly. The integer value of your constant is meaningless to your user.
 
@@ -102,34 +96,32 @@ import &#34;fmt&#34;
 
 type Pill int
 
-<b>func (p Pill) String() string {</b>
-<b>	switch p {</b>
+<b>func (p Pill) String() string &#123;</b>
+<b>	switch p &#123;</b>
 <b>	case Placebo:</b>
 <b>		return &#34;Placebo&#34;</b>
 <b>	case Ibuprofen:</b>
 <b>		return &#34;Ibuprofen&#34;</b>
 <b>	default:</b>
 <b>		panic(fmt.Errorf(&#34;unknown Pill value %v&#34;, p))</b>
-<b>	}</b>
-<b>}</b>
+<b>	&#125;</b>
+<b>&#125;</b>
 <b></b>
 const (
 	Placebo Pill = iota
 	Ibuprofen
 )
 
-func main() {
+func main() &#123;
 	fmt.Printf(&#34;For headaches, take %v\n&#34;, Ibuprofen)
-}
+&#125;
 </code></pre>
 
 Run the program to see the new output:
 
-```.term1
-$ go run .
+<pre data-command-src="Z28gcnVuIC4K"><code class="language-.term1">$ go run .
 For headaches, take Ibuprofen
-```
-{:data-command-src="Z28gcnVuIC4K"}
+</code></pre>
 
 That's better. But as you can see there is a lot of repetition in your `String()` method. Adding more constants will
 mean more manual, robotic effort... not to mention being error prone. Can we do better? Enter `stringer`.
@@ -156,9 +148,9 @@ const (
 	Ibuprofen
 )
 
-func main() {
+func main() &#123;
 	fmt.Printf(&#34;For headaches, take %v\n&#34;, Ibuprofen)
-}
+&#125;
 </code></pre>
 
 ### Adding tool dependencies
@@ -194,40 +186,33 @@ exists solely for its side effects, in this case the declaration of the dependen
 With the package dependency declared, you can now add a dependency on the module that contains
 `golang.org/x/tools/cmd/stringer`. Use `go get` to add a dependency:
 
-```.term1
-$ go get golang.org/x/tools/cmd/stringer@v0.0.0-20201105220310-78b158585360
+<pre data-command-src="Z28gZ2V0IGdvbGFuZy5vcmcveC90b29scy9jbWQvc3RyaW5nZXJAdjAuMC4wLTIwMjAxMTA1MjIwMzEwLTc4YjE1ODU4NTM2MAo="><code class="language-.term1">$ go get golang.org/x/tools/cmd/stringer@v0.0.0-20201105220310-78b158585360
 go: downloading golang.org/x/tools v0.0.0-20201105220310-78b158585360
 go: found golang.org/x/tools/cmd/stringer in golang.org/x/tools v0.0.0-20201105220310-78b158585360
 go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
 go: downloading golang.org/x/mod v0.3.0
-```
-{:data-command-src="Z28gZ2V0IGdvbGFuZy5vcmcveC90b29scy9jbWQvc3RyaW5nZXJAdjAuMC4wLTIwMjAxMTA1MjIwMzEwLTc4YjE1ODU4NTM2MAo="}
+</code></pre>
 
 You can see your new dependency in the project's `go.mod` file:
 
-```.term1
-$ cat go.mod
+<pre data-command-src="Y2F0IGdvLm1vZAo="><code class="language-.term1">$ cat go.mod
 module painkiller
 
 go 1.15
 
 require golang.org/x/tools v0.0.0-20201105220310-78b158585360 // indirect
-```
-{:data-command-src="Y2F0IGdvLm1vZAo="}
+</code></pre>
 
 This guide uses a specific version of `stringer` so as to remain reproducible. In a real-world project you would almost
 certainly omit the version to get the latest version, or explicitly use the special version `@latest`. Alternatively,
 you could simply run `go mod tidy` instead of `go get`:
 
-```.term1
-$ go mod tidy
-```
-{:data-command-src="Z28gbW9kIHRpZHkK"}
+<pre data-command-src="Z28gbW9kIHRpZHkK"><code class="language-.term1">$ go mod tidy
+</code></pre>
 
 Run `stringer` to see how it should be invoked:
 
-```.term1
-$ go run golang.org/x/tools/cmd/stringer -help
+<pre data-command-src="Z28gcnVuIGdvbGFuZy5vcmcveC90b29scy9jbWQvc3RyaW5nZXIgLWhlbHAK"><code class="language-.term1">$ go run golang.org/x/tools/cmd/stringer -help
 Usage of stringer:
 	stringer [flags] -type T [directory]
 	stringer [flags] -type T files... # Must be a single package
@@ -237,72 +222,63 @@ Flags:
   -linecomment
     	use line comment text as printed text when present
   -output string
-    	output file name; default srcdir/<type>_string.go
+    	output file name; default srcdir/&lt;type&gt;_string.go
   -tags string
     	comma-separated list of build tags to apply
   -trimprefix prefix
     	trim the prefix from the generated constant names
   -type string
     	comma-separated list of type names; must be set
-```
-{:data-command-src="Z28gcnVuIGdvbGFuZy5vcmcveC90b29scy9jbWQvc3RyaW5nZXIgLWhlbHAK"}
+</code></pre>
 
 As you can see, `Pill` must be passed as an argument to the `-type` flag:
 
-```.term1
-$ go run golang.org/x/tools/cmd/stringer -type Pill
-```
-{:data-command-src="Z28gcnVuIGdvbGFuZy5vcmcveC90b29scy9jbWQvc3RyaW5nZXIgLXR5cGUgUGlsbAo="}
+<pre data-command-src="Z28gcnVuIGdvbGFuZy5vcmcveC90b29scy9jbWQvc3RyaW5nZXIgLXR5cGUgUGlsbAo="><code class="language-.term1">$ go run golang.org/x/tools/cmd/stringer -type Pill
+</code></pre>
 
 Listing the directory contents reveals what `stringer` has generated for us:
 
-```.term1
-$ ls
+<pre data-command-src="bHMK"><code class="language-.term1">$ ls
 go.mod	go.sum	painkiller.go  pill_string.go  tools.go
-```
-{:data-command-src="bHMK"}
+</code></pre>
 
 Examine the contents of the `stringer`-generated file:
 
-```.term1
-$ cat pill_string.go
-// Code generated by "stringer -type Pill"; DO NOT EDIT.
+<pre data-command-src="Y2F0IHBpbGxfc3RyaW5nLmdvCg=="><code class="language-.term1">$ cat pill_string.go
+// Code generated by &#34;stringer -type Pill&#34;; DO NOT EDIT.
 
 package main
 
-import "strconv"
+import &#34;strconv&#34;
 
-func _() {
-	// An "invalid array index" compiler error signifies that the constant values have changed.
+func _() &#123;
+	// An &#34;invalid array index&#34; compiler error signifies that the constant values have changed.
 	// Re-run the stringer command to generate them again.
-	var x [1]struct{}
+	var x [1]struct&#123;&#125;
 	_ = x[Placebo-0]
 	_ = x[Ibuprofen-1]
-}
+&#125;
 
-const _Pill_name = "PlaceboIbuprofen"
+const _Pill_name = &#34;PlaceboIbuprofen&#34;
 
-var _Pill_index = [...]uint8{0, 7, 16}
+var _Pill_index = [...]uint8&#123;0, 7, 16&#125;
 
-func (i Pill) String() string {
-	if i < 0 || i >= Pill(len(_Pill_index)-1) {
-		return "Pill(" + strconv.FormatInt(int64(i), 10) + ")"
-	}
+func (i Pill) String() string &#123;
+	if i &lt; 0 || i &gt;= Pill(len(_Pill_index)-1) &#123;
+		return &#34;Pill(&#34; + strconv.FormatInt(int64(i), 10) + &#34;)&#34;
+	&#125;
 	return _Pill_name[_Pill_index[i]:_Pill_index[i+1]]
-}
-```
-{:data-command-src="Y2F0IHBpbGxfc3RyaW5nLmdvCg=="}
+&#125;
+</code></pre>
 
 Notice the first line of this generated file is a comment warning you against editing it by hand: this "header" is a
 [standard convention](https://golang.org/cmd/go/#hdr-Generate_Go_files_by_processing_source) of generated files.
 
 Run your program to verify it behaves as expected:
 
-```.term1
-$ go run .
+<pre data-command-src="Z28gcnVuIC4K"><code class="language-.term1">$ go run .
 For headaches, take Ibuprofen
-```
-{:data-command-src="Z28gcnVuIC4K"}
+</code></pre>
 
 Success!
 
@@ -326,17 +302,15 @@ const (
 	Ibuprofen
 )
 
-func main() {
+func main() &#123;
 	fmt.Printf(&#34;For headaches, take %v\n&#34;, Ibuprofen)
-}
+&#125;
 </code></pre>
 
 Now you can re-run all code generation steps (there is currently only one, but still) for current package by running:
 
-```.term1
-$ go generate .
-```
-{:data-command-src="Z28gZ2VuZXJhdGUgLgo="}
+<pre data-command-src="Z28gZ2VuZXJhdGUgLgo="><code class="language-.term1">$ go generate .
+</code></pre>
 
 Try this out by extending your program to give another piece of advice:
 
@@ -354,27 +328,23 @@ const (
 <b>	Paracetamol</b>
 )
 
-func main() {
+func main() &#123;
 	fmt.Printf(&#34;For headaches, take %v\n&#34;, Ibuprofen)
 <b>	fmt.Printf(&#34;For a fever, take %v\n&#34;, Paracetamol)</b>
-}
+&#125;
 </code></pre>
 
 Re-run your code generation steps:
 
-```.term1
-$ go generate .
-```
-{:data-command-src="Z28gZ2VuZXJhdGUgLgo="}
+<pre data-command-src="Z28gZ2VuZXJhdGUgLgo="><code class="language-.term1">$ go generate .
+</code></pre>
 
 Finally, check your program's output:
 
-```.term1
-$ go run .
+<pre data-command-src="Z28gcnVuIC4K"><code class="language-.term1">$ go run .
 For headaches, take Ibuprofen
 For a fever, take Paracetamol
-```
-{:data-command-src="Z28gcnVuIC4K"}
+</code></pre>
 
 ### Conclusion
 

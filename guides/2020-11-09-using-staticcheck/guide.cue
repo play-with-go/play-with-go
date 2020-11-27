@@ -163,8 +163,9 @@ Steps: pets_staticcheck_fixed: preguide.#Command & {
 }
 
 Steps: staticcheck_config_initial: preguide.#Upload & {
-	Target: "\(Defs.pets_dir)/\(Defs.staticcheck_conf)"
-	Source: #"""
+	Target:   "\(Defs.pets_dir)/\(Defs.staticcheck_conf)"
+	Language: "toml"
+	Source:   #"""
 		checks = ["inherit", "\#(Defs.staticcheck_st1000)"]
 
 		"""#

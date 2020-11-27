@@ -200,8 +200,9 @@ Steps: proverb_cat_v020_retract: preguide.#Command & {
 }
 
 Steps: proverb_comment_retraction: preguide.#Upload & {
-	Target: "\(Defs.proverb_dir)/go.mod"
-	Source: """
+	Target:   "\(Defs.proverb_dir)/go.mod"
+	Language: "go.mod"
+	Source:   """
 		module \(Defs.proverb_mod)
 
 		go 1.16
@@ -354,6 +355,7 @@ Steps: proverb_tag_v040: preguide.#Command & {
 
 Steps: proverb_retract_v100: preguide.#Upload & {
 	Target:   "\(Defs.proverb_dir)/go.mod"
+	Language: "go.mod"
 	Renderer: preguide.#RenderDiff & {Pre: Steps.proverb_comment_retraction.Source}
 	Source:   """
 		module \(Defs.proverb_mod)

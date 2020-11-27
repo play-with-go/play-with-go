@@ -28,18 +28,15 @@ You should already have completed:
 
 This guide is running with:
 
-```.term1
-$ go version
+<pre data-command-src="Z28gdmVyc2lvbgo="><code class="language-.term1">$ go version
 go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
-```
-{:data-command-src="Z28gdmVyc2lvbgo="}
+</code></pre>
 
 ### Background
 
 Currently, tool authors who want to provide installation instructions in their projects' `README.md` typically include:
 
-```.term1
-$ go get filippo.io/mkcert@v1.4.2
+<pre data-command-src="Z28gZ2V0IGZpbGlwcG8uaW8vbWtjZXJ0QHYxLjQuMgo="><code class="language-.term1">$ go get filippo.io/mkcert@v1.4.2
 go: downloading filippo.io/mkcert v1.4.2
 go: downloading golang.org/x/net v0.0.0-20190620200207-3b0461eec859
 go: downloading golang.org/x/tools v0.0.0-20191108193012-7d206e10da11
@@ -48,8 +45,7 @@ go: downloading howett.net/plist v0.0.0-20181124034731-591f970eefbb
 go: downloading software.sslmate.com/src/go-pkcs12 v0.0.0-20180114231543-2291e8f0f237
 go: downloading golang.org/x/text v0.3.0
 go: downloading github.com/BurntSushi/toml v0.3.1
-```
-{:data-command-src="Z28gZ2V0IGZpbGlwcG8uaW8vbWtjZXJ0QHYxLjQuMgo="}
+</code></pre>
 
 _Note: most `README.md` instructions that use `go get` do not specify a version. This results in the latest
 version of a package being fetched. A specific version, `v1.4.2`, is used here to ensure this guide
@@ -67,10 +63,8 @@ There are a number of problems with this approach:
 Prior to Go 1.16, the general advice to fix the first two problems was to use a snippet
 which runs `go get` in module mode and outside any module, by using a temporary directory:
 
-```.term1
-$ (cd $(mktemp -d); GO111MODULE=on go get filippo.io/mkcert@v1.4.2)
-```
-{:data-command-src="KGNkICQobWt0ZW1wIC1kKTsgR08xMTFNT0RVTEU9b24gZ28gZ2V0IGZpbGlwcG8uaW8vbWtjZXJ0QHYxLjQuMikK"}
+<pre data-command-src="KGNkICQobWt0ZW1wIC1kKTsgR08xMTFNT0RVTEU9b24gZ28gZ2V0IGZpbGlwcG8uaW8vbWtjZXJ0QHYxLjQuMikK"><code class="language-.term1">$ (cd $(mktemp -d); GO111MODULE=on go get filippo.io/mkcert@v1.4.2)
+</code></pre>
 
 However, this new approach had its own problems:
 
@@ -85,10 +79,8 @@ instructions which are meant to be brief and easy to follow.
 In Go 1.16, the `go install` command is now used to install programs directly, i.e. regardless of the current
 module context:
 
-```.term1
-$ go install filippo.io/mkcert@v1.4.2
-```
-{:data-command-src="Z28gaW5zdGFsbCBmaWxpcHBvLmlvL21rY2VydEB2MS40LjIK"}
+<pre data-command-src="Z28gaW5zdGFsbCBmaWxpcHBvLmlvL21rY2VydEB2MS40LjIK"><code class="language-.term1">$ go install filippo.io/mkcert@v1.4.2
+</code></pre>
 
 For the purposes of this guide you are using a specific version (`v1.4.2`). Alternatively,
 the special `latest` version can be used to install the latest release.
@@ -99,32 +91,26 @@ your `PATH` is set correctly.
 
 Verify that `mkcert` is now on your `PATH`:
 
-```.term1
-$ which mkcert
+<pre data-command-src="d2hpY2ggbWtjZXJ0Cg=="><code class="language-.term1">$ which mkcert
 /home/gopher/go/bin/mkcert
-```
-{:data-command-src="d2hpY2ggbWtjZXJ0Cg=="}
+</code></pre>
 
 Run `mkcert` to check everything is working:
 
-```.term1
-$ mkcert -version
+<pre data-command-src="bWtjZXJ0IC12ZXJzaW9uCg=="><code class="language-.term1">$ mkcert -version
 v1.4.2
-```
-{:data-command-src="bWtjZXJ0IC12ZXJzaW9uCg=="}
+</code></pre>
 
 You can also use `go version` to see the module dependencies used in building the program:
 
-```.term1
-$ go version -m $(which mkcert)
+<pre data-command-src="Z28gdmVyc2lvbiAtbSAkKHdoaWNoIG1rY2VydCkK"><code class="language-.term1">$ go version -m $(which mkcert)
 /home/gopher/go/bin/mkcert: devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000
 	path	filippo.io/mkcert
 	mod	filippo.io/mkcert	v1.4.2	h1:7mWofpFS4gzQS5bhE3KYBwzfceIPy2KJ4tMT31aPNeY=
 	dep	golang.org/x/net	v0.0.0-20190620200207-3b0461eec859	h1:R/3boaszxrf1GEUWTVDzSKVwLmSJpwZ1yqXm8j0v2QI=
 	dep	golang.org/x/text	v0.3.0	h1:g61tztE5qeGQ89tm6NTjjM9VPIm088od1l6aSorWRWg=
 	dep	software.sslmate.com/src/go-pkcs12	v0.0.0-20180114231543-2291e8f0f237	h1:iAEkCBPbRaflBgZ7o9gjVUuWuvWeV4sytFWg9o+Pj2k=
-```
-{:data-command-src="Z28gdmVyc2lvbiAtbSAkKHdoaWNoIG1rY2VydCkK"}
+</code></pre>
 
 To eliminate redundancy and confusion, using `go get` to build or
 install programs is being deprecated in Go 1.16.
