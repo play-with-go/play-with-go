@@ -118,7 +118,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.5@sha256:1c332c6b4e73dee8075badc66fe23c7fe51c44ddd2becb6cffc2db81bdaa0b06"
+			Image: "playwithgo/go1.15.5@sha256:e26150265392c264f720f524a6402092efffca9afd475b11512afff0aa813bc6"
 		}
 	}
 }]
@@ -1524,7 +1524,7 @@ Steps: {
 			ExitCode: 0
 			Output: """
 				PASS
-				ok  \t{{{.GREETINGS}}}\t0.002s
+				ok  \t{{{.GREETINGS}}}\t0.003s
 
 				"""
 			ComparisonOutput: """
@@ -1542,7 +1542,7 @@ Steps: {
 				=== RUN   TestHelloEmpty
 				--- PASS: TestHelloEmpty (0.00s)
 				PASS
-				ok  \t{{{.GREETINGS}}}\t0.003s
+				ok  \t{{{.GREETINGS}}}\t0.002s
 
 				"""
 			ComparisonOutput: """
@@ -1990,5 +1990,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "85e1a7a20134544bca854341e97ac6ab48dd7f7767f0fa4813e9b0e3c1206197"
+Hash: "14493470a97b2d4ba53a91c1b581926efa0373384b612a26b368779eb72a34fb"
 Delims: ["{{{", "}}}"]
