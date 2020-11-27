@@ -1,7 +1,19 @@
 package out
 
 Presteps: [{
-	Variables: ["GITEA_USERNAME", "GITEA_PRIV_KEY", "GITEA_PUB_KEY", "GITEA_KEYSCAN", "PUBLIC", "PRIVATE"]
+	Package: "github.com/play-with-go/gitea"
+	Path:    "/newuser"
+	Args: {
+		Repos: [{
+			Pattern: "public"
+			Private: false
+			Var:     "PUBLIC"
+		}, {
+			Pattern: "private"
+			Private: true
+			Var:     "PRIVATE"
+		}]
+	}
 	Version: """
 		{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
@@ -20,8 +32,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "cuelang.org/go",
-		      "Version": "v0.3.0-alpha5",
-		      "Sum": "h1:8gY9P7bZ3EsET3t0Y0tS2rtGo8qka7jbSu5pfjl07lw=",
+		      "Version": "v0.3.0-alpha5.0.20201125190328-110d0bffb886",
+		      "Sum": "h1:AH0SmnFFudNmu7ZFcKV8aNOAiPC/3nC5M9zfh50pLzk=",
 		      "Replace": null
 		    },
 		    {
@@ -56,8 +68,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201127063021-618bc89b79b5",
-		      "Sum": "h1:D8LWv2UGZd6JG8fIg1ASdBr0K7gLhthZ0UcBmGNbI4A=",
+		      "Version": "v0.0.2-0.20201127064237-60c1cbc298ce",
+		      "Sum": "h1:G+SARY3jyPp4RLbXTusrALhXMDY4JaslhkXoDx0MmdI=",
 		      "Replace": null
 		    },
 		    {
@@ -99,105 +111,100 @@ Presteps: [{
 		  ]
 		}
 		"""
-	Args: {
-		Repos: [{
-			Var:     "PUBLIC"
-			Private: false
-			Pattern: "public"
-		}, {
-			Var:     "PRIVATE"
-			Private: true
-			Pattern: "private"
-		}]
-	}
-	Package: "github.com/play-with-go/gitea"
-	Path:    "/newuser"
+	Variables: ["GITEA_USERNAME", "GITEA_PRIV_KEY", "GITEA_PUB_KEY", "GITEA_KEYSCAN", "PUBLIC", "PRIVATE"]
 }]
 Terminals: [{
+	Name:        "term1"
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
 			Image: "playwithgo/go1.15.5@sha256:1c332c6b4e73dee8075badc66fe23c7fe51c44ddd2becb6cffc2db81bdaa0b06"
 		}
 	}
-	Name: "term1"
 }]
 Scenarios: [{
-	Description: "Go 1.15"
 	Name:        "go115"
+	Description: "Go 1.15"
 }]
 Networks: ["playwithgo_pwg"]
 Env: []
 FilenameComment: false
 Steps: {
 	goversion: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "goversion"
+		Order:           0
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				go version go1.15.5 linux/amd64
-
-				"""
+			Negated:  false
+			CmdStr:   "go version"
+			ExitCode: 0
 			Output: """
 				go version go1.15.5 linux/amd64
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go version"
-			Negated:  false
+			ComparisonOutput: """
+				go version go1.15.5 linux/amd64
+
+				"""
 		}]
-		Order:           0
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "goversion"
 	}
 	public_init: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "public_init"
+		Order:           1
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
+			Negated:          false
 			CmdStr:           "mkdir /home/gopher/public"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
 			ExitCode:         0
-			CmdStr:           "cd /home/gopher/public"
-			Negated:          false
+			Output:           ""
+			ComparisonOutput: ""
 		}, {
-			ComparisonOutput: """
-				go: creating new go.mod: module {{{.PUBLIC}}}
-
-				"""
+			Negated:          false
+			CmdStr:           "cd /home/gopher/public"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:  false
+			CmdStr:   "go mod init {{{.PUBLIC}}}"
+			ExitCode: 0
 			Output: """
 				go: creating new go.mod: module {{{.PUBLIC}}}
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go mod init {{{.PUBLIC}}}"
-			Negated:  false
+			ComparisonOutput: """
+				go: creating new go.mod: module {{{.PUBLIC}}}
+
+				"""
 		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
+			Negated:          false
 			CmdStr:           "git init -q"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
 			ExitCode:         0
-			CmdStr:           "git remote add origin https://{{{.PUBLIC}}}.git"
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
 			Negated:          false
+			CmdStr:           "git remote add origin https://{{{.PUBLIC}}}.git"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
 		}]
-		Order:           1
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "public_init"
 	}
 	public_go_initial: {
-		Order: 2
+		StepType: 2
+		Name:     "public_go_initial"
+		Order:    2
+		Terminal: "term1"
+		Language: "go"
+		Renderer: {
+			RendererType: 1
+		}
 		Source: """
 			package public
 
@@ -206,112 +213,112 @@ Steps: {
 			}
 
 			"""
+		Target: "/home/gopher/public/public.go"
+	}
+	public_initial_commit: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "public_initial_commit"
+		Order:           3
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "git add public.go go.mod"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:          false
+			CmdStr:           "git commit -q -m 'Initial commit of public module'"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:  false
+			CmdStr:   "git push -q origin main"
+			ExitCode: 0
+			Output: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
+			ComparisonOutput: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
+		}]
+	}
+	public_check_initial_porcelain: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: true
+		Name:            "public_check_initial_porcelain"
+		Order:           4
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
+	}
+	private_init: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "private_init"
+		Order:           5
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "mkdir /home/gopher/private"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:          false
+			CmdStr:           "cd /home/gopher/private"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:  false
+			CmdStr:   "go mod init {{{.PRIVATE}}}"
+			ExitCode: 0
+			Output: """
+				go: creating new go.mod: module {{{.PRIVATE}}}
+
+				"""
+			ComparisonOutput: """
+				go: creating new go.mod: module {{{.PRIVATE}}}
+
+				"""
+		}, {
+			Negated:          false
+			CmdStr:           "git init -q"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:          false
+			CmdStr:           "git remote add origin https://{{{.PRIVATE}}}.git"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
+	}
+	private_go_initial: {
+		StepType: 2
+		Name:     "private_go_initial"
+		Order:    6
+		Terminal: "term1"
+		Language: "go"
 		Renderer: {
 			RendererType: 1
 		}
-		Language: "go"
-		Target:   "/home/gopher/public/public.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "public_go_initial"
-	}
-	public_initial_commit: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git add public.go go.mod"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git commit -q -m 'Initial commit of public module'"
-			Negated:          false
-		}, {
-			ComparisonOutput: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
-			Output: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
-			ExitCode: 0
-			CmdStr:   "git push -q origin main"
-			Negated:  false
-		}]
-		Order:           3
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "public_initial_commit"
-	}
-	public_check_initial_porcelain: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
-			Negated:          false
-		}]
-		Order:           4
-		InformationOnly: true
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "public_check_initial_porcelain"
-	}
-	private_init: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "mkdir /home/gopher/private"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "cd /home/gopher/private"
-			Negated:          false
-		}, {
-			ComparisonOutput: """
-				go: creating new go.mod: module {{{.PRIVATE}}}
-
-				"""
-			Output: """
-				go: creating new go.mod: module {{{.PRIVATE}}}
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go mod init {{{.PRIVATE}}}"
-			Negated:  false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git init -q"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git remote add origin https://{{{.PRIVATE}}}.git"
-			Negated:          false
-		}]
-		Order:           5
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "private_init"
-	}
-	private_go_initial: {
-		Order: 6
 		Source: """
 			package private
 
@@ -320,100 +327,100 @@ Steps: {
 			}
 
 			"""
+		Target: "/home/gopher/private/private.go"
+	}
+	private_initial_commit: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "private_initial_commit"
+		Order:           7
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "git add private.go go.mod"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:          false
+			CmdStr:           "git commit -q -m 'Initial commit of private module'"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:  false
+			CmdStr:   "git push -q origin main"
+			ExitCode: 0
+			Output: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
+			ComparisonOutput: """
+				remote: . Processing 1 references        
+				remote: Processed 1 references in total        
+
+				"""
+		}]
+	}
+	private_check_initial_porcelain: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: true
+		Name:            "private_check_initial_porcelain"
+		Order:           8
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
+	}
+	gopher_init: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_init"
+		Order:           9
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "mkdir /home/gopher/gopher"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:          false
+			CmdStr:           "cd /home/gopher/gopher"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:  false
+			CmdStr:   "go mod init gopher"
+			ExitCode: 0
+			Output: """
+				go: creating new go.mod: module gopher
+
+				"""
+			ComparisonOutput: """
+				go: creating new go.mod: module gopher
+
+				"""
+		}]
+	}
+	gopher_go_initial: {
+		StepType: 2
+		Name:     "gopher_go_initial"
+		Order:    10
+		Terminal: "term1"
+		Language: "go"
 		Renderer: {
 			RendererType: 1
 		}
-		Language: "go"
-		Target:   "/home/gopher/private/private.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "private_go_initial"
-	}
-	private_initial_commit: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git add private.go go.mod"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "git commit -q -m 'Initial commit of private module'"
-			Negated:          false
-		}, {
-			ComparisonOutput: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
-			Output: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
-			ExitCode: 0
-			CmdStr:   "git push -q origin main"
-			Negated:  false
-		}]
-		Order:           7
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "private_initial_commit"
-	}
-	private_check_initial_porcelain: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
-			Negated:          false
-		}]
-		Order:           8
-		InformationOnly: true
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "private_check_initial_porcelain"
-	}
-	gopher_init: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "mkdir /home/gopher/gopher"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "cd /home/gopher/gopher"
-			Negated:          false
-		}, {
-			ComparisonOutput: """
-				go: creating new go.mod: module gopher
-
-				"""
-			Output: """
-				go: creating new go.mod: module gopher
-
-				"""
-			ExitCode: 0
-			CmdStr:   "go mod init gopher"
-			Negated:  false
-		}]
-		Order:           9
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_init"
-	}
-	gopher_go_initial: {
-		Order: 10
 		Source: """
 			package main
 
@@ -430,83 +437,61 @@ Steps: {
 			}
 
 			"""
-		Renderer: {
-			RendererType: 1
-		}
-		Language: "go"
-		Target:   "/home/gopher/gopher/gopher.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "gopher_go_initial"
+		Target: "/home/gopher/gopher/gopher.go"
 	}
 	go_env_check_goproxy: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "go_env_check_goproxy"
+		Order:           11
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				https://proxy.golang.org,direct
-
-				"""
+			Negated:  false
+			CmdStr:   "go env GOPROXY"
+			ExitCode: 0
 			Output: """
 				https://proxy.golang.org,direct
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go env GOPROXY"
-			Negated:  false
+			ComparisonOutput: """
+				https://proxy.golang.org,direct
+
+				"""
 		}]
-		Order:           11
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "go_env_check_goproxy"
 	}
 	go_env_check_gosumdb: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "go_env_check_gosumdb"
+		Order:           12
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				sum.golang.org
-
-				"""
+			Negated:  false
+			CmdStr:   "go env GOSUMDB"
+			ExitCode: 0
 			Output: """
 				sum.golang.org
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go env GOSUMDB"
-			Negated:  false
+			ComparisonOutput: """
+				sum.golang.org
+
+				"""
 		}]
-		Order:           12
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "go_env_check_gosumdb"
 	}
 	go_env_check: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: true
+		Name:            "go_env_check"
+		Order:           13
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				usage: go env [-json] [-u] [-w] [var ...]
-
-				Env prints Go environment information.
-
-				By default env prints information as a shell script
-				(on Windows, a batch file). If one or more variable
-				names is given as arguments, env prints the value of
-				each named variable on its own line.
-
-				The -json flag prints the environment in JSON format
-				instead of as a shell script.
-
-				The -u flag requires one or more arguments and unsets
-				the default setting for the named environment variables,
-				if one has been set with 'go env -w'.
-
-				The -w flag requires one or more arguments of the
-				form NAME=VALUE and changes the default settings
-				of the named environment variables to the given values.
-
-				For more about environment variables, see 'go help environment'.
-
-				"""
+			Negated:  false
+			CmdStr:   "go help env"
+			ExitCode: 0
 			Output: """
 				usage: go env [-json] [-u] [-w] [var ...]
 
@@ -531,88 +516,103 @@ Steps: {
 				For more about environment variables, see 'go help environment'.
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go help env"
-			Negated:  false
+			ComparisonOutput: """
+				usage: go env [-json] [-u] [-w] [var ...]
+
+				Env prints Go environment information.
+
+				By default env prints information as a shell script
+				(on Windows, a batch file). If one or more variable
+				names is given as arguments, env prints the value of
+				each named variable on its own line.
+
+				The -json flag prints the environment in JSON format
+				instead of as a shell script.
+
+				The -u flag requires one or more arguments and unsets
+				the default setting for the named environment variables,
+				if one has been set with 'go env -w'.
+
+				The -w flag requires one or more arguments of the
+				form NAME=VALUE and changes the default settings
+				of the named environment variables to the given values.
+
+				For more about environment variables, see 'go help environment'.
+
+				"""
 		}]
-		Order:           13
-		InformationOnly: true
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "go_env_check"
 	}
 	goproxy_proxy_only: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "go env -w GOPROXY=https://proxy.golang.org"
-			Negated:          false
-		}]
-		Order:           14
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "goproxy_proxy_only"
+		Order:           14
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "go env -w GOPROXY=https://proxy.golang.org"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	gopher_get_public_initial: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_get_public_initial"
+		Order:           15
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-
-				go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
-				go: {{{.PUBLIC}}} upgrade => v0.0.0-20060102150405-abcedf12345
-				"""
+			Negated:  false
+			CmdStr:   "go get {{{.PUBLIC}}}"
+			ExitCode: 0
 			Output: """
 				go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
 				go: {{{.PUBLIC}}} upgrade => v0.0.0-20060102150405-abcedf12345
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go get {{{.PUBLIC}}}"
-			Negated:  false
+			ComparisonOutput: """
+
+				go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
+				go: {{{.PUBLIC}}} upgrade => v0.0.0-20060102150405-abcedf12345
+				"""
 		}]
-		Order:           15
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_get_public_initial"
 	}
 	public_pseudo_version: {
+		StepType:        1
+		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
+		DoNotTrim:       false
+		InformationOnly: true
+		Name:            "public_pseudo_version"
+		Order:           16
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				v0.0.0-20060102150405-abcedf12345
-
-				"""
+			Negated:  false
+			CmdStr:   "go list -m -f {{.Version}} {{{.PUBLIC}}}"
+			ExitCode: 0
 			Output: """
 				v0.0.0-20060102150405-abcedf12345
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go list -m -f {{.Version}} {{{.PUBLIC}}}"
-			Negated:  false
+			ComparisonOutput: """
+				v0.0.0-20060102150405-abcedf12345
+
+				"""
 		}]
-		Order:           16
-		InformationOnly: true
-		DoNotTrim:       false
-		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "public_pseudo_version"
 	}
 	gopher_get_private_initial: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_get_private_initial"
+		Order:           17
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-
-				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
-				\tConfirm the import path was entered correctly.
-				\tIf this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
-				\tnot found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
-				\tserver response:
-				go get {{{.PRIVATE}}}: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 410 Gone
-				"""
+			Negated:  true
+			CmdStr:   "go get {{{.PRIVATE}}}"
+			ExitCode: 1
 			Output: """
 				go get {{{.PRIVATE}}}: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 410 Gone
 				\tserver response:
@@ -622,42 +622,43 @@ Steps: {
 				\tIf this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
 
 				"""
-			ExitCode: 1
-			CmdStr:   "go get {{{.PRIVATE}}}"
-			Negated:  true
+			ComparisonOutput: """
+
+				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
+				\tConfirm the import path was entered correctly.
+				\tIf this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
+				\tnot found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
+				\tserver response:
+				go get {{{.PRIVATE}}}: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 410 Gone
+				"""
 		}]
-		Order:           17
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_get_private_initial"
 	}
 	goproxy_proxy_default: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "go env -w GOPROXY="
-			Negated:          false
-		}]
-		Order:           18
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "goproxy_proxy_default"
+		Order:           18
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "go env -w GOPROXY="
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	gopher_get_private_direct: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_get_private_direct"
+		Order:           19
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-
-				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
-				\tnot found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
-				\tserver response:
-				go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 410 Gone
-				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
-				"""
+			Negated:  true
+			CmdStr:   "go get {{{.PRIVATE}}}"
+			ExitCode: 1
 			Output: """
 				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
 				go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 410 Gone
@@ -666,63 +667,27 @@ Steps: {
 				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
 
 				"""
-			ExitCode: 1
-			CmdStr:   "go get {{{.PRIVATE}}}"
-			Negated:  true
+			ComparisonOutput: """
+
+				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
+				\tnot found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
+				\tserver response:
+				go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 410 Gone
+				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
+				"""
 		}]
-		Order:           19
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_get_private_direct"
 	}
 	go_help_modprivate: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: true
+		Name:            "go_help_modprivate"
+		Order:           20
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				The go command defaults to downloading modules from the public Go module
-				mirror at proxy.golang.org. It also defaults to validating downloaded modules,
-				regardless of source, against the public Go checksum database at sum.golang.org.
-				These defaults work well for publicly available source code.
-
-				The GOPRIVATE environment variable controls which modules the go command
-				considers to be private (not available publicly) and should therefore not use the
-				proxy or checksum database. The variable is a comma-separated list of
-				glob patterns (in the syntax of Go's path.Match) of module path prefixes.
-				For example,
-
-				\tGOPRIVATE=*.corp.example.com,rsc.io/private
-
-				causes the go command to treat as private any module with a path prefix
-				matching either pattern, including git.corp.example.com/xyzzy, rsc.io/private,
-				and rsc.io/private/quux.
-
-				The GOPRIVATE environment variable may be used by other tools as well to
-				identify non-public modules. For example, an editor could use GOPRIVATE
-				to decide whether to hyperlink a package import to a godoc.org page.
-
-				For fine-grained control over module download and validation, the GONOPROXY
-				and GONOSUMDB environment variables accept the same kind of glob list
-				and override GOPRIVATE for the specific decision of whether to use the proxy
-				and checksum database, respectively.
-
-				For example, if a company ran a module proxy serving private modules,
-				users would configure go using:
-
-				\tGOPRIVATE=*.corp.example.com
-				\tGOPROXY=proxy.example.com
-				\tGONOPROXY=none
-
-				This would tell the go command and other tools that modules beginning with
-				a corp.example.com subdomain are private but that the company proxy should
-				be used for downloading both public and private modules, because
-				GONOPROXY has been set to a pattern that won't match any modules,
-				overriding GOPRIVATE.
-
-				The 'go env -w' command (see 'go help env') can be used to set these variables
-				for future go command invocations.
-
-				"""
+			Negated:  false
+			CmdStr:   "go help module-private"
+			ExitCode: 0
 			Output: """
 				The go command defaults to downloading modules from the public Go module
 				mirror at proxy.golang.org. It also defaults to validating downloaded modules,
@@ -767,100 +732,135 @@ Steps: {
 				for future go command invocations.
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go help module-private"
-			Negated:  false
+			ComparisonOutput: """
+				The go command defaults to downloading modules from the public Go module
+				mirror at proxy.golang.org. It also defaults to validating downloaded modules,
+				regardless of source, against the public Go checksum database at sum.golang.org.
+				These defaults work well for publicly available source code.
+
+				The GOPRIVATE environment variable controls which modules the go command
+				considers to be private (not available publicly) and should therefore not use the
+				proxy or checksum database. The variable is a comma-separated list of
+				glob patterns (in the syntax of Go's path.Match) of module path prefixes.
+				For example,
+
+				\tGOPRIVATE=*.corp.example.com,rsc.io/private
+
+				causes the go command to treat as private any module with a path prefix
+				matching either pattern, including git.corp.example.com/xyzzy, rsc.io/private,
+				and rsc.io/private/quux.
+
+				The GOPRIVATE environment variable may be used by other tools as well to
+				identify non-public modules. For example, an editor could use GOPRIVATE
+				to decide whether to hyperlink a package import to a godoc.org page.
+
+				For fine-grained control over module download and validation, the GONOPROXY
+				and GONOSUMDB environment variables accept the same kind of glob list
+				and override GOPRIVATE for the specific decision of whether to use the proxy
+				and checksum database, respectively.
+
+				For example, if a company ran a module proxy serving private modules,
+				users would configure go using:
+
+				\tGOPRIVATE=*.corp.example.com
+				\tGOPROXY=proxy.example.com
+				\tGONOPROXY=none
+
+				This would tell the go command and other tools that modules beginning with
+				a corp.example.com subdomain are private but that the company proxy should
+				be used for downloading both public and private modules, because
+				GONOPROXY has been set to a pattern that won't match any modules,
+				overriding GOPRIVATE.
+
+				The 'go env -w' command (see 'go help env') can be used to set these variables
+				for future go command invocations.
+
+				"""
 		}]
-		Order:           20
-		InformationOnly: true
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "go_help_modprivate"
 	}
 	goprivate_set_private: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "go env -w GOPRIVATE={{{.PRIVATE}}}"
-			Negated:          false
-		}]
-		Order:           21
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "goprivate_set_private"
+		Order:           21
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "go env -w GOPRIVATE={{{.PRIVATE}}}"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	gopher_get_private_goprivate: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_get_private_goprivate"
+		Order:           22
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-
-				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
-				go: {{{.PRIVATE}}} upgrade => v0.0.0-20060102150405-abcedf12345
-				"""
+			Negated:  false
+			CmdStr:   "go get {{{.PRIVATE}}}"
+			ExitCode: 0
 			Output: """
 				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
 				go: {{{.PRIVATE}}} upgrade => v0.0.0-20060102150405-abcedf12345
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go get {{{.PRIVATE}}}"
-			Negated:  false
+			ComparisonOutput: """
+
+				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
+				go: {{{.PRIVATE}}} upgrade => v0.0.0-20060102150405-abcedf12345
+				"""
 		}]
-		Order:           22
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_get_private_goprivate"
 	}
 	private_pseudo_version: {
+		StepType:        1
+		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
+		DoNotTrim:       false
+		InformationOnly: true
+		Name:            "private_pseudo_version"
+		Order:           23
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				v0.0.0-20060102150405-abcedf12345
-
-				"""
+			Negated:  false
+			CmdStr:   "go list -m -f {{.Version}} {{{.PRIVATE}}}"
+			ExitCode: 0
 			Output: """
 				v0.0.0-20060102150405-abcedf12345
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go list -m -f {{.Version}} {{{.PRIVATE}}}"
-			Negated:  false
+			ComparisonOutput: """
+				v0.0.0-20060102150405-abcedf12345
+
+				"""
 		}]
-		Order:           23
-		InformationOnly: true
-		DoNotTrim:       false
-		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "private_pseudo_version"
 	}
 	gopher_run: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_run"
+		Order:           24
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				public.Message(): This is a public safety announcement!
-				private.Secret(): This is a top secret message... for your eyes only
-
-				"""
+			Negated:  false
+			CmdStr:   "go run ."
+			ExitCode: 0
 			Output: """
 				public.Message(): This is a public safety announcement!
 				private.Secret(): This is a top secret message... for your eyes only
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go run ."
-			Negated:  false
+			ComparisonOutput: """
+				public.Message(): This is a public safety announcement!
+				private.Secret(): This is a top secret message... for your eyes only
+
+				"""
 		}]
-		Order:           24
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gopher_run"
 	}
 }
-Hash: "e4cb8f3830d86416838afc897d487876948216d1f8f221696b039879999ea627"
+Hash: "365dd25ad2f88ee9d62e095f710f72403e47ea015a2437ca783b9aa4ac4469e1"
 Delims: ["{{{", "}}}"]

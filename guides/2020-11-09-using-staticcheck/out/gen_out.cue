@@ -1,53 +1,54 @@
 package out
 
 Terminals: [{
+	Name:        "term1"
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
 			Image: "playwithgo/go1.15.5@sha256:1c332c6b4e73dee8075badc66fe23c7fe51c44ddd2becb6cffc2db81bdaa0b06"
 		}
 	}
-	Name: "term1"
 }]
 Scenarios: [{
-	Description: "Go 1.15"
 	Name:        "go115"
+	Description: "Go 1.15"
 }]
 Networks: ["playwithgo_pwg"]
 Env: []
 FilenameComment: false
 Steps: {
 	goversion: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "goversion"
+		Order:           0
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				go version go1.15.5 linux/amd64
-
-				"""
+			Negated:  false
+			CmdStr:   "go version"
+			ExitCode: 0
 			Output: """
 				go version go1.15.5 linux/amd64
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go version"
-			Negated:  false
+			ComparisonOutput: """
+				go version go1.15.5 linux/amd64
+
+				"""
 		}]
-		Order:           0
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "goversion"
 	}
 	staticcheck_install: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "staticcheck_install"
+		Order:           1
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-
-				go: downloading github.com/BurntSushi/toml v0.3.1
-				go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
-				go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
-				go: downloading honnef.co/go/tools v0.0.1-2020.1.6
-				go: found honnef.co/go/tools/cmd/staticcheck in honnef.co/go/tools v0.0.1-2020.1.6
-				"""
+			Negated:  false
+			CmdStr:   "(cd $(mktemp -d); GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6)"
+			ExitCode: 0
 			Output: """
 				go: downloading honnef.co/go/tools v0.0.1-2020.1.6
 				go: found honnef.co/go/tools/cmd/staticcheck in honnef.co/go/tools v0.0.1-2020.1.6
@@ -56,94 +57,100 @@ Steps: {
 				go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
 
 				"""
-			ExitCode: 0
-			CmdStr:   "(cd $(mktemp -d); GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6)"
-			Negated:  false
+			ComparisonOutput: """
+
+				go: downloading github.com/BurntSushi/toml v0.3.1
+				go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
+				go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
+				go: downloading honnef.co/go/tools v0.0.1-2020.1.6
+				go: found honnef.co/go/tools/cmd/staticcheck in honnef.co/go/tools v0.0.1-2020.1.6
+				"""
 		}]
-		Order:           1
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "staticcheck_install"
 	}
 	staticcheck_check_on_path: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "staticcheck_check_on_path"
+		Order:           2
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				/home/gopher/go/bin/staticcheck
-
-				"""
+			Negated:  false
+			CmdStr:   "which staticcheck"
+			ExitCode: 0
 			Output: """
 				/home/gopher/go/bin/staticcheck
 
 				"""
-			ExitCode: 0
-			CmdStr:   "which staticcheck"
-			Negated:  false
+			ComparisonOutput: """
+				/home/gopher/go/bin/staticcheck
+
+				"""
 		}]
-		Order:           2
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "staticcheck_check_on_path"
 	}
 	staticcheck_version: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "staticcheck_version"
+		Order:           3
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				staticcheck 2020.1.6
-
-				"""
+			Negated:  false
+			CmdStr:   "staticcheck -version"
+			ExitCode: 0
 			Output: """
 				staticcheck 2020.1.6
 
 				"""
-			ExitCode: 0
-			CmdStr:   "staticcheck -version"
-			Negated:  false
+			ComparisonOutput: """
+				staticcheck 2020.1.6
+
+				"""
 		}]
-		Order:           3
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "staticcheck_version"
 	}
 	pets_init: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "pets_init"
+		Order:           4
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
+			Negated:          false
 			CmdStr:           "mkdir /home/gopher/pets"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
 			ExitCode:         0
-			CmdStr:           "cd /home/gopher/pets"
-			Negated:          false
+			Output:           ""
+			ComparisonOutput: ""
 		}, {
-			ComparisonOutput: """
-				go: creating new go.mod: module pets
-
-				"""
+			Negated:          false
+			CmdStr:           "cd /home/gopher/pets"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:  false
+			CmdStr:   "go mod init pets"
+			ExitCode: 0
 			Output: """
 				go: creating new go.mod: module pets
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go mod init pets"
-			Negated:  false
+			ComparisonOutput: """
+				go: creating new go.mod: module pets
+
+				"""
 		}]
-		Order:           4
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "pets_init"
 	}
 	pets_go_initial: {
-		Order: 5
+		StepType: 2
+		Name:     "pets_go_initial"
+		Order:    5
+		Terminal: "term1"
+		Language: "go"
+		Renderer: {
+			RendererType: 1
+		}
 		Source: """
 			package pets
 
@@ -179,39 +186,34 @@ Steps: {
 			}
 
 			"""
-		Renderer: {
-			RendererType: 1
-		}
-		Language: "go"
-		Target:   "/home/gopher/pets/pets.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "pets_go_initial"
+		Target: "/home/gopher/pets/pets.go"
 	}
 	pets_build_initial: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "go build"
-			Negated:          false
-		}]
-		Order:           6
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "pets_build_initial"
+		Order:           6
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "go build"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	pets_staticcheck_initial: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "pets_staticcheck_initial"
+		Order:           7
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				pets.go:23:14: Printf format %v reads arg #1, but call has only 0 args (SA5009)
-				pets.go:25:10: should use fmt.Errorf(...) instead of errors.New(fmt.Sprintf(...)) (S1028)
-				pets.go:30:7: receiver name should be a reflection of its identity; don't use generic names such as "this" or "self" (ST1006)
-				pets.go:31:9: the argument is already a string, there's no need to use fmt.Sprintf (S1025)
-
-				"""
+			Negated:  true
+			CmdStr:   "staticcheck ."
+			ExitCode: 1
 			Output: """
 				pets.go:23:14: Printf format %v reads arg #1, but call has only 0 args (SA5009)
 				pets.go:25:10: should use fmt.Errorf(...) instead of errors.New(fmt.Sprintf(...)) (S1028)
@@ -219,27 +221,26 @@ Steps: {
 				pets.go:31:9: the argument is already a string, there's no need to use fmt.Sprintf (S1025)
 
 				"""
-			ExitCode: 1
-			CmdStr:   "staticcheck ."
-			Negated:  true
+			ComparisonOutput: """
+				pets.go:23:14: Printf format %v reads arg #1, but call has only 0 args (SA5009)
+				pets.go:25:10: should use fmt.Errorf(...) instead of errors.New(fmt.Sprintf(...)) (S1028)
+				pets.go:30:7: receiver name should be a reflection of its identity; don't use generic names such as "this" or "self" (ST1006)
+				pets.go:31:9: the argument is already a string, there's no need to use fmt.Sprintf (S1025)
+
+				"""
 		}]
-		Order:           7
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "pets_staticcheck_initial"
 	}
 	staticcheck_explain: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "staticcheck_explain"
+		Order:           8
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				Invalid Printf call
-
-				Available since
-				    2019.2
-
-
-				"""
+			Negated:  false
+			CmdStr:   "staticcheck -explain SA5009"
+			ExitCode: 0
 			Output: """
 				Invalid Printf call
 
@@ -248,54 +249,24 @@ Steps: {
 
 
 				"""
-			ExitCode: 0
-			CmdStr:   "staticcheck -explain SA5009"
-			Negated:  false
+			ComparisonOutput: """
+				Invalid Printf call
+
+				Available since
+				    2019.2
+
+
+				"""
 		}]
-		Order:           8
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "staticcheck_explain"
 	}
 	pets_go_fixed: {
-		Order: 9
-		Source: """
-			package pets
-
-			import (
-			\t"fmt"
-			)
-
-			type Animal int
-
-			const (
-			\tDog Animal = iota
-			\tSnake
-			)
-
-			type Pet struct {
-			\tKind Animal
-			\tName string
-			}
-
-			func (p Pet) Walk() error {
-			\tswitch p.Kind {
-			\tcase Dog:
-			\t\tfmt.Printf("Will take %v for a walk around the block\\n", p.Name)
-			\tdefault:
-			\t\treturn fmt.Errorf("cannot take %v for a walk", p.Name)
-			\t}
-			\treturn nil
-			}
-
-			func (p Pet) String() string {
-			\treturn p.Name
-			}
-
-			"""
+		StepType: 2
+		Name:     "pets_go_fixed"
+		Order:    9
+		Terminal: "term1"
+		Language: "go"
 		Renderer: {
+			RendererType: 3
 			Pre: """
 				package pets
 
@@ -331,67 +302,137 @@ Steps: {
 				}
 
 				"""
-			RendererType: 3
 		}
-		Language: "go"
-		Target:   "/home/gopher/pets/pets.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "pets_go_fixed"
+		Source: """
+			package pets
+
+			import (
+			\t"fmt"
+			)
+
+			type Animal int
+
+			const (
+			\tDog Animal = iota
+			\tSnake
+			)
+
+			type Pet struct {
+			\tKind Animal
+			\tName string
+			}
+
+			func (p Pet) Walk() error {
+			\tswitch p.Kind {
+			\tcase Dog:
+			\t\tfmt.Printf("Will take %v for a walk around the block\\n", p.Name)
+			\tdefault:
+			\t\treturn fmt.Errorf("cannot take %v for a walk", p.Name)
+			\t}
+			\treturn nil
+			}
+
+			func (p Pet) String() string {
+			\treturn p.Name
+			}
+
+			"""
+		Target: "/home/gopher/pets/pets.go"
 	}
 	pets_staticcheck_fixed: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "staticcheck ."
-			Negated:          false
-		}]
-		Order:           10
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "pets_staticcheck_fixed"
+		Order:           10
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "staticcheck ."
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	staticcheck_config_initial: {
-		Order: 11
+		StepType: 2
+		Name:     "staticcheck_config_initial"
+		Order:    11
+		Terminal: "term1"
+		Language: "toml"
+		Renderer: {
+			RendererType: 1
+		}
 		Source: """
 			checks = ["inherit", "ST1000"]
 
 			"""
-		Renderer: {
-			RendererType: 1
-		}
-		Language: "toml"
-		Target:   "/home/gopher/pets/staticcheck.conf"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "staticcheck_config_initial"
+		Target: "/home/gopher/pets/staticcheck.conf"
 	}
 	pets_staticcheck_st1000_enabled: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "pets_staticcheck_st1000_enabled"
+		Order:           12
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				pets.go:1:1: at least one file in a package should have a package comment (ST1000)
-
-				"""
+			Negated:  true
+			CmdStr:   "staticcheck ."
+			ExitCode: 1
 			Output: """
 				pets.go:1:1: at least one file in a package should have a package comment (ST1000)
 
 				"""
-			ExitCode: 1
-			CmdStr:   "staticcheck ."
-			Negated:  true
+			ComparisonOutput: """
+				pets.go:1:1: at least one file in a package should have a package comment (ST1000)
+
+				"""
 		}]
-		Order:           12
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "pets_staticcheck_st1000_enabled"
 	}
 	pets_go_with_package_comment: {
-		Order: 13
+		StepType: 2
+		Name:     "pets_go_with_package_comment"
+		Order:    13
+		Terminal: "term1"
+		Language: "go"
+		Renderer: {
+			RendererType: 3
+			Pre: """
+				package pets
+
+				import (
+				\t"fmt"
+				)
+
+				type Animal int
+
+				const (
+				\tDog Animal = iota
+				\tSnake
+				)
+
+				type Pet struct {
+				\tKind Animal
+				\tName string
+				}
+
+				func (p Pet) Walk() error {
+				\tswitch p.Kind {
+				\tcase Dog:
+				\t\tfmt.Printf("Will take %v for a walk around the block\\n", p.Name)
+				\tdefault:
+				\t\treturn fmt.Errorf("cannot take %v for a walk", p.Name)
+				\t}
+				\treturn nil
+				}
+
+				func (p Pet) String() string {
+				\treturn p.Name
+				}
+
+				"""
+		}
 		Source: """
 			// Package pets contains useful functionality for pet owners
 			package pets
@@ -427,8 +468,33 @@ Steps: {
 			}
 
 			"""
+		Target: "/home/gopher/pets/pets.go"
+	}
+	pets_staticcheck_st1000_fixed: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "pets_staticcheck_st1000_fixed"
+		Order:           14
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "staticcheck ."
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
+	}
+	pets_go_feed: {
+		StepType: 2
+		Name:     "pets_go_feed"
+		Order:    15
+		Terminal: "term1"
+		Language: "go"
 		Renderer: {
+			RendererType: 3
 			Pre: """
+				// Package pets contains useful functionality for pet owners
 				package pets
 
 				import (
@@ -462,31 +528,7 @@ Steps: {
 				}
 
 				"""
-			RendererType: 3
 		}
-		Language: "go"
-		Target:   "/home/gopher/pets/pets.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "pets_go_with_package_comment"
-	}
-	pets_staticcheck_st1000_fixed: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "staticcheck ."
-			Negated:          false
-		}]
-		Order:           14
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "pets_staticcheck_st1000_fixed"
-	}
-	pets_go_feed: {
-		Order: 15
 		Source: """
 			// Package pets contains useful functionality for pet owners
 			package pets
@@ -527,7 +569,37 @@ Steps: {
 			}
 
 			"""
+		Target: "/home/gopher/pets/pets.go"
+	}
+	pets_staticcheck_check_feed: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "pets_staticcheck_check_feed"
+		Order:           16
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:  true
+			CmdStr:   "staticcheck ."
+			ExitCode: 1
+			Output: """
+				pets.go:31:2: self-assignment of food to food (SA4018)
+
+				"""
+			ComparisonOutput: """
+				pets.go:31:2: self-assignment of food to food (SA4018)
+
+				"""
+		}]
+	}
+	pets_go_ignore_sa4018: {
+		StepType: 2
+		Name:     "pets_go_ignore_sa4018"
+		Order:    17
+		Terminal: "term1"
+		Language: "go"
 		Renderer: {
+			RendererType: 3
 			Pre: """
 				// Package pets contains useful functionality for pet owners
 				package pets
@@ -558,42 +630,17 @@ Steps: {
 				\treturn nil
 				}
 
+				func (p Pet) Feed(food string) {
+				\tfood = food
+				\tfmt.Printf("Feeding %v some %v\\n", p.Name, food)
+				}
+
 				func (p Pet) String() string {
 				\treturn p.Name
 				}
 
 				"""
-			RendererType: 3
 		}
-		Language: "go"
-		Target:   "/home/gopher/pets/pets.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "pets_go_feed"
-	}
-	pets_staticcheck_check_feed: {
-		Stmts: [{
-			ComparisonOutput: """
-				pets.go:31:2: self-assignment of food to food (SA4018)
-
-				"""
-			Output: """
-				pets.go:31:2: self-assignment of food to food (SA4018)
-
-				"""
-			ExitCode: 1
-			CmdStr:   "staticcheck ."
-			Negated:  true
-		}]
-		Order:           16
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "pets_staticcheck_check_feed"
-	}
-	pets_go_ignore_sa4018: {
-		Order: 17
 		Source: """
 			// Package pets contains useful functionality for pet owners
 			package pets
@@ -635,7 +682,31 @@ Steps: {
 			}
 
 			"""
+		Target: "/home/gopher/pets/pets.go"
+	}
+	pets_staticcheck_check_sa4018_ignored: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "pets_staticcheck_check_sa4018_ignored"
+		Order:           18
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "staticcheck ."
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
+	}
+	pets_go_file_ignore_sa4018: {
+		StepType: 2
+		Name:     "pets_go_file_ignore_sa4018"
+		Order:    19
+		Terminal: "term1"
+		Language: "go"
 		Renderer: {
+			RendererType: 3
 			Pre: """
 				// Package pets contains useful functionality for pet owners
 				package pets
@@ -667,6 +738,7 @@ Steps: {
 				}
 
 				func (p Pet) Feed(food string) {
+				\t//lint:ignore SA4018 trying out line-based linter directives
 				\tfood = food
 				\tfmt.Printf("Feeding %v some %v\\n", p.Name, food)
 				}
@@ -676,31 +748,7 @@ Steps: {
 				}
 
 				"""
-			RendererType: 3
 		}
-		Language: "go"
-		Target:   "/home/gopher/pets/pets.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "pets_go_ignore_sa4018"
-	}
-	pets_staticcheck_check_sa4018_ignored: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "staticcheck ."
-			Negated:          false
-		}]
-		Order:           18
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "pets_staticcheck_check_sa4018_ignored"
-	}
-	pets_go_file_ignore_sa4018: {
-		Order: 19
 		Source: """
 			// Package pets contains useful functionality for pet owners
 			package pets
@@ -743,113 +791,31 @@ Steps: {
 			}
 
 			"""
-		Renderer: {
-			Pre: """
-				// Package pets contains useful functionality for pet owners
-				package pets
-
-				import (
-				\t"fmt"
-				)
-
-				type Animal int
-
-				const (
-				\tDog Animal = iota
-				\tSnake
-				)
-
-				type Pet struct {
-				\tKind Animal
-				\tName string
-				}
-
-				func (p Pet) Walk() error {
-				\tswitch p.Kind {
-				\tcase Dog:
-				\t\tfmt.Printf("Will take %v for a walk around the block\\n", p.Name)
-				\tdefault:
-				\t\treturn fmt.Errorf("cannot take %v for a walk", p.Name)
-				\t}
-				\treturn nil
-				}
-
-				func (p Pet) Feed(food string) {
-				\t//lint:ignore SA4018 trying out line-based linter directives
-				\tfood = food
-				\tfmt.Printf("Feeding %v some %v\\n", p.Name, food)
-				}
-
-				func (p Pet) String() string {
-				\treturn p.Name
-				}
-
-				"""
-			RendererType: 3
-		}
-		Language: "go"
-		Target:   "/home/gopher/pets/pets.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "pets_go_file_ignore_sa4018"
+		Target: "/home/gopher/pets/pets.go"
 	}
 	pets_staticcheck_check_sa4018_still_ignored: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "staticcheck ."
-			Negated:          false
-		}]
-		Order:           20
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "pets_staticcheck_check_sa4018_still_ignored"
+		Order:           20
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "staticcheck ."
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	pets_go_final: {
-		Order: 21
-		Source: """
-			// Package pets contains useful functionality for pet owners
-			package pets
-
-			import (
-			\t"fmt"
-			)
-
-			type Animal int
-
-			const (
-			\tDog Animal = iota
-			\tSnake
-			)
-
-			type Pet struct {
-			\tKind Animal
-			\tName string
-			}
-
-			func (p Pet) Walk() error {
-			\tswitch p.Kind {
-			\tcase Dog:
-			\t\tfmt.Printf("Will take %v for a walk around the block\\n", p.Name)
-			\tdefault:
-			\t\treturn fmt.Errorf("cannot take %v for a walk", p.Name)
-			\t}
-			\treturn nil
-			}
-
-			func (p Pet) Feed(food string) {
-			\tfmt.Printf("Feeding %v some %v\\n", p.Name, food)
-			}
-
-			func (p Pet) String() string {
-			\treturn p.Name
-			}
-
-			"""
+		StepType: 2
+		Name:     "pets_go_final"
+		Order:    21
+		Terminal: "term1"
+		Language: "go"
 		Renderer: {
+			RendererType: 3
 			Pre: """
 				// Package pets contains useful functionality for pet owners
 				package pets
@@ -892,29 +858,63 @@ Steps: {
 				}
 
 				"""
-			RendererType: 3
 		}
-		Language: "go"
-		Target:   "/home/gopher/pets/pets.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "pets_go_final"
+		Source: """
+			// Package pets contains useful functionality for pet owners
+			package pets
+
+			import (
+			\t"fmt"
+			)
+
+			type Animal int
+
+			const (
+			\tDog Animal = iota
+			\tSnake
+			)
+
+			type Pet struct {
+			\tKind Animal
+			\tName string
+			}
+
+			func (p Pet) Walk() error {
+			\tswitch p.Kind {
+			\tcase Dog:
+			\t\tfmt.Printf("Will take %v for a walk around the block\\n", p.Name)
+			\tdefault:
+			\t\treturn fmt.Errorf("cannot take %v for a walk", p.Name)
+			\t}
+			\treturn nil
+			}
+
+			func (p Pet) Feed(food string) {
+			\tfmt.Printf("Feeding %v some %v\\n", p.Name, food)
+			}
+
+			func (p Pet) String() string {
+			\treturn p.Name
+			}
+
+			"""
+		Target: "/home/gopher/pets/pets.go"
 	}
 	pets_staticcheck_final: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "staticcheck ."
-			Negated:          false
-		}]
-		Order:           22
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "pets_staticcheck_final"
+		Order:           22
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "staticcheck ."
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 }
-Hash: "425d248d2ccc27072ce59eeb01949201a472566c7bb38729f3329b99b40bd25c"
+Hash: "8d4b2bf2756441d7c8a6581ce155463d2066021d68f24520ecebf0bb9674283e"
 Delims: ["{{{", "}}}"]

@@ -1,87 +1,94 @@
 package out
 
 Terminals: [{
+	Name:        "term1"
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
 			Image: "playwithgo/go1.15.5@sha256:1c332c6b4e73dee8075badc66fe23c7fe51c44ddd2becb6cffc2db81bdaa0b06"
 		}
 	}
-	Name: "term1"
 }]
 Scenarios: [{
-	Description: "Go 1.15"
 	Name:        "go115"
+	Description: "Go 1.15"
 }]
 Networks: ["playwithgo_pwg"]
 Env: []
 FilenameComment: false
 Steps: {
 	goversion: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "goversion"
+		Order:           0
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				go version go1.15.5 linux/amd64
-
-				"""
+			Negated:  false
+			CmdStr:   "go version"
+			ExitCode: 0
 			Output: """
 				go version go1.15.5 linux/amd64
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go version"
-			Negated:  false
+			ComparisonOutput: """
+				go version go1.15.5 linux/amd64
+
+				"""
 		}]
-		Order:           0
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "goversion"
 	}
 	pwd_home: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "pwd_home"
+		Order:           1
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				/home/gopher
-
-				"""
+			Negated:  false
+			CmdStr:   "pwd"
+			ExitCode: 0
 			Output: """
 				/home/gopher
 
 				"""
-			ExitCode: 0
-			CmdStr:   "pwd"
-			Negated:  false
+			ComparisonOutput: """
+				/home/gopher
+
+				"""
 		}]
-		Order:           1
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "pwd_home"
 	}
 	mkdir_hello: {
-		Stmts: [{
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "mkdir /home/gopher/hello"
-			Negated:          false
-		}, {
-			ComparisonOutput: ""
-			Output:           ""
-			ExitCode:         0
-			CmdStr:           "cd /home/gopher/hello"
-			Negated:          false
-		}]
-		Order:           2
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
 		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
 		Name:            "mkdir_hello"
+		Order:           2
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "mkdir /home/gopher/hello"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}, {
+			Negated:          false
+			CmdStr:           "cd /home/gopher/hello"
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
 	}
 	create_hello: {
-		Order: 3
+		StepType: 2
+		Name:     "create_hello"
+		Order:    3
+		Terminal: "term1"
+		Language: "go"
+		Renderer: {
+			RendererType: 1
+		}
 		Source: """
 			package main
 
@@ -92,38 +99,48 @@ Steps: {
 			}
 
 			"""
-		Renderer: {
-			RendererType: 1
-		}
-		Language: "go"
-		Target:   "/home/gopher/hello/hello.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "create_hello"
+		Target: "/home/gopher/hello/hello.go"
 	}
 	run_hello: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "run_hello"
+		Order:           4
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				Hello, World!
-
-				"""
+			Negated:  false
+			CmdStr:   "go run hello.go"
+			ExitCode: 0
 			Output: """
 				Hello, World!
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go run hello.go"
-			Negated:  false
+			ComparisonOutput: """
+				Hello, World!
+
+				"""
 		}]
-		Order:           4
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "run_hello"
 	}
 	update_hello: {
-		Order: 5
+		StepType: 2
+		Name:     "update_hello"
+		Order:    5
+		Terminal: "term1"
+		Language: "go"
+		Renderer: {
+			RendererType: 3
+			Pre: """
+				package main
+
+				import "fmt"
+
+				func main() {
+				\tfmt.Println("Hello, World!")
+				}
+
+				"""
+		}
 		Source: """
 			package main
 
@@ -136,92 +153,75 @@ Steps: {
 			}
 
 			"""
-		Renderer: {
-			Pre: """
-				package main
-
-				import "fmt"
-
-				func main() {
-				\tfmt.Println("Hello, World!")
-				}
-
-				"""
-			RendererType: 3
-		}
-		Language: "go"
-		Target:   "/home/gopher/hello/hello.go"
-		Terminal: "term1"
-		StepType: 2
-		Name:     "update_hello"
+		Target: "/home/gopher/hello/hello.go"
 	}
 	gomodinit: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gomodinit"
+		Order:           6
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				go: creating new go.mod: module hello
-
-				"""
+			Negated:  false
+			CmdStr:   "go mod init hello"
+			ExitCode: 0
 			Output: """
 				go: creating new go.mod: module hello
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go mod init hello"
-			Negated:  false
+			ComparisonOutput: """
+				go: creating new go.mod: module hello
+
+				"""
 		}]
-		Order:           6
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gomodinit"
 	}
 	gogetquote: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gogetquote"
+		Order:           7
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-
-				go: downloading golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
-				go: downloading rsc.io/quote v1.5.2
-				go: downloading rsc.io/sampler v1.3.0
-				"""
+			Negated:  false
+			CmdStr:   "go get rsc.io/quote@v1.5.2"
+			ExitCode: 0
 			Output: """
 				go: downloading rsc.io/quote v1.5.2
 				go: downloading rsc.io/sampler v1.3.0
 				go: downloading golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go get rsc.io/quote@v1.5.2"
-			Negated:  false
+			ComparisonOutput: """
+
+				go: downloading golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
+				go: downloading rsc.io/quote v1.5.2
+				go: downloading rsc.io/sampler v1.3.0
+				"""
 		}]
-		Order:           7
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "gogetquote"
 	}
 	run_hello_again: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "run_hello_again"
+		Order:           8
+		Terminal:        "term1"
 		Stmts: [{
-			ComparisonOutput: """
-				Don't communicate by sharing memory, share memory by communicating.
-
-				"""
+			Negated:  false
+			CmdStr:   "go run hello.go"
+			ExitCode: 0
 			Output: """
 				Don't communicate by sharing memory, share memory by communicating.
 
 				"""
-			ExitCode: 0
-			CmdStr:   "go run hello.go"
-			Negated:  false
+			ComparisonOutput: """
+				Don't communicate by sharing memory, share memory by communicating.
+
+				"""
 		}]
-		Order:           8
-		InformationOnly: false
-		DoNotTrim:       false
-		Terminal:        "term1"
-		StepType:        1
-		Name:            "run_hello_again"
 	}
 }
-Hash: "eb95610716bc610fcde40619d5a1972244f258077fe1811c5254463be3540c61"
+Hash: "f84600efdfca285c26efcb59e2bf4c6ba73748c82ae73db75ec4d9a71f4a4c6c"
 Delims: ["{{{", "}}}"]
