@@ -15,6 +15,7 @@ Scenarios: [{
 }]
 Networks: ["playwithgo_pwg"]
 Env: []
+FilenameComment: false
 Steps: {
 	goversion: {
 		Stmts: [{
@@ -176,5 +177,5 @@ Steps: {
 		Name:            "goversion_mkcert"
 	}
 }
-Hash: "9ea49ee3b141a06c9945fd37de54c955d45a74b4b078310c12c2cc351d65956a"
+Hash: "5b876f360f6ebd1cb190158cb9df035ef905538f4321ef3c10ca1860f529d844"
 Delims: ["{{{", "}}}"]

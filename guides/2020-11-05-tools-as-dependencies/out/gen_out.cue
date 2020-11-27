@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201127055619-8777d2847809",
-		      "Sum": "h1:AFGAfyRMZ71UMh26WqlC1eWG379ulXpMZD357jL0tVk=",
+		      "Version": "v0.0.2-0.20201127063021-618bc89b79b5",
+		      "Sum": "h1:D8LWv2UGZd6JG8fIg1ASdBr0K7gLhthZ0UcBmGNbI4A=",
 		      "Replace": null
 		    },
 		    {
@@ -124,6 +124,7 @@ Scenarios: [{
 }]
 Networks: ["playwithgo_pwg"]
 Env: []
+FilenameComment: false
 Steps: {
 	goversion: {
 		Stmts: [{
@@ -780,5 +781,5 @@ Steps: {
 		Name:            "painkiller_check_fever_advice"
 	}
 }
-Hash: "2052857141c6a876a0e2160c5a9b3dd97f69583b6ffa68928a5759ad144fcbb3"
+Hash: "50577c8ee2d73ac731c10cc6955a3243380353c3a395b95417c842099bb619c2"
 Delims: ["{{{", "}}}"]

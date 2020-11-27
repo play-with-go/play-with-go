@@ -25,6 +25,8 @@ import (
 		Terminal: string
 	}
 
+	FilenameComment: *false | bool
+
 	_#stepCommon: {
 		Name:     string
 		StepType: #StepType

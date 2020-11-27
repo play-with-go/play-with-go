@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201127055619-8777d2847809",
-		      "Sum": "h1:AFGAfyRMZ71UMh26WqlC1eWG379ulXpMZD357jL0tVk=",
+		      "Version": "v0.0.2-0.20201127063021-618bc89b79b5",
+		      "Sum": "h1:D8LWv2UGZd6JG8fIg1ASdBr0K7gLhthZ0UcBmGNbI4A=",
 		      "Replace": null
 		    },
 		    {
@@ -128,6 +128,7 @@ Scenarios: [{
 }]
 Networks: ["playwithgo_pwg"]
 Env: []
+FilenameComment: false
 Steps: {
 	goversion: {
 		Stmts: [{
@@ -1541,7 +1542,7 @@ Steps: {
 				=== RUN   TestHelloEmpty
 				--- PASS: TestHelloEmpty (0.00s)
 				PASS
-				ok  \t{{{.GREETINGS}}}\t0.002s
+				ok  \t{{{.GREETINGS}}}\t0.003s
 
 				"""
 			ExitCode: 0
@@ -1989,5 +1990,5 @@ Steps: {
 		Name:            "hello_run_by_name"
 	}
 }
-Hash: "22e5b03d5996f0b417213d75feaf21af18998a008ac6ff4c495476549c19cd63"
+Hash: "e9624b44cc03ef376d7f76d9e5f7babcd663f2f8d71ab62a5fe3b5c618c508d5"
 Delims: ["{{{", "}}}"]
