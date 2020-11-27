@@ -8,7 +8,8 @@ ENV GOMODCACHE=/root/.cache/go/gomodcache
 ENV CGO_ENABLED=0
 ENV GOPATH=
 
-COPY . .
+COPY go.mod go.sum .
+COPY cmd/ ./cmd
 
 RUN --mount=type=cache,target=/root/.cache/go go build -o cmd/controller/controller ./cmd/controller
 
