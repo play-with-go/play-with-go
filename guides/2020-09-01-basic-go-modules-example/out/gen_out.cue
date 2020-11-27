@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201127055619-8777d2847809",
-		      "Sum": "h1:AFGAfyRMZ71UMh26WqlC1eWG379ulXpMZD357jL0tVk=",
+		      "Version": "v0.0.2-0.20201127063021-618bc89b79b5",
+		      "Sum": "h1:D8LWv2UGZd6JG8fIg1ASdBr0K7gLhthZ0UcBmGNbI4A=",
 		      "Replace": null
 		    },
 		    {
@@ -124,6 +124,7 @@ Scenarios: [{
 }]
 Networks: ["playwithgo_pwg"]
 Env: []
+FilenameComment: false
 Steps: {
 	create_module: {
 		Stmts: [{
@@ -335,5 +336,5 @@ Steps: {
 		Name:            "mod1_pseudoversion"
 	}
 }
-Hash: "b2e486dd84e74881a8d51d333549ab6dbf00e506e57fcc62ab0fee67bdd2bbc5"
+Hash: "65394bbe4ff91387360dc29d68c24bc3fc84411ea8dd8ee0e5c44f0ff5efa775"
 Delims: ["{{{", "}}}"]

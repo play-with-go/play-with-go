@@ -15,6 +15,7 @@ Scenarios: [{
 }]
 Networks: ["playwithgo_pwg"]
 Env: []
+FilenameComment: false
 Steps: {
 	goversion: {
 		Stmts: [{
@@ -915,5 +916,5 @@ Steps: {
 		Name:            "pets_staticcheck_final"
 	}
 }
-Hash: "d873acc14957482352f68b4b861e6cf69c88b5cf3c706d57eff0406fe3e91b70"
+Hash: "425d248d2ccc27072ce59eeb01949201a472566c7bb38729f3329b99b40bd25c"
 Delims: ["{{{", "}}}"]

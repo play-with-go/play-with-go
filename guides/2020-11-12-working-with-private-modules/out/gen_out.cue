@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201127055619-8777d2847809",
-		      "Sum": "h1:AFGAfyRMZ71UMh26WqlC1eWG379ulXpMZD357jL0tVk=",
+		      "Version": "v0.0.2-0.20201127063021-618bc89b79b5",
+		      "Sum": "h1:D8LWv2UGZd6JG8fIg1ASdBr0K7gLhthZ0UcBmGNbI4A=",
 		      "Replace": null
 		    },
 		    {
@@ -128,6 +128,7 @@ Scenarios: [{
 }]
 Networks: ["playwithgo_pwg"]
 Env: []
+FilenameComment: false
 Steps: {
 	goversion: {
 		Stmts: [{
@@ -861,5 +862,5 @@ Steps: {
 		Name:            "gopher_run"
 	}
 }
-Hash: "ee1ae68ae10b43533ac6fa1e5a38bf8e68f94213417c141caf9058a103bc9a9a"
+Hash: "e4cb8f3830d86416838afc897d487876948216d1f8f221696b039879999ea627"
 Delims: ["{{{", "}}}"]

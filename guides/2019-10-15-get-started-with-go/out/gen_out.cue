@@ -15,6 +15,7 @@ Scenarios: [{
 }]
 Networks: ["playwithgo_pwg"]
 Env: []
+FilenameComment: false
 Steps: {
 	goversion: {
 		Stmts: [{
@@ -222,5 +223,5 @@ Steps: {
 		Name:            "run_hello_again"
 	}
 }
-Hash: "f209986eb24e8efc42c862a7a5e028d0a7d95a895d49532c48d784493a59d20c"
+Hash: "eb95610716bc610fcde40619d5a1972244f258077fe1811c5254463be3540c61"
 Delims: ["{{{", "}}}"]

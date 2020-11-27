@@ -15,6 +15,7 @@ Scenarios: [{
 }]
 Networks: ["playwithgo_pwg"]
 Env: []
+FilenameComment: false
 Steps: {
 	start_dir: {
 		Stmts: [{
@@ -453,5 +454,5 @@ Steps: {
 		Name:            "echo_path"
 	}
 }
-Hash: "f73b2e3c09c903e88442b6261a9eb23006cbb53163b44a8778693dc39e1ce6a9"
+Hash: "acadb0ef73de450e9efc712093e905fd88e016f1a20e075f14f6d26c76fcae16"
 Delims: ["{{{", "}}}"]

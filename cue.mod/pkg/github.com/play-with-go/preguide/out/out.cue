@@ -4,6 +4,7 @@ import "github.com/play-with-go/preguide"
 
 #GuideOutput: {
 	Delims: [string, string]
+	FilenameComment: bool
 	Presteps: [...#Prestep]
 	Terminals: [...preguide.#Terminal]
 	Scenarios: [...preguide.#Scenario]

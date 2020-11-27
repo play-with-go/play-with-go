@@ -56,8 +56,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201127055619-8777d2847809",
-		      "Sum": "h1:AFGAfyRMZ71UMh26WqlC1eWG379ulXpMZD357jL0tVk=",
+		      "Version": "v0.0.2-0.20201127063021-618bc89b79b5",
+		      "Sum": "h1:D8LWv2UGZd6JG8fIg1ASdBr0K7gLhthZ0UcBmGNbI4A=",
 		      "Replace": null
 		    },
 		    {
@@ -124,6 +124,7 @@ Scenarios: [{
 }]
 Networks: ["playwithgo_pwg"]
 Env: []
+FilenameComment: false
 Steps: {
 	whoami: {
 		Stmts: [{
@@ -339,5 +340,5 @@ Steps: {
 		Name:            "gitpush"
 	}
 }
-Hash: "7f6ae4cca60e27970520e586f919bd69132a02dcafeddf71530ce3db30758dba"
+Hash: "f428b1ca5d2429e2fc66cbe16375ae69b104a0206657058bd61215ff9be51940"
 Delims: ["{{{", "}}}"]
