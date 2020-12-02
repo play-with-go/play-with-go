@@ -32,8 +32,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "cuelang.org/go",
-		      "Version": "v0.3.0-alpha5.0.20201125190328-110d0bffb886",
-		      "Sum": "h1:AH0SmnFFudNmu7ZFcKV8aNOAiPC/3nC5M9zfh50pLzk=",
+		      "Version": "v0.3.0-alpha5.0.20201129154919-e77ccb1c2e96",
+		      "Sum": "h1:D5l1EBi57KHntmLBF94By+EZDFvHN9WUEJoM4ZGm9QI=",
 		      "Replace": null
 		    },
 		    {
@@ -68,8 +68,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20201127064237-60c1cbc298ce",
-		      "Sum": "h1:G+SARY3jyPp4RLbXTusrALhXMDY4JaslhkXoDx0MmdI=",
+		      "Version": "v0.0.2-0.20201202115912-9dcd6cce2ddb",
+		      "Sum": "h1:vK3tPJL2IBN9ySVgwVcws39rmxbV8c/2niscNM95/ZE=",
 		      "Replace": null
 		    },
 		    {
@@ -862,5 +862,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "581d67344fcac0588c4d2aa5b2b925803d88a60cfbc61faec319464828a1dbe8"
+Hash: "2e2a6f6a395caf3362a5ed7881ac04f2cd2c0e98424bc59f73212b09fe797c1f"
 Delims: ["{{{", "}}}"]
