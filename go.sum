@@ -40,8 +40,8 @@ contrib.go.opencensus.io/integrations/ocsql v0.1.4/go.mod h1:8DsSdjz3F+APR+0z0Wk
 contrib.go.opencensus.io/resource v0.0.0-20190131005048-21591786a5e0/go.mod h1:F361eGI91LCmW1I/Saf+rX0+OFcigGlFvXwEGEnkRLA=
 cuelang.org/go v0.3.0-alpha3 h1:CxqJByVB1t6kcgcVnBYfcxWmzcupeepnoaI1CKaOC7U=
 cuelang.org/go v0.3.0-alpha3/go.mod h1:un6c4wnW3jEIrp97ARM3eJOlIJojP61ASQTRHyR0uiE=
-cuelang.org/go v0.3.0-alpha5.0.20201125190328-110d0bffb886 h1:AH0SmnFFudNmu7ZFcKV8aNOAiPC/3nC5M9zfh50pLzk=
-cuelang.org/go v0.3.0-alpha5.0.20201125190328-110d0bffb886/go.mod h1:NwRWsRzQvqkhCHdkIjFBKo9ujPd1OQLZzugDjElHh8Q=
+cuelang.org/go v0.3.0-alpha5.0.20201129154919-e77ccb1c2e96 h1:D5l1EBi57KHntmLBF94By+EZDFvHN9WUEJoM4ZGm9QI=
+cuelang.org/go v0.3.0-alpha5.0.20201129154919-e77ccb1c2e96/go.mod h1:NwRWsRzQvqkhCHdkIjFBKo9ujPd1OQLZzugDjElHh8Q=
 dmitri.shuralyov.com/gpu/mtl v0.0.0-20190408044501-666a987793e9/go.mod h1:H6x//7gZCb22OMCxBHrMx7a5I7Hp++hsVxbQ4BYO7hU=
 docker.io/go-docker v1.0.0 h1:VdXS/aNYQxyA9wdLD5z8Q8Ro688/hG8HzKxYVEVbE6s=
 docker.io/go-docker v1.0.0/go.mod h1:7tiAn5a0LFmjbPDbyTPOaTTOuG1ZRNXdPA6RvKY+fpY=
@@ -425,8 +425,8 @@ github.com/play-with-docker/play-with-docker v0.0.3-0.20201025222131-e8486b8100e
 github.com/play-with-go/gitea v0.0.0-20201117212359-e8c942fd23b1 h1:GF1ytqY5ImU/VwbxBRfry/sOIsXpZWwxUM50WNRySeo=
 github.com/play-with-go/gitea v0.0.0-20201117212359-e8c942fd23b1/go.mod h1:u2EwEyaJW1TLsVERI3nAQHW6k/N1tBGvuI9jT9q5lP0=
 github.com/play-with-go/preguide v0.0.2-0.20200929132054-e0f48a7f7b23/go.mod h1:jkhBBbIBioAzKiRo5Rr9r03tqglgUdPZAVIpBBw7aDU=
-github.com/play-with-go/preguide v0.0.2-0.20201127064237-60c1cbc298ce h1:G+SARY3jyPp4RLbXTusrALhXMDY4JaslhkXoDx0MmdI=
-github.com/play-with-go/preguide v0.0.2-0.20201127064237-60c1cbc298ce/go.mod h1:u+zsAsJQuwHGlbFILawiDBfSduV6zrcFuVMOm9qLCsQ=
+github.com/play-with-go/preguide v0.0.2-0.20201202115912-9dcd6cce2ddb h1:vK3tPJL2IBN9ySVgwVcws39rmxbV8c/2niscNM95/ZE=
+github.com/play-with-go/preguide v0.0.2-0.20201202115912-9dcd6cce2ddb/go.mod h1:2aKPWjyECAeInUVAbNvJqcKjuKeDtbkuyT1uSj1eJus=
 github.com/pmezard/go-difflib v0.0.0-20151028094244-d8ed2627bdf0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
