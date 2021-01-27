@@ -114,7 +114,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go116: {
-			Image: "playwithgo/go1.16-tip@sha256:eb14debbd59bb5b4252d4026780a0469fdda7601cdcfd1aa4c0ea685881cea28"
+			Image: "playwithgo/go1.16-tip@sha256:dd9175b42b77df02298fb9f601895516c1963a51be8a023b1659843d47a1fe1b"
 		}
 	}
 }]
@@ -1383,5 +1383,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "6e3f07c473aa15e452011f07e40b0f5e42955093fb284ca9c568c1c336b39b29"
+Hash: "e1c8d35ab8581afe945460fd0bdf275938a51880887776f395c054730c655dd8"
 Delims: ["{{{", "}}}"]
