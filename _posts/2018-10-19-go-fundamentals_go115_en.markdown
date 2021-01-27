@@ -753,7 +753,7 @@ The tests should pass:
 
 <pre data-command-src="Z28gdGVzdApnbyB0ZXN0IC12Cg=="><code class="language-.term1">$ go test
 PASS
-ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.003s
+ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.002s
 $ go test -v
 === RUN   TestHelloName
 --- PASS: TestHelloName (0.00s)
