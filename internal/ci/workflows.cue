@@ -9,6 +9,9 @@ import "github.com/SchemaStore/schemastore/src/schemas/json"
 	{file: "wip.yml", schema:     wip},
 ]
 
+_#latestUbuntu: "ubuntu-18.04"
+_#latestGo:     "1.15.7"
+
 #testWorkflow: json.#Workflow & {
 	env: {
 		DOCKER_HUB_USER:                    "playwithgopher"
@@ -23,7 +26,7 @@ import "github.com/SchemaStore/schemastore/src/schemas/json"
 		strategy: {
 			"fail-fast": false
 			matrix: {
-				go_version: ["1.15.4"]
+				go_version: [_#latestGo]
 			}
 		}
 		"runs-on": "${{ matrix.os }}"
@@ -107,7 +110,7 @@ test: {
 		pull_request: branches: ["**"]
 		schedule: [{cron: "0 9 * * *"}]
 	}
-	jobs: test: strategy: matrix: os: ["ubuntu-18.04"]
+	jobs: test: strategy: matrix: os: [_#latestUbuntu]
 }
 
 testmac: {
@@ -128,7 +131,7 @@ wip: json.#Workflow & {
 		env: {
 			GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 		}
-		"runs-on": "ubuntu-18.04"
+		"runs-on": _#latestUbuntu
 		steps: [{
 			uses: "myitcv/wip@v1.0.0"
 			with: {
