@@ -1,7 +1,11 @@
-# syntax = docker/dockerfile:experimental@sha256:de85b2f3a3e8a2f7fe48e8e84a65f6fdd5cd5183afa6412fff9caa6871649c44
+# syntax = docker/dockerfile@sha256:e2a8561e419ab1ba6b2fe6cbdf49fd92b95912df1cf7d313c3e2230a333fdbcc
+# SHA256 above is an absolute reference to docker/dockerfile:1.2.1
 
-# golang:1.15.2
-FROM golang@sha256:da7ff43658854148b401f24075c0aa390e3b52187ab67cab0043f2b15e754a68 AS stage1
+# The comment regarding the syntax reference is not at the top of the file
+# because the syntax line must be the first in the file.
+
+# golang:1.15.7
+FROM golang@sha256:c161abf0cde3969e05f6914a86cab804b2b0df515f4ff9570475b25547ba7959 AS stage1
 
 ENV GOCACHE=/root/.cache/go/gocache
 ENV GOMODCACHE=/root/.cache/go/gomodcache
