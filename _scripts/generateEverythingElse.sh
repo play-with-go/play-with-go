@@ -19,4 +19,8 @@ then
 	popd > /dev/null
 fi
 
+# Explicit build step because the site portion of the config is not
+# systematically rebuilt unlike the other parts of the config,
+# precisely because it is contained in a separate yaml file.
+./_scripts/dc.sh -f docker-compose.yml -f docker-compose-website.yml build site
 ./_scripts/dc.sh -f docker-compose.yml -f docker-compose-website.yml run --rm -e JEKYLL_UID=$(id -u) -e JEKYLL_GID=$(id -g) site
