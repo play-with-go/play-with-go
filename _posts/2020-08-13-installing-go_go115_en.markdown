@@ -36,12 +36,12 @@ Start in your home directory:
 
 Download the latest version of Go:
 
-<pre data-command-src="d2dldCAtcSBodHRwczovL2dvbGFuZy5vcmcvZGwvZ28xLjE1LjUubGludXgtYW1kNjQudGFyLmd6Cg=="><code class="language-.term1">$ wget -q https://golang.org/dl/go1.15.5.linux-amd64.tar.gz
+<pre data-command-src="d2dldCAtcSBodHRwczovL2dvbGFuZy5vcmcvZGwvZ28xLjE1LjcubGludXgtYW1kNjQudGFyLmd6Cg=="><code class="language-.term1">$ wget -q https://golang.org/dl/go1.15.7.linux-amd64.tar.gz
 </code></pre>
 
 Extract and install:
 
-<pre data-command-src="c3VkbyB0YXIgLUMgL3Vzci9sb2NhbCAteHpmIGdvMS4xNS41LmxpbnV4LWFtZDY0LnRhci5nego="><code class="language-.term1">$ sudo tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz
+<pre data-command-src="c3VkbyB0YXIgLUMgL3Vzci9sb2NhbCAteHpmIGdvMS4xNS43LmxpbnV4LWFtZDY0LnRhci5nego="><code class="language-.term1">$ sudo tar -C /usr/local -xzf go1.15.7.linux-amd64.tar.gz
 </code></pre>
 
 Add the install target to your profile `PATH`:
@@ -57,7 +57,7 @@ Source your profile to test the new settings:
 Verify the Go installation:
 
 <pre data-command-src="Z28gdmVyc2lvbgo="><code class="language-.term1">$ go version
-go version go1.15.5 linux/amd64
+go version go1.15.7 linux/amd64
 </code></pre>
 
 ### The Go environment

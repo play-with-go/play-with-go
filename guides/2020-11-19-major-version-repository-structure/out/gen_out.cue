@@ -118,7 +118,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.5@sha256:0dfb27b5c217fd1ada5143427363ffcf5842b460c52e31f377301b0c82bf1695"
+			Image: "playwithgo/go1.15.7@sha256:29da7e55ee550cddc3f742d25756bf7ecfaa7c5a23c723f079f0c982a369fda4"
 		}
 	}
 }]
@@ -142,11 +142,11 @@ Steps: {
 			CmdStr:   "go version"
 			ExitCode: 0
 			Output: """
-				go version go1.15.5 linux/amd64
+				go version go1.15.7 linux/amd64
 
 				"""
 			ComparisonOutput: """
-				go version go1.15.5 linux/amd64
+				go version go1.15.7 linux/amd64
 
 				"""
 		}]
@@ -788,5 +788,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "9dcc78f1f5203b0a4e4fb42d497b127e80365958a2becdc6cd80424d3a96df60"
+Hash: "e2e883b7034065c51cf23c3da42bf50e001398d7683beb68ed926b32879d1b4d"
 Delims: ["{{{", "}}}"]

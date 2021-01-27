@@ -1,5 +1,5 @@
 $ go version
-go version go1.15.5 linux/amd64
+go version go1.15.7 linux/amd64
 $ mkdir /home/gopher/branch
 $ cd /home/gopher/branch
 $ go mod init {{{.BRANCH}}}

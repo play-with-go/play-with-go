@@ -118,7 +118,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.5@sha256:0dfb27b5c217fd1ada5143427363ffcf5842b460c52e31f377301b0c82bf1695"
+			Image: "playwithgo/go1.15.7@sha256:29da7e55ee550cddc3f742d25756bf7ecfaa7c5a23c723f079f0c982a369fda4"
 		}
 	}
 }]
@@ -142,11 +142,11 @@ Steps: {
 			CmdStr:   "go version"
 			ExitCode: 0
 			Output: """
-				go version go1.15.5 linux/amd64
+				go version go1.15.7 linux/amd64
 
 				"""
 			ComparisonOutput: """
-				go version go1.15.5 linux/amd64
+				go version go1.15.7 linux/amd64
 
 				"""
 		}]
@@ -1524,7 +1524,7 @@ Steps: {
 			ExitCode: 0
 			Output: """
 				PASS
-				ok  \t{{{.GREETINGS}}}\t0.002s
+				ok  \t{{{.GREETINGS}}}\t0.003s
 
 				"""
 			ComparisonOutput: """
@@ -1542,7 +1542,7 @@ Steps: {
 				=== RUN   TestHelloEmpty
 				--- PASS: TestHelloEmpty (0.00s)
 				PASS
-				ok  \t{{{.GREETINGS}}}\t0.002s
+				ok  \t{{{.GREETINGS}}}\t0.004s
 
 				"""
 			ComparisonOutput: """
@@ -1886,7 +1886,7 @@ Steps: {
 			ExitCode: 0
 			Output: """
 				PASS
-				ok  \t{{{.GREETINGS}}}\t0.003s
+				ok  \t{{{.GREETINGS}}}\t0.002s
 
 				"""
 			ComparisonOutput: """
@@ -1990,5 +1990,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "8872560175aaabfb11445cd5a1c11ce65c901f76737e6bd7564aa1f0a7a98dc2"
+Hash: "d1730934b6fc7950acf42007c3654174690deaaad283da1145df0999958f8d76"
 Delims: ["{{{", "}}}"]

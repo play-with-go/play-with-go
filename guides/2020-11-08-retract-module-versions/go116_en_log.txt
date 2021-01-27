@@ -1,5 +1,5 @@
 $ go version
-go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
+go version go1.16beta1 linux/amd64
 $ mkdir /home/gopher/proverb
 $ cd /home/gopher/proverb
 $ git init -q
@@ -45,6 +45,7 @@ func main() {
 EOD
 $ go get {{{.PROVERB}}}@v0.1.0
 go: downloading {{{.PROVERB}}} v0.1.0
+go get: added {{{.PROVERB}}} v0.1.0
 $ go run .
 Don't communicate by sharing memory, share memory by communicating.
 $ cd /home/gopher/proverb
@@ -70,6 +71,7 @@ remote: Processed 1 references in total
 $ cd /home/gopher/gopher
 $ go get {{{.PROVERB}}}@v0.2.0
 go: downloading {{{.PROVERB}}} v0.2.0
+go get: upgraded {{{.PROVERB}}} v0.1.0 => v0.2.0
 $ go run .
 Concurrency is parallelism.
 $ cd /home/gopher/proverb
@@ -111,6 +113,7 @@ $ [ "$(git status --porcelain)" == "" ] || (git status && false)
 $ cd /home/gopher/gopher
 $ go get {{{.PROVERB}}}@v0.3.0
 go: downloading {{{.PROVERB}}} v0.3.0
+go get: upgraded {{{.PROVERB}}} v0.2.0 => v0.3.0
 $ go run .
 Concurrency is not parallelism.
 $ sleep 1m
@@ -119,14 +122,16 @@ $ go list -m -versions {{{.PROVERB}}}
 $ go list -m -versions -retracted {{{.PROVERB}}}
 {{{.PROVERB}}} v0.1.0 v0.2.0 v0.3.0
 $ go get {{{.PROVERB}}}@v0.2.0
-go: warning: {{{.PROVERB}}}@v0.2.0 is retracted: Go proverb was totally wrong
+go: warning: {{{.PROVERB}}}@v0.2.0: retracted by module author: Go proverb was totally wrong
 go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
+go get: downgraded {{{.PROVERB}}} v0.3.0 => v0.2.0
 $ go run .
 Concurrency is parallelism.
 $ go list -m -u all
 gopher
 {{{.PROVERB}}} v0.2.0 (retracted) [v0.3.0]
 $ go get {{{.PROVERB}}}@latest
+go get: upgraded {{{.PROVERB}}} v0.2.0 => v0.3.0
 $ cd /home/gopher/proverb
 $ cat <<EOD > /home/gopher/proverb/proverb.go
 package proverb
@@ -184,14 +189,17 @@ $ cd /home/gopher/gopher
 $ (cd $(mktemp -d); export GOPATH=$(mktemp -d); go mod init mod.com; go get -x {{{.PROVERB}}}@v0.4.0; go get -x {{{.PROVERB}}}@v1.0.0; go get -x {{{.PROVERB}}}@v1.0.1; sleep 1m) >/dev/null 2>&1
 $ go get {{{.PROVERB}}}@v1.0.0
 go: downloading {{{.PROVERB}}} v1.0.0
-go: warning: {{{.PROVERB}}}@v1.0.0 is retracted: Published v1 too early
+go: warning: {{{.PROVERB}}}@v1.0.0: retracted by module author: Published v1 too early
 go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
+go get: upgraded {{{.PROVERB}}} v0.3.0 => v1.0.0
 $ go get {{{.PROVERB}}}@v1.0.1
 go: downloading {{{.PROVERB}}} v1.0.1
-go: warning: {{{.PROVERB}}}@v1.0.1 is retracted: Published v1 too early
+go: warning: {{{.PROVERB}}}@v1.0.1: retracted by module author: Published v1 too early
 go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
+go get: upgraded {{{.PROVERB}}} v1.0.0 => v1.0.1
 $ go get {{{.PROVERB}}}@v0.4.0
 go: downloading {{{.PROVERB}}} v0.4.0
+go get: downgraded {{{.PROVERB}}} v1.0.1 => v0.4.0
 $ sleep 1m
 $ go list -m -versions -retracted {{{.PROVERB}}}
 {{{.PROVERB}}} v0.1.0 v0.2.0 v0.3.0 v0.4.0 v1.0.0 v1.0.1
