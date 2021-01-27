@@ -534,7 +534,7 @@ func randomFormat() string {
 EOD
 $ go test
 PASS
-ok  	{{{.GREETINGS}}}	0.002s
+ok  	{{{.GREETINGS}}}	0.003s
 $ cd /home/gopher/hello
 $ go list -f '{{.Target}}'
 /home/gopher/go/bin/hello

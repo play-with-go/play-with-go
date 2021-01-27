@@ -919,7 +919,7 @@ And re-run `go test` to verify our change:
 
 <pre data-command-src="Z28gdGVzdAo="><code class="language-.term1">$ go test
 PASS
-ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.002s
+ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.003s
 </code></pre>
 
 This section introduced Go's built-in support for unit testing. In the next section, you'll see how to compile and
