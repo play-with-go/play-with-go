@@ -33,7 +33,7 @@ You should already have completed:
 This guide is running using:
 
 <pre data-command-src="Z28gdmVyc2lvbgo="><code class="language-.term1">$ go version
-go version go1.15.5 linux/amd64
+go version go1.15.7 linux/amd64
 </code></pre>
 
 ### Why `stringer`?

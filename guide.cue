@@ -10,10 +10,10 @@ Networks: *["playwithgo_pwg"] | [...string]
 
 Delims: ["{{{", "}}}"]
 
-_#installGo:          "playwithgo/installgo1.15.5@sha256:8eedcce072b4296d3aad40b83ecc06252bfb91d64318b7d0f12081846fe6fd5d"
-_#go115LatestVersion: "go1.15.5"
-_#go115LatestImage:   "playwithgo/go1.15.5@sha256:0dfb27b5c217fd1ada5143427363ffcf5842b460c52e31f377301b0c82bf1695"
-_#go116LatestImage:   "playwithgo/go1.16-tip@sha256:dd9175b42b77df02298fb9f601895516c1963a51be8a023b1659843d47a1fe1b"
+_#installGo:          "playwithgo/installgo1.15.7@sha256:2994cd07143aeab4fd8e90a09f30716c9441c6c340c12a69a96babd4eca7b06e"
+_#go115LatestVersion: "go1.15.7"
+_#go115LatestImage:   "playwithgo/go1.15.7@sha256:29da7e55ee550cddc3f742d25756bf7ecfaa7c5a23c723f079f0c982a369fda4"
+_#go116LatestImage:   "playwithgo/go1.16beta1@sha256:0495af40e1c11efbf4622aa79dc4f39bdade9026fce003334a3db6c34bd6ba7d"
 
 _#golangToolsLatest: "v0.0.0-20201105220310-78b158585360"
 

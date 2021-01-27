@@ -43,7 +43,7 @@ You should already have completed:
 This guide is running using:
 
 <pre data-command-src="Z28gdmVyc2lvbgo="><code class="language-.term1">$ go version
-go version go1.15.5 linux/amd64
+go version go1.15.7 linux/amd64
 </code></pre>
 
 ### Create a module that others can use
@@ -753,14 +753,14 @@ The tests should pass:
 
 <pre data-command-src="Z28gdGVzdApnbyB0ZXN0IC12Cg=="><code class="language-.term1">$ go test
 PASS
-ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.002s
+ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.003s
 $ go test -v
 === RUN   TestHelloName
 --- PASS: TestHelloName (0.00s)
 === RUN   TestHelloEmpty
 --- PASS: TestHelloEmpty (0.00s)
 PASS
-ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.002s
+ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.004s
 </code></pre>
 
 You will now break the `greetings.Hello` function to view a failing test. The `TestHelloName` test function
@@ -919,7 +919,7 @@ And re-run `go test` to verify our change:
 
 <pre data-command-src="Z28gdGVzdAo="><code class="language-.term1">$ go test
 PASS
-ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.003s
+ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.002s
 </code></pre>
 
 This section introduced Go's built-in support for unit testing. In the next section, you'll see how to compile and

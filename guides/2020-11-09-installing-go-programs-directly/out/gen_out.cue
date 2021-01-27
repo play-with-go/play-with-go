@@ -5,7 +5,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go116: {
-			Image: "playwithgo/go1.16-tip@sha256:dd9175b42b77df02298fb9f601895516c1963a51be8a023b1659843d47a1fe1b"
+			Image: "playwithgo/go1.16beta1@sha256:0495af40e1c11efbf4622aa79dc4f39bdade9026fce003334a3db6c34bd6ba7d"
 		}
 	}
 }]
@@ -29,11 +29,11 @@ Steps: {
 			CmdStr:   "go version"
 			ExitCode: 0
 			Output: """
-				go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
+				go version go1.16beta1 linux/amd64
 
 				"""
 			ComparisonOutput: """
-				go version devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000 linux/amd64
+				go version go1.16beta1 linux/amd64
 
 				"""
 		}]
@@ -157,7 +157,7 @@ Steps: {
 			CmdStr:   "go version -m $(which mkcert)"
 			ExitCode: 0
 			Output: """
-				/home/gopher/go/bin/mkcert: devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000
+				/home/gopher/go/bin/mkcert: go1.16beta1
 				\tpath\tfilippo.io/mkcert
 				\tmod\tfilippo.io/mkcert\tv1.4.2\th1:7mWofpFS4gzQS5bhE3KYBwzfceIPy2KJ4tMT31aPNeY=
 				\tdep\tgolang.org/x/net\tv0.0.0-20190620200207-3b0461eec859\th1:R/3boaszxrf1GEUWTVDzSKVwLmSJpwZ1yqXm8j0v2QI=
@@ -166,7 +166,7 @@ Steps: {
 
 				"""
 			ComparisonOutput: """
-				/home/gopher/go/bin/mkcert: devel +7307e86afd Sun Nov 8 12:19:55 2020 +0000
+				/home/gopher/go/bin/mkcert: go1.16beta1
 				\tpath\tfilippo.io/mkcert
 				\tmod\tfilippo.io/mkcert\tv1.4.2\th1:7mWofpFS4gzQS5bhE3KYBwzfceIPy2KJ4tMT31aPNeY=
 				\tdep\tgolang.org/x/net\tv0.0.0-20190620200207-3b0461eec859\th1:R/3boaszxrf1GEUWTVDzSKVwLmSJpwZ1yqXm8j0v2QI=
@@ -177,5 +177,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "9d9edb7b3e802c97463d642f07788a586986e2e69c7c6ed50b47244ec09ec34f"
+Hash: "51faf1c8c0fbff500473a130df5ed890d83cd63a4eb3035b1065a0a435a3d3e7"
 Delims: ["{{{", "}}}"]

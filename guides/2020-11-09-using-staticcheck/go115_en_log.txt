@@ -1,5 +1,5 @@
 $ go version
-go version go1.15.5 linux/amd64
+go version go1.15.7 linux/amd64
 $ (cd $(mktemp -d); GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6)
 go: downloading honnef.co/go/tools v0.0.1-2020.1.6
 go: found honnef.co/go/tools/cmd/staticcheck in honnef.co/go/tools v0.0.1-2020.1.6

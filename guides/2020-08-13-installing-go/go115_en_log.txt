@@ -1,11 +1,11 @@
 $ pwd
 /home/gopher
-$ wget -q https://golang.org/dl/go1.15.5.linux-amd64.tar.gz
-$ sudo tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz
+$ wget -q https://golang.org/dl/go1.15.7.linux-amd64.tar.gz
+$ sudo tar -C /usr/local -xzf go1.15.7.linux-amd64.tar.gz
 $ echo export PATH="/usr/local/go/bin:$PATH" >>$HOME/.profile
 $ source $HOME/.profile
 $ go version
-go version go1.15.5 linux/amd64
+go version go1.15.7 linux/amd64
 $ go env
 GO111MODULE=""
 GOARCH="amd64"
