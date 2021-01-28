@@ -22,7 +22,7 @@ which find
 # Docker
 
 # Install Docker
-brew cask install docker
+brew install --cask docker
 
 # Allow the app to run without confirmation
 xattr -d -r com.apple.quarantine /Applications/Docker.app
