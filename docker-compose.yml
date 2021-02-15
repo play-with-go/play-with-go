@@ -62,19 +62,6 @@ services:
     working_dir: /start
     container_name: pwd
 
-  l2:
-    build:
-      context: .
-      dockerfile: ./docker/l2/Dockerfile
-    networks:
-      - pwg
-    command: ["-ssh_key_path", "/etc/ssh/ssh_host_rsa_key", "-save", "/pwd/networks", "-name", "l2"]
-    volumes:
-      - networks:/pwd
-      - /var/run/docker.sock:/var/run/docker.sock
-    working_dir: /start
-    container_name: l2
-
   site:
     build:
       context: .
