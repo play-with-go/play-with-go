@@ -15,7 +15,7 @@ layout: default
             <div class="post-content" itemprop="articleBody">
                 {{ content }}
             </div>
-            <a href="/guides.html"><button class="btn btn-primary" style="margin: 10px 0 40px 0">Back to guides</button></a>
+            <a href="/"><button class="btn btn-primary" style="margin: 10px 0 40px 0">Back to guides</button></a>
         </article>
     </div>
 
@@ -34,9 +34,29 @@ layout: default
         <div class="twrapper">
             <div class="splitter"></div>
             <div class="tab-content" id="myTabContent">
-                {% for i in (1..terms) %}
-                <div class="tab-pane show term{{i}} {% if forloop.first %}active{% endif %}" id="term{{i}}" role="tabpanel" aria-labelledby="term{{i}}-tab"><div class="term-init">Initializing remote session...</div></div>
-                {% endfor %}
+              <div class="login" style="display: none;">
+                <div class="login-title">
+                  <div>
+                    Log in to use the terminal
+                  </div>
+                  <div class="login-buttons">
+                    <button onclick="performLogin('google')" class="btn np-login btn-primary btn-welcome">
+                      <img class="img-fluid" src="{{site.baseurl}}/images/google.svg" alt="Text"/>
+                      <span>Sign-in with Google</span>
+                    </button>
+
+                    <button onclick="performLogin('github')" class="btn np-login btn-primary btn-welcome">
+                      <img src="{{site.baseurl}}/images/github.svg" alt="Text"/>
+                      <span>Sign-in with GitHub</span>
+                    </button>
+                  </div>
+                </div>
+
+                <img src="{{site.baseurl}}/images/gopher-login.png"  alt=""/>
+              </div>
+              {% for i in (1..terms) %}
+              <div class="tab-pane show term{{i}} {% if forloop.first %}active{% endif %}" id="term{{i}}" role="tabpanel" aria-labelledby="term{{i}}-tab"><div class="term-init"></div></div>
+              {% endfor %}
             </div>
         </div>
     </div>

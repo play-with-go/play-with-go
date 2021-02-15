@@ -153,3 +153,30 @@ font-size: 46px;
   padding-left: 40px;
   padding-right: 40px;
 }
+
+.login {
+    color: white;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    z-index: 10;
+    .login-title {
+        font-size: 42px;
+        margin-top: 200px;
+        text-align: center;
+        max-width: 500px;
+    }
+    .login-buttons {
+        max-width: 250px;
+        margin: auto
+    }
+    > img {
+        max-width: 340px;
+        width: 50%;
+        position: absolute;
+        bottom: 0;
+
+    }
+}

@@ -13,10 +13,44 @@ function replaceInText(element, replacements) {
   element.innerHTML = v;
 }
 
-function login() {
-  localStorage.setItem("authenticated", false);
-  document.location.href = "/index.html";
+function showLogin() {
+  $(".login").show();
 }
+
+// performLogin opens the popup to trigger the login process and then
+// initializes the terminal if the user is not logged-in.
+function performLogin(provider) {
+  var width = screen.width * 0.6;
+  var height = screen.height * 0.6;
+  var x = screen.width / 2 - width / 2;
+  var y = screen.height / 2 - height / 2;
+
+  window.open(
+      "{{site.pwdurl}}" +
+      "/oauth/providers/"+provider+"/login",
+    "PWDLogin",
+    "width=" + width + ",height=" + height + ",left=" + x + ",top=" + y
+  );
+  var eventMethod = window.addEventListener
+    ? "addEventListener"
+    : "attachEvent";
+  var eventer = window[eventMethod];
+  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+  // Listen to message from child window
+  eventer(
+    messageEvent,
+    function (e) {
+      if (e.data === "done") {
+        $(".login").hide();
+        localStorage.setItem("authenticated", true);
+        init();
+      }
+    },
+    false
+  );
+}
+
+
 var siteUrl = "{{ site.url }}";
 var fontChanged = false;
 var pwd = new PWD();
@@ -28,65 +62,77 @@ pwd.on("instanceCreate", function(instance) {
   });
 });
 pwd.on("unauthorized", function() {
-  login();
+  showLogin();
 });
 
-var guideRequest = new XMLHttpRequest();
-// TODO: move away from hard-code guides URL to use a variable
-// specified in the site config
-guideRequest.open('POST', '{{ site.controllerurl }}');
-guideRequest.withCredentials = true;
-guideRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-guideRequest.onerror = function() {
-  $(".term-init").text("Error initializing environment, please raise an issue using the help link.");
-}
-guideRequest.onload = function() {
-  // TODO: error handling
-  if (guideRequest.status > 500) {
-    throw "Failed to make guides request";
-  } else if (guideRequest.status == 401) {
-    login();
-  }
-  var guideDetails = JSON.parse(guideRequest.responseText);
+function init() {
 
-  let replacements = [];
-  if (guideDetails.Env != null) {
-    for (let env of guideDetails.Env) {
-      let parts = env.split("=", 2);
-      replacements.push([guideDetails.Delims[0]+"."+parts[0]+guideDetails.Delims[1], parts[1]]);
-    }
+  var guideRequest = new XMLHttpRequest();
+  // TODO: move away from hard-code guides URL to use a variable
+  // specified in the site config
+  guideRequest.open('POST', '{{ site.controllerurl }}');
+  guideRequest.withCredentials = true;
+  guideRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  guideRequest.onerror = function() {
+    $(".term-init").text("Error initializing environment, please raise an issue using the help link.");
   }
-  replaceInText(document.querySelector("article"), replacements);
-  for (let attr of ["data-upload-src", "data-command-src", "data-upload-path"]) {
-    document.querySelectorAll("["+attr+"]").forEach(function(node) {
-      let na = data = node.getAttribute(attr);
-      let prefix = "";
-      if (attr == "data-upload-src") {
-        let parts = na.split(":");
-        prefix = atob(parts[0])+":";
-        data = parts[1];
-      }
-      let v = atob(data);
-      for (let r of replacements) {
-        v = replaceAll(v, r[0], r[1]);
-        prefix = replaceAll(prefix, r[0], r[1]);
-      }
-      if (attr != "data-upload-path") {
-        v = btoa(v);
-      }
-      node.setAttribute(attr, prefix+v);
 
-    });
-  }
-  pwd.newSession(guideDetails.Terminals, {baseUrl: "{{site.pwdurl}}", Networks: guideDetails.Networks, Envs: guideDetails.Env }, function(err) {
-    if (err) {
-      $(".term-init").text("Error initializing environment, please try again or submit an issue if problem persists.");
+  guideRequest.onload = function() {
+    // TODO: error handling
+
+    if (guideRequest.status > 500) {
+      throw "Failed to make guides request";
+    } else if (guideRequest.status == 401) {
+      showLogin();
       return
     }
-    $(".term-init").remove();
-  });
-};
-guideRequest.send(JSON.stringify({Guide: pageGuide, Language: pageLanguage, Scenario: pageScenario}));
+
+    $(".term-init").text("Initializing remote session");
+
+    var guideDetails = JSON.parse(guideRequest.responseText);
+
+    let replacements = [];
+    if (guideDetails.Env != null) {
+      for (let env of guideDetails.Env) {
+        let parts = env.split("=", 2);
+        replacements.push([guideDetails.Delims[0]+"."+parts[0]+guideDetails.Delims[1], parts[1]]);
+      }
+    }
+    replaceInText(document.querySelector("article"), replacements);
+    for (let attr of ["data-upload-src", "data-command-src", "data-upload-path"]) {
+      document.querySelectorAll("["+attr+"]").forEach(function(node) {
+        let na = data = node.getAttribute(attr);
+        let prefix = "";
+        if (attr == "data-upload-src") {
+          let parts = na.split(":");
+          prefix = atob(parts[0])+":";
+          data = parts[1];
+        }
+        let v = atob(data);
+        for (let r of replacements) {
+          v = replaceAll(v, r[0], r[1]);
+          prefix = replaceAll(prefix, r[0], r[1]);
+        }
+        if (attr != "data-upload-path") {
+          v = btoa(v);
+        }
+        node.setAttribute(attr, prefix+v);
+
+      });
+    }
+    pwd.newSession(guideDetails.Terminals, {baseUrl: "{{site.pwdurl}}", Networks: guideDetails.Networks, Envs: guideDetails.Env }, function(err) {
+      if (err) {
+        $(".term-init").text("Error initializing environment, please try again or submit an issue if problem persists.");
+        return
+      }
+      $(".term-init").remove();
+    });
+  };
+  guideRequest.send(JSON.stringify({Guide: pageGuide, Language: pageLanguage, Scenario: pageScenario}));
+}
+
+init();
+
 
 $(".panel-left").resizable({
   handleSelector: ".splitter",

@@ -2,68 +2,72 @@
 layout: plain
 ---
 
-
-<script charset="utf-8">
-  if (localStorage.getItem("authenticated") == "true") {
-    document.location.href = "guides.html";
-  }
-  function performLogin(provider) {
-    var width = screen.width * 0.6;
-    var height = screen.height * 0.6;
-    var x = screen.width / 2 - width / 2;
-    var y = screen.height / 2 - height / 2;
-
-    window.open(
-        "{{site.pwdurl}}" +
-        "/oauth/providers/"+provider+"/login",
-      "PWDLogin",
-      "width=" + width + ",height=" + height + ",left=" + x + ",top=" + y
-    );
-    var eventMethod = window.addEventListener
-      ? "addEventListener"
-      : "attachEvent";
-    var eventer = window[eventMethod];
-    var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
-    // Listen to message from child window
-    eventer(
-      messageEvent,
-      function (e) {
-        if (e.data === "done") {
-          localStorage.setItem("authenticated", true);
-          document.location.href = "guides.html"
-        }
-      },
-      false
-    );
-  }
-</script>
-
-<div class="landing" style="height: 100%">
-  <div class="container" >
-    <div class="text-center">
-      <h1 class="cover-heading title-guides mt-8" style="color: seashell;">Play with Go</h1>
-      <p class="lead welcome-par" style="color: seashell;">
-        Hands-on, interactive guides for programming in Go.</br>
-      </p>
-        <div class="container">
-          <div class="row align-items-center justify-content-center">
-            <div class="col-xs">
-            <button onclick="performLogin('google')" class="btn np-login btn-primary btn-welcome">
-              <img class="img-fluid" src="{{site.baseurl}}/images/google.svg" alt="Text"/>
-              <span>Sign-in with Google</span>
-              </button>
-              </div>
-
-
-            <div class="col-xs">
-            <button onclick="performLogin('github')" class="btn np-login btn-primary btn-welcome">
-              <img src="{{site.baseurl}}/images/github.svg" alt="Text"/>
-              <span>Sign-in with GitHub</span>
-              </button>
-            </div>
-            </div>
-          </div>
-       <img class="img-fluid d-none d-lg-block mt-4" style="max-width: 50%; margin: 0 auto;" alt="Responsive image" src="{{site.baseurl}}/images/playgo.png"/>
+<div class="landing">
+  <div class="container">
+    <div class="row d-flex align-items-center mb-4">
+      <div class="col-lg-7 col-md-9 guides-hero">
+        <h1 class= "title-guides" style="color: #FDDD00;">
+            Welcome to Play with Go</h1>
+        <p class="lead welcome-par guides-link" style="color: seashell;" >
+          A series of hands-on, interactive, browser-based guides that introduce the tools required to work with the Go programming language.
+      </div>
+      <div class="col-lg-5">
+        <div class="d-none d-lg-block">
+          <img src="{{site.baseurl}}/images/gopher.png">
+        </div>
+      </div>
     </div>
+
+
+    {% assign categories = site.guides-categories %}
+
+    {% for cat in categories %}
+    <div class="row">
+      <div class="col"><hr class="line"></div>
+      <div class="col-auto catego">{{cat}}</div>
+      <div class="col"><hr class="line"></div>
+    </div>
+
+    <div class="row card-deck">
+      {% for post in site.categories[cat] %}
+      <div class="col-md-4 card-pad">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.excerpt }}</p>
+            <div class="row">
+              <div class="col-1">
+                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+              </div>
+              <div class="col">
+                <p class="card-text d-inline time">   {{post.difficulty}}.</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-1">
+                <i class="fa fa-clock-o" style="margin-left: 3px;" aria-hidden="true"></i>
+              </div>
+              <div class="col">
+                <p class="card-text time d-inline" title="Estimated read time">
+                {% assign words = post.content | strip_html | number_of_words %}
+                {{ words | divided_by: 180 | plus: 1 | times: 2 }} min read.
+                </p>
+              </div>
+            </div>
+
+          </div>
+          <a href="{{ site.baseurl }}{{ post.url }}" class="card-link">
+            <div class="card-footer fofo">
+              Start guide
+            </div>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
   </div>
 </div>
+
+
