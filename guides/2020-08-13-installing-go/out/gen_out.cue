@@ -5,7 +5,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/installgo1.15.7@sha256:2994cd07143aeab4fd8e90a09f30716c9441c6c340c12a69a96babd4eca7b06e"
+			Image: "playwithgo/installgo1.15.8@sha256:0e480b658f50b85b8eb40c426022d572709a93f6e0a7fe65475bea50ad172c5f"
 		}
 	}
 }]
@@ -47,7 +47,7 @@ Steps: {
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:          false
-			CmdStr:           "wget -q https://golang.org/dl/go1.15.7.linux-amd64.tar.gz"
+			CmdStr:           "wget -q https://golang.org/dl/go1.15.8.linux-amd64.tar.gz"
 			ExitCode:         0
 			Output:           ""
 			ComparisonOutput: ""
@@ -62,7 +62,7 @@ Steps: {
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:          false
-			CmdStr:           "sudo tar -C /usr/local -xzf go1.15.7.linux-amd64.tar.gz"
+			CmdStr:           "sudo tar -C /usr/local -xzf go1.15.8.linux-amd64.tar.gz"
 			ExitCode:         0
 			Output:           ""
 			ComparisonOutput: ""
@@ -110,11 +110,11 @@ Steps: {
 			CmdStr:   "go version"
 			ExitCode: 0
 			Output: """
-				go version go1.15.7 linux/amd64
+				go version go1.15.8 linux/amd64
 
 				"""
 			ComparisonOutput: """
-				go version go1.15.7 linux/amd64
+				go version go1.15.8 linux/amd64
 
 				"""
 		}]
@@ -454,5 +454,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "8c1de948c3657284626c6081b305129699f390f220d9820382c34bc6b8dc83e8"
+Hash: "1b982601bb294dceed967a1fb792c75e7e4e7091d45fa2740301f29e52845bea"
 Delims: ["{{{", "}}}"]

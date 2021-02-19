@@ -114,7 +114,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.7@sha256:29da7e55ee550cddc3f742d25756bf7ecfaa7c5a23c723f079f0c982a369fda4"
+			Image: "playwithgo/go1.15.8@sha256:7640da09d1555c4dddbba7f1b96051af2816e6542005176b749f38865ee0454c"
 		}
 	}
 }]
@@ -138,11 +138,11 @@ Steps: {
 			CmdStr:   "go version"
 			ExitCode: 0
 			Output: """
-				go version go1.15.7 linux/amd64
+				go version go1.15.8 linux/amd64
 
 				"""
 			ComparisonOutput: """
-				go version go1.15.7 linux/amd64
+				go version go1.15.8 linux/amd64
 
 				"""
 		}]
@@ -397,8 +397,8 @@ Steps: {
 			Output: """
 				go: downloading golang.org/x/tools v0.0.0-20201105220310-78b158585360
 				go: found golang.org/x/tools/cmd/stringer in golang.org/x/tools v0.0.0-20201105220310-78b158585360
-				go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
 				go: downloading golang.org/x/mod v0.3.0
+				go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
 
 				"""
 			ComparisonOutput: """
@@ -781,5 +781,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "ca37d5a14ed3aa4f6ed2dcfb2257f71318e7b020f0595c13c56058bdbb60711a"
+Hash: "f4d3f795f9300ba48a15ccbeb232f99867ecc16a6198f0a850bab5195d46d626"
 Delims: ["{{{", "}}}"]

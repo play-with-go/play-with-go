@@ -29,7 +29,7 @@ You should already have completed:
 This guide is running with:
 
 <pre data-command-src="Z28gdmVyc2lvbgo="><code class="language-.term1">$ go version
-go version go1.16beta1 linux/amd64
+go version go1.16 linux/amd64
 </code></pre>
 
 ### Background
@@ -104,7 +104,7 @@ v1.4.2
 You can also use `go version` to see the module dependencies used in building the program:
 
 <pre data-command-src="Z28gdmVyc2lvbiAtbSAkKHdoaWNoIG1rY2VydCkK"><code class="language-.term1">$ go version -m $(which mkcert)
-/home/gopher/go/bin/mkcert: go1.16beta1
+/home/gopher/go/bin/mkcert: go1.16
 	path	filippo.io/mkcert
 	mod	filippo.io/mkcert	v1.4.2	h1:7mWofpFS4gzQS5bhE3KYBwzfceIPy2KJ4tMT31aPNeY=
 	dep	golang.org/x/net	v0.0.0-20190620200207-3b0461eec859	h1:R/3boaszxrf1GEUWTVDzSKVwLmSJpwZ1yqXm8j0v2QI=

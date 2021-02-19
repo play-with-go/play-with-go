@@ -28,7 +28,7 @@ This guide's sequence includes six brief topics that each illustrate a different
 This guide requires you to push code to remote source code repositories. A unique user, `{{{.username}}}`, has
 been automatically created for you, as have the repositories [`{{{ .greetings_mod }}}`]({{{ .greetings_vcs }}}) and
 [`{{{ .hello_mod }}}`]({{{ .hello_vcs }}}). For more details on how `play-with-go.dev` guides work, please see the
-[_Introduction to `play-with-go.dev` guides_](ntro-to-play-with-go-dev/) guide.
+[_Introduction to `play-with-go.dev` guides_](/intro-to-play-with-go-dev_go115_en) guide.
 
 ### Prerequisites
 
