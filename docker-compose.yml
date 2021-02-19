@@ -16,8 +16,6 @@ services:
       context: .
       dockerfile: ./docker/controller/Dockerfile
     image: playwithgo/controller
-    ports:
-      - "8081:8080"
     networks:
       - pwg
     volumes:
@@ -55,25 +53,12 @@ services:
       - pwg
     environment:
       - PWD_UNSAFE=true
-    command: ["-save", "/pwd/sessions", "-name", "l2"]
+    command: ["-save", "/pwd/sessions", "-name", "pwd", "-l2", "pwd"]
     volumes:
       - sessions:/pwd
       - /var/run/docker.sock:/var/run/docker.sock
     working_dir: /start
     container_name: pwd
-
-  l2:
-    build:
-      context: .
-      dockerfile: ./docker/l2/Dockerfile
-    networks:
-      - pwg
-    command: ["-ssh_key_path", "/etc/ssh/ssh_host_rsa_key", "-save", "/pwd/networks", "-name", "l2"]
-    volumes:
-      - networks:/pwd
-      - /var/run/docker.sock:/var/run/docker.sock
-    working_dir: /start
-    container_name: l2
 
   site:
     build:
