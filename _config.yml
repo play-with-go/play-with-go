@@ -55,12 +55,13 @@ sass:
   style: compressed
 
 # Gems
-gems: [jekyll-paginate, jekyll-toc]
+gems: [jekyll-paginate, jekyll-toc, jekyll-redirect-from]
 
 # Plugins
 plugins_dir:
   - jekyll-paginate
   - jekyll-toc
+  - jekyll-redirect-from
 
 
 #sdkbaseurl: http://localhost:8080
