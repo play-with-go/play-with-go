@@ -50,7 +50,7 @@ You should already have completed:
 This guide is running using:
 
 <pre data-command-src="Z28gdmVyc2lvbgo="><code class="language-.term1">$ go version
-go version go1.16beta1 linux/amd64
+go version go1.16 linux/amd64
 </code></pre>
 
 ### The `proverb` module
@@ -324,8 +324,8 @@ So what would happen if you were to rely on the now retracted `v0.2.0`?
 
 <pre data-command-src="Z28gZ2V0IHt7ey5QUk9WRVJCfX19QHYwLjIuMAo="><code class="language-.term1">$ go get &#123;&#123;&#123;.PROVERB&#125;&#125;&#125;@v0.2.0
 go: warning: &#123;&#123;&#123;.PROVERB&#125;&#125;&#125;@v0.2.0: retracted by module author: Go proverb was totally wrong
-go: run &#39;go get &#123;&#123;&#123;.PROVERB&#125;&#125;&#125;@latest&#39; to switch to the latest unretracted version
-go get: downgraded &#123;&#123;&#123;.PROVERB&#125;&#125;&#125; v0.3.0 =&gt; v0.2.0
+go: to switch to the latest unretracted version, run:
+	go get &#123;&#123;&#123;.PROVERB&#125;&#125;&#125;@latestgo get: downgraded &#123;&#123;&#123;.PROVERB&#125;&#125;&#125; v0.3.0 =&gt; v0.2.0
 </code></pre>
 
 A helpful message is printed, warning that you are now depending on a retracted version. Notice that this error message
@@ -449,13 +449,13 @@ Ensure proxy.golang.org is aware of the new versions of `proverb` you just publi
 <pre data-command-src="Z28gZ2V0IHt7ey5QUk9WRVJCfX19QHYxLjAuMApnbyBnZXQge3t7LlBST1ZFUkJ9fX1AdjEuMC4xCmdvIGdldCB7e3suUFJPVkVSQn19fUB2MC40LjAK"><code class="language-.term1">$ go get &#123;&#123;&#123;.PROVERB&#125;&#125;&#125;@v1.0.0
 go: downloading &#123;&#123;&#123;.PROVERB&#125;&#125;&#125; v1.0.0
 go: warning: &#123;&#123;&#123;.PROVERB&#125;&#125;&#125;@v1.0.0: retracted by module author: Published v1 too early
-go: run &#39;go get &#123;&#123;&#123;.PROVERB&#125;&#125;&#125;@latest&#39; to switch to the latest unretracted version
-go get: upgraded &#123;&#123;&#123;.PROVERB&#125;&#125;&#125; v0.3.0 =&gt; v1.0.0
+go: to switch to the latest unretracted version, run:
+	go get &#123;&#123;&#123;.PROVERB&#125;&#125;&#125;@latestgo get: upgraded &#123;&#123;&#123;.PROVERB&#125;&#125;&#125; v0.3.0 =&gt; v1.0.0
 $ go get &#123;&#123;&#123;.PROVERB&#125;&#125;&#125;@v1.0.1
 go: downloading &#123;&#123;&#123;.PROVERB&#125;&#125;&#125; v1.0.1
 go: warning: &#123;&#123;&#123;.PROVERB&#125;&#125;&#125;@v1.0.1: retracted by module author: Published v1 too early
-go: run &#39;go get &#123;&#123;&#123;.PROVERB&#125;&#125;&#125;@latest&#39; to switch to the latest unretracted version
-go get: upgraded &#123;&#123;&#123;.PROVERB&#125;&#125;&#125; v1.0.0 =&gt; v1.0.1
+go: to switch to the latest unretracted version, run:
+	go get &#123;&#123;&#123;.PROVERB&#125;&#125;&#125;@latestgo get: upgraded &#123;&#123;&#123;.PROVERB&#125;&#125;&#125; v1.0.0 =&gt; v1.0.1
 $ go get &#123;&#123;&#123;.PROVERB&#125;&#125;&#125;@v0.4.0
 go: downloading &#123;&#123;&#123;.PROVERB&#125;&#125;&#125; v0.4.0
 go get: downgraded &#123;&#123;&#123;.PROVERB&#125;&#125;&#125; v1.0.1 =&gt; v0.4.0

@@ -30,7 +30,7 @@ This guide's sequence includes six brief topics that each illustrate a different
 This guide requires you to push code to remote source code repositories. A unique user, `{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}`, has
 been automatically created for you, as have the repositories [`{% raw %}{{{.GREETINGS}}}{% endraw %}`](https://{% raw %}{{{.GREETINGS}}}{% endraw %}.git) and
 [`{% raw %}{{{.HELLO}}}{% endraw %}`](https://{% raw %}{{{.HELLO}}}{% endraw %}.git). For more details on how `play-with-go.dev` guides work, please see the
-[_Introduction to `play-with-go.dev` guides_](ntro-to-play-with-go-dev/) guide.
+[_Introduction to `play-with-go.dev` guides_](/intro-to-play-with-go-dev_go115_en) guide.
 
 ### Prerequisites
 
@@ -43,7 +43,7 @@ You should already have completed:
 This guide is running using:
 
 <pre data-command-src="Z28gdmVyc2lvbgo="><code class="language-.term1">$ go version
-go version go1.15.7 linux/amd64
+go version go1.15.8 linux/amd64
 </code></pre>
 
 ### Create a module that others can use
@@ -753,14 +753,14 @@ The tests should pass:
 
 <pre data-command-src="Z28gdGVzdApnbyB0ZXN0IC12Cg=="><code class="language-.term1">$ go test
 PASS
-ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.003s
+ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.002s
 $ go test -v
 === RUN   TestHelloName
 --- PASS: TestHelloName (0.00s)
 === RUN   TestHelloEmpty
 --- PASS: TestHelloEmpty (0.00s)
 PASS
-ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.004s
+ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.002s
 </code></pre>
 
 You will now break the `greetings.Hello` function to view a failing test. The `TestHelloName` test function

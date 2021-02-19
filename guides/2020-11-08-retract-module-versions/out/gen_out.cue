@@ -114,7 +114,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go116: {
-			Image: "playwithgo/go1.16beta1@sha256:0495af40e1c11efbf4622aa79dc4f39bdade9026fce003334a3db6c34bd6ba7d"
+			Image: "playwithgo/go1.16@sha256:3ae1950433998a2be8c8ce3b1cb6479e6541f1e32443447a24085cfe09e2c391"
 		}
 	}
 }]
@@ -138,11 +138,11 @@ Steps: {
 			CmdStr:   "go version"
 			ExitCode: 0
 			Output: """
-				go version go1.16beta1 linux/amd64
+				go version go1.16 linux/amd64
 
 				"""
 			ComparisonOutput: """
-				go version go1.16beta1 linux/amd64
+				go version go1.16 linux/amd64
 
 				"""
 		}]
@@ -855,14 +855,14 @@ Steps: {
 			ExitCode: 0
 			Output: """
 				go: warning: {{{.PROVERB}}}@v0.2.0: retracted by module author: Go proverb was totally wrong
-				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
-				go get: downgraded {{{.PROVERB}}} v0.3.0 => v0.2.0
+				go: to switch to the latest unretracted version, run:
+				\tgo get {{{.PROVERB}}}@latestgo get: downgraded {{{.PROVERB}}} v0.3.0 => v0.2.0
 
 				"""
 			ComparisonOutput: """
 
-				go get: downgraded {{{.PROVERB}}} v0.3.0 => v0.2.0
-				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
+				\tgo get {{{.PROVERB}}}@latestgo get: downgraded {{{.PROVERB}}} v0.3.0 => v0.2.0
+				go: to switch to the latest unretracted version, run:
 				go: warning: {{{.PROVERB}}}@v0.2.0: retracted by module author: Go proverb was totally wrong
 				"""
 		}]
@@ -1237,15 +1237,15 @@ Steps: {
 			Output: """
 				go: downloading {{{.PROVERB}}} v1.0.0
 				go: warning: {{{.PROVERB}}}@v1.0.0: retracted by module author: Published v1 too early
-				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
-				go get: upgraded {{{.PROVERB}}} v0.3.0 => v1.0.0
+				go: to switch to the latest unretracted version, run:
+				\tgo get {{{.PROVERB}}}@latestgo get: upgraded {{{.PROVERB}}} v0.3.0 => v1.0.0
 
 				"""
 			ComparisonOutput: """
 
-				go get: upgraded {{{.PROVERB}}} v0.3.0 => v1.0.0
+				\tgo get {{{.PROVERB}}}@latestgo get: upgraded {{{.PROVERB}}} v0.3.0 => v1.0.0
 				go: downloading {{{.PROVERB}}} v1.0.0
-				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
+				go: to switch to the latest unretracted version, run:
 				go: warning: {{{.PROVERB}}}@v1.0.0: retracted by module author: Published v1 too early
 				"""
 		}, {
@@ -1255,15 +1255,15 @@ Steps: {
 			Output: """
 				go: downloading {{{.PROVERB}}} v1.0.1
 				go: warning: {{{.PROVERB}}}@v1.0.1: retracted by module author: Published v1 too early
-				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
-				go get: upgraded {{{.PROVERB}}} v1.0.0 => v1.0.1
+				go: to switch to the latest unretracted version, run:
+				\tgo get {{{.PROVERB}}}@latestgo get: upgraded {{{.PROVERB}}} v1.0.0 => v1.0.1
 
 				"""
 			ComparisonOutput: """
 
-				go get: upgraded {{{.PROVERB}}} v1.0.0 => v1.0.1
+				\tgo get {{{.PROVERB}}}@latestgo get: upgraded {{{.PROVERB}}} v1.0.0 => v1.0.1
 				go: downloading {{{.PROVERB}}} v1.0.1
-				go: run 'go get {{{.PROVERB}}}@latest' to switch to the latest unretracted version
+				go: to switch to the latest unretracted version, run:
 				go: warning: {{{.PROVERB}}}@v1.0.1: retracted by module author: Published v1 too early
 				"""
 		}, {
@@ -1403,5 +1403,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "ac6a2d842da0d217c04846ec22b283ea7570e61288c76e553569275d41fe94ba"
+Hash: "254791c02d718930e65df5631f0d9bfa49c9888c43a72c39e43dd02cb28d6fc0"
 Delims: ["{{{", "}}}"]

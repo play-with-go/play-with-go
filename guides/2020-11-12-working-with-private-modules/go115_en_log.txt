@@ -1,5 +1,5 @@
 $ go version
-go version go1.15.7 linux/amd64
+go version go1.15.8 linux/amd64
 $ mkdir /home/gopher/public
 $ cd /home/gopher/public
 $ go mod init {{{.PUBLIC}}}

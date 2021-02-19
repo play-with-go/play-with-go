@@ -5,7 +5,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go116: {
-			Image: "playwithgo/go1.16beta1@sha256:0495af40e1c11efbf4622aa79dc4f39bdade9026fce003334a3db6c34bd6ba7d"
+			Image: "playwithgo/go1.16@sha256:3ae1950433998a2be8c8ce3b1cb6479e6541f1e32443447a24085cfe09e2c391"
 		}
 	}
 }]
@@ -29,11 +29,11 @@ Steps: {
 			CmdStr:   "go version"
 			ExitCode: 0
 			Output: """
-				go version go1.16beta1 linux/amd64
+				go version go1.16 linux/amd64
 
 				"""
 			ComparisonOutput: """
-				go version go1.16beta1 linux/amd64
+				go version go1.16 linux/amd64
 
 				"""
 		}]
@@ -157,7 +157,7 @@ Steps: {
 			CmdStr:   "go version -m $(which mkcert)"
 			ExitCode: 0
 			Output: """
-				/home/gopher/go/bin/mkcert: go1.16beta1
+				/home/gopher/go/bin/mkcert: go1.16
 				\tpath\tfilippo.io/mkcert
 				\tmod\tfilippo.io/mkcert\tv1.4.2\th1:7mWofpFS4gzQS5bhE3KYBwzfceIPy2KJ4tMT31aPNeY=
 				\tdep\tgolang.org/x/net\tv0.0.0-20190620200207-3b0461eec859\th1:R/3boaszxrf1GEUWTVDzSKVwLmSJpwZ1yqXm8j0v2QI=
@@ -166,7 +166,7 @@ Steps: {
 
 				"""
 			ComparisonOutput: """
-				/home/gopher/go/bin/mkcert: go1.16beta1
+				/home/gopher/go/bin/mkcert: go1.16
 				\tpath\tfilippo.io/mkcert
 				\tmod\tfilippo.io/mkcert\tv1.4.2\th1:7mWofpFS4gzQS5bhE3KYBwzfceIPy2KJ4tMT31aPNeY=
 				\tdep\tgolang.org/x/net\tv0.0.0-20190620200207-3b0461eec859\th1:R/3boaszxrf1GEUWTVDzSKVwLmSJpwZ1yqXm8j0v2QI=
@@ -177,5 +177,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "51faf1c8c0fbff500473a130df5ed890d83cd63a4eb3035b1065a0a435a3d3e7"
+Hash: "73c9091cdd99c62b11430bf2ac757aeba7a7ede663a24be8e64730b32a6bdc4b"
 Delims: ["{{{", "}}}"]
