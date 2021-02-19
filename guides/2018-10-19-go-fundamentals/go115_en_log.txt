@@ -1,5 +1,5 @@
 $ go version
-go version go1.15.7 linux/amd64
+go version go1.15.8 linux/amd64
 $ pwd
 /home/gopher
 $ mkdir /home/gopher/greetings
@@ -385,14 +385,14 @@ func TestHelloEmpty(t *testing.T) {
 EOD
 $ go test
 PASS
-ok  	{{{.GREETINGS}}}	0.003s
+ok  	{{{.GREETINGS}}}	0.002s
 $ go test -v
 === RUN   TestHelloName
 --- PASS: TestHelloName (0.00s)
 === RUN   TestHelloEmpty
 --- PASS: TestHelloEmpty (0.00s)
 PASS
-ok  	{{{.GREETINGS}}}	0.004s
+ok  	{{{.GREETINGS}}}	0.002s
 $ cat <<EOD > /home/gopher/greetings/greetings.go
 package greetings
 
