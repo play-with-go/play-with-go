@@ -18,7 +18,7 @@ jobs:
       fail-fast: false
       matrix:
         go_version:
-        - 1.15.7
+        - "1.16"
         os:
         - macos-latest
     runs-on: ${{ matrix.os }}

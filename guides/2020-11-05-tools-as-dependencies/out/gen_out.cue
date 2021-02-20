@@ -15,8 +15,8 @@ Presteps: [{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20210220211257-449a12644e08",
-		    "Sum": "h1:ifHCcwg5o8QhPmMM3bgUU/bor78pFz8LAllflNU64xI=",
+		    "Version": "v0.0.0-20210221062040-e0aff1ca9bb5",
+		    "Sum": "h1:gwdqqYsrbaxbWpF/lLkHKaEDax2+7kRXW1hX0gXp6bk=",
 		    "Replace": null
 		  },
 		  "Deps": [
@@ -64,8 +64,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20210220210722-a86dc6501825",
-		      "Sum": "h1:u9kzEo17KJzKwB0IK+vvthIPrDt9Hun+LqKOMfSSZrU=",
+		      "Version": "v0.0.2-0.20210221145801-1ad62d50f30a",
+		      "Sum": "h1:g0UXUL267v0eA6yEKPo206vFI2uOyjiBjkGyrVnfUVE=",
 		      "Replace": null
 		    },
 		    {
@@ -397,8 +397,8 @@ Steps: {
 			Output: """
 				go: downloading golang.org/x/tools v0.0.0-20201105220310-78b158585360
 				go: found golang.org/x/tools/cmd/stringer in golang.org/x/tools v0.0.0-20201105220310-78b158585360
-				go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
 				go: downloading golang.org/x/mod v0.3.0
+				go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
 
 				"""
 			ComparisonOutput: """
@@ -781,5 +781,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "991da5c73ecf9f09ac3e840c0d75bab7053f013c8dbf70cc473abbab06538ea2"
+Hash: "a0a27b641f875dc08dcd88c2de337cb33f458bf6293b32dd895cf5fc59d5615e"
 Delims: ["{{{", "}}}"]

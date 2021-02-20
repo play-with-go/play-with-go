@@ -10,7 +10,7 @@ import "github.com/SchemaStore/schemastore/src/schemas/json"
 ]
 
 _#latestUbuntu: "ubuntu-18.04"
-_#latestGo:     "1.15.7"
+_#latestGo:     "1.16"
 
 #testWorkflow: json.#Workflow & {
 	env: {
