@@ -19,8 +19,8 @@ Presteps: [{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20201117212359-e8c942fd23b1",
-		    "Sum": "h1:GF1ytqY5ImU/VwbxBRfry/sOIsXpZWwxUM50WNRySeo=",
+		    "Version": "v0.0.0-20210220211257-449a12644e08",
+		    "Sum": "h1:ifHCcwg5o8QhPmMM3bgUU/bor78pFz8LAllflNU64xI=",
 		    "Replace": null
 		  },
 		  "Deps": [
@@ -32,8 +32,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "cuelang.org/go",
-		      "Version": "v0.3.0-beta.3.0.20210125164657-726d93e418af",
-		      "Sum": "h1:sHbIQ2HcXQMxHI0IYnizBeS90XBtFWLdmRHFr3Z/01c=",
+		      "Version": "v0.3.0-beta.5.0.20210217114852-2c86835c2019",
+		      "Sum": "h1:mj5d8fHqqDGVAeGwO5FeLsYAOIYL+ifjySl0v18NVyo=",
 		      "Replace": null
 		    },
 		    {
@@ -68,8 +68,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20210127111707-235c877c9360",
-		      "Sum": "h1:fEYeNxniikAJjUgISSADA38kW3kiL4YfQMnLEN+ZBNU=",
+		      "Version": "v0.0.2-0.20210220210722-a86dc6501825",
+		      "Sum": "h1:u9kzEo17KJzKwB0IK+vvthIPrDt9Hun+LqKOMfSSZrU=",
 		      "Replace": null
 		    },
 		    {
@@ -862,5 +862,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "9d97954c3ee1cd4bde7c11746ea13c5a2042df6bfa03380d66499af1fd13989f"
+Hash: "7df5411362111e9dbcf0142e792707bb3ffef476fe571d41404020665cf0edab"
 Delims: ["{{{", "}}}"]

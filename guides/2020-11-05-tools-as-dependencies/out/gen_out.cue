@@ -15,8 +15,8 @@ Presteps: [{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20201117212359-e8c942fd23b1",
-		    "Sum": "h1:GF1ytqY5ImU/VwbxBRfry/sOIsXpZWwxUM50WNRySeo=",
+		    "Version": "v0.0.0-20210220211257-449a12644e08",
+		    "Sum": "h1:ifHCcwg5o8QhPmMM3bgUU/bor78pFz8LAllflNU64xI=",
 		    "Replace": null
 		  },
 		  "Deps": [
@@ -28,8 +28,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "cuelang.org/go",
-		      "Version": "v0.3.0-beta.3.0.20210125164657-726d93e418af",
-		      "Sum": "h1:sHbIQ2HcXQMxHI0IYnizBeS90XBtFWLdmRHFr3Z/01c=",
+		      "Version": "v0.3.0-beta.5.0.20210217114852-2c86835c2019",
+		      "Sum": "h1:mj5d8fHqqDGVAeGwO5FeLsYAOIYL+ifjySl0v18NVyo=",
 		      "Replace": null
 		    },
 		    {
@@ -64,8 +64,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20210127111707-235c877c9360",
-		      "Sum": "h1:fEYeNxniikAJjUgISSADA38kW3kiL4YfQMnLEN+ZBNU=",
+		      "Version": "v0.0.2-0.20210220210722-a86dc6501825",
+		      "Sum": "h1:u9kzEo17KJzKwB0IK+vvthIPrDt9Hun+LqKOMfSSZrU=",
 		      "Replace": null
 		    },
 		    {
@@ -397,8 +397,8 @@ Steps: {
 			Output: """
 				go: downloading golang.org/x/tools v0.0.0-20201105220310-78b158585360
 				go: found golang.org/x/tools/cmd/stringer in golang.org/x/tools v0.0.0-20201105220310-78b158585360
-				go: downloading golang.org/x/mod v0.3.0
 				go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
+				go: downloading golang.org/x/mod v0.3.0
 
 				"""
 			ComparisonOutput: """
@@ -781,5 +781,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "f4d3f795f9300ba48a15ccbeb232f99867ecc16a6198f0a850bab5195d46d626"
+Hash: "991da5c73ecf9f09ac3e840c0d75bab7053f013c8dbf70cc473abbab06538ea2"
 Delims: ["{{{", "}}}"]
