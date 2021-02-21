@@ -10,7 +10,6 @@ import "github.com/play-with-go/preguide"
 	Scenarios: [...preguide.#Scenario]
 	Hash: string
 	Steps: [string]: #Step
-	Defs: [string]:  _
 	Networks: [...string]
 	Env: [...string]
 }
