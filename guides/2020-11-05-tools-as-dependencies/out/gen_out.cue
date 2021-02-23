@@ -70,26 +70,26 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "golang.org/x/crypto",
-		      "Version": "v0.0.0-20191011191535-87dc89f01550",
-		      "Sum": "h1:ObdrDkeb4kJdCP557AjRjq69pTHfNouLtWZG7j9rPN8=",
+		      "Version": "v0.0.0-20200622213623-75b288015ac9",
+		      "Sum": "h1:psW17arqaxU48Z5kZ0CQnkZWQJsqcURM6tKiBApRjXI=",
 		      "Replace": null
 		    },
 		    {
 		      "Path": "golang.org/x/net",
-		      "Version": "v0.0.0-20200602114024-627f9648deb9",
-		      "Sum": "h1:pNX+40auqi2JqRfOP1akLGtYcn15TUbkhwuCO3foqqM=",
+		      "Version": "v0.0.0-20201021035429-f5854403a974",
+		      "Sum": "h1:IX6qOQeG5uLjB/hjjwjedwfjND0hgjPMMyO1RoIXQNI=",
 		      "Replace": null
 		    },
 		    {
 		      "Path": "golang.org/x/text",
-		      "Version": "v0.3.2",
-		      "Sum": "h1:tW2bmiBqwgJj/UpqtC8EpXEZVYOwU0yG4iWbprSVAcs=",
+		      "Version": "v0.3.3",
+		      "Sum": "h1:cokOdA+Jmi5PJGXLlLllQSgYigAEfHXJAERHVMaCc2k=",
 		      "Replace": null
 		    },
 		    {
 		      "Path": "golang.org/x/xerrors",
-		      "Version": "v0.0.0-20191204190536-9bdfabe68543",
-		      "Sum": "h1:E7g+9GITq07hpfrRu66IVDexMakfv52eLZ2CXBWiKr4=",
+		      "Version": "v0.0.0-20200804184101-5ec99f83aff1",
+		      "Sum": "h1:go1bK/D/BFZV2I8cIQd1NKEZ+0owSTG1fDTci4IqFcE=",
 		      "Replace": null
 		    },
 		    {
@@ -397,8 +397,8 @@ Steps: {
 			Output: """
 				go: downloading golang.org/x/tools v0.0.0-20201105220310-78b158585360
 				go: found golang.org/x/tools/cmd/stringer in golang.org/x/tools v0.0.0-20201105220310-78b158585360
-				go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
 				go: downloading golang.org/x/mod v0.3.0
+				go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
 
 				"""
 			ComparisonOutput: """
@@ -781,5 +781,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "a3c8d3aa0781b18fd1ae004139be5c679f8e6a70a266b8b09bec2704668e824f"
+Hash: "8dcdeecdf917fe106ed48a2247baab60b7e4e576777baa114c32fc7a4218f03c"
 Delims: ["{{{", "}}}"]
