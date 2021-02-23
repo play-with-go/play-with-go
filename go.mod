@@ -9,6 +9,6 @@ require (
 	github.com/myitcv/docker-compose v0.0.0-20200623052903-c60483a3250f
 	github.com/play-with-docker/play-with-docker v0.0.3-0.20201025222131-e8486b8100e0
 	github.com/play-with-go/gitea v0.0.0-20210221062040-e0aff1ca9bb5
-	github.com/play-with-go/preguide v0.0.2-0.20210221145801-1ad62d50f30a
+	github.com/play-with-go/preguide v0.0.2-0.20210223162556-900e02260be7
 	golang.org/x/sync v0.0.0-20201020160332-67f06af15bc9
 )
