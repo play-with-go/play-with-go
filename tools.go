@@ -13,4 +13,5 @@ import (
 	_ "github.com/play-with-docker/play-with-docker/router/l2"
 	_ "github.com/play-with-go/gitea/cmd/gitea"
 	_ "github.com/play-with-go/preguide/cmd/preguide"
+	_ "github.com/cue-sh/unity/cmd/unity"
 )

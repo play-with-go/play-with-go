@@ -279,7 +279,7 @@ func (r *runner) loadConfig() (config, error) {
 // Encodes the resulting value into value
 func (r *runner) loadConfigFromFlags(inputs []string, schema cue.Value, value interface{}) error {
 	var val cue.Value
-	bis := load.Instances(inputs, nil)
+	bis := load.Instances(inputs, &load.Config{AllCUEFiles: true})
 	for i, bi := range bis {
 		inst, err := r.runtime.Build(bi)
 		if err != nil {

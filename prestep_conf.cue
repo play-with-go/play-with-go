@@ -1,3 +1,5 @@
+@if(controller)
+
 package conf
 
 import "github.com/play-with-go/preguide"

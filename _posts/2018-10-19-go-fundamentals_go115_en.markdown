@@ -760,7 +760,7 @@ $ go test -v
 === RUN   TestHelloEmpty
 --- PASS: TestHelloEmpty (0.00s)
 PASS
-ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.002s
+ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.003s
 </code></pre>
 
 You will now break the `greetings.Hello` function to view a failing test. The `TestHelloName` test function

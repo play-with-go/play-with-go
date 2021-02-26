@@ -74,26 +74,26 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "golang.org/x/crypto",
-		      "Version": "v0.0.0-20191011191535-87dc89f01550",
-		      "Sum": "h1:ObdrDkeb4kJdCP557AjRjq69pTHfNouLtWZG7j9rPN8=",
+		      "Version": "v0.0.0-20200622213623-75b288015ac9",
+		      "Sum": "h1:psW17arqaxU48Z5kZ0CQnkZWQJsqcURM6tKiBApRjXI=",
 		      "Replace": null
 		    },
 		    {
 		      "Path": "golang.org/x/net",
-		      "Version": "v0.0.0-20200602114024-627f9648deb9",
-		      "Sum": "h1:pNX+40auqi2JqRfOP1akLGtYcn15TUbkhwuCO3foqqM=",
+		      "Version": "v0.0.0-20201021035429-f5854403a974",
+		      "Sum": "h1:IX6qOQeG5uLjB/hjjwjedwfjND0hgjPMMyO1RoIXQNI=",
 		      "Replace": null
 		    },
 		    {
 		      "Path": "golang.org/x/text",
-		      "Version": "v0.3.2",
-		      "Sum": "h1:tW2bmiBqwgJj/UpqtC8EpXEZVYOwU0yG4iWbprSVAcs=",
+		      "Version": "v0.3.3",
+		      "Sum": "h1:cokOdA+Jmi5PJGXLlLllQSgYigAEfHXJAERHVMaCc2k=",
 		      "Replace": null
 		    },
 		    {
 		      "Path": "golang.org/x/xerrors",
-		      "Version": "v0.0.0-20191204190536-9bdfabe68543",
-		      "Sum": "h1:E7g+9GITq07hpfrRu66IVDexMakfv52eLZ2CXBWiKr4=",
+		      "Version": "v0.0.0-20200804184101-5ec99f83aff1",
+		      "Sum": "h1:go1bK/D/BFZV2I8cIQd1NKEZ+0owSTG1fDTci4IqFcE=",
 		      "Replace": null
 		    },
 		    {
@@ -788,5 +788,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "4b14bd799be0759965a82b6e4a4c056cd438c6fe8a7c4b9f67e0dfbca14db714"
+Hash: "c9c37466f96d7e720f78e607b8705813fedc0bcf5da1aa43983ec4d6d3104849"
 Delims: ["{{{", "}}}"]
