@@ -2,14 +2,12 @@
 layout: post
 title:  "Installing Go programs directly"
 excerpt: "Simple easy-to-remember way to install Go programs"
-category: What's coming in Go 1.16
+category: New features in Go 1.16
 difficulty: Beginner
 ---
 
 _By [Daniel Martí](https://mvdan.cc), Go contributor, maintainer of [`encoding/json`](https://pkg.go.dev/encoding/json),
 and tool author._
-
-_Note: this is a preview of a `cmd/go` feature that is due to land in Go 1.16_
 
 Users need a simple, easy-to-remember way to install Go programs. Similarly, tool authors need a short one-liner they
 can include at the top of their `README.md` explaining how to install the tool.
