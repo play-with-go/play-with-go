@@ -2,14 +2,12 @@
 layout: post
 title:  "Retract Module Versions"
 excerpt: "Learn how to flag modules that shouldn't be used"
-category: What's coming in Go 1.16
+category: New features in Go 1.16
 difficulty: Intermediate
 ---
 
 _By [Jay Conrod](https://twitter.com/jayconrod), software engineer on the [Go](https://golang.org/) tools team, and
 principal author of module retraction in the `go` command._
-
-_Note: this is a preview of a `cmd/go` feature that is due to land in Go 1.16_
 
 Module authors need a way to indicate that published module versions should not be used. There are a number of reasons
 this may be needed:
