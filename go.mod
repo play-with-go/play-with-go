@@ -4,7 +4,7 @@ go 1.16
 
 require (
 	cuelang.org/go v0.3.0-beta.5.0.20210217114852-2c86835c2019
-	github.com/cue-sh/unity v0.0.0-20210226062359-497bf9bf5c8a
+	github.com/cue-sh/unity v0.0.0-20210301145705-c22e75465f8f
 	github.com/gorilla/securecookie v1.1.1
 	github.com/kr/pretty v0.2.1
 	github.com/myitcv/docker-compose v0.0.0-20200623052903-c60483a3250f
