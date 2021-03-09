@@ -7,6 +7,9 @@ set -euo pipefail
 
 # With thanks/credit to https://github.com/docker/for-mac/issues/2359#issuecomment-607154849
 
+# Update brew to make sure we're using the latest formulae
+brew update
+
 ###############################
 # General
 brew install bash
