@@ -1,6 +1,9 @@
 # Verify that a simple eval works as expect
 
+# eval
 cue eval ./...
+
+# Compare vs golden files
 cmp stdout $WORK/stdout.golden
 
 -- stdout.golden --
