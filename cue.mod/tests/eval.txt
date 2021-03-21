@@ -13658,6 +13658,9 @@ import "strings"
                     name: "Tidy"
                     run:  "go mod tidy"
                 }, {
+                    name: "Verify commit is clean"
+                    run:  "test -z \"$(git status --porcelain)\" || (git status; git diff; false)"
+                }, {
                     name: "Run unity tests"
                     run:  "go run github.com/cue-sh/unity/cmd/unity test"
                 }, {
@@ -13698,6 +13701,13 @@ import "strings"
             schedule: [{
                 cron: "0 9 * * *"
             }]
+            push: {
+                branches: ["main"]
+                tags: ["v*"]
+            }
+            pull_request: {
+                branches: ["**"]
+            }
         }
         env: {
             DOCKER_HUB_USER:                    "playwithgopher"
@@ -13762,6 +13772,9 @@ import "strings"
                 }, {
                     name: "Tidy"
                     run:  "go mod tidy"
+                }, {
+                    name: "Verify commit is clean"
+                    run:  "test -z \"$(git status --porcelain)\" || (git status; git diff; false)"
                 }, {
                     name: "Run unity tests"
                     run:  "go run github.com/cue-sh/unity/cmd/unity test"
@@ -13908,6 +13921,9 @@ import "strings"
                 name: "Tidy"
                 run:  "go mod tidy"
             }, {
+                name: "Verify commit is clean"
+                run:  "test -z \"$(git status --porcelain)\" || (git status; git diff; false)"
+            }, {
                 name: "Run unity tests"
                 run:  "go run github.com/cue-sh/unity/cmd/unity test"
             }, {
@@ -14015,6 +14031,9 @@ test: {
                 name: "Tidy"
                 run:  "go mod tidy"
             }, {
+                name: "Verify commit is clean"
+                run:  "test -z \"$(git status --porcelain)\" || (git status; git diff; false)"
+            }, {
                 name: "Run unity tests"
                 run:  "go run github.com/cue-sh/unity/cmd/unity test"
             }, {
@@ -14053,6 +14072,13 @@ testmac: {
         schedule: [{
             cron: "0 9 * * *"
         }]
+        push: {
+            branches: ["main"]
+            tags: ["v*"]
+        }
+        pull_request: {
+            branches: ["**"]
+        }
     }
     env: {
         DOCKER_HUB_USER:                    "playwithgopher"
@@ -14117,6 +14143,9 @@ testmac: {
             }, {
                 name: "Tidy"
                 run:  "go mod tidy"
+            }, {
+                name: "Verify commit is clean"
+                run:  "test -z \"$(git status --porcelain)\" || (git status; git diff; false)"
             }, {
                 name: "Run unity tests"
                 run:  "go run github.com/cue-sh/unity/cmd/unity test"

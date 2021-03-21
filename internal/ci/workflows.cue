@@ -88,6 +88,10 @@ _#latestGo:     "1.16"
 				run:  "go mod tidy"
 			},
 			{
+				name: "Verify commit is clean"
+				run:  "test -z \"$(git status --porcelain)\" || (git status; git diff; false)"
+			},
+			{
 				name: "Run unity tests"
 				run:  "go run github.com/cue-sh/unity/cmd/unity test"
 			},
@@ -121,6 +125,14 @@ testmac: {
 	name: "TestMac"
 	#testWorkflow
 	on: schedule: [{cron: "0 9 * * *"}]
+	on: {
+		push: {
+			branches: ["main"]
+			tags: ["v*"]
+		}
+		pull_request: branches: ["**"]
+		schedule: [{cron: "0 9 * * *"}]
+	}
 	jobs: test: strategy: matrix: os: ["macos-latest"]
 }
 
