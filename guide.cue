@@ -10,10 +10,11 @@ Networks: *["playwithgo_pwg"] | [...string]
 
 Delims: ["{{{", "}}}"]
 
-_#installGo:          "playwithgo/installgo1.15.8@sha256:0e480b658f50b85b8eb40c426022d572709a93f6e0a7fe65475bea50ad172c5f"
-_#go115LatestVersion: "go1.15.8"
-_#go115LatestImage:   "playwithgo/go1.15.8@sha256:7640da09d1555c4dddbba7f1b96051af2816e6542005176b749f38865ee0454c"
-_#go116LatestImage:   "playwithgo/go1.16@sha256:3ae1950433998a2be8c8ce3b1cb6479e6541f1e32443447a24085cfe09e2c391"
+_#installGo:           "playwithgo/installgo1.15.8@sha256:0e480b658f50b85b8eb40c426022d572709a93f6e0a7fe65475bea50ad172c5f"
+_#go115LatestVersion:  "go1.15.8"
+_#go115LatestImage:    "playwithgo/go1.15.8@sha256:7640da09d1555c4dddbba7f1b96051af2816e6542005176b749f38865ee0454c"
+_#go116LatestImage:    "playwithgo/go1.16@sha256:3ae1950433998a2be8c8ce3b1cb6479e6541f1e32443447a24085cfe09e2c391"
+_#go116CUELatestImage: "playwithgo/cue-kubernetes-tutorial"
 
 _#golangToolsLatest: "v0.0.0-20201105220310-78b158585360"
 
