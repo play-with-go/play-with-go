@@ -35,8 +35,8 @@ been automatically created for you, as have the repositories [`{{{ .greetings_mo
 You should already have completed:
 
 * [The Go Tour](https://tour.golang.org/)
-* [An introduction to play-with-go.dev guides](/intro-to-play-with-go-dev/)
-* [Get started with Go](/get-started-with-go/)
+* [An introduction to play-with-go.dev guides](/intro-to-play-with-go-dev_go115_en/)
+* [Get started with Go](/get-started-with-go_go115_en/)
 
 This guide is running using:
 
