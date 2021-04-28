@@ -24,7 +24,7 @@ In this guide we present a brief introduction to Go programming. You will:
 You should already have completed:
 
 * [The Go Tour](https://tour.golang.org/)
-* [An introduction to play-with-go.dev guides](/intro-to-play-with-go-dev/)
+* [An introduction to play-with-go.dev guides](/intro-to-play-with-go-dev_go115_en/)
 
 This guide is running using:
 
