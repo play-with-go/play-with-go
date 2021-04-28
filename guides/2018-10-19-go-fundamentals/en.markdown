@@ -9,7 +9,7 @@ category: Start here
 _This guide is based on the official ["Create a module"](https://golang.org/doc/tutorial/create-module) tutorial._
 
 This guide introduces a few fundamental features of the Go language. If you're just getting started with Go, be sure
-to take a look at the ["Get Started with Go" guide](/get-started-with-go/), which introduces the go command, Go modules,
+to take a look at the ["Get Started with Go" guide](/get-started-with-go_go115_en/), which introduces the go command, Go modules,
 and very simple Go code.
 
 In this guide you'll create two modules. The first is a library which is intended to be imported by other libraries
