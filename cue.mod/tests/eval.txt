@@ -297,6 +297,24 @@ Delims: ["{{{", "}}}"]
     Networks: ["playwithgo_pwg"]
     Env: []
 }
+"2021-05-06-gosheffield-demo": {
+    Delims: ["{{{", "}}}"]
+    Terminals: [{
+        Name:        "term1"
+        Description: "The main terminal"
+        Scenarios: {
+            go115: {
+                Image: "playwithgo/go1.15.8@sha256:7640da09d1555c4dddbba7f1b96051af2816e6542005176b749f38865ee0454c"
+            }
+        }
+    }]
+    Scenarios: [{
+        Name:        "go115"
+        Description: "Go 1.15"
+    }]
+    Networks: ["playwithgo_pwg"]
+    Env: []
+}
 // ---
 Networks: ["playwithgo_pwg"]
 Delims: ["{{{", "}}}"]
@@ -13557,6 +13575,111 @@ Steps: {
     }
 }
 Hash: "8ef9567dbd2ab217155604d5765fa9d19321015d41bc33452860bf698ad2c9d8"
+Delims: ["{{{", "}}}"]
+// ---
+Networks: ["playwithgo_pwg"]
+Delims: ["{{{", "}}}"]
+Defs: {
+    script:     "script.sh"
+    scriptpath: "/home/gopher/script.sh"
+}
+Steps: {
+    create_script: {
+        Target:   "/home/gopher/script.sh"
+        Language: "sh"
+        Name:     string
+        StepType: 3
+        Source: """
+            echo "Hello, world!"
+
+            """
+        Renderer: {
+            RendererType: 1
+        }
+        Terminal: string
+    }
+    run_script: {
+        DoNotTrim:       false
+        Name:            string
+        StepType:        1
+        Source:          "bash /home/gopher/script.sh"
+        InformationOnly: false
+        Terminal:        string
+    }
+}
+Scenarios: {
+    go115: {
+        Name:        string
+        Description: "Go 1.15"
+    }
+}
+Terminals: {
+    term1: {
+        Name:        string
+        Description: "The main terminal"
+        Scenarios: {
+            go115: {
+                Image: "playwithgo/go1.15.8@sha256:7640da09d1555c4dddbba7f1b96051af2816e6542005176b749f38865ee0454c"
+            }
+        }
+    }
+}
+// ---
+Terminals: [{
+    Name:        "term1"
+    Description: "The main terminal"
+    Scenarios: {
+        go115: {
+            Image: "playwithgo/go1.15.8@sha256:7640da09d1555c4dddbba7f1b96051af2816e6542005176b749f38865ee0454c"
+        }
+    }
+}]
+Scenarios: [{
+    Name:        "go115"
+    Description: "Go 1.15"
+}]
+Networks: ["playwithgo_pwg"]
+Env: []
+FilenameComment: false
+Steps: {
+    create_script: {
+        StepType: 2
+        Name:     "create_script"
+        Order:    0
+        Terminal: "term1"
+        Language: "sh"
+        Renderer: {
+            RendererType: 1
+        }
+        Source: """
+            echo "Hello, world!"
+
+            """
+        Target: "/home/gopher/script.sh"
+    }
+    run_script: {
+        StepType:        1
+        DoNotTrim:       false
+        InformationOnly: false
+        Name:            "run_script"
+        Order:           1
+        Terminal:        "term1"
+        Stmts: [{
+            Negated:  false
+            CmdStr:   "bash /home/gopher/script.sh"
+            ExitCode: 0
+            Output: """
+                Hello, world!
+
+                """
+            ComparisonOutput: """
+                Hello, world!
+
+                """
+        }]
+    }
+}
+Hash: "df6a8d33103a6eb7219db145252acd608396f57af2661415838b781a4721eb7c"
 Delims: ["{{{", "}}}"]
 // ---
 import "strings"
