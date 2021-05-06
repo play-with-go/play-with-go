@@ -1,0 +1,6 @@
+$ cat <<EOD > /home/gopher/script.sh
+echo "Hello, world!"
+
+EOD
+$ bash /home/gopher/script.sh
+Hello, world!
