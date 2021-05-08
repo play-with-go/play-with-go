@@ -8,6 +8,8 @@ layout: post
 title: An introduction to play-with-go.dev guides
 ---
 
+Hello &#123;&#123; .world &#125;&#125;
+
 [`play-with-go.dev`](https://play-with-go.dev/) is a series of interactive browser-based guides that lead you on a tour
 of the [Go command](https://golang.org/cmd/go/) and [Go modules](https://golang.org/ref/mod).
 

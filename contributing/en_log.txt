@@ -1,0 +1,27 @@
+Terminals: [
+  {
+    "Name": "term1",
+    "Description": "The main terminal",
+    "Scenarios": {
+      "go115": {
+        "Image": "playwithgo/create-your-first-guide"
+      }
+    }
+  }
+]
+$ docker version -f {{.Server.Version}}
+19.03.12
+$ docker-compose version
+docker-compose version 1.26.2, build eefe0d31
+docker-py version: 4.2.2
+CPython version: 3.7.7
+OpenSSL version: OpenSSL 1.1.0l  10 Sep 2019
+$ go version
+go version go1.15.1 linux/amd64
+$ mkcert -version
+v1.4.1
+$ git clone https://github.com/play-with-go/play-with-go
+Cloning into 'play-with-go'...
+$ cd play-with-go
+$ git checkout -b myfirstguide 206a134e21007d1970e92be68ed0a2451376208a
+Switched to a new branch 'myfirstguide'

@@ -1,0 +1,18 @@
+$ docker version -f {{.Server.Version}}
+19.03.13
+$ docker-compose version
+docker-compose version 1.26.2, build eefe0d31
+docker-py version: 4.2.2
+CPython version: 3.7.7
+OpenSSL version: OpenSSL 1.1.0l  10 Sep 2019
+$ go version
+go version go1.15.5 linux/amd64
+$ git clone -q https://github.com/play-with-go/play-with-go
+$ cd play-with-go
+$ git checkout simple_guide
+Branch 'simple_guide' set up to track remote branch 'simple_guide' from 'origin'.
+Switched to a new branch 'simple_guide'
+$ cat <<EOD > /home/gopher/play-with-go/blah.txt
+Blah
+
+EOD
