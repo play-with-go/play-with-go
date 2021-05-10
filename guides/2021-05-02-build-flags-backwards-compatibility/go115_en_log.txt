@@ -1,0 +1,129 @@
+$ go115 version
+go version go1.15.8 linux/amd64
+$ go116 version
+go version go1.16.3 linux/amd64
+$ alias go=go115
+$ mkdir /home/gopher/public
+$ cd /home/gopher/public
+$ go mod init {{{.PUBLIC}}}
+go: creating new go.mod: module {{{.PUBLIC}}}
+$ git init -q
+$ git remote add origin https://{{{.PUBLIC}}}.git
+$ cat <<EOD > /home/gopher/public/public.go
+package public
+
+import (
+    "fmt"
+    "io/ioutil"
+)
+
+func DoSomething() {
+    fmt.Fprintf(ioutil.Discard, "This doesn't print anything")
+}
+EOD
+$ git add public.go go.mod
+$ git commit -q -m 'Initial commit of public module'
+$ git push -q origin main
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ [ "$(git status --porcelain)" == "" ] || (git status && false)
+$ mkdir /home/gopher/gopher
+$ cd /home/gopher/gopher
+$ go mod init gopher
+go: creating new go.mod: module gopher
+$ cat <<EOD > /home/gopher/gopher/gopher.go
+package main
+
+import (
+
+"{{{.PUBLIC}}}"
+)
+
+func main() {
+    public.DoSomething()
+}
+
+EOD
+$ go run .
+go: finding module for package {{{.PUBLIC}}}
+go: downloading {{{.PUBLIC}}} v0.0.0-20210510022515-3b5a503cc6e3
+go: found {{{.PUBLIC}}} in {{{.PUBLIC}}} v0.0.0-20210510022515-3b5a503cc6e3
+$ alias go=go116
+$ cat <<EOD > /home/gopher/public/public.go
+package public
+
+import (
+    "fmt"
+    "io"
+)
+
+func DoSomething() {
+    fmt.Fprintf(io.Discard, "This doesn't print anything")
+}
+EOD
+$ cd /home/gopher/public
+$ git checkout -b bump
+Switched to a new branch 'bump'
+$ git add public.go go.mod
+$ git commit -q -m 'Bump public to go1.16'
+$ git push -q origin bump
+remote: 
+remote: Create a new pull request for 'bump':        
+remote:   https://{{{.PUBLIC}}}/compare/main...bump        
+remote: 
+remote: . Processing 1 references
+remote: Processed 1 references in total        
+$ alias go=go115
+$ cd /home/gopher/gopher
+$ code=$(go get -u -v {{{.PUBLIC}}}@bump; echo $?)
+go: {{{.PUBLIC}}} bump => v0.0.0-20210510022530-3dbd6db9c7be
+go: downloading {{{.PUBLIC}}} v0.0.0-20210510022530-3dbd6db9c7be
+{{{.PUBLIC}}}
+# {{{.PUBLIC}}}
+../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210510022530-3dbd6db9c7be/public.go:9:17: undefined: io.Discard
+$ [ $code == 2 ] || false
+$ cat <<EOD > /home/gopher/public/public.go
+// +build !go1.16
+
+package public
+
+import (
+    "fmt"
+    "io/ioutil"
+)
+
+func DoSomething() {
+    fmt.Fprintf(ioutil.Discard, "This doesn't print anything")
+}
+EOD
+$ cat <<EOD > /home/gopher/public/public_116.go
+// +build go.1.16
+
+package public
+
+import (
+    "fmt"
+    "io"
+)
+
+func DoSomething() {
+    fmt.Fprintf(io.Discard, "This doesn't print anything")
+}
+EOD
+$ cd /home/gopher/public
+$ git checkout -b bump_fix
+Switched to a new branch 'bump_fix'
+$ git add public.go public_116.go go.mod
+$ git commit -q -m 'Fix public bump to go1.16'
+$ git push -q origin bump_fix
+remote: 
+remote: Create a new pull request for 'bump_fix':        
+remote:   https://{{{.PUBLIC}}}/compare/main...bump_fix        
+remote: 
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ cd /home/gopher/gopher
+$ go get -u -v {{{.PUBLIC}}}@bump_fix
+go: {{{.PUBLIC}}} bump_fix => v0.0.0-20210510022545-65e54e92a856
+go: downloading {{{.PUBLIC}}} v0.0.0-20210510022545-65e54e92a856
+{{{.PUBLIC}}}
