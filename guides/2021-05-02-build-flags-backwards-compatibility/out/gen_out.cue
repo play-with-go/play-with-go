@@ -114,7 +114,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "lala"
+			Image: "playwithgo/go1.15_1.16@sha256:6cea9fd5d2b1316120a40e7d8c2c9e0db0a408bcb80ffbaad36238cf066298ee"
 		}
 	}
 }]
@@ -358,29 +358,64 @@ Steps: {
 			"""
 		Target: "/home/gopher/gopher/gopher.go"
 	}
+	gopher_get: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_get"
+		Order:           9
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:  false
+			CmdStr:   "go get -d {{{.PUBLIC}}}@latest"
+			ExitCode: 0
+			Output: """
+				go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
+				go: {{{.PUBLIC}}} latest => v0.0.0-20060102150405-abcedf12345
+
+				"""
+			ComparisonOutput: """
+
+				go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
+				go: {{{.PUBLIC}}} latest => v0.0.0-20060102150405-abcedf12345
+				"""
+		}]
+	}
+	golist_gopher_1: {
+		StepType:        1
+		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
+		DoNotTrim:       false
+		InformationOnly: true
+		Name:            "golist_gopher_1"
+		Order:           10
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:  false
+			CmdStr:   "go list -m -f {{.Version}} {{{.PUBLIC}}}"
+			ExitCode: 0
+			Output: """
+				v0.0.0-20060102150405-abcedf12345
+
+				"""
+			ComparisonOutput: """
+				v0.0.0-20060102150405-abcedf12345
+
+				"""
+		}]
+	}
 	gopher_run: {
 		StepType:        1
 		DoNotTrim:       false
 		InformationOnly: false
 		Name:            "gopher_run"
-		Order:           9
+		Order:           11
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:  false
-			CmdStr:   "go run ."
-			ExitCode: 0
-			Output: """
-				go: finding module for package {{{.PUBLIC}}}
-				go: downloading {{{.PUBLIC}}} v0.0.0-20210516021259-5911e81d2353
-				go: found {{{.PUBLIC}}} in {{{.PUBLIC}}} v0.0.0-20210516021259-5911e81d2353
-
-				"""
-			ComparisonOutput: """
-				go: finding module for package {{{.PUBLIC}}}
-				go: downloading {{{.PUBLIC}}} v0.0.0-20210516021259-5911e81d2353
-				go: found {{{.PUBLIC}}} in {{{.PUBLIC}}} v0.0.0-20210516021259-5911e81d2353
-
-				"""
+			Negated:          false
+			CmdStr:           "go run ."
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
 		}]
 	}
 	go116default: {
@@ -388,7 +423,7 @@ Steps: {
 		DoNotTrim:       false
 		InformationOnly: false
 		Name:            "go116default"
-		Order:           10
+		Order:           12
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:          false
@@ -401,7 +436,7 @@ Steps: {
 	public_bump_discard: {
 		StepType: 2
 		Name:     "public_bump_discard"
-		Order:    11
+		Order:    13
 		Terminal: "term1"
 		Language: "go"
 		Renderer: {
@@ -426,7 +461,7 @@ Steps: {
 		DoNotTrim:       false
 		InformationOnly: false
 		Name:            "public_bump_commit"
-		Order:           12
+		Order:           14
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:          false
@@ -434,18 +469,6 @@ Steps: {
 			ExitCode:         0
 			Output:           ""
 			ComparisonOutput: ""
-		}, {
-			Negated:  false
-			CmdStr:   "git checkout -b bump"
-			ExitCode: 0
-			Output: """
-				Switched to a new branch 'bump'
-
-				"""
-			ComparisonOutput: """
-				Switched to a new branch 'bump'
-
-				"""
 		}, {
 			Negated:          false
 			CmdStr:           "git add public.go go.mod"
@@ -460,23 +483,15 @@ Steps: {
 			ComparisonOutput: ""
 		}, {
 			Negated:  false
-			CmdStr:   "git push -q origin bump"
+			CmdStr:   "git push -q origin main"
 			ExitCode: 0
 			Output: """
-				remote: 
-				remote: Create a new pull request for 'bump':        
-				remote:   https://{{{.PUBLIC}}}/compare/main...bump        
-				remote: 
-				remote: . Processing 1 references
+				remote: . Processing 1 references        
 				remote: Processed 1 references in total        
 
 				"""
 			ComparisonOutput: """
-				remote: 
-				remote: Create a new pull request for 'bump':        
-				remote:   https://{{{.PUBLIC}}}/compare/main...bump        
-				remote: 
-				remote: . Processing 1 references
+				remote: . Processing 1 references        
 				remote: Processed 1 references in total        
 
 				"""
@@ -487,7 +502,7 @@ Steps: {
 		DoNotTrim:       false
 		InformationOnly: false
 		Name:            "go115default1"
-		Order:           13
+		Order:           15
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:          false
@@ -497,12 +512,12 @@ Steps: {
 			ComparisonOutput: ""
 		}]
 	}
-	gopher_update_fail: {
+	gopher_update: {
 		StepType:        1
 		DoNotTrim:       false
 		InformationOnly: false
-		Name:            "gopher_update_fail"
-		Order:           14
+		Name:            "gopher_update"
+		Order:           16
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:          false
@@ -512,36 +527,47 @@ Steps: {
 			ComparisonOutput: ""
 		}, {
 			Negated:  false
-			CmdStr:   "code=$(go get -u -v {{{.PUBLIC}}}@bump; echo $?)"
+			CmdStr:   "GOPROXY=direct go get -d {{{.PUBLIC}}}@latest"
 			ExitCode: 0
 			Output: """
-				go: {{{.PUBLIC}}} bump => v0.0.0-20210516021314-e2f48657c61e
-				go: downloading {{{.PUBLIC}}} v0.0.0-20210516021314-e2f48657c61e
-				{{{.PUBLIC}}}
-				# {{{.PUBLIC}}}
-				../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210516021314-e2f48657c61e/public.go:9:17: undefined: io.Discard
+				go: {{{.PUBLIC}}} latest => v0.0.0-20210516082250-842dcc186154
+				go: downloading {{{.PUBLIC}}} v0.0.0-20210516082250-842dcc186154
 
 				"""
 			ComparisonOutput: """
-				go: {{{.PUBLIC}}} bump => v0.0.0-20210516021314-e2f48657c61e
-				go: downloading {{{.PUBLIC}}} v0.0.0-20210516021314-e2f48657c61e
-				{{{.PUBLIC}}}
+
+				go: downloading {{{.PUBLIC}}} v0.0.0-20210516082250-842dcc186154
+				go: {{{.PUBLIC}}} latest => v0.0.0-20210516082250-842dcc186154
+				"""
+		}]
+	}
+	gopher_run_fail: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_run_fail"
+		Order:           17
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:  true
+			CmdStr:   "go run ."
+			ExitCode: 2
+			Output: """
 				# {{{.PUBLIC}}}
-				../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210516021314-e2f48657c61e/public.go:9:17: undefined: io.Discard
+				../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210516082250-842dcc186154/public.go:9:17: undefined: io.Discard
 
 				"""
-		}, {
-			Negated:          false
-			CmdStr:           "[ $code == 2 ] || false"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			ComparisonOutput: """
+				# {{{.PUBLIC}}}
+				../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210516082250-842dcc186154/public.go:9:17: undefined: io.Discard
+
+				"""
 		}]
 	}
 	public_rollback_mod: {
 		StepType: 2
 		Name:     "public_rollback_mod"
-		Order:    15
+		Order:    18
 		Terminal: "term1"
 		Language: "go"
 		Renderer: {
@@ -566,7 +592,7 @@ Steps: {
 	public_add_buildtag: {
 		StepType: 2
 		Name:     "public_add_buildtag"
-		Order:    16
+		Order:    19
 		Terminal: "term1"
 		Language: "go"
 		Renderer: {
@@ -593,7 +619,7 @@ Steps: {
 		DoNotTrim:       false
 		InformationOnly: false
 		Name:            "public_fix_commit"
-		Order:           17
+		Order:           20
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:          false
@@ -601,18 +627,6 @@ Steps: {
 			ExitCode:         0
 			Output:           ""
 			ComparisonOutput: ""
-		}, {
-			Negated:  false
-			CmdStr:   "git checkout -b bump_fix"
-			ExitCode: 0
-			Output: """
-				Switched to a new branch 'bump_fix'
-
-				"""
-			ComparisonOutput: """
-				Switched to a new branch 'bump_fix'
-
-				"""
 		}, {
 			Negated:          false
 			CmdStr:           "git add public.go public_116.go go.mod"
@@ -627,34 +641,26 @@ Steps: {
 			ComparisonOutput: ""
 		}, {
 			Negated:  false
-			CmdStr:   "git push -q origin bump_fix"
+			CmdStr:   "git push -q origin main"
 			ExitCode: 0
 			Output: """
-				remote: 
-				remote: Create a new pull request for 'bump_fix':        
-				remote:   https://{{{.PUBLIC}}}/compare/main...bump_fix        
-				remote: 
 				remote: . Processing 1 references        
 				remote: Processed 1 references in total        
 
 				"""
 			ComparisonOutput: """
-				remote: 
-				remote: Create a new pull request for 'bump_fix':        
-				remote:   https://{{{.PUBLIC}}}/compare/main...bump_fix        
-				remote: 
 				remote: . Processing 1 references        
 				remote: Processed 1 references in total        
 
 				"""
 		}]
 	}
-	gopher_update_ok: {
+	gopher_update_fix: {
 		StepType:        1
 		DoNotTrim:       false
 		InformationOnly: false
-		Name:            "gopher_update_ok"
-		Order:           18
+		Name:            "gopher_update_fix"
+		Order:           21
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:          false
@@ -664,20 +670,57 @@ Steps: {
 			ComparisonOutput: ""
 		}, {
 			Negated:  false
-			CmdStr:   "go get -d -v {{{.PUBLIC}}}@bump_fix"
+			CmdStr:   "GOPROXY=direct go get -d {{{.PUBLIC}}}@latest"
 			ExitCode: 0
 			Output: """
-				go: {{{.PUBLIC}}} bump_fix => v0.0.0-20210516021327-c273d5742f90
-				go: downloading {{{.PUBLIC}}} v0.0.0-20210516021327-c273d5742f90
+				go: {{{.PUBLIC}}} latest => v0.0.0-20060102150405-abcedf12345
+				go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
 
 				"""
 			ComparisonOutput: """
 
-				go: downloading {{{.PUBLIC}}} v0.0.0-20210516021327-c273d5742f90
-				go: {{{.PUBLIC}}} bump_fix => v0.0.0-20210516021327-c273d5742f90
+				go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
+				go: {{{.PUBLIC}}} latest => v0.0.0-20060102150405-abcedf12345
 				"""
 		}]
 	}
+	golist_gopher_2: {
+		StepType:        1
+		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
+		DoNotTrim:       false
+		InformationOnly: true
+		Name:            "golist_gopher_2"
+		Order:           22
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:  false
+			CmdStr:   "go list -m -f {{.Version}} {{{.PUBLIC}}}"
+			ExitCode: 0
+			Output: """
+				v0.0.0-20060102150405-abcedf12345
+
+				"""
+			ComparisonOutput: """
+				v0.0.0-20060102150405-abcedf12345
+
+				"""
+		}]
+	}
+	gopher_run_fix: {
+		StepType:        1
+		DoNotTrim:       false
+		InformationOnly: false
+		Name:            "gopher_run_fix"
+		Order:           23
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:          false
+			CmdStr:           "go run ."
+			ExitCode:         0
+			Output:           ""
+			ComparisonOutput: ""
+		}]
+	}
 }
-Hash: "56560623b8d127d7ac5022951e9b12235f9456b2d590fa70e9cb1321eada231d"
+Hash: "98efc8027e023d99863fe8d8a94d454f723a36f64213b6be470376529f8d2128"
 Delims: ["{{{", "}}}"]

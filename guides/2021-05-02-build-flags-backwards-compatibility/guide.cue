@@ -39,7 +39,7 @@ Scenarios: go115: preguide.#Scenario & {
 
 Terminals: term1: preguide.#Terminal & {
 	Description: "The main terminal"
-	Scenarios: go115: Image: "lala"
+	Scenarios: go115: Image: "playwithgo/go1.15_1.16@sha256:6cea9fd5d2b1316120a40e7d8c2c9e0db0a408bcb80ffbaad36238cf066298ee"
 }
 
 Steps: go115version: preguide.#Command & {
@@ -56,7 +56,7 @@ Steps: go116version: preguide.#Command & {
 
 Steps: go115default: preguide.#Command & {
 	Source: """
-		alias go=\(Defs.go115) 
+		alias go=\(Defs.go115)
 		"""
 }
 
@@ -126,6 +126,20 @@ func main() {
 """#
 }
 
+Steps: gopher_get: preguide.#Command & {
+	Source: """
+\(Defs.cmdgo.get) -d \(Defs.public_mod)@latest
+"""
+}
+
+Steps: golist_gopher_1: preguide.#Command & {
+	InformationOnly: true
+	RandomReplace:   "v0.0.0-\(_#StablePsuedoversionSuffix)"
+	Source:          """
+   go list -m -f {{.Version}} \(Defs.public_mod)
+   """
+}
+
 Steps: gopher_run: preguide.#Command & {
 	Source: """
 \(Defs.cmdgo.run) .
@@ -134,7 +148,7 @@ Steps: gopher_run: preguide.#Command & {
 
 Steps: go116default: preguide.#Command & {
 	Source: """
-alias go=\(Defs.go116) 
+alias go=\(Defs.go116)
 """
 }
 
@@ -157,27 +171,28 @@ func \#(Defs.public_func) {
 Steps: public_bump_commit: preguide.#Command & {
 	Source: """
 cd \(Defs.public_dir)
-\(Defs.git.checkout) -b bump
 \(Defs.git.add) \(Defs.public_go) go.mod
 \(Defs.git.commit) -m 'Bump \(Defs.public) to go1.16'
-\(Defs.git.push) origin bump
+\(Defs.git.push) origin main
 """
 }
 
 Steps: go115default1: preguide.#Command & {
 	Source: """
-		alias go=\(Defs.go115) 
+		alias go=\(Defs.go115)
 		"""
 }
 
-Steps: gopher_update_fail: preguide.#Command & {
+Steps: gopher_update: preguide.#Command & {
 	Source: """
 cd \(Defs.gopher_dir)
-# We launch this in a subshell to assert the status code
-code=$(\(Defs.cmdgo.get) -u -v \(Defs.public_mod)@bump; echo $?)
+GOPROXY=direct \(Defs.cmdgo.get) -d \(Defs.public_mod)@latest
+"""
+}
 
-# Assert that status code is correct or fail
-[ $code == 2 ] || false
+Steps: gopher_run_fail: preguide.#Command & {
+	Source: """
+! \(Defs.cmdgo.run) .
 """
 }
 
@@ -220,16 +235,29 @@ func \#(Defs.public_func) {
 Steps: public_fix_commit: preguide.#Command & {
 	Source: """
 cd \(Defs.public_dir)
-\(Defs.git.checkout) -b bump_fix
 \(Defs.git.add) \(Defs.public_go) \(Defs.public_go116) go.mod
 \(Defs.git.commit) -m 'Fix \(Defs.public) bump to go1.16'
-\(Defs.git.push) origin bump_fix
+\(Defs.git.push) origin main
 """
 }
 
-Steps: gopher_update_ok: preguide.#Command & {
+Steps: gopher_update_fix: preguide.#Command & {
 	Source: """
 cd \(Defs.gopher_dir)
-\(Defs.cmdgo.get) -d -v \(Defs.public_mod)@bump_fix
+GOPROXY=direct \(Defs.cmdgo.get) -d \(Defs.public_mod)@latest
+"""
+}
+
+Steps: golist_gopher_2: preguide.#Command & {
+	InformationOnly: true
+	RandomReplace:   "v0.0.0-\(_#StablePsuedoversionSuffix)"
+	Source:          """
+   go list -m -f {{.Version}} \(Defs.public_mod)
+   """
+}
+
+Steps: gopher_run_fix: preguide.#Command & {
+	Source: """
+\(Defs.cmdgo.run) .
 """
 }

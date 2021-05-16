@@ -44,10 +44,12 @@ func main() {
 }
 
 EOD
+$ go get -d {{{.PUBLIC}}}@latest
+go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
+go: {{{.PUBLIC}}} latest => v0.0.0-20060102150405-abcedf12345
+$ go list -m -f {{.Version}} {{{.PUBLIC}}}
+v0.0.0-20060102150405-abcedf12345
 $ go run .
-go: finding module for package {{{.PUBLIC}}}
-go: downloading {{{.PUBLIC}}} v0.0.0-20210516021259-5911e81d2353
-go: found {{{.PUBLIC}}} in {{{.PUBLIC}}} v0.0.0-20210516021259-5911e81d2353
 $ alias go=go116
 $ cat <<EOD > /home/gopher/public/public.go
 package public
@@ -62,26 +64,19 @@ func DoSomething() {
 }
 EOD
 $ cd /home/gopher/public
-$ git checkout -b bump
-Switched to a new branch 'bump'
 $ git add public.go go.mod
 $ git commit -q -m 'Bump public to go1.16'
-$ git push -q origin bump
-remote: 
-remote: Create a new pull request for 'bump':        
-remote:   https://{{{.PUBLIC}}}/compare/main...bump        
-remote: 
-remote: . Processing 1 references
+$ git push -q origin main
+remote: . Processing 1 references        
 remote: Processed 1 references in total        
 $ alias go=go115
 $ cd /home/gopher/gopher
-$ code=$(go get -u -v {{{.PUBLIC}}}@bump; echo $?)
-go: {{{.PUBLIC}}} bump => v0.0.0-20210516021314-e2f48657c61e
-go: downloading {{{.PUBLIC}}} v0.0.0-20210516021314-e2f48657c61e
-{{{.PUBLIC}}}
+$ GOPROXY=direct go get -d {{{.PUBLIC}}}@latest
+go: {{{.PUBLIC}}} latest => v0.0.0-20210516082250-842dcc186154
+go: downloading {{{.PUBLIC}}} v0.0.0-20210516082250-842dcc186154
+$ go run .
 # {{{.PUBLIC}}}
-../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210516021314-e2f48657c61e/public.go:9:17: undefined: io.Discard
-$ [ $code == 2 ] || false
+../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210516082250-842dcc186154/public.go:9:17: undefined: io.Discard
 $ cat <<EOD > /home/gopher/public/public.go
 // +build !go1.16
 
@@ -111,18 +106,15 @@ func DoSomething() {
 }
 EOD
 $ cd /home/gopher/public
-$ git checkout -b bump_fix
-Switched to a new branch 'bump_fix'
 $ git add public.go public_116.go go.mod
 $ git commit -q -m 'Fix public bump to go1.16'
-$ git push -q origin bump_fix
-remote: 
-remote: Create a new pull request for 'bump_fix':        
-remote:   https://{{{.PUBLIC}}}/compare/main...bump_fix        
-remote: 
+$ git push -q origin main
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
 $ cd /home/gopher/gopher
-$ go get -d -v {{{.PUBLIC}}}@bump_fix
-go: {{{.PUBLIC}}} bump_fix => v0.0.0-20210516021327-c273d5742f90
-go: downloading {{{.PUBLIC}}} v0.0.0-20210516021327-c273d5742f90
+$ GOPROXY=direct go get -d {{{.PUBLIC}}}@latest
+go: {{{.PUBLIC}}} latest => v0.0.0-20060102150405-abcedf12345
+go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
+$ go list -m -f {{.Version}} {{{.PUBLIC}}}
+v0.0.0-20060102150405-abcedf12345
+$ go run .

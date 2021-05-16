@@ -10,15 +10,15 @@ _By [Marcos Nils](https://twitter.com/marcosnils), [Docker Captain](https://www.
 
 Sometimes, when a new `go` version is released, it also ships with a bunch of changes and really interesting features on the standard library.
 As the time of this article, [go 1.16](https://golang.org/doc/go1.16) has been released around two months ago which introduces some changes and
-new features into the [core library](https://golang.org/doc/go1.16#library) like the new `io.FS` interface, the `go:embed` directive amongst others. 
+new features into the [core library](https://golang.org/doc/go1.16#library) like the new `io.FS` interface, the `go:embed` directive amongst others.
 
 As a module author, how could I introduce these new features and at the same time provide some guarantees that
 my module can still support the last N releases of go?
 
 This guide explains how to deal with situations where you want to use new features of recent versions of `go`
-and at the same time you don't want to force downstream dependecies to upgrade. In this case we'll be using 
+and at the same time you don't want to force downstream dependecies to upgrade. In this case we'll be using
 conditional compilation through build tags in a real case scenario by using `go` 1.15 and 1.16 new `io.FS`
-package respectively. 
+package respectively.
 
 
 ### A simple go 1.15 program using ioutil.Discard
@@ -63,6 +63,10 @@ Create an initial version of a `main` package that uses the previous public modu
 {{{ step "gopher_go_initial" }}}
 
 
+Get the initial version of the `{{{.gopher}}}` module:
+
+{{{ step "gopher_get" }}}
+
 Now, we'll run the `{{{ .gopher }}}` module `main` package:
 
 {{{ step "gopher_run" }}}
@@ -89,17 +93,20 @@ using the `go` 1.16 new package:
 {{{ step "public_bump_commit"}}}
 
 
-Let's go back to our `{{{ .gopher }}}` module in `go` 1.15 and try to fetch
-the latest version of the `{{{ .public }}}` dependecy and see what happens
+Let's go back to our `{{{ .gopher }}}` module in `go` 1.15, fetch the latest
+version of the `{{{ .public }}}` dependecy and see what happens when we try and
+run again:
 
 {{{ step "go115default1" }}}
 
-{{{ step "gopher_update_fail" }}}
+{{{ step "gopher_update" }}}
 
+{{{ step "gopher_run_fail" }}}
 
-As you can see, when trying to bump our `{{[ .gopher ]}}` project, we got an 
-error because in our case, we're still using `go` 1.15 in the gopher project which
-doesn't support the new `io.Discard` package.
+As you can see, when trying to run our `{{{ .gopher }}}` project using the
+latest `{{{.public}}}`, we got an error because in our case, we're still using
+`go` 1.15 in the gopher project which doesn't support the new `io.Discard`
+package.
 
 How do we handle these situations where we shouldn't force our clients to update?
 The right approach to tackle this is by using [build constraints](https://pkg.go.dev/go/build#hdr-Build_Constraints) so our `{{{ .public }}}`
@@ -108,7 +115,7 @@ clients can build their project regardless of the `go` version they're using
 
 ### Adding `build` tags to our `{{{ .public }}}` project
 
-Let's go ahead and modify our `{{{ .public }}}` project so it now uses the 
+Let's go ahead and modify our `{{{ .public }}}` project so it now uses the
 `// +build 1.16` tag.
 
 First we rollback the changes to our original file to keep using the `ioutil.Discard`
@@ -116,8 +123,7 @@ pacage for `go` < 1.16 clients
 
 {{{ step "public_rollback_mod" }}}
 
-
-Additionally, we create a new file which has the correct build tag, so 
+Additionally, we create a new file which has the correct build tag, so
 newer clients can make use of the new package
 
 {{{ step "public_add_buildtag" }}}
@@ -128,16 +134,18 @@ Let's now publish our fixed module
 
 
 Now, we can go ahead and update our `{{{ .gopher }}}` without problems with the
-benefit that `go` 1.16 clients and future clients will be able to use make 
+benefit that `go` 1.16 clients and future clients will be able to use make
 use of the newer `go` features and packages.
 
-{{{ step "gopher_update_ok" }}}
+{{{ step "gopher_update_fix" }}}
+
+{{{ step "gopher_run_fix" }}}
 
 
 ### Conclusion
 
 This guide serves as an example on how to leverage on [build constraints](https://pkg.go.dev/go/build#hdr-Build_Constraints)
-to provide a backwards compatbile module to your clients. Build constraints are a very 
+to provide a backwards compatbile module to your clients. Build constraints are a very
 powerful pattern to achieve other tasks in `go`. We encourage the reader to check the official docs
 for further examples.
 
