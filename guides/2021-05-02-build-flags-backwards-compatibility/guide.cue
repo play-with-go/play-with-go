@@ -230,6 +230,6 @@ cd \(Defs.public_dir)
 Steps: gopher_update_ok: preguide.#Command & {
 	Source: """
 cd \(Defs.gopher_dir)
-\(Defs.cmdgo.get) -u -v \(Defs.public_mod)@bump_fix
+\(Defs.cmdgo.get) -d -v \(Defs.public_mod)@bump_fix
 """
 }

@@ -46,8 +46,8 @@ func main() {
 EOD
 $ go run .
 go: finding module for package {{{.PUBLIC}}}
-go: downloading {{{.PUBLIC}}} v0.0.0-20210510022515-3b5a503cc6e3
-go: found {{{.PUBLIC}}} in {{{.PUBLIC}}} v0.0.0-20210510022515-3b5a503cc6e3
+go: downloading {{{.PUBLIC}}} v0.0.0-20210516021259-5911e81d2353
+go: found {{{.PUBLIC}}} in {{{.PUBLIC}}} v0.0.0-20210516021259-5911e81d2353
 $ alias go=go116
 $ cat <<EOD > /home/gopher/public/public.go
 package public
@@ -76,11 +76,11 @@ remote: Processed 1 references in total
 $ alias go=go115
 $ cd /home/gopher/gopher
 $ code=$(go get -u -v {{{.PUBLIC}}}@bump; echo $?)
-go: {{{.PUBLIC}}} bump => v0.0.0-20210510022530-3dbd6db9c7be
-go: downloading {{{.PUBLIC}}} v0.0.0-20210510022530-3dbd6db9c7be
+go: {{{.PUBLIC}}} bump => v0.0.0-20210516021314-e2f48657c61e
+go: downloading {{{.PUBLIC}}} v0.0.0-20210516021314-e2f48657c61e
 {{{.PUBLIC}}}
 # {{{.PUBLIC}}}
-../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210510022530-3dbd6db9c7be/public.go:9:17: undefined: io.Discard
+../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210516021314-e2f48657c61e/public.go:9:17: undefined: io.Discard
 $ [ $code == 2 ] || false
 $ cat <<EOD > /home/gopher/public/public.go
 // +build !go1.16
@@ -123,7 +123,6 @@ remote:
 remote: . Processing 1 references        
 remote: Processed 1 references in total        
 $ cd /home/gopher/gopher
-$ go get -u -v {{{.PUBLIC}}}@bump_fix
-go: {{{.PUBLIC}}} bump_fix => v0.0.0-20210510022545-65e54e92a856
-go: downloading {{{.PUBLIC}}} v0.0.0-20210510022545-65e54e92a856
-{{{.PUBLIC}}}
+$ go get -d -v {{{.PUBLIC}}}@bump_fix
+go: {{{.PUBLIC}}} bump_fix => v0.0.0-20210516021327-c273d5742f90
+go: downloading {{{.PUBLIC}}} v0.0.0-20210516021327-c273d5742f90

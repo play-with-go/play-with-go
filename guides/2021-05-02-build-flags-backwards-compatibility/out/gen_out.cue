@@ -371,14 +371,14 @@ Steps: {
 			ExitCode: 0
 			Output: """
 				go: finding module for package {{{.PUBLIC}}}
-				go: downloading {{{.PUBLIC}}} v0.0.0-20210510022515-3b5a503cc6e3
-				go: found {{{.PUBLIC}}} in {{{.PUBLIC}}} v0.0.0-20210510022515-3b5a503cc6e3
+				go: downloading {{{.PUBLIC}}} v0.0.0-20210516021259-5911e81d2353
+				go: found {{{.PUBLIC}}} in {{{.PUBLIC}}} v0.0.0-20210516021259-5911e81d2353
 
 				"""
 			ComparisonOutput: """
 				go: finding module for package {{{.PUBLIC}}}
-				go: downloading {{{.PUBLIC}}} v0.0.0-20210510022515-3b5a503cc6e3
-				go: found {{{.PUBLIC}}} in {{{.PUBLIC}}} v0.0.0-20210510022515-3b5a503cc6e3
+				go: downloading {{{.PUBLIC}}} v0.0.0-20210516021259-5911e81d2353
+				go: found {{{.PUBLIC}}} in {{{.PUBLIC}}} v0.0.0-20210516021259-5911e81d2353
 
 				"""
 		}]
@@ -515,19 +515,19 @@ Steps: {
 			CmdStr:   "code=$(go get -u -v {{{.PUBLIC}}}@bump; echo $?)"
 			ExitCode: 0
 			Output: """
-				go: {{{.PUBLIC}}} bump => v0.0.0-20210510022530-3dbd6db9c7be
-				go: downloading {{{.PUBLIC}}} v0.0.0-20210510022530-3dbd6db9c7be
+				go: {{{.PUBLIC}}} bump => v0.0.0-20210516021314-e2f48657c61e
+				go: downloading {{{.PUBLIC}}} v0.0.0-20210516021314-e2f48657c61e
 				{{{.PUBLIC}}}
 				# {{{.PUBLIC}}}
-				../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210510022530-3dbd6db9c7be/public.go:9:17: undefined: io.Discard
+				../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210516021314-e2f48657c61e/public.go:9:17: undefined: io.Discard
 
 				"""
 			ComparisonOutput: """
-				go: {{{.PUBLIC}}} bump => v0.0.0-20210510022530-3dbd6db9c7be
-				go: downloading {{{.PUBLIC}}} v0.0.0-20210510022530-3dbd6db9c7be
+				go: {{{.PUBLIC}}} bump => v0.0.0-20210516021314-e2f48657c61e
+				go: downloading {{{.PUBLIC}}} v0.0.0-20210516021314-e2f48657c61e
 				{{{.PUBLIC}}}
 				# {{{.PUBLIC}}}
-				../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210510022530-3dbd6db9c7be/public.go:9:17: undefined: io.Discard
+				../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210516021314-e2f48657c61e/public.go:9:17: undefined: io.Discard
 
 				"""
 		}, {
@@ -664,22 +664,20 @@ Steps: {
 			ComparisonOutput: ""
 		}, {
 			Negated:  false
-			CmdStr:   "go get -u -v {{{.PUBLIC}}}@bump_fix"
+			CmdStr:   "go get -d -v {{{.PUBLIC}}}@bump_fix"
 			ExitCode: 0
 			Output: """
-				go: {{{.PUBLIC}}} bump_fix => v0.0.0-20210510022545-65e54e92a856
-				go: downloading {{{.PUBLIC}}} v0.0.0-20210510022545-65e54e92a856
-				{{{.PUBLIC}}}
+				go: {{{.PUBLIC}}} bump_fix => v0.0.0-20210516021327-c273d5742f90
+				go: downloading {{{.PUBLIC}}} v0.0.0-20210516021327-c273d5742f90
 
 				"""
 			ComparisonOutput: """
 
-				go: downloading {{{.PUBLIC}}} v0.0.0-20210510022545-65e54e92a856
-				go: {{{.PUBLIC}}} bump_fix => v0.0.0-20210510022545-65e54e92a856
-				{{{.PUBLIC}}}
+				go: downloading {{{.PUBLIC}}} v0.0.0-20210516021327-c273d5742f90
+				go: {{{.PUBLIC}}} bump_fix => v0.0.0-20210516021327-c273d5742f90
 				"""
 		}]
 	}
 }
-Hash: "a65f6315f10a0cd883e90f8c1ead7bcc18b6a10a92b5d05e6009b80d7a12e981"
+Hash: "56560623b8d127d7ac5022951e9b12235f9456b2d590fa70e9cb1321eada231d"
 Delims: ["{{{", "}}}"]

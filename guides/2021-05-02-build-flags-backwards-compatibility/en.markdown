@@ -10,23 +10,20 @@ _By [Marcos Nils](https://twitter.com/marcosnils), [Docker Captain](https://www.
 
 Sometimes, when a new `go` version is released, it also ships with a bunch of changes and really interesting features on the standard library.
 As the time of this article, [go 1.16](https://golang.org/doc/go1.16) has been released around two months ago which introduces some changes and
-new features into the [core library](https://golang.org/doc/go1.16#library) like the new `io.FS` interface, the `embed` directive amongst others. 
+new features into the [core library](https://golang.org/doc/go1.16#library) like the new `io.FS` interface, the `go:embed` directive amongst others. 
 
-It's usually common to see developers wanting to adopt all these new features and refactor their code so they can take
-advantage of these interfaces to make their applications and libraries more modular, testable and sometimes
-even more performant. However, it's important to understand how these changes, if not done carefuly, can
-sometimes break downstream dependencies given that in the case of `go`, when you're importing a third party module,
-you're forced to build your project with the latest version of the complete dependency tree. 
+As a module author, how could I introduce these new features and at the same time provide some guarantees that
+my module can still support the last N releases of go?
 
 This guide explains how to deal with situations where you want to use new features of recent versions of `go`
 and at the same time you don't want to force downstream dependecies to upgrade. In this case we'll be using 
-conditional compilation through `go build` tags in a real case scenario by using `go` 1.15 and 1.16 new `io.FS`
+conditional compilation through build tags in a real case scenario by using `go` 1.15 and 1.16 new `io.FS`
 package respectively. 
 
 
 ### A simple go 1.15 program using ioutil.Discard
 
-Let's start by checking our current `go` 1.15 version:
+Verifying that we're using `go` 1.15 version:
 
 {{{ step "go115version" }}}
 
@@ -101,11 +98,11 @@ the latest version of the `{{{ .public }}}` dependecy and see what happens
 
 
 As you can see, when trying to bump our `{{[ .gopher ]}}` project, we got an 
-error because in our case, we're still using `go` 1.15 in our project which
+error because in our case, we're still using `go` 1.15 in the gopher project which
 doesn't support the new `io.Discard` package.
 
 How do we handle these situations where we shouldn't force our clients to update?
-The right approach to tackle this is by using `build tag` so our `{{{ .public }}}`
+The right approach to tackle this is by using [build constraints](https://pkg.go.dev/go/build#hdr-Build_Constraints) so our `{{{ .public }}}`
 clients can build their project regardless of the `go` version they're using
 
 
@@ -139,10 +136,12 @@ use of the newer `go` features and packages.
 
 ### Conclusion
 
-This guide has provided you with a brief introduction to handling private modules.
+This guide serves as an example on how to leverage on [build constraints](https://pkg.go.dev/go/build#hdr-Build_Constraints)
+to provide a backwards compatbile module to your clients. Build constraints are a very 
+powerful pattern to achieve other tasks in `go`. We encourage the reader to check the official docs
+for further examples.
 
 As a next step you might like to consider:
 
-* [Developer tools as module dependencies](/tools-as-dependencies_go115_en/)
-* [How to use and tweak Staticcheck](/using-staticcheck_go115_en/)
-* [Installing Go](/installing-go_go115_en/)
+* [Wokring with private modules](/working-with-private-modules_go115_en/)
+* [Retract module versions](/retract-module-versions_go116_en/)

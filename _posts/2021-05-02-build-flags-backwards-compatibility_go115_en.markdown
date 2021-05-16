@@ -12,23 +12,20 @@ _By [Marcos Nils](https://twitter.com/marcosnils), [Docker Captain](https://www.
 
 Sometimes, when a new `go` version is released, it also ships with a bunch of changes and really interesting features on the standard library.
 As the time of this article, [go 1.16](https://golang.org/doc/go1.16) has been released around two months ago which introduces some changes and
-new features into the [core library](https://golang.org/doc/go1.16#library) like the new `io.FS` interface, the `embed` directive amongst others. 
+new features into the [core library](https://golang.org/doc/go1.16#library) like the new `io.FS` interface, the `go:embed` directive amongst others. 
 
-It's usually common to see developers wanting to adopt all these new features and refactor their code so they can take
-advantage of these interfaces to make their applications and libraries more modular, testable and sometimes
-even more performant. However, it's important to understand how these changes, if not done carefuly, can
-sometimes break downstream dependencies given that in the case of `go`, when you're importing a third party module,
-you're forced to build your project with the latest version of the complete dependency tree. 
+As a module author, how could I introduce these new features and at the same time provide some guarantees that
+my module can still support the last N releases of go?
 
 This guide explains how to deal with situations where you want to use new features of recent versions of `go`
 and at the same time you don't want to force downstream dependecies to upgrade. In this case we'll be using 
-conditional compilation through `go build` tags in a real case scenario by using `go` 1.15 and 1.16 new `io.FS`
+conditional compilation through build tags in a real case scenario by using `go` 1.15 and 1.16 new `io.FS`
 package respectively. 
 
 
 ### A simple go 1.15 program using ioutil.Discard
 
-Let's start by checking our current `go` 1.15 version:
+Verifying that we're using `go` 1.15 version:
 
 <pre data-command-src="Z28xMTUgdmVyc2lvbgo="><code class="language-.term1">$ go115 version
 go version go1.15.8 linux/amd64
@@ -111,8 +108,8 @@ Now, we'll run the `gopher` module `main` package:
 
 <pre data-command-src="Z28gcnVuIC4K"><code class="language-.term1">$ go run .
 go: finding module for package &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125;
-go: downloading &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125; v0.0.0-20210510022515-3b5a503cc6e3
-go: found &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125; in &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125; v0.0.0-20210510022515-3b5a503cc6e3
+go: downloading &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125; v0.0.0-20210516021259-5911e81d2353
+go: found &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125; in &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125; v0.0.0-20210516021259-5911e81d2353
 </code></pre>
 
 
@@ -167,21 +164,21 @@ the latest version of the `public` dependecy and see what happens
 
 <pre data-command-src="Y2QgL2hvbWUvZ29waGVyL2dvcGhlcgpjb2RlPSQoZ28gZ2V0IC11IC12IHt7ey5QVUJMSUN9fX1AYnVtcDsgZWNobyAkPykKWyAkY29kZSA9PSAyIF0gfHwgZmFsc2UK"><code class="language-.term1">$ cd /home/gopher/gopher
 $ code=$(go get -u -v &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125;@bump; echo $?)
-go: &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125; bump =&gt; v0.0.0-20210510022530-3dbd6db9c7be
-go: downloading &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125; v0.0.0-20210510022530-3dbd6db9c7be
+go: &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125; bump =&gt; v0.0.0-20210516021314-e2f48657c61e
+go: downloading &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125; v0.0.0-20210516021314-e2f48657c61e
 &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125;
 # &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125;
-../go/pkg/mod/&#123;&#123;&#123;.PUBLIC&#125;&#125;&#125;@v0.0.0-20210510022530-3dbd6db9c7be/public.go:9:17: undefined: io.Discard
+../go/pkg/mod/&#123;&#123;&#123;.PUBLIC&#125;&#125;&#125;@v0.0.0-20210516021314-e2f48657c61e/public.go:9:17: undefined: io.Discard
 $ [ $code == 2 ] || false
 </code></pre>
 
 
 As you can see, when trying to bump our `{{[ .gopher ]}}` project, we got an 
-error because in our case, we're still using `go` 1.15 in our project which
+error because in our case, we're still using `go` 1.15 in the gopher project which
 doesn't support the new `io.Discard` package.
 
 How do we handle these situations where we shouldn't force our clients to update?
-The right approach to tackle this is by using `build tag` so our `public`
+The right approach to tackle this is by using [build constraints](https://pkg.go.dev/go/build#hdr-Build_Constraints) so our `public`
 clients can build their project regardless of the `go` version they're using
 
 
@@ -244,11 +241,10 @@ Now, we can go ahead and update our `gopher` without problems with the
 benefit that `go` 1.16 clients and future clients will be able to use make 
 use of the newer `go` features and packages.
 
-<pre data-command-src="Y2QgL2hvbWUvZ29waGVyL2dvcGhlcgpnbyBnZXQgLXUgLXYge3t7LlBVQkxJQ319fUBidW1wX2ZpeAo="><code class="language-.term1">$ cd /home/gopher/gopher
-$ go get -u -v &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125;@bump_fix
-go: &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125; bump_fix =&gt; v0.0.0-20210510022545-65e54e92a856
-go: downloading &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125; v0.0.0-20210510022545-65e54e92a856
-&#123;&#123;&#123;.PUBLIC&#125;&#125;&#125;
+<pre data-command-src="Y2QgL2hvbWUvZ29waGVyL2dvcGhlcgpnbyBnZXQgLWQgLXYge3t7LlBVQkxJQ319fUBidW1wX2ZpeAo="><code class="language-.term1">$ cd /home/gopher/gopher
+$ go get -d -v &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125;@bump_fix
+go: &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125; bump_fix =&gt; v0.0.0-20210516021327-c273d5742f90
+go: downloading &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125; v0.0.0-20210516021327-c273d5742f90
 </code></pre>
 
 
@@ -258,7 +254,6 @@ This guide has provided you with a brief introduction to handling private module
 
 As a next step you might like to consider:
 
-* [Developer tools as module dependencies](/tools-as-dependencies_go115_en/)
-* [How to use and tweak Staticcheck](/using-staticcheck_go115_en/)
-* [Installing Go](/installing-go_go115_en/)
+* [Wokring with private modules](/working-with-private-modules_go115_en/)
+* [Retract module versions](/retract-module-versions_go116_en/)
 <script>let pageGuide="2021-05-02-build-flags-backwards-compatibility"; let pageLanguage="en"; let pageScenario="go115";</script>
