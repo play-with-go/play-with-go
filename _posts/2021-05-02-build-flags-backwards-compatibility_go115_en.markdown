@@ -22,6 +22,14 @@ and at the same time you don't want to force downstream dependecies to upgrade. 
 conditional compilation through build tags in a real case scenario by using `go` 1.15 and 1.16 new `io.FS`
 package respectively.
 
+Here's a high level overview of the steps you'll accomplish following this guide:
+
+- Create a `public` module that contains and exports a `DoSomething()` function
+- Create a `gopher` module that uses the `public`module
+- Bump the `public` module to use `go` 1.16 features without any considerations
+- Try updating the `gopher` module and show the observed errors
+- Fix the `public` module by adding required buid tags.
+
 
 ### A simple go 1.15 program using ioutil.Discard
 
