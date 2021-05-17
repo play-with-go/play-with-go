@@ -1,0 +1,120 @@
+$ go115 version
+go version go1.15.8 linux/amd64
+$ go116 version
+go version go1.16.3 linux/amd64
+$ alias go=go115
+$ mkdir /home/gopher/public
+$ cd /home/gopher/public
+$ go mod init {{{.PUBLIC}}}
+go: creating new go.mod: module {{{.PUBLIC}}}
+$ git init -q
+$ git remote add origin https://{{{.PUBLIC}}}.git
+$ cat <<EOD > /home/gopher/public/public.go
+package public
+
+import (
+    "fmt"
+    "io/ioutil"
+)
+
+func DoSomething() {
+    fmt.Fprintf(ioutil.Discard, "This doesn't print anything")
+}
+EOD
+$ git add public.go go.mod
+$ git commit -q -m 'Initial commit of public module'
+$ git push -q origin main
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ [ "$(git status --porcelain)" == "" ] || (git status && false)
+$ mkdir /home/gopher/gopher
+$ cd /home/gopher/gopher
+$ go mod init gopher
+go: creating new go.mod: module gopher
+$ cat <<EOD > /home/gopher/gopher/gopher.go
+package main
+
+import (
+
+"{{{.PUBLIC}}}"
+)
+
+func main() {
+    public.DoSomething()
+}
+
+EOD
+$ go get -d {{{.PUBLIC}}}@latest
+go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
+go: {{{.PUBLIC}}} latest => v0.0.0-20060102150405-abcedf12345
+$ go list -m -f {{.Version}} {{{.PUBLIC}}}
+v0.0.0-20060102150405-abcedf12345
+$ go run .
+$ alias go=go116
+$ cat <<EOD > /home/gopher/public/public.go
+package public
+
+import (
+    "fmt"
+    "io"
+)
+
+func DoSomething() {
+    fmt.Fprintf(io.Discard, "This doesn't print anything")
+}
+EOD
+$ cd /home/gopher/public
+$ git add public.go go.mod
+$ git commit -q -m 'Bump public to go1.16'
+$ git push -q origin main
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ alias go=go115
+$ cd /home/gopher/gopher
+$ GOPROXY=direct go get -d {{{.PUBLIC}}}@latest
+go: {{{.PUBLIC}}} latest => v0.0.0-20210517052223-fcd4ca0bf3d0
+go: downloading {{{.PUBLIC}}} v0.0.0-20210517052223-fcd4ca0bf3d0
+$ go run .
+# {{{.PUBLIC}}}
+../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210517052223-fcd4ca0bf3d0/public.go:9:17: undefined: io.Discard
+$ cat <<EOD > /home/gopher/public/public.go
+// +build !go1.16
+
+package public
+
+import (
+    "fmt"
+    "io/ioutil"
+)
+
+func DoSomething() {
+    fmt.Fprintf(ioutil.Discard, "This doesn't print anything")
+}
+EOD
+$ cat <<EOD > /home/gopher/public/public_116.go
+// +build go.1.16
+
+package public
+
+import (
+    "fmt"
+    "io"
+)
+
+func DoSomething() {
+    fmt.Fprintf(io.Discard, "This doesn't print anything")
+}
+EOD
+$ cd /home/gopher/public
+$ git add public.go public_116.go go.mod
+$ git commit -q -m 'Fix public bump to go1.16'
+$ git push -q origin main
+remote: . Processing 1 references        
+remote: Processed 1 references in total        
+$ cd /home/gopher/gopher
+$ GOPROXY=direct go get -d {{{.PUBLIC}}}@latest
+go: {{{.PUBLIC}}} latest => v0.0.0-20060102150405-abcedf12345
+go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
+$ go list -m -f {{.Version}} {{{.PUBLIC}}}
+v0.0.0-20060102150405-abcedf12345
+$ go run .

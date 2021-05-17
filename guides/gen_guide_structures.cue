@@ -287,6 +287,35 @@ package guides
 	Networks: ["playwithgo_pwg"]
 	Env: []
 }
+"2021-05-02-build-flags-backwards-compatibility": {
+	Delims: ["{{{", "}}}"]
+	Presteps: [{
+		Package: "github.com/play-with-go/gitea"
+		Path:    "/newuser"
+		Args: {
+			Repos: [{
+				Pattern: "public"
+				Private: false
+				Var:     "PUBLIC"
+			}]
+		}
+	}]
+	Terminals: [{
+		Name:        "term1"
+		Description: "The main terminal"
+		Scenarios: {
+			go115: {
+				Image: "playwithgo/go1.15_1.16@sha256:38ee32afdd785e5f1d9e63033ce5d64cbd098207ed6506669105db97c2dbe9a1"
+			}
+		}
+	}]
+	Scenarios: [{
+		Name:        "go115"
+		Description: "Go 1.15"
+	}]
+	Networks: ["playwithgo_pwg"]
+	Env: []
+}
 "2021-05-06-gosheffield-demo": {
 	Delims: ["{{{", "}}}"]
 	Terminals: [{
