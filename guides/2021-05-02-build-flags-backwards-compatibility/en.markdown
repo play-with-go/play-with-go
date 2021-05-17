@@ -8,17 +8,16 @@ category: Next steps
 
 _By [Marcos Nils](https://twitter.com/marcosnils), [Docker Captain](https://www.docker.com/captains/marcos-lilljedahl), Hashicorp Ambassador, Go developer, and co-creator of `play-with-go.dev`._
 
-Sometimes, when a new `go` version is released, it also ships with a bunch of changes and really interesting features on the standard library.
-As the time of this article, [go 1.16](https://golang.org/doc/go1.16) has been released around two months ago which introduces some changes and
+Sometimes, when a new `go` version is released, it also ships with a bunch of changes and really interesting features in the standard library.
+At the time of this article, [go 1.16](https://golang.org/doc/go1.16) has been released around two months ago which introduces some changes and
 new features into the [core library](https://golang.org/doc/go1.16#library) like the new `io.FS` interface, the `go:embed` directive amongst others.
 
 As a module author, how could I introduce these new features and at the same time provide some guarantees that
 my module can still support the last N releases of go?
 
 This guide explains how to deal with situations where you want to use new features of recent versions of `go`
-and at the same time you don't want to force downstream dependecies to upgrade. In this case we'll be using
-conditional compilation through build tags in a real case scenario by using `go` 1.15 and 1.16 new `io.FS`
-package respectively.
+and at the same time you don't want to force downstream dependats to upgrade. In this case we'll be using
+conditional compilation through build tags in a real life scenario by using 1.16's new io.FS whilst retaining compatibility for users of `go` 1.15.
 
 Here's a high level overview of the steps you'll accomplish following this guide:
 
