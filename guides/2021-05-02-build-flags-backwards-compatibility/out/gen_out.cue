@@ -114,7 +114,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15_1.16@sha256:6cea9fd5d2b1316120a40e7d8c2c9e0db0a408bcb80ffbaad36238cf066298ee"
+			Image: "playwithgo/go1.15_1.16@sha256:38ee32afdd785e5f1d9e63033ce5d64cbd098207ed6506669105db97c2dbe9a1"
 		}
 	}
 }]
@@ -530,14 +530,14 @@ Steps: {
 			CmdStr:   "GOPROXY=direct go get -d {{{.PUBLIC}}}@latest"
 			ExitCode: 0
 			Output: """
-				go: {{{.PUBLIC}}} latest => v0.0.0-20210516082250-842dcc186154
-				go: downloading {{{.PUBLIC}}} v0.0.0-20210516082250-842dcc186154
+				go: {{{.PUBLIC}}} latest => v0.0.0-20210517052223-fcd4ca0bf3d0
+				go: downloading {{{.PUBLIC}}} v0.0.0-20210517052223-fcd4ca0bf3d0
 
 				"""
 			ComparisonOutput: """
 
-				go: downloading {{{.PUBLIC}}} v0.0.0-20210516082250-842dcc186154
-				go: {{{.PUBLIC}}} latest => v0.0.0-20210516082250-842dcc186154
+				go: downloading {{{.PUBLIC}}} v0.0.0-20210517052223-fcd4ca0bf3d0
+				go: {{{.PUBLIC}}} latest => v0.0.0-20210517052223-fcd4ca0bf3d0
 				"""
 		}]
 	}
@@ -554,12 +554,12 @@ Steps: {
 			ExitCode: 2
 			Output: """
 				# {{{.PUBLIC}}}
-				../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210516082250-842dcc186154/public.go:9:17: undefined: io.Discard
+				../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210517052223-fcd4ca0bf3d0/public.go:9:17: undefined: io.Discard
 
 				"""
 			ComparisonOutput: """
 				# {{{.PUBLIC}}}
-				../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210516082250-842dcc186154/public.go:9:17: undefined: io.Discard
+				../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210517052223-fcd4ca0bf3d0/public.go:9:17: undefined: io.Discard
 
 				"""
 		}]
@@ -722,5 +722,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "98efc8027e023d99863fe8d8a94d454f723a36f64213b6be470376529f8d2128"
+Hash: "087597cb2f6d2340581cfe8324db65938ef581566661e67cf19e93cffaefbf16"
 Delims: ["{{{", "}}}"]

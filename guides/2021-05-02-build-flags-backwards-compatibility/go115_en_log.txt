@@ -72,11 +72,11 @@ remote: Processed 1 references in total
 $ alias go=go115
 $ cd /home/gopher/gopher
 $ GOPROXY=direct go get -d {{{.PUBLIC}}}@latest
-go: {{{.PUBLIC}}} latest => v0.0.0-20210516082250-842dcc186154
-go: downloading {{{.PUBLIC}}} v0.0.0-20210516082250-842dcc186154
+go: {{{.PUBLIC}}} latest => v0.0.0-20210517052223-fcd4ca0bf3d0
+go: downloading {{{.PUBLIC}}} v0.0.0-20210517052223-fcd4ca0bf3d0
 $ go run .
 # {{{.PUBLIC}}}
-../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210516082250-842dcc186154/public.go:9:17: undefined: io.Discard
+../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210517052223-fcd4ca0bf3d0/public.go:9:17: undefined: io.Discard
 $ cat <<EOD > /home/gopher/public/public.go
 // +build !go1.16
 

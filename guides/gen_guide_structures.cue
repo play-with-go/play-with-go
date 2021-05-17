@@ -305,7 +305,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15_1.16@sha256:6cea9fd5d2b1316120a40e7d8c2c9e0db0a408bcb80ffbaad36238cf066298ee"
+				Image: "playwithgo/go1.15_1.16@sha256:38ee32afdd785e5f1d9e63033ce5d64cbd098207ed6506669105db97c2dbe9a1"
 			}
 		}
 	}]
