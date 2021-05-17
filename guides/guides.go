@@ -6,4 +6,4 @@
 
 package guide
 
-//go:generate go run github.com/play-with-go/preguide/cmd/preguide gen -run backwards -out ../_posts
+//go:generate go run github.com/play-with-go/preguide/cmd/preguide gen -out ../_posts
