@@ -530,14 +530,36 @@ Steps: {
 			CmdStr:   "GOPROXY=direct go get -d {{{.PUBLIC}}}@latest"
 			ExitCode: 0
 			Output: """
-				go: {{{.PUBLIC}}} latest => v0.0.0-20210517052223-fcd4ca0bf3d0
-				go: downloading {{{.PUBLIC}}} v0.0.0-20210517052223-fcd4ca0bf3d0
+				go: {{{.PUBLIC}}} latest => v0.0.0-20060102150405-abcedf12345
+				go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
 
 				"""
 			ComparisonOutput: """
 
-				go: downloading {{{.PUBLIC}}} v0.0.0-20210517052223-fcd4ca0bf3d0
-				go: {{{.PUBLIC}}} latest => v0.0.0-20210517052223-fcd4ca0bf3d0
+				go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
+				go: {{{.PUBLIC}}} latest => v0.0.0-20060102150405-abcedf12345
+				"""
+		}]
+	}
+	golist_gopher_2: {
+		StepType:        1
+		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
+		DoNotTrim:       false
+		InformationOnly: true
+		Name:            "golist_gopher_2"
+		Order:           17
+		Terminal:        "term1"
+		Stmts: [{
+			Negated:  false
+			CmdStr:   "go list -m -f {{.Version}} {{{.PUBLIC}}}"
+			ExitCode: 0
+			Output: """
+				v0.0.0-20060102150405-abcedf12345
+
+				"""
+			ComparisonOutput: """
+				v0.0.0-20060102150405-abcedf12345
+
 				"""
 		}]
 	}
@@ -546,7 +568,7 @@ Steps: {
 		DoNotTrim:       false
 		InformationOnly: false
 		Name:            "gopher_run_fail"
-		Order:           17
+		Order:           18
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:  true
@@ -554,12 +576,12 @@ Steps: {
 			ExitCode: 2
 			Output: """
 				# {{{.PUBLIC}}}
-				../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210517052223-fcd4ca0bf3d0/public.go:9:17: undefined: io.Discard
+				../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20060102150405-abcedf12345/public.go:9:17: undefined: io.Discard
 
 				"""
 			ComparisonOutput: """
 				# {{{.PUBLIC}}}
-				../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20210517052223-fcd4ca0bf3d0/public.go:9:17: undefined: io.Discard
+				../go/pkg/mod/{{{.PUBLIC}}}@v0.0.0-20060102150405-abcedf12345/public.go:9:17: undefined: io.Discard
 
 				"""
 		}]
@@ -567,7 +589,7 @@ Steps: {
 	public_rollback_mod: {
 		StepType: 2
 		Name:     "public_rollback_mod"
-		Order:    18
+		Order:    19
 		Terminal: "term1"
 		Language: "go"
 		Renderer: {
@@ -592,7 +614,7 @@ Steps: {
 	public_add_buildtag: {
 		StepType: 2
 		Name:     "public_add_buildtag"
-		Order:    19
+		Order:    20
 		Terminal: "term1"
 		Language: "go"
 		Renderer: {
@@ -619,7 +641,7 @@ Steps: {
 		DoNotTrim:       false
 		InformationOnly: false
 		Name:            "public_fix_commit"
-		Order:           20
+		Order:           21
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:          false
@@ -660,7 +682,7 @@ Steps: {
 		DoNotTrim:       false
 		InformationOnly: false
 		Name:            "gopher_update_fix"
-		Order:           21
+		Order:           22
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:          false
@@ -684,13 +706,13 @@ Steps: {
 				"""
 		}]
 	}
-	golist_gopher_2: {
+	golist_gopher_3: {
 		StepType:        1
 		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
 		DoNotTrim:       false
 		InformationOnly: true
-		Name:            "golist_gopher_2"
-		Order:           22
+		Name:            "golist_gopher_3"
+		Order:           23
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:  false
@@ -711,7 +733,7 @@ Steps: {
 		DoNotTrim:       false
 		InformationOnly: false
 		Name:            "gopher_run_fix"
-		Order:           23
+		Order:           24
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:          false
@@ -722,5 +744,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "087597cb2f6d2340581cfe8324db65938ef581566661e67cf19e93cffaefbf16"
+Hash: "d394d1b632ff7b9ffeb462121bada6ac4ab1a4db97ee371d5d66f0b87ce5ee15"
 Delims: ["{{{", "}}}"]

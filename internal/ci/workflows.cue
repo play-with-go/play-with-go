@@ -88,6 +88,10 @@ _#latestGo:     "1.16.3"
 				run:  "go mod tidy"
 			},
 			{
+				name: "Verify commit is clean"
+				run:  "test -z \"$(git status --porcelain)\" || (git status; git diff; false)"
+			},
+			{
 				name: "Run unity tests"
 				run:  "go run github.com/cue-sh/unity/cmd/unity test"
 			},

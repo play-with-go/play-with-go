@@ -190,6 +190,14 @@ GOPROXY=direct \(Defs.cmdgo.get) -d \(Defs.public_mod)@latest
 """
 }
 
+Steps: golist_gopher_2: preguide.#Command & {
+	InformationOnly: true
+	RandomReplace:   "v0.0.0-\(_#StablePsuedoversionSuffix)"
+	Source:          """
+   go list -m -f {{.Version}} \(Defs.public_mod)
+   """
+}
+
 Steps: gopher_run_fail: preguide.#Command & {
 	Source: """
 ! \(Defs.cmdgo.run) .
@@ -248,7 +256,7 @@ GOPROXY=direct \(Defs.cmdgo.get) -d \(Defs.public_mod)@latest
 """
 }
 
-Steps: golist_gopher_2: preguide.#Command & {
+Steps: golist_gopher_3: preguide.#Command & {
 	InformationOnly: true
 	RandomReplace:   "v0.0.0-\(_#StablePsuedoversionSuffix)"
 	Source:          """
