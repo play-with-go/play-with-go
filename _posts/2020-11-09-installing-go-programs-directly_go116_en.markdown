@@ -16,7 +16,7 @@ can include at the top of their `README.md` explaining how to install the tool.
 
 Go 1.16 introduces a new way to install Go programs directly with the `go` command. This guide
 introduces the new mode of `go install` using the example of
-[`filippo.io/mkcert`](https://mkcert.io/), and is suitable for both end users and tool authors.
+[`filippo.io/mkcert`](https://filippo.io/mkcert), and is suitable for both end users and tool authors.
 
 ### Prerequisites
 
