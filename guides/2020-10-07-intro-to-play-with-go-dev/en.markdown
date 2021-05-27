@@ -54,7 +54,7 @@ Now that we have uploaded `{{{ .readme }}}` we can run another command to show u
 ### Remote source code repositories
 
 Some guides need you to publish code to a remote source code repository. For such guides, a unique user is automatically
-created for you in the [`gopher.live`](https://gopher.live) [`gitea`](https://gitea.io) instance. Repostitories are
+created for you in the [`gopher.live`](https://gopher.live) [`gitea`](https://gitea.io) instance. Repositories are
 created beneath that user account. For example, for this guide we have created the unique user `{{{.username}}}`
 and a repository called `{{{ .modname }}}`.
 
