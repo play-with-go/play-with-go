@@ -1,0 +1,77 @@
+$ mkdir /home/gopher/gopherkv
+$ cd /home/gopher/gopherkv
+$ go mod init gopherkv
+go: creating new go.mod: module gopherkv
+$ cat <<EOD > /home/gopher/gopherkv/gopherkv.go
+package gopherkv
+
+type KV struct {
+	data map[string]string
+}
+
+func Create(size uint) *KV {
+	return &KV{
+		data: make(map[string]string, size),
+	}
+}
+
+func (kv *KV) Get(key string) (string, bool) {
+	v, ok := kv.data[key]
+	return v, ok
+}
+
+func (kv *KV) Set(key, value string) {
+	kv.data[key] = value
+}
+
+func (kv *KV) Purge() {
+	kv.data = make(map[string]string)
+}
+EOD
+$ cat <<EOD > /home/gopher/gopherkv/gopherkv_test.go
+package gopherkv
+
+import "testing"
+
+var kv *KV
+
+func TestCreateKV(t *testing.T) {
+	kv = Create(512)
+	if kv == nil {
+		t.Errorf("expected newly created kv store to not be nil")
+	}
+}
+
+func TestSet(t *testing.T) {
+	kv.Set("foo", "bar")
+
+	if len(kv.data) != 1 {
+		t.Errorf("expected exactly one value to be set")
+	}
+}
+
+func TestGet(t *testing.T) {
+	val, exists := kv.Get("foo")
+	if val != "bar" || !exists {
+		t.Errorf("expected foo:bar pair to have been fetched correctly")
+	}
+}
+
+func TestPurge(t *testing.T) {
+	kv.Purge()
+	lenNew := len(kv.data)
+
+	if lenNew != 0 {
+		t.Errorf("expected a length of 0 after purging")
+	}
+}
+EOD
+$ go test -cover ./...
+ok  	gopherkv	0.002s	coverage: 100.0% of statements
+$ go test -shuffle=5 ./... || true
+-test.shuffle 5
+--- FAIL: TestGet (0.00s)
+    gopherkv_test.go:25: expected foo:bar pair to have been fetched correctly
+FAIL
+FAIL	gopherkv	0.002s
+FAIL

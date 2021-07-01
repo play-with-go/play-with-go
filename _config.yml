@@ -21,6 +21,7 @@ guides-categories:
   - "Start here"
   - "Next steps"
   - "New features in Go 1.16"
+  - "What's coming in Go 1.17"
 
 #footer
 built-by: The play-with-go.dev Authors

@@ -334,4 +334,22 @@ package guides
 	Networks: ["playwithgo_pwg"]
 	Env: []
 }
+"2021-06-30-shuffling-tests": {
+	Delims: ["{{{", "}}}"]
+	Terminals: [{
+		Name:        "term1"
+		Description: "The main terminal"
+		Scenarios: {
+			go117: {
+				Image: "tpaschalis-gotip"
+			}
+		}
+	}]
+	Scenarios: [{
+		Name:        "go117"
+		Description: "Go 1.17"
+	}]
+	Networks: ["playwithgo_pwg"]
+	Env: []
+}
 
