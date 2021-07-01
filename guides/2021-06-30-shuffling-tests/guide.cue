@@ -6,12 +6,6 @@ import (
 
 Defs: {
 	_#commonDefs
-	staticcheck_version:      "v0.0.1-2020.1.6"
-	staticcheck_conf:         "staticcheck.conf"
-	staticcheck_st1000:       "ST1000"
-	staticcheck_sa4018:       "SA4018"
-	staticcheck_sa5009:       "SA5009"
-	staticcheck_explain_flag: "-explain"
 	gopherkv:                     "gopherkv"
 	gopherkv_dir:                 "/home/gopher/\(gopherkv)"
 	gopherkv_go:                  "\(gopherkv).go"
