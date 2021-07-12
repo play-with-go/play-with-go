@@ -4,9 +4,8 @@ import "github.com/SchemaStore/schemastore/src/schemas/json"
 
 #workflows: [...{file: string, schema: json.#Workflow}]
 #workflows: [
-	{file: "test.yml", schema:    test},
-	{file: "testmac.yml", schema: testmac},
-	{file: "wip.yml", schema:     wip},
+	{file: "test.yml", schema: test},
+	{file: "wip.yml", schema:  wip},
 ]
 
 _#latestUbuntu: "ubuntu-18.04"
@@ -119,13 +118,6 @@ test: {
 		schedule: [{cron: "0 9 * * *"}]
 	}
 	jobs: test: strategy: matrix: os: [_#latestUbuntu]
-}
-
-testmac: {
-	name: "TestMac"
-	#testWorkflow
-	on: schedule: [{cron: "0 9 * * *"}]
-	jobs: test: strategy: matrix: os: ["macos-latest"]
 }
 
 wip: json.#Workflow & {
