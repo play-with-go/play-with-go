@@ -1,0 +1,37 @@
+$ go version
+go version go1.15.5 linux/amd64
+$ mkdir /home/gopher/fib
+$ cd /home/gopher/fib
+$ go mod init fib
+go: creating new go.mod: module fib
+$ cat <<EOD > /home/gopher/fib/fib.go
+package fib
+
+func Fib(n int) int {
+	if n < 2 {
+		return n
+	}
+	return Fib(n-1) + Fib(n-2)
+}
+
+EOD
+$ cat <<EOD > /home/gopher/fib/fib_test.go
+package fib
+
+import "testing"
+
+func BenchmarkFib10(b *testing.B) {
+	// run the Fib function b.N times
+	for n := 0; n < b.N; n++ {
+		Fib(10)
+	}
+}
+
+EOD
+$ go test -bench=.
+goos: linux
+goarch: amd64
+pkg: fib
+BenchmarkFib10 	 3039295	       376 ns/op
+PASS
+ok  	fib	1.546s
