@@ -47,7 +47,9 @@ You should already have completed:
 
 This guide is running using:
 
-<pre data-command-src="Z28gdmVyc2lvbgo="><code class="language-.term1">$ go version
+<pre data-command-src="ZWNobyBIZWxsbyB3b3JsZCEKZ28gdmVyc2lvbgo="><code class="language-.term1">$ echo Hello world!
+Hello world!
+$ go version
 go version go1.16 linux/amd64
 </code></pre>
 

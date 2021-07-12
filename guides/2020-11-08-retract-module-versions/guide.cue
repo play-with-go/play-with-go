@@ -44,6 +44,7 @@ Terminals: term1: preguide.#Terminal & {
 
 Steps: goversion: preguide.#Command & {
 	Source: """
+		echo Hello world!
 		go version
 		"""
 }

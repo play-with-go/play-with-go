@@ -7157,10 +7157,13 @@ Terminals: {
 }
 Steps: {
     goversion: {
-        DoNotTrim:       false
-        Name:            string
-        StepType:        1
-        Source:          "go version"
+        DoNotTrim: false
+        Name:      string
+        StepType:  1
+        Source: """
+            echo Hello world!
+            go version
+            """
         InformationOnly: false
         Terminal:        string
     }
@@ -7910,6 +7913,18 @@ Steps: {
         Order:           0
         Terminal:        "term1"
         Stmts: [{
+            Negated:  false
+            CmdStr:   "echo Hello world!"
+            ExitCode: 0
+            Output: """
+                Hello world!
+
+                """
+            ComparisonOutput: """
+                Hello world!
+
+                """
+        }, {
             Negated:  false
             CmdStr:   "go version"
             ExitCode: 0
@@ -9179,7 +9194,7 @@ Steps: {
         }]
     }
 }
-Hash: "68e5331fc3739dfadefe321096e50621ed3f505e11283a4599597c9033a9b384"
+Hash: "60ebf1b2d3797ee0c00965521236865aadc2ee138fb7e34ac856c0ecd9d7312f"
 Delims: ["{{{", "}}}"]
 // ---
 Networks: ["playwithgo_pwg"]
@@ -14940,6 +14955,9 @@ import "strings"
                     run:  "./_scripts/macCISetup.sh"
                     if:   "${{ matrix.os == 'macos-latest' }}"
                 }, {
+                    name: "Docker login"
+                    run:  "docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN"
+                }, {
                     name: "Ensure docker setup"
                     run:  "./_scripts/ensureDocker.sh"
                 }, {
@@ -15009,6 +15027,13 @@ import "strings"
         #shell: string | "bash" | "pwsh" | "python" | "sh" | "cmd" | "powershell"
         #types: [_]
         on: {
+            push: {
+                branches: ["main"]
+                tags: ["v*"]
+            }
+            pull_request: {
+                branches: ["**"]
+            }
             schedule: [{
                 cron: "0 9 * * *"
             }]
@@ -15047,6 +15072,9 @@ import "strings"
                     name: "mac CI setup"
                     run:  "./_scripts/macCISetup.sh"
                     if:   "${{ matrix.os == 'macos-latest' }}"
+                }, {
+                    name: "Docker login"
+                    run:  "docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN"
                 }, {
                     name: "Ensure docker setup"
                     run:  "./_scripts/ensureDocker.sh"
@@ -15196,6 +15224,9 @@ import "strings"
                 run:  "./_scripts/macCISetup.sh"
                 if:   "${{ matrix.os == 'macos-latest' }}"
             }, {
+                name: "Docker login"
+                run:  "docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN"
+            }, {
                 name: "Ensure docker setup"
                 run:  "./_scripts/ensureDocker.sh"
             }, {
@@ -15306,6 +15337,9 @@ test: {
                 run:  "./_scripts/macCISetup.sh"
                 if:   "${{ matrix.os == 'macos-latest' }}"
             }, {
+                name: "Docker login"
+                run:  "docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN"
+            }, {
                 name: "Ensure docker setup"
                 run:  "./_scripts/ensureDocker.sh"
             }, {
@@ -15373,6 +15407,13 @@ testmac: {
     #shell: string | "bash" | "pwsh" | "python" | "sh" | "cmd" | "powershell"
     #types: [_]
     on: {
+        push: {
+            branches: ["main"]
+            tags: ["v*"]
+        }
+        pull_request: {
+            branches: ["**"]
+        }
         schedule: [{
             cron: "0 9 * * *"
         }]
@@ -15411,6 +15452,9 @@ testmac: {
                 name: "mac CI setup"
                 run:  "./_scripts/macCISetup.sh"
                 if:   "${{ matrix.os == 'macos-latest' }}"
+            }, {
+                name: "Docker login"
+                run:  "docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN"
             }, {
                 name: "Ensure docker setup"
                 run:  "./_scripts/ensureDocker.sh"

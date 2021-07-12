@@ -2,6 +2,14 @@
 
 name: TestMac
 on:
+  push:
+    branches:
+    - main
+    tags:
+    - v*
+  pull_request:
+    branches:
+    - '**'
   schedule:
   - cron: 0 9 * * *
 env:
@@ -34,6 +42,8 @@ jobs:
     - name: mac CI setup
       run: ./_scripts/macCISetup.sh
       if: ${{ matrix.os == 'macos-latest' }}
+    - name: Docker login
+      run: docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN
     - name: Ensure docker setup
       run: ./_scripts/ensureDocker.sh
     - name: Env setup

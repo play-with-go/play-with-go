@@ -1,3 +1,5 @@
+$ echo Hello world!
+Hello world!
 $ go version
 go version go1.16 linux/amd64
 $ mkdir /home/gopher/proverb

@@ -50,6 +50,10 @@ _#latestGo:     "1.16.3"
 				if:   "${{ matrix.os == 'macos-latest' }}"
 			},
 			{
+				name: "Docker login"
+				run:  "docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN"
+			},
+			{
 				name: "Ensure docker setup"
 				run:  "./_scripts/ensureDocker.sh"
 			},
@@ -124,7 +128,14 @@ test: {
 testmac: {
 	name: "TestMac"
 	#testWorkflow
-	on: schedule: [{cron: "0 9 * * *"}]
+	on: {
+		push: {
+			branches: ["main"]
+			tags: ["v*"]
+		}
+		pull_request: branches: ["**"]
+		schedule: [{cron: "0 9 * * *"}]
+	}
 	jobs: test: strategy: matrix: os: ["macos-latest"]
 }
 

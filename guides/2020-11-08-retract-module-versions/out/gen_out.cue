@@ -135,6 +135,18 @@ Steps: {
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:  false
+			CmdStr:   "echo Hello world!"
+			ExitCode: 0
+			Output: """
+				Hello world!
+
+				"""
+			ComparisonOutput: """
+				Hello world!
+
+				"""
+		}, {
+			Negated:  false
 			CmdStr:   "go version"
 			ExitCode: 0
 			Output: """
@@ -1403,5 +1415,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "68e5331fc3739dfadefe321096e50621ed3f505e11283a4599597c9033a9b384"
+Hash: "60ebf1b2d3797ee0c00965521236865aadc2ee138fb7e34ac856c0ecd9d7312f"
 Delims: ["{{{", "}}}"]
