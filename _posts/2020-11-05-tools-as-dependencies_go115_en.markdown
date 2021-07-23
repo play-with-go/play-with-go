@@ -189,8 +189,8 @@ With the package dependency declared, you can now add a dependency on the module
 <pre data-command-src="Z28gZ2V0IGdvbGFuZy5vcmcveC90b29scy9jbWQvc3RyaW5nZXJAdjAuMC4wLTIwMjAxMTA1MjIwMzEwLTc4YjE1ODU4NTM2MAo="><code class="language-.term1">$ go get golang.org/x/tools/cmd/stringer@v0.0.0-20201105220310-78b158585360
 go: downloading golang.org/x/tools v0.0.0-20201105220310-78b158585360
 go: found golang.org/x/tools/cmd/stringer in golang.org/x/tools v0.0.0-20201105220310-78b158585360
-go: downloading golang.org/x/mod v0.3.0
 go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
+go: downloading golang.org/x/mod v0.3.0
 </code></pre>
 
 You can see your new dependency in the project's `go.mod` file:

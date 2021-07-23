@@ -19,8 +19,8 @@ Presteps: [{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20210430163339-b27dc21b6036",
-		    "Sum": "h1:7wJ+VvtJk2GU9XtFGDeVwO6ohT8l5nu5h9A6YDCec+U=",
+		    "Version": "v0.0.0-20210723114817-feef4e6b64a7",
+		    "Sum": "h1:sEr3hyAUMVVfDG6xmHdzwSKHOL8ZpI5DJYQvbMtpZks=",
 		    "Replace": null
 		  },
 		  "Deps": [
@@ -32,8 +32,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "cuelang.org/go",
-		      "Version": "v0.3.2",
-		      "Sum": "h1:/Am5yFDwqnaEi+g942OPM1M4/qtfVSm49wtkQbeh5Z4=",
+		      "Version": "v0.4.0",
+		      "Sum": "h1:GLJblw6m2WGGCA3k1v6Wbk9gTOt2qto48ahO2MmSd6I=",
 		      "Replace": null
 		    },
 		    {
@@ -46,6 +46,18 @@ Presteps: [{
 		      "Path": "github.com/emicklei/proto",
 		      "Version": "v1.6.15",
 		      "Sum": "h1:XbpwxmuOPrdES97FrSfpyy67SSCV/wBIKXqgJzh6hNw=",
+		      "Replace": null
+		    },
+		    {
+		      "Path": "github.com/golang/glog",
+		      "Version": "v0.0.0-20160126235308-23def4e6c14b",
+		      "Sum": "h1:VKtxabqXZkF25pY9ekfRL6a582T4P37/31XEstQ5p58=",
+		      "Replace": null
+		    },
+		    {
+		      "Path": "github.com/google/uuid",
+		      "Version": "v1.2.0",
+		      "Sum": "h1:qJYtXnJRWmpe7m/3XlyhrsLrEURqHRM2kxzoxXqyUDs=",
 		      "Replace": null
 		    },
 		    {
@@ -62,14 +74,20 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/pkg/errors",
-		      "Version": "v0.8.1",
-		      "Sum": "h1:iURUrRGxPUNPdy5/HRSm+Yj6okJ6UtLINN0Q9M4+h3I=",
+		      "Version": "v0.9.1",
+		      "Sum": "h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=",
 		      "Replace": null
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20210430163307-e5ab271ba2e9",
-		      "Sum": "h1:dpSLI117TKb8MdLknsUYbQjKJpP6jzBYpfKKVszCZNI=",
+		      "Version": "v0.0.2-0.20210723101428-f0437229c60d",
+		      "Sum": "h1:298lqYRTgb0AnzWRhXMFuAwNtoR7L60aTCNmWOyz4Gw=",
+		      "Replace": null
+		    },
+		    {
+		      "Path": "github.com/protocolbuffers/txtpbfmt",
+		      "Version": "v0.0.0-20201118171849-f6a6b3f636fc",
+		      "Sum": "h1:gSVONBi2HWMFXCa9jFdYvYk7IwW/mTLxWOF7rXS4LO0=",
 		      "Replace": null
 		    },
 		    {
@@ -80,14 +98,14 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "golang.org/x/net",
-		      "Version": "v0.0.0-20201021035429-f5854403a974",
-		      "Sum": "h1:IX6qOQeG5uLjB/hjjwjedwfjND0hgjPMMyO1RoIXQNI=",
+		      "Version": "v0.0.0-20210316092652-d523dce5a7f4",
+		      "Sum": "h1:b0LrWgu8+q7z4J+0Y3Umo5q1dL7NXBkKBWkaVkAq17E=",
 		      "Replace": null
 		    },
 		    {
 		      "Path": "golang.org/x/text",
-		      "Version": "v0.3.3",
-		      "Sum": "h1:cokOdA+Jmi5PJGXLlLllQSgYigAEfHXJAERHVMaCc2k=",
+		      "Version": "v0.3.6",
+		      "Sum": "h1:aRYxNxv6iGQlyVaZmk6ZgYEDa+Jg18DxebPSrd6bg1M=",
 		      "Replace": null
 		    },
 		    {
@@ -104,8 +122,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "gopkg.in/yaml.v3",
-		      "Version": "v3.0.0-20200121175148-a6ecf24a6d71",
-		      "Sum": "h1:Xe2gvTZUJpsvOWUnvmL/tmhVBZUmHSvLbMjRj6NUUKo=",
+		      "Version": "v3.0.0-20200313102051-9f266ea9e77c",
+		      "Sum": "h1:dUUwHk2QECo/6vqA44rthZ8ie2QXMNeKRTHCNY2nXvo=",
 		      "Replace": null
 		    }
 		  ]
@@ -1990,5 +2008,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "f03b169fd33f353c3a304a089a25ca252eb60b22491fb186bf0ab26dcc8f5be2"
+Hash: "a529c687b99b1dd600ccd0f90eaab6b76d6414c9f4bff308b3f42bd194030057"
 Delims: ["{{{", "}}}"]

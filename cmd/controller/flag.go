@@ -13,7 +13,7 @@ import (
 	"strings"
 
 	"cuelang.org/go/cue"
-	"cuelang.org/go/encoding/gocode/gocodec"
+	"cuelang.org/go/cue/cuecontext"
 	"github.com/play-with-go/preguide"
 )
 
@@ -56,8 +56,7 @@ type runner struct {
 	fHashKey        *string
 	fBlockKey       *string
 
-	runtime cue.Runtime
-	codec   *gocodec.Codec
+	context *cue.Context
 
 	schemas preguide.Schemas
 }
@@ -66,7 +65,8 @@ func newRunner() *runner {
 	var err error
 	fs := flag.NewFlagSet("controller", flag.ContinueOnError)
 	r := &runner{
-		fs: fs,
+		fs:      fs,
+		context: cuecontext.New(),
 	}
 
 	r.fUnsafe = fs.Bool("unsafe", false, "indicates we are running in development-mode and hence enable unsafe things")
@@ -76,9 +76,7 @@ func newRunner() *runner {
 	r.fHashKey = fs.String("hashKey", "", "hashKey is used to authenticate the cookie value using HMAC")
 	r.fBlockKey = fs.String("blockKey", "", "blockKey (optional), used to encrypt the cookie value. Empty means implies not using encryption")
 
-	r.codec = gocodec.New(&r.runtime, nil)
-
-	r.schemas, err = preguide.LoadSchemas(&r.runtime)
+	r.schemas, err = preguide.LoadSchemas(r.context)
 	check(err, "failed to load schemas: %v", err)
 
 	return r

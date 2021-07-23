@@ -53,8 +53,8 @@ Steps: {
 				go: downloading honnef.co/go/tools v0.0.1-2020.1.6
 				go: found honnef.co/go/tools/cmd/staticcheck in honnef.co/go/tools v0.0.1-2020.1.6
 				go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
-				go: downloading github.com/BurntSushi/toml v0.3.1
 				go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
+				go: downloading github.com/BurntSushi/toml v0.3.1
 
 				"""
 			ComparisonOutput: """
@@ -916,5 +916,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "21ac90d602934c8e400f7aebfea65b8d6c78304d7d573ddd6184ad456e477788"
+Hash: "3fe2d351775751fe4a3f807d62ae62aacd124f6e1af2be7e3348f3e9689ff771"
 Delims: ["{{{", "}}}"]

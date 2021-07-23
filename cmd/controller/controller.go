@@ -281,11 +281,12 @@ func (r *runner) loadConfigFromFlags(inputs []string, schema cue.Value, value in
 	var val cue.Value
 	bis := load.Instances(inputs, &load.Config{AllCUEFiles: true})
 	for i, bi := range bis {
-		inst, err := r.runtime.Build(bi)
+		v := r.context.BuildInstance(bi)
+		err := v.Err()
 		if err != nil {
 			return fmt.Errorf("failed to load config from %v: %v", inputs[i], err)
 		}
-		val = val.Unify(inst.Value())
+		val = val.Unify(v)
 	}
 	// TODO: there is a bug with cuelang.org/go v0.2.2 whereby we can't
 	// encode the result of val.Unify(schema) - some error:
@@ -298,7 +299,7 @@ func (r *runner) loadConfigFromFlags(inputs []string, schema cue.Value, value in
 	if err := unifiedVal.Validate(); err != nil {
 		return fmt.Errorf("failed to validate config: %v", err)
 	}
-	if err := r.codec.Encode(val, value); err != nil {
+	if err := val.Decode(value); err != nil {
 		return fmt.Errorf("failed to decode config from CUE value: %v", err)
 	}
 	return nil

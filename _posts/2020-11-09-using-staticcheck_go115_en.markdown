@@ -50,8 +50,8 @@ Use `go get` to install Staticcheck:
 go: downloading honnef.co/go/tools v0.0.1-2020.1.6
 go: found honnef.co/go/tools/cmd/staticcheck in honnef.co/go/tools v0.0.1-2020.1.6
 go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
-go: downloading github.com/BurntSushi/toml v0.3.1
 go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
+go: downloading github.com/BurntSushi/toml v0.3.1
 </code></pre>
 
 _Note: so that this guide remains reproducible we have spcified an explicit version, `v0.0.1-2020.1.6`.
