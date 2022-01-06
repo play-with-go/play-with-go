@@ -16,24 +16,25 @@ Presteps: [{
 	}
 	Version: """
 		{
+		  "GoVersion": "go1.19.1",
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20210723114817-feef4e6b64a7",
-		    "Sum": "h1:sEr3hyAUMVVfDG6xmHdzwSKHOL8ZpI5DJYQvbMtpZks=",
+		    "Version": "v0.0.0-20220916095345-fddafa3403c2",
+		    "Sum": "h1:hNi/ACPKXTIEOV6hn0HfelzIqwkaLWQXKSElGCi8xKE=",
 		    "Replace": null
 		  },
 		  "Deps": [
 		    {
 		      "Path": "code.gitea.io/sdk/gitea",
-		      "Version": "v0.13.1",
-		      "Sum": "h1:Y7bpH2iO6Q0KhhMJfjP/LZ0AmiYITeRQlCD8b0oYqhk=",
+		      "Version": "v0.15.1",
+		      "Sum": "h1:WJreC7YYuxbn0UDaPuWIe/mtiNKTvLN8MLkaw71yx/M=",
 		      "Replace": null
 		    },
 		    {
 		      "Path": "cuelang.org/go",
-		      "Version": "v0.4.0",
-		      "Sum": "h1:GLJblw6m2WGGCA3k1v6Wbk9gTOt2qto48ahO2MmSd6I=",
+		      "Version": "v0.4.3",
+		      "Sum": "h1:W3oBBjDTm7+IZfCKZAmC8uDG0eYfJL4Pp/xbbCMKaVo=",
 		      "Replace": null
 		    },
 		    {
@@ -62,8 +63,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/hashicorp/go-version",
-		      "Version": "v1.2.0",
-		      "Sum": "h1:3vNe/fWF5CBgRIguda1meWhsZHy3m8gCJ5wx+dIzX/E=",
+		      "Version": "v1.2.1",
+		      "Sum": "h1:zEfKbn2+PDgroKdiOzqiE8rsmLqU2uwi5PB5pBJ3TkI=",
 		      "Replace": null
 		    },
 		    {
@@ -80,8 +81,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20210723101428-f0437229c60d",
-		      "Sum": "h1:298lqYRTgb0AnzWRhXMFuAwNtoR7L60aTCNmWOyz4Gw=",
+		      "Version": "v0.0.2-0.20220916045313-f81d11764005",
+		      "Sum": "h1:TozvtuERGrcqQhYM4thrishUY+QONu76GMskVpgQHBA=",
 		      "Replace": null
 		    },
 		    {
@@ -92,26 +93,20 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "golang.org/x/crypto",
-		      "Version": "v0.0.0-20200622213623-75b288015ac9",
-		      "Sum": "h1:psW17arqaxU48Z5kZ0CQnkZWQJsqcURM6tKiBApRjXI=",
+		      "Version": "v0.0.0-20210921155107-089bfa567519",
+		      "Sum": "h1:7I4JAnoQBe7ZtJcBaYHi5UtiO8tQHbUSXxL+pnGRANg=",
 		      "Replace": null
 		    },
 		    {
 		      "Path": "golang.org/x/net",
-		      "Version": "v0.0.0-20210316092652-d523dce5a7f4",
-		      "Sum": "h1:b0LrWgu8+q7z4J+0Y3Umo5q1dL7NXBkKBWkaVkAq17E=",
+		      "Version": "v0.0.0-20211015210444-4f30a5c0130f",
+		      "Sum": "h1:OfiFi4JbukWwe3lzw+xunroH1mnC1e2Gy5cxNJApiSY=",
 		      "Replace": null
 		    },
 		    {
 		      "Path": "golang.org/x/text",
-		      "Version": "v0.3.6",
-		      "Sum": "h1:aRYxNxv6iGQlyVaZmk6ZgYEDa+Jg18DxebPSrd6bg1M=",
-		      "Replace": null
-		    },
-		    {
-		      "Path": "golang.org/x/xerrors",
-		      "Version": "v0.0.0-20200804184101-5ec99f83aff1",
-		      "Sum": "h1:go1bK/D/BFZV2I8cIQd1NKEZ+0owSTG1fDTci4IqFcE=",
+		      "Version": "v0.3.7",
+		      "Sum": "h1:olpwvP2KacW1ZWvsR7uQhoyTYvKAupfQrRGBFM352Gk=",
 		      "Replace": null
 		    },
 		    {
@@ -122,11 +117,12 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "gopkg.in/yaml.v3",
-		      "Version": "v3.0.0-20200313102051-9f266ea9e77c",
-		      "Sum": "h1:dUUwHk2QECo/6vqA44rthZ8ie2QXMNeKRTHCNY2nXvo=",
+		      "Version": "v3.0.0-20210107192922-496545a6307b",
+		      "Sum": "h1:h8qDotaEPuJATrMmW04NCwg7v22aHH28wwpauUhK9Oo=",
 		      "Replace": null
 		    }
-		  ]
+		  ],
+		  "Settings": null
 		}
 		"""
 	Variables: ["GITEA_USERNAME", "GITEA_PRIV_KEY", "GITEA_PUB_KEY", "GITEA_KEYSCAN", "BRANCH", "SUBDIR"]
@@ -136,7 +132,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.8@sha256:7640da09d1555c4dddbba7f1b96051af2816e6542005176b749f38865ee0454c"
+			Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
 		}
 	}
 }]
@@ -156,17 +152,11 @@ Steps: {
 		Order:           0
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:  false
-			CmdStr:   "go version"
-			ExitCode: 0
-			Output: """
-				go version go1.15.8 linux/amd64
-
-				"""
-			ComparisonOutput: """
-				go version go1.15.8 linux/amd64
-
-				"""
+			Negated:          false
+			CmdStr:           "go version"
+			ExitCode:         0
+			Output:           "go version go1.15.15 linux/amd64"
+			ComparisonOutput: "go version go1.15.15 linux/amd64"
 		}]
 	}
 	branch_init: {
@@ -806,5 +796,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "58eef5fe9a3b886acc1a5cacc5eb73c55a1f0777fb12d769d1449e6573fa182b"
+Hash: "7dece9cb34390b221d2e98f2faa720ebb2fa859489ba010a8f63e3016d5121fb"
 Delims: ["{{{", "}}}"]

@@ -5,7 +5,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/installgo1.15.8@sha256:0e480b658f50b85b8eb40c426022d572709a93f6e0a7fe65475bea50ad172c5f"
+			Image: "playwithgo/installgo1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
 		}
 	}
 }]
@@ -47,7 +47,7 @@ Steps: {
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:          false
-			CmdStr:           "wget -q https://golang.org/dl/go1.15.8.linux-amd64.tar.gz"
+			CmdStr:           "wget -q https://golang.org/dl/go1.15.15.linux-$GOARCH.tar.gz"
 			ExitCode:         0
 			Output:           ""
 			ComparisonOutput: ""
@@ -62,7 +62,7 @@ Steps: {
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:          false
-			CmdStr:           "sudo tar -C /usr/local -xzf go1.15.8.linux-amd64.tar.gz"
+			CmdStr:           "sudo tar -C /usr/local -xzf go1.15.15.linux-$GOARCH.tar.gz"
 			ExitCode:         0
 			Output:           ""
 			ComparisonOutput: ""
@@ -106,17 +106,11 @@ Steps: {
 		Order:           5
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:  false
-			CmdStr:   "go version"
-			ExitCode: 0
-			Output: """
-				go version go1.15.8 linux/amd64
-
-				"""
-			ComparisonOutput: """
-				go version go1.15.8 linux/amd64
-
-				"""
+			Negated:          false
+			CmdStr:           "go version"
+			ExitCode:         0
+			Output:           "go version go1.15.15 linux/amd64"
+			ComparisonOutput: "go version go1.15.15 linux/amd64"
 		}]
 	}
 	go_env: {
@@ -164,7 +158,7 @@ Steps: {
 				CGO_FFLAGS="-g -O2"
 				CGO_LDFLAGS="-g -O2"
 				PKG_CONFIG="pkg-config"
-				GOGCCFLAGS="-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build -gno-record-gcc-switches"
+				GOGCCFLAGS="fake_gcc_flags"
 
 				"""
 			ComparisonOutput: """
@@ -201,7 +195,7 @@ Steps: {
 				CGO_FFLAGS="-g -O2"
 				CGO_LDFLAGS="-g -O2"
 				PKG_CONFIG="pkg-config"
-				GOGCCFLAGS="-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build -gno-record-gcc-switches"
+				GOGCCFLAGS="fake_gcc_flags"
 
 				"""
 		}]
@@ -454,5 +448,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "6233def428c210d66fda91571d6ed0b2900f55c0846606ecafbcc4aac862f42d"
+Hash: "57f9241df49785e337140bd0aa692834aac59089f3b266546b0f3ac12cc7cddc"
 Delims: ["{{{", "}}}"]

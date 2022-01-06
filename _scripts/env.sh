@@ -14,3 +14,4 @@ $export PREGUIDE_CONFIG "$modRoot/prestep_conf.cue"
 $export PREGUIDE_PULL_IMAGE missing
 $export COMPOSE_DOCKER_CLI_BUILD 1
 $export DOCKER_BUILDKIT 1
+$export CGO_ENABLED 0

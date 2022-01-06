@@ -1,5 +1,5 @@
 $ go version
-go version go1.16 linux/amd64
+go version go1.16.15 linux/amd64
 $ mkdir /home/gopher/proverb
 $ cd /home/gopher/proverb
 $ git init -q
@@ -124,7 +124,8 @@ $ go list -m -versions -retracted {{{.PROVERB}}}
 $ go get {{{.PROVERB}}}@v0.2.0
 go: warning: {{{.PROVERB}}}@v0.2.0: retracted by module author: Go proverb was totally wrong
 go: to switch to the latest unretracted version, run:
-	go get {{{.PROVERB}}}@latestgo get: downgraded {{{.PROVERB}}} v0.3.0 => v0.2.0
+	go get {{{.PROVERB}}}@latest
+go get: downgraded {{{.PROVERB}}} v0.3.0 => v0.2.0
 $ go run .
 Concurrency is parallelism.
 $ go list -m -u all
@@ -191,12 +192,14 @@ $ go get {{{.PROVERB}}}@v1.0.0
 go: downloading {{{.PROVERB}}} v1.0.0
 go: warning: {{{.PROVERB}}}@v1.0.0: retracted by module author: Published v1 too early
 go: to switch to the latest unretracted version, run:
-	go get {{{.PROVERB}}}@latestgo get: upgraded {{{.PROVERB}}} v0.3.0 => v1.0.0
+	go get {{{.PROVERB}}}@latest
+go get: upgraded {{{.PROVERB}}} v0.3.0 => v1.0.0
 $ go get {{{.PROVERB}}}@v1.0.1
 go: downloading {{{.PROVERB}}} v1.0.1
 go: warning: {{{.PROVERB}}}@v1.0.1: retracted by module author: Published v1 too early
 go: to switch to the latest unretracted version, run:
-	go get {{{.PROVERB}}}@latestgo get: upgraded {{{.PROVERB}}} v1.0.0 => v1.0.1
+	go get {{{.PROVERB}}}@latest
+go get: upgraded {{{.PROVERB}}} v1.0.0 => v1.0.1
 $ go get {{{.PROVERB}}}@v0.4.0
 go: downloading {{{.PROVERB}}} v0.4.0
 go get: downgraded {{{.PROVERB}}} v1.0.1 => v0.4.0

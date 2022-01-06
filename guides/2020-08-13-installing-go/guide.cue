@@ -27,13 +27,13 @@ Steps: start_dir: preguide.#Command & {
 
 Steps: download_go: preguide.#Command & {
 	Source: """
-		wget -q  https://golang.org/dl/\(_#go115LatestVersion).linux-amd64.tar.gz
+		wget -q https://golang.org/dl/\(_#go115LatestVersion).linux-$GOARCH.tar.gz
 		"""
 }
 
 Steps: install_go: preguide.#Command & {
 	Source: """
-		sudo tar -C /usr/local -xzf \(_#go115LatestVersion).linux-amd64.tar.gz
+		sudo tar -C /usr/local -xzf \(_#go115LatestVersion).linux-$GOARCH.tar.gz
 		"""
 }
 

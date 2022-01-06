@@ -5,17 +5,15 @@ import "github.com/SchemaStore/schemastore/src/schemas/json"
 #workflows: [...{file: string, schema: json.#Workflow}]
 #workflows: [
 	{file: "test.yml", schema: test},
-	{file: "wip.yml", schema:  wip},
 ]
 
-_#latestUbuntu: "ubuntu-18.04"
-_#latestGo:     "1.16.3"
+_#latestUbuntu: "ubuntu-20.04"
+_#latestGo:     "1.19.1"
 
 #testWorkflow: json.#Workflow & {
 	env: {
 		DOCKER_HUB_USER:                    "playwithgopher"
 		DOCKER_HUB_TOKEN:                   "${{ secrets.DOCKER_HUB_TOKEN }}"
-		PREGUIDE_DEBUG:                     true
 		PLAYWITHGODEV_CONTRIBUTOR_USER:     "playwithgopher_github"
 		PLAYWITHGODEV_CONTRIBUTOR_PASSWORD: "${{ secrets.PLAYWITHGODEV_CONTRIBUTOR_PASSWORD }}"
 		PLAYWITHGOPHER_GITHUB_PAT:          "${{ secrets.PLAYWITHGOPHER_GITHUB_PAT }}"
@@ -57,6 +55,18 @@ _#latestGo:     "1.16.3"
 				run:  "./_scripts/env.sh github"
 			},
 			{
+				name: "Verify"
+				run:  "go mod verify"
+			},
+			{
+				name: "Tidy"
+				run:  "go mod tidy"
+			},
+			{
+				name: "Run unity tests"
+				run:  "go run github.com/cue-sh/unity/cmd/unity test"
+			},
+			{
 				name: "docker-compose build"
 				run:  "./_scripts/dc.sh build"
 			},
@@ -65,34 +75,17 @@ _#latestGo:     "1.16.3"
 				run:  "./_scripts/dc.sh up -d cmd_gitea"
 			},
 			{
-				name: "Verify"
-				run:  "go mod verify"
-			},
-			{
 				name: "Re-generate guides"
 				run:  "_scripts/generateGuides.sh"
-			},
-			{
-				name:                "Race check re-generating guides"
-				run:                 "go run -race github.com/play-with-go/preguide/cmd/preguide gen -out ../_posts"
-				"working-directory": "./guides"
-				if:                  "${{ github.event_name == 'schedule' }}"
+				env: {
+					CGO_ENABLED:         "0"
+					PREGUIDE_SKIP_CACHE: "true"
+					PREGUIDE_PROGRESS:   "true"
+				}
 			},
 			{
 				name: "Re-generate everything else"
 				run:  "_scripts/generateEverythingElse.sh"
-			},
-			{
-				name: "Tidy"
-				run:  "go mod tidy"
-			},
-			{
-				name: "Verify commit is clean"
-				run:  "test -z \"$(git status --porcelain)\" || (git status; git diff; false)"
-			},
-			{
-				name: "Run unity tests"
-				run:  "go run github.com/cue-sh/unity/cmd/unity test"
 			},
 			{
 				name: "Verify commit is clean"
@@ -118,25 +111,4 @@ test: {
 		schedule: [{cron: "0 9 * * *"}]
 	}
 	jobs: test: strategy: matrix: os: [_#latestUbuntu]
-}
-
-wip: json.#Workflow & {
-	name: "WIP"
-	on: {
-		pull_request: {
-			types: ["opened", "synchronize", "reopened", "edited"]
-		}
-	}
-	jobs: wip: {
-		env: {
-			GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-		}
-		"runs-on": _#latestUbuntu
-		steps: [{
-			uses: "myitcv/wip@v1.0.0"
-			with: {
-				token: "${{ secrets.GITHUB_TOKEN }}"
-			}
-		}]
-	}
 }

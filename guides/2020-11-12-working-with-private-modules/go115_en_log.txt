@@ -1,5 +1,5 @@
 $ go version
-go version go1.15.8 linux/amd64
+go version go1.15.15 linux/amd64
 $ mkdir /home/gopher/public
 $ cd /home/gopher/public
 $ go mod init {{{.PUBLIC}}}
@@ -93,7 +93,7 @@ go: {{{.PUBLIC}}} upgrade => v0.0.0-20060102150405-abcedf12345
 $ go list -m -f {{.Version}} {{{.PUBLIC}}}
 v0.0.0-20060102150405-abcedf12345
 $ go get {{{.PRIVATE}}}
-go get {{{.PRIVATE}}}: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 410 Gone
+go get {{{.PRIVATE}}}: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 404 Not Found
 	server response:
 	not found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 		fatal: could not read Username for 'https://gopher.live': terminal prompts disabled
@@ -102,7 +102,7 @@ go get {{{.PRIVATE}}}: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{
 $ go env -w GOPROXY=
 $ go get {{{.PRIVATE}}}
 go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
-go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 410 Gone
+go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 404 Not Found
 	server response:
 	not found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 		fatal: could not read Username for 'https://gopher.live': terminal prompts disabled

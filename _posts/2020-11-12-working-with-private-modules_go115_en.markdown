@@ -32,7 +32,7 @@ You should already have completed:
 This guide is running using:
 
 <pre data-command-src="Z28gdmVyc2lvbgo="><code class="language-.term1">$ go version
-go version go1.15.8 linux/amd64
+go version go1.15.15 linux/amd64
 </code></pre>
 
 ### The `public` and `private` modules
@@ -174,7 +174,7 @@ As expected, that succeeded.
 Try to add a dependency on the `private` module:
 
 <pre data-command-src="Z28gZ2V0IHt7ey5QUklWQVRFfX19Cg=="><code class="language-.term1">$ go get &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;
-go get &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;: module &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;: reading https://proxy.golang.org/&#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;/@v/list: 410 Gone
+go get &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;: module &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;: reading https://proxy.golang.org/&#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;/@v/list: 404 Not Found
 	server response:
 	not found: module &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 		fatal: could not read Username for &#39;https://gopher.live&#39;: terminal prompts disabled
@@ -193,7 +193,7 @@ And try once again to add a dependency on the `private` module:
 
 <pre data-command-src="Z28gZ2V0IHt7ey5QUklWQVRFfX19Cg=="><code class="language-.term1">$ go get &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;
 go: downloading &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345
-go get &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;: &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;@v0.0.0-20060102150405-abcedf12345: verifying module: &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/&#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;@v0.0.0-20060102150405-abcedf12345: 410 Gone
+go get &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;: &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;@v0.0.0-20060102150405-abcedf12345: verifying module: &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/&#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;@v0.0.0-20060102150405-abcedf12345: 404 Not Found
 	server response:
 	not found: &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;@v0.0.0-20060102150405-abcedf12345: invalid version: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 		fatal: could not read Username for &#39;https://gopher.live&#39;: terminal prompts disabled

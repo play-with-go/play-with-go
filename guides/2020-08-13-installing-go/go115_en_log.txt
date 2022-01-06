@@ -1,11 +1,11 @@
 $ pwd
 /home/gopher
-$ wget -q https://golang.org/dl/go1.15.8.linux-amd64.tar.gz
-$ sudo tar -C /usr/local -xzf go1.15.8.linux-amd64.tar.gz
+$ wget -q https://golang.org/dl/go1.15.15.linux-$GOARCH.tar.gz
+$ sudo tar -C /usr/local -xzf go1.15.15.linux-$GOARCH.tar.gz
 $ echo export PATH="/usr/local/go/bin:$PATH" >>$HOME/.profile
 $ source $HOME/.profile
 $ go version
-go version go1.15.8 linux/amd64
+go version go1.15.15 linux/amd64
 $ go env
 GO111MODULE=""
 GOARCH="amd64"
@@ -40,7 +40,7 @@ CGO_CXXFLAGS="-g -O2"
 CGO_FFLAGS="-g -O2"
 CGO_LDFLAGS="-g -O2"
 PKG_CONFIG="pkg-config"
-GOGCCFLAGS="-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build -gno-record-gcc-switches"
+GOGCCFLAGS="fake_gcc_flags"
 $ go env GOBIN
 
 $ go env -w GOBIN=/path/to/my/gobin
