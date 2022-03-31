@@ -681,14 +681,18 @@ Steps: {
 				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
 				go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 410 Gone
 				\tserver response:
-				\tnot found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
+				\tnot found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
+				\tConfirm the import path was entered correctly.
+				\tIf this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
 
 				"""
 			ComparisonOutput: """
 
 				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
-				\tnot found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
+				\tConfirm the import path was entered correctly.
+				\tIf this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
+				\tnot found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 				\tserver response:
 				go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 410 Gone
 				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345

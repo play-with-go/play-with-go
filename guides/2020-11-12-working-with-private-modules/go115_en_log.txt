@@ -104,8 +104,10 @@ $ go get {{{.PRIVATE}}}
 go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
 go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 410 Gone
 	server response:
-	not found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
+	not found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 		fatal: could not read Username for 'https://gopher.live': terminal prompts disabled
+	Confirm the import path was entered correctly.
+	If this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
 $ go help module-private
 The go command defaults to downloading modules from the public Go module
 mirror at proxy.golang.org. It also defaults to validating downloaded modules,

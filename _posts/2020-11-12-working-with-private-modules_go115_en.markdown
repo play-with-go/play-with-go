@@ -195,8 +195,10 @@ And try once again to add a dependency on the `private` module:
 go: downloading &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345
 go get &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;: &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;@v0.0.0-20060102150405-abcedf12345: verifying module: &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/&#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;@v0.0.0-20060102150405-abcedf12345: 410 Gone
 	server response:
-	not found: &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;@v0.0.0-20060102150405-abcedf12345: invalid version: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
+	not found: &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;@v0.0.0-20060102150405-abcedf12345: invalid version: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 		fatal: could not read Username for &#39;https://gopher.live&#39;: terminal prompts disabled
+	Confirm the import path was entered correctly.
+	If this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
 </code></pre>
 
 This fails because the checksum database is not able to access your `private` module. But it's worse than
