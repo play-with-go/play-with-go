@@ -5,7 +5,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.8@sha256:7640da09d1555c4dddbba7f1b96051af2816e6542005176b749f38865ee0454c"
+			Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
 		}
 	}
 }]
@@ -25,17 +25,11 @@ Steps: {
 		Order:           0
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:  false
-			CmdStr:   "go version"
-			ExitCode: 0
-			Output: """
-				go version go1.15.8 linux/amd64
-
-				"""
-			ComparisonOutput: """
-				go version go1.15.8 linux/amd64
-
-				"""
+			Negated:          false
+			CmdStr:           "go version"
+			ExitCode:         0
+			Output:           "go version go1.15.15 linux/amd64"
+			ComparisonOutput: "go version go1.15.15 linux/amd64"
 		}]
 	}
 	staticcheck_install: {
@@ -53,8 +47,8 @@ Steps: {
 				go: downloading honnef.co/go/tools v0.0.1-2020.1.6
 				go: found honnef.co/go/tools/cmd/staticcheck in honnef.co/go/tools v0.0.1-2020.1.6
 				go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
-				go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
 				go: downloading github.com/BurntSushi/toml v0.3.1
+				go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
 
 				"""
 			ComparisonOutput: """
@@ -916,5 +910,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "3fe2d351775751fe4a3f807d62ae62aacd124f6e1af2be7e3348f3e9689ff771"
+Hash: "66396cad683065b32470e992e2b449c499702986cff334556cdab46668d107d5"
 Delims: ["{{{", "}}}"]

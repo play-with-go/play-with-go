@@ -36,7 +36,7 @@ You should already have completed:
 This guide is running using:
 
 <pre data-command-src="Z28gdmVyc2lvbgo="><code class="language-.term1">$ go version
-go version go1.15.8 linux/amd64
+go version go1.15.15 linux/amd64
 </code></pre>
 
 ### Installing Staticcheck
@@ -50,8 +50,8 @@ Use `go get` to install Staticcheck:
 go: downloading honnef.co/go/tools v0.0.1-2020.1.6
 go: found honnef.co/go/tools/cmd/staticcheck in honnef.co/go/tools v0.0.1-2020.1.6
 go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
-go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
 go: downloading github.com/BurntSushi/toml v0.3.1
+go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
 </code></pre>
 
 _Note: so that this guide remains reproducible we have spcified an explicit version, `v0.0.1-2020.1.6`.

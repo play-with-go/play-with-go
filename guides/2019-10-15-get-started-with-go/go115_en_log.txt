@@ -1,5 +1,5 @@
 $ go version
-go version go1.15.8 linux/amd64
+go version go1.15.15 linux/amd64
 $ pwd
 /home/gopher
 $ mkdir /home/gopher/hello

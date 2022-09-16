@@ -12,24 +12,25 @@ Presteps: [{
 	}
 	Version: """
 		{
+		  "GoVersion": "go1.19.1",
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20210723114817-feef4e6b64a7",
-		    "Sum": "h1:sEr3hyAUMVVfDG6xmHdzwSKHOL8ZpI5DJYQvbMtpZks=",
+		    "Version": "v0.0.0-20220916095345-fddafa3403c2",
+		    "Sum": "h1:hNi/ACPKXTIEOV6hn0HfelzIqwkaLWQXKSElGCi8xKE=",
 		    "Replace": null
 		  },
 		  "Deps": [
 		    {
 		      "Path": "code.gitea.io/sdk/gitea",
-		      "Version": "v0.13.1",
-		      "Sum": "h1:Y7bpH2iO6Q0KhhMJfjP/LZ0AmiYITeRQlCD8b0oYqhk=",
+		      "Version": "v0.15.1",
+		      "Sum": "h1:WJreC7YYuxbn0UDaPuWIe/mtiNKTvLN8MLkaw71yx/M=",
 		      "Replace": null
 		    },
 		    {
 		      "Path": "cuelang.org/go",
-		      "Version": "v0.4.0",
-		      "Sum": "h1:GLJblw6m2WGGCA3k1v6Wbk9gTOt2qto48ahO2MmSd6I=",
+		      "Version": "v0.4.3",
+		      "Sum": "h1:W3oBBjDTm7+IZfCKZAmC8uDG0eYfJL4Pp/xbbCMKaVo=",
 		      "Replace": null
 		    },
 		    {
@@ -58,8 +59,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/hashicorp/go-version",
-		      "Version": "v1.2.0",
-		      "Sum": "h1:3vNe/fWF5CBgRIguda1meWhsZHy3m8gCJ5wx+dIzX/E=",
+		      "Version": "v1.2.1",
+		      "Sum": "h1:zEfKbn2+PDgroKdiOzqiE8rsmLqU2uwi5PB5pBJ3TkI=",
 		      "Replace": null
 		    },
 		    {
@@ -76,8 +77,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20210723101428-f0437229c60d",
-		      "Sum": "h1:298lqYRTgb0AnzWRhXMFuAwNtoR7L60aTCNmWOyz4Gw=",
+		      "Version": "v0.0.2-0.20220916045313-f81d11764005",
+		      "Sum": "h1:TozvtuERGrcqQhYM4thrishUY+QONu76GMskVpgQHBA=",
 		      "Replace": null
 		    },
 		    {
@@ -88,26 +89,20 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "golang.org/x/crypto",
-		      "Version": "v0.0.0-20200622213623-75b288015ac9",
-		      "Sum": "h1:psW17arqaxU48Z5kZ0CQnkZWQJsqcURM6tKiBApRjXI=",
+		      "Version": "v0.0.0-20210921155107-089bfa567519",
+		      "Sum": "h1:7I4JAnoQBe7ZtJcBaYHi5UtiO8tQHbUSXxL+pnGRANg=",
 		      "Replace": null
 		    },
 		    {
 		      "Path": "golang.org/x/net",
-		      "Version": "v0.0.0-20210316092652-d523dce5a7f4",
-		      "Sum": "h1:b0LrWgu8+q7z4J+0Y3Umo5q1dL7NXBkKBWkaVkAq17E=",
+		      "Version": "v0.0.0-20211015210444-4f30a5c0130f",
+		      "Sum": "h1:OfiFi4JbukWwe3lzw+xunroH1mnC1e2Gy5cxNJApiSY=",
 		      "Replace": null
 		    },
 		    {
 		      "Path": "golang.org/x/text",
-		      "Version": "v0.3.6",
-		      "Sum": "h1:aRYxNxv6iGQlyVaZmk6ZgYEDa+Jg18DxebPSrd6bg1M=",
-		      "Replace": null
-		    },
-		    {
-		      "Path": "golang.org/x/xerrors",
-		      "Version": "v0.0.0-20200804184101-5ec99f83aff1",
-		      "Sum": "h1:go1bK/D/BFZV2I8cIQd1NKEZ+0owSTG1fDTci4IqFcE=",
+		      "Version": "v0.3.7",
+		      "Sum": "h1:olpwvP2KacW1ZWvsR7uQhoyTYvKAupfQrRGBFM352Gk=",
 		      "Replace": null
 		    },
 		    {
@@ -118,11 +113,12 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "gopkg.in/yaml.v3",
-		      "Version": "v3.0.0-20200313102051-9f266ea9e77c",
-		      "Sum": "h1:dUUwHk2QECo/6vqA44rthZ8ie2QXMNeKRTHCNY2nXvo=",
+		      "Version": "v3.0.0-20210107192922-496545a6307b",
+		      "Sum": "h1:h8qDotaEPuJATrMmW04NCwg7v22aHH28wwpauUhK9Oo=",
 		      "Replace": null
 		    }
-		  ]
+		  ],
+		  "Settings": null
 		}
 		"""
 	Variables: ["GITEA_USERNAME", "GITEA_PRIV_KEY", "GITEA_PUB_KEY", "GITEA_KEYSCAN", "PROVERB"]
@@ -132,7 +128,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go116: {
-			Image: "playwithgo/go1.16@sha256:3ae1950433998a2be8c8ce3b1cb6479e6541f1e32443447a24085cfe09e2c391"
+			Image: "playwithgo/go1.16.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
 		}
 	}
 }]
@@ -152,17 +148,11 @@ Steps: {
 		Order:           0
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:  false
-			CmdStr:   "go version"
-			ExitCode: 0
-			Output: """
-				go version go1.16 linux/amd64
-
-				"""
-			ComparisonOutput: """
-				go version go1.16 linux/amd64
-
-				"""
+			Negated:          false
+			CmdStr:           "go version"
+			ExitCode:         0
+			Output:           "go version go1.16.15 linux/amd64"
+			ComparisonOutput: "go version go1.16.15 linux/amd64"
 		}]
 	}
 	proverb_create: {
@@ -874,12 +864,14 @@ Steps: {
 			Output: """
 				go: warning: {{{.PROVERB}}}@v0.2.0: retracted by module author: Go proverb was totally wrong
 				go: to switch to the latest unretracted version, run:
-				\tgo get {{{.PROVERB}}}@latestgo get: downgraded {{{.PROVERB}}} v0.3.0 => v0.2.0
+				\tgo get {{{.PROVERB}}}@latest
+				go get: downgraded {{{.PROVERB}}} v0.3.0 => v0.2.0
 
 				"""
 			ComparisonOutput: """
 
-				\tgo get {{{.PROVERB}}}@latestgo get: downgraded {{{.PROVERB}}} v0.3.0 => v0.2.0
+				\tgo get {{{.PROVERB}}}@latest
+				go get: downgraded {{{.PROVERB}}} v0.3.0 => v0.2.0
 				go: to switch to the latest unretracted version, run:
 				go: warning: {{{.PROVERB}}}@v0.2.0: retracted by module author: Go proverb was totally wrong
 				"""
@@ -1256,12 +1248,14 @@ Steps: {
 				go: downloading {{{.PROVERB}}} v1.0.0
 				go: warning: {{{.PROVERB}}}@v1.0.0: retracted by module author: Published v1 too early
 				go: to switch to the latest unretracted version, run:
-				\tgo get {{{.PROVERB}}}@latestgo get: upgraded {{{.PROVERB}}} v0.3.0 => v1.0.0
+				\tgo get {{{.PROVERB}}}@latest
+				go get: upgraded {{{.PROVERB}}} v0.3.0 => v1.0.0
 
 				"""
 			ComparisonOutput: """
 
-				\tgo get {{{.PROVERB}}}@latestgo get: upgraded {{{.PROVERB}}} v0.3.0 => v1.0.0
+				\tgo get {{{.PROVERB}}}@latest
+				go get: upgraded {{{.PROVERB}}} v0.3.0 => v1.0.0
 				go: downloading {{{.PROVERB}}} v1.0.0
 				go: to switch to the latest unretracted version, run:
 				go: warning: {{{.PROVERB}}}@v1.0.0: retracted by module author: Published v1 too early
@@ -1274,12 +1268,14 @@ Steps: {
 				go: downloading {{{.PROVERB}}} v1.0.1
 				go: warning: {{{.PROVERB}}}@v1.0.1: retracted by module author: Published v1 too early
 				go: to switch to the latest unretracted version, run:
-				\tgo get {{{.PROVERB}}}@latestgo get: upgraded {{{.PROVERB}}} v1.0.0 => v1.0.1
+				\tgo get {{{.PROVERB}}}@latest
+				go get: upgraded {{{.PROVERB}}} v1.0.0 => v1.0.1
 
 				"""
 			ComparisonOutput: """
 
-				\tgo get {{{.PROVERB}}}@latestgo get: upgraded {{{.PROVERB}}} v1.0.0 => v1.0.1
+				\tgo get {{{.PROVERB}}}@latest
+				go get: upgraded {{{.PROVERB}}} v1.0.0 => v1.0.1
 				go: downloading {{{.PROVERB}}} v1.0.1
 				go: to switch to the latest unretracted version, run:
 				go: warning: {{{.PROVERB}}}@v1.0.1: retracted by module author: Published v1 too early
@@ -1421,5 +1417,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "7e36395c5d69009d1b9102c0e8d21c076cf6a7ffeede7f67b2902178c5aad31e"
+Hash: "e8dd0d207479237a2ad5c4bae3807603adb72649141e4ff82a2a6c8b09ccade1"
 Delims: ["{{{", "}}}"]

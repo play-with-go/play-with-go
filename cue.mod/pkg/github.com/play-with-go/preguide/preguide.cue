@@ -47,18 +47,17 @@ import (
 		Name: name
 	}
 
-	// This "forces" the user to define the image for every scenario for
-	// every terminal they declare
-	for scenario, _ in Scenarios for terminal, _ in Terminals {
-		Terminals: "\(terminal)": Scenarios: "\(scenario)": #TerminalScenario
-	}
-
 	_#TerminalNames: [ for k, _ in Terminals {k}]
 	_#TerminalName: *_#TerminalNames[0] | or(_#TerminalNames)
 
 	// Terminals defines the required remote VMs for a given guide
 	Terminals: [name=string]: #Terminal & {
 		Name: name
+		// This "forces" the user to define the image for every scenario for
+		// every terminal they declare
+		for scenario, _ in Scenarios {
+			Scenarios: "\(scenario)": #TerminalScenario
+		}
 	}
 
 	Defs: [string]: _

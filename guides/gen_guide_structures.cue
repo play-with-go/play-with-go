@@ -7,36 +7,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.8@sha256:7640da09d1555c4dddbba7f1b96051af2816e6542005176b749f38865ee0454c"
-			}
-		}
-	}]
-	Scenarios: [{
-		Name:        "go115"
-		Description: "Go 1.15"
-	}]
-	Networks: ["playwithgo_pwg"]
-	Env: []
-}
-"2021-05-02-build-flags-backwards-compatibility": {
-	Delims: ["{{{", "}}}"]
-	Presteps: [{
-		Package: "github.com/play-with-go/gitea"
-		Path:    "/newuser"
-		Args: {
-			Repos: [{
-				Pattern: "public"
-				Private: false
-				Var:     "PUBLIC"
-			}]
-		}
-	}]
-	Terminals: [{
-		Name:        "term1"
-		Description: "The main terminal"
-		Scenarios: {
-			go115: {
-				Image: "playwithgo/go1.15_1.16@sha256:38ee32afdd785e5f1d9e63033ce5d64cbd098207ed6506669105db97c2dbe9a1"
+				Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
 			}
 		}
 	}]
@@ -69,7 +40,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.8@sha256:7640da09d1555c4dddbba7f1b96051af2816e6542005176b749f38865ee0454c"
+				Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
 			}
 		}
 	}]
@@ -102,7 +73,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.8@sha256:7640da09d1555c4dddbba7f1b96051af2816e6542005176b749f38865ee0454c"
+				Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
 			}
 		}
 	}]
@@ -120,7 +91,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.8@sha256:7640da09d1555c4dddbba7f1b96051af2816e6542005176b749f38865ee0454c"
+				Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
 			}
 		}
 	}]
@@ -138,7 +109,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go116: {
-				Image: "playwithgo/go1.16@sha256:3ae1950433998a2be8c8ce3b1cb6479e6541f1e32443447a24085cfe09e2c391"
+				Image: "playwithgo/go1.16.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
 			}
 		}
 	}]
@@ -167,7 +138,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go116: {
-				Image: "playwithgo/go1.16@sha256:3ae1950433998a2be8c8ce3b1cb6479e6541f1e32443447a24085cfe09e2c391"
+				Image: "playwithgo/go1.16.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
 			}
 		}
 	}]
@@ -196,7 +167,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.8@sha256:7640da09d1555c4dddbba7f1b96051af2816e6542005176b749f38865ee0454c"
+				Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
 			}
 		}
 	}]
@@ -225,7 +196,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.8@sha256:7640da09d1555c4dddbba7f1b96051af2816e6542005176b749f38865ee0454c"
+				Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
 			}
 		}
 	}]
@@ -254,7 +225,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.8@sha256:7640da09d1555c4dddbba7f1b96051af2816e6542005176b749f38865ee0454c"
+				Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
 			}
 		}
 	}]
@@ -272,7 +243,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/installgo1.15.8@sha256:0e480b658f50b85b8eb40c426022d572709a93f6e0a7fe65475bea50ad172c5f"
+				Image: "playwithgo/installgo1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
 			}
 		}
 	}]
@@ -290,7 +261,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.8@sha256:7640da09d1555c4dddbba7f1b96051af2816e6542005176b749f38865ee0454c"
+				Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
 			}
 		}
 	}]
@@ -323,7 +294,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go115: {
-				Image: "playwithgo/go1.15.8@sha256:7640da09d1555c4dddbba7f1b96051af2816e6542005176b749f38865ee0454c"
+				Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
 			}
 		}
 	}]
