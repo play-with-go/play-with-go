@@ -1,24 +1,20 @@
 $ go version
-go version go1.16.15 linux/amd64
-$ go get filippo.io/mkcert@v1.4.2
-go: downloading filippo.io/mkcert v1.4.2
-go: downloading golang.org/x/net v0.0.0-20190620200207-3b0461eec859
-go: downloading golang.org/x/tools v0.0.0-20191108193012-7d206e10da11
-go: downloading honnef.co/go/tools v0.0.0-20191107024926-a9480a3ec3bc
-go: downloading howett.net/plist v0.0.0-20181124034731-591f970eefbb
-go: downloading software.sslmate.com/src/go-pkcs12 v0.0.0-20180114231543-2291e8f0f237
-go: downloading golang.org/x/text v0.3.0
-go: downloading github.com/BurntSushi/toml v0.3.1
-$ (cd $(mktemp -d); GO111MODULE=on go get filippo.io/mkcert@v1.4.2)
-$ go install filippo.io/mkcert@v1.4.2
+go version go1.19.1 linux/amd64
+$ go install filippo.io/mkcert@v1.4.4
+go: downloading filippo.io/mkcert v1.4.4
+go: downloading golang.org/x/net v0.0.0-20220421235706-1d1ef9303861
+go: downloading software.sslmate.com/src/go-pkcs12 v0.2.0
+go: downloading golang.org/x/text v0.3.7
+go: downloading golang.org/x/crypto v0.0.0-20220331220935-ae2d96664a29
 $ which mkcert
 /home/gopher/go/bin/mkcert
 $ mkcert -version
-v1.4.2
+v1.4.4
 $ go version -m $(which mkcert)
-/home/gopher/go/bin/mkcert: go1.16.15
+/home/gopher/go/bin/mkcert: go1.19.1
 	path	filippo.io/mkcert
-	mod	filippo.io/mkcert	v1.4.2	h1:7mWofpFS4gzQS5bhE3KYBwzfceIPy2KJ4tMT31aPNeY=
-	dep	golang.org/x/net	v0.0.0-20190620200207-3b0461eec859	h1:R/3boaszxrf1GEUWTVDzSKVwLmSJpwZ1yqXm8j0v2QI=
-	dep	golang.org/x/text	v0.3.0	h1:g61tztE5qeGQ89tm6NTjjM9VPIm088od1l6aSorWRWg=
-	dep	software.sslmate.com/src/go-pkcs12	v0.0.0-20180114231543-2291e8f0f237	h1:iAEkCBPbRaflBgZ7o9gjVUuWuvWeV4sytFWg9o+Pj2k=
+	mod	filippo.io/mkcert	v1.4.4	h1:8eVbbwfVlaqUM7OwuftKc2nuYOoTDQWqsoXmzoXZdbc=
+	dep	golang.org/x/crypto	v0.0.0-20220331220935-ae2d96664a29	h1:tkVvjkPTB7pnW3jnid7kNyAMPVWllTNOf/qKDze4p9o=
+	dep	golang.org/x/net	v0.0.0-20220421235706-1d1ef9303861	h1:yssD99+7tqHWO5Gwh81phT+67hg+KttniBr6UnEXOY8=
+	dep	golang.org/x/text	v0.3.7	h1:olpwvP2KacW1ZWvsR7uQhoyTYvKAupfQrRGBFM352Gk=
+	dep	software.sslmate.com/src/go-pkcs12	v0.2.0	h1:nlFkj7bTysH6VkC4fGphtjXRbezREPgrHuJG20hBGPE=

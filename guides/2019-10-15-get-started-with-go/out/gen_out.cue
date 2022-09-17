@@ -5,7 +5,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+			Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 		}
 	}
 }]
@@ -28,8 +28,8 @@ Steps: {
 			Negated:          false
 			CmdStr:           "go version"
 			ExitCode:         0
-			Output:           "go version go1.15.15 linux/amd64"
-			ComparisonOutput: "go version go1.15.15 linux/amd64"
+			Output:           "go version go1.19.1 linux/amd64"
+			ComparisonOutput: "go version go1.19.1 linux/amd64"
 		}]
 	}
 	pwd_home: {
@@ -162,10 +162,14 @@ Steps: {
 			ExitCode: 0
 			Output: """
 				go: creating new go.mod: module hello
+				go: to add module requirements and sums:
+				\tgo mod tidy
 
 				"""
 			ComparisonOutput: """
 				go: creating new go.mod: module hello
+				go: to add module requirements and sums:
+				\tgo mod tidy
 
 				"""
 		}]
@@ -185,10 +189,16 @@ Steps: {
 				go: downloading rsc.io/quote v1.5.2
 				go: downloading rsc.io/sampler v1.3.0
 				go: downloading golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
+				go: added golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
+				go: added rsc.io/quote v1.5.2
+				go: added rsc.io/sampler v1.3.0
 
 				"""
 			ComparisonOutput: """
 
+				go: added golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
+				go: added rsc.io/quote v1.5.2
+				go: added rsc.io/sampler v1.3.0
 				go: downloading golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
 				go: downloading rsc.io/quote v1.5.2
 				go: downloading rsc.io/sampler v1.3.0
@@ -217,5 +227,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "13b62f3b7d87bd98ecc52b27beabea85d4a954d86f0a1ff3ac75aed4b213b07f"
+Hash: "5deda7db40f740e3769be5cc2e7ac9dff1bb782bf714e5011e9f5d84abab8774"
 Delims: ["{{{", "}}}"]

@@ -77,8 +77,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20220916045313-f81d11764005",
-		      "Sum": "h1:TozvtuERGrcqQhYM4thrishUY+QONu76GMskVpgQHBA=",
+		      "Version": "v0.0.2-0.20220918055127-cc4d80fbbfa7",
+		      "Sum": "h1:83MPB7IZes5I5o7Jc2r9JBgMqHaU+E8LjHv03xehSic=",
 		      "Replace": null
 		    },
 		    {
@@ -128,7 +128,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+			Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 		}
 	}
 }]
@@ -305,13 +305,13 @@ Steps: {
 			ExitCode: 0
 			Output: """
 				go: downloading {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
-				go: {{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcedf12345
+				go: added {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
 
 				"""
 			ComparisonOutput: """
 
+				go: added {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
 				go: downloading {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
-				go: {{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcedf12345
 				"""
 		}, {
 			Negated:  false
@@ -350,5 +350,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "703d7b8f9690e147301b8824a58f1fcaadf55bc2cad6ae498ef6ef33db2bf706"
+Hash: "ae3238b78d035abf6fc957d0c603b0506d75a724b225fcfacb127ba4e8f7b810"
 Delims: ["{{{", "}}}"]

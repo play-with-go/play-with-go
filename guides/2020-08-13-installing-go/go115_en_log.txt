@@ -1,11 +1,11 @@
 $ pwd
 /home/gopher
-$ wget -q https://golang.org/dl/go1.15.15.linux-$GOARCH.tar.gz
-$ sudo tar -C /usr/local -xzf go1.15.15.linux-$GOARCH.tar.gz
+$ wget -q https://golang.org/dl/go1.19.1.linux-$GOARCH.tar.gz
+$ sudo tar -C /usr/local -xzf go1.19.1.linux-$GOARCH.tar.gz
 $ echo export PATH="/usr/local/go/bin:$PATH" >>$HOME/.profile
 $ source $HOME/.profile
 $ go version
-go version go1.15.15 linux/amd64
+go version go1.19.1 linux/amd64
 $ go env
 GO111MODULE=""
 GOARCH="amd64"
@@ -13,6 +13,7 @@ GOBIN=""
 GOCACHE="/home/gopher/.cache/go-build"
 GOENV="/home/gopher/.config/go/env"
 GOEXE=""
+GOEXPERIMENT=""
 GOFLAGS=""
 GOHOSTARCH="amd64"
 GOHOSTOS="linux"
@@ -28,19 +29,21 @@ GOROOT="/usr/local/go"
 GOSUMDB="sum.golang.org"
 GOTMPDIR=""
 GOTOOLDIR="/usr/local/go/pkg/tool/linux_amd64"
+GOVCS=""
+GOVERSION="go1.19.1"
 GCCGO="gccgo"
 AR="ar"
 CC="gcc"
 CXX="g++"
 CGO_ENABLED="1"
-GOMOD=""
+GOMOD="/dev/null"
+GOWORK=""
 CGO_CFLAGS="-g -O2"
 CGO_CPPFLAGS=""
 CGO_CXXFLAGS="-g -O2"
 CGO_FFLAGS="-g -O2"
 CGO_LDFLAGS="-g -O2"
 PKG_CONFIG="pkg-config"
-GOGCCFLAGS="fake_gcc_flags"
 $ go env GOBIN
 
 $ go env -w GOBIN=/path/to/my/gobin

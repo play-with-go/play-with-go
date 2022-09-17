@@ -5,7 +5,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+			Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 		}
 	}
 }]
@@ -28,8 +28,8 @@ Steps: {
 			Negated:          false
 			CmdStr:           "go version"
 			ExitCode:         0
-			Output:           "go version go1.15.15 linux/amd64"
-			ComparisonOutput: "go version go1.15.15 linux/amd64"
+			Output:           "go version go1.19.1 linux/amd64"
+			ComparisonOutput: "go version go1.19.1 linux/amd64"
 		}]
 	}
 	staticcheck_install: {
@@ -41,23 +41,25 @@ Steps: {
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:  false
-			CmdStr:   "(cd $(mktemp -d); GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6)"
+			CmdStr:   "go install honnef.co/go/tools/cmd/staticcheck@v0.3.3"
 			ExitCode: 0
 			Output: """
-				go: downloading honnef.co/go/tools v0.0.1-2020.1.6
-				go: found honnef.co/go/tools/cmd/staticcheck in honnef.co/go/tools v0.0.1-2020.1.6
-				go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
-				go: downloading github.com/BurntSushi/toml v0.3.1
-				go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
+				go: downloading honnef.co/go/tools v0.3.3
+				go: downloading golang.org/x/tools v0.1.11-0.20220513221640-090b14e8501f
+				go: downloading golang.org/x/exp/typeparams v0.0.0-20220218215828-6cf2b201936e
+				go: downloading golang.org/x/sys v0.0.0-20211019181941-9d821ace8654
+				go: downloading github.com/BurntSushi/toml v0.4.1
+				go: downloading golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4
 
 				"""
 			ComparisonOutput: """
+				go: downloading honnef.co/go/tools v0.3.3
+				go: downloading golang.org/x/tools v0.1.11-0.20220513221640-090b14e8501f
+				go: downloading golang.org/x/exp/typeparams v0.0.0-20220218215828-6cf2b201936e
+				go: downloading golang.org/x/sys v0.0.0-20211019181941-9d821ace8654
+				go: downloading github.com/BurntSushi/toml v0.4.1
+				go: downloading golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4
 
-				go: downloading github.com/BurntSushi/toml v0.3.1
-				go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
-				go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
-				go: downloading honnef.co/go/tools v0.0.1-2020.1.6
-				go: found honnef.co/go/tools/cmd/staticcheck in honnef.co/go/tools v0.0.1-2020.1.6
 				"""
 		}]
 	}
@@ -94,11 +96,11 @@ Steps: {
 			CmdStr:   "staticcheck -version"
 			ExitCode: 0
 			Output: """
-				staticcheck 2020.1.6
+				staticcheck 2022.1.3 (v0.3.3)
 
 				"""
 			ComparisonOutput: """
-				staticcheck 2020.1.6
+				staticcheck 2022.1.3 (v0.3.3)
 
 				"""
 		}]
@@ -241,6 +243,8 @@ Steps: {
 				Available since
 				    2019.2
 
+				Online documentation
+				    https://staticcheck.io/docs/checks#SA5009
 
 				"""
 			ComparisonOutput: """
@@ -249,6 +253,8 @@ Steps: {
 				Available since
 				    2019.2
 
+				Online documentation
+				    https://staticcheck.io/docs/checks#SA5009
 
 				"""
 		}]
@@ -910,5 +916,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "66396cad683065b32470e992e2b449c499702986cff334556cdab46668d107d5"
+Hash: "29d51f4a617087a8662817a9ec8eae7670ad5825297397b2df912324ff2c1071"
 Delims: ["{{{", "}}}"]

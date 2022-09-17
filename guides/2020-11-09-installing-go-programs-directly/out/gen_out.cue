@@ -5,7 +5,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go116: {
-			Image: "playwithgo/go1.16.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+			Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 		}
 	}
 }]
@@ -28,58 +28,8 @@ Steps: {
 			Negated:          false
 			CmdStr:           "go version"
 			ExitCode:         0
-			Output:           "go version go1.16.15 linux/amd64"
-			ComparisonOutput: "go version go1.16.15 linux/amd64"
-		}]
-	}
-	go115_mkcert_get: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "go115_mkcert_get"
-		Order:           1
-		Terminal:        "term1"
-		Stmts: [{
-			Negated:  false
-			CmdStr:   "go get filippo.io/mkcert@v1.4.2"
-			ExitCode: 0
-			Output: """
-				go: downloading filippo.io/mkcert v1.4.2
-				go: downloading golang.org/x/net v0.0.0-20190620200207-3b0461eec859
-				go: downloading golang.org/x/tools v0.0.0-20191108193012-7d206e10da11
-				go: downloading honnef.co/go/tools v0.0.0-20191107024926-a9480a3ec3bc
-				go: downloading howett.net/plist v0.0.0-20181124034731-591f970eefbb
-				go: downloading software.sslmate.com/src/go-pkcs12 v0.0.0-20180114231543-2291e8f0f237
-				go: downloading golang.org/x/text v0.3.0
-				go: downloading github.com/BurntSushi/toml v0.3.1
-
-				"""
-			ComparisonOutput: """
-
-				go: downloading filippo.io/mkcert v1.4.2
-				go: downloading github.com/BurntSushi/toml v0.3.1
-				go: downloading golang.org/x/net v0.0.0-20190620200207-3b0461eec859
-				go: downloading golang.org/x/text v0.3.0
-				go: downloading golang.org/x/tools v0.0.0-20191108193012-7d206e10da11
-				go: downloading honnef.co/go/tools v0.0.0-20191107024926-a9480a3ec3bc
-				go: downloading howett.net/plist v0.0.0-20181124034731-591f970eefbb
-				go: downloading software.sslmate.com/src/go-pkcs12 v0.0.0-20180114231543-2291e8f0f237
-				"""
-		}]
-	}
-	go115_mkcert_modules_get: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "go115_mkcert_modules_get"
-		Order:           2
-		Terminal:        "term1"
-		Stmts: [{
-			Negated:          false
-			CmdStr:           "(cd $(mktemp -d); GO111MODULE=on go get filippo.io/mkcert@v1.4.2)"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			Output:           "go version go1.19.1 linux/amd64"
+			ComparisonOutput: "go version go1.19.1 linux/amd64"
 		}]
 	}
 	go116_mkcert_install: {
@@ -87,14 +37,28 @@ Steps: {
 		DoNotTrim:       false
 		InformationOnly: false
 		Name:            "go116_mkcert_install"
-		Order:           3
+		Order:           1
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "go install filippo.io/mkcert@v1.4.2"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			Negated:  false
+			CmdStr:   "go install filippo.io/mkcert@v1.4.4"
+			ExitCode: 0
+			Output: """
+				go: downloading filippo.io/mkcert v1.4.4
+				go: downloading golang.org/x/net v0.0.0-20220421235706-1d1ef9303861
+				go: downloading software.sslmate.com/src/go-pkcs12 v0.2.0
+				go: downloading golang.org/x/text v0.3.7
+				go: downloading golang.org/x/crypto v0.0.0-20220331220935-ae2d96664a29
+
+				"""
+			ComparisonOutput: """
+				go: downloading filippo.io/mkcert v1.4.4
+				go: downloading golang.org/x/net v0.0.0-20220421235706-1d1ef9303861
+				go: downloading software.sslmate.com/src/go-pkcs12 v0.2.0
+				go: downloading golang.org/x/text v0.3.7
+				go: downloading golang.org/x/crypto v0.0.0-20220331220935-ae2d96664a29
+
+				"""
 		}]
 	}
 	which_mkcert: {
@@ -102,7 +66,7 @@ Steps: {
 		DoNotTrim:       false
 		InformationOnly: false
 		Name:            "which_mkcert"
-		Order:           4
+		Order:           2
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:  false
@@ -123,18 +87,18 @@ Steps: {
 		DoNotTrim:       false
 		InformationOnly: false
 		Name:            "run_mkcert"
-		Order:           5
+		Order:           3
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:  false
 			CmdStr:   "mkcert -version"
 			ExitCode: 0
 			Output: """
-				v1.4.2
+				v1.4.4
 
 				"""
 			ComparisonOutput: """
-				v1.4.2
+				v1.4.4
 
 				"""
 		}]
@@ -144,32 +108,32 @@ Steps: {
 		DoNotTrim:       false
 		InformationOnly: false
 		Name:            "goversion_mkcert"
-		Order:           6
+		Order:           4
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:  false
 			CmdStr:   "go version -m $(which mkcert)"
 			ExitCode: 0
 			Output: """
-				/home/gopher/go/bin/mkcert: go1.16.15
+				/home/gopher/go/bin/mkcert: go1.19.1
 				\tpath\tfilippo.io/mkcert
-				\tmod\tfilippo.io/mkcert\tv1.4.2\th1:7mWofpFS4gzQS5bhE3KYBwzfceIPy2KJ4tMT31aPNeY=
-				\tdep\tgolang.org/x/net\tv0.0.0-20190620200207-3b0461eec859\th1:R/3boaszxrf1GEUWTVDzSKVwLmSJpwZ1yqXm8j0v2QI=
-				\tdep\tgolang.org/x/text\tv0.3.0\th1:g61tztE5qeGQ89tm6NTjjM9VPIm088od1l6aSorWRWg=
-				\tdep\tsoftware.sslmate.com/src/go-pkcs12\tv0.0.0-20180114231543-2291e8f0f237\th1:iAEkCBPbRaflBgZ7o9gjVUuWuvWeV4sytFWg9o+Pj2k=
-
+				\tmod\tfilippo.io/mkcert\tv1.4.4\th1:8eVbbwfVlaqUM7OwuftKc2nuYOoTDQWqsoXmzoXZdbc=
+				\tdep\tgolang.org/x/crypto\tv0.0.0-20220331220935-ae2d96664a29\th1:tkVvjkPTB7pnW3jnid7kNyAMPVWllTNOf/qKDze4p9o=
+				\tdep\tgolang.org/x/net\tv0.0.0-20220421235706-1d1ef9303861\th1:yssD99+7tqHWO5Gwh81phT+67hg+KttniBr6UnEXOY8=
+				\tdep\tgolang.org/x/text\tv0.3.7\th1:olpwvP2KacW1ZWvsR7uQhoyTYvKAupfQrRGBFM352Gk=
+				\tdep\tsoftware.sslmate.com/src/go-pkcs12\tv0.2.0\th1:nlFkj7bTysH6VkC4fGphtjXRbezREPgrHuJG20hBGPE=
 				"""
 			ComparisonOutput: """
-				/home/gopher/go/bin/mkcert: go1.16.15
+				/home/gopher/go/bin/mkcert: go1.19.1
 				\tpath\tfilippo.io/mkcert
-				\tmod\tfilippo.io/mkcert\tv1.4.2\th1:7mWofpFS4gzQS5bhE3KYBwzfceIPy2KJ4tMT31aPNeY=
-				\tdep\tgolang.org/x/net\tv0.0.0-20190620200207-3b0461eec859\th1:R/3boaszxrf1GEUWTVDzSKVwLmSJpwZ1yqXm8j0v2QI=
-				\tdep\tgolang.org/x/text\tv0.3.0\th1:g61tztE5qeGQ89tm6NTjjM9VPIm088od1l6aSorWRWg=
-				\tdep\tsoftware.sslmate.com/src/go-pkcs12\tv0.0.0-20180114231543-2291e8f0f237\th1:iAEkCBPbRaflBgZ7o9gjVUuWuvWeV4sytFWg9o+Pj2k=
-
+				\tmod\tfilippo.io/mkcert\tv1.4.4\th1:8eVbbwfVlaqUM7OwuftKc2nuYOoTDQWqsoXmzoXZdbc=
+				\tdep\tgolang.org/x/crypto\tv0.0.0-20220331220935-ae2d96664a29\th1:tkVvjkPTB7pnW3jnid7kNyAMPVWllTNOf/qKDze4p9o=
+				\tdep\tgolang.org/x/net\tv0.0.0-20220421235706-1d1ef9303861\th1:yssD99+7tqHWO5Gwh81phT+67hg+KttniBr6UnEXOY8=
+				\tdep\tgolang.org/x/text\tv0.3.7\th1:olpwvP2KacW1ZWvsR7uQhoyTYvKAupfQrRGBFM352Gk=
+				\tdep\tsoftware.sslmate.com/src/go-pkcs12\tv0.2.0\th1:nlFkj7bTysH6VkC4fGphtjXRbezREPgrHuJG20hBGPE=
 				"""
 		}]
 	}
 }
-Hash: "c82a16030f644b76c51e45f0ce0b71c14b3cf34798230d29b0c90526d8522d1c"
+Hash: "d19823b04cae5f5be42889ac3f5d71ed8700c12a3ac6e15c47c8cbd3fafef345"
 Delims: ["{{{", "}}}"]

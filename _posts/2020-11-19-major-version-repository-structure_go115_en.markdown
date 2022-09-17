@@ -23,7 +23,7 @@ In this guide you will:
 ### Context
 
 <pre data-command-src="Z28gdmVyc2lvbgo="><code class="language-.term1">$ go version
-go version go1.15.15 linux/amd64
+go version go1.19.1 linux/amd64
 </code></pre>
 
 ### Major branch strategy
@@ -165,12 +165,16 @@ func main() &#123;
 
 <pre data-command-src="Z28gZ2V0IHt7ey5CUkFOQ0h9fX1AdjEuMC4wCmdvIGdldCB7e3suQlJBTkNIfX19L3YyQHYyLjAuMApnbyBnZXQge3t7LlNVQkRJUn19fUB2MS4wLjAKZ28gZ2V0IHt7ey5TVUJESVJ9fX0vdjJAdjIuMC4wCg=="><code class="language-.term1">$ go get &#123;&#123;&#123;.BRANCH&#125;&#125;&#125;@v1.0.0
 go: downloading &#123;&#123;&#123;.BRANCH&#125;&#125;&#125; v1.0.0
+go: added &#123;&#123;&#123;.BRANCH&#125;&#125;&#125; v1.0.0
 $ go get &#123;&#123;&#123;.BRANCH&#125;&#125;&#125;/v2@v2.0.0
 go: downloading &#123;&#123;&#123;.BRANCH&#125;&#125;&#125;/v2 v2.0.0
+go: added &#123;&#123;&#123;.BRANCH&#125;&#125;&#125;/v2 v2.0.0
 $ go get &#123;&#123;&#123;.SUBDIR&#125;&#125;&#125;@v1.0.0
 go: downloading &#123;&#123;&#123;.SUBDIR&#125;&#125;&#125; v1.0.0
+go: added &#123;&#123;&#123;.SUBDIR&#125;&#125;&#125; v1.0.0
 $ go get &#123;&#123;&#123;.SUBDIR&#125;&#125;&#125;/v2@v2.0.0
 go: downloading &#123;&#123;&#123;.SUBDIR&#125;&#125;&#125;/v2 v2.0.0
+go: added &#123;&#123;&#123;.SUBDIR&#125;&#125;&#125;/v2 v2.0.0
 </code></pre>
 
 <pre data-command-src="Z28gcnVuIC4K"><code class="language-.term1">$ go run .

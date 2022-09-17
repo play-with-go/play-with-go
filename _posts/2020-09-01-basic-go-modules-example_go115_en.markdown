@@ -51,7 +51,7 @@ $ go mod init mod.com
 go: creating new go.mod: module mod.com
 $ go get &#123;&#123;&#123;.REPO1&#125;&#125;&#125;
 go: downloading &#123;&#123;&#123;.REPO1&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345
-go: &#123;&#123;&#123;.REPO1&#125;&#125;&#125; upgrade =&gt; v0.0.0-20060102150405-abcedf12345
+go: added &#123;&#123;&#123;.REPO1&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345
 $ go run &#123;&#123;&#123;.REPO1&#125;&#125;&#125;
 Hello, world!
 </code></pre>

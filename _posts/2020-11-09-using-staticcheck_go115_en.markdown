@@ -36,7 +36,7 @@ You should already have completed:
 This guide is running using:
 
 <pre data-command-src="Z28gdmVyc2lvbgo="><code class="language-.term1">$ go version
-go version go1.15.15 linux/amd64
+go version go1.19.1 linux/amd64
 </code></pre>
 
 ### Installing Staticcheck
@@ -46,15 +46,16 @@ module dependency, please see the ["Developer tools as module dependencies" guid
 
 Use `go get` to install Staticcheck:
 
-<pre data-command-src="KGNkICQobWt0ZW1wIC1kKTsgR08xMTFNT0RVTEU9b24gZ28gZ2V0IGhvbm5lZi5jby9nby90b29scy9jbWQvc3RhdGljY2hlY2tAdjAuMC4xLTIwMjAuMS42KQo="><code class="language-.term1">$ (cd $(mktemp -d); GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6)
-go: downloading honnef.co/go/tools v0.0.1-2020.1.6
-go: found honnef.co/go/tools/cmd/staticcheck in honnef.co/go/tools v0.0.1-2020.1.6
-go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
-go: downloading github.com/BurntSushi/toml v0.3.1
-go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
+<pre data-command-src="Z28gaW5zdGFsbCBob25uZWYuY28vZ28vdG9vbHMvY21kL3N0YXRpY2NoZWNrQHYwLjMuMwo="><code class="language-.term1">$ go install honnef.co/go/tools/cmd/staticcheck@v0.3.3
+go: downloading honnef.co/go/tools v0.3.3
+go: downloading golang.org/x/tools v0.1.11-0.20220513221640-090b14e8501f
+go: downloading golang.org/x/exp/typeparams v0.0.0-20220218215828-6cf2b201936e
+go: downloading golang.org/x/sys v0.0.0-20211019181941-9d821ace8654
+go: downloading github.com/BurntSushi/toml v0.4.1
+go: downloading golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4
 </code></pre>
 
-_Note: so that this guide remains reproducible we have spcified an explicit version, `v0.0.1-2020.1.6`.
+_Note: so that this guide remains reproducible we have spcified an explicit version, `v0.3.3`.
 When running yourself you could use the special version `latest`._
 
 The rather ugly use of a temporary directory ensures that `go get` is run outside of a module.  See the
@@ -69,7 +70,7 @@ Check that `staticcheck` is on your `PATH`:
 Run `staticcheck` as a quick check:
 
 <pre data-command-src="c3RhdGljY2hlY2sgLXZlcnNpb24K"><code class="language-.term1">$ staticcheck -version
-staticcheck 2020.1.6
+staticcheck 2022.1.3 (v0.3.3)
 </code></pre>
 
 You're all set!
@@ -164,6 +165,8 @@ Invalid Printf call
 Available since
     2019.2
 
+Online documentation
+    https://staticcheck.io/docs/checks#SA5009
 </code></pre>
 
 Let's consider one of the problems reported, [`ST1006`](https://staticcheck.io/docs/checks#ST1006), documented as "Poorly

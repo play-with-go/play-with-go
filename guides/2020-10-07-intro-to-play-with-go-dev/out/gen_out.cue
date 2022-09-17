@@ -77,8 +77,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20220916045313-f81d11764005",
-		      "Sum": "h1:TozvtuERGrcqQhYM4thrishUY+QONu76GMskVpgQHBA=",
+		      "Version": "v0.0.2-0.20220918055127-cc4d80fbbfa7",
+		      "Sum": "h1:83MPB7IZes5I5o7Jc2r9JBgMqHaU+E8LjHv03xehSic=",
 		      "Replace": null
 		    },
 		    {
@@ -128,7 +128,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+			Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 		}
 	}
 }]
@@ -354,5 +354,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "b53dcd3de8b90157ae825182f021b1c7087125438c18e54e2bc618d1e214588a"
+Hash: "772eb554083abcd286edfc7be26d16d0bfefcf7a6740ab3342b60e2609d1e744"
 Delims: ["{{{", "}}}"]

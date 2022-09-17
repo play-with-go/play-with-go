@@ -39,7 +39,7 @@ Scenarios: go116: preguide.#Scenario & {
 
 Terminals: term1: preguide.#Terminal & {
 	Description: "The main terminal"
-	Scenarios: go116: Image: _#go116LatestImage
+	Scenarios: go116: Image: _#go119LatestImage
 }
 
 Steps: goversion: preguide.#Command & {

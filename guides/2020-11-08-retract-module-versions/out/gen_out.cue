@@ -77,8 +77,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20220916045313-f81d11764005",
-		      "Sum": "h1:TozvtuERGrcqQhYM4thrishUY+QONu76GMskVpgQHBA=",
+		      "Version": "v0.0.2-0.20220918055127-cc4d80fbbfa7",
+		      "Sum": "h1:83MPB7IZes5I5o7Jc2r9JBgMqHaU+E8LjHv03xehSic=",
 		      "Replace": null
 		    },
 		    {
@@ -128,7 +128,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go116: {
-			Image: "playwithgo/go1.16.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+			Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 		}
 	}
 }]
@@ -151,8 +151,8 @@ Steps: {
 			Negated:          false
 			CmdStr:           "go version"
 			ExitCode:         0
-			Output:           "go version go1.16.15 linux/amd64"
-			ComparisonOutput: "go version go1.16.15 linux/amd64"
+			Output:           "go version go1.19.1 linux/amd64"
+			ComparisonOutput: "go version go1.19.1 linux/amd64"
 		}]
 	}
 	proverb_create: {
@@ -370,12 +370,12 @@ Steps: {
 			ExitCode: 0
 			Output: """
 				go: downloading {{{.PROVERB}}} v0.1.0
-				go get: added {{{.PROVERB}}} v0.1.0
+				go: added {{{.PROVERB}}} v0.1.0
 
 				"""
 			ComparisonOutput: """
 
-				go get: added {{{.PROVERB}}} v0.1.0
+				go: added {{{.PROVERB}}} v0.1.0
 				go: downloading {{{.PROVERB}}} v0.1.0
 				"""
 		}]
@@ -543,13 +543,13 @@ Steps: {
 			ExitCode: 0
 			Output: """
 				go: downloading {{{.PROVERB}}} v0.2.0
-				go get: upgraded {{{.PROVERB}}} v0.1.0 => v0.2.0
+				go: upgraded {{{.PROVERB}}} v0.1.0 => v0.2.0
 
 				"""
 			ComparisonOutput: """
 
-				go get: upgraded {{{.PROVERB}}} v0.1.0 => v0.2.0
 				go: downloading {{{.PROVERB}}} v0.2.0
+				go: upgraded {{{.PROVERB}}} v0.1.0 => v0.2.0
 				"""
 		}, {
 			Negated:  false
@@ -609,7 +609,7 @@ Steps: {
 			Output: """
 				module {{{.PROVERB}}}
 
-				go 1.16
+				go 1.19
 
 				retract v0.2.0
 
@@ -617,7 +617,7 @@ Steps: {
 			ComparisonOutput: """
 				module {{{.PROVERB}}}
 
-				go 1.16
+				go 1.19
 
 				retract v0.2.0
 
@@ -762,13 +762,13 @@ Steps: {
 			ExitCode: 0
 			Output: """
 				go: downloading {{{.PROVERB}}} v0.3.0
-				go get: upgraded {{{.PROVERB}}} v0.2.0 => v0.3.0
+				go: upgraded {{{.PROVERB}}} v0.2.0 => v0.3.0
 
 				"""
 			ComparisonOutput: """
 
-				go get: upgraded {{{.PROVERB}}} v0.2.0 => v0.3.0
 				go: downloading {{{.PROVERB}}} v0.3.0
+				go: upgraded {{{.PROVERB}}} v0.2.0 => v0.3.0
 				"""
 		}]
 	}
@@ -865,13 +865,13 @@ Steps: {
 				go: warning: {{{.PROVERB}}}@v0.2.0: retracted by module author: Go proverb was totally wrong
 				go: to switch to the latest unretracted version, run:
 				\tgo get {{{.PROVERB}}}@latest
-				go get: downgraded {{{.PROVERB}}} v0.3.0 => v0.2.0
+				go: downgraded {{{.PROVERB}}} v0.3.0 => v0.2.0
 
 				"""
 			ComparisonOutput: """
 
 				\tgo get {{{.PROVERB}}}@latest
-				go get: downgraded {{{.PROVERB}}} v0.3.0 => v0.2.0
+				go: downgraded {{{.PROVERB}}} v0.3.0 => v0.2.0
 				go: to switch to the latest unretracted version, run:
 				go: warning: {{{.PROVERB}}}@v0.2.0: retracted by module author: Go proverb was totally wrong
 				"""
@@ -933,12 +933,12 @@ Steps: {
 			CmdStr:   "go get {{{.PROVERB}}}@latest"
 			ExitCode: 0
 			Output: """
-				go get: upgraded {{{.PROVERB}}} v0.2.0 => v0.3.0
+				go: upgraded {{{.PROVERB}}} v0.2.0 => v0.3.0
 
 				"""
 			ComparisonOutput: """
 
-				go get: upgraded {{{.PROVERB}}} v0.2.0 => v0.3.0
+				go: upgraded {{{.PROVERB}}} v0.2.0 => v0.3.0
 				"""
 		}]
 	}
@@ -1249,15 +1249,15 @@ Steps: {
 				go: warning: {{{.PROVERB}}}@v1.0.0: retracted by module author: Published v1 too early
 				go: to switch to the latest unretracted version, run:
 				\tgo get {{{.PROVERB}}}@latest
-				go get: upgraded {{{.PROVERB}}} v0.3.0 => v1.0.0
+				go: upgraded {{{.PROVERB}}} v0.3.0 => v1.0.0
 
 				"""
 			ComparisonOutput: """
 
 				\tgo get {{{.PROVERB}}}@latest
-				go get: upgraded {{{.PROVERB}}} v0.3.0 => v1.0.0
 				go: downloading {{{.PROVERB}}} v1.0.0
 				go: to switch to the latest unretracted version, run:
+				go: upgraded {{{.PROVERB}}} v0.3.0 => v1.0.0
 				go: warning: {{{.PROVERB}}}@v1.0.0: retracted by module author: Published v1 too early
 				"""
 		}, {
@@ -1269,15 +1269,15 @@ Steps: {
 				go: warning: {{{.PROVERB}}}@v1.0.1: retracted by module author: Published v1 too early
 				go: to switch to the latest unretracted version, run:
 				\tgo get {{{.PROVERB}}}@latest
-				go get: upgraded {{{.PROVERB}}} v1.0.0 => v1.0.1
+				go: upgraded {{{.PROVERB}}} v1.0.0 => v1.0.1
 
 				"""
 			ComparisonOutput: """
 
 				\tgo get {{{.PROVERB}}}@latest
-				go get: upgraded {{{.PROVERB}}} v1.0.0 => v1.0.1
 				go: downloading {{{.PROVERB}}} v1.0.1
 				go: to switch to the latest unretracted version, run:
+				go: upgraded {{{.PROVERB}}} v1.0.0 => v1.0.1
 				go: warning: {{{.PROVERB}}}@v1.0.1: retracted by module author: Published v1 too early
 				"""
 		}, {
@@ -1286,12 +1286,12 @@ Steps: {
 			ExitCode: 0
 			Output: """
 				go: downloading {{{.PROVERB}}} v0.4.0
-				go get: downgraded {{{.PROVERB}}} v1.0.1 => v0.4.0
+				go: downgraded {{{.PROVERB}}} v1.0.1 => v0.4.0
 
 				"""
 			ComparisonOutput: """
 
-				go get: downgraded {{{.PROVERB}}} v1.0.1 => v0.4.0
+				go: downgraded {{{.PROVERB}}} v1.0.1 => v0.4.0
 				go: downloading {{{.PROVERB}}} v0.4.0
 				"""
 		}]
@@ -1417,5 +1417,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "e8dd0d207479237a2ad5c4bae3807603adb72649141e4ff82a2a6c8b09ccade1"
+Hash: "a0e9b5de69b2e25ac50a27547ab7ddb8cf2fcacda227d67a8c7b205952a63c17"
 Delims: ["{{{", "}}}"]

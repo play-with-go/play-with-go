@@ -17,7 +17,7 @@ Delims: ["{{{", "}}}"]
         Description: "The main terminal"
         Scenarios: {
             go115: {
-                Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }]
@@ -50,7 +50,7 @@ Delims: ["{{{", "}}}"]
         Description: "The main terminal"
         Scenarios: {
             go115: {
-                Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }]
@@ -83,7 +83,7 @@ Delims: ["{{{", "}}}"]
         Description: "The main terminal"
         Scenarios: {
             go115: {
-                Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }]
@@ -101,7 +101,7 @@ Delims: ["{{{", "}}}"]
         Description: "The main terminal"
         Scenarios: {
             go115: {
-                Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }]
@@ -119,7 +119,7 @@ Delims: ["{{{", "}}}"]
         Description: "The main terminal"
         Scenarios: {
             go116: {
-                Image: "playwithgo/go1.16.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }]
@@ -148,7 +148,7 @@ Delims: ["{{{", "}}}"]
         Description: "The main terminal"
         Scenarios: {
             go116: {
-                Image: "playwithgo/go1.16.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }]
@@ -177,7 +177,7 @@ Delims: ["{{{", "}}}"]
         Description: "The main terminal"
         Scenarios: {
             go115: {
-                Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }]
@@ -206,7 +206,7 @@ Delims: ["{{{", "}}}"]
         Description: "The main terminal"
         Scenarios: {
             go115: {
-                Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }]
@@ -235,7 +235,7 @@ Delims: ["{{{", "}}}"]
         Description: "The main terminal"
         Scenarios: {
             go115: {
-                Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }]
@@ -253,7 +253,7 @@ Delims: ["{{{", "}}}"]
         Description: "The main terminal"
         Scenarios: {
             go115: {
-                Image: "playwithgo/installgo1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/installgo1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }]
@@ -271,7 +271,7 @@ Delims: ["{{{", "}}}"]
         Description: "The main terminal"
         Scenarios: {
             go115: {
-                Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }]
@@ -304,7 +304,7 @@ Delims: ["{{{", "}}}"]
         Description: "The main terminal"
         Scenarios: {
             go115: {
-                Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }]
@@ -402,7 +402,7 @@ Terminals: {
         Description: "The main terminal"
         Scenarios: {
             go115: {
-                Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }
@@ -1756,8 +1756,8 @@ Presteps: [{
             },
             {
               "Path": "github.com/play-with-go/preguide",
-              "Version": "v0.0.2-0.20220916045313-f81d11764005",
-              "Sum": "h1:TozvtuERGrcqQhYM4thrishUY+QONu76GMskVpgQHBA=",
+              "Version": "v0.0.2-0.20220918055127-cc4d80fbbfa7",
+              "Sum": "h1:83MPB7IZes5I5o7Jc2r9JBgMqHaU+E8LjHv03xehSic=",
               "Replace": null
             },
             {
@@ -1807,7 +1807,7 @@ Terminals: [{
     Description: "The main terminal"
     Scenarios: {
         go115: {
-            Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+            Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
         }
     }
 }]
@@ -1830,8 +1830,8 @@ Steps: {
             Negated:          false
             CmdStr:           "go version"
             ExitCode:         0
-            Output:           "go version go1.15.15 linux/amd64"
-            ComparisonOutput: "go version go1.15.15 linux/amd64"
+            Output:           "go version go1.19.1 linux/amd64"
+            ComparisonOutput: "go version go1.19.1 linux/amd64"
         }]
     }
     pwd_home: {
@@ -1911,13 +1911,13 @@ Steps: {
             Output: """
                 module {{{.GREETINGS}}}
 
-                go 1.15
+                go 1.19
 
                 """
             ComparisonOutput: """
                 module {{{.GREETINGS}}}
 
-                go 1.15
+                go 1.19
 
                 """
         }]
@@ -2119,13 +2119,13 @@ Steps: {
             ExitCode: 0
             Output: """
                 go: downloading {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
-                go: {{{.GREETINGS}}} upgrade => v0.0.0-20060102150405-abcedf12345
+                go: added {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
 
                 """
             ComparisonOutput: """
 
+                go: added {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
                 go: downloading {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
-                go: {{{.GREETINGS}}} upgrade => v0.0.0-20060102150405-abcedf12345
                 """
         }]
     }
@@ -2390,14 +2390,14 @@ Steps: {
             CmdStr:   "go get {{{.GREETINGS}}}@$greetings_error_commit"
             ExitCode: 0
             Output: """
-                go: {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
                 go: downloading {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
+                go: upgraded {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
 
                 """
             ComparisonOutput: """
 
                 go: downloading {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
-                go: {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
+                go: upgraded {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
                 """
         }]
     }
@@ -2704,14 +2704,14 @@ Steps: {
             CmdStr:   "go get {{{.GREETINGS}}}@$greetings_random_commit"
             ExitCode: 0
             Output: """
-                go: {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
                 go: downloading {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
+                go: upgraded {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
 
                 """
             ComparisonOutput: """
 
                 go: downloading {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
-                go: {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
+                go: upgraded {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
                 """
         }]
     }
@@ -3026,9 +3026,9 @@ Steps: {
             Output: """
                 module {{{.HELLO}}}
 
-                go 1.15
+                go 1.19
 
-                require {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
+                require {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 // indirect
 
                 replace {{{.GREETINGS}}} => /home/gopher/greetings
 
@@ -3036,9 +3036,9 @@ Steps: {
             ComparisonOutput: """
                 module {{{.HELLO}}}
 
-                go 1.15
+                go 1.19
 
-                require {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
+                require {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 // indirect
 
                 replace {{{.GREETINGS}}} => /home/gopher/greetings
 
@@ -3207,7 +3207,7 @@ Steps: {
             ExitCode: 0
             Output: """
                 PASS
-                ok  \t{{{.GREETINGS}}}\t0.002s
+                ok  \t{{{.GREETINGS}}}\t0.001s
 
                 """
             ComparisonOutput: """
@@ -3225,7 +3225,7 @@ Steps: {
                 === RUN   TestHelloEmpty
                 --- PASS: TestHelloEmpty (0.00s)
                 PASS
-                ok  \t{{{.GREETINGS}}}\t0.002s
+                ok  \t{{{.GREETINGS}}}\t0.001s
 
                 """
             ComparisonOutput: """
@@ -3399,7 +3399,7 @@ Steps: {
                     greetings_test.go:15: Hello("Gladys") = "Hail, %v! Well met!", <nil>, want match for `\\bGladys\\b`, <nil>
                 FAIL
                 exit status 1
-                FAIL\t{{{.GREETINGS}}}\t0.001s
+                FAIL\t{{{.GREETINGS}}}\t0.002s
 
                 """
             ComparisonOutput: """
@@ -3569,7 +3569,7 @@ Steps: {
             ExitCode: 0
             Output: """
                 PASS
-                ok  \t{{{.GREETINGS}}}\t0.001s
+                ok  \t{{{.GREETINGS}}}\t0.002s
 
                 """
             ComparisonOutput: """
@@ -3673,7 +3673,7 @@ Steps: {
         }]
     }
 }
-Hash: "4030ef2161a08fd4057fffd4499e5b683247d45a04169c7cf11892d42c9f2138"
+Hash: "5eaa4bac4c0d61559e4ada00c264ad04e45e2b4635a313f9596008eef77a880e"
 Delims: ["{{{", "}}}"]
 // ---
 Networks: ["playwithgo_pwg"]
@@ -3739,7 +3739,7 @@ Terminals: {
         Description: "The main terminal"
         Scenarios: {
             go115: {
-                Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }
@@ -3863,7 +3863,7 @@ Terminals: [{
     Description: "The main terminal"
     Scenarios: {
         go115: {
-            Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+            Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
         }
     }
 }]
@@ -3886,8 +3886,8 @@ Steps: {
             Negated:          false
             CmdStr:           "go version"
             ExitCode:         0
-            Output:           "go version go1.15.15 linux/amd64"
-            ComparisonOutput: "go version go1.15.15 linux/amd64"
+            Output:           "go version go1.19.1 linux/amd64"
+            ComparisonOutput: "go version go1.19.1 linux/amd64"
         }]
     }
     pwd_home: {
@@ -4020,10 +4020,14 @@ Steps: {
             ExitCode: 0
             Output: """
                 go: creating new go.mod: module hello
+                go: to add module requirements and sums:
+                \tgo mod tidy
 
                 """
             ComparisonOutput: """
                 go: creating new go.mod: module hello
+                go: to add module requirements and sums:
+                \tgo mod tidy
 
                 """
         }]
@@ -4043,10 +4047,16 @@ Steps: {
                 go: downloading rsc.io/quote v1.5.2
                 go: downloading rsc.io/sampler v1.3.0
                 go: downloading golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
+                go: added golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
+                go: added rsc.io/quote v1.5.2
+                go: added rsc.io/sampler v1.3.0
 
                 """
             ComparisonOutput: """
 
+                go: added golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
+                go: added rsc.io/quote v1.5.2
+                go: added rsc.io/sampler v1.3.0
                 go: downloading golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
                 go: downloading rsc.io/quote v1.5.2
                 go: downloading rsc.io/sampler v1.3.0
@@ -4075,7 +4085,7 @@ Steps: {
         }]
     }
 }
-Hash: "13b62f3b7d87bd98ecc52b27beabea85d4a954d86f0a1ff3ac75aed4b213b07f"
+Hash: "5deda7db40f740e3769be5cc2e7ac9dff1bb782bf714e5011e9f5d84abab8774"
 Delims: ["{{{", "}}}"]
 // ---
 Networks: ["playwithgo_pwg"]
@@ -4137,7 +4147,7 @@ Terminals: {
         Description: "The main terminal"
         Scenarios: {
             go115: {
-                Image: "playwithgo/installgo1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/installgo1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }
@@ -4155,7 +4165,7 @@ Steps: {
         DoNotTrim:       false
         Name:            string
         StepType:        1
-        Source:          "wget -q https://golang.org/dl/go1.15.15.linux-$GOARCH.tar.gz"
+        Source:          "wget -q https://golang.org/dl/go1.19.1.linux-$GOARCH.tar.gz"
         InformationOnly: false
         Terminal:        string
     }
@@ -4163,7 +4173,7 @@ Steps: {
         DoNotTrim:       false
         Name:            string
         StepType:        1
-        Source:          "sudo tar -C /usr/local -xzf go1.15.15.linux-$GOARCH.tar.gz"
+        Source:          "sudo tar -C /usr/local -xzf go1.19.1.linux-$GOARCH.tar.gz"
         InformationOnly: false
         Terminal:        string
     }
@@ -4294,7 +4304,7 @@ Terminals: [{
     Description: "The main terminal"
     Scenarios: {
         go115: {
-            Image: "playwithgo/installgo1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+            Image: "playwithgo/installgo1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
         }
     }
 }]
@@ -4336,7 +4346,7 @@ Steps: {
         Terminal:        "term1"
         Stmts: [{
             Negated:          false
-            CmdStr:           "wget -q https://golang.org/dl/go1.15.15.linux-$GOARCH.tar.gz"
+            CmdStr:           "wget -q https://golang.org/dl/go1.19.1.linux-$GOARCH.tar.gz"
             ExitCode:         0
             Output:           ""
             ComparisonOutput: ""
@@ -4351,7 +4361,7 @@ Steps: {
         Terminal:        "term1"
         Stmts: [{
             Negated:          false
-            CmdStr:           "sudo tar -C /usr/local -xzf go1.15.15.linux-$GOARCH.tar.gz"
+            CmdStr:           "sudo tar -C /usr/local -xzf go1.19.1.linux-$GOARCH.tar.gz"
             ExitCode:         0
             Output:           ""
             ComparisonOutput: ""
@@ -4398,8 +4408,8 @@ Steps: {
             Negated:          false
             CmdStr:           "go version"
             ExitCode:         0
-            Output:           "go version go1.15.15 linux/amd64"
-            ComparisonOutput: "go version go1.15.15 linux/amd64"
+            Output:           "go version go1.19.1 linux/amd64"
+            ComparisonOutput: "go version go1.19.1 linux/amd64"
         }]
     }
     go_env: {
@@ -4420,6 +4430,7 @@ Steps: {
                 GOCACHE="/home/gopher/.cache/go-build"
                 GOENV="/home/gopher/.config/go/env"
                 GOEXE=""
+                GOEXPERIMENT=""
                 GOFLAGS=""
                 GOHOSTARCH="amd64"
                 GOHOSTOS="linux"
@@ -4435,19 +4446,21 @@ Steps: {
                 GOSUMDB="sum.golang.org"
                 GOTMPDIR=""
                 GOTOOLDIR="/usr/local/go/pkg/tool/linux_amd64"
+                GOVCS=""
+                GOVERSION="go1.19.1"
                 GCCGO="gccgo"
                 AR="ar"
                 CC="gcc"
                 CXX="g++"
                 CGO_ENABLED="1"
-                GOMOD=""
+                GOMOD="/dev/null"
+                GOWORK=""
                 CGO_CFLAGS="-g -O2"
                 CGO_CPPFLAGS=""
                 CGO_CXXFLAGS="-g -O2"
                 CGO_FFLAGS="-g -O2"
                 CGO_LDFLAGS="-g -O2"
                 PKG_CONFIG="pkg-config"
-                GOGCCFLAGS="fake_gcc_flags"
 
                 """
             ComparisonOutput: """
@@ -4457,6 +4470,7 @@ Steps: {
                 GOCACHE="/home/gopher/.cache/go-build"
                 GOENV="/home/gopher/.config/go/env"
                 GOEXE=""
+                GOEXPERIMENT=""
                 GOFLAGS=""
                 GOHOSTARCH="amd64"
                 GOHOSTOS="linux"
@@ -4472,19 +4486,21 @@ Steps: {
                 GOSUMDB="sum.golang.org"
                 GOTMPDIR=""
                 GOTOOLDIR="/usr/local/go/pkg/tool/linux_amd64"
+                GOVCS=""
+                GOVERSION="go1.19.1"
                 GCCGO="gccgo"
                 AR="ar"
                 CC="gcc"
                 CXX="g++"
                 CGO_ENABLED="1"
-                GOMOD=""
+                GOMOD="/dev/null"
+                GOWORK=""
                 CGO_CFLAGS="-g -O2"
                 CGO_CPPFLAGS=""
                 CGO_CXXFLAGS="-g -O2"
                 CGO_FFLAGS="-g -O2"
                 CGO_LDFLAGS="-g -O2"
                 PKG_CONFIG="pkg-config"
-                GOGCCFLAGS="fake_gcc_flags"
 
                 """
         }]
@@ -4737,7 +4753,7 @@ Steps: {
         }]
     }
 }
-Hash: "57f9241df49785e337140bd0aa692834aac59089f3b266546b0f3ac12cc7cddc"
+Hash: "6823ef57ddaff8214fd4ab7366db217f74bd29901bda3d8ba0c6b8a283732e24"
 Delims: ["{{{", "}}}"]
 // ---
 Networks: ["playwithgo_pwg"]
@@ -4814,7 +4830,7 @@ Terminals: {
         Description: "The main terminal"
         Scenarios: {
             go115: {
-                Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }
@@ -4987,8 +5003,8 @@ Presteps: [{
             },
             {
               "Path": "github.com/play-with-go/preguide",
-              "Version": "v0.0.2-0.20220916045313-f81d11764005",
-              "Sum": "h1:TozvtuERGrcqQhYM4thrishUY+QONu76GMskVpgQHBA=",
+              "Version": "v0.0.2-0.20220918055127-cc4d80fbbfa7",
+              "Sum": "h1:83MPB7IZes5I5o7Jc2r9JBgMqHaU+E8LjHv03xehSic=",
               "Replace": null
             },
             {
@@ -5038,7 +5054,7 @@ Terminals: [{
     Description: "The main terminal"
     Scenarios: {
         go115: {
-            Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+            Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
         }
     }
 }]
@@ -5215,13 +5231,13 @@ Steps: {
             ExitCode: 0
             Output: """
                 go: downloading {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
-                go: {{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcedf12345
+                go: added {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
 
                 """
             ComparisonOutput: """
 
+                go: added {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
                 go: downloading {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
-                go: {{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcedf12345
                 """
         }, {
             Negated:  false
@@ -5260,7 +5276,7 @@ Steps: {
         }]
     }
 }
-Hash: "703d7b8f9690e147301b8824a58f1fcaadf55bc2cad6ae498ef6ef33db2bf706"
+Hash: "ae3238b78d035abf6fc957d0c603b0506d75a724b225fcfacb127ba4e8f7b810"
 Delims: ["{{{", "}}}"]
 // ---
 Networks: ["playwithgo_pwg"]
@@ -5338,7 +5354,7 @@ Terminals: {
         Description: "The main terminal"
         Scenarios: {
             go115: {
-                Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }
@@ -5531,8 +5547,8 @@ Presteps: [{
             },
             {
               "Path": "github.com/play-with-go/preguide",
-              "Version": "v0.0.2-0.20220916045313-f81d11764005",
-              "Sum": "h1:TozvtuERGrcqQhYM4thrishUY+QONu76GMskVpgQHBA=",
+              "Version": "v0.0.2-0.20220918055127-cc4d80fbbfa7",
+              "Sum": "h1:83MPB7IZes5I5o7Jc2r9JBgMqHaU+E8LjHv03xehSic=",
               "Replace": null
             },
             {
@@ -5582,7 +5598,7 @@ Terminals: [{
     Description: "The main terminal"
     Scenarios: {
         go115: {
-            Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+            Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
         }
     }
 }]
@@ -5808,7 +5824,7 @@ Steps: {
         }]
     }
 }
-Hash: "b53dcd3de8b90157ae825182f021b1c7087125438c18e54e2bc618d1e214588a"
+Hash: "772eb554083abcd286edfc7be26d16d0bfefcf7a6740ab3342b60e2609d1e744"
 Delims: ["{{{", "}}}"]
 // ---
 Networks: ["playwithgo_pwg"]
@@ -5891,7 +5907,7 @@ Terminals: {
         Description: "The main terminal"
         Scenarios: {
             go115: {
-                Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }
@@ -6094,7 +6110,7 @@ Steps: {
         DoNotTrim:       false
         Name:            string
         StepType:        1
-        Source:          "go get golang.org/x/tools/cmd/stringer@v0.0.0-20201105220310-78b158585360"
+        Source:          "go get golang.org/x/tools/cmd/stringer@v0.1.13-0.20220917004541-4d18923f060e"
         InformationOnly: false
         Terminal:        string
     }
@@ -6353,8 +6369,8 @@ Presteps: [{
             },
             {
               "Path": "github.com/play-with-go/preguide",
-              "Version": "v0.0.2-0.20220916045313-f81d11764005",
-              "Sum": "h1:TozvtuERGrcqQhYM4thrishUY+QONu76GMskVpgQHBA=",
+              "Version": "v0.0.2-0.20220918055127-cc4d80fbbfa7",
+              "Sum": "h1:83MPB7IZes5I5o7Jc2r9JBgMqHaU+E8LjHv03xehSic=",
               "Replace": null
             },
             {
@@ -6404,7 +6420,7 @@ Terminals: [{
     Description: "The main terminal"
     Scenarios: {
         go115: {
-            Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+            Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
         }
     }
 }]
@@ -6427,8 +6443,8 @@ Steps: {
             Negated:          false
             CmdStr:           "go version"
             ExitCode:         0
-            Output:           "go version go1.15.15 linux/amd64"
-            ComparisonOutput: "go version go1.15.15 linux/amd64"
+            Output:           "go version go1.19.1 linux/amd64"
+            ComparisonOutput: "go version go1.19.1 linux/amd64"
         }]
     }
     painkiller_go_mod_init: {
@@ -6676,21 +6692,25 @@ Steps: {
         Terminal:        "term1"
         Stmts: [{
             Negated:  false
-            CmdStr:   "go get golang.org/x/tools/cmd/stringer@v0.0.0-20201105220310-78b158585360"
+            CmdStr:   "go get golang.org/x/tools/cmd/stringer@v0.1.13-0.20220917004541-4d18923f060e"
             ExitCode: 0
             Output: """
-                go: downloading golang.org/x/tools v0.0.0-20201105220310-78b158585360
-                go: found golang.org/x/tools/cmd/stringer in golang.org/x/tools v0.0.0-20201105220310-78b158585360
-                go: downloading golang.org/x/mod v0.3.0
-                go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
+                go: downloading golang.org/x/tools v0.1.13-0.20220917004541-4d18923f060e
+                go: downloading golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f
+                go: downloading golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4
+                go: added golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4
+                go: added golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f
+                go: added golang.org/x/tools v0.1.13-0.20220917004541-4d18923f060e
 
                 """
             ComparisonOutput: """
 
-                go: downloading golang.org/x/mod v0.3.0
-                go: downloading golang.org/x/tools v0.0.0-20201105220310-78b158585360
-                go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
-                go: found golang.org/x/tools/cmd/stringer in golang.org/x/tools v0.0.0-20201105220310-78b158585360
+                go: added golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4
+                go: added golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f
+                go: added golang.org/x/tools v0.1.13-0.20220917004541-4d18923f060e
+                go: downloading golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4
+                go: downloading golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f
+                go: downloading golang.org/x/tools v0.1.13-0.20220917004541-4d18923f060e
                 """
         }]
     }
@@ -6708,17 +6728,25 @@ Steps: {
             Output: """
                 module painkiller
 
-                go 1.15
+                go 1.19
 
-                require golang.org/x/tools v0.0.0-20201105220310-78b158585360 // indirect
+                require (
+                \tgolang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4 // indirect
+                \tgolang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f // indirect
+                \tgolang.org/x/tools v0.1.13-0.20220917004541-4d18923f060e // indirect
+                )
 
                 """
             ComparisonOutput: """
                 module painkiller
 
-                go 1.15
+                go 1.19
 
-                require golang.org/x/tools v0.0.0-20201105220310-78b158585360 // indirect
+                require (
+                \tgolang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4 // indirect
+                \tgolang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f // indirect
+                \tgolang.org/x/tools v0.1.13-0.20220917004541-4d18923f060e // indirect
+                )
 
                 """
         }]
@@ -7065,7 +7093,7 @@ Steps: {
         }]
     }
 }
-Hash: "422eaf5b740efdf4c0016fabc28e2438e057a7108260db3be9edd4787ca4a0ca"
+Hash: "f440fa815f06042623db1e5dcbc6fb91863ff214da8db577281584cb87006d59"
 Delims: ["{{{", "}}}"]
 // ---
 Networks: ["playwithgo_pwg"]
@@ -7153,7 +7181,7 @@ Terminals: {
         Description: "The main terminal"
         Scenarios: {
             go116: {
-                Image: "playwithgo/go1.16.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }
@@ -7856,8 +7884,8 @@ Presteps: [{
             },
             {
               "Path": "github.com/play-with-go/preguide",
-              "Version": "v0.0.2-0.20220916045313-f81d11764005",
-              "Sum": "h1:TozvtuERGrcqQhYM4thrishUY+QONu76GMskVpgQHBA=",
+              "Version": "v0.0.2-0.20220918055127-cc4d80fbbfa7",
+              "Sum": "h1:83MPB7IZes5I5o7Jc2r9JBgMqHaU+E8LjHv03xehSic=",
               "Replace": null
             },
             {
@@ -7907,7 +7935,7 @@ Terminals: [{
     Description: "The main terminal"
     Scenarios: {
         go116: {
-            Image: "playwithgo/go1.16.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+            Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
         }
     }
 }]
@@ -7930,8 +7958,8 @@ Steps: {
             Negated:          false
             CmdStr:           "go version"
             ExitCode:         0
-            Output:           "go version go1.16.15 linux/amd64"
-            ComparisonOutput: "go version go1.16.15 linux/amd64"
+            Output:           "go version go1.19.1 linux/amd64"
+            ComparisonOutput: "go version go1.19.1 linux/amd64"
         }]
     }
     proverb_create: {
@@ -8149,12 +8177,12 @@ Steps: {
             ExitCode: 0
             Output: """
                 go: downloading {{{.PROVERB}}} v0.1.0
-                go get: added {{{.PROVERB}}} v0.1.0
+                go: added {{{.PROVERB}}} v0.1.0
 
                 """
             ComparisonOutput: """
 
-                go get: added {{{.PROVERB}}} v0.1.0
+                go: added {{{.PROVERB}}} v0.1.0
                 go: downloading {{{.PROVERB}}} v0.1.0
                 """
         }]
@@ -8322,13 +8350,13 @@ Steps: {
             ExitCode: 0
             Output: """
                 go: downloading {{{.PROVERB}}} v0.2.0
-                go get: upgraded {{{.PROVERB}}} v0.1.0 => v0.2.0
+                go: upgraded {{{.PROVERB}}} v0.1.0 => v0.2.0
 
                 """
             ComparisonOutput: """
 
-                go get: upgraded {{{.PROVERB}}} v0.1.0 => v0.2.0
                 go: downloading {{{.PROVERB}}} v0.2.0
+                go: upgraded {{{.PROVERB}}} v0.1.0 => v0.2.0
                 """
         }, {
             Negated:  false
@@ -8388,7 +8416,7 @@ Steps: {
             Output: """
                 module {{{.PROVERB}}}
 
-                go 1.16
+                go 1.19
 
                 retract v0.2.0
 
@@ -8396,7 +8424,7 @@ Steps: {
             ComparisonOutput: """
                 module {{{.PROVERB}}}
 
-                go 1.16
+                go 1.19
 
                 retract v0.2.0
 
@@ -8541,13 +8569,13 @@ Steps: {
             ExitCode: 0
             Output: """
                 go: downloading {{{.PROVERB}}} v0.3.0
-                go get: upgraded {{{.PROVERB}}} v0.2.0 => v0.3.0
+                go: upgraded {{{.PROVERB}}} v0.2.0 => v0.3.0
 
                 """
             ComparisonOutput: """
 
-                go get: upgraded {{{.PROVERB}}} v0.2.0 => v0.3.0
                 go: downloading {{{.PROVERB}}} v0.3.0
+                go: upgraded {{{.PROVERB}}} v0.2.0 => v0.3.0
                 """
         }]
     }
@@ -8644,13 +8672,13 @@ Steps: {
                 go: warning: {{{.PROVERB}}}@v0.2.0: retracted by module author: Go proverb was totally wrong
                 go: to switch to the latest unretracted version, run:
                 \tgo get {{{.PROVERB}}}@latest
-                go get: downgraded {{{.PROVERB}}} v0.3.0 => v0.2.0
+                go: downgraded {{{.PROVERB}}} v0.3.0 => v0.2.0
 
                 """
             ComparisonOutput: """
 
                 \tgo get {{{.PROVERB}}}@latest
-                go get: downgraded {{{.PROVERB}}} v0.3.0 => v0.2.0
+                go: downgraded {{{.PROVERB}}} v0.3.0 => v0.2.0
                 go: to switch to the latest unretracted version, run:
                 go: warning: {{{.PROVERB}}}@v0.2.0: retracted by module author: Go proverb was totally wrong
                 """
@@ -8712,12 +8740,12 @@ Steps: {
             CmdStr:   "go get {{{.PROVERB}}}@latest"
             ExitCode: 0
             Output: """
-                go get: upgraded {{{.PROVERB}}} v0.2.0 => v0.3.0
+                go: upgraded {{{.PROVERB}}} v0.2.0 => v0.3.0
 
                 """
             ComparisonOutput: """
 
-                go get: upgraded {{{.PROVERB}}} v0.2.0 => v0.3.0
+                go: upgraded {{{.PROVERB}}} v0.2.0 => v0.3.0
                 """
         }]
     }
@@ -9028,15 +9056,15 @@ Steps: {
                 go: warning: {{{.PROVERB}}}@v1.0.0: retracted by module author: Published v1 too early
                 go: to switch to the latest unretracted version, run:
                 \tgo get {{{.PROVERB}}}@latest
-                go get: upgraded {{{.PROVERB}}} v0.3.0 => v1.0.0
+                go: upgraded {{{.PROVERB}}} v0.3.0 => v1.0.0
 
                 """
             ComparisonOutput: """
 
                 \tgo get {{{.PROVERB}}}@latest
-                go get: upgraded {{{.PROVERB}}} v0.3.0 => v1.0.0
                 go: downloading {{{.PROVERB}}} v1.0.0
                 go: to switch to the latest unretracted version, run:
+                go: upgraded {{{.PROVERB}}} v0.3.0 => v1.0.0
                 go: warning: {{{.PROVERB}}}@v1.0.0: retracted by module author: Published v1 too early
                 """
         }, {
@@ -9048,15 +9076,15 @@ Steps: {
                 go: warning: {{{.PROVERB}}}@v1.0.1: retracted by module author: Published v1 too early
                 go: to switch to the latest unretracted version, run:
                 \tgo get {{{.PROVERB}}}@latest
-                go get: upgraded {{{.PROVERB}}} v1.0.0 => v1.0.1
+                go: upgraded {{{.PROVERB}}} v1.0.0 => v1.0.1
 
                 """
             ComparisonOutput: """
 
                 \tgo get {{{.PROVERB}}}@latest
-                go get: upgraded {{{.PROVERB}}} v1.0.0 => v1.0.1
                 go: downloading {{{.PROVERB}}} v1.0.1
                 go: to switch to the latest unretracted version, run:
+                go: upgraded {{{.PROVERB}}} v1.0.0 => v1.0.1
                 go: warning: {{{.PROVERB}}}@v1.0.1: retracted by module author: Published v1 too early
                 """
         }, {
@@ -9065,12 +9093,12 @@ Steps: {
             ExitCode: 0
             Output: """
                 go: downloading {{{.PROVERB}}} v0.4.0
-                go get: downgraded {{{.PROVERB}}} v1.0.1 => v0.4.0
+                go: downgraded {{{.PROVERB}}} v1.0.1 => v0.4.0
 
                 """
             ComparisonOutput: """
 
-                go get: downgraded {{{.PROVERB}}} v1.0.1 => v0.4.0
+                go: downgraded {{{.PROVERB}}} v1.0.1 => v0.4.0
                 go: downloading {{{.PROVERB}}} v0.4.0
                 """
         }]
@@ -9196,7 +9224,7 @@ Steps: {
         }]
     }
 }
-Hash: "e8dd0d207479237a2ad5c4bae3807603adb72649141e4ff82a2a6c8b09ccade1"
+Hash: "a0e9b5de69b2e25ac50a27547ab7ddb8cf2fcacda227d67a8c7b205952a63c17"
 Delims: ["{{{", "}}}"]
 // ---
 Networks: ["playwithgo_pwg"]
@@ -9204,7 +9232,7 @@ Delims: ["{{{", "}}}"]
 Defs: {
     mkcert:         "mkcert"
     mkcert_pkg:     "filippo.io/mkcert"
-    mkcert_version: "v1.4.2"
+    mkcert_version: "v1.4.4"
     pwg: {
         gopher_live: "gopher.live"
     }
@@ -9261,7 +9289,7 @@ Terminals: {
         Description: "The main terminal"
         Scenarios: {
             go116: {
-                Image: "playwithgo/go1.16.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }
@@ -9275,27 +9303,11 @@ Steps: {
         InformationOnly: false
         Terminal:        string
     }
-    go115_mkcert_get: {
-        DoNotTrim:       false
-        Name:            string
-        StepType:        1
-        Source:          "go get filippo.io/mkcert@v1.4.2"
-        InformationOnly: false
-        Terminal:        string
-    }
-    go115_mkcert_modules_get: {
-        DoNotTrim:       false
-        Name:            string
-        StepType:        1
-        Source:          "(cd $(mktemp -d); GO111MODULE=on go get filippo.io/mkcert@v1.4.2)"
-        InformationOnly: false
-        Terminal:        string
-    }
     go116_mkcert_install: {
         DoNotTrim:       false
         Name:            string
         StepType:        1
-        Source:          "go install filippo.io/mkcert@v1.4.2"
+        Source:          "go install filippo.io/mkcert@v1.4.4"
         InformationOnly: false
         Terminal:        string
     }
@@ -9330,7 +9342,7 @@ Terminals: [{
     Description: "The main terminal"
     Scenarios: {
         go116: {
-            Image: "playwithgo/go1.16.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+            Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
         }
     }
 }]
@@ -9353,58 +9365,8 @@ Steps: {
             Negated:          false
             CmdStr:           "go version"
             ExitCode:         0
-            Output:           "go version go1.16.15 linux/amd64"
-            ComparisonOutput: "go version go1.16.15 linux/amd64"
-        }]
-    }
-    go115_mkcert_get: {
-        StepType:        1
-        DoNotTrim:       false
-        InformationOnly: false
-        Name:            "go115_mkcert_get"
-        Order:           1
-        Terminal:        "term1"
-        Stmts: [{
-            Negated:  false
-            CmdStr:   "go get filippo.io/mkcert@v1.4.2"
-            ExitCode: 0
-            Output: """
-                go: downloading filippo.io/mkcert v1.4.2
-                go: downloading golang.org/x/net v0.0.0-20190620200207-3b0461eec859
-                go: downloading golang.org/x/tools v0.0.0-20191108193012-7d206e10da11
-                go: downloading honnef.co/go/tools v0.0.0-20191107024926-a9480a3ec3bc
-                go: downloading howett.net/plist v0.0.0-20181124034731-591f970eefbb
-                go: downloading software.sslmate.com/src/go-pkcs12 v0.0.0-20180114231543-2291e8f0f237
-                go: downloading golang.org/x/text v0.3.0
-                go: downloading github.com/BurntSushi/toml v0.3.1
-
-                """
-            ComparisonOutput: """
-
-                go: downloading filippo.io/mkcert v1.4.2
-                go: downloading github.com/BurntSushi/toml v0.3.1
-                go: downloading golang.org/x/net v0.0.0-20190620200207-3b0461eec859
-                go: downloading golang.org/x/text v0.3.0
-                go: downloading golang.org/x/tools v0.0.0-20191108193012-7d206e10da11
-                go: downloading honnef.co/go/tools v0.0.0-20191107024926-a9480a3ec3bc
-                go: downloading howett.net/plist v0.0.0-20181124034731-591f970eefbb
-                go: downloading software.sslmate.com/src/go-pkcs12 v0.0.0-20180114231543-2291e8f0f237
-                """
-        }]
-    }
-    go115_mkcert_modules_get: {
-        StepType:        1
-        DoNotTrim:       false
-        InformationOnly: false
-        Name:            "go115_mkcert_modules_get"
-        Order:           2
-        Terminal:        "term1"
-        Stmts: [{
-            Negated:          false
-            CmdStr:           "(cd $(mktemp -d); GO111MODULE=on go get filippo.io/mkcert@v1.4.2)"
-            ExitCode:         0
-            Output:           ""
-            ComparisonOutput: ""
+            Output:           "go version go1.19.1 linux/amd64"
+            ComparisonOutput: "go version go1.19.1 linux/amd64"
         }]
     }
     go116_mkcert_install: {
@@ -9412,14 +9374,28 @@ Steps: {
         DoNotTrim:       false
         InformationOnly: false
         Name:            "go116_mkcert_install"
-        Order:           3
+        Order:           1
         Terminal:        "term1"
         Stmts: [{
-            Negated:          false
-            CmdStr:           "go install filippo.io/mkcert@v1.4.2"
-            ExitCode:         0
-            Output:           ""
-            ComparisonOutput: ""
+            Negated:  false
+            CmdStr:   "go install filippo.io/mkcert@v1.4.4"
+            ExitCode: 0
+            Output: """
+                go: downloading filippo.io/mkcert v1.4.4
+                go: downloading golang.org/x/net v0.0.0-20220421235706-1d1ef9303861
+                go: downloading software.sslmate.com/src/go-pkcs12 v0.2.0
+                go: downloading golang.org/x/text v0.3.7
+                go: downloading golang.org/x/crypto v0.0.0-20220331220935-ae2d96664a29
+
+                """
+            ComparisonOutput: """
+                go: downloading filippo.io/mkcert v1.4.4
+                go: downloading golang.org/x/net v0.0.0-20220421235706-1d1ef9303861
+                go: downloading software.sslmate.com/src/go-pkcs12 v0.2.0
+                go: downloading golang.org/x/text v0.3.7
+                go: downloading golang.org/x/crypto v0.0.0-20220331220935-ae2d96664a29
+
+                """
         }]
     }
     which_mkcert: {
@@ -9427,7 +9403,7 @@ Steps: {
         DoNotTrim:       false
         InformationOnly: false
         Name:            "which_mkcert"
-        Order:           4
+        Order:           2
         Terminal:        "term1"
         Stmts: [{
             Negated:  false
@@ -9448,18 +9424,18 @@ Steps: {
         DoNotTrim:       false
         InformationOnly: false
         Name:            "run_mkcert"
-        Order:           5
+        Order:           3
         Terminal:        "term1"
         Stmts: [{
             Negated:  false
             CmdStr:   "mkcert -version"
             ExitCode: 0
             Output: """
-                v1.4.2
+                v1.4.4
 
                 """
             ComparisonOutput: """
-                v1.4.2
+                v1.4.4
 
                 """
         }]
@@ -9469,40 +9445,40 @@ Steps: {
         DoNotTrim:       false
         InformationOnly: false
         Name:            "goversion_mkcert"
-        Order:           6
+        Order:           4
         Terminal:        "term1"
         Stmts: [{
             Negated:  false
             CmdStr:   "go version -m $(which mkcert)"
             ExitCode: 0
             Output: """
-                /home/gopher/go/bin/mkcert: go1.16.15
+                /home/gopher/go/bin/mkcert: go1.19.1
                 \tpath\tfilippo.io/mkcert
-                \tmod\tfilippo.io/mkcert\tv1.4.2\th1:7mWofpFS4gzQS5bhE3KYBwzfceIPy2KJ4tMT31aPNeY=
-                \tdep\tgolang.org/x/net\tv0.0.0-20190620200207-3b0461eec859\th1:R/3boaszxrf1GEUWTVDzSKVwLmSJpwZ1yqXm8j0v2QI=
-                \tdep\tgolang.org/x/text\tv0.3.0\th1:g61tztE5qeGQ89tm6NTjjM9VPIm088od1l6aSorWRWg=
-                \tdep\tsoftware.sslmate.com/src/go-pkcs12\tv0.0.0-20180114231543-2291e8f0f237\th1:iAEkCBPbRaflBgZ7o9gjVUuWuvWeV4sytFWg9o+Pj2k=
-
+                \tmod\tfilippo.io/mkcert\tv1.4.4\th1:8eVbbwfVlaqUM7OwuftKc2nuYOoTDQWqsoXmzoXZdbc=
+                \tdep\tgolang.org/x/crypto\tv0.0.0-20220331220935-ae2d96664a29\th1:tkVvjkPTB7pnW3jnid7kNyAMPVWllTNOf/qKDze4p9o=
+                \tdep\tgolang.org/x/net\tv0.0.0-20220421235706-1d1ef9303861\th1:yssD99+7tqHWO5Gwh81phT+67hg+KttniBr6UnEXOY8=
+                \tdep\tgolang.org/x/text\tv0.3.7\th1:olpwvP2KacW1ZWvsR7uQhoyTYvKAupfQrRGBFM352Gk=
+                \tdep\tsoftware.sslmate.com/src/go-pkcs12\tv0.2.0\th1:nlFkj7bTysH6VkC4fGphtjXRbezREPgrHuJG20hBGPE=
                 """
             ComparisonOutput: """
-                /home/gopher/go/bin/mkcert: go1.16.15
+                /home/gopher/go/bin/mkcert: go1.19.1
                 \tpath\tfilippo.io/mkcert
-                \tmod\tfilippo.io/mkcert\tv1.4.2\th1:7mWofpFS4gzQS5bhE3KYBwzfceIPy2KJ4tMT31aPNeY=
-                \tdep\tgolang.org/x/net\tv0.0.0-20190620200207-3b0461eec859\th1:R/3boaszxrf1GEUWTVDzSKVwLmSJpwZ1yqXm8j0v2QI=
-                \tdep\tgolang.org/x/text\tv0.3.0\th1:g61tztE5qeGQ89tm6NTjjM9VPIm088od1l6aSorWRWg=
-                \tdep\tsoftware.sslmate.com/src/go-pkcs12\tv0.0.0-20180114231543-2291e8f0f237\th1:iAEkCBPbRaflBgZ7o9gjVUuWuvWeV4sytFWg9o+Pj2k=
-
+                \tmod\tfilippo.io/mkcert\tv1.4.4\th1:8eVbbwfVlaqUM7OwuftKc2nuYOoTDQWqsoXmzoXZdbc=
+                \tdep\tgolang.org/x/crypto\tv0.0.0-20220331220935-ae2d96664a29\th1:tkVvjkPTB7pnW3jnid7kNyAMPVWllTNOf/qKDze4p9o=
+                \tdep\tgolang.org/x/net\tv0.0.0-20220421235706-1d1ef9303861\th1:yssD99+7tqHWO5Gwh81phT+67hg+KttniBr6UnEXOY8=
+                \tdep\tgolang.org/x/text\tv0.3.7\th1:olpwvP2KacW1ZWvsR7uQhoyTYvKAupfQrRGBFM352Gk=
+                \tdep\tsoftware.sslmate.com/src/go-pkcs12\tv0.2.0\th1:nlFkj7bTysH6VkC4fGphtjXRbezREPgrHuJG20hBGPE=
                 """
         }]
     }
 }
-Hash: "c82a16030f644b76c51e45f0ce0b71c14b3cf34798230d29b0c90526d8522d1c"
+Hash: "d19823b04cae5f5be42889ac3f5d71ed8700c12a3ac6e15c47c8cbd3fafef345"
 Delims: ["{{{", "}}}"]
 // ---
 Networks: ["playwithgo_pwg"]
 Delims: ["{{{", "}}}"]
 Defs: {
-    staticcheck_version:      "v0.0.1-2020.1.6"
+    staticcheck_version:      "v0.3.3"
     staticcheck_conf:         "staticcheck.conf"
     staticcheck_st1000:       "ST1000"
     staticcheck_sa4018:       "SA4018"
@@ -9567,7 +9543,7 @@ Terminals: {
         Description: "The main terminal"
         Scenarios: {
             go115: {
-                Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }
@@ -9585,7 +9561,7 @@ Steps: {
         DoNotTrim:       false
         Name:            string
         StepType:        1
-        Source:          "(cd $(mktemp -d); GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6)"
+        Source:          "go install honnef.co/go/tools/cmd/staticcheck@v0.3.3"
         InformationOnly: false
         Terminal:        string
     }
@@ -10281,7 +10257,7 @@ Terminals: [{
     Description: "The main terminal"
     Scenarios: {
         go115: {
-            Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+            Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
         }
     }
 }]
@@ -10304,8 +10280,8 @@ Steps: {
             Negated:          false
             CmdStr:           "go version"
             ExitCode:         0
-            Output:           "go version go1.15.15 linux/amd64"
-            ComparisonOutput: "go version go1.15.15 linux/amd64"
+            Output:           "go version go1.19.1 linux/amd64"
+            ComparisonOutput: "go version go1.19.1 linux/amd64"
         }]
     }
     staticcheck_install: {
@@ -10317,23 +10293,25 @@ Steps: {
         Terminal:        "term1"
         Stmts: [{
             Negated:  false
-            CmdStr:   "(cd $(mktemp -d); GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@v0.0.1-2020.1.6)"
+            CmdStr:   "go install honnef.co/go/tools/cmd/staticcheck@v0.3.3"
             ExitCode: 0
             Output: """
-                go: downloading honnef.co/go/tools v0.0.1-2020.1.6
-                go: found honnef.co/go/tools/cmd/staticcheck in honnef.co/go/tools v0.0.1-2020.1.6
-                go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
-                go: downloading github.com/BurntSushi/toml v0.3.1
-                go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
+                go: downloading honnef.co/go/tools v0.3.3
+                go: downloading golang.org/x/tools v0.1.11-0.20220513221640-090b14e8501f
+                go: downloading golang.org/x/exp/typeparams v0.0.0-20220218215828-6cf2b201936e
+                go: downloading golang.org/x/sys v0.0.0-20211019181941-9d821ace8654
+                go: downloading github.com/BurntSushi/toml v0.4.1
+                go: downloading golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4
 
                 """
             ComparisonOutput: """
+                go: downloading honnef.co/go/tools v0.3.3
+                go: downloading golang.org/x/tools v0.1.11-0.20220513221640-090b14e8501f
+                go: downloading golang.org/x/exp/typeparams v0.0.0-20220218215828-6cf2b201936e
+                go: downloading golang.org/x/sys v0.0.0-20211019181941-9d821ace8654
+                go: downloading github.com/BurntSushi/toml v0.4.1
+                go: downloading golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4
 
-                go: downloading github.com/BurntSushi/toml v0.3.1
-                go: downloading golang.org/x/tools v0.0.0-20200410194907-79a7a3126eef
-                go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
-                go: downloading honnef.co/go/tools v0.0.1-2020.1.6
-                go: found honnef.co/go/tools/cmd/staticcheck in honnef.co/go/tools v0.0.1-2020.1.6
                 """
         }]
     }
@@ -10370,11 +10348,11 @@ Steps: {
             CmdStr:   "staticcheck -version"
             ExitCode: 0
             Output: """
-                staticcheck 2020.1.6
+                staticcheck 2022.1.3 (v0.3.3)
 
                 """
             ComparisonOutput: """
-                staticcheck 2020.1.6
+                staticcheck 2022.1.3 (v0.3.3)
 
                 """
         }]
@@ -10517,6 +10495,8 @@ Steps: {
                 Available since
                     2019.2
 
+                Online documentation
+                    https://staticcheck.io/docs/checks#SA5009
 
                 """
             ComparisonOutput: """
@@ -10525,6 +10505,8 @@ Steps: {
                 Available since
                     2019.2
 
+                Online documentation
+                    https://staticcheck.io/docs/checks#SA5009
 
                 """
         }]
@@ -11186,7 +11168,7 @@ Steps: {
         }]
     }
 }
-Hash: "66396cad683065b32470e992e2b449c499702986cff334556cdab46668d107d5"
+Hash: "29d51f4a617087a8662817a9ec8eae7670ad5825297397b2df912324ff2c1071"
 Delims: ["{{{", "}}}"]
 // ---
 Networks: ["playwithgo_pwg"]
@@ -11264,7 +11246,7 @@ Defs: {
         branch:   "git branch"
         checkout: "git checkout"
     }
-    go_help_modprivate: "go help module-private"
+    go_help_modprivate: "go help module-auth"
     proxygolangorg: {
         waitforcache: "1m"
     }
@@ -11281,7 +11263,7 @@ Terminals: {
         Description: "The main terminal"
         Scenarios: {
             go115: {
-                Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }
@@ -11514,7 +11496,7 @@ Steps: {
         DoNotTrim:       false
         Name:            string
         StepType:        1
-        Source:          "go help module-private"
+        Source:          "go help module-auth"
         InformationOnly: true
         Terminal:        string
     }
@@ -11634,8 +11616,8 @@ Presteps: [{
             },
             {
               "Path": "github.com/play-with-go/preguide",
-              "Version": "v0.0.2-0.20220916045313-f81d11764005",
-              "Sum": "h1:TozvtuERGrcqQhYM4thrishUY+QONu76GMskVpgQHBA=",
+              "Version": "v0.0.2-0.20220918055127-cc4d80fbbfa7",
+              "Sum": "h1:83MPB7IZes5I5o7Jc2r9JBgMqHaU+E8LjHv03xehSic=",
               "Replace": null
             },
             {
@@ -11685,7 +11667,7 @@ Terminals: [{
     Description: "The main terminal"
     Scenarios: {
         go115: {
-            Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+            Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
         }
     }
 }]
@@ -11708,8 +11690,8 @@ Steps: {
             Negated:          false
             CmdStr:           "go version"
             ExitCode:         0
-            Output:           "go version go1.15.15 linux/amd64"
-            ComparisonOutput: "go version go1.15.15 linux/amd64"
+            Output:           "go version go1.19.1 linux/amd64"
+            ComparisonOutput: "go version go1.19.1 linux/amd64"
         }]
     }
     public_init: {
@@ -12131,13 +12113,13 @@ Steps: {
             ExitCode: 0
             Output: """
                 go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
-                go: {{{.PUBLIC}}} upgrade => v0.0.0-20060102150405-abcedf12345
+                go: added {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
 
                 """
             ComparisonOutput: """
 
+                go: added {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
                 go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
-                go: {{{.PUBLIC}}} upgrade => v0.0.0-20060102150405-abcedf12345
                 """
         }]
     }
@@ -12175,7 +12157,7 @@ Steps: {
             CmdStr:   "go get {{{.PRIVATE}}}"
             ExitCode: 1
             Output: """
-                go get {{{.PRIVATE}}}: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 404 Not Found
+                go: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 404 Not Found
                 \tserver response:
                 \tnot found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
                 \t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
@@ -12190,7 +12172,7 @@ Steps: {
                 \tIf this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
                 \tnot found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
                 \tserver response:
-                go get {{{.PRIVATE}}}: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 404 Not Found
+                go: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 404 Not Found
                 """
         }]
     }
@@ -12222,7 +12204,7 @@ Steps: {
             ExitCode: 1
             Output: """
                 go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
-                go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 404 Not Found
+                go: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 404 Not Found
                 \tserver response:
                 \tnot found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
                 \t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
@@ -12237,8 +12219,8 @@ Steps: {
                 \tIf this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
                 \tnot found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
                 \tserver response:
-                go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 404 Not Found
                 go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
+                go: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 404 Not Found
                 """
         }]
     }
@@ -12251,94 +12233,28 @@ Steps: {
         Terminal:        "term1"
         Stmts: [{
             Negated:  false
-            CmdStr:   "go help module-private"
+            CmdStr:   "go help module-auth"
             ExitCode: 0
             Output: """
-                The go command defaults to downloading modules from the public Go module
-                mirror at proxy.golang.org. It also defaults to validating downloaded modules,
-                regardless of source, against the public Go checksum database at sum.golang.org.
-                These defaults work well for publicly available source code.
+                When the go command downloads a module zip file or go.mod file into the
+                module cache, it computes a cryptographic hash and compares it with a known
+                value to verify the file hasn't changed since it was first downloaded. Known
+                hashes are stored in a file in the module root directory named go.sum. Hashes
+                may also be downloaded from the checksum database depending on the values of
+                GOSUMDB, GOPRIVATE, and GONOSUMDB.
 
-                The GOPRIVATE environment variable controls which modules the go command
-                considers to be private (not available publicly) and should therefore not use the
-                proxy or checksum database. The variable is a comma-separated list of
-                glob patterns (in the syntax of Go's path.Match) of module path prefixes.
-                For example,
-
-                \tGOPRIVATE=*.corp.example.com,rsc.io/private
-
-                causes the go command to treat as private any module with a path prefix
-                matching either pattern, including git.corp.example.com/xyzzy, rsc.io/private,
-                and rsc.io/private/quux.
-
-                The GOPRIVATE environment variable may be used by other tools as well to
-                identify non-public modules. For example, an editor could use GOPRIVATE
-                to decide whether to hyperlink a package import to a godoc.org page.
-
-                For fine-grained control over module download and validation, the GONOPROXY
-                and GONOSUMDB environment variables accept the same kind of glob list
-                and override GOPRIVATE for the specific decision of whether to use the proxy
-                and checksum database, respectively.
-
-                For example, if a company ran a module proxy serving private modules,
-                users would configure go using:
-
-                \tGOPRIVATE=*.corp.example.com
-                \tGOPROXY=proxy.example.com
-                \tGONOPROXY=none
-
-                This would tell the go command and other tools that modules beginning with
-                a corp.example.com subdomain are private but that the company proxy should
-                be used for downloading both public and private modules, because
-                GONOPROXY has been set to a pattern that won't match any modules,
-                overriding GOPRIVATE.
-
-                The 'go env -w' command (see 'go help env') can be used to set these variables
-                for future go command invocations.
+                For details, see https://golang.org/ref/mod#authenticating.
 
                 """
             ComparisonOutput: """
-                The go command defaults to downloading modules from the public Go module
-                mirror at proxy.golang.org. It also defaults to validating downloaded modules,
-                regardless of source, against the public Go checksum database at sum.golang.org.
-                These defaults work well for publicly available source code.
+                When the go command downloads a module zip file or go.mod file into the
+                module cache, it computes a cryptographic hash and compares it with a known
+                value to verify the file hasn't changed since it was first downloaded. Known
+                hashes are stored in a file in the module root directory named go.sum. Hashes
+                may also be downloaded from the checksum database depending on the values of
+                GOSUMDB, GOPRIVATE, and GONOSUMDB.
 
-                The GOPRIVATE environment variable controls which modules the go command
-                considers to be private (not available publicly) and should therefore not use the
-                proxy or checksum database. The variable is a comma-separated list of
-                glob patterns (in the syntax of Go's path.Match) of module path prefixes.
-                For example,
-
-                \tGOPRIVATE=*.corp.example.com,rsc.io/private
-
-                causes the go command to treat as private any module with a path prefix
-                matching either pattern, including git.corp.example.com/xyzzy, rsc.io/private,
-                and rsc.io/private/quux.
-
-                The GOPRIVATE environment variable may be used by other tools as well to
-                identify non-public modules. For example, an editor could use GOPRIVATE
-                to decide whether to hyperlink a package import to a godoc.org page.
-
-                For fine-grained control over module download and validation, the GONOPROXY
-                and GONOSUMDB environment variables accept the same kind of glob list
-                and override GOPRIVATE for the specific decision of whether to use the proxy
-                and checksum database, respectively.
-
-                For example, if a company ran a module proxy serving private modules,
-                users would configure go using:
-
-                \tGOPRIVATE=*.corp.example.com
-                \tGOPROXY=proxy.example.com
-                \tGONOPROXY=none
-
-                This would tell the go command and other tools that modules beginning with
-                a corp.example.com subdomain are private but that the company proxy should
-                be used for downloading both public and private modules, because
-                GONOPROXY has been set to a pattern that won't match any modules,
-                overriding GOPRIVATE.
-
-                The 'go env -w' command (see 'go help env') can be used to set these variables
-                for future go command invocations.
+                For details, see https://golang.org/ref/mod#authenticating.
 
                 """
         }]
@@ -12371,13 +12287,13 @@ Steps: {
             ExitCode: 0
             Output: """
                 go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
-                go: {{{.PRIVATE}}} upgrade => v0.0.0-20060102150405-abcedf12345
+                go: added {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
 
                 """
             ComparisonOutput: """
 
+                go: added {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
                 go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
-                go: {{{.PRIVATE}}} upgrade => v0.0.0-20060102150405-abcedf12345
                 """
         }]
     }
@@ -12427,7 +12343,7 @@ Steps: {
         }]
     }
 }
-Hash: "5aeb0e6f8ca108e4c4267463519d57c906181a6c92b666c64fd9ad55336cfc6a"
+Hash: "f2232199872cd3dccfd7a2084716cd499551087f9944f36db3bb491eb2265caa"
 Delims: ["{{{", "}}}"]
 // ---
 Networks: ["playwithgo_pwg"]
@@ -12520,7 +12436,7 @@ Terminals: {
         Description: "The main terminal"
         Scenarios: {
             go115: {
-                Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }
@@ -12924,8 +12840,8 @@ Presteps: [{
             },
             {
               "Path": "github.com/play-with-go/preguide",
-              "Version": "v0.0.2-0.20220916045313-f81d11764005",
-              "Sum": "h1:TozvtuERGrcqQhYM4thrishUY+QONu76GMskVpgQHBA=",
+              "Version": "v0.0.2-0.20220918055127-cc4d80fbbfa7",
+              "Sum": "h1:83MPB7IZes5I5o7Jc2r9JBgMqHaU+E8LjHv03xehSic=",
               "Replace": null
             },
             {
@@ -12975,7 +12891,7 @@ Terminals: [{
     Description: "The main terminal"
     Scenarios: {
         go115: {
-            Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+            Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
         }
     }
 }]
@@ -12998,8 +12914,8 @@ Steps: {
             Negated:          false
             CmdStr:           "go version"
             ExitCode:         0
-            Output:           "go version go1.15.15 linux/amd64"
-            ComparisonOutput: "go version go1.15.15 linux/amd64"
+            Output:           "go version go1.19.1 linux/amd64"
+            ComparisonOutput: "go version go1.19.1 linux/amd64"
         }]
     }
     branch_init: {
@@ -13567,10 +13483,12 @@ Steps: {
             ExitCode: 0
             Output: """
                 go: downloading {{{.BRANCH}}} v1.0.0
+                go: added {{{.BRANCH}}} v1.0.0
 
                 """
             ComparisonOutput: """
 
+                go: added {{{.BRANCH}}} v1.0.0
                 go: downloading {{{.BRANCH}}} v1.0.0
                 """
         }, {
@@ -13579,10 +13497,12 @@ Steps: {
             ExitCode: 0
             Output: """
                 go: downloading {{{.BRANCH}}}/v2 v2.0.0
+                go: added {{{.BRANCH}}}/v2 v2.0.0
 
                 """
             ComparisonOutput: """
 
+                go: added {{{.BRANCH}}}/v2 v2.0.0
                 go: downloading {{{.BRANCH}}}/v2 v2.0.0
                 """
         }, {
@@ -13591,10 +13511,12 @@ Steps: {
             ExitCode: 0
             Output: """
                 go: downloading {{{.SUBDIR}}} v1.0.0
+                go: added {{{.SUBDIR}}} v1.0.0
 
                 """
             ComparisonOutput: """
 
+                go: added {{{.SUBDIR}}} v1.0.0
                 go: downloading {{{.SUBDIR}}} v1.0.0
                 """
         }, {
@@ -13603,10 +13525,12 @@ Steps: {
             ExitCode: 0
             Output: """
                 go: downloading {{{.SUBDIR}}}/v2 v2.0.0
+                go: added {{{.SUBDIR}}}/v2 v2.0.0
 
                 """
             ComparisonOutput: """
 
+                go: added {{{.SUBDIR}}}/v2 v2.0.0
                 go: downloading {{{.SUBDIR}}}/v2 v2.0.0
                 """
         }]
@@ -13639,7 +13563,7 @@ Steps: {
         }]
     }
 }
-Hash: "7dece9cb34390b221d2e98f2faa720ebb2fa859489ba010a8f63e3016d5121fb"
+Hash: "41c7f8744234fcd70be0eb280b0c4108d2f6b2cc6a46e7faccb6a8c9af7bba0a"
 Delims: ["{{{", "}}}"]
 // ---
 Networks: ["playwithgo_pwg"]
@@ -13684,7 +13608,7 @@ Terminals: {
         Description: "The main terminal"
         Scenarios: {
             go115: {
-                Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+                Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
             }
         }
     }
@@ -13695,7 +13619,7 @@ Terminals: [{
     Description: "The main terminal"
     Scenarios: {
         go115: {
-            Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+            Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
         }
     }
 }]
@@ -13744,7 +13668,7 @@ Steps: {
         }]
     }
 }
-Hash: "271f9cdbe52fe75c83acb8deecf95dc51ec068d641335bba20245003681ce10a"
+Hash: "09e26e2e121925fb298139537bf27cbb561802c097fd17a2c0d1be60fe318ffe"
 Delims: ["{{{", "}}}"]
 // ---
 import "strings"

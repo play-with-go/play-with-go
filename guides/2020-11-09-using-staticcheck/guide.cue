@@ -6,7 +6,7 @@ import (
 
 Defs: {
 	_#commonDefs
-	staticcheck_version:      "v0.0.1-2020.1.6"
+	staticcheck_version:      "v0.3.3"
 	staticcheck_conf:         "staticcheck.conf"
 	staticcheck_st1000:       "ST1000"
 	staticcheck_sa4018:       "SA4018"
@@ -24,7 +24,7 @@ Scenarios: go115: preguide.#Scenario & {
 
 Terminals: term1: preguide.#Terminal & {
 	Description: "The main terminal"
-	Scenarios: go115: Image: _#go115LatestImage
+	Scenarios: go115: Image: _#go119LatestImage
 }
 
 Steps: goversion: preguide.#Command & {
@@ -35,7 +35,7 @@ Steps: goversion: preguide.#Command & {
 
 Steps: staticcheck_install: preguide.#Command & {
 	Source: """
-		(cd $(mktemp -d); GO111MODULE=on go get honnef.co/go/tools/cmd/staticcheck@\(Defs.staticcheck_version))
+		go install honnef.co/go/tools/cmd/staticcheck@\(Defs.staticcheck_version)
 		"""
 }
 

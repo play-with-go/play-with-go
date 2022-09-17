@@ -33,7 +33,7 @@ You should already have completed:
 This guide is running using:
 
 <pre data-command-src="Z28gdmVyc2lvbgo="><code class="language-.term1">$ go version
-go version go1.15.15 linux/amd64
+go version go1.19.1 linux/amd64
 </code></pre>
 
 ### Why `stringer`?
@@ -186,11 +186,13 @@ exists solely for its side effects, in this case the declaration of the dependen
 With the package dependency declared, you can now add a dependency on the module that contains
 `golang.org/x/tools/cmd/stringer`. Use `go get` to add a dependency:
 
-<pre data-command-src="Z28gZ2V0IGdvbGFuZy5vcmcveC90b29scy9jbWQvc3RyaW5nZXJAdjAuMC4wLTIwMjAxMTA1MjIwMzEwLTc4YjE1ODU4NTM2MAo="><code class="language-.term1">$ go get golang.org/x/tools/cmd/stringer@v0.0.0-20201105220310-78b158585360
-go: downloading golang.org/x/tools v0.0.0-20201105220310-78b158585360
-go: found golang.org/x/tools/cmd/stringer in golang.org/x/tools v0.0.0-20201105220310-78b158585360
-go: downloading golang.org/x/mod v0.3.0
-go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
+<pre data-command-src="Z28gZ2V0IGdvbGFuZy5vcmcveC90b29scy9jbWQvc3RyaW5nZXJAdjAuMS4xMy0wLjIwMjIwOTE3MDA0NTQxLTRkMTg5MjNmMDYwZQo="><code class="language-.term1">$ go get golang.org/x/tools/cmd/stringer@v0.1.13-0.20220917004541-4d18923f060e
+go: downloading golang.org/x/tools v0.1.13-0.20220917004541-4d18923f060e
+go: downloading golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f
+go: downloading golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4
+go: added golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4
+go: added golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f
+go: added golang.org/x/tools v0.1.13-0.20220917004541-4d18923f060e
 </code></pre>
 
 You can see your new dependency in the project's `go.mod` file:
@@ -198,9 +200,13 @@ You can see your new dependency in the project's `go.mod` file:
 <pre data-command-src="Y2F0IGdvLm1vZAo="><code class="language-.term1">$ cat go.mod
 module painkiller
 
-go 1.15
+go 1.19
 
-require golang.org/x/tools v0.0.0-20201105220310-78b158585360 // indirect
+require (
+	golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4 // indirect
+	golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f // indirect
+	golang.org/x/tools v0.1.13-0.20220917004541-4d18923f060e // indirect
+)
 </code></pre>
 
 This guide uses a specific version of `stringer` so as to remain reproducible. In a real-world project you would almost
