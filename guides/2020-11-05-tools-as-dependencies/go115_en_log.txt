@@ -1,5 +1,5 @@
 $ go version
-go version go1.15.15 linux/amd64
+go version go1.19.1 linux/amd64
 $ mkdir painkiller
 $ cd painkiller
 $ go mod init painkiller
@@ -80,17 +80,23 @@ import (
 )
 
 EOD
-$ go get golang.org/x/tools/cmd/stringer@v0.0.0-20201105220310-78b158585360
-go: downloading golang.org/x/tools v0.0.0-20201105220310-78b158585360
-go: found golang.org/x/tools/cmd/stringer in golang.org/x/tools v0.0.0-20201105220310-78b158585360
-go: downloading golang.org/x/mod v0.3.0
-go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
+$ go get golang.org/x/tools/cmd/stringer@v0.1.13-0.20220917004541-4d18923f060e
+go: downloading golang.org/x/tools v0.1.13-0.20220917004541-4d18923f060e
+go: downloading golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f
+go: downloading golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4
+go: added golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4
+go: added golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f
+go: added golang.org/x/tools v0.1.13-0.20220917004541-4d18923f060e
 $ cat go.mod
 module painkiller
 
-go 1.15
+go 1.19
 
-require golang.org/x/tools v0.0.0-20201105220310-78b158585360 // indirect
+require (
+	golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4 // indirect
+	golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f // indirect
+	golang.org/x/tools v0.1.13-0.20220917004541-4d18923f060e // indirect
+)
 $ go mod tidy
 $ go run golang.org/x/tools/cmd/stringer -help
 Usage of stringer:

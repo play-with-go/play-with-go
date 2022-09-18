@@ -32,7 +32,7 @@ You should already have completed:
 This guide is running using:
 
 <pre data-command-src="Z28gdmVyc2lvbgo="><code class="language-.term1">$ go version
-go version go1.15.15 linux/amd64
+go version go1.19.1 linux/amd64
 </code></pre>
 
 ### The `public` and `private` modules
@@ -166,7 +166,7 @@ Add a dependency on the `public` module:
 
 <pre data-command-src="Z28gZ2V0IHt7ey5QVUJMSUN9fX0K"><code class="language-.term1">$ go get &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125;
 go: downloading &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345
-go: &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125; upgrade =&gt; v0.0.0-20060102150405-abcedf12345
+go: added &#123;&#123;&#123;.PUBLIC&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345
 </code></pre>
 
 As expected, that succeeded.
@@ -174,7 +174,7 @@ As expected, that succeeded.
 Try to add a dependency on the `private` module:
 
 <pre data-command-src="Z28gZ2V0IHt7ey5QUklWQVRFfX19Cg=="><code class="language-.term1">$ go get &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;
-go get &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;: module &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;: reading https://proxy.golang.org/&#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;/@v/list: 404 Not Found
+go: module &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;: reading https://proxy.golang.org/&#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;/@v/list: 404 Not Found
 	server response:
 	not found: module &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 		fatal: could not read Username for &#39;https://gopher.live&#39;: terminal prompts disabled
@@ -193,7 +193,7 @@ And try once again to add a dependency on the `private` module:
 
 <pre data-command-src="Z28gZ2V0IHt7ey5QUklWQVRFfX19Cg=="><code class="language-.term1">$ go get &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;
 go: downloading &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345
-go get &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;: &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;@v0.0.0-20060102150405-abcedf12345: verifying module: &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/&#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;@v0.0.0-20060102150405-abcedf12345: 404 Not Found
+go: &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;@v0.0.0-20060102150405-abcedf12345: verifying module: &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/&#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;@v0.0.0-20060102150405-abcedf12345: 404 Not Found
 	server response:
 	not found: &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;@v0.0.0-20060102150405-abcedf12345: invalid version: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 		fatal: could not read Username for &#39;https://gopher.live&#39;: terminal prompts disabled
@@ -223,7 +223,7 @@ succeeded):
 
 <pre data-command-src="Z28gZ2V0IHt7ey5QUklWQVRFfX19Cg=="><code class="language-.term1">$ go get &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125;
 go: downloading &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345
-go: &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125; upgrade =&gt; v0.0.0-20060102150405-abcedf12345
+go: added &#123;&#123;&#123;.PRIVATE&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345
 </code></pre>
 
 Success! As a final check, run the `gopher` module `main` package:
@@ -234,11 +234,11 @@ private.Secret(): This is a top secret message... for your eyes only
 </code></pre>
 
 For more details on the `GOPRIVATE` environment variable and the values it can take, see
-`go help module-private`, which also includes examples of how to use the `*` glob to match multiple sub domains
+`go help module-auth`, which also includes examples of how to use the `*` glob to match multiple sub domains
 or modules.
 
 The `GONOPROXY` and `GONOSUMDB` environment variables can be used for more fine
-grained control. Again, see `go help module-private` for more information.
+grained control. Again, see `go help module-auth` for more information.
 
 ### Conclusion
 

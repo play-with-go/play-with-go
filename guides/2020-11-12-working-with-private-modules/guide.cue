@@ -34,7 +34,7 @@ Defs: {
 	gopher_dir:         "/home/gopher/\(gopher)"
 	gopher_go:          "\(gopher).go"
 	go_help_env:        "\(_#commonDefs.cmdgo.help) env"
-	go_help_modprivate: "\(_#commonDefs.cmdgo.help) module-private"
+	go_help_modprivate: "\(_#commonDefs.cmdgo.help) module-auth"
 }
 
 Scenarios: go115: preguide.#Scenario & {
@@ -43,7 +43,7 @@ Scenarios: go115: preguide.#Scenario & {
 
 Terminals: term1: preguide.#Terminal & {
 	Description: "The main terminal"
-	Scenarios: go115: Image: _#go115LatestImage
+	Scenarios: go115: Image: _#go119LatestImage
 }
 
 Steps: goversion: preguide.#Command & {

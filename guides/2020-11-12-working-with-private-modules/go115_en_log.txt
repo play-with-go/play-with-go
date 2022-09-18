@@ -1,5 +1,5 @@
 $ go version
-go version go1.15.15 linux/amd64
+go version go1.19.1 linux/amd64
 $ mkdir /home/gopher/public
 $ cd /home/gopher/public
 $ go mod init {{{.PUBLIC}}}
@@ -89,11 +89,11 @@ For more about environment variables, see 'go help environment'.
 $ go env -w GOPROXY=https://proxy.golang.org
 $ go get {{{.PUBLIC}}}
 go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
-go: {{{.PUBLIC}}} upgrade => v0.0.0-20060102150405-abcedf12345
+go: added {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
 $ go list -m -f {{.Version}} {{{.PUBLIC}}}
 v0.0.0-20060102150405-abcedf12345
 $ go get {{{.PRIVATE}}}
-go get {{{.PRIVATE}}}: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 404 Not Found
+go: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 404 Not Found
 	server response:
 	not found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 		fatal: could not read Username for 'https://gopher.live': terminal prompts disabled
@@ -102,58 +102,25 @@ go get {{{.PRIVATE}}}: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{
 $ go env -w GOPROXY=
 $ go get {{{.PRIVATE}}}
 go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
-go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 404 Not Found
+go: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 404 Not Found
 	server response:
 	not found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 		fatal: could not read Username for 'https://gopher.live': terminal prompts disabled
 	Confirm the import path was entered correctly.
 	If this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
-$ go help module-private
-The go command defaults to downloading modules from the public Go module
-mirror at proxy.golang.org. It also defaults to validating downloaded modules,
-regardless of source, against the public Go checksum database at sum.golang.org.
-These defaults work well for publicly available source code.
+$ go help module-auth
+When the go command downloads a module zip file or go.mod file into the
+module cache, it computes a cryptographic hash and compares it with a known
+value to verify the file hasn't changed since it was first downloaded. Known
+hashes are stored in a file in the module root directory named go.sum. Hashes
+may also be downloaded from the checksum database depending on the values of
+GOSUMDB, GOPRIVATE, and GONOSUMDB.
 
-The GOPRIVATE environment variable controls which modules the go command
-considers to be private (not available publicly) and should therefore not use the
-proxy or checksum database. The variable is a comma-separated list of
-glob patterns (in the syntax of Go's path.Match) of module path prefixes.
-For example,
-
-	GOPRIVATE=*.corp.example.com,rsc.io/private
-
-causes the go command to treat as private any module with a path prefix
-matching either pattern, including git.corp.example.com/xyzzy, rsc.io/private,
-and rsc.io/private/quux.
-
-The GOPRIVATE environment variable may be used by other tools as well to
-identify non-public modules. For example, an editor could use GOPRIVATE
-to decide whether to hyperlink a package import to a godoc.org page.
-
-For fine-grained control over module download and validation, the GONOPROXY
-and GONOSUMDB environment variables accept the same kind of glob list
-and override GOPRIVATE for the specific decision of whether to use the proxy
-and checksum database, respectively.
-
-For example, if a company ran a module proxy serving private modules,
-users would configure go using:
-
-	GOPRIVATE=*.corp.example.com
-	GOPROXY=proxy.example.com
-	GONOPROXY=none
-
-This would tell the go command and other tools that modules beginning with
-a corp.example.com subdomain are private but that the company proxy should
-be used for downloading both public and private modules, because
-GONOPROXY has been set to a pattern that won't match any modules,
-overriding GOPRIVATE.
-
-The 'go env -w' command (see 'go help env') can be used to set these variables
-for future go command invocations.
+For details, see https://golang.org/ref/mod#authenticating.
 $ go env -w GOPRIVATE={{{.PRIVATE}}}
 $ go get {{{.PRIVATE}}}
 go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
-go: {{{.PRIVATE}}} upgrade => v0.0.0-20060102150405-abcedf12345
+go: added {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
 $ go list -m -f {{.Version}} {{{.PRIVATE}}}
 v0.0.0-20060102150405-abcedf12345
 $ go run .

@@ -8,7 +8,7 @@ Defs: {
 	_#commonDefs
 	mkcert:         "mkcert"
 	mkcert_pkg:     "filippo.io/mkcert"
-	mkcert_version: "v1.4.2"
+	mkcert_version: "v1.4.4"
 	mktemp:         "mktemp -d"
 }
 
@@ -18,24 +18,12 @@ Scenarios: go116: preguide.#Scenario & {
 
 Terminals: term1: preguide.#Terminal & {
 	Description: "The main terminal"
-	Scenarios: go116: Image: _#go116LatestImage
+	Scenarios: go116: Image: _#go119LatestImage
 }
 
 Steps: goversion: preguide.#Command & {
 	Source: """
 		go version
-		"""
-}
-
-Steps: go115_mkcert_get: preguide.#Command & {
-	Source: """
-		go get \(Defs.mkcert_pkg)@\(Defs.mkcert_version)
-		"""
-}
-
-Steps: go115_mkcert_modules_get: preguide.#Command & {
-	Source: """
-		(cd $(\(Defs.mktemp)); GO111MODULE=on go get \(Defs.mkcert_pkg)@\(Defs.mkcert_version))
 		"""
 }
 

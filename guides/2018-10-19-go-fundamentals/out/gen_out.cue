@@ -81,8 +81,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20220916045313-f81d11764005",
-		      "Sum": "h1:TozvtuERGrcqQhYM4thrishUY+QONu76GMskVpgQHBA=",
+		      "Version": "v0.0.2-0.20220918055127-cc4d80fbbfa7",
+		      "Sum": "h1:83MPB7IZes5I5o7Jc2r9JBgMqHaU+E8LjHv03xehSic=",
 		      "Replace": null
 		    },
 		    {
@@ -132,7 +132,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+			Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 		}
 	}
 }]
@@ -155,8 +155,8 @@ Steps: {
 			Negated:          false
 			CmdStr:           "go version"
 			ExitCode:         0
-			Output:           "go version go1.15.15 linux/amd64"
-			ComparisonOutput: "go version go1.15.15 linux/amd64"
+			Output:           "go version go1.19.1 linux/amd64"
+			ComparisonOutput: "go version go1.19.1 linux/amd64"
 		}]
 	}
 	pwd_home: {
@@ -236,13 +236,13 @@ Steps: {
 			Output: """
 				module {{{.GREETINGS}}}
 
-				go 1.15
+				go 1.19
 
 				"""
 			ComparisonOutput: """
 				module {{{.GREETINGS}}}
 
-				go 1.15
+				go 1.19
 
 				"""
 		}]
@@ -444,13 +444,13 @@ Steps: {
 			ExitCode: 0
 			Output: """
 				go: downloading {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
-				go: {{{.GREETINGS}}} upgrade => v0.0.0-20060102150405-abcedf12345
+				go: added {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
 
 				"""
 			ComparisonOutput: """
 
+				go: added {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
 				go: downloading {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
-				go: {{{.GREETINGS}}} upgrade => v0.0.0-20060102150405-abcedf12345
 				"""
 		}]
 	}
@@ -715,14 +715,14 @@ Steps: {
 			CmdStr:   "go get {{{.GREETINGS}}}@$greetings_error_commit"
 			ExitCode: 0
 			Output: """
-				go: {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
 				go: downloading {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
+				go: upgraded {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
 
 				"""
 			ComparisonOutput: """
 
 				go: downloading {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
-				go: {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
+				go: upgraded {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
 				"""
 		}]
 	}
@@ -1029,14 +1029,14 @@ Steps: {
 			CmdStr:   "go get {{{.GREETINGS}}}@$greetings_random_commit"
 			ExitCode: 0
 			Output: """
-				go: {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
 				go: downloading {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
+				go: upgraded {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
 
 				"""
 			ComparisonOutput: """
 
 				go: downloading {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
-				go: {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
+				go: upgraded {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
 				"""
 		}]
 	}
@@ -1351,9 +1351,9 @@ Steps: {
 			Output: """
 				module {{{.HELLO}}}
 
-				go 1.15
+				go 1.19
 
-				require {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
+				require {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 // indirect
 
 				replace {{{.GREETINGS}}} => /home/gopher/greetings
 
@@ -1361,9 +1361,9 @@ Steps: {
 			ComparisonOutput: """
 				module {{{.HELLO}}}
 
-				go 1.15
+				go 1.19
 
-				require {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
+				require {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 // indirect
 
 				replace {{{.GREETINGS}}} => /home/gopher/greetings
 
@@ -1532,7 +1532,7 @@ Steps: {
 			ExitCode: 0
 			Output: """
 				PASS
-				ok  \t{{{.GREETINGS}}}\t0.002s
+				ok  \t{{{.GREETINGS}}}\t0.001s
 
 				"""
 			ComparisonOutput: """
@@ -1550,7 +1550,7 @@ Steps: {
 				=== RUN   TestHelloEmpty
 				--- PASS: TestHelloEmpty (0.00s)
 				PASS
-				ok  \t{{{.GREETINGS}}}\t0.002s
+				ok  \t{{{.GREETINGS}}}\t0.001s
 
 				"""
 			ComparisonOutput: """
@@ -1724,7 +1724,7 @@ Steps: {
 				    greetings_test.go:15: Hello("Gladys") = "Hail, %v! Well met!", <nil>, want match for `\\bGladys\\b`, <nil>
 				FAIL
 				exit status 1
-				FAIL\t{{{.GREETINGS}}}\t0.001s
+				FAIL\t{{{.GREETINGS}}}\t0.002s
 
 				"""
 			ComparisonOutput: """
@@ -1894,7 +1894,7 @@ Steps: {
 			ExitCode: 0
 			Output: """
 				PASS
-				ok  \t{{{.GREETINGS}}}\t0.001s
+				ok  \t{{{.GREETINGS}}}\t0.002s
 
 				"""
 			ComparisonOutput: """
@@ -1998,5 +1998,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "4030ef2161a08fd4057fffd4499e5b683247d45a04169c7cf11892d42c9f2138"
+Hash: "5eaa4bac4c0d61559e4ada00c264ad04e45e2b4635a313f9596008eef77a880e"
 Delims: ["{{{", "}}}"]

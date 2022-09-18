@@ -81,8 +81,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20220916045313-f81d11764005",
-		      "Sum": "h1:TozvtuERGrcqQhYM4thrishUY+QONu76GMskVpgQHBA=",
+		      "Version": "v0.0.2-0.20220918055127-cc4d80fbbfa7",
+		      "Sum": "h1:83MPB7IZes5I5o7Jc2r9JBgMqHaU+E8LjHv03xehSic=",
 		      "Replace": null
 		    },
 		    {
@@ -132,7 +132,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+			Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 		}
 	}
 }]
@@ -155,8 +155,8 @@ Steps: {
 			Negated:          false
 			CmdStr:           "go version"
 			ExitCode:         0
-			Output:           "go version go1.15.15 linux/amd64"
-			ComparisonOutput: "go version go1.15.15 linux/amd64"
+			Output:           "go version go1.19.1 linux/amd64"
+			ComparisonOutput: "go version go1.19.1 linux/amd64"
 		}]
 	}
 	branch_init: {
@@ -724,10 +724,12 @@ Steps: {
 			ExitCode: 0
 			Output: """
 				go: downloading {{{.BRANCH}}} v1.0.0
+				go: added {{{.BRANCH}}} v1.0.0
 
 				"""
 			ComparisonOutput: """
 
+				go: added {{{.BRANCH}}} v1.0.0
 				go: downloading {{{.BRANCH}}} v1.0.0
 				"""
 		}, {
@@ -736,10 +738,12 @@ Steps: {
 			ExitCode: 0
 			Output: """
 				go: downloading {{{.BRANCH}}}/v2 v2.0.0
+				go: added {{{.BRANCH}}}/v2 v2.0.0
 
 				"""
 			ComparisonOutput: """
 
+				go: added {{{.BRANCH}}}/v2 v2.0.0
 				go: downloading {{{.BRANCH}}}/v2 v2.0.0
 				"""
 		}, {
@@ -748,10 +752,12 @@ Steps: {
 			ExitCode: 0
 			Output: """
 				go: downloading {{{.SUBDIR}}} v1.0.0
+				go: added {{{.SUBDIR}}} v1.0.0
 
 				"""
 			ComparisonOutput: """
 
+				go: added {{{.SUBDIR}}} v1.0.0
 				go: downloading {{{.SUBDIR}}} v1.0.0
 				"""
 		}, {
@@ -760,10 +766,12 @@ Steps: {
 			ExitCode: 0
 			Output: """
 				go: downloading {{{.SUBDIR}}}/v2 v2.0.0
+				go: added {{{.SUBDIR}}}/v2 v2.0.0
 
 				"""
 			ComparisonOutput: """
 
+				go: added {{{.SUBDIR}}}/v2 v2.0.0
 				go: downloading {{{.SUBDIR}}}/v2 v2.0.0
 				"""
 		}]
@@ -796,5 +804,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "7dece9cb34390b221d2e98f2faa720ebb2fa859489ba010a8f63e3016d5121fb"
+Hash: "41c7f8744234fcd70be0eb280b0c4108d2f6b2cc6a46e7faccb6a8c9af7bba0a"
 Delims: ["{{{", "}}}"]

@@ -77,8 +77,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20220916045313-f81d11764005",
-		      "Sum": "h1:TozvtuERGrcqQhYM4thrishUY+QONu76GMskVpgQHBA=",
+		      "Version": "v0.0.2-0.20220918055127-cc4d80fbbfa7",
+		      "Sum": "h1:83MPB7IZes5I5o7Jc2r9JBgMqHaU+E8LjHv03xehSic=",
 		      "Replace": null
 		    },
 		    {
@@ -128,7 +128,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+			Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 		}
 	}
 }]
@@ -151,8 +151,8 @@ Steps: {
 			Negated:          false
 			CmdStr:           "go version"
 			ExitCode:         0
-			Output:           "go version go1.15.15 linux/amd64"
-			ComparisonOutput: "go version go1.15.15 linux/amd64"
+			Output:           "go version go1.19.1 linux/amd64"
+			ComparisonOutput: "go version go1.19.1 linux/amd64"
 		}]
 	}
 	painkiller_go_mod_init: {
@@ -400,21 +400,25 @@ Steps: {
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:  false
-			CmdStr:   "go get golang.org/x/tools/cmd/stringer@v0.0.0-20201105220310-78b158585360"
+			CmdStr:   "go get golang.org/x/tools/cmd/stringer@v0.1.13-0.20220917004541-4d18923f060e"
 			ExitCode: 0
 			Output: """
-				go: downloading golang.org/x/tools v0.0.0-20201105220310-78b158585360
-				go: found golang.org/x/tools/cmd/stringer in golang.org/x/tools v0.0.0-20201105220310-78b158585360
-				go: downloading golang.org/x/mod v0.3.0
-				go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
+				go: downloading golang.org/x/tools v0.1.13-0.20220917004541-4d18923f060e
+				go: downloading golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f
+				go: downloading golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4
+				go: added golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4
+				go: added golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f
+				go: added golang.org/x/tools v0.1.13-0.20220917004541-4d18923f060e
 
 				"""
 			ComparisonOutput: """
 
-				go: downloading golang.org/x/mod v0.3.0
-				go: downloading golang.org/x/tools v0.0.0-20201105220310-78b158585360
-				go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
-				go: found golang.org/x/tools/cmd/stringer in golang.org/x/tools v0.0.0-20201105220310-78b158585360
+				go: added golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4
+				go: added golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f
+				go: added golang.org/x/tools v0.1.13-0.20220917004541-4d18923f060e
+				go: downloading golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4
+				go: downloading golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f
+				go: downloading golang.org/x/tools v0.1.13-0.20220917004541-4d18923f060e
 				"""
 		}]
 	}
@@ -432,17 +436,25 @@ Steps: {
 			Output: """
 				module painkiller
 
-				go 1.15
+				go 1.19
 
-				require golang.org/x/tools v0.0.0-20201105220310-78b158585360 // indirect
+				require (
+				\tgolang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4 // indirect
+				\tgolang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f // indirect
+				\tgolang.org/x/tools v0.1.13-0.20220917004541-4d18923f060e // indirect
+				)
 
 				"""
 			ComparisonOutput: """
 				module painkiller
 
-				go 1.15
+				go 1.19
 
-				require golang.org/x/tools v0.0.0-20201105220310-78b158585360 // indirect
+				require (
+				\tgolang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4 // indirect
+				\tgolang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f // indirect
+				\tgolang.org/x/tools v0.1.13-0.20220917004541-4d18923f060e // indirect
+				)
 
 				"""
 		}]
@@ -789,5 +801,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "422eaf5b740efdf4c0016fabc28e2438e057a7108260db3be9edd4787ca4a0ca"
+Hash: "f440fa815f06042623db1e5dcbc6fb91863ff214da8db577281584cb87006d59"
 Delims: ["{{{", "}}}"]

@@ -81,8 +81,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20220916045313-f81d11764005",
-		      "Sum": "h1:TozvtuERGrcqQhYM4thrishUY+QONu76GMskVpgQHBA=",
+		      "Version": "v0.0.2-0.20220918055127-cc4d80fbbfa7",
+		      "Sum": "h1:83MPB7IZes5I5o7Jc2r9JBgMqHaU+E8LjHv03xehSic=",
 		      "Replace": null
 		    },
 		    {
@@ -132,7 +132,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/go1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+			Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 		}
 	}
 }]
@@ -155,8 +155,8 @@ Steps: {
 			Negated:          false
 			CmdStr:           "go version"
 			ExitCode:         0
-			Output:           "go version go1.15.15 linux/amd64"
-			ComparisonOutput: "go version go1.15.15 linux/amd64"
+			Output:           "go version go1.19.1 linux/amd64"
+			ComparisonOutput: "go version go1.19.1 linux/amd64"
 		}]
 	}
 	public_init: {
@@ -578,13 +578,13 @@ Steps: {
 			ExitCode: 0
 			Output: """
 				go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
-				go: {{{.PUBLIC}}} upgrade => v0.0.0-20060102150405-abcedf12345
+				go: added {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
 
 				"""
 			ComparisonOutput: """
 
+				go: added {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
 				go: downloading {{{.PUBLIC}}} v0.0.0-20060102150405-abcedf12345
-				go: {{{.PUBLIC}}} upgrade => v0.0.0-20060102150405-abcedf12345
 				"""
 		}]
 	}
@@ -622,7 +622,7 @@ Steps: {
 			CmdStr:   "go get {{{.PRIVATE}}}"
 			ExitCode: 1
 			Output: """
-				go get {{{.PRIVATE}}}: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 404 Not Found
+				go: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 404 Not Found
 				\tserver response:
 				\tnot found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
@@ -637,7 +637,7 @@ Steps: {
 				\tIf this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
 				\tnot found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 				\tserver response:
-				go get {{{.PRIVATE}}}: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 404 Not Found
+				go: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 404 Not Found
 				"""
 		}]
 	}
@@ -669,7 +669,7 @@ Steps: {
 			ExitCode: 1
 			Output: """
 				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
-				go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 404 Not Found
+				go: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 404 Not Found
 				\tserver response:
 				\tnot found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
@@ -684,8 +684,8 @@ Steps: {
 				\tIf this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
 				\tnot found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/0123456789abcdef: exit status 128:
 				\tserver response:
-				go get {{{.PRIVATE}}}: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 404 Not Found
 				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
+				go: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 404 Not Found
 				"""
 		}]
 	}
@@ -698,94 +698,28 @@ Steps: {
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:  false
-			CmdStr:   "go help module-private"
+			CmdStr:   "go help module-auth"
 			ExitCode: 0
 			Output: """
-				The go command defaults to downloading modules from the public Go module
-				mirror at proxy.golang.org. It also defaults to validating downloaded modules,
-				regardless of source, against the public Go checksum database at sum.golang.org.
-				These defaults work well for publicly available source code.
+				When the go command downloads a module zip file or go.mod file into the
+				module cache, it computes a cryptographic hash and compares it with a known
+				value to verify the file hasn't changed since it was first downloaded. Known
+				hashes are stored in a file in the module root directory named go.sum. Hashes
+				may also be downloaded from the checksum database depending on the values of
+				GOSUMDB, GOPRIVATE, and GONOSUMDB.
 
-				The GOPRIVATE environment variable controls which modules the go command
-				considers to be private (not available publicly) and should therefore not use the
-				proxy or checksum database. The variable is a comma-separated list of
-				glob patterns (in the syntax of Go's path.Match) of module path prefixes.
-				For example,
-
-				\tGOPRIVATE=*.corp.example.com,rsc.io/private
-
-				causes the go command to treat as private any module with a path prefix
-				matching either pattern, including git.corp.example.com/xyzzy, rsc.io/private,
-				and rsc.io/private/quux.
-
-				The GOPRIVATE environment variable may be used by other tools as well to
-				identify non-public modules. For example, an editor could use GOPRIVATE
-				to decide whether to hyperlink a package import to a godoc.org page.
-
-				For fine-grained control over module download and validation, the GONOPROXY
-				and GONOSUMDB environment variables accept the same kind of glob list
-				and override GOPRIVATE for the specific decision of whether to use the proxy
-				and checksum database, respectively.
-
-				For example, if a company ran a module proxy serving private modules,
-				users would configure go using:
-
-				\tGOPRIVATE=*.corp.example.com
-				\tGOPROXY=proxy.example.com
-				\tGONOPROXY=none
-
-				This would tell the go command and other tools that modules beginning with
-				a corp.example.com subdomain are private but that the company proxy should
-				be used for downloading both public and private modules, because
-				GONOPROXY has been set to a pattern that won't match any modules,
-				overriding GOPRIVATE.
-
-				The 'go env -w' command (see 'go help env') can be used to set these variables
-				for future go command invocations.
+				For details, see https://golang.org/ref/mod#authenticating.
 
 				"""
 			ComparisonOutput: """
-				The go command defaults to downloading modules from the public Go module
-				mirror at proxy.golang.org. It also defaults to validating downloaded modules,
-				regardless of source, against the public Go checksum database at sum.golang.org.
-				These defaults work well for publicly available source code.
+				When the go command downloads a module zip file or go.mod file into the
+				module cache, it computes a cryptographic hash and compares it with a known
+				value to verify the file hasn't changed since it was first downloaded. Known
+				hashes are stored in a file in the module root directory named go.sum. Hashes
+				may also be downloaded from the checksum database depending on the values of
+				GOSUMDB, GOPRIVATE, and GONOSUMDB.
 
-				The GOPRIVATE environment variable controls which modules the go command
-				considers to be private (not available publicly) and should therefore not use the
-				proxy or checksum database. The variable is a comma-separated list of
-				glob patterns (in the syntax of Go's path.Match) of module path prefixes.
-				For example,
-
-				\tGOPRIVATE=*.corp.example.com,rsc.io/private
-
-				causes the go command to treat as private any module with a path prefix
-				matching either pattern, including git.corp.example.com/xyzzy, rsc.io/private,
-				and rsc.io/private/quux.
-
-				The GOPRIVATE environment variable may be used by other tools as well to
-				identify non-public modules. For example, an editor could use GOPRIVATE
-				to decide whether to hyperlink a package import to a godoc.org page.
-
-				For fine-grained control over module download and validation, the GONOPROXY
-				and GONOSUMDB environment variables accept the same kind of glob list
-				and override GOPRIVATE for the specific decision of whether to use the proxy
-				and checksum database, respectively.
-
-				For example, if a company ran a module proxy serving private modules,
-				users would configure go using:
-
-				\tGOPRIVATE=*.corp.example.com
-				\tGOPROXY=proxy.example.com
-				\tGONOPROXY=none
-
-				This would tell the go command and other tools that modules beginning with
-				a corp.example.com subdomain are private but that the company proxy should
-				be used for downloading both public and private modules, because
-				GONOPROXY has been set to a pattern that won't match any modules,
-				overriding GOPRIVATE.
-
-				The 'go env -w' command (see 'go help env') can be used to set these variables
-				for future go command invocations.
+				For details, see https://golang.org/ref/mod#authenticating.
 
 				"""
 		}]
@@ -818,13 +752,13 @@ Steps: {
 			ExitCode: 0
 			Output: """
 				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
-				go: {{{.PRIVATE}}} upgrade => v0.0.0-20060102150405-abcedf12345
+				go: added {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
 
 				"""
 			ComparisonOutput: """
 
+				go: added {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
 				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
-				go: {{{.PRIVATE}}} upgrade => v0.0.0-20060102150405-abcedf12345
 				"""
 		}]
 	}
@@ -874,5 +808,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "5aeb0e6f8ca108e4c4267463519d57c906181a6c92b666c64fd9ad55336cfc6a"
+Hash: "f2232199872cd3dccfd7a2084716cd499551087f9944f36db3bb491eb2265caa"
 Delims: ["{{{", "}}}"]

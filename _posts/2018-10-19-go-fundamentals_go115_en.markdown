@@ -43,7 +43,7 @@ You should already have completed:
 This guide is running using:
 
 <pre data-command-src="Z28gdmVyc2lvbgo="><code class="language-.term1">$ go version
-go version go1.15.15 linux/amd64
+go version go1.19.1 linux/amd64
 </code></pre>
 
 ### Create a module that others can use
@@ -85,7 +85,7 @@ other code.  The file you just created includes only the name of your module and
 <pre data-command-src="Y2F0IGdvLm1vZAo="><code class="language-.term1">$ cat go.mod
 module &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;
 
-go 1.15
+go 1.19
 </code></pre>
 
 As you add dependencies -- meaning packages from other modules -- the `go.mod` file will list the specific module
@@ -183,7 +183,7 @@ Declare a dependency on `{% raw %}{{{.GREETINGS}}}{% endraw %}` using [`go get`]
 
 <pre data-command-src="Z28gZ2V0IHt7ey5HUkVFVElOR1N9fX0K"><code class="language-.term1">$ go get &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;
 go: downloading &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345
-go: &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125; upgrade =&gt; v0.0.0-20060102150405-abcedf12345
+go: added &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345
 </code></pre>
 
 Without any version specified, `go get` will retrieve the latest version of the `greetings` module. And
@@ -304,8 +304,8 @@ improve the proxy's caching and serving latencies, new versions may not show up 
 not resolve a stale latest version, use the latest commit of the `greetings` module as an explicit version:
 
 <pre data-command-src="Z28gZ2V0IHt7ey5HUkVFVElOR1N9fX1AJGdyZWV0aW5nc19lcnJvcl9jb21taXQK"><code class="language-.term1">$ go get &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;@$greetings_error_commit
-go: &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345 =&gt; v0.0.0-20060102150405-abcedf12345
 go: downloading &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345
+go: upgraded &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345 =&gt; v0.0.0-20060102150405-abcedf12345
 </code></pre>
 
 In your hello.go, handle the error now returned by the `Hello` function, along with the non-error value:
@@ -464,8 +464,8 @@ Return to the `hello` module directory and use this new version:
 
 <pre data-command-src="Y2QgL2hvbWUvZ29waGVyL2hlbGxvCmdvIGdldCB7e3suR1JFRVRJTkdTfX19QCRncmVldGluZ3NfcmFuZG9tX2NvbW1pdAo="><code class="language-.term1">$ cd /home/gopher/hello
 $ go get &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;@$greetings_random_commit
-go: &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345 =&gt; v0.0.0-20060102150405-abcedf12345
 go: downloading &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345
+go: upgraded &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345 =&gt; v0.0.0-20060102150405-abcedf12345
 </code></pre>
 
 Re-add Gladys's name as an argument to the `Hello` function call in `hello.go`:
@@ -629,9 +629,9 @@ We can see the result in the `hello` module `go.mod` file:
 <pre data-command-src="Y2F0IGdvLm1vZAo="><code class="language-.term1">$ cat go.mod
 module &#123;&#123;&#123;.HELLO&#125;&#125;&#125;
 
-go 1.15
+go 1.19
 
-require &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345
+require &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125; v0.0.0-20060102150405-abcedf12345 // indirect
 
 replace &#123;&#123;&#123;.GREETINGS&#125;&#125;&#125; =&gt; /home/gopher/greetings
 </code></pre>
@@ -753,14 +753,14 @@ The tests should pass:
 
 <pre data-command-src="Z28gdGVzdApnbyB0ZXN0IC12Cg=="><code class="language-.term1">$ go test
 PASS
-ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.002s
+ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.001s
 $ go test -v
 === RUN   TestHelloName
 --- PASS: TestHelloName (0.00s)
 === RUN   TestHelloEmpty
 --- PASS: TestHelloEmpty (0.00s)
 PASS
-ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.002s
+ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.001s
 </code></pre>
 
 You will now break the `greetings.Hello` function to view a failing test. The `TestHelloName` test function
@@ -845,7 +845,7 @@ a lot of tests. The `TestHelloName` test should fail -- `TestHelloEmpty` still p
     greetings_test.go:15: Hello(&#34;Gladys&#34;) = &#34;Hail, %v! Well met!&#34;, &lt;nil&gt;, want match for `\bGladys\b`, &lt;nil&gt;
 FAIL
 exit status 1
-FAIL	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.001s
+FAIL	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.002s
 </code></pre>
 
 Let's restore `greetings.Hello` to a working state
@@ -919,7 +919,7 @@ And re-run `go test` to verify our change:
 
 <pre data-command-src="Z28gdGVzdAo="><code class="language-.term1">$ go test
 PASS
-ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.001s
+ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.002s
 </code></pre>
 
 This section introduced Go's built-in support for unit testing. In the next section, you'll see how to compile and

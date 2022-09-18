@@ -1,5 +1,5 @@
 $ go version
-go version go1.15.15 linux/amd64
+go version go1.19.1 linux/amd64
 $ mkdir /home/gopher/branch
 $ cd /home/gopher/branch
 $ go mod init {{{.BRANCH}}}
@@ -126,12 +126,16 @@ func main() {
 EOD
 $ go get {{{.BRANCH}}}@v1.0.0
 go: downloading {{{.BRANCH}}} v1.0.0
+go: added {{{.BRANCH}}} v1.0.0
 $ go get {{{.BRANCH}}}/v2@v2.0.0
 go: downloading {{{.BRANCH}}}/v2 v2.0.0
+go: added {{{.BRANCH}}}/v2 v2.0.0
 $ go get {{{.SUBDIR}}}@v1.0.0
 go: downloading {{{.SUBDIR}}} v1.0.0
+go: added {{{.SUBDIR}}} v1.0.0
 $ go get {{{.SUBDIR}}}/v2@v2.0.0
 go: downloading {{{.SUBDIR}}}/v2 v2.0.0
+go: added {{{.SUBDIR}}}/v2 v2.0.0
 $ go run .
 branch.Message: branch v1
 branch/v2.Message: branch v2

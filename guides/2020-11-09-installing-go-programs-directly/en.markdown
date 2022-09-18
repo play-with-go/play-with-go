@@ -12,7 +12,7 @@ and tool author._
 Users need a simple, easy-to-remember way to install Go programs. Similarly, tool authors need a short one-liner they
 can include at the top of their `README.md` explaining how to install the tool.
 
-Go 1.16 introduces a new way to install Go programs directly with the `go` command. This guide
+Go 1.16 introduced a new way to install Go programs directly with the `go` command. This guide
 introduces the new mode of `{{{ .cmdgo.install }}}` using the example of
 [`{{{ .mkcert_pkg }}}`](https://{{{ .mkcert_pkg }}}), and is suitable for both end users and tool authors.
 
@@ -26,42 +26,10 @@ This guide is running with:
 
 {{{ step "goversion" }}}
 
-### Background
-
-Currently, tool authors who want to provide installation instructions in their projects' `README.md` typically include:
-
-{{{ step "go115_mkcert_get" }}}
-
-_Note: most `README.md` instructions that use `{{{ .cmdgo.get }}}` do not specify a version. This results in the latest
-version of a package being fetched. A specific version, `{{{.mkcert_version}}}`, is used here to ensure this guide
-remains reproducible._
-
-There are a number of problems with this approach:
-
-* A user might run the above `{{{ .cmdgo.get }}}` within a module, which would
-  update the current module's dependencies, rather than just installing the tool directly.
-* `{{{ .cmdgo.get }}}` might not be running in module mode at all, for example
-  if the user previously modified `{{{ .cmdgo.GO111MODULE }}}`.
-* The use of `{{{ .cmdgo.get }}}` is confusing; it is used to download and install executables,
-  but it's also responsible for managing dependencies in `go.mod` files.
-
-Prior to Go 1.16, the general advice to fix the first two problems was to use a snippet
-which runs `{{{ .cmdgo.get }}}` in module mode and outside any module, by using a temporary directory:
-
-{{{ step "go115_mkcert_modules_get" }}}
-
-However, this new approach had its own problems:
-
-* It's not user-friendly; the extra shell is confusing to newcomers, and hard to remember.
-* It's not cross platform; the command is not guaranteed to work on Windows.
-
-It is clear that neither method is satisfactory, especially for `README.md`
-instructions which are meant to be brief and easy to follow.
-
 ### `{{{ .cmdgo.install }}}` in Go 1.16
 
-In Go 1.16, the `{{{ .cmdgo.install }}}` command is now used to install programs directly, i.e. regardless of the current
-module context:
+As of Go 1.16, the `{{{ .cmdgo.install }}}` command is now used to install
+programs directly, i.e. regardless of the current module context:
 
 {{{ step "go116_mkcert_install" }}}
 
@@ -89,7 +57,7 @@ install programs is being deprecated in Go 1.16.
 
 ### Conclusion
 
-That's it! Time to sit back and wait for the release of Go 1.16!
+That's it!
 
 As a next step you might like to consider:
 

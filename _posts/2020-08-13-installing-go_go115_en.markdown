@@ -36,12 +36,12 @@ Start in your home directory:
 
 Download the latest version of Go:
 
-<pre data-command-src="d2dldCAtcSBodHRwczovL2dvbGFuZy5vcmcvZGwvZ28xLjE1LjE1LmxpbnV4LSRHT0FSQ0gudGFyLmd6Cg=="><code class="language-.term1">$ wget -q https://golang.org/dl/go1.15.15.linux-$GOARCH.tar.gz
+<pre data-command-src="d2dldCAtcSBodHRwczovL2dvbGFuZy5vcmcvZGwvZ28xLjE5LjEubGludXgtJEdPQVJDSC50YXIuZ3oK"><code class="language-.term1">$ wget -q https://golang.org/dl/go1.19.1.linux-$GOARCH.tar.gz
 </code></pre>
 
 Extract and install:
 
-<pre data-command-src="c3VkbyB0YXIgLUMgL3Vzci9sb2NhbCAteHpmIGdvMS4xNS4xNS5saW51eC0kR09BUkNILnRhci5nego="><code class="language-.term1">$ sudo tar -C /usr/local -xzf go1.15.15.linux-$GOARCH.tar.gz
+<pre data-command-src="c3VkbyB0YXIgLUMgL3Vzci9sb2NhbCAteHpmIGdvMS4xOS4xLmxpbnV4LSRHT0FSQ0gudGFyLmd6Cg=="><code class="language-.term1">$ sudo tar -C /usr/local -xzf go1.19.1.linux-$GOARCH.tar.gz
 </code></pre>
 
 Add the install target to your profile `PATH`:
@@ -57,7 +57,7 @@ Source your profile to test the new settings:
 Verify the Go installation:
 
 <pre data-command-src="Z28gdmVyc2lvbgo="><code class="language-.term1">$ go version
-go version go1.15.15 linux/amd64
+go version go1.19.1 linux/amd64
 </code></pre>
 
 ### The Go environment
@@ -75,6 +75,7 @@ GOBIN=&#34;&#34;
 GOCACHE=&#34;/home/gopher/.cache/go-build&#34;
 GOENV=&#34;/home/gopher/.config/go/env&#34;
 GOEXE=&#34;&#34;
+GOEXPERIMENT=&#34;&#34;
 GOFLAGS=&#34;&#34;
 GOHOSTARCH=&#34;amd64&#34;
 GOHOSTOS=&#34;linux&#34;
@@ -90,19 +91,21 @@ GOROOT=&#34;/usr/local/go&#34;
 GOSUMDB=&#34;sum.golang.org&#34;
 GOTMPDIR=&#34;&#34;
 GOTOOLDIR=&#34;/usr/local/go/pkg/tool/linux_amd64&#34;
+GOVCS=&#34;&#34;
+GOVERSION=&#34;go1.19.1&#34;
 GCCGO=&#34;gccgo&#34;
 AR=&#34;ar&#34;
 CC=&#34;gcc&#34;
 CXX=&#34;g++&#34;
 CGO_ENABLED=&#34;1&#34;
-GOMOD=&#34;&#34;
+GOMOD=&#34;/dev/null&#34;
+GOWORK=&#34;&#34;
 CGO_CFLAGS=&#34;-g -O2&#34;
 CGO_CPPFLAGS=&#34;&#34;
 CGO_CXXFLAGS=&#34;-g -O2&#34;
 CGO_FFLAGS=&#34;-g -O2&#34;
 CGO_LDFLAGS=&#34;-g -O2&#34;
 PKG_CONFIG=&#34;pkg-config&#34;
-GOGCCFLAGS=&#34;fake_gcc_flags&#34;
 </code></pre>
 
 To see the effective setting of a specific variable, for example `GOBIN`, you can run:

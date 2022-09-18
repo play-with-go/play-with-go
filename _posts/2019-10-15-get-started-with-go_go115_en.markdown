@@ -29,7 +29,7 @@ You should already have completed:
 This guide is running using:
 
 <pre data-command-src="Z28gdmVyc2lvbgo="><code class="language-.term1">$ go version
-go version go1.15.15 linux/amd64
+go version go1.19.1 linux/amd64
 </code></pre>
 
 ### Write some code
@@ -117,6 +117,8 @@ code will be in (here, just use `hello`):
 
 <pre data-command-src="Z28gbW9kIGluaXQgaGVsbG8K"><code class="language-.term1">$ go mod init hello
 go: creating new go.mod: module hello
+go: to add module requirements and sums:
+	go mod tidy
 </code></pre>
 
 Our `main` package now belongs to the `hello` module.
@@ -127,6 +129,9 @@ We need to declare a dependency on the `rsc.io/quote` module, specifically versi
 go: downloading rsc.io/quote v1.5.2
 go: downloading rsc.io/sampler v1.3.0
 go: downloading golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
+go: added golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
+go: added rsc.io/quote v1.5.2
+go: added rsc.io/sampler v1.3.0
 </code></pre>
 
 [`go get`](https://golang.org/cmd/go/#hdr-Add_dependencies_to_current_module_and_install_them) resolves and adds

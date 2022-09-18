@@ -5,7 +5,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go115: {
-			Image: "playwithgo/installgo1.15.15:c14f40c289a17ef3817d7f82ea3ea2cfc3297713"
+			Image: "playwithgo/installgo1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 		}
 	}
 }]
@@ -47,7 +47,7 @@ Steps: {
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:          false
-			CmdStr:           "wget -q https://golang.org/dl/go1.15.15.linux-$GOARCH.tar.gz"
+			CmdStr:           "wget -q https://golang.org/dl/go1.19.1.linux-$GOARCH.tar.gz"
 			ExitCode:         0
 			Output:           ""
 			ComparisonOutput: ""
@@ -62,7 +62,7 @@ Steps: {
 		Terminal:        "term1"
 		Stmts: [{
 			Negated:          false
-			CmdStr:           "sudo tar -C /usr/local -xzf go1.15.15.linux-$GOARCH.tar.gz"
+			CmdStr:           "sudo tar -C /usr/local -xzf go1.19.1.linux-$GOARCH.tar.gz"
 			ExitCode:         0
 			Output:           ""
 			ComparisonOutput: ""
@@ -109,8 +109,8 @@ Steps: {
 			Negated:          false
 			CmdStr:           "go version"
 			ExitCode:         0
-			Output:           "go version go1.15.15 linux/amd64"
-			ComparisonOutput: "go version go1.15.15 linux/amd64"
+			Output:           "go version go1.19.1 linux/amd64"
+			ComparisonOutput: "go version go1.19.1 linux/amd64"
 		}]
 	}
 	go_env: {
@@ -131,6 +131,7 @@ Steps: {
 				GOCACHE="/home/gopher/.cache/go-build"
 				GOENV="/home/gopher/.config/go/env"
 				GOEXE=""
+				GOEXPERIMENT=""
 				GOFLAGS=""
 				GOHOSTARCH="amd64"
 				GOHOSTOS="linux"
@@ -146,19 +147,21 @@ Steps: {
 				GOSUMDB="sum.golang.org"
 				GOTMPDIR=""
 				GOTOOLDIR="/usr/local/go/pkg/tool/linux_amd64"
+				GOVCS=""
+				GOVERSION="go1.19.1"
 				GCCGO="gccgo"
 				AR="ar"
 				CC="gcc"
 				CXX="g++"
 				CGO_ENABLED="1"
-				GOMOD=""
+				GOMOD="/dev/null"
+				GOWORK=""
 				CGO_CFLAGS="-g -O2"
 				CGO_CPPFLAGS=""
 				CGO_CXXFLAGS="-g -O2"
 				CGO_FFLAGS="-g -O2"
 				CGO_LDFLAGS="-g -O2"
 				PKG_CONFIG="pkg-config"
-				GOGCCFLAGS="fake_gcc_flags"
 
 				"""
 			ComparisonOutput: """
@@ -168,6 +171,7 @@ Steps: {
 				GOCACHE="/home/gopher/.cache/go-build"
 				GOENV="/home/gopher/.config/go/env"
 				GOEXE=""
+				GOEXPERIMENT=""
 				GOFLAGS=""
 				GOHOSTARCH="amd64"
 				GOHOSTOS="linux"
@@ -183,19 +187,21 @@ Steps: {
 				GOSUMDB="sum.golang.org"
 				GOTMPDIR=""
 				GOTOOLDIR="/usr/local/go/pkg/tool/linux_amd64"
+				GOVCS=""
+				GOVERSION="go1.19.1"
 				GCCGO="gccgo"
 				AR="ar"
 				CC="gcc"
 				CXX="g++"
 				CGO_ENABLED="1"
-				GOMOD=""
+				GOMOD="/dev/null"
+				GOWORK=""
 				CGO_CFLAGS="-g -O2"
 				CGO_CPPFLAGS=""
 				CGO_CXXFLAGS="-g -O2"
 				CGO_FFLAGS="-g -O2"
 				CGO_LDFLAGS="-g -O2"
 				PKG_CONFIG="pkg-config"
-				GOGCCFLAGS="fake_gcc_flags"
 
 				"""
 		}]
@@ -448,5 +454,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "57f9241df49785e337140bd0aa692834aac59089f3b266546b0f3ac12cc7cddc"
+Hash: "6823ef57ddaff8214fd4ab7366db217f74bd29901bda3d8ba0c6b8a283732e24"
 Delims: ["{{{", "}}}"]

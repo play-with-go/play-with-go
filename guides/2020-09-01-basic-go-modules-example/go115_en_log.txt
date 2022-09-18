@@ -29,7 +29,7 @@ $ go mod init mod.com
 go: creating new go.mod: module mod.com
 $ go get {{{.REPO1}}}
 go: downloading {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
-go: {{{.REPO1}}} upgrade => v0.0.0-20060102150405-abcedf12345
+go: added {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
 $ go run {{{.REPO1}}}
 Hello, world!
 $ go list -m -f {{.Version}} {{{.REPO1}}}
