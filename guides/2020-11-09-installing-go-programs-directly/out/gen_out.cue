@@ -4,13 +4,13 @@ Terminals: [{
 	Name:        "term1"
 	Description: "The main terminal"
 	Scenarios: {
-		go116: {
+		go119: {
 			Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 		}
 	}
 }]
 Scenarios: [{
-	Name:        "go116"
+	Name:        "go119"
 	Description: "Go 1.16"
 }]
 Networks: ["playwithgo_pwg"]
@@ -32,11 +32,11 @@ Steps: {
 			ComparisonOutput: "go version go1.19.1 linux/amd64"
 		}]
 	}
-	go116_mkcert_install: {
+	go119_mkcert_install: {
 		StepType:        1
 		DoNotTrim:       false
 		InformationOnly: false
-		Name:            "go116_mkcert_install"
+		Name:            "go119_mkcert_install"
 		Order:           1
 		Terminal:        "term1"
 		Stmts: [{
@@ -135,5 +135,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "d19823b04cae5f5be42889ac3f5d71ed8700c12a3ac6e15c47c8cbd3fafef345"
+Hash: "2c0e026671687269cb13630a2de4f9b129e045a1e1db44e36f8046094793a76a"
 Delims: ["{{{", "}}}"]

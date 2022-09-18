@@ -131,13 +131,13 @@ Terminals: [{
 	Name:        "term1"
 	Description: "The main terminal"
 	Scenarios: {
-		go115: {
+		go119: {
 			Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 		}
 	}
 }]
 Scenarios: [{
-	Name:        "go115"
+	Name:        "go119"
 	Description: "Go 1.15"
 }]
 Networks: ["playwithgo_pwg"]
@@ -1724,7 +1724,7 @@ Steps: {
 				    greetings_test.go:15: Hello("Gladys") = "Hail, %v! Well met!", <nil>, want match for `\\bGladys\\b`, <nil>
 				FAIL
 				exit status 1
-				FAIL\t{{{.GREETINGS}}}\t0.002s
+				FAIL\t{{{.GREETINGS}}}\t0.001s
 
 				"""
 			ComparisonOutput: """
@@ -1894,7 +1894,7 @@ Steps: {
 			ExitCode: 0
 			Output: """
 				PASS
-				ok  \t{{{.GREETINGS}}}\t0.002s
+				ok  \t{{{.GREETINGS}}}\t0.001s
 
 				"""
 			ComparisonOutput: """

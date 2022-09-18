@@ -33,13 +33,13 @@ Defs: {
 	gopher_go:    "\(gopher).go"
 }
 
-Scenarios: go116: preguide.#Scenario & {
+Scenarios: go119: preguide.#Scenario & {
 	Description: "Go 1.16"
 }
 
 Terminals: term1: preguide.#Terminal & {
 	Description: "The main terminal"
-	Scenarios: go116: Image: _#go119LatestImage
+	Scenarios: go119: Image: _#go119LatestImage
 }
 
 Steps: goversion: preguide.#Command & {

@@ -1,10 +1,12 @@
 ---
-category: New features in Go 1.16
+category: Next steps
 difficulty: Intermediate
 excerpt: Learn how to flag modules that shouldn't be used
 guide: 2020-11-08-retract-module-versions
 lang: en
 layout: post
+redirect_from:
+- /retract-module-versions_go115_en/
 title: Retract Module Versions
 ---
 
@@ -43,7 +45,7 @@ This guide walks you through how to use module retractions. In the guide you wil
 
 You should already have completed:
 
-* [Go Fundamentals](/go-fundamentals_go115_en)
+* [Go Fundamentals](/go-fundamentals_go119_en)
 
 This guide is running using:
 
@@ -520,5 +522,5 @@ reference](https://golang.org/ref/mod).
 
 As a next step you might like to consider:
 
-* [Installing Go programs directly](/installing-go-programs-directly_go116_en/)
-<script>let pageGuide="2020-11-08-retract-module-versions"; let pageLanguage="en"; let pageScenario="go116";</script>
+* [Installing Go programs directly](/installing-go-programs-directly_go119_en/)
+<script>let pageGuide="2020-11-08-retract-module-versions"; let pageLanguage="en"; let pageScenario="go119";</script>

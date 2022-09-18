@@ -2,8 +2,10 @@
 layout: post
 title:  "Installing Go programs directly"
 excerpt: "Simple easy-to-remember way to install Go programs"
-category: New features in Go 1.16
+category: Next steps
 difficulty: Beginner
+redirect_from:
+  - /installing-go-programs-directly_go115_en/
 ---
 
 _By [Daniel Martí](https://mvdan.cc), Go contributor, maintainer of [`encoding/json`](https://pkg.go.dev/encoding/json),
@@ -20,7 +22,7 @@ introduces the new mode of `{{{ .cmdgo.install }}}` using the example of
 
 You should already have completed:
 
-* [Go Fundamentals](/go-fundamentals_go115_en)
+* [Go Fundamentals](/go-fundamentals_go119_en)
 
 This guide is running with:
 
@@ -31,13 +33,13 @@ This guide is running with:
 As of Go 1.16, the `{{{ .cmdgo.install }}}` command is now used to install
 programs directly, i.e. regardless of the current module context:
 
-{{{ step "go116_mkcert_install" }}}
+{{{ step "go119_mkcert_install" }}}
 
 For the purposes of this guide you are using a specific version (`{{{ .mkcert_version }}}`). Alternatively,
 the special `{{{ .cmdgo.vlatest }}}` version can be used to install the latest release.
 
 Much like the previous behaviour of `{{{ .cmdgo.get }}}`, `{{{ .cmdgo.install }}}` places binaries in `$GOPATH/bin`,
-or in `$GOBIN` if set. See the _"Setting up your `PATH`"_ section in [Installing Go](/installing-go_go115_en) to ensure
+or in `$GOBIN` if set. See the _"Setting up your `PATH`"_ section in [Installing Go](/installing-go_go119_en) to ensure
 your `PATH` is set correctly.
 
 Verify that `{{{ .mkcert }}}` is now on your `PATH`:
@@ -61,4 +63,4 @@ That's it!
 
 As a next step you might like to consider:
 
-* [Retract Module Versions](/retract-module-versions_go116_en/)
+* [Retract Module Versions](/retract-module-versions_go119_en/)

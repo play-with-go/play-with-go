@@ -5,13 +5,15 @@ excerpt: Primer on creating and using go modules
 guide: 2018-10-19-go-fundamentals
 lang: en
 layout: post
+redirect_from:
+- /go-fundamentals_go115_en/
 title: Go fundamentals
 ---
 
 _This guide is based on the official ["Create a module"](https://golang.org/doc/tutorial/create-module) tutorial._
 
 This guide introduces a few fundamental features of the Go language. If you're just getting started with Go, be sure
-to take a look at the ["Get Started with Go" guide](/get-started-with-go_go115_en/), which introduces the go command, Go modules,
+to take a look at the ["Get Started with Go" guide](/get-started-with-go_go119_en/), which introduces the go command, Go modules,
 and very simple Go code.
 
 In this guide you'll create two modules. The first is a library which is intended to be imported by other libraries
@@ -30,15 +32,15 @@ This guide's sequence includes six brief topics that each illustrate a different
 This guide requires you to push code to remote source code repositories. A unique user, `{% raw %}{{{.GITEA_USERNAME}}}{% endraw %}`, has
 been automatically created for you, as have the repositories [`{% raw %}{{{.GREETINGS}}}{% endraw %}`](https://{% raw %}{{{.GREETINGS}}}{% endraw %}.git) and
 [`{% raw %}{{{.HELLO}}}{% endraw %}`](https://{% raw %}{{{.HELLO}}}{% endraw %}.git). For more details on how `play-with-go.dev` guides work, please see the
-[_Introduction to `play-with-go.dev` guides_](/intro-to-play-with-go-dev_go115_en) guide.
+[_Introduction to `play-with-go.dev` guides_](/intro-to-play-with-go-dev_go119_en) guide.
 
 ### Prerequisites
 
 You should already have completed:
 
 * [The Go Tour](https://tour.golang.org/)
-* [An introduction to play-with-go.dev guides](/intro-to-play-with-go-dev_go115_en/)
-* [Get started with Go](/get-started-with-go_go115_en/)
+* [An introduction to play-with-go.dev guides](/intro-to-play-with-go-dev_go119_en/)
+* [Get started with Go](/get-started-with-go_go119_en/)
 
 This guide is running using:
 
@@ -845,7 +847,7 @@ a lot of tests. The `TestHelloName` test should fail -- `TestHelloEmpty` still p
     greetings_test.go:15: Hello(&#34;Gladys&#34;) = &#34;Hail, %v! Well met!&#34;, &lt;nil&gt;, want match for `\bGladys\b`, &lt;nil&gt;
 FAIL
 exit status 1
-FAIL	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.002s
+FAIL	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.001s
 </code></pre>
 
 Let's restore `greetings.Hello` to a working state
@@ -919,7 +921,7 @@ And re-run `go test` to verify our change:
 
 <pre data-command-src="Z28gdGVzdAo="><code class="language-.term1">$ go test
 PASS
-ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.002s
+ok  	&#123;&#123;&#123;.GREETINGS&#125;&#125;&#125;	0.001s
 </code></pre>
 
 This section introduced Go's built-in support for unit testing. In the next section, you'll see how to compile and
@@ -968,6 +970,6 @@ That wraps up this guide!
 
 As a next step you might like to consider:
 
-* [Installing Go](/installing-go_go115_en/)
-* [Working with private modules](/working-with-private-modules_go115_en/)
-<script>let pageGuide="2018-10-19-go-fundamentals"; let pageLanguage="en"; let pageScenario="go115";</script>
+* [Installing Go](/installing-go_go119_en/)
+* [Working with private modules](/working-with-private-modules_go119_en/)
+<script>let pageGuide="2018-10-19-go-fundamentals"; let pageLanguage="en"; let pageScenario="go119";</script>

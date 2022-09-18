@@ -6,6 +6,8 @@ excerpt: You've completed the Go tour, so what next? This guide gives a brief in
 guide: 2019-10-15-get-started-with-go
 lang: en
 layout: post
+redirect_from:
+- /get-started-with-go_go115_en/
 title: Get started with Go
 ---
 
@@ -24,7 +26,7 @@ In this guide we present a brief introduction to Go programming. You will:
 You should already have completed:
 
 * [The Go Tour](https://tour.golang.org/)
-* [An introduction to play-with-go.dev guides](/intro-to-play-with-go-dev_go115_en/)
+* [An introduction to play-with-go.dev guides](/intro-to-play-with-go-dev_go119_en/)
 
 This guide is running using:
 
@@ -151,6 +153,6 @@ With this quick introduction, you learned some of the basics.
 
 As a next step you might like to consider:
 
-* [Go Fundamentals](/go-fundamentals_go115_en)
+* [Go Fundamentals](/go-fundamentals_go119_en)
 
-<script>let pageGuide="2019-10-15-get-started-with-go"; let pageLanguage="en"; let pageScenario="go115";</script>
+<script>let pageGuide="2019-10-15-get-started-with-go"; let pageLanguage="en"; let pageScenario="go119";</script>

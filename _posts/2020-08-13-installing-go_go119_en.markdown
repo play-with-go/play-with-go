@@ -5,6 +5,8 @@ excerpt: Ready to take the plunge and install Go on your system?!
 guide: 2020-08-13-installing-go
 lang: en
 layout: post
+redirect_from:
+- /installing-go_go115_en/
 title: Installing Go
 ---
 
@@ -20,8 +22,8 @@ running any Go programs you install.
 You should already have completed:
 
 * [The Go Tour](https://tour.golang.org/)
-* [An introduction to play-with-go.dev guides](/intro-to-play-with-go-dev_go115_en/)
-* [Get started with Go](/get-started-with-go_go115_en/)
+* [An introduction to play-with-go.dev guides](/intro-to-play-with-go-dev_go119_en/)
+* [Get started with Go](/get-started-with-go_go119_en/)
 
 ### Installing Go
 
@@ -187,5 +189,5 @@ That's it! You're all set for working with Go on your local system.
 
 As a next step you might like to consider:
 
-* [Go Fundamentals](/go-fundamentals_go115_en)
-<script>let pageGuide="2020-08-13-installing-go"; let pageLanguage="en"; let pageScenario="go115";</script>
+* [Go Fundamentals](/go-fundamentals_go119_en)
+<script>let pageGuide="2020-08-13-installing-go"; let pageLanguage="en"; let pageScenario="go119";</script>

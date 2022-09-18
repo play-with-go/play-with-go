@@ -4,6 +4,8 @@ title:  "Get started with Go"
 excerpt: "You've completed the Go tour, so what next? This guide gives a brief introduction to Go programming"
 difficulty: Beginner
 category: Start here
+redirect_from:
+  - /get-started-with-go_go115_en/
 ---
 
 _This guide is based on the official ["Getting started"](https://golang.org/doc/tutorial/getting-started.html)
@@ -21,7 +23,7 @@ In this guide we present a brief introduction to Go programming. You will:
 You should already have completed:
 
 * [The Go Tour](https://tour.golang.org/)
-* [An introduction to play-with-go.dev guides](/intro-to-play-with-go-dev_go115_en/)
+* [An introduction to play-with-go.dev guides](/intro-to-play-with-go-dev_go119_en/)
 
 This guide is running using:
 
@@ -111,5 +113,5 @@ With this quick introduction, you learned some of the basics.
 
 As a next step you might like to consider:
 
-* [Go Fundamentals](/go-fundamentals_go115_en)
+* [Go Fundamentals](/go-fundamentals_go119_en)
 
