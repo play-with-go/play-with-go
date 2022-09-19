@@ -1,10 +1,12 @@
 ---
-category: New features in Go 1.16
+category: Next steps
 difficulty: Beginner
 excerpt: Simple easy-to-remember way to install Go programs
 guide: 2020-11-09-installing-go-programs-directly
 lang: en
 layout: post
+redirect_from:
+- /installing-go-programs-directly_go115_en/
 title: Installing Go programs directly
 ---
 
@@ -22,7 +24,7 @@ introduces the new mode of `go install` using the example of
 
 You should already have completed:
 
-* [Go Fundamentals](/go-fundamentals_go115_en)
+* [Go Fundamentals](/go-fundamentals_go119_en)
 
 This guide is running with:
 
@@ -47,7 +49,7 @@ For the purposes of this guide you are using a specific version (`v1.4.4`). Alte
 the special `latest` version can be used to install the latest release.
 
 Much like the previous behaviour of `go get`, `go install` places binaries in `$GOPATH/bin`,
-or in `$GOBIN` if set. See the _"Setting up your `PATH`"_ section in [Installing Go](/installing-go_go115_en) to ensure
+or in `$GOBIN` if set. See the _"Setting up your `PATH`"_ section in [Installing Go](/installing-go_go119_en) to ensure
 your `PATH` is set correctly.
 
 Verify that `mkcert` is now on your `PATH`:
@@ -83,5 +85,5 @@ That's it!
 
 As a next step you might like to consider:
 
-* [Retract Module Versions](/retract-module-versions_go116_en/)
-<script>let pageGuide="2020-11-09-installing-go-programs-directly"; let pageLanguage="en"; let pageScenario="go116";</script>
+* [Retract Module Versions](/retract-module-versions_go119_en/)
+<script>let pageGuide="2020-11-09-installing-go-programs-directly"; let pageLanguage="en"; let pageScenario="go119";</script>

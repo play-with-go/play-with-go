@@ -6,13 +6,13 @@ package guides
 		Name:        "term1"
 		Description: "The main terminal"
 		Scenarios: {
-			go115: {
+			go119: {
 				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 			}
 		}
 	}]
 	Scenarios: [{
-		Name:        "go115"
+		Name:        "go119"
 		Description: "Go 1.15"
 	}]
 	Networks: ["playwithgo_pwg"]
@@ -39,13 +39,13 @@ package guides
 		Name:        "term1"
 		Description: "The main terminal"
 		Scenarios: {
-			go115: {
+			go119: {
 				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 			}
 		}
 	}]
 	Scenarios: [{
-		Name:        "go115"
+		Name:        "go119"
 		Description: "Go 1.15"
 	}]
 	Networks: ["playwithgo_pwg"]
@@ -72,13 +72,13 @@ package guides
 		Name:        "term1"
 		Description: "The main terminal"
 		Scenarios: {
-			go115: {
+			go119: {
 				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 			}
 		}
 	}]
 	Scenarios: [{
-		Name:        "go115"
+		Name:        "go119"
 		Description: "Go 1.15"
 	}]
 	Networks: ["playwithgo_pwg"]
@@ -90,13 +90,13 @@ package guides
 		Name:        "term1"
 		Description: "The main terminal"
 		Scenarios: {
-			go115: {
+			go119: {
 				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 			}
 		}
 	}]
 	Scenarios: [{
-		Name:        "go115"
+		Name:        "go119"
 		Description: "Go 1.15"
 	}]
 	Networks: ["playwithgo_pwg"]
@@ -108,13 +108,13 @@ package guides
 		Name:        "term1"
 		Description: "The main terminal"
 		Scenarios: {
-			go116: {
+			go119: {
 				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 			}
 		}
 	}]
 	Scenarios: [{
-		Name:        "go116"
+		Name:        "go119"
 		Description: "Go 1.16"
 	}]
 	Networks: ["playwithgo_pwg"]
@@ -137,13 +137,13 @@ package guides
 		Name:        "term1"
 		Description: "The main terminal"
 		Scenarios: {
-			go116: {
+			go119: {
 				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 			}
 		}
 	}]
 	Scenarios: [{
-		Name:        "go116"
+		Name:        "go119"
 		Description: "Go 1.16"
 	}]
 	Networks: ["playwithgo_pwg"]
@@ -166,13 +166,13 @@ package guides
 		Name:        "term1"
 		Description: "The main terminal"
 		Scenarios: {
-			go115: {
+			go119: {
 				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 			}
 		}
 	}]
 	Scenarios: [{
-		Name:        "go115"
+		Name:        "go119"
 		Description: "Go 1.15"
 	}]
 	Networks: ["playwithgo_pwg"]
@@ -195,13 +195,13 @@ package guides
 		Name:        "term1"
 		Description: "The main terminal"
 		Scenarios: {
-			go115: {
+			go119: {
 				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 			}
 		}
 	}]
 	Scenarios: [{
-		Name:        "go115"
+		Name:        "go119"
 		Description: "Go 1.15"
 	}]
 	Networks: ["playwithgo_pwg"]
@@ -224,13 +224,13 @@ package guides
 		Name:        "term1"
 		Description: "The main terminal"
 		Scenarios: {
-			go115: {
+			go119: {
 				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 			}
 		}
 	}]
 	Scenarios: [{
-		Name:        "go115"
+		Name:        "go119"
 		Description: "Go 1.15"
 	}]
 	Networks: ["playwithgo_pwg"]
@@ -242,13 +242,13 @@ package guides
 		Name:        "term1"
 		Description: "The main terminal"
 		Scenarios: {
-			go115: {
+			go119: {
 				Image: "playwithgo/installgo1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 			}
 		}
 	}]
 	Scenarios: [{
-		Name:        "go115"
+		Name:        "go119"
 		Description: "Go 1.15"
 	}]
 	Networks: ["playwithgo_pwg"]
@@ -260,13 +260,13 @@ package guides
 		Name:        "term1"
 		Description: "The main terminal"
 		Scenarios: {
-			go115: {
+			go119: {
 				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 			}
 		}
 	}]
 	Scenarios: [{
-		Name:        "go115"
+		Name:        "go119"
 		Description: "Go 1.15"
 	}]
 	Networks: ["playwithgo_pwg"]
@@ -293,13 +293,13 @@ package guides
 		Name:        "term1"
 		Description: "The main terminal"
 		Scenarios: {
-			go115: {
+			go119: {
 				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
 			}
 		}
 	}]
 	Scenarios: [{
-		Name:        "go115"
+		Name:        "go119"
 		Description: "Go 1.15"
 	}]
 	Networks: ["playwithgo_pwg"]

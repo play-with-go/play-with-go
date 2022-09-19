@@ -4,6 +4,8 @@ title:  "An introduction to play-with-go.dev guides"
 excerpt: "Learn about how to get the most out of play-with-go.dev guides"
 difficulty: Beginner
 category: Start here
+redirect_from:
+  - /intro-to-play-with-go-dev_go115_en/
 ---
 
 [`play-with-go.dev`](https://play-with-go.dev/) is a series of interactive browser-based guides that lead you on a tour
@@ -86,5 +88,5 @@ issue](https://github.com/play-with-go/play-with-go/issues/new?title=help:&label
 
 As a next step you might like to consider:
 
-* [Get started with Go](/get-started-with-go_go115_en/)
-* [Go Fundamentals](/go-fundamentals_go115_en)
+* [Get started with Go](/get-started-with-go_go119_en/)
+* [Go Fundamentals](/go-fundamentals_go119_en)

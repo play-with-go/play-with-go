@@ -16,4 +16,4 @@ Now run the script:
 Hello, world!
 </code></pre>
 
-<script>let pageGuide="2021-05-06-gosheffield-demo"; let pageLanguage="en"; let pageScenario="go115";</script>
+<script>let pageGuide="2021-05-06-gosheffield-demo"; let pageLanguage="en"; let pageScenario="go119";</script>

@@ -465,7 +465,7 @@ $ go test
     greetings_test.go:15: Hello("Gladys") = "Hail, %v! Well met!", <nil>, want match for `\bGladys\b`, <nil>
 FAIL
 exit status 1
-FAIL	{{{.GREETINGS}}}	0.002s
+FAIL	{{{.GREETINGS}}}	0.001s
 $ cat <<EOD > /home/gopher/greetings/greetings.go
 package greetings
 
@@ -534,7 +534,7 @@ func randomFormat() string {
 EOD
 $ go test
 PASS
-ok  	{{{.GREETINGS}}}	0.002s
+ok  	{{{.GREETINGS}}}	0.001s
 $ cd /home/gopher/hello
 $ go list -f '{{.Target}}'
 /home/gopher/go/bin/hello

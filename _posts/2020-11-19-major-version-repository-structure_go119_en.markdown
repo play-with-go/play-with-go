@@ -4,6 +4,8 @@ excerpt: Options for repository structure with multiple major versions
 guide: 2020-11-19-major-version-repository-structure
 lang: en
 layout: post
+redirect_from:
+- /major-version-repository-structure_go115_en/
 title: Repository structure with multiple major versions
 ---
 ### Introduction
@@ -183,4 +185,4 @@ branch/v2.Message: branch v2
 subdir.Message: subdir v1
 subdir/v2.Message: subdir v2
 </code></pre>
-<script>let pageGuide="2020-11-19-major-version-repository-structure"; let pageLanguage="en"; let pageScenario="go115";</script>
+<script>let pageGuide="2020-11-19-major-version-repository-structure"; let pageLanguage="en"; let pageScenario="go119";</script>

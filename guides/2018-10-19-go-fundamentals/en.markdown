@@ -4,12 +4,14 @@ title:  "Go fundamentals"
 excerpt: "Primer on creating and using go modules"
 difficulty: Beginner
 category: Start here
+redirect_from:
+  - /go-fundamentals_go115_en/
 ---
 
 _This guide is based on the official ["Create a module"](https://golang.org/doc/tutorial/create-module) tutorial._
 
 This guide introduces a few fundamental features of the Go language. If you're just getting started with Go, be sure
-to take a look at the ["Get Started with Go" guide](/get-started-with-go_go115_en/), which introduces the go command, Go modules,
+to take a look at the ["Get Started with Go" guide](/get-started-with-go_go119_en/), which introduces the go command, Go modules,
 and very simple Go code.
 
 In this guide you'll create two modules. The first is a library which is intended to be imported by other libraries
@@ -28,15 +30,15 @@ This guide's sequence includes six brief topics that each illustrate a different
 This guide requires you to push code to remote source code repositories. A unique user, `{{{.username}}}`, has
 been automatically created for you, as have the repositories [`{{{ .greetings_mod }}}`]({{{ .greetings_vcs }}}) and
 [`{{{ .hello_mod }}}`]({{{ .hello_vcs }}}). For more details on how `play-with-go.dev` guides work, please see the
-[_Introduction to `play-with-go.dev` guides_](/intro-to-play-with-go-dev_go115_en) guide.
+[_Introduction to `play-with-go.dev` guides_](/intro-to-play-with-go-dev_go119_en) guide.
 
 ### Prerequisites
 
 You should already have completed:
 
 * [The Go Tour](https://tour.golang.org/)
-* [An introduction to play-with-go.dev guides](/intro-to-play-with-go-dev_go115_en/)
-* [Get started with Go](/get-started-with-go_go115_en/)
+* [An introduction to play-with-go.dev guides](/intro-to-play-with-go-dev_go119_en/)
+* [Get started with Go](/get-started-with-go_go119_en/)
 
 This guide is running using:
 
@@ -468,5 +470,5 @@ That wraps up this guide!
 
 As a next step you might like to consider:
 
-* [Installing Go](/installing-go_go115_en/)
-* [Working with private modules](/working-with-private-modules_go115_en/)
+* [Installing Go](/installing-go_go119_en/)
+* [Working with private modules](/working-with-private-modules_go119_en/)

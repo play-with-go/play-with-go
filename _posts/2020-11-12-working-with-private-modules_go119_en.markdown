@@ -5,6 +5,8 @@ excerpt: How to create, publish and work with non-public modules in your team.
 guide: 2020-11-12-working-with-private-modules
 lang: en
 layout: post
+redirect_from:
+- /working-with-private-modules_go115_en/
 title: Working with private modules
 ---
 
@@ -27,7 +29,7 @@ This guide explains how to work with private modules. In the guide you will crea
 
 You should already have completed:
 
-* [Go Fundamentals](/go-fundamentals_go115_en)
+* [Go Fundamentals](/go-fundamentals_go119_en)
 
 This guide is running using:
 
@@ -246,7 +248,7 @@ This guide has provided you with a brief introduction to handling private module
 
 As a next step you might like to consider:
 
-* [Developer tools as module dependencies](/tools-as-dependencies_go115_en/)
-* [How to use and tweak Staticcheck](/using-staticcheck_go115_en/)
-* [Installing Go](/installing-go_go115_en/)
-<script>let pageGuide="2020-11-12-working-with-private-modules"; let pageLanguage="en"; let pageScenario="go115";</script>
+* [Developer tools as module dependencies](/tools-as-dependencies_go119_en/)
+* [How to use and tweak Staticcheck](/using-staticcheck_go119_en/)
+* [Installing Go](/installing-go_go119_en/)
+<script>let pageGuide="2020-11-12-working-with-private-modules"; let pageLanguage="en"; let pageScenario="go119";</script>

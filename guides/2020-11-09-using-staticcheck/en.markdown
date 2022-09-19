@@ -4,6 +4,8 @@ title:  "How to use and tweak Staticcheck"
 excerpt: "Using static analysis to automatically find bugs and performance optimizations."
 category: Next steps
 difficulty: Intermediate
+redirect_from:
+  - /using-staticcheck_go115_en/
 ---
 
 _By [Dominik Honnef](https://dominik.honnef.co/), author of Staticcheck._
@@ -29,7 +31,7 @@ This guide gets you up and running with Staticcheck by analysing the `{{{ .pets_
 
 You should already have completed:
 
-* [Go fundamentals](/go-fundamentals_go115_en)
+* [Go fundamentals](/go-fundamentals_go119_en)
 
 This guide is running using:
 
@@ -38,7 +40,7 @@ This guide is running using:
 ### Installing Staticcheck
 
 In this guide you will install Staticcheck to your `PATH`. For details on how to add development tools as a project
-module dependency, please see the ["Developer tools as module dependencies" guide](/tools-as-dependencies_go115_en).
+module dependency, please see the ["Developer tools as module dependencies" guide](/tools-as-dependencies_go119_en).
 
 Use `{{{ .cmdgo.get }}}` to install Staticcheck:
 
@@ -48,7 +50,7 @@ _Note: so that this guide remains reproducible we have spcified an explicit vers
 When running yourself you could use the special version `{{{ .cmdgo.vlatest }}}`._
 
 The rather ugly use of a temporary directory ensures that `{{{ .cmdgo.get }}}` is run outside of a module.  See the
-_"Setting up your `PATH`"_ section in [Installing Go](/installing-go_go115_en) to ensure your `PATH` is set correctly.
+_"Setting up your `PATH`"_ section in [Installing Go](/installing-go_go119_en) to ensure your `PATH` is set correctly.
 
 Check that `staticcheck` is on your `PATH`:
 
@@ -223,15 +225,15 @@ We can now be sure of lots of happy pets!
 
 This guide has provided you with an introduction to Staticcheck, and the power of static analysis. To learn more see:
 
-* the ["Developer tools as module dependencies" guide](/tools-as-dependencies_go115_en) guide to see how to add tools
+* the ["Developer tools as module dependencies" guide](/tools-as-dependencies_go119_en) guide to see how to add tools
   like Staticcheck to a project.
 * the [Staticcheck documentation](https://staticcheck.io/docs) for more details about Staticcheck itself.
 
 As a next step you might like to consider:
 
-* [Developer tools as module dependencies](/tools-as-dependencies_go115_en/)
-* [Working with private modules](/working-with-private-modules_go115_en/)
-* [Installing Go](/installing-go_go115_en/)
+* [Developer tools as module dependencies](/tools-as-dependencies_go119_en/)
+* [Working with private modules](/working-with-private-modules_go119_en/)
+* [Installing Go](/installing-go_go119_en/)
 
 
 

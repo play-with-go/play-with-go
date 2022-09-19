@@ -5,6 +5,8 @@ excerpt: Learn about how to get the most out of play-with-go.dev guides
 guide: 2020-10-07-intro-to-play-with-go-dev
 lang: en
 layout: post
+redirect_from:
+- /intro-to-play-with-go-dev_go115_en/
 title: An introduction to play-with-go.dev guides
 ---
 
@@ -118,6 +120,6 @@ issue](https://github.com/play-with-go/play-with-go/issues/new?title=help:&label
 
 As a next step you might like to consider:
 
-* [Get started with Go](/get-started-with-go_go115_en/)
-* [Go Fundamentals](/go-fundamentals_go115_en)
-<script>let pageGuide="2020-10-07-intro-to-play-with-go-dev"; let pageLanguage="en"; let pageScenario="go115";</script>
+* [Get started with Go](/get-started-with-go_go119_en/)
+* [Go Fundamentals](/go-fundamentals_go119_en)
+<script>let pageGuide="2020-10-07-intro-to-play-with-go-dev"; let pageLanguage="en"; let pageScenario="go119";</script>

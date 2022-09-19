@@ -3,6 +3,8 @@ layout: post
 title:  "Repository structure with multiple major versions"
 excerpt: "Options for repository structure with multiple major versions"
 difficulty: Intermediate
+redirect_from:
+  - /major-version-repository-structure_go115_en/
 ---
 ### Introduction
 

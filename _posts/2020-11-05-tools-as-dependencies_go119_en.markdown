@@ -5,6 +5,8 @@ excerpt: Ensure all developers use the same version of each developer tool
 guide: 2020-11-05-tools-as-dependencies
 lang: en
 layout: post
+redirect_from:
+- /tools-as-dependencies_go115_en/
 title: Developer tools as module dependencies
 ---
 
@@ -28,7 +30,7 @@ You will:
 
 You should already have completed:
 
-* [Go Fundamentals](/go-fundamentals_go115_en)
+* [Go Fundamentals](/go-fundamentals_go119_en)
 
 This guide is running using:
 
@@ -359,5 +361,5 @@ code generation tool and its use via `go generate`.
 
 As a next step you might like to consider:
 
-* [Working with private modules](/working-with-private-modules_go115_en/)
-<script>let pageGuide="2020-11-05-tools-as-dependencies"; let pageLanguage="en"; let pageScenario="go115";</script>
+* [Working with private modules](/working-with-private-modules_go119_en/)
+<script>let pageGuide="2020-11-05-tools-as-dependencies"; let pageLanguage="en"; let pageScenario="go119";</script>

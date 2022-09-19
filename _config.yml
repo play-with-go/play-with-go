@@ -20,7 +20,6 @@ default-image: https://play-with-go.dev/images/playgo.png # If there is no featu
 guides-categories:
   - "Start here"
   - "Next steps"
-  - "New features in Go 1.16"
 
 #footer
 built-by: The play-with-go.dev Authors

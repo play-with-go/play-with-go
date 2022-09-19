@@ -35,13 +35,13 @@ Defs: {
 	go_help_modsubdir: "\(_#commonDefs.cmdgo.help) module-subdir"
 }
 
-Scenarios: go115: preguide.#Scenario & {
+Scenarios: go119: preguide.#Scenario & {
 	Description: "Go 1.15"
 }
 
 Terminals: term1: preguide.#Terminal & {
 	Description: "The main terminal"
-	Scenarios: go115: Image: _#go119LatestImage
+	Scenarios: go119: Image: _#go119LatestImage
 }
 
 Steps: goversion: preguide.#Command & {
