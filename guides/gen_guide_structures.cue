@@ -7,7 +7,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go119: {
-				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
+				Image: "playwithgo/go1.19.1:6d8215b3a5eda6d3bcf338c58a26194abe18b4cd"
 			}
 		}
 	}]
@@ -40,7 +40,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go119: {
-				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
+				Image: "playwithgo/go1.19.1:6d8215b3a5eda6d3bcf338c58a26194abe18b4cd"
 			}
 		}
 	}]
@@ -73,7 +73,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go119: {
-				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
+				Image: "playwithgo/go1.19.1:6d8215b3a5eda6d3bcf338c58a26194abe18b4cd"
 			}
 		}
 	}]
@@ -91,7 +91,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go119: {
-				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
+				Image: "playwithgo/go1.19.1:6d8215b3a5eda6d3bcf338c58a26194abe18b4cd"
 			}
 		}
 	}]
@@ -109,7 +109,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go119: {
-				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
+				Image: "playwithgo/go1.19.1:6d8215b3a5eda6d3bcf338c58a26194abe18b4cd"
 			}
 		}
 	}]
@@ -138,7 +138,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go119: {
-				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
+				Image: "playwithgo/go1.19.1:6d8215b3a5eda6d3bcf338c58a26194abe18b4cd"
 			}
 		}
 	}]
@@ -167,7 +167,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go119: {
-				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
+				Image: "playwithgo/go1.19.1:6d8215b3a5eda6d3bcf338c58a26194abe18b4cd"
 			}
 		}
 	}]
@@ -196,7 +196,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go119: {
-				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
+				Image: "playwithgo/go1.19.1:6d8215b3a5eda6d3bcf338c58a26194abe18b4cd"
 			}
 		}
 	}]
@@ -225,7 +225,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go119: {
-				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
+				Image: "playwithgo/go1.19.1:6d8215b3a5eda6d3bcf338c58a26194abe18b4cd"
 			}
 		}
 	}]
@@ -243,7 +243,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go119: {
-				Image: "playwithgo/installgo1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
+				Image: "playwithgo/installgo1.19.1:6d8215b3a5eda6d3bcf338c58a26194abe18b4cd"
 			}
 		}
 	}]
@@ -261,7 +261,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go119: {
-				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
+				Image: "playwithgo/go1.19.1:6d8215b3a5eda6d3bcf338c58a26194abe18b4cd"
 			}
 		}
 	}]
@@ -294,7 +294,7 @@ package guides
 		Description: "The main terminal"
 		Scenarios: {
 			go119: {
-				Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
+				Image: "playwithgo/go1.19.1:6d8215b3a5eda6d3bcf338c58a26194abe18b4cd"
 			}
 		}
 	}]

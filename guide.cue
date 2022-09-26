@@ -10,11 +10,12 @@ Networks: *["playwithgo_pwg"] | [...string]
 
 Delims: ["{{{", "}}}"]
 
-_#dockerCommit: ":5966cd5f1b8ef645576f95bcb19fff827d6ca560"
+_#dockerCommit: ":6d8215b3a5eda6d3bcf338c58a26194abe18b4cd"
 
-_#installGo:          "playwithgo/installgo1.19.1\(_#dockerCommit)"
-_#go119LatestVersion: "go1.19.1"
-_#go119LatestImage:   "playwithgo/go1.19.1\(_#dockerCommit)"
+_#installGo:           "playwithgo/installgo1.19.1\(_#dockerCommit)"
+_#go119LatestVersion:  "go1.19.1"
+_#go119LatestImage:    "playwithgo/go1.19.1\(_#dockerCommit)"
+_#cuego119LatestImage: "playwithgo/cue_v0.4.3_go1.19.1\(_#dockerCommit)"
 
 _#golangToolsLatest: "v0.1.13-0.20220917004541-4d18923f060e"
 
