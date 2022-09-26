@@ -5,7 +5,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go119: {
-			Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
+			Image: "playwithgo/go1.19.1:6d8215b3a5eda6d3bcf338c58a26194abe18b4cd"
 		}
 	}
 }]
@@ -25,11 +25,17 @@ Steps: {
 		Order:           0
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "go version"
-			ExitCode:         0
-			Output:           "go version go1.19.1 linux/amd64"
-			ComparisonOutput: "go version go1.19.1 linux/amd64"
+			Negated:  false
+			CmdStr:   "go version"
+			ExitCode: 0
+			Output: """
+				go version go1.19.1 linux/amd64
+
+				"""
+			ComparisonOutput: """
+				go version go1.19.1 linux/amd64
+
+				"""
 		}]
 	}
 	go119_mkcert_install: {
@@ -122,6 +128,7 @@ Steps: {
 				\tdep\tgolang.org/x/net\tv0.0.0-20220421235706-1d1ef9303861\th1:yssD99+7tqHWO5Gwh81phT+67hg+KttniBr6UnEXOY8=
 				\tdep\tgolang.org/x/text\tv0.3.7\th1:olpwvP2KacW1ZWvsR7uQhoyTYvKAupfQrRGBFM352Gk=
 				\tdep\tsoftware.sslmate.com/src/go-pkcs12\tv0.2.0\th1:nlFkj7bTysH6VkC4fGphtjXRbezREPgrHuJG20hBGPE=
+
 				"""
 			ComparisonOutput: """
 				/home/gopher/go/bin/mkcert: go1.19.1
@@ -131,9 +138,10 @@ Steps: {
 				\tdep\tgolang.org/x/net\tv0.0.0-20220421235706-1d1ef9303861\th1:yssD99+7tqHWO5Gwh81phT+67hg+KttniBr6UnEXOY8=
 				\tdep\tgolang.org/x/text\tv0.3.7\th1:olpwvP2KacW1ZWvsR7uQhoyTYvKAupfQrRGBFM352Gk=
 				\tdep\tsoftware.sslmate.com/src/go-pkcs12\tv0.2.0\th1:nlFkj7bTysH6VkC4fGphtjXRbezREPgrHuJG20hBGPE=
+
 				"""
 		}]
 	}
 }
-Hash: "2c0e026671687269cb13630a2de4f9b129e045a1e1db44e36f8046094793a76a"
+Hash: "0778cb954b64e7edaf7f8e8a8bf3cf366c43d9b236f618a9db8ddd5cee6f6652"
 Delims: ["{{{", "}}}"]

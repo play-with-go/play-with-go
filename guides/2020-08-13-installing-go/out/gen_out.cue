@@ -5,7 +5,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go119: {
-			Image: "playwithgo/installgo1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
+			Image: "playwithgo/installgo1.19.1:6d8215b3a5eda6d3bcf338c58a26194abe18b4cd"
 		}
 	}
 }]
@@ -106,11 +106,17 @@ Steps: {
 		Order:           5
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "go version"
-			ExitCode:         0
-			Output:           "go version go1.19.1 linux/amd64"
-			ComparisonOutput: "go version go1.19.1 linux/amd64"
+			Negated:  false
+			CmdStr:   "go version"
+			ExitCode: 0
+			Output: """
+				go version go1.19.1 linux/amd64
+
+				"""
+			ComparisonOutput: """
+				go version go1.19.1 linux/amd64
+
+				"""
 		}]
 	}
 	go_env: {
@@ -454,5 +460,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "6823ef57ddaff8214fd4ab7366db217f74bd29901bda3d8ba0c6b8a283732e24"
+Hash: "0ae0bc09185ac921b4e7489cf1d156d719d715bfb6b51f8dd1620ec73271302b"
 Delims: ["{{{", "}}}"]

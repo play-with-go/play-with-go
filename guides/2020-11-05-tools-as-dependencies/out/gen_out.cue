@@ -77,8 +77,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20220918055127-cc4d80fbbfa7",
-		      "Sum": "h1:83MPB7IZes5I5o7Jc2r9JBgMqHaU+E8LjHv03xehSic=",
+		      "Version": "v0.0.2-0.20220926082147-a0a4ec5fe714",
+		      "Sum": "h1:lNhg1ct5kMU7pPBgwQBAH9glAsbtIHUXqJElKgYLg3E=",
 		      "Replace": null
 		    },
 		    {
@@ -128,7 +128,7 @@ Terminals: [{
 	Description: "The main terminal"
 	Scenarios: {
 		go119: {
-			Image: "playwithgo/go1.19.1:5966cd5f1b8ef645576f95bcb19fff827d6ca560"
+			Image: "playwithgo/go1.19.1:6d8215b3a5eda6d3bcf338c58a26194abe18b4cd"
 		}
 	}
 }]
@@ -148,11 +148,17 @@ Steps: {
 		Order:           0
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "go version"
-			ExitCode:         0
-			Output:           "go version go1.19.1 linux/amd64"
-			ComparisonOutput: "go version go1.19.1 linux/amd64"
+			Negated:  false
+			CmdStr:   "go version"
+			ExitCode: 0
+			Output: """
+				go version go1.19.1 linux/amd64
+
+				"""
+			ComparisonOutput: """
+				go version go1.19.1 linux/amd64
+
+				"""
 		}]
 	}
 	painkiller_go_mod_init: {
@@ -801,5 +807,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "f440fa815f06042623db1e5dcbc6fb91863ff214da8db577281584cb87006d59"
+Hash: "5d510d752cd32badad46a5d11cd86b6d9c903da93d3b2292c0a8661f1d93591f"
 Delims: ["{{{", "}}}"]
