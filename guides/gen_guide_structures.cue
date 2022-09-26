@@ -1,5 +1,23 @@
 package guides
 
+"2022-09-23-london-gophers-cue": {
+	Delims: ["{{{", "}}}"]
+	Terminals: [{
+		Name:        "term1"
+		Description: "The main terminal"
+		Scenarios: {
+			go119: {
+				Image: "playwithgo/cue_v0.4.3_go1.19.1:6d8215b3a5eda6d3bcf338c58a26194abe18b4cd"
+			}
+		}
+	}]
+	Scenarios: [{
+		Name:        "go119"
+		Description: "cue v0.4.3 Go 1.19"
+	}]
+	Networks: ["playwithgo_pwg"]
+	Env: []
+}
 "2021-05-06-gosheffield-demo": {
 	Delims: ["{{{", "}}}"]
 	Terminals: [{
