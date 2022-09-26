@@ -1,0 +1,856 @@
+$ sudo mkdir -p /var/gocache /var/gomodcache
+$ sudo chown gopher:gopher /var/gocache /var/gomodcache
+$ go version
+go version go1.19.1 linux/amd64$ cue version
+cue version v0.4.4-0.20220923112746-fe50dff0dce8
+
+       -compiler gc
+     CGO_ENABLED 1
+          GOARCH amd64
+            GOOS linux
+$ mkdir demo
+$ cd demo
+$ go mod init example.com/demo
+go: creating new go.mod: module example.com/demo
+$ cat <<EOD > /home/gopher/demo/go.mod
+module example.com/demo
+
+go 1.19
+
+require (
+		  github.com/kr/pretty v0.3.0
+)
+
+EOD
+$ cat <<EOD > /home/gopher/demo/main.go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+	"os"
+	"path/filepath"
+)
+
+type Config struct {
+	Programs map[string]Program `json:"programs"`
+}
+
+type Program struct {
+	Path         string   `json:"path"`
+	Args         []string `json:"args"`
+	Description  string   `json:"description"`
+	Retries      int      `json:"retries"`
+	IgnoreErrors bool     `json:"ignoreErrors"`
+	Directory    string   `json:"directory"`
+}
+
+func main() {
+	// Use a fake "$HOME" for the purposes of this demo
+	cfpath := filepath.Join("home", ".config", "demo", "config.json")
+
+	cf, err := os.ReadFile(cfpath)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	var conf Config
+	if err := json.Unmarshal(cf, &conf); err != nil {
+		log.Fatal(err)
+	}
+
+	out, err := json.MarshalIndent(conf, "", "  ")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%s\n", out)
+}
+
+EOD
+$ go mod tidy
+$ mkdir -p /home/gopher/demo/home/.config/demo
+$ cat <<EOD > /home/gopher/demo/home/.config/demo/config.json
+{
+	 "programs": {
+		  "service1": {
+				"path": "/path/to/service1",
+				"description": "service1 is a special service\nfor special things",
+				"args": [
+					 "hello",
+					 "world"
+				],
+				"directory": "/tmp",
+				"ignoreErrors": true
+		  },
+		  "service2": {
+				"path": "/path/to/service2",
+				"description": "service2 is a special service\nfor special things",
+				"args": [
+					 "hello",
+					 "world"
+				],
+				"directory": "/home/cueckoo"
+		  },
+		  "service3": {
+				"path": "/path/to/service3",
+				"description": "service3 is a special service\nfor special things",
+				"directory": "/home/cueckoo"
+		  }
+	 }
+}
+EOD
+$ cat go.mod
+module example.com/demo
+
+go 1.19
+$ go run .
+{
+  "programs": {
+    "service1": {
+      "path": "/path/to/service1",
+      "args": [
+        "hello",
+        "world"
+      ],
+      "description": "service1 is a special service\nfor special things",
+      "retries": 0,
+      "ignoreErrors": true,
+      "directory": "/tmp"
+    },
+    "service2": {
+      "path": "/path/to/service2",
+      "args": [
+        "hello",
+        "world"
+      ],
+      "description": "service2 is a special service\nfor special things",
+      "retries": 0,
+      "ignoreErrors": false,
+      "directory": "/home/cueckoo"
+    },
+    "service3": {
+      "path": "/path/to/service3",
+      "args": null,
+      "description": "service3 is a special service\nfor special things",
+      "retries": 0,
+      "ignoreErrors": false,
+      "directory": "/home/cueckoo"
+    }
+  }
+}
+$ cue import ./home/.config/demo/config.json
+$ cat ./home/.config/demo/config.cue
+programs: {
+	service1: {
+		path: "/path/to/service1"
+		description: """
+			service1 is a special service
+			for special things
+			"""
+		args: [
+			"hello",
+			"world",
+		]
+		directory:    "/tmp"
+		ignoreErrors: true
+	}
+	service2: {
+		path: "/path/to/service2"
+		description: """
+			service2 is a special service
+			for special things
+			"""
+		args: [
+			"hello",
+			"world",
+		]
+		directory: "/home/cueckoo"
+	}
+	service3: {
+		path: "/path/to/service3"
+		description: """
+			service3 is a special service
+			for special things
+			"""
+		directory: "/home/cueckoo"
+	}
+}
+$ cue export ./home/.config/demo/config.cue
+{
+    "programs": {
+        "service1": {
+            "path": "/path/to/service1",
+            "description": "service1 is a special service\nfor special things",
+            "args": [
+                "hello",
+                "world"
+            ],
+            "directory": "/tmp",
+            "ignoreErrors": true
+        },
+        "service2": {
+            "path": "/path/to/service2",
+            "description": "service2 is a special service\nfor special things",
+            "args": [
+                "hello",
+                "world"
+            ],
+            "directory": "/home/cueckoo"
+        },
+        "service3": {
+            "path": "/path/to/service3",
+            "description": "service3 is a special service\nfor special things",
+            "directory": "/home/cueckoo"
+        }
+    }
+}
+$ mv ./home/.config/demo/config.json ./home/.config/demo/config.json.copy
+$ cue export -o ./home/.config/demo/config.json ./home/.config/demo/config.cue
+$ diff -wu ./home/.config/demo/config.json ./home/.config/demo/config.json.copy
+$ cat <<EOD > /home/gopher/demo/main.go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+	"path/filepath"
+
+	"github.com/cue-exp/cueconfig"
+)
+
+type Config struct {
+	Programs map[string]Program `json:"programs"`
+}
+
+type Program struct {
+	Path         string   `json:"path"`
+	Args         []string `json:"args"`
+	Description  string   `json:"description"`
+	Retries      int      `json:"retries"`
+	IgnoreErrors bool     `json:"ignoreErrors"`
+	Directory    string   `json:"directory"`
+}
+
+func main() {
+	// Use a fake "$HOME" for the purposes of this demo
+	cfpath := filepath.Join("home", ".config", "demo", "config.cue")
+
+	var conf Config
+	if err := cueconfig.Load(cfpath, nil, nil, nil, &conf); err != nil {
+		log.Fatal(err)
+	}
+
+	out, err := json.MarshalIndent(conf, "", "  ")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%s\n", out)
+}
+
+EOD
+$ go get github.com/cue-exp/cueconfig@v0.0.1
+go: downloading github.com/cue-exp/cueconfig v0.0.1
+go: downloading cuelang.org/go v0.4.3
+go: downloading github.com/cockroachdb/apd/v2 v2.0.1
+go: downloading golang.org/x/net v0.0.0-20200226121028-0de0cce0169b
+go: downloading github.com/emicklei/proto v1.6.15
+go: downloading github.com/protocolbuffers/txtpbfmt v0.0.0-20201118171849-f6a6b3f636fc
+go: downloading gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
+go: added cuelang.org/go v0.4.3
+go: added github.com/cockroachdb/apd/v2 v2.0.1
+go: added github.com/cue-exp/cueconfig v0.0.1
+go: added github.com/emicklei/proto v1.6.15
+go: added github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
+go: added github.com/google/uuid v1.2.0
+go: added github.com/mpvl/unique v0.0.0-20150818121801-cbe035fff7de
+go: added github.com/pkg/errors v0.8.1
+go: added github.com/protocolbuffers/txtpbfmt v0.0.0-20201118171849-f6a6b3f636fc
+go: added golang.org/x/net v0.0.0-20200226121028-0de0cce0169b
+go: added golang.org/x/text v0.3.7
+go: added gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
+$ go mod tidy
+go: downloading github.com/rogpeppe/go-internal v1.9.0
+go: downloading github.com/google/go-cmp v0.4.0
+go: downloading github.com/stretchr/testify v1.2.2
+go: downloading github.com/kylelemons/godebug v1.1.0
+go: downloading github.com/pkg/diff v0.0.0-20210226163009-20ebb0f2a09e
+go: downloading github.com/cockroachdb/apd v1.1.0
+go: downloading github.com/lib/pq v1.0.0
+go: downloading github.com/davecgh/go-spew v1.1.1
+go: downloading github.com/pmezard/go-difflib v1.0.0
+go: downloading golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
+go: downloading github.com/kr/pretty v0.1.0
+go: downloading golang.org/x/tools v0.0.0-20200612220849-54c614fe050c
+go: downloading github.com/kr/text v0.1.0
+go: downloading gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405
+$ go run .
+{
+  "programs": {
+    "service1": {
+      "path": "/path/to/service1",
+      "args": [
+        "hello",
+        "world"
+      ],
+      "description": "service1 is a special service\nfor special things",
+      "retries": 0,
+      "ignoreErrors": true,
+      "directory": "/tmp"
+    },
+    "service2": {
+      "path": "/path/to/service2",
+      "args": [
+        "hello",
+        "world"
+      ],
+      "description": "service2 is a special service\nfor special things",
+      "retries": 0,
+      "ignoreErrors": false,
+      "directory": "/home/cueckoo"
+    },
+    "service3": {
+      "path": "/path/to/service3",
+      "args": null,
+      "description": "service3 is a special service\nfor special things",
+      "retries": 0,
+      "ignoreErrors": false,
+      "directory": "/home/cueckoo"
+    }
+  }
+}
+$ cat <<EOD > /home/gopher/demo/schema.cue
+package main
+
+programs: [string]: #Program
+
+#Program: {
+	path: string
+	args?: [...string]
+	description:   string
+	retries?:      int
+	ignoreErrors?: bool
+	directory?:    string
+}
+
+EOD
+$ cat <<EOD > /home/gopher/demo/main.go
+package main
+
+import (
+	_ "embed"
+	"encoding/json"
+	"fmt"
+	"log"
+	"path/filepath"
+
+	"github.com/cue-exp/cueconfig"
+)
+
+type Config struct {
+	Programs map[string]Program `json:"programs"`
+}
+
+type Program struct {
+	Path         string   `json:"path"`
+	Args         []string `json:"args"`
+	Description  string   `json:"description"`
+	Retries      int      `json:"retries"`
+	IgnoreErrors bool     `json:"ignoreErrors"`
+	Directory    string   `json:"directory"`
+}
+
+var (
+	//go:embed schema.cue
+	schema []byte
+)
+
+func main() {
+	// Use a fake "$HOME" for the purposes of this demo
+	cfpath := filepath.Join("home", ".config", "demo", "config.cue")
+
+	var conf Config
+	if err := cueconfig.Load(cfpath, schema, nil, nil, &conf); err != nil {
+		log.Fatal(err)
+	}
+
+	out, err := json.MarshalIndent(conf, "", "  ")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%s\n", out)
+}
+
+EOD
+$ go run .
+{
+  "programs": {
+    "service1": {
+      "path": "/path/to/service1",
+      "args": [
+        "hello",
+        "world"
+      ],
+      "description": "service1 is a special service\nfor special things",
+      "retries": 0,
+      "ignoreErrors": true,
+      "directory": "/tmp"
+    },
+    "service2": {
+      "path": "/path/to/service2",
+      "args": [
+        "hello",
+        "world"
+      ],
+      "description": "service2 is a special service\nfor special things",
+      "retries": 0,
+      "ignoreErrors": false,
+      "directory": "/home/cueckoo"
+    },
+    "service3": {
+      "path": "/path/to/service3",
+      "args": null,
+      "description": "service3 is a special service\nfor special things",
+      "retries": 0,
+      "ignoreErrors": false,
+      "directory": "/home/cueckoo"
+    }
+  }
+}
+$ cat <<EOD > /home/gopher/demo/home/.config/demo/config.cue
+programs: {
+	service1: {
+		path: "/path/to/service1"
+		description: """
+			service1 is a special service
+			for special things
+			"""
+		args: [
+			"hello",
+			"world",
+		]
+		directory:    "/tmp"
+		ignoreErrors: true
+		blah:         "something"
+	}
+	service2: {
+		path: "/path/to/service2"
+		description: """
+			service2 is a special service
+			for special things
+			"""
+		args: [
+			"hello",
+			"world",
+		]
+		directory: "/home/cueckoo"
+	}
+	service3: {
+		path: "/path/to/service3"
+		description: """
+			service3 is a special service
+			for special things
+			"""
+		directory: "/home/cueckoo"
+	}
+}
+
+EOD
+$ go run .
+main.go:37: error in configuration: programs.service1: field not allowed: blah:
+    $schema.cue:3:21
+    $schema.cue:5:11
+    /home/gopher/demo/home/.config/demo/config.cue:14:3
+exit status 1
+$ cat <<EOD > /home/gopher/demo/home/.config/demo/config.cue
+programs: {
+	service1: {
+		path: "/path/to/service1"
+		description: """
+			service1 is a special service
+			for special things
+			"""
+		args: [
+			"hello",
+			"world",
+		]
+		directory:    "/tmp"
+		ignoreErrors: true
+	}
+	service2: {
+		path: "/path/to/service2"
+		description: """
+			service2 is a special service
+			for special things
+			"""
+		args: [
+			"hello",
+			"world",
+		]
+		directory: "/home/cueckoo"
+	}
+	service3: {
+		path: "/path/to/service3"
+		description: """
+			service3 is a special service
+			for special things
+			"""
+		directory: "/home/cueckoo"
+	}
+}
+
+EOD
+$ go run .
+{
+  "programs": {
+    "service1": {
+      "path": "/path/to/service1",
+      "args": [
+        "hello",
+        "world"
+      ],
+      "description": "service1 is a special service\nfor special things",
+      "retries": 0,
+      "ignoreErrors": true,
+      "directory": "/tmp"
+    },
+    "service2": {
+      "path": "/path/to/service2",
+      "args": [
+        "hello",
+        "world"
+      ],
+      "description": "service2 is a special service\nfor special things",
+      "retries": 0,
+      "ignoreErrors": false,
+      "directory": "/home/cueckoo"
+    },
+    "service3": {
+      "path": "/path/to/service3",
+      "args": null,
+      "description": "service3 is a special service\nfor special things",
+      "retries": 0,
+      "ignoreErrors": false,
+      "directory": "/home/cueckoo"
+    }
+  }
+}
+$ cat <<EOD > /home/gopher/demo/home/.config/demo/config.cue
+import "strings"
+
+programs: [_name=string]: {
+	directory:   *"/home/cueckoo" | _
+	path:        *"/path/to/\(_name)" | _
+	description: strings.HasPrefix(_name)
+}
+
+programs: {
+	service1: {
+		description: """
+			service1 is a special service
+			for special things
+			"""
+		args: [
+			"hello",
+			"world",
+		]
+		directory:    "/tmp"
+		ignoreErrors: true
+	}
+	service2: {
+		description: """
+			service2 is a special service
+			for special things
+			"""
+		args: service1.args,
+	}
+	service3: {
+		description: """
+			service3 is a special service
+			for special things
+			"""
+	}
+}
+
+EOD
+$ go run .
+{
+  "programs": {
+    "service1": {
+      "path": "/path/to/service1",
+      "args": [
+        "hello",
+        "world"
+      ],
+      "description": "service1 is a special service\nfor special things",
+      "retries": 0,
+      "ignoreErrors": true,
+      "directory": "/tmp"
+    },
+    "service2": {
+      "path": "/path/to/service2",
+      "args": [
+        "hello",
+        "world"
+      ],
+      "description": "service2 is a special service\nfor special things",
+      "retries": 0,
+      "ignoreErrors": false,
+      "directory": "/home/cueckoo"
+    },
+    "service3": {
+      "path": "/path/to/service3",
+      "args": null,
+      "description": "service3 is a special service\nfor special things",
+      "retries": 0,
+      "ignoreErrors": false,
+      "directory": "/home/cueckoo"
+    }
+  }
+}
+$ cat <<EOD > /home/gopher/demo/defaults.cue
+package main
+
+programs: [string]: retries: *3 | _
+
+EOD
+$ cat <<EOD > /home/gopher/demo/main.go
+package main
+
+import (
+	_ "embed"
+	"encoding/json"
+	"fmt"
+	"log"
+	"path/filepath"
+
+	"github.com/cue-exp/cueconfig"
+)
+
+type Config struct {
+	Programs map[string]Program `json:"programs"`
+}
+
+type Program struct {
+	Path         string   `json:"path"`
+	Args         []string `json:"args"`
+	Description  string   `json:"description"`
+	Retries      int      `json:"retries"`
+	IgnoreErrors bool     `json:"ignoreErrors"`
+	Directory    string   `json:"directory"`
+}
+
+var (
+	//go:embed schema.cue
+	schema []byte
+
+	//go:embed defaults.cue
+	defaults []byte
+)
+
+func main() {
+	// Use a fake "$HOME" for the purposes of this demo
+	cfpath := filepath.Join("home", ".config", "demo", "config.cue")
+
+	var conf Config
+	if err := cueconfig.Load(cfpath, schema, defaults, nil, &conf); err != nil {
+		log.Fatal(err)
+	}
+
+	out, err := json.MarshalIndent(conf, "", "  ")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%s\n", out)
+}
+
+EOD
+$ go run .
+{
+  "programs": {
+    "service1": {
+      "path": "/path/to/service1",
+      "args": [
+        "hello",
+        "world"
+      ],
+      "description": "service1 is a special service\nfor special things",
+      "retries": 3,
+      "ignoreErrors": true,
+      "directory": "/tmp"
+    },
+    "service2": {
+      "path": "/path/to/service2",
+      "args": [
+        "hello",
+        "world"
+      ],
+      "description": "service2 is a special service\nfor special things",
+      "retries": 3,
+      "ignoreErrors": false,
+      "directory": "/home/cueckoo"
+    },
+    "service3": {
+      "path": "/path/to/service3",
+      "args": null,
+      "description": "service3 is a special service\nfor special things",
+      "retries": 3,
+      "ignoreErrors": false,
+      "directory": "/home/cueckoo"
+    }
+  }
+}
+$ cat <<EOD > /home/gopher/demo/main.go
+package main
+
+import (
+	_ "embed"
+	"encoding/json"
+	"fmt"
+	"log"
+	"path/filepath"
+
+	"github.com/cue-exp/cueconfig"
+)
+
+type Config struct {
+	Programs map[string]Program `json:"programs"`
+}
+
+type Program struct {
+	Path         string   `json:"path"`
+	Args         []string `json:"args"`
+	Description  string   `json:"description"`
+	Retries      int      `json:"retries"`
+	IgnoreErrors bool     `json:"ignoreErrors"`
+	Directory    string   `json:"directory"`
+}
+
+var (
+	//go:embed schema.cue
+	schema []byte
+
+	//go:embed defaults.cue
+	defaults []byte
+)
+
+func main() {
+	// Use a fake "$HOME" for the purposes of this demo
+	cfpath := filepath.Join("home", ".config", "demo", "config.cue")
+
+	r := map[string]any{
+		"runtime": map[string]any{
+			"workingDirectory": "/runtime/blah",
+		},
+	}
+
+	var conf Config
+	if err := cueconfig.Load(cfpath, schema, defaults, r, &conf); err != nil {
+		log.Fatal(err)
+	}
+
+	out, err := json.MarshalIndent(conf, "", "  ")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%s\n", out)
+}
+
+EOD
+$ cat <<EOD > /home/gopher/demo/schema.cue
+package main
+
+programs: [string]: #Program
+
+#Program: {
+	path: string
+	args?: [...string]
+	description:   string
+	retries?:      int
+	ignoreErrors?: bool
+	directory?:    string
+}
+
+runtime: #Runtime
+
+#Runtime: {
+	workingDirectory?: string
+}
+
+EOD
+$ cat <<EOD > /home/gopher/demo/home/.config/demo/config.cue
+import "strings"
+
+runtime: _
+
+programs: [_name=string]: {
+	directory:   *runtime.workingDirectory | _
+	path:        *"/path/to/\(_name)" | _
+	description: strings.HasPrefix(_name)
+}
+
+programs: {
+	service1: {
+		description: """
+			service1 is a special service
+			for special things
+			"""
+		args: [
+			"hello",
+			"world",
+		]
+		directory:    "/tmp"
+		ignoreErrors: true
+	}
+	service2: {
+		description: """
+			service2 is a special service
+			for special things
+			"""
+		args: service1.args,
+	}
+	service3: {
+		description: """
+			service3 is a special service
+			for special things
+			"""
+	}
+}
+
+EOD
+$ go run .
+{
+  "programs": {
+    "service1": {
+      "path": "/path/to/service1",
+      "args": [
+        "hello",
+        "world"
+      ],
+      "description": "service1 is a special service\nfor special things",
+      "retries": 3,
+      "ignoreErrors": true,
+      "directory": "/tmp"
+    },
+    "service2": {
+      "path": "/path/to/service2",
+      "args": [
+        "hello",
+        "world"
+      ],
+      "description": "service2 is a special service\nfor special things",
+      "retries": 3,
+      "ignoreErrors": false,
+      "directory": "/runtime/blah"
+    },
+    "service3": {
+      "path": "/path/to/service3",
+      "args": null,
+      "description": "service3 is a special service\nfor special things",
+      "retries": 3,
+      "ignoreErrors": false,
+      "directory": "/runtime/blah"
+    }
+  }
+}
