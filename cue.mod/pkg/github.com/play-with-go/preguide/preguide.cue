@@ -8,17 +8,15 @@ import (
 // TODO: keep this in sync with the Go definitions
 #StepType: int
 
-#StepTypeCommand:     #StepType & 1
-#StepTypeCommandFile: #StepType & 2
-#StepTypeUpload:      #StepType & 3
-#StepTypeUploadFile:  #StepType & 4
+#StepTypeCommand: #StepType & 1
+#StepTypeUpload:  #StepType & 3
 
 #Guide: {
 
 	Languages: [...#Language]
 	Languages: ["en"]
 
-	FilenameComment: *false | bool
+	FilenameComment?: bool
 
 	// Networks is the list of docker networks to connect to when running
 	// this guide.
@@ -96,18 +94,30 @@ import (
 	"sv" | "ta" | "te" | "tg" | "th" | "ti" | "bo" | "tk" | "tl" | "tn" | "to" | "tr" | "ts" | "tt" | "tw" | "ty" | "ug" | "uk" | "ur" |
 	"uz" | "ve" | "vi" | "vo" | "wa" | "cy" | "wo" | "fy" | "xh" | "yi" | "yo" | "za" | "zu"
 
-// The following definitions necessarily reference the nested definitions
-// in #Guide, because those definitions rely on references to Terminals
-// which only makes sense in the context of a #Guide instance
-
 _stepCommon: {
 	Name:     string
 	StepType: #StepType
 	Terminal: string
 }
 
-_#commandCommon: {
+#Step: (#Command | #Upload ) & _stepCommon
+
+#Command: {
 	_stepCommon
+
+	StepType: #StepTypeCommand
+	Stmts?:   string | [...string | #Stmt]
+	Path?:    string
+
+	// InformationOnly indicates that this field is not required for the
+	// successful execution of the script. Generally this is used by
+	// command blocks which are outputting random data for post-execution
+	// sanitisation, e.g. git commits.
+	InformationOnly?: bool
+}
+
+#Stmt: {
+	Cmd?: string
 
 	// RandomReplace indicates the entire output from this command block
 	// should be used to sanitise the output from the entire script,
@@ -118,17 +128,30 @@ _#commandCommon: {
 	// DoNotTrim indicates that when RandomReplace is set, its value
 	// should not be trimmed (the default is to trim the trailing \n
 	// from the output) prior to sanitising the output from the script
-	DoNotTrim: *false | bool
+	DoNotTrim?: bool
 
-	// InformationOnly indicates that this field is not required for the
-	// successful execution of the script. Generally this is used by
-	// command blocks which are outputting random data for post-execution
-	// sanitisation, e.g. git commits.
-	InformationOnly: *false | bool
+	Sanitisers?: [...#Sanitiser]
+	Comparators?: [...#Pattern]
+	UnstableLineOrder?: bool
 }
 
-_#uploadCommon: {
+#Sanitiser: {
+	#Pattern
+	Replacement: string
+}
+
+#Pattern: {
+	Pattern:   string
+	Longest?:  bool
+	LineWise?: bool
+}
+
+#Upload: {
 	_stepCommon
+
+	StepType: #StepTypeUpload
+	Source?:  string
+	Path?:    string
 
 	Target: string
 
@@ -141,32 +164,6 @@ _#uploadCommon: {
 	// Renderer defines how the upload file contents will be
 	// rendered to the user in the guide.
 	Renderer: #Renderer
-}
-
-#Step: (#Command | #CommandFile | #Upload | #UploadFile) & _stepCommon
-
-#Command: {
-	_#commandCommon
-	StepType: #StepTypeCommand
-	Source:   string
-}
-
-#CommandFile: {
-	_#commandCommon
-	StepType: #StepTypeCommandFile
-	Path:     string
-}
-
-#Upload: {
-	_#uploadCommon
-	StepType: #StepTypeUpload
-	Source:   string
-}
-
-#UploadFile: {
-	_#uploadCommon
-	StepType: #StepTypeUploadFile
-	Path:     string
 }
 
 // #PrestepServiceConfig is a mapping from prestep package path to endpoint

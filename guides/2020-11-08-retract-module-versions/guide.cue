@@ -43,13 +43,13 @@ Terminals: term1: preguide.#Terminal & {
 }
 
 Steps: goversion: preguide.#Command & {
-	Source: """
-		go version
-		"""
+	Stmts: [{
+		Cmd: "go version"
+	}]
 }
 
 Steps: proverb_create: preguide.#Command & {
-	Source: """
+	Stmts: """
 		mkdir \(Defs.proverb_dir)
 		cd \(Defs.proverb_dir)
 		\(Defs.git.init)
@@ -72,7 +72,7 @@ Steps: proverb_go_initial: preguide.#Upload & {
 }
 
 Steps: proverb_initial_commit: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.add) -A
 		\(Defs.git.commit) -m "Initial commit"
 		\(Defs.git.push) origin main
@@ -81,20 +81,20 @@ Steps: proverb_initial_commit: preguide.#Command & {
 
 Steps: proverb_check_initial_porcelain: preguide.#Command & {
 	InformationOnly: true
-	Source: """
+	Stmts: """
 		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 
 Steps: proverb_tag_v010: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.tag) \(Defs.proverb_v010)
 		\(Defs.git.push) origin \(Defs.proverb_v010)
 		"""
 }
 
 Steps: gopher_create: preguide.#Command & {
-	Source: """
+	Stmts: """
 		mkdir \(Defs.gopher_dir)
 		cd \(Defs.gopher_dir)
 		go mod init \(Defs.gopher_mod)
@@ -120,19 +120,19 @@ Steps: gopher_go_initial: preguide.#Upload & {
 }
 
 Steps: gopher_add_dep_proverb_v010: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.get) \(Defs.proverb_mod)@\(Defs.proverb_v010)
 		"""
 }
 
 Steps: gopher_run_initial: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.run) .
 		"""
 }
 
 Steps: proverb_cd_concurrency_change: preguide.#Command & {
-	Source: """
+	Stmts: """
 		cd \(Defs.proverb_dir)
 		"""
 }
@@ -152,7 +152,7 @@ Steps: proverb_go_concurrency: preguide.#Upload & {
 }
 
 Steps: proverb_concurrency_commit: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.add) -A
 		\(Defs.git.commit) -m "Switch Go proverb to something more famous"
 		\(Defs.git.push) origin main
@@ -161,20 +161,20 @@ Steps: proverb_concurrency_commit: preguide.#Command & {
 
 Steps: proverb_check_concurrency_porcelain: preguide.#Command & {
 	InformationOnly: true
-	Source: """
+	Stmts: """
 		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 
 Steps: proverb_tag_v020: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.tag) \(Defs.proverb_v020)
 		\(Defs.git.push) origin \(Defs.proverb_v020)
 		"""
 }
 
 Steps: gopher_use_v020: preguide.#Command & {
-	Source: """
+	Stmts: """
 		cd \(Defs.gopher_dir)
 		\(Defs.cmdgo.get) \(Defs.proverb_mod)@\(Defs.proverb_v020)
 		\(Defs.cmdgo.run) .
@@ -182,19 +182,19 @@ Steps: gopher_use_v020: preguide.#Command & {
 }
 
 Steps: proverb_return_to_retract_v020: preguide.#Command & {
-	Source: """
+	Stmts: """
 		cd \(Defs.proverb_dir)
 		"""
 }
 
 Steps: proverb_retract_v020: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.modedit) -retract=\(Defs.proverb_v020)
 		"""
 }
 
 Steps: proverb_cat_v020_retract: preguide.#Command & {
-	Source: """
+	Stmts: """
 		cat go.mod
 		"""
 }
@@ -228,7 +228,7 @@ Steps: proverb_go_fix_concurrency_bug: preguide.#Upload & {
 }
 
 Steps: proverb_tag_v030: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.add) -A
 		\(Defs.git.commit) -m "Fix severe error in Go proverb"
 		\(Defs.git.push) origin main
@@ -239,68 +239,68 @@ Steps: proverb_tag_v030: preguide.#Command & {
 
 Steps: proverb_check_v030_porcelain: preguide.#Command & {
 	InformationOnly: true
-	Source: """
+	Stmts: """
 		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 
 Steps: gopher_use_v030: preguide.#Command & {
-	Source: """
+	Stmts: """
 		cd \(Defs.gopher_dir)
 		\(Defs.cmdgo.get) \(Defs.proverb_mod)@\(Defs.proverb_v030)
 		"""
 }
 
 Steps: gopher_run_v030: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.run) .
 		"""
 }
 
 Steps: gopher_sleep_on_proxy: preguide.#Command & {
-	Source: """
+	Stmts: """
 		sleep \(Defs.proxygolangorg.waitforcache)
 		"""
 }
 
 Steps: gopher_list_proverb: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.list) -m -versions \(Defs.proverb_mod)
 		"""
 }
 
 Steps: gopher_list_proverb_retracted: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.list) -m -versions -retracted \(Defs.proverb_mod)
 		"""
 }
 
 Steps: gopher_use_retracted_v020: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.get) \(Defs.proverb_mod)@\(Defs.proverb_v020)
 		"""
 }
 
 Steps: gopher_run_retracted_v020: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.run) .
 		"""
 }
 
 Steps: gopher_list_versions: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.list) -m -u all
 		"""
 }
 
 Steps: gopher_use_latest_unretracted: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.get) \(Defs.proverb_mod)@\(Defs.cmdgo.vlatest)
 		"""
 }
 
 Steps: proverb_return_life: preguide.#Command & {
-	Source: """
+	Stmts: """
 		cd \(Defs.proverb_dir)
 		"""
 }
@@ -325,7 +325,7 @@ Steps: proverb_go_life_advice: preguide.#Upload & {
 }
 
 Steps: proverb_life_commit: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.add) -A
 		\(Defs.git.commit) -m "Add Life() proverb"
 		\(Defs.git.push) origin main
@@ -334,20 +334,20 @@ Steps: proverb_life_commit: preguide.#Command & {
 
 Steps: proverb_check_v100_porcelain: preguide.#Command & {
 	InformationOnly: true
-	Source: """
+	Stmts: """
 		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 
 Steps: proverb_tag_v100: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.tag) \(Defs.proverb_v100)
 		\(Defs.git.push) origin \(Defs.proverb_v100)
 		"""
 }
 
 Steps: proverb_tag_v040: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.tag) \(Defs.proverb_v040)
 		\(Defs.git.push) origin \(Defs.proverb_v040)
 		"""
@@ -374,7 +374,7 @@ Steps: proverb_retract_v100: preguide.#Upload & {
 }
 
 Steps: proverb_tag_v101: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.add) -A
 		\(Defs.git.commit) -m "Retract [\(Defs.proverb_v100), \(Defs.proverb_v101)]"
 		\(Defs.git.push) origin main
@@ -385,20 +385,20 @@ Steps: proverb_tag_v101: preguide.#Command & {
 
 Steps: proverb_check_v101_porcelain: preguide.#Command & {
 	InformationOnly: true
-	Source: """
+	Stmts: """
 		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 
 Steps: gopher_cd_use_v100: preguide.#Command & {
-	Source: """
+	Stmts: """
 		cd \(Defs.gopher_dir)
 		"""
 }
 
 Steps: temp_get_v101: preguide.#Command & {
 	InformationOnly: true
-	Source:          """
+	Stmts:           """
 		(
 			cd $(mktemp -d)
 			export GOPATH=$(mktemp -d)
@@ -412,7 +412,7 @@ Steps: temp_get_v101: preguide.#Command & {
 }
 
 Steps: gopher_use_v101: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.get) \(Defs.proverb_mod)@\(Defs.proverb_v100)
 		\(Defs.cmdgo.get) \(Defs.proverb_mod)@\(Defs.proverb_v101)
 		\(Defs.cmdgo.get) \(Defs.proverb_mod)@\(Defs.proverb_v040)
@@ -420,19 +420,19 @@ Steps: gopher_use_v101: preguide.#Command & {
 }
 
 Steps: gopher_sleep_on_proxy_again: preguide.#Command & {
-	Source: """
+	Stmts: """
 		sleep \(Defs.proxygolangorg.waitforcache)
 		"""
 }
 
 Steps: gopher_list_proverb_v101_retracted: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.list) -m -versions -retracted \(Defs.proverb_mod)
 		"""
 }
 
 Steps: gopher_list_proverb_v101_nonretracted: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.list) -m -versions \(Defs.proverb_mod)
 		"""
 }
@@ -458,7 +458,7 @@ Steps: gopher_go_update_life_proverb: preguide.#Upload & {
 }
 
 Steps: gopher_run_life_proverb: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.run) .
 		"""
 }

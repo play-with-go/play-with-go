@@ -21,6 +21,68 @@ _#golangToolsLatest: "v0.1.13-0.20220917004541-4d18923f060e"
 
 _#StablePsuedoversionSuffix: "20060102150405-abcedf12345"
 
+_#goVersionSanitisers: [{
+	Pattern:     #"linux\/.+(?:\n$)"#
+	Replacement: "linux/amd64"
+}]
+
+_#goVersionMSanitisers: [
+	{
+		Pattern:     #"(?ms)^\s+build\s.*(?:\n)"#
+		Replacement: ""
+	},
+	{
+		Pattern:     #"(?m)\s+(?:$)"#
+		LineWise:    true
+		Replacement: ""
+	},
+]
+
+_#goGetComparators: [
+	{Pattern: #"(pkg/mod/cache/vcs/)[0-9a-f]+"#},
+]
+
+_#goTestSanitisers: []
+
+_#goTestComparators: [
+	{Pattern: #"^( *--- (PASS|FAIL): .+\()\d+(\.\d+)?s\)"#, LineWise: true},
+	{Pattern: #"^((FAIL|ok  )\t.+\t)\d+(\.\d+)?s$"#, LineWise:        true},
+]
+
+_#goTestBenchSanitisers: [
+	{Pattern: #"(?m)^goos: .*\ngoarch: .*\n"#, Replacement: "goos: linux\ngoarch: amd64\n"},
+	{Pattern: #"(?m)^cpu: .*\n"#, Replacement:              ""},
+]
+
+_#goTestBenchComparators: [
+	for _, v in _#goTestComparators {v},
+	{Pattern: #"^([^\s]+)\s+\d+\s+\d+(\.\d+)? ns/op$"#, LineWise: true},
+]
+
+_#goEnvSanitiers: [
+	{Pattern: #"(?m)^GOGCCFLAGS=.*\n"#, Replacement: ""},
+	{Pattern: #"(?m)^GOAMD64=.*\n"#, Replacement:    ""},
+	{Pattern: #"^(GOTOOLDIR=.*/)[^/]*"#, LineWise:   true, Replacement: #"${1}linux_amd64""#},
+	{Pattern: #"^(GOOS=).*"#, LineWise:              true, Replacement: #"${1}"linux""#},
+	{Pattern: #"^(GO(HOST)?ARCH=).*"#, LineWise:     true, Replacement: #"${1}"amd64""#},
+]
+
+// Set default go version sanitisers
+Steps: [string]: *(preguide.#Command & {
+	Stmts: [...*{
+		Cmd:        _#commonDefs.cmdgo.version
+		Sanitisers: _#goVersionSanitisers
+	} | _]
+}) | _
+
+// Set default go env sanitisers
+Steps: [string]: *(preguide.#Command & {
+	Stmts: [...*{
+		Cmd:        _#commonDefs.cmdgo.env
+		Sanitisers: _#goEnvSanitiers
+	} | _]
+}) | _
+
 _#commonDefs: {
 	pwg: {
 		gopher_live: "gopher.live"
@@ -78,7 +140,7 @@ _#waitForVersion: preguide.#Command & {
 	_#versions: [...string]
 
 	InformationOnly: true
-	Source:          """
+	Stmts:           """
 					(
 					i=0
 					j=0

@@ -17,7 +17,7 @@ Steps: create_script: preguide.#Upload & {
 }
 
 Steps: run_script: preguide.#Command & {
-	Source: """
+	Stmts: """
 		bash \(Defs.scriptpath)
 		"""
 }

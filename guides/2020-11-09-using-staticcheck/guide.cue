@@ -28,31 +28,31 @@ Terminals: term1: preguide.#Terminal & {
 }
 
 Steps: goversion: preguide.#Command & {
-	Source: """
-		go version
-		"""
+	Stmts: [{
+		Cmd: "go version"
+	}]
 }
 
 Steps: staticcheck_install: preguide.#Command & {
-	Source: """
+	Stmts: """
 		go install honnef.co/go/tools/cmd/staticcheck@\(Defs.staticcheck_version)
 		"""
 }
 
 Steps: staticcheck_check_on_path: preguide.#Command & {
-	Source: """
+	Stmts: """
 		which staticcheck
 		"""
 }
 
 Steps: staticcheck_version: preguide.#Command & {
-	Source: """
+	Stmts: """
 		staticcheck -version
 		"""
 }
 
 Steps: pets_init: preguide.#Command & {
-	Source: """
+	Stmts: """
 		mkdir \(Defs.pets_dir)
 		cd \(Defs.pets_dir)
 		\(Defs.cmdgo.modinit) \(Defs.pets_mod)
@@ -100,19 +100,19 @@ Steps: pets_go_initial: preguide.#Upload & {
 }
 
 Steps: pets_build_initial: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.build)
 		"""
 }
 
 Steps: pets_staticcheck_initial: preguide.#Command & {
-	Source: """
+	Stmts: """
 		! staticcheck .
 		"""
 }
 
 Steps: staticcheck_explain: preguide.#Command & {
-	Source: """
+	Stmts: """
 		staticcheck \(Defs.staticcheck_explain_flag) \(Defs.staticcheck_sa5009)
 		"""
 }
@@ -157,7 +157,7 @@ Steps: pets_go_fixed: preguide.#Upload & {
 }
 
 Steps: pets_staticcheck_fixed: preguide.#Command & {
-	Source: """
+	Stmts: """
 		staticcheck .
 		"""
 }
@@ -172,7 +172,7 @@ Steps: staticcheck_config_initial: preguide.#Upload & {
 }
 
 Steps: pets_staticcheck_st1000_enabled: preguide.#Command & {
-	Source: """
+	Stmts: """
 		! staticcheck .
 		"""
 }
@@ -218,7 +218,7 @@ Steps: pets_go_with_package_comment: preguide.#Upload & {
 }
 
 Steps: pets_staticcheck_st1000_fixed: preguide.#Command & {
-	Source: """
+	Stmts: """
 		staticcheck .
 		"""
 }
@@ -269,7 +269,7 @@ Steps: pets_go_feed: preguide.#Upload & {
 }
 
 Steps: pets_staticcheck_check_feed: preguide.#Command & {
-	Source: """
+	Stmts: """
 		! staticcheck .
 		"""
 }
@@ -321,7 +321,7 @@ Steps: pets_go_ignore_sa4018: preguide.#Upload & {
 }
 
 Steps: pets_staticcheck_check_sa4018_ignored: preguide.#Command & {
-	Source: """
+	Stmts: """
 		staticcheck .
 		"""
 }
@@ -374,7 +374,7 @@ Steps: pets_go_file_ignore_sa4018: preguide.#Upload & {
 }
 
 Steps: pets_staticcheck_check_sa4018_still_ignored: preguide.#Command & {
-	Source: """
+	Stmts: """
 		staticcheck .
 		"""
 }
@@ -424,7 +424,7 @@ Steps: pets_go_final: preguide.#Upload & {
 }
 
 Steps: pets_staticcheck_final: preguide.#Command & {
-	Source: """
+	Stmts: """
 		staticcheck .
 		"""
 }

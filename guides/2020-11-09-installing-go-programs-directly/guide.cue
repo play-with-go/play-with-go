@@ -22,31 +22,32 @@ Terminals: term1: preguide.#Terminal & {
 }
 
 Steps: goversion: preguide.#Command & {
-	Source: """
-		go version
-		"""
+	Stmts: [{
+		Cmd: "go version"
+	}]
 }
 
 Steps: go119_mkcert_install: preguide.#Command & {
-	Source: """
+	Stmts: """
 		go install \(Defs.mkcert_pkg)@\(Defs.mkcert_version)
 		"""
 }
 
 Steps: which_mkcert: preguide.#Command & {
-	Source: """
+	Stmts: """
 		which \(Defs.mkcert)
 		"""
 }
 
 Steps: run_mkcert: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.mkcert) -version
 		"""
 }
 
 Steps: goversion_mkcert: preguide.#Command & {
-	Source: """
-		\(Defs.cmdgo.version) -m $(which \(Defs.mkcert))
-		"""
+	Stmts: [{
+		Cmd:        "\(Defs.cmdgo.version) -m $(which \(Defs.mkcert))"
+		Sanitisers: _#goVersionMSanitisers
+	}]
 }

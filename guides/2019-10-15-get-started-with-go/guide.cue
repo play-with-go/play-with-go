@@ -23,19 +23,19 @@ Terminals: term1: preguide.#Terminal & {
 }
 
 Steps: goversion: preguide.#Command & {
-	Source: """
-		go version
-		"""
+	Stmts: [{
+		Cmd: "go version"
+	}]
 }
 
 Steps: pwd_home: preguide.#Command & {
-	Source: """
+	Stmts: """
 		pwd
 		"""
 }
 
 Steps: mkdir_hello: preguide.#Command & {
-	Source: """
+	Stmts: """
 		mkdir \(Defs.hello_dir)
 		cd \(Defs.hello_dir)
 		"""
@@ -56,7 +56,7 @@ Steps: create_hello: preguide.#Upload & {
 }
 
 Steps: run_hello: preguide.#Command & {
-	Source: """
+	Stmts: """
 		go run \(Defs.hello_go)
 		"""
 }
@@ -81,19 +81,19 @@ Steps: update_hello: preguide.#Upload & {
 }
 
 Steps: gomodinit: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.modinit) \(Defs.hellomod)
 		"""
 }
 
 Steps: gogetquote: preguide.#Command & {
-	Source: """
+	Stmts: """
 		go get rsc.io/quote@v1.5.2
 		"""
 }
 
 Steps: run_hello_again: preguide.#Command & {
-	Source: """
+	Stmts: """
 		go run \(Defs.hello_go)
 		"""
 }

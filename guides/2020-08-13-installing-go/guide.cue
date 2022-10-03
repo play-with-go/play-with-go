@@ -20,110 +20,110 @@ Terminals: term1: preguide.#Terminal & {
 }
 
 Steps: start_dir: preguide.#Command & {
-	Source: """
+	Stmts: """
 		pwd
 		"""
 }
 
 Steps: download_go: preguide.#Command & {
-	Source: """
+	Stmts: """
 		wget -q https://golang.org/dl/\(_#go119LatestVersion).linux-$GOARCH.tar.gz
 		"""
 }
 
 Steps: install_go: preguide.#Command & {
-	Source: """
+	Stmts: """
 		sudo tar -C /usr/local -xzf \(_#go119LatestVersion).linux-$GOARCH.tar.gz
 		"""
 }
 
 Steps: add_install_to_path: preguide.#Command & {
-	Source: """
+	Stmts: """
 		echo export PATH="/usr/local/go/bin:$PATH" >> $HOME/.profile
 		"""
 }
 
 Steps: source_profile: preguide.#Command & {
-	Source: """
+	Stmts: """
 		source $HOME/.profile
 		"""
 }
 
 Steps: go_version: preguide.#Command & {
-	Source: """
-		\(Defs.cmdgo.version)
-		"""
+	Stmts: [{
+		Cmd: Defs.cmdgo.version
+	}]
 }
 
 Steps: go_env: preguide.#Command & {
-	Source: """
-		\(Defs.cmdgo.env)
-		"""
+	Stmts: [{
+		Cmd: Defs.cmdgo.env
+	}]
 }
 
 Steps: go_env_gobin: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.env) GOBIN
 		"""
 }
 
 Steps: go_env_set_gobin: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.env) -w GOBIN=/path/to/my/gobin
 		"""
 }
 
 Steps: go_env_check_gobin: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.env) GOBIN
 		"""
 }
 
 Steps: go_env_env: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.env) GOENV
 		"""
 }
 
 Steps: go_env_unset_gobin: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.env) -w GOBIN=
 		"""
 }
 
 Steps: go_env_check_gobin_again: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.env) GOBIN
 		"""
 }
 
 Steps: go_help_env: preguide.#Command & {
 	InformationOnly: true
-	Source:          """
+	Stmts:           """
 		\(Defs.go_help_env)
 		"""
 }
 
 Steps: gobin_not_set: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.env) GOBIN
 		"""
 }
 
 Steps: add_gobin_bin_to_path: preguide.#Command & {
-	Source: """
+	Stmts: """
 		echo export PATH="$(go env GOPATH)/bin:$PATH" >> $HOME/.profile
 		"""
 }
 
 Steps: source_profile_again: preguide.#Command & {
-	Source: """
+	Stmts: """
 		source $HOME/.profile
 		"""
 }
 
 Steps: echo_path: preguide.#Command & {
-	Source: """
+	Stmts: """
 		echo $PATH
 		"""
 }

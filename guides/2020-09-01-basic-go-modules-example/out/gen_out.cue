@@ -16,8 +16,8 @@ Presteps: [{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20220916095345-fddafa3403c2",
-		    "Sum": "h1:hNi/ACPKXTIEOV6hn0HfelzIqwkaLWQXKSElGCi8xKE=",
+		    "Version": "v0.0.0-20221003164140-c14d636df530",
+		    "Sum": "h1:RDNvyzwtVgtV0xOEaQL+CziEPkar/gNPyQUaWdnYjGk=",
 		    "Replace": null
 		  },
 		  "Deps": [
@@ -77,8 +77,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20220926082147-a0a4ec5fe714",
-		      "Sum": "h1:lNhg1ct5kMU7pPBgwQBAH9glAsbtIHUXqJElKgYLg3E=",
+		      "Version": "v0.0.2-0.20221003193111-f84a6637f25f",
+		      "Sum": "h1:ijMtjVmmzO13W4+wfOng8tkYFBJN+VRuw/znwVm7x68=",
 		      "Replace": null
 		    },
 		    {
@@ -138,48 +138,32 @@ Scenarios: [{
 }]
 Networks: ["playwithgo_pwg"]
 Env: []
-FilenameComment: false
 Steps: {
 	create_module: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "create_module"
-		Order:           0
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "create_module"
+		Order:    0
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "mkdir /home/gopher/mod1"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "mkdir /home/gopher/mod1"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "cd /home/gopher/mod1"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "cd /home/gopher/mod1"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "git init -q"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git init -q"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "git remote add origin https://{{{.REPO1}}}.git"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git remote add origin https://{{{.REPO1}}}.git"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:  false
 			CmdStr:   "go mod init {{{.REPO1}}}"
 			ExitCode: 0
 			Output: """
-				go: creating new go.mod: module {{{.REPO1}}}
-
-				"""
-			ComparisonOutput: """
 				go: creating new go.mod: module {{{.REPO1}}}
 
 				"""
@@ -219,34 +203,22 @@ Steps: {
 		Target: "/home/gopher/mod1/main.go"
 	}
 	commit_and_push: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "commit_and_push"
-		Order:           3
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "commit_and_push"
+		Order:    3
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "git add go.mod README.md main.go"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git add go.mod README.md main.go"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "git commit -q -m \"Initial commit\""
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git commit -q -m \"Initial commit\""
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:  false
 			CmdStr:   "git push -q origin main"
 			ExitCode: 0
 			Output: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
-			ComparisonOutput: """
 				remote: . Processing 1 references        
 				remote: Processed 1 references in total        
 
@@ -255,52 +227,37 @@ Steps: {
 	}
 	check_porcelain: {
 		StepType:        1
-		DoNotTrim:       false
 		InformationOnly: true
 		Name:            "check_porcelain"
 		Order:           4
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	use_module: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "use_module"
-		Order:           5
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "use_module"
+		Order:    5
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "mkdir /home/gopher/mod2"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "mkdir /home/gopher/mod2"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "cd /home/gopher/mod2"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "cd /home/gopher/mod2"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:  false
 			CmdStr:   "go mod init mod.com"
 			ExitCode: 0
 			Output: """
 				go: creating new go.mod: module mod.com
 
 				"""
-			ComparisonOutput: """
-				go: creating new go.mod: module mod.com
-
-				"""
 		}, {
-			Negated:  false
 			CmdStr:   "go get {{{.REPO1}}}"
 			ExitCode: 0
 			Output: """
@@ -308,20 +265,10 @@ Steps: {
 				go: added {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
 
 				"""
-			ComparisonOutput: """
-
-				go: added {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
-				go: downloading {{{.REPO1}}} v0.0.0-20060102150405-abcedf12345
-				"""
 		}, {
-			Negated:  false
 			CmdStr:   "go run {{{.REPO1}}}"
 			ExitCode: 0
 			Output: """
-				Hello, world!
-
-				"""
-			ComparisonOutput: """
 				Hello, world!
 
 				"""
@@ -329,26 +276,20 @@ Steps: {
 	}
 	mod1_pseudoversion: {
 		StepType:        1
-		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
-		DoNotTrim:       false
 		InformationOnly: true
 		Name:            "mod1_pseudoversion"
 		Order:           6
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "go list -m -f {{.Version}} {{{.REPO1}}}"
 			ExitCode: 0
 			Output: """
 				v0.0.0-20060102150405-abcedf12345
 
 				"""
-			ComparisonOutput: """
-				v0.0.0-20060102150405-abcedf12345
-
-				"""
+			RandomReplace: "v0.0.0-20060102150405-abcedf12345"
 		}]
 	}
 }
-Hash: "f49f9b065ef6ff9b20153e5b002b69226eed447f48fb16bee6aad98a5400bd02"
+Hash: "f4a72d3bcbdc6b1a4bd48a13352560204f2daf0d510acab4df087304accb3a03"
 Delims: ["{{{", "}}}"]

@@ -34,20 +34,20 @@ Terminals: term1: preguide.#Terminal & {
 }
 
 Steps: whoami: preguide.#Command & {
-	Source: """
+	Stmts: """
 		whoami
 		pwd
 		"""
 }
 
 Steps: echo_hello: preguide.#Command & {
-	Source: """
+	Stmts: """
 		echo '*** !!! CLICK ME !!! ***'
 		"""
 }
 
 Steps: multiple_commands: preguide.#Command & {
-	Source: """
+	Stmts: """
 		mkdir \(Defs.modname)
 		cd \(Defs.modname)
 		"""
@@ -79,27 +79,27 @@ Steps: upload_readme_again: preguide.#Upload & {
 }
 
 Steps: cat_readme: preguide.#Command & {
-	Source: """
+	Stmts: """
 		cat \(Defs.readme)
 		"""
 }
 
 Steps: gitinit: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.init)
 		\(Defs.git.remote) add origin \(Defs.vcsurl)
 		"""
 }
 
 Steps: gitadd: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.add) README.md
 		\(Defs.git.commit) -m 'Initial commit'
 		"""
 }
 
 Steps: gitpush: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.push) origin main
 		"""
 }

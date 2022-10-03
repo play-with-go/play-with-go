@@ -15,7 +15,6 @@ Scenarios: [{
 }]
 Networks: ["playwithgo_pwg"]
 Env: []
-FilenameComment: false
 Steps: {
 	create_script: {
 		StepType: 2
@@ -33,26 +32,19 @@ Steps: {
 		Target: "/home/gopher/script.sh"
 	}
 	run_script: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "run_script"
-		Order:           1
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "run_script"
+		Order:    1
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "bash /home/gopher/script.sh"
 			ExitCode: 0
 			Output: """
 				Hello, world!
 
 				"""
-			ComparisonOutput: """
-				Hello, world!
-
-				"""
 		}]
 	}
 }
-Hash: "6bb519f3907c2e569d2eaf26773076d59a6da02605f18bc510610bbaa64c4d97"
+Hash: "608f7aeee182a2f487f8bd308e9f91e4508a7706aaa422413d1cc764c61b79df"
 Delims: ["{{{", "}}}"]
