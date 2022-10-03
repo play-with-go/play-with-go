@@ -41,32 +41,33 @@ Terminals: term1: preguide.#Terminal & {
 }
 
 Steps: goversion: preguide.#Command & {
-	Source: """
-		go version
-		"""
+	Stmts: [{
+		Cmd: "go version"
+		// Sanitisers: _#goVersionSanitisers
+	}]
 }
 
 Steps: pwd_home: preguide.#Command & {
-	Source: """
+	Stmts: """
 		pwd
 		"""
 }
 
 Steps: mkdir_greetings: preguide.#Command & {
-	Source: """
+	Stmts: """
 		mkdir \(Defs.greetings_dir)
 		cd \(Defs.greetings_dir)
 		"""
 }
 
 Steps: gomodinit_greetings: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.modinit) \(Defs.greetings_mod)
 		"""
 }
 
 Steps: cat_gomodgreetings: preguide.#Command & {
-	Source: """
+	Stmts: """
 		cat go.mod
 		"""
 }
@@ -108,14 +109,14 @@ Steps: create_greetingsgo_long: preguide.#Upload & {
 }
 
 Steps: greetings_gitinit: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.init)
 		\(Defs.git.remote) add origin \(Defs.greetings_vcs)
 		"""
 }
 
 Steps: greetings_gitadd: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.add) go.mod \(Defs.greetings_go)
 		\(Defs.git.commit) -m 'Initial commit'
 		"""
@@ -123,42 +124,45 @@ Steps: greetings_gitadd: preguide.#Command & {
 
 Steps: greetings_check_porcelain: preguide.#Command & {
 	InformationOnly: true
-	Source: """
+	Stmts: """
 		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 
 Steps: greetings_gitpush: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.push) origin main
 		"""
 }
 
 Steps: mkdir_hello: preguide.#Command & {
-	Source: """
+	Stmts: """
 		mkdir \(Defs.hello_dir)
 		cd \(Defs.hello_dir)
 		"""
 }
 
 Steps: gomodinit_hello: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.modinit) \(Defs.hello_mod)
 		"""
 }
 
 Steps: goget_greetings: preguide.#Command & {
-	Source: """
+	Stmts: [{
+		Cmd:               """
 		go get \(Defs.greetings_mod)
 		"""
+		UnstableLineOrder: true
+	}]
 }
 
 Steps: golist_greetings: preguide.#Command & {
 	InformationOnly: true
-	RandomReplace:   "v0.0.0-\(_#StablePsuedoversionSuffix)"
-	Source:          """
-		go list -m -f {{.Version}} \(Defs.greetings_mod)
-		"""
+	Stmts: [{
+		Cmd:           "go list -m -f {{.Version}} \(Defs.greetings_mod)"
+		RandomReplace: "v0.0.0-\(_#StablePsuedoversionSuffix)"
+	}]
 }
 
 Steps: create_hellogo: preguide.#Upload & {
@@ -182,14 +186,14 @@ Steps: create_hellogo: preguide.#Upload & {
 }
 
 Steps: buildrun_hello: preguide.#Command & {
-	Source: """
+	Stmts: """
 		go build
 		./hello
 		"""
 }
 
 Steps: cd_greetings: preguide.#Command & {
-	Source: """
+	Stmts: """
 		cd \(Defs.greetings_dir)
 		"""
 }
@@ -222,7 +226,7 @@ Steps: update_greetings_go: preguide.#Upload & {
 }
 
 Steps: commit_greetings_error_handling: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.add) \(Defs.greetings_go)
 		\(Defs.git.commit) -m 'Added error handling'
 		"""
@@ -230,49 +234,52 @@ Steps: commit_greetings_error_handling: preguide.#Command & {
 
 Steps: greetings_check_error_handling_porcelain: preguide.#Command & {
 	InformationOnly: true
-	Source: """
+	Stmts: """
 		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 
 Steps: greetings_error_commit: preguide.#Command & {
-	Source: """
+	Stmts: """
 		greetings_error_commit=$(\(Defs.git.revparse) HEAD)
 		"""
 }
 
 Steps: echo_greetings_error_commit: preguide.#Command & {
 	InformationOnly: true
-	RandomReplace:   "v0.0.0-\(_#StablePsuedoversionSuffix)"
-	Source:          """
-		\(Defs.git.revparse) HEAD
-		"""
+	Stmts: [{
+		Cmd:           "\(Defs.git.revparse) HEAD"
+		RandomReplace: "v0.0.0-\(_#StablePsuedoversionSuffix)"
+	}]
 }
 
 Steps: republish_greetings: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.push) origin main
 		"""
 }
 
 Steps: cd_hello: preguide.#Command & {
-	Source: """
+	Stmts: """
 		cd \(Defs.hello_dir)
 		"""
 }
 
 Steps: get_latest_greetings: preguide.#Command & {
-	Source: """
+	Stmts: [{
+		Cmd:               """
 		go get \(Defs.greetings_mod)@$greetings_error_commit
 		"""
+		UnstableLineOrder: true
+	}]
 }
 
 Steps: golist_latest_greetings: preguide.#Command & {
 	InformationOnly: true
-	RandomReplace:   "v0.0.0-\(_#StablePsuedoversionSuffix)"
-	Source:          """
-		go list -m -f {{.Version}} \(Defs.greetings_mod)
-		"""
+	Stmts: [{
+		Cmd:           "go list -m -f {{.Version}} \(Defs.greetings_mod)"
+		RandomReplace: "v0.0.0-\(_#StablePsuedoversionSuffix)"
+	}]
 }
 
 Steps: update_hello_go_error: preguide.#Upload & {
@@ -312,13 +319,13 @@ Steps: update_hello_go_error: preguide.#Upload & {
 }
 
 Steps: run_hello_error: preguide.#Command & {
-	Source: """
+	Stmts: """
 		! \(Defs.cmdgo.run) hello.go
 		"""
 }
 
 Steps: cd_greetings_random: preguide.#Command & {
-	Source: """
+	Stmts: """
 		cd \(Defs.greetings_dir)
 		"""
 }
@@ -376,7 +383,7 @@ Steps: update_greetings_go_random: preguide.#Upload & {
 }
 
 Steps: greeings_commit_random: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.add) \(Defs.greetings_go)
 		\(Defs.git.commit) -m 'Added random format'
 		"""
@@ -384,33 +391,33 @@ Steps: greeings_commit_random: preguide.#Command & {
 
 Steps: greetings_check_random_porcelain: preguide.#Command & {
 	InformationOnly: true
-	Source: """
+	Stmts: """
 		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 
 Steps: greetings_random_commit: preguide.#Command & {
-	Source: """
+	Stmts: """
 		greetings_random_commit=$(\(Defs.git.revparse) HEAD)
 		"""
 }
 
 Steps: greetings_echo_random_commit: preguide.#Command & {
 	InformationOnly: true
-	RandomReplace:   "v0.0.0-\(_#StablePsuedoversionSuffix)"
-	Source:          """
-		\(Defs.git.revparse) HEAD
-		"""
+	Stmts: [{
+		Cmd:           "\(Defs.git.revparse) HEAD"
+		RandomReplace: "v0.0.0-\(_#StablePsuedoversionSuffix)"
+	}]
 }
 
 Steps: greetings_publish_random: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.push) origin main
 		"""
 }
 
 Steps: hello_use_random: preguide.#Command & {
-	Source: """
+	Stmts: """
 		cd \(Defs.hello_dir)
 		\(Defs.cmdgo.get) \(Defs.greetings_mod)@$greetings_random_commit
 		"""
@@ -418,10 +425,10 @@ Steps: hello_use_random: preguide.#Command & {
 
 Steps: hello_golist_random_greetings: preguide.#Command & {
 	InformationOnly: true
-	RandomReplace:   "v0.0.0-\(_#StablePsuedoversionSuffix)"
-	Source:          """
-		\(Defs.cmdgo.list) -m -f {{.Version}} \(Defs.greetings_mod)
-		"""
+	Stmts: [{
+		Cmd:           "\(Defs.cmdgo.list) -m -f {{.Version}} \(Defs.greetings_mod)"
+		RandomReplace: "v0.0.0-\(_#StablePsuedoversionSuffix)"
+	}]
 }
 
 Steps: hello_go_readd_gladys: preguide.#Upload & {
@@ -461,14 +468,14 @@ Steps: hello_go_readd_gladys: preguide.#Upload & {
 }
 
 Steps: hello_run_random: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.run) hello.go
 		\(Defs.cmdgo.run) hello.go
 		"""
 }
 
 Steps: greetings_start_multiple: preguide.#Command & {
-	Source: """
+	Stmts: """
 		cd \(Defs.greetings_dir)
 		"""
 }
@@ -545,19 +552,19 @@ Steps: greetings_go_multiple_people: preguide.#Upload & {
 }
 
 Steps: hello_use_multiple: preguide.#Command & {
-	Source: """
+	Stmts: """
 		cd \(Defs.hello_dir)
 		"""
 }
 
 Steps: hello_replace_greetings: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.modedit) -replace \(Defs.greetings_mod)=\(Defs.greetings_dir)
 		"""
 }
 
 Steps: hello_cat_go_mod_replace: preguide.#Command & {
-	Source: """
+	Stmts: """
 		cat go.mod
 		"""
 }
@@ -599,13 +606,13 @@ Steps: hello_go_call_multiple: preguide.#Upload & {
 }
 
 Steps: hello_run_multiple: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.run) hello.go
 		"""
 }
 
 Steps: greetings_return_to_write_test: preguide.#Command & {
-	Source: """
+	Stmts: """
 		cd \(Defs.greetings_dir)
 		"""
 }
@@ -644,10 +651,18 @@ Steps: greetings_create_greetings_test_go: preguide.#Upload & {
 }
 
 Steps: greetings_run_tests: preguide.#Command & {
-	Source: """
-		\(Defs.cmdgo.test)
-		\(Defs.cmdgo.test) -v
-		"""
+	Stmts: [
+		{
+			Cmd:         "\(Defs.cmdgo.test)"
+			Sanitisers:  _#goTestSanitisers
+			Comparators: _#goTestComparators
+		},
+		{
+			Cmd:         "\(Defs.cmdgo.test) -v"
+			Sanitisers:  _#goTestSanitisers
+			Comparators: _#goTestComparators
+		},
+	]
 }
 
 Steps: greetings_go_break: preguide.#Upload & {
@@ -723,9 +738,13 @@ Steps: greetings_go_break: preguide.#Upload & {
 }
 
 Steps: greetings_run_tests_fail: preguide.#Command & {
-	Source: """
-		! \(Defs.cmdgo.test)
-		"""
+	Stmts: [
+		{
+			Cmd:         "! \(Defs.cmdgo.test)"
+			Sanitisers:  _#goTestSanitisers
+			Comparators: _#goTestComparators
+		},
+	]
 }
 
 Steps: greetings_go_restore: preguide.#Upload & {
@@ -800,38 +819,42 @@ Steps: greetings_go_restore: preguide.#Upload & {
 }
 
 Steps: greetings_check_tests_pass: preguide.#Command & {
-	Source: """
-		\(Defs.cmdgo.test)
-		"""
+	Stmts: [
+		{
+			Cmd:         "\(Defs.cmdgo.test)"
+			Sanitisers:  _#goTestSanitisers
+			Comparators: _#goTestComparators
+		},
+	]
 }
 
 Steps: hello_cd_for_install: preguide.#Command & {
-	Source: """
+	Stmts: """
 		cd \(Defs.hello_dir)
 		"""
 }
 
 Steps: hello_go_list_target: preguide.#Command & {
-	Source: """
+	Stmts: """
 		go list -f '{{.Target}}'
 		"""
 }
 
 Steps: hello_add_gopath_bin_path: preguide.#Command & {
-	Source: """
+	Stmts: """
 		goinstalldir="$(dirname "$(go list -f '{{.Target}}')")"
 		export PATH="$goinstalldir:$PATH"
 		"""
 }
 
 Steps: hello_go_install: preguide.#Command & {
-	Source: """
+	Stmts: """
 		go install
 		"""
 }
 
 Steps: hello_run_by_name: preguide.#Command & {
-	Source: """
+	Stmts: """
 		hello
 		"""
 }

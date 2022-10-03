@@ -20,8 +20,8 @@ Presteps: [{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20220916095345-fddafa3403c2",
-		    "Sum": "h1:hNi/ACPKXTIEOV6hn0HfelzIqwkaLWQXKSElGCi8xKE=",
+		    "Version": "v0.0.0-20221003164140-c14d636df530",
+		    "Sum": "h1:RDNvyzwtVgtV0xOEaQL+CziEPkar/gNPyQUaWdnYjGk=",
 		    "Replace": null
 		  },
 		  "Deps": [
@@ -81,8 +81,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20220926082147-a0a4ec5fe714",
-		      "Sum": "h1:lNhg1ct5kMU7pPBgwQBAH9glAsbtIHUXqJElKgYLg3E=",
+		      "Version": "v0.0.2-0.20221003193111-f84a6637f25f",
+		      "Sum": "h1:ijMtjVmmzO13W4+wfOng8tkYFBJN+VRuw/znwVm7x68=",
 		      "Replace": null
 		    },
 		    {
@@ -142,72 +142,46 @@ Scenarios: [{
 }]
 Networks: ["playwithgo_pwg"]
 Env: []
-FilenameComment: false
 Steps: {
 	goversion: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "goversion"
-		Order:           0
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "goversion"
+		Order:    0
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "go version"
 			ExitCode: 0
-			Output: """
-				go version go1.19.1 linux/amd64
-
-				"""
-			ComparisonOutput: """
-				go version go1.19.1 linux/amd64
-
-				"""
+			Output:   "go version go1.19.1 linux/amd64"
 		}]
 	}
 	branch_init: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "branch_init"
-		Order:           1
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "branch_init"
+		Order:    1
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "mkdir /home/gopher/branch"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "mkdir /home/gopher/branch"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "cd /home/gopher/branch"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "cd /home/gopher/branch"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:  false
 			CmdStr:   "go mod init {{{.BRANCH}}}"
 			ExitCode: 0
 			Output: """
 				go: creating new go.mod: module {{{.BRANCH}}}
 
 				"""
-			ComparisonOutput: """
-				go: creating new go.mod: module {{{.BRANCH}}}
-
-				"""
 		}, {
-			Negated:          false
-			CmdStr:           "git init -q"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git init -q"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "git remote add origin https://{{{.BRANCH}}}.git"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git remote add origin https://{{{.BRANCH}}}.git"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	branch_go_initial: {
@@ -230,40 +204,26 @@ Steps: {
 		Target: "/home/gopher/branch/branch.go"
 	}
 	branch_initial_commit: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "branch_initial_commit"
-		Order:           3
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "branch_initial_commit"
+		Order:    3
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "git add branch.go go.mod"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git add branch.go go.mod"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "git commit -q -m 'Initial commit of branch module'"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git commit -q -m 'Initial commit of branch module'"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "git tag v1.0.0"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git tag v1.0.0"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:  false
 			CmdStr:   "git push -q origin main v1.0.0"
 			ExitCode: 0
 			Output: """
-				remote: .. Processing 2 references        
-				remote: Processed 2 references in total        
-
-				"""
-			ComparisonOutput: """
 				remote: .. Processing 2 references        
 				remote: Processed 2 references in total        
 
@@ -272,46 +232,29 @@ Steps: {
 	}
 	branch_check_initial_porcelain: {
 		StepType:        1
-		DoNotTrim:       false
 		InformationOnly: true
 		Name:            "branch_check_initial_porcelain"
 		Order:           4
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	branch_create_v1_branch: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "branch_create_v1_branch"
-		Order:           5
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "branch_create_v1_branch"
+		Order:    5
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "git branch main.v1"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git branch main.v1"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:  false
 			CmdStr:   "git push -q origin main.v1"
 			ExitCode: 0
 			Output: """
-				remote: 
-				remote: Create a new pull request for 'main.v1':        
-				remote:   https://{{{.BRANCH}}}/compare/main...main.v1        
-				remote: 
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
-			ComparisonOutput: """
 				remote: 
 				remote: Create a new pull request for 'main.v1':        
 				remote:   https://{{{.BRANCH}}}/compare/main...main.v1        
@@ -361,40 +304,26 @@ Steps: {
 		Target: "/home/gopher/branch/branch.go"
 	}
 	branch_v2_commit: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "branch_v2_commit"
-		Order:           8
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "branch_v2_commit"
+		Order:    8
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "git add branch.go go.mod"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git add branch.go go.mod"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "git commit -q -m 'v2 commit of branch module'"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git commit -q -m 'v2 commit of branch module'"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "git tag v2.0.0"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git tag v2.0.0"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:  false
 			CmdStr:   "git push -q origin main v2.0.0"
 			ExitCode: 0
 			Output: """
-				remote: .. Processing 2 references        
-				remote: Processed 2 references in total        
-
-				"""
-			ComparisonOutput: """
 				remote: .. Processing 2 references        
 				remote: Processed 2 references in total        
 
@@ -403,62 +332,44 @@ Steps: {
 	}
 	branch_check_v2_porcelain: {
 		StepType:        1
-		DoNotTrim:       false
 		InformationOnly: true
 		Name:            "branch_check_v2_porcelain"
 		Order:           9
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	subdir_init: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "subdir_init"
-		Order:           10
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "subdir_init"
+		Order:    10
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "mkdir /home/gopher/subdir"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "mkdir /home/gopher/subdir"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "cd /home/gopher/subdir"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "cd /home/gopher/subdir"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:  false
 			CmdStr:   "go mod init {{{.SUBDIR}}}"
 			ExitCode: 0
 			Output: """
 				go: creating new go.mod: module {{{.SUBDIR}}}
 
 				"""
-			ComparisonOutput: """
-				go: creating new go.mod: module {{{.SUBDIR}}}
-
-				"""
 		}, {
-			Negated:          false
-			CmdStr:           "git init -q"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git init -q"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "git remote add origin https://{{{.SUBDIR}}}.git"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git remote add origin https://{{{.SUBDIR}}}.git"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	subdir_go_initial: {
@@ -481,40 +392,26 @@ Steps: {
 		Target: "/home/gopher/subdir/subdir.go"
 	}
 	subdir_initial_commit: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "subdir_initial_commit"
-		Order:           12
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "subdir_initial_commit"
+		Order:    12
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "git add subdir.go go.mod"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git add subdir.go go.mod"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "git commit -q -m 'Initial commit of subdir module'"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git commit -q -m 'Initial commit of subdir module'"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "git tag v1.0.0"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git tag v1.0.0"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:  false
 			CmdStr:   "git push -q origin main v1.0.0"
 			ExitCode: 0
 			Output: """
-				remote: .. Processing 2 references        
-				remote: Processed 2 references in total        
-
-				"""
-			ComparisonOutput: """
 				remote: .. Processing 2 references        
 				remote: Processed 2 references in total        
 
@@ -523,38 +420,29 @@ Steps: {
 	}
 	subdir_check_initial_porcelain: {
 		StepType:        1
-		DoNotTrim:       false
 		InformationOnly: true
 		Name:            "subdir_check_initial_porcelain"
 		Order:           13
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	subdir_create_v2_subdir: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "subdir_create_v2_subdir"
-		Order:           14
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "subdir_create_v2_subdir"
+		Order:    14
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "mkdir v2"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "mkdir v2"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "cp go.mod subdir.go v2"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "cp go.mod subdir.go v2"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	subdir_go_mod_v2: {
@@ -596,40 +484,26 @@ Steps: {
 		Target: "/home/gopher/subdir/v2/subdir.go"
 	}
 	subdir_v2_commit: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "subdir_v2_commit"
-		Order:           17
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "subdir_v2_commit"
+		Order:    17
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "git add v2"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git add v2"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "git commit -q -m 'v2 commit of subdir module'"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git commit -q -m 'v2 commit of subdir module'"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "git tag v2.0.0"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git tag v2.0.0"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:  false
 			CmdStr:   "git push -q origin main v2.0.0"
 			ExitCode: 0
 			Output: """
-				remote: .. Processing 2 references        
-				remote: Processed 2 references in total        
-
-				"""
-			ComparisonOutput: """
 				remote: .. Processing 2 references        
 				remote: Processed 2 references in total        
 
@@ -638,47 +512,33 @@ Steps: {
 	}
 	subdir_check_v2_porcelain: {
 		StepType:        1
-		DoNotTrim:       false
 		InformationOnly: true
 		Name:            "subdir_check_v2_porcelain"
 		Order:           18
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	gopher_init: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "gopher_init"
-		Order:           19
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "gopher_init"
+		Order:    19
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "mkdir /home/gopher/gopher"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "mkdir /home/gopher/gopher"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "cd /home/gopher/gopher"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "cd /home/gopher/gopher"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:  false
 			CmdStr:   "go mod init gopher"
 			ExitCode: 0
 			Output: """
-				go: creating new go.mod: module gopher
-
-				"""
-			ComparisonOutput: """
 				go: creating new go.mod: module gopher
 
 				"""
@@ -718,14 +578,11 @@ Steps: {
 		Target: "/home/gopher/gopher/gopher.go"
 	}
 	gopher_get_deps: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "gopher_get_deps"
-		Order:           21
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "gopher_get_deps"
+		Order:    21
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "go get {{{.BRANCH}}}@v1.0.0"
 			ExitCode: 0
 			Output: """
@@ -733,13 +590,7 @@ Steps: {
 				go: added {{{.BRANCH}}} v1.0.0
 
 				"""
-			ComparisonOutput: """
-
-				go: added {{{.BRANCH}}} v1.0.0
-				go: downloading {{{.BRANCH}}} v1.0.0
-				"""
 		}, {
-			Negated:  false
 			CmdStr:   "go get {{{.BRANCH}}}/v2@v2.0.0"
 			ExitCode: 0
 			Output: """
@@ -747,13 +598,7 @@ Steps: {
 				go: added {{{.BRANCH}}}/v2 v2.0.0
 
 				"""
-			ComparisonOutput: """
-
-				go: added {{{.BRANCH}}}/v2 v2.0.0
-				go: downloading {{{.BRANCH}}}/v2 v2.0.0
-				"""
 		}, {
-			Negated:  false
 			CmdStr:   "go get {{{.SUBDIR}}}@v1.0.0"
 			ExitCode: 0
 			Output: """
@@ -761,13 +606,7 @@ Steps: {
 				go: added {{{.SUBDIR}}} v1.0.0
 
 				"""
-			ComparisonOutput: """
-
-				go: added {{{.SUBDIR}}} v1.0.0
-				go: downloading {{{.SUBDIR}}} v1.0.0
-				"""
 		}, {
-			Negated:  false
 			CmdStr:   "go get {{{.SUBDIR}}}/v2@v2.0.0"
 			ExitCode: 0
 			Output: """
@@ -775,22 +614,14 @@ Steps: {
 				go: added {{{.SUBDIR}}}/v2 v2.0.0
 
 				"""
-			ComparisonOutput: """
-
-				go: added {{{.SUBDIR}}}/v2 v2.0.0
-				go: downloading {{{.SUBDIR}}}/v2 v2.0.0
-				"""
 		}]
 	}
 	gopher_run: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "gopher_run"
-		Order:           22
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "gopher_run"
+		Order:    22
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "go run ."
 			ExitCode: 0
 			Output: """
@@ -800,15 +631,8 @@ Steps: {
 				subdir/v2.Message: subdir v2
 
 				"""
-			ComparisonOutput: """
-				branch.Message: branch v1
-				branch/v2.Message: branch v2
-				subdir.Message: subdir v1
-				subdir/v2.Message: subdir v2
-
-				"""
 		}]
 	}
 }
-Hash: "eb38b1f9fe14901cb0fe7f5750437d7ad6fcc4f2c718d514648ca91da3d10513"
+Hash: "3f05fa31786a39bbda64558b6fdd6069144925c39f6994d2839481793b328ac7"
 Delims: ["{{{", "}}}"]

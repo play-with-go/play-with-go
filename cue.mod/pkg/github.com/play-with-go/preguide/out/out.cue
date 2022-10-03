@@ -4,7 +4,7 @@ import "github.com/play-with-go/preguide"
 
 #GuideOutput: {
 	Delims: [string, string]
-	FilenameComment: bool
+	FilenameComment?: bool
 	Presteps: [...#Prestep]
 	Terminals: [...preguide.#Terminal]
 	Scenarios: [...preguide.#Scenario]
@@ -42,18 +42,17 @@ _stepCommon: {
 
 #CommandStep: {
 	_stepCommon
-	DoNotTrim:       bool
-	RandomReplace:   string
-	InformationOnly: bool
+	InformationOnly?: bool
 	Stmts: [...#Stmt]
 }
 
 #Stmt: {
-	Negated:          bool
-	CmdStr:           string
-	ExitCode:         int
-	Output:           string
-	ComparisonOutput: string
+	Negated?:       bool
+	CmdStr:         string
+	ExitCode:       int
+	Output:         string
+	DoNotTrim?:     bool
+	RandomReplace?: string
 }
 
 #UploadStep: {

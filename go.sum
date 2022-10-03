@@ -507,10 +507,10 @@ github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINE
 github.com/pkg/sftp v1.10.1/go.mod h1:lYOWFsE0bwd1+KfKJaKeuokY15vzFx25BLbzYYoAxZI=
 github.com/play-with-docker/play-with-docker v0.0.3-0.20201025222131-e8486b8100e0 h1:R8o6egG3l0QWEibAbqvvadfPpTMDONbBYyElKaDo3e0=
 github.com/play-with-docker/play-with-docker v0.0.3-0.20201025222131-e8486b8100e0/go.mod h1:fQEYtvon2ocbbFpyki/m+Bg2xqVS1YsRj1ylGnhmpm4=
-github.com/play-with-go/gitea v0.0.0-20220916095345-fddafa3403c2 h1:hNi/ACPKXTIEOV6hn0HfelzIqwkaLWQXKSElGCi8xKE=
-github.com/play-with-go/gitea v0.0.0-20220916095345-fddafa3403c2/go.mod h1:mfBUaCtcOXcYQ4GQRc5VbD2a2ia7gFme1pc+1qzwi6M=
-github.com/play-with-go/preguide v0.0.2-0.20220926082147-a0a4ec5fe714 h1:lNhg1ct5kMU7pPBgwQBAH9glAsbtIHUXqJElKgYLg3E=
-github.com/play-with-go/preguide v0.0.2-0.20220926082147-a0a4ec5fe714/go.mod h1:OiZEQ1+V6HA/Wh4koKxDn8EIFPWTpcylWyzKJ9CTIGY=
+github.com/play-with-go/gitea v0.0.0-20221003164140-c14d636df530 h1:RDNvyzwtVgtV0xOEaQL+CziEPkar/gNPyQUaWdnYjGk=
+github.com/play-with-go/gitea v0.0.0-20221003164140-c14d636df530/go.mod h1:xNXE7F2KM0d7emx1Mxadc7n3Xef26of3xZTHmkMQikk=
+github.com/play-with-go/preguide v0.0.2-0.20221003193111-f84a6637f25f h1:ijMtjVmmzO13W4+wfOng8tkYFBJN+VRuw/znwVm7x68=
+github.com/play-with-go/preguide v0.0.2-0.20221003193111-f84a6637f25f/go.mod h1:OiZEQ1+V6HA/Wh4koKxDn8EIFPWTpcylWyzKJ9CTIGY=
 github.com/pmezard/go-difflib v0.0.0-20151028094244-d8ed2627bdf0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=

@@ -20,8 +20,8 @@ Presteps: [{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20220916095345-fddafa3403c2",
-		    "Sum": "h1:hNi/ACPKXTIEOV6hn0HfelzIqwkaLWQXKSElGCi8xKE=",
+		    "Version": "v0.0.0-20221003164140-c14d636df530",
+		    "Sum": "h1:RDNvyzwtVgtV0xOEaQL+CziEPkar/gNPyQUaWdnYjGk=",
 		    "Replace": null
 		  },
 		  "Deps": [
@@ -81,8 +81,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20220926082147-a0a4ec5fe714",
-		      "Sum": "h1:lNhg1ct5kMU7pPBgwQBAH9glAsbtIHUXqJElKgYLg3E=",
+		      "Version": "v0.0.2-0.20221003193111-f84a6637f25f",
+		      "Sum": "h1:ijMtjVmmzO13W4+wfOng8tkYFBJN+VRuw/znwVm7x68=",
 		      "Replace": null
 		    },
 		    {
@@ -142,110 +142,70 @@ Scenarios: [{
 }]
 Networks: ["playwithgo_pwg"]
 Env: []
-FilenameComment: false
 Steps: {
 	goversion: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "goversion"
-		Order:           0
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "goversion"
+		Order:    0
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "go version"
 			ExitCode: 0
-			Output: """
-				go version go1.19.1 linux/amd64
-
-				"""
-			ComparisonOutput: """
-				go version go1.19.1 linux/amd64
-
-				"""
+			Output:   "go version go1.19.1 linux/amd64"
 		}]
 	}
 	pwd_home: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "pwd_home"
-		Order:           1
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "pwd_home"
+		Order:    1
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "pwd"
 			ExitCode: 0
 			Output: """
 				/home/gopher
 
 				"""
-			ComparisonOutput: """
-				/home/gopher
-
-				"""
 		}]
 	}
 	mkdir_greetings: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "mkdir_greetings"
-		Order:           2
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "mkdir_greetings"
+		Order:    2
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "mkdir /home/gopher/greetings"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "mkdir /home/gopher/greetings"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "cd /home/gopher/greetings"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "cd /home/gopher/greetings"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	gomodinit_greetings: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "gomodinit_greetings"
-		Order:           3
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "gomodinit_greetings"
+		Order:    3
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "go mod init {{{.GREETINGS}}}"
 			ExitCode: 0
 			Output: """
 				go: creating new go.mod: module {{{.GREETINGS}}}
 
 				"""
-			ComparisonOutput: """
-				go: creating new go.mod: module {{{.GREETINGS}}}
-
-				"""
 		}]
 	}
 	cat_gomodgreetings: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "cat_gomodgreetings"
-		Order:           4
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "cat_gomodgreetings"
+		Order:    4
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "cat go.mod"
 			ExitCode: 0
 			Output: """
-				module {{{.GREETINGS}}}
-
-				go 1.19
-
-				"""
-			ComparisonOutput: """
 				module {{{.GREETINGS}}}
 
 				go 1.19
@@ -316,71 +276,53 @@ Steps: {
 		Target: "/home/gopher/greetings/greetings.go"
 	}
 	greetings_gitinit: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "greetings_gitinit"
-		Order:           7
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "greetings_gitinit"
+		Order:    7
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "git init -q"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git init -q"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "git remote add origin https://{{{.GREETINGS}}}.git"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git remote add origin https://{{{.GREETINGS}}}.git"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	greetings_gitadd: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "greetings_gitadd"
-		Order:           8
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "greetings_gitadd"
+		Order:    8
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "git add go.mod greetings.go"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git add go.mod greetings.go"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "git commit -q -m 'Initial commit'"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git commit -q -m 'Initial commit'"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	greetings_check_porcelain: {
 		StepType:        1
-		DoNotTrim:       false
 		InformationOnly: true
 		Name:            "greetings_check_porcelain"
 		Order:           9
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	greetings_gitpush: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "greetings_gitpush"
-		Order:           10
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "greetings_gitpush"
+		Order:    10
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "git push -q origin main"
 			ExitCode: 0
 			Output: """
@@ -388,64 +330,43 @@ Steps: {
 				remote: Processed 1 references in total        
 
 				"""
-			ComparisonOutput: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
 		}]
 	}
 	mkdir_hello: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "mkdir_hello"
-		Order:           11
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "mkdir_hello"
+		Order:    11
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "mkdir /home/gopher/hello"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "mkdir /home/gopher/hello"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "cd /home/gopher/hello"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "cd /home/gopher/hello"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	gomodinit_hello: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "gomodinit_hello"
-		Order:           12
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "gomodinit_hello"
+		Order:    12
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "go mod init {{{.HELLO}}}"
 			ExitCode: 0
 			Output: """
 				go: creating new go.mod: module {{{.HELLO}}}
 
 				"""
-			ComparisonOutput: """
-				go: creating new go.mod: module {{{.HELLO}}}
-
-				"""
 		}]
 	}
 	goget_greetings: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "goget_greetings"
-		Order:           13
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "goget_greetings"
+		Order:    13
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "go get {{{.GREETINGS}}}"
 			ExitCode: 0
 			Output: """
@@ -453,33 +374,22 @@ Steps: {
 				go: added {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
 
 				"""
-			ComparisonOutput: """
-
-				go: added {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
-				go: downloading {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
-				"""
 		}]
 	}
 	golist_greetings: {
 		StepType:        1
-		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
-		DoNotTrim:       false
 		InformationOnly: true
 		Name:            "golist_greetings"
 		Order:           14
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "go list -m -f {{.Version}} {{{.GREETINGS}}}"
 			ExitCode: 0
 			Output: """
 				v0.0.0-20060102150405-abcedf12345
 
 				"""
-			ComparisonOutput: """
-				v0.0.0-20060102150405-abcedf12345
-
-				"""
+			RandomReplace: "v0.0.0-20060102150405-abcedf12345"
 		}]
 	}
 	create_hellogo: {
@@ -510,45 +420,32 @@ Steps: {
 		Target: "/home/gopher/hello/hello.go"
 	}
 	buildrun_hello: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "buildrun_hello"
-		Order:           16
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "buildrun_hello"
+		Order:    16
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "go build"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "go build"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:  false
 			CmdStr:   "./hello"
 			ExitCode: 0
 			Output: """
 				Hi, Gladys. Welcome!
 
 				"""
-			ComparisonOutput: """
-				Hi, Gladys. Welcome!
-
-				"""
 		}]
 	}
 	cd_greetings: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "cd_greetings"
-		Order:           17
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "cd_greetings"
+		Order:    17
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "cd /home/gopher/greetings"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "cd /home/gopher/greetings"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	update_greetings_go: {
@@ -599,87 +496,65 @@ Steps: {
 		Target: "/home/gopher/greetings/greetings.go"
 	}
 	commit_greetings_error_handling: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "commit_greetings_error_handling"
-		Order:           19
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "commit_greetings_error_handling"
+		Order:    19
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "git add greetings.go"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git add greetings.go"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "git commit -q -m 'Added error handling'"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git commit -q -m 'Added error handling'"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	greetings_check_error_handling_porcelain: {
 		StepType:        1
-		DoNotTrim:       false
 		InformationOnly: true
 		Name:            "greetings_check_error_handling_porcelain"
 		Order:           20
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	greetings_error_commit: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "greetings_error_commit"
-		Order:           21
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "greetings_error_commit"
+		Order:    21
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "greetings_error_commit=$(git rev-parse HEAD)"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "greetings_error_commit=$(git rev-parse HEAD)"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	echo_greetings_error_commit: {
 		StepType:        1
-		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
-		DoNotTrim:       false
 		InformationOnly: true
 		Name:            "echo_greetings_error_commit"
 		Order:           22
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "git rev-parse HEAD"
 			ExitCode: 0
 			Output: """
 				v0.0.0-20060102150405-abcedf12345
 
 				"""
-			ComparisonOutput: """
-				v0.0.0-20060102150405-abcedf12345
-
-				"""
+			RandomReplace: "v0.0.0-20060102150405-abcedf12345"
 		}]
 	}
 	republish_greetings: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "republish_greetings"
-		Order:           23
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "republish_greetings"
+		Order:    23
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "git push -q origin main"
 			ExitCode: 0
 			Output: """
@@ -687,37 +562,25 @@ Steps: {
 				remote: Processed 1 references in total        
 
 				"""
-			ComparisonOutput: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
 		}]
 	}
 	cd_hello: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "cd_hello"
-		Order:           24
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "cd_hello"
+		Order:    24
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "cd /home/gopher/hello"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "cd /home/gopher/hello"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	get_latest_greetings: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "get_latest_greetings"
-		Order:           25
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "get_latest_greetings"
+		Order:    25
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "go get {{{.GREETINGS}}}@$greetings_error_commit"
 			ExitCode: 0
 			Output: """
@@ -725,33 +588,22 @@ Steps: {
 				go: upgraded {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
 
 				"""
-			ComparisonOutput: """
-
-				go: downloading {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
-				go: upgraded {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
-				"""
 		}]
 	}
 	golist_latest_greetings: {
 		StepType:        1
-		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
-		DoNotTrim:       false
 		InformationOnly: true
 		Name:            "golist_latest_greetings"
 		Order:           26
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "go list -m -f {{.Version}} {{{.GREETINGS}}}"
 			ExitCode: 0
 			Output: """
 				v0.0.0-20060102150405-abcedf12345
 
 				"""
-			ComparisonOutput: """
-				v0.0.0-20060102150405-abcedf12345
-
-				"""
+			RandomReplace: "v0.0.0-20060102150405-abcedf12345"
 		}]
 	}
 	update_hello_go_error: {
@@ -813,12 +665,10 @@ Steps: {
 		Target: "/home/gopher/hello/hello.go"
 	}
 	run_hello_error: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "run_hello_error"
-		Order:           28
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "run_hello_error"
+		Order:    28
+		Terminal: "term1"
 		Stmts: [{
 			Negated:  true
 			CmdStr:   "go run hello.go"
@@ -828,26 +678,17 @@ Steps: {
 				exit status 1
 
 				"""
-			ComparisonOutput: """
-				greetings: empty name
-				exit status 1
-
-				"""
 		}]
 	}
 	cd_greetings_random: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "cd_greetings_random"
-		Order:           29
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "cd_greetings_random"
+		Order:    29
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "cd /home/gopher/greetings"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "cd /home/gopher/greetings"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	update_greetings_go_random: {
@@ -922,87 +763,65 @@ Steps: {
 		Target: "/home/gopher/greetings/greetings.go"
 	}
 	greeings_commit_random: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "greeings_commit_random"
-		Order:           31
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "greeings_commit_random"
+		Order:    31
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "git add greetings.go"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git add greetings.go"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "git commit -q -m 'Added random format'"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git commit -q -m 'Added random format'"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	greetings_check_random_porcelain: {
 		StepType:        1
-		DoNotTrim:       false
 		InformationOnly: true
 		Name:            "greetings_check_random_porcelain"
 		Order:           32
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "[ \"$(git status --porcelain)\" == \"\" ] || (git status && false)"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	greetings_random_commit: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "greetings_random_commit"
-		Order:           33
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "greetings_random_commit"
+		Order:    33
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "greetings_random_commit=$(git rev-parse HEAD)"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "greetings_random_commit=$(git rev-parse HEAD)"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	greetings_echo_random_commit: {
 		StepType:        1
-		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
-		DoNotTrim:       false
 		InformationOnly: true
 		Name:            "greetings_echo_random_commit"
 		Order:           34
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "git rev-parse HEAD"
 			ExitCode: 0
 			Output: """
 				v0.0.0-20060102150405-abcedf12345
 
 				"""
-			ComparisonOutput: """
-				v0.0.0-20060102150405-abcedf12345
-
-				"""
+			RandomReplace: "v0.0.0-20060102150405-abcedf12345"
 		}]
 	}
 	greetings_publish_random: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "greetings_publish_random"
-		Order:           35
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "greetings_publish_random"
+		Order:    35
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "git push -q origin main"
 			ExitCode: 0
 			Output: """
@@ -1010,28 +829,18 @@ Steps: {
 				remote: Processed 1 references in total        
 
 				"""
-			ComparisonOutput: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
 		}]
 	}
 	hello_use_random: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "hello_use_random"
-		Order:           36
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "hello_use_random"
+		Order:    36
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "cd /home/gopher/hello"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "cd /home/gopher/hello"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:  false
 			CmdStr:   "go get {{{.GREETINGS}}}@$greetings_random_commit"
 			ExitCode: 0
 			Output: """
@@ -1039,33 +848,22 @@ Steps: {
 				go: upgraded {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
 
 				"""
-			ComparisonOutput: """
-
-				go: downloading {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345
-				go: upgraded {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 => v0.0.0-20060102150405-abcedf12345
-				"""
 		}]
 	}
 	hello_golist_random_greetings: {
 		StepType:        1
-		RandomReplace:   "v0.0.0-20060102150405-abcedf12345"
-		DoNotTrim:       false
 		InformationOnly: true
 		Name:            "hello_golist_random_greetings"
 		Order:           37
 		Terminal:        "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "go list -m -f {{.Version}} {{{.GREETINGS}}}"
 			ExitCode: 0
 			Output: """
 				v0.0.0-20060102150405-abcedf12345
 
 				"""
-			ComparisonOutput: """
-				v0.0.0-20060102150405-abcedf12345
-
-				"""
+			RandomReplace: "v0.0.0-20060102150405-abcedf12345"
 		}]
 	}
 	hello_go_readd_gladys: {
@@ -1142,51 +940,35 @@ Steps: {
 		Target: "/home/gopher/hello/hello.go"
 	}
 	hello_run_random: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "hello_run_random"
-		Order:           39
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "hello_run_random"
+		Order:    39
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "go run hello.go"
 			ExitCode: 0
 			Output: """
-				Hail, Gladys! Well met!
-
-				"""
-			ComparisonOutput: """
 				Hail, Gladys! Well met!
 
 				"""
 		}, {
-			Negated:  false
 			CmdStr:   "go run hello.go"
 			ExitCode: 0
 			Output: """
-				Hail, Gladys! Well met!
-
-				"""
-			ComparisonOutput: """
 				Hail, Gladys! Well met!
 
 				"""
 		}]
 	}
 	greetings_start_multiple: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "greetings_start_multiple"
-		Order:           40
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "greetings_start_multiple"
+		Order:    40
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "cd /home/gopher/greetings"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "cd /home/gopher/greetings"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	greetings_go_multiple_people: {
@@ -1314,57 +1096,36 @@ Steps: {
 		Target: "/home/gopher/greetings/greetings.go"
 	}
 	hello_use_multiple: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "hello_use_multiple"
-		Order:           42
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "hello_use_multiple"
+		Order:    42
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "cd /home/gopher/hello"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "cd /home/gopher/hello"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	hello_replace_greetings: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "hello_replace_greetings"
-		Order:           43
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "hello_replace_greetings"
+		Order:    43
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "go mod edit -replace {{{.GREETINGS}}}=/home/gopher/greetings"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "go mod edit -replace {{{.GREETINGS}}}=/home/gopher/greetings"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	hello_cat_go_mod_replace: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "hello_cat_go_mod_replace"
-		Order:           44
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "hello_cat_go_mod_replace"
+		Order:    44
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "cat go.mod"
 			ExitCode: 0
 			Output: """
-				module {{{.HELLO}}}
-
-				go 1.19
-
-				require {{{.GREETINGS}}} v0.0.0-20060102150405-abcedf12345 // indirect
-
-				replace {{{.GREETINGS}}} => /home/gopher/greetings
-
-				"""
-			ComparisonOutput: """
 				module {{{.HELLO}}}
 
 				go 1.19
@@ -1450,39 +1211,28 @@ Steps: {
 		Target: "/home/gopher/hello/hello.go"
 	}
 	hello_run_multiple: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "hello_run_multiple"
-		Order:           46
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "hello_run_multiple"
+		Order:    46
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "go run hello.go"
 			ExitCode: 0
 			Output: """
 				map[Darrin:Hail, Darrin! Well met! Gladys:Hail, Gladys! Well met! Samantha:Hi, Samantha. Welcome!]
 
 				"""
-			ComparisonOutput: """
-				map[Darrin:Hail, Darrin! Well met! Gladys:Hail, Gladys! Well met! Samantha:Hi, Samantha. Welcome!]
-
-				"""
 		}]
 	}
 	greetings_return_to_write_test: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "greetings_return_to_write_test"
-		Order:           47
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "greetings_return_to_write_test"
+		Order:    47
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "cd /home/gopher/greetings"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "cd /home/gopher/greetings"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	greetings_create_greetings_test_go: {
@@ -1526,28 +1276,19 @@ Steps: {
 		Target: "/home/gopher/greetings/greetings_test.go"
 	}
 	greetings_run_tests: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "greetings_run_tests"
-		Order:           49
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "greetings_run_tests"
+		Order:    49
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "go test"
 			ExitCode: 0
 			Output: """
 				PASS
-				ok  \t{{{.GREETINGS}}}\t0.001s
-
-				"""
-			ComparisonOutput: """
-				PASS
-				ok  \t{{{.GREETINGS}}}\tN.NNs
+				ok  \t{{{.GREETINGS}}}\t0.002s
 
 				"""
 		}, {
-			Negated:  false
 			CmdStr:   "go test -v"
 			ExitCode: 0
 			Output: """
@@ -1557,15 +1298,6 @@ Steps: {
 				--- PASS: TestHelloEmpty (0.00s)
 				PASS
 				ok  \t{{{.GREETINGS}}}\t0.001s
-
-				"""
-			ComparisonOutput: """
-				=== RUN   TestHelloName
-				--- PASS: TestHelloName (N.NNs)
-				=== RUN   TestHelloEmpty
-				--- PASS: TestHelloEmpty (N.NNs)
-				PASS
-				ok  \t{{{.GREETINGS}}}\tN.NNs
 
 				"""
 		}]
@@ -1715,12 +1447,10 @@ Steps: {
 		Target: "/home/gopher/greetings/greetings.go"
 	}
 	greetings_run_tests_fail: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "greetings_run_tests_fail"
-		Order:           51
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "greetings_run_tests_fail"
+		Order:    51
+		Terminal: "term1"
 		Stmts: [{
 			Negated:  true
 			CmdStr:   "go test"
@@ -1731,14 +1461,6 @@ Steps: {
 				FAIL
 				exit status 1
 				FAIL\t{{{.GREETINGS}}}\t0.001s
-
-				"""
-			ComparisonOutput: """
-				--- FAIL: TestHelloName (N.NNs)
-				    greetings_test.go:15: Hello("Gladys") = "Hail, %v! Well met!", <nil>, want match for `\\bGladys\\b`, <nil>
-				FAIL
-				exit status 1
-				FAIL\t{{{.GREETINGS}}}\tN.NNs
 
 				"""
 		}]
@@ -1888,121 +1610,85 @@ Steps: {
 		Target: "/home/gopher/greetings/greetings.go"
 	}
 	greetings_check_tests_pass: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "greetings_check_tests_pass"
-		Order:           53
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "greetings_check_tests_pass"
+		Order:    53
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "go test"
 			ExitCode: 0
 			Output: """
 				PASS
-				ok  \t{{{.GREETINGS}}}\t0.001s
-
-				"""
-			ComparisonOutput: """
-				PASS
-				ok  \t{{{.GREETINGS}}}\tN.NNs
+				ok  \t{{{.GREETINGS}}}\t0.002s
 
 				"""
 		}]
 	}
 	hello_cd_for_install: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "hello_cd_for_install"
-		Order:           54
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "hello_cd_for_install"
+		Order:    54
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "cd /home/gopher/hello"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "cd /home/gopher/hello"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	hello_go_list_target: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "hello_go_list_target"
-		Order:           55
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "hello_go_list_target"
+		Order:    55
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "go list -f '{{.Target}}'"
 			ExitCode: 0
 			Output: """
 				/home/gopher/go/bin/hello
 
 				"""
-			ComparisonOutput: """
-				/home/gopher/go/bin/hello
-
-				"""
 		}]
 	}
 	hello_add_gopath_bin_path: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "hello_add_gopath_bin_path"
-		Order:           56
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "hello_add_gopath_bin_path"
+		Order:    56
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "goinstalldir=\"$(dirname \"$(go list -f '{{.Target}}')\")\""
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "goinstalldir=\"$(dirname \"$(go list -f '{{.Target}}')\")\""
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "export PATH=\"$goinstalldir:$PATH\""
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "export PATH=\"$goinstalldir:$PATH\""
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	hello_go_install: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "hello_go_install"
-		Order:           57
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "hello_go_install"
+		Order:    57
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "go install"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "go install"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	hello_run_by_name: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "hello_run_by_name"
-		Order:           58
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "hello_run_by_name"
+		Order:    58
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "hello"
 			ExitCode: 0
 			Output: """
 				map[Darrin:Hail, Darrin! Well met! Gladys:Hail, Gladys! Well met! Samantha:Hi, Samantha. Welcome!]
 
 				"""
-			ComparisonOutput: """
-				map[Darrin:Hail, Darrin! Well met! Gladys:Hail, Gladys! Well met! Samantha:Hi, Samantha. Welcome!]
-
-				"""
 		}]
 	}
 }
-Hash: "5ac09ef7785b71d65d4b661223ece0235ff61e0691cbd3e70a7872b1ef367a74"
+Hash: "40fe1df5454c68f78e248200c18f7acc458eb3ed58bef36a817520456ea81b63"
 Delims: ["{{{", "}}}"]

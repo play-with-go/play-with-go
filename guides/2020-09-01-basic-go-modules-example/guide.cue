@@ -32,7 +32,7 @@ Terminals: term1: preguide.#Terminal & {
 }
 
 Steps: create_module: preguide.#Command & {
-	Source: """
+	Stmts: """
 		mkdir \(Defs.mod1_dir)
 		cd \(Defs.mod1_dir)
 		\(Defs.git.init)
@@ -63,7 +63,7 @@ Steps: create_main: preguide.#Upload & {
 }
 
 Steps: commit_and_push: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.add) go.mod README.md main.go
 		\(Defs.git.commit) -m "Initial commit"
 		\(Defs.git.push) origin main
@@ -72,13 +72,13 @@ Steps: commit_and_push: preguide.#Command & {
 
 Steps: check_porcelain: preguide.#Command & {
 	InformationOnly: true
-	Source: """
+	Stmts: """
 		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 
 Steps: use_module: preguide.#Command & {
-	Source: """
+	Stmts: """
 		mkdir \(Defs.mod2_dir)
 		cd \(Defs.mod2_dir)
 		\(Defs.cmdgo.modinit) mod.com
@@ -89,8 +89,10 @@ Steps: use_module: preguide.#Command & {
 
 Steps: mod1_pseudoversion: preguide.#Command & {
 	InformationOnly: true
-	RandomReplace:   "v0.0.0-\(_#StablePsuedoversionSuffix)"
-	Source:          """
+	Stmts: [{
+		Cmd:           """
 		\(Defs.cmdgo.list) -m -f {{.Version}} \(Defs.mod1_path)
 		"""
+		RandomReplace: "v0.0.0-\(_#StablePsuedoversionSuffix)"
+	}]
 }

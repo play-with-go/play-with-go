@@ -45,13 +45,13 @@ Terminals: term1: preguide.#Terminal & {
 }
 
 Steps: goversion: preguide.#Command & {
-	Source: """
-		go version
-		"""
+	Stmts: [{
+		Cmd: "go version"
+	}]
 }
 
 Steps: branch_init: preguide.#Command & {
-	Source: """
+	Stmts: """
 		mkdir \(Defs.branch_dir)
 		cd \(Defs.branch_dir)
 		\(Defs.cmdgo.modinit) \(Defs.branch_mod)
@@ -73,7 +73,7 @@ Steps: branch_go_initial: preguide.#Upload & {
 }
 
 Steps: branch_initial_commit: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.add) \(Defs.branch_go) go.mod
 		\(Defs.git.commit) -m 'Initial commit of \(Defs.branch) module'
 		\(Defs.git.tag) v1.0.0
@@ -83,13 +83,13 @@ Steps: branch_initial_commit: preguide.#Command & {
 
 Steps: branch_check_initial_porcelain: preguide.#Command & {
 	InformationOnly: true
-	Source: """
+	Stmts: """
 		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 
 Steps: branch_create_v1_branch: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.branch) main.v1
 		\(Defs.git.push) origin main.v1
 		"""
@@ -121,7 +121,7 @@ Steps: branch_go_v2: preguide.#Upload & {
 }
 
 Steps: branch_v2_commit: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.add) \(Defs.branch_go) go.mod
 		\(Defs.git.commit) -m 'v2 commit of \(Defs.branch) module'
 		\(Defs.git.tag) v2.0.0
@@ -131,13 +131,13 @@ Steps: branch_v2_commit: preguide.#Command & {
 
 Steps: branch_check_v2_porcelain: preguide.#Command & {
 	InformationOnly: true
-	Source: """
+	Stmts: """
 		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 
 Steps: subdir_init: preguide.#Command & {
-	Source: """
+	Stmts: """
 		mkdir \(Defs.subdir_dir)
 		cd \(Defs.subdir_dir)
 		\(Defs.cmdgo.modinit) \(Defs.subdir_mod)
@@ -159,7 +159,7 @@ Steps: subdir_go_initial: preguide.#Upload & {
 }
 
 Steps: subdir_initial_commit: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.add) \(Defs.subdir_go) go.mod
 		\(Defs.git.commit) -m 'Initial commit of \(Defs.subdir) module'
 		\(Defs.git.tag) v1.0.0
@@ -169,13 +169,13 @@ Steps: subdir_initial_commit: preguide.#Command & {
 
 Steps: subdir_check_initial_porcelain: preguide.#Command & {
 	InformationOnly: true
-	Source: """
+	Stmts: """
 		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 
 Steps: subdir_create_v2_subdir: preguide.#Command & {
-	Source: """
+	Stmts: """
 		mkdir v2
 		cp go.mod \(Defs.subdir_go) v2
 		"""
@@ -207,7 +207,7 @@ Steps: subdir_go_v2: preguide.#Upload & {
 }
 
 Steps: subdir_v2_commit: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.add) v2
 		\(Defs.git.commit) -m 'v2 commit of \(Defs.subdir) module'
 		\(Defs.git.tag) v2.0.0
@@ -217,13 +217,13 @@ Steps: subdir_v2_commit: preguide.#Command & {
 
 Steps: subdir_check_v2_porcelain: preguide.#Command & {
 	InformationOnly: true
-	Source: """
+	Stmts: """
 		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 
 Steps: gopher_init: preguide.#Command & {
-	Source: """
+	Stmts: """
 		mkdir \(Defs.gopher_dir)
 		cd \(Defs.gopher_dir)
 		\(Defs.cmdgo.modinit) \(Defs.gopher)
@@ -257,7 +257,7 @@ Steps: gopher_go_initial: preguide.#Upload & {
 }
 
 Steps: gopher_get_deps: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.get) \(Defs.branch_mod)@v1.0.0
 		\(Defs.cmdgo.get) \(Defs.branch_mod)/v2@v2.0.0
 		\(Defs.cmdgo.get) \(Defs.subdir_mod)@v1.0.0
@@ -266,7 +266,7 @@ Steps: gopher_get_deps: preguide.#Command & {
 }
 
 Steps: gopher_run: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.run) .
 		"""
 }

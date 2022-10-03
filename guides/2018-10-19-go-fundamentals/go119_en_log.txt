@@ -385,7 +385,7 @@ func TestHelloEmpty(t *testing.T) {
 EOD
 $ go test
 PASS
-ok  	{{{.GREETINGS}}}	0.001s
+ok  	{{{.GREETINGS}}}	0.002s
 $ go test -v
 === RUN   TestHelloName
 --- PASS: TestHelloName (0.00s)
@@ -534,7 +534,7 @@ func randomFormat() string {
 EOD
 $ go test
 PASS
-ok  	{{{.GREETINGS}}}	0.001s
+ok  	{{{.GREETINGS}}}	0.002s
 $ cd /home/gopher/hello
 $ go list -f '{{.Target}}'
 /home/gopher/go/bin/hello

@@ -16,8 +16,8 @@ Presteps: [{
 		  "Path": "github.com/play-with-go/gitea/cmd/gitea",
 		  "Main": {
 		    "Path": "github.com/play-with-go/gitea",
-		    "Version": "v0.0.0-20220916095345-fddafa3403c2",
-		    "Sum": "h1:hNi/ACPKXTIEOV6hn0HfelzIqwkaLWQXKSElGCi8xKE=",
+		    "Version": "v0.0.0-20221003164140-c14d636df530",
+		    "Sum": "h1:RDNvyzwtVgtV0xOEaQL+CziEPkar/gNPyQUaWdnYjGk=",
 		    "Replace": null
 		  },
 		  "Deps": [
@@ -77,8 +77,8 @@ Presteps: [{
 		    },
 		    {
 		      "Path": "github.com/play-with-go/preguide",
-		      "Version": "v0.0.2-0.20220926082147-a0a4ec5fe714",
-		      "Sum": "h1:lNhg1ct5kMU7pPBgwQBAH9glAsbtIHUXqJElKgYLg3E=",
+		      "Version": "v0.0.2-0.20221003193111-f84a6637f25f",
+		      "Sum": "h1:ijMtjVmmzO13W4+wfOng8tkYFBJN+VRuw/znwVm7x68=",
 		      "Replace": null
 		    },
 		    {
@@ -138,81 +138,55 @@ Scenarios: [{
 }]
 Networks: ["playwithgo_pwg"]
 Env: []
-FilenameComment: false
 Steps: {
 	whoami: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "whoami"
-		Order:           0
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "whoami"
+		Order:    0
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "whoami"
 			ExitCode: 0
 			Output: """
 				gopher
 
 				"""
-			ComparisonOutput: """
-				gopher
-
-				"""
 		}, {
-			Negated:  false
 			CmdStr:   "pwd"
 			ExitCode: 0
 			Output: """
 				/home/gopher
 
 				"""
-			ComparisonOutput: """
-				/home/gopher
-
-				"""
 		}]
 	}
 	echo_hello: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "echo_hello"
-		Order:           1
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "echo_hello"
+		Order:    1
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "echo '*** !!! CLICK ME !!! ***'"
 			ExitCode: 0
 			Output: """
 				*** !!! CLICK ME !!! ***
 
 				"""
-			ComparisonOutput: """
-				*** !!! CLICK ME !!! ***
-
-				"""
 		}]
 	}
 	multiple_commands: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "multiple_commands"
-		Order:           2
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "multiple_commands"
+		Order:    2
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "mkdir hello"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "mkdir hello"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "cd hello"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "cd hello"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	upload_readme: {
@@ -258,14 +232,11 @@ Steps: {
 		Target: "/home/gopher/hello/README.md"
 	}
 	cat_readme: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "cat_readme"
-		Order:           5
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "cat_readme"
+		Order:    5
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "cat README.md"
 			ExitCode: 0
 			Output: """
@@ -277,68 +248,44 @@ Steps: {
 
 
 				"""
-			ComparisonOutput: """
-				This is README.md.
-
-				Hello, gopher!
-
-				We made a change!
-
-
-				"""
 		}]
 	}
 	gitinit: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "gitinit"
-		Order:           6
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "gitinit"
+		Order:    6
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "git init -q"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git init -q"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "git remote add origin https://{{{.REPO1}}}.git"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git remote add origin https://{{{.REPO1}}}.git"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	gitadd: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "gitadd"
-		Order:           7
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "gitadd"
+		Order:    7
+		Terminal: "term1"
 		Stmts: [{
-			Negated:          false
-			CmdStr:           "git add README.md"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git add README.md"
+			ExitCode: 0
+			Output:   ""
 		}, {
-			Negated:          false
-			CmdStr:           "git commit -q -m 'Initial commit'"
-			ExitCode:         0
-			Output:           ""
-			ComparisonOutput: ""
+			CmdStr:   "git commit -q -m 'Initial commit'"
+			ExitCode: 0
+			Output:   ""
 		}]
 	}
 	gitpush: {
-		StepType:        1
-		DoNotTrim:       false
-		InformationOnly: false
-		Name:            "gitpush"
-		Order:           8
-		Terminal:        "term1"
+		StepType: 1
+		Name:     "gitpush"
+		Order:    8
+		Terminal: "term1"
 		Stmts: [{
-			Negated:  false
 			CmdStr:   "git push -q origin main"
 			ExitCode: 0
 			Output: """
@@ -346,13 +293,8 @@ Steps: {
 				remote: Processed 1 references in total        
 
 				"""
-			ComparisonOutput: """
-				remote: . Processing 1 references        
-				remote: Processed 1 references in total        
-
-				"""
 		}]
 	}
 }
-Hash: "8a1e55d26eee36eb085f9157fae3fbf6ac7649fda888241efa606a8c977c0310"
+Hash: "078ba4df03709cf71bd7d95713769f532e46d84ef0b08477a5578c88bea4bea3"
 Delims: ["{{{", "}}}"]

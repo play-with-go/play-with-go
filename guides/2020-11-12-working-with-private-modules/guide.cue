@@ -47,13 +47,13 @@ Terminals: term1: preguide.#Terminal & {
 }
 
 Steps: goversion: preguide.#Command & {
-	Source: """
-		go version
-		"""
+	Stmts: [{
+		Cmd: "go version"
+	}]
 }
 
 Steps: public_init: preguide.#Command & {
-	Source: """
+	Stmts: """
 		mkdir \(Defs.public_dir)
 		cd \(Defs.public_dir)
 		\(Defs.cmdgo.modinit) \(Defs.public_mod)
@@ -75,7 +75,7 @@ Steps: public_go_initial: preguide.#Upload & {
 }
 
 Steps: public_initial_commit: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.add) \(Defs.public_go) go.mod
 		\(Defs.git.commit) -m 'Initial commit of \(Defs.public) module'
 		\(Defs.git.push) origin main
@@ -84,13 +84,13 @@ Steps: public_initial_commit: preguide.#Command & {
 
 Steps: public_check_initial_porcelain: preguide.#Command & {
 	InformationOnly: true
-	Source: """
+	Stmts: """
 		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 
 Steps: private_init: preguide.#Command & {
-	Source: """
+	Stmts: """
 		mkdir \(Defs.private_dir)
 		cd \(Defs.private_dir)
 		\(Defs.cmdgo.modinit) \(Defs.private_mod)
@@ -112,7 +112,7 @@ Steps: private_go_initial: preguide.#Upload & {
 }
 
 Steps: private_initial_commit: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.git.add) \(Defs.private_go) go.mod
 		\(Defs.git.commit) -m 'Initial commit of \(Defs.private) module'
 		\(Defs.git.push) origin main
@@ -121,13 +121,13 @@ Steps: private_initial_commit: preguide.#Command & {
 
 Steps: private_check_initial_porcelain: preguide.#Command & {
 	InformationOnly: true
-	Source: """
+	Stmts: """
 		[ "$(git status --porcelain)" == "" ] || (git status && false)
 		"""
 }
 
 Steps: gopher_init: preguide.#Command & {
-	Source: """
+	Stmts: """
 		mkdir \(Defs.gopher_dir)
 		cd \(Defs.gopher_dir)
 		\(Defs.cmdgo.modinit) \(Defs.gopher)
@@ -155,91 +155,97 @@ Steps: gopher_go_initial: preguide.#Upload & {
 }
 
 Steps: go_env_check_goproxy: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.env) GOPROXY
 		"""
 }
 
 Steps: go_env_check_gosumdb: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.env) GOSUMDB
 		"""
 }
 
 Steps: go_env_check: preguide.#Command & {
 	InformationOnly: true
-	Source:          """
+	Stmts:           """
 		\(Defs.go_help_env)
 		"""
 }
 
 Steps: goproxy_proxy_only: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.env) -w GOPROXY=https://proxy.golang.org
 		"""
 }
 
 Steps: gopher_get_public_initial: preguide.#Command & {
-	Source: """
+	Stmts: """
 		 \(Defs.cmdgo.get) \(Defs.public_mod)
 		"""
 }
 
 Steps: public_pseudo_version: preguide.#Command & {
 	InformationOnly: true
-	RandomReplace:   "v0.0.0-\(_#StablePsuedoversionSuffix)"
-	Source:          """
+	Stmts: [{
+		Cmd:           """
 		\(Defs.cmdgo.list) -m -f {{.Version}} \(Defs.public_mod)
 		"""
+		RandomReplace: "v0.0.0-\(_#StablePsuedoversionSuffix)"
+	}]
 }
 
 Steps: gopher_get_private_initial: preguide.#Command & {
-	Source: """
-		! \(Defs.cmdgo.get) \(Defs.private_mod)
-		"""
+	Stmts: [{
+		Cmd:         "! \(Defs.cmdgo.get) \(Defs.private_mod)"
+		Comparators: _#goGetComparators
+	}]
 }
 
 Steps: goproxy_proxy_default: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.env) -w GOPROXY=
 		"""
 }
 
 Steps: gopher_get_private_direct: preguide.#Command & {
-	Source: """
-		! \(Defs.cmdgo.get) \(Defs.private_mod)
-		"""
+	Stmts: [{
+		Cmd:         "! \(Defs.cmdgo.get) \(Defs.private_mod)"
+		Comparators: _#goGetComparators
+	}]
 }
 
 Steps: go_help_modprivate: preguide.#Command & {
 	InformationOnly: true
-	Source:          """
+	Stmts:           """
 		\(Defs.go_help_modprivate)
 		"""
 }
 
 Steps: goprivate_set_private: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.env) -w GOPRIVATE=\(Defs.private_mod)
 		"""
 }
 
 Steps: gopher_get_private_goprivate: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.get) \(Defs.private_mod)
 		"""
 }
 
 Steps: private_pseudo_version: preguide.#Command & {
 	InformationOnly: true
-	RandomReplace:   "v0.0.0-\(_#StablePsuedoversionSuffix)"
-	Source:          """
+	Stmts: [{
+		Cmd:           """
 		\(Defs.cmdgo.list) -m -f {{.Version}} \(Defs.private_mod)
 		"""
+		RandomReplace: "v0.0.0-\(_#StablePsuedoversionSuffix)"
+	}]
 }
 
 Steps: gopher_run: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.run) .
 		"""
 }

@@ -38,13 +38,13 @@ Terminals: term1: preguide.#Terminal & {
 }
 
 Steps: goversion: preguide.#Command & {
-	Source: """
-		go version
-		"""
+	Stmts: [{
+		Cmd: "go version"
+	}]
 }
 
 Steps: painkiller_go_mod_init: preguide.#Command & {
-	Source: """
+	Stmts: """
 		mkdir \(Defs.painkiller)
 		cd \(Defs.painkiller)
 		\(Defs.cmdgo.modinit) \(Defs.painkiller)
@@ -73,7 +73,7 @@ Steps: basic_app: preguide.#Upload & {
 }
 
 Steps: painkiller_run_basic: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.run) .
 		"""
 }
@@ -112,7 +112,7 @@ Steps: manual_string: preguide.#Upload & {
 }
 
 Steps: painkiller_run_manual_string: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.run) .
 		"""
 }
@@ -154,49 +154,49 @@ Steps: tools_go_initial: preguide.#Upload & {
 }
 
 Steps: stringer_go_get: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.get) \(Defs.stringer_pkg)@\(_#golangToolsLatest)
 		"""
 }
 
 Steps: painkiller_cat_go_mod: preguide.#Command & {
-	Source: """
+	Stmts: """
 		cat go.mod
 		"""
 }
 
 Steps: painkiller_go_mod_tidy: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.modtidy)
 		"""
 }
 
 Steps: stringer_help: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.run) \(Defs.stringer_pkg) -help
 		"""
 }
 
 Steps: stringer_run_by_hand: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.run) \(Defs.stringer_pkg) \(Defs.stringer_type_flag) Pill
 		"""
 }
 
 Steps: stringer_ls_output: preguide.#Command & {
-	Source: """
+	Stmts: """
 		ls
 		"""
 }
 
 Steps: stringer_cat_generated: preguide.#Command & {
-	Source: """
+	Stmts: """
 		cat pill_string.go
 		"""
 }
 
 Steps: painkiller_check_stringer: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.run) .
 		"""
 }
@@ -226,7 +226,7 @@ Steps: painkiller_add_gogenerate_directive: preguide.#Upload & {
 }
 
 Steps: painkiller_gogenerate: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.generate) .
 		"""
 }
@@ -258,13 +258,13 @@ Steps: painkiller_add_fever_advice: preguide.#Upload & {
 }
 
 Steps: painkiller_gogenerate_again: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.generate) .
 		"""
 }
 
 Steps: painkiller_check_fever_advice: preguide.#Command & {
-	Source: """
+	Stmts: """
 		\(Defs.cmdgo.run) .
 		"""
 }
