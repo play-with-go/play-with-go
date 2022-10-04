@@ -151,7 +151,10 @@ Steps: {
 		Stmts: [{
 			CmdStr:   "go version"
 			ExitCode: 0
-			Output:   "go version go1.19.1 linux/amd64"
+			Output: """
+				go version go1.19.1 linux/amd64
+
+				"""
 		}]
 	}
 	branch_init: {
@@ -634,5 +637,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "3f05fa31786a39bbda64558b6fdd6069144925c39f6994d2839481793b328ac7"
+Hash: "b95bad945dd62885ac3329f46de99c150b7afdfc83ff05be98c322ddbfbefa57"
 Delims: ["{{{", "}}}"]

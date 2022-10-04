@@ -147,7 +147,10 @@ Steps: {
 		Stmts: [{
 			CmdStr:   "go version"
 			ExitCode: 0
-			Output:   "go version go1.19.1 linux/amd64"
+			Output: """
+				go version go1.19.1 linux/amd64
+
+				"""
 		}]
 	}
 	proverb_create: {
@@ -1072,5 +1075,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "e0156387dca9f4e908778aa3cd2f560cad49a3a8a076d6a62ffcea58e2f73268"
+Hash: "d7b4bb98c1a487db529a3def4f4cde56cfceb482cda16bbcefd1371a144fc72a"
 Delims: ["{{{", "}}}"]

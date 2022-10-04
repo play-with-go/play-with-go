@@ -40,7 +40,10 @@ Steps: {
 		Stmts: [{
 			CmdStr:   "go version"
 			ExitCode: 0
-			Output:   "go version go1.19.1 linux/amd64"
+			Output: """
+				go version go1.19.1 linux/amd64
+
+				"""
 		}, {
 			CmdStr:   "cue version"
 			ExitCode: 0
@@ -1263,5 +1266,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "061d934d15a6d4303f898cac6fb28ce97465695997c97ec32268f61a4b068aa9"
+Hash: "5ab76f8ce3183aea299d772ebef08c1d44c92a71752fcbd21d6b8b68dc363691"
 Delims: ["{{{", "}}}"]

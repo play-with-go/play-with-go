@@ -147,7 +147,10 @@ Steps: {
 		Stmts: [{
 			CmdStr:   "go version"
 			ExitCode: 0
-			Output:   "go version go1.19.1 linux/amd64"
+			Output: """
+				go version go1.19.1 linux/amd64
+
+				"""
 		}]
 	}
 	painkiller_go_mod_init: {
@@ -654,5 +657,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "90c0f116a15b1df7f7af6b38eb3484d777595b273f26ff7e9efb9f0e8010e61e"
+Hash: "8977183b2cced1416d98c478153b4db07029403c8977f4ccef9712fa465526f6"
 Delims: ["{{{", "}}}"]

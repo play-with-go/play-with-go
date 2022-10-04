@@ -24,7 +24,10 @@ Steps: {
 		Stmts: [{
 			CmdStr:   "go version"
 			ExitCode: 0
-			Output:   "go version go1.19.1 linux/amd64"
+			Output: """
+				go version go1.19.1 linux/amd64
+
+				"""
 		}]
 	}
 	staticcheck_install: {
@@ -816,5 +819,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "8200d1ab1c995b0b3438c73a25d9c9cf67a2776285f710d502f43f987efc80db"
+Hash: "385fd8d591067972131ec9241e14958a582d20514d5e3e6bb27b36e036fe40b2"
 Delims: ["{{{", "}}}"]

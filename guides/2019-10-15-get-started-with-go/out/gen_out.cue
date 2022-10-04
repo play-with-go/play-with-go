@@ -24,7 +24,10 @@ Steps: {
 		Stmts: [{
 			CmdStr:   "go version"
 			ExitCode: 0
-			Output:   "go version go1.19.1 linux/amd64"
+			Output: """
+				go version go1.19.1 linux/amd64
+
+				"""
 		}]
 	}
 	pwd_home: {
@@ -174,5 +177,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "842d73bc83bb7772d2550172b759aa5a927bb95014b906a59d8b3bf138997e48"
+Hash: "22d44d4092b52269a9225228ea2e3a33bbb0b27545b941917b905f36535c5c4c"
 Delims: ["{{{", "}}}"]
