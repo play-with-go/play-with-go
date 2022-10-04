@@ -13,16 +13,6 @@ $ mkdir demo
 $ cd demo
 $ go mod init example.com/demo
 go: creating new go.mod: module example.com/demo
-$ cat <<EOD > /home/gopher/demo/go.mod
-module example.com/demo
-
-go 1.19
-
-require (
-		  github.com/kr/pretty v0.3.0
-)
-
-EOD
 $ cat <<EOD > /home/gopher/demo/main.go
 package main
 
@@ -69,7 +59,6 @@ func main() {
 }
 
 EOD
-$ go mod tidy
 $ mkdir -p /home/gopher/demo/home/.config/demo
 $ cat <<EOD > /home/gopher/demo/home/.config/demo/config.json
 {

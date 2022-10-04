@@ -8,11 +8,7 @@ title:  "Creating a shell script"
 
 {{{ step "startexample" }}}
 
-{{{ step "create_gomod" }}}
-
 {{{ step "create_initialmain" }}}
-
-{{{ step "initialgomodtidy" }}}
 
 {{{ step "create_config_dir" }}}
 
