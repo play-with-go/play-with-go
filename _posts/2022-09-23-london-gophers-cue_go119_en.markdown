@@ -22,15 +22,6 @@ $ go mod init example.com/demo
 go: creating new go.mod: module example.com/demo
 </code></pre>
 
-<pre data-upload-path="L2hvbWUvZ29waGVyL2RlbW8=" data-upload-src="Z28ubW9k:bW9kdWxlIGV4YW1wbGUuY29tL2RlbW8KCmdvIDEuMTkKCnJlcXVpcmUgKAoJCSAgZ2l0aHViLmNvbS9rci9wcmV0dHkgdjAuMy4wCikK" data-upload-term=".term1"><code class="language-mod">module example.com/demo
-
-go 1.19
-
-require (
-		  github.com/kr/pretty v0.3.0
-)
-</code></pre>
-
 <pre data-upload-path="L2hvbWUvZ29waGVyL2RlbW8=" data-upload-src="bWFpbi5nbw==:cGFja2FnZSBtYWluCgppbXBvcnQgKAoJImVuY29kaW5nL2pzb24iCgkiZm10IgoJImxvZyIKCSJvcyIKCSJwYXRoL2ZpbGVwYXRoIgopCgp0eXBlIENvbmZpZyBzdHJ1Y3QgewoJUHJvZ3JhbXMgbWFwW3N0cmluZ11Qcm9ncmFtIGBqc29uOiJwcm9ncmFtcyJgCn0KCnR5cGUgUHJvZ3JhbSBzdHJ1Y3QgewoJUGF0aCAgICAgICAgIHN0cmluZyAgIGBqc29uOiJwYXRoImAKCUFyZ3MgICAgICAgICBbXXN0cmluZyBganNvbjoiYXJncyJgCglEZXNjcmlwdGlvbiAgc3RyaW5nICAgYGpzb246ImRlc2NyaXB0aW9uImAKCVJldHJpZXMgICAgICBpbnQgICAgICBganNvbjoicmV0cmllcyJgCglJZ25vcmVFcnJvcnMgYm9vbCAgICAgYGpzb246Imlnbm9yZUVycm9ycyJgCglEaXJlY3RvcnkgICAgc3RyaW5nICAgYGpzb246ImRpcmVjdG9yeSJgCn0KCmZ1bmMgbWFpbigpIHsKCS8vIFVzZSBhIGZha2UgIiRIT01FIiBmb3IgdGhlIHB1cnBvc2VzIG9mIHRoaXMgZGVtbwoJY2ZwYXRoIDo9IGZpbGVwYXRoLkpvaW4oImhvbWUiLCAiLmNvbmZpZyIsICJkZW1vIiwgImNvbmZpZy5qc29uIikKCgljZiwgZXJyIDo9IG9zLlJlYWRGaWxlKGNmcGF0aCkKCWlmIGVyciAhPSBuaWwgewoJCWxvZy5GYXRhbChlcnIpCgl9CgoJdmFyIGNvbmYgQ29uZmlnCglpZiBlcnIgOj0ganNvbi5Vbm1hcnNoYWwoY2YsICZjb25mKTsgZXJyICE9IG5pbCB7CgkJbG9nLkZhdGFsKGVycikKCX0KCglvdXQsIGVyciA6PSBqc29uLk1hcnNoYWxJbmRlbnQoY29uZiwgIiIsICIgICIpCglpZiBlcnIgIT0gbmlsIHsKCQlsb2cuRmF0YWwoZXJyKQoJfQoJZm10LlByaW50ZigiJXNcbiIsIG91dCkKfQo=" data-upload-term=".term1"><code class="language-go">package main
 
 import (
@@ -74,9 +65,6 @@ func main() &#123;
 	&#125;
 	fmt.Printf(&#34;%s\n&#34;, out)
 &#125;
-</code></pre>
-
-<pre data-command-src="Z28gbW9kIHRpZHkK"><code class="language-.term1">$ go mod tidy
 </code></pre>
 
 <pre data-command-src="bWtkaXIgLXAgL2hvbWUvZ29waGVyL2RlbW8vaG9tZS8uY29uZmlnL2RlbW8K"><code class="language-.term1">$ mkdir -p /home/gopher/demo/home/.config/demo

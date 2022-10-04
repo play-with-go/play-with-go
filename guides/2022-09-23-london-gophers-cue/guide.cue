@@ -47,20 +47,6 @@ Steps: startexample: preguide.#Command & {
 		"""
 }
 
-Steps: create_gomod: preguide.#Upload & {
-	Target: "\(Defs.demodir)/go.mod"
-	Source: """
-		module example.com/demo
-
-		go 1.19
-
-		require (
-				  github.com/kr/pretty v0.3.0
-		)
-
-		"""
-}
-
 Steps: create_initialmain: preguide.#Upload & {
 	Target: "\(Defs.demodir)/main.go"
 	Source: #"""
@@ -109,12 +95,6 @@ Steps: create_initialmain: preguide.#Upload & {
 		}
 
 		"""#
-}
-
-Steps: initialgomodtidy: preguide.#Command & {
-	Stmts: """
-		go mod tidy
-		"""
 }
 
 Steps: create_config_dir: preguide.#Command & {

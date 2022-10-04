@@ -80,31 +80,10 @@ Steps: {
 				"""
 		}]
 	}
-	create_gomod: {
-		StepType: 2
-		Name:     "create_gomod"
-		Order:    3
-		Terminal: "term1"
-		Language: "mod"
-		Renderer: {
-			RendererType: 1
-		}
-		Source: """
-			module example.com/demo
-
-			go 1.19
-
-			require (
-			\t\t  github.com/kr/pretty v0.3.0
-			)
-
-			"""
-		Target: "/home/gopher/demo/go.mod"
-	}
 	create_initialmain: {
 		StepType: 2
 		Name:     "create_initialmain"
-		Order:    4
+		Order:    3
 		Terminal: "term1"
 		Language: "go"
 		Renderer: {
@@ -158,21 +137,10 @@ Steps: {
 			"""
 		Target: "/home/gopher/demo/main.go"
 	}
-	initialgomodtidy: {
-		StepType: 1
-		Name:     "initialgomodtidy"
-		Order:    5
-		Terminal: "term1"
-		Stmts: [{
-			CmdStr:   "go mod tidy"
-			ExitCode: 0
-			Output:   ""
-		}]
-	}
 	create_config_dir: {
 		StepType: 1
 		Name:     "create_config_dir"
-		Order:    6
+		Order:    4
 		Terminal: "term1"
 		Stmts: [{
 			CmdStr:   "mkdir -p /home/gopher/demo/home/.config/demo"
@@ -183,7 +151,7 @@ Steps: {
 	initial_config_file: {
 		StepType: 2
 		Name:     "initial_config_file"
-		Order:    7
+		Order:    5
 		Terminal: "term1"
 		Language: "json"
 		Renderer: {
@@ -224,7 +192,7 @@ Steps: {
 	run_v_json: {
 		StepType: 1
 		Name:     "run_v_json"
-		Order:    8
+		Order:    6
 		Terminal: "term1"
 		Stmts: [{
 			CmdStr:   "cat go.mod"
@@ -280,7 +248,7 @@ Steps: {
 	import_json_cue: {
 		StepType: 1
 		Name:     "import_json_cue"
-		Order:    9
+		Order:    7
 		Terminal: "term1"
 		Stmts: [{
 			CmdStr:   "cue import ./home/.config/demo/config.json"
@@ -291,7 +259,7 @@ Steps: {
 	inspect_initial_cue: {
 		StepType: 1
 		Name:     "inspect_initial_cue"
-		Order:    10
+		Order:    8
 		Terminal: "term1"
 		Stmts: [{
 			CmdStr:   "cat ./home/.config/demo/config.cue"
@@ -339,7 +307,7 @@ Steps: {
 	export_json: {
 		StepType: 1
 		Name:     "export_json"
-		Order:    11
+		Order:    9
 		Terminal: "term1"
 		Stmts: [{
 			CmdStr:   "cue export ./home/.config/demo/config.cue"
@@ -380,7 +348,7 @@ Steps: {
 	export_json_diff: {
 		StepType: 1
 		Name:     "export_json_diff"
-		Order:    12
+		Order:    10
 		Terminal: "term1"
 		Stmts: [{
 			CmdStr:   "mv ./home/.config/demo/config.json ./home/.config/demo/config.json.copy"
@@ -399,7 +367,7 @@ Steps: {
 	initial_main_cueconfig: {
 		StepType: 2
 		Name:     "initial_main_cueconfig"
-		Order:    13
+		Order:    11
 		Terminal: "term1"
 		Language: "go"
 		Renderer: {
@@ -452,7 +420,7 @@ Steps: {
 	get_cueconfig_and_tidy: {
 		StepType: 1
 		Name:     "get_cueconfig_and_tidy"
-		Order:    14
+		Order:    12
 		Terminal: "term1"
 		Stmts: [{
 			CmdStr:   "go get github.com/cue-exp/cueconfig@v0.0.1"
@@ -504,7 +472,7 @@ Steps: {
 	run_initial_cueconfig: {
 		StepType: 1
 		Name:     "run_initial_cueconfig"
-		Order:    15
+		Order:    13
 		Terminal: "term1"
 		Stmts: [{
 			CmdStr:   "go run ."
@@ -551,7 +519,7 @@ Steps: {
 	create_initial_schema: {
 		StepType: 2
 		Name:     "create_initial_schema"
-		Order:    16
+		Order:    14
 		Terminal: "term1"
 		Language: "cue"
 		Renderer: {
@@ -577,7 +545,7 @@ Steps: {
 	update_main_schema: {
 		StepType: 2
 		Name:     "update_main_schema"
-		Order:    17
+		Order:    15
 		Terminal: "term1"
 		Language: "go"
 		Renderer: {
@@ -636,7 +604,7 @@ Steps: {
 	run_initial_schema: {
 		StepType: 1
 		Name:     "run_initial_schema"
-		Order:    18
+		Order:    16
 		Terminal: "term1"
 		Stmts: [{
 			CmdStr:   "go run ."
@@ -683,7 +651,7 @@ Steps: {
 	break_config_additional_field: {
 		StepType: 2
 		Name:     "break_config_additional_field"
-		Order:    19
+		Order:    17
 		Terminal: "term1"
 		Language: "cue"
 		Renderer: {
@@ -733,7 +701,7 @@ Steps: {
 	run_broken_config_additional_field: {
 		StepType: 1
 		Name:     "run_broken_config_additional_field"
-		Order:    20
+		Order:    18
 		Terminal: "term1"
 		Stmts: [{
 			Negated:  true
@@ -752,7 +720,7 @@ Steps: {
 	restore_config_working: {
 		StepType: 2
 		Name:     "restore_config_working"
-		Order:    21
+		Order:    19
 		Terminal: "term1"
 		Language: "cue"
 		Renderer: {
@@ -801,7 +769,7 @@ Steps: {
 	run_check_config_working: {
 		StepType: 1
 		Name:     "run_check_config_working"
-		Order:    22
+		Order:    20
 		Terminal: "term1"
 		Stmts: [{
 			CmdStr:   "go run ."
@@ -848,7 +816,7 @@ Steps: {
 	modify_config_dry: {
 		StepType: 2
 		Name:     "modify_config_dry"
-		Order:    23
+		Order:    21
 		Terminal: "term1"
 		Language: "cue"
 		Renderer: {
@@ -897,7 +865,7 @@ Steps: {
 	run_check_config_dry: {
 		StepType: 1
 		Name:     "run_check_config_dry"
-		Order:    24
+		Order:    22
 		Terminal: "term1"
 		Stmts: [{
 			CmdStr:   "go run ."
@@ -944,7 +912,7 @@ Steps: {
 	create_initial_defaults: {
 		StepType: 2
 		Name:     "create_initial_defaults"
-		Order:    25
+		Order:    23
 		Terminal: "term1"
 		Language: "cue"
 		Renderer: {
@@ -961,7 +929,7 @@ Steps: {
 	update_main_defaults: {
 		StepType: 2
 		Name:     "update_main_defaults"
-		Order:    26
+		Order:    24
 		Terminal: "term1"
 		Language: "go"
 		Renderer: {
@@ -1023,7 +991,7 @@ Steps: {
 	run_check_defaults: {
 		StepType: 1
 		Name:     "run_check_defaults"
-		Order:    27
+		Order:    25
 		Terminal: "term1"
 		Stmts: [{
 			CmdStr:   "go run ."
@@ -1070,7 +1038,7 @@ Steps: {
 	update_main_runtime: {
 		StepType: 2
 		Name:     "update_main_runtime"
-		Order:    28
+		Order:    26
 		Terminal: "term1"
 		Language: "go"
 		Renderer: {
@@ -1138,7 +1106,7 @@ Steps: {
 	update_schema_runtime: {
 		StepType: 2
 		Name:     "update_schema_runtime"
-		Order:    29
+		Order:    27
 		Terminal: "term1"
 		Language: "cue"
 		Renderer: {
@@ -1170,7 +1138,7 @@ Steps: {
 	update_config_runtime: {
 		StepType: 2
 		Name:     "update_config_runtime"
-		Order:    30
+		Order:    28
 		Terminal: "term1"
 		Language: "cue"
 		Renderer: {
@@ -1221,7 +1189,7 @@ Steps: {
 	run_check_runtime: {
 		StepType: 1
 		Name:     "run_check_runtime"
-		Order:    31
+		Order:    29
 		Terminal: "term1"
 		Stmts: [{
 			CmdStr:   "go run ."
@@ -1266,5 +1234,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "5ab76f8ce3183aea299d772ebef08c1d44c92a71752fcbd21d6b8b68dc363691"
+Hash: "50943b1fd985cad0c022486a934dd81846e5bda9969f224cca10c6e86fda67e5"
 Delims: ["{{{", "}}}"]
