@@ -24,7 +24,10 @@ Steps: {
 		Stmts: [{
 			CmdStr:   "go version"
 			ExitCode: 0
-			Output:   "go version go1.19.1 linux/amd64"
+			Output: """
+				go version go1.19.1 linux/amd64
+
+				"""
 		}]
 	}
 	go119_mkcert_install: {
@@ -94,5 +97,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "e02e44a4f6bb7d7b6fde80ddd0078920a147a3f750d737746f64df50cb0d2e5f"
+Hash: "6b1ba1f958a40ef6bc888200197cfe629a39b379c6755b52d23d052ffdd5a4b0"
 Delims: ["{{{", "}}}"]

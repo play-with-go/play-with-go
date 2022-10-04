@@ -82,7 +82,10 @@ Steps: {
 		Stmts: [{
 			CmdStr:   "go version"
 			ExitCode: 0
-			Output:   "go version go1.19.1 linux/amd64"
+			Output: """
+				go version go1.19.1 linux/amd64
+
+				"""
 		}]
 	}
 	go_env: {
@@ -299,5 +302,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "45293319d0d701a41e33b13d48e330e2dd45359f216da1e9a9230e7b50f561cd"
+Hash: "f8724749417fb0d90978efddb54cc595cf5560e901020ba8b0b594f7337d6cda"
 Delims: ["{{{", "}}}"]

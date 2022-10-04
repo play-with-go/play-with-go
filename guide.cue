@@ -22,8 +22,9 @@ _#golangToolsLatest: "v0.1.13-0.20220917004541-4d18923f060e"
 _#StablePsuedoversionSuffix: "20060102150405-abcedf12345"
 
 _#goVersionSanitisers: [{
-	Pattern:     #"linux\/.+(?:\n$)"#
+	Pattern:     #"linux\/.+$"#
 	Replacement: "linux/amd64"
+	LineWise:    true
 }]
 
 _#goVersionMSanitisers: [

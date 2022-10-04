@@ -433,8 +433,9 @@ Steps: {
         Stmts: [{
             Cmd: "go version"
             Sanitisers: [{
-                Pattern:     "linux\\/.+(?:\\n$)"
+                Pattern:     "linux\\/.+$"
                 Replacement: "linux/amd64"
+                LineWise:    true
             }]
         }]
         Terminal: string
@@ -1818,7 +1819,10 @@ Steps: {
         Stmts: [{
             CmdStr:   "go version"
             ExitCode: 0
-            Output:   "go version go1.19.1 linux/amd64"
+            Output: """
+                go version go1.19.1 linux/amd64
+
+                """
         }]
     }
     pwd_home: {
@@ -2952,7 +2956,7 @@ Steps: {
             ExitCode: 0
             Output: """
                 PASS
-                ok  \t{{{.GREETINGS}}}\t0.002s
+                ok  \t{{{.GREETINGS}}}\t0.001s
 
                 """
         }, {
@@ -3286,7 +3290,7 @@ Steps: {
             ExitCode: 0
             Output: """
                 PASS
-                ok  \t{{{.GREETINGS}}}\t0.002s
+                ok  \t{{{.GREETINGS}}}\t0.001s
 
                 """
         }]
@@ -3357,7 +3361,7 @@ Steps: {
         }]
     }
 }
-Hash: "40fe1df5454c68f78e248200c18f7acc458eb3ed58bef36a817520456ea81b63"
+Hash: "9e4f02d46d20499be5e4590c8b6068da3c3a6715ab541822dd296e631cd5b491"
 Delims: ["{{{", "}}}"]
 // ---
 Networks: ["playwithgo_pwg"]
@@ -3435,8 +3439,9 @@ Steps: {
         Stmts: [{
             Cmd: "go version"
             Sanitisers: [{
-                Pattern:     "linux\\/.+(?:\\n$)"
+                Pattern:     "linux\\/.+$"
                 Replacement: "linux/amd64"
+                LineWise:    true
             }]
         }]
         Terminal: string
@@ -3558,7 +3563,10 @@ Steps: {
         Stmts: [{
             CmdStr:   "go version"
             ExitCode: 0
-            Output:   "go version go1.19.1 linux/amd64"
+            Output: """
+                go version go1.19.1 linux/amd64
+
+                """
         }]
     }
     pwd_home: {
@@ -3708,7 +3716,7 @@ Steps: {
         }]
     }
 }
-Hash: "842d73bc83bb7772d2550172b759aa5a927bb95014b906a59d8b3bf138997e48"
+Hash: "22d44d4092b52269a9225228ea2e3a33bbb0b27545b941917b905f36535c5c4c"
 Delims: ["{{{", "}}}"]
 // ---
 Networks: ["playwithgo_pwg"]
@@ -3812,8 +3820,9 @@ Steps: {
         Stmts: [{
             Cmd: "go version"
             Sanitisers: [{
-                Pattern:     "linux\\/.+(?:\\n$)"
+                Pattern:     "linux\\/.+$"
                 Replacement: "linux/amd64"
+                LineWise:    true
             }]
         }]
         Terminal: string
@@ -3996,7 +4005,10 @@ Steps: {
         Stmts: [{
             CmdStr:   "go version"
             ExitCode: 0
-            Output:   "go version go1.19.1 linux/amd64"
+            Output: """
+                go version go1.19.1 linux/amd64
+
+                """
         }]
     }
     go_env: {
@@ -4213,7 +4225,7 @@ Steps: {
         }]
     }
 }
-Hash: "45293319d0d701a41e33b13d48e330e2dd45359f216da1e9a9230e7b50f561cd"
+Hash: "f8724749417fb0d90978efddb54cc595cf5560e901020ba8b0b594f7337d6cda"
 Delims: ["{{{", "}}}"]
 // ---
 Networks: ["playwithgo_pwg"]
@@ -5242,8 +5254,9 @@ Steps: {
         Stmts: [{
             Cmd: "go version"
             Sanitisers: [{
-                Pattern:     "linux\\/.+(?:\\n$)"
+                Pattern:     "linux\\/.+$"
                 Replacement: "linux/amd64"
+                LineWise:    true
             }]
         }]
         Terminal: string
@@ -5738,7 +5751,10 @@ Steps: {
         Stmts: [{
             CmdStr:   "go version"
             ExitCode: 0
-            Output:   "go version go1.19.1 linux/amd64"
+            Output: """
+                go version go1.19.1 linux/amd64
+
+                """
         }]
     }
     painkiller_go_mod_init: {
@@ -6245,7 +6261,7 @@ Steps: {
         }]
     }
 }
-Hash: "90c0f116a15b1df7f7af6b38eb3484d777595b273f26ff7e9efb9f0e8010e61e"
+Hash: "8977183b2cced1416d98c478153b4db07029403c8977f4ccef9712fa465526f6"
 Delims: ["{{{", "}}}"]
 // ---
 Networks: ["playwithgo_pwg"]
@@ -6345,8 +6361,9 @@ Steps: {
         Stmts: [{
             Cmd: "go version"
             Sanitisers: [{
-                Pattern:     "linux\\/.+(?:\\n$)"
+                Pattern:     "linux\\/.+$"
                 Replacement: "linux/amd64"
+                LineWise:    true
             }]
         }]
         Terminal: string
@@ -7036,7 +7053,10 @@ Steps: {
         Stmts: [{
             CmdStr:   "go version"
             ExitCode: 0
-            Output:   "go version go1.19.1 linux/amd64"
+            Output: """
+                go version go1.19.1 linux/amd64
+
+                """
         }]
     }
     proverb_create: {
@@ -7961,7 +7981,7 @@ Steps: {
         }]
     }
 }
-Hash: "e0156387dca9f4e908778aa3cd2f560cad49a3a8a076d6a62ffcea58e2f73268"
+Hash: "d7b4bb98c1a487db529a3def4f4cde56cfceb482cda16bbcefd1371a144fc72a"
 Delims: ["{{{", "}}}"]
 // ---
 Networks: ["playwithgo_pwg"]
@@ -8038,8 +8058,9 @@ Steps: {
         Stmts: [{
             Cmd: "go version"
             Sanitisers: [{
-                Pattern:     "linux\\/.+(?:\\n$)"
+                Pattern:     "linux\\/.+$"
                 Replacement: "linux/amd64"
+                LineWise:    true
             }]
         }]
         Terminal: string
@@ -8104,7 +8125,10 @@ Steps: {
         Stmts: [{
             CmdStr:   "go version"
             ExitCode: 0
-            Output:   "go version go1.19.1 linux/amd64"
+            Output: """
+                go version go1.19.1 linux/amd64
+
+                """
         }]
     }
     go119_mkcert_install: {
@@ -8174,7 +8198,7 @@ Steps: {
         }]
     }
 }
-Hash: "e02e44a4f6bb7d7b6fde80ddd0078920a147a3f750d737746f64df50cb0d2e5f"
+Hash: "6b1ba1f958a40ef6bc888200197cfe629a39b379c6755b52d23d052ffdd5a4b0"
 Delims: ["{{{", "}}}"]
 // ---
 Networks: ["playwithgo_pwg"]
@@ -8257,8 +8281,9 @@ Steps: {
         Stmts: [{
             Cmd: "go version"
             Sanitisers: [{
-                Pattern:     "linux\\/.+(?:\\n$)"
+                Pattern:     "linux\\/.+$"
                 Replacement: "linux/amd64"
+                LineWise:    true
             }]
         }]
         Terminal: string
@@ -8954,7 +8979,10 @@ Steps: {
         Stmts: [{
             CmdStr:   "go version"
             ExitCode: 0
-            Output:   "go version go1.19.1 linux/amd64"
+            Output: """
+                go version go1.19.1 linux/amd64
+
+                """
         }]
     }
     staticcheck_install: {
@@ -9746,7 +9774,7 @@ Steps: {
         }]
     }
 }
-Hash: "8200d1ab1c995b0b3438c73a25d9c9cf67a2776285f710d502f43f987efc80db"
+Hash: "385fd8d591067972131ec9241e14958a582d20514d5e3e6bb27b36e036fe40b2"
 Delims: ["{{{", "}}}"]
 // ---
 Networks: ["playwithgo_pwg"]
@@ -9853,8 +9881,9 @@ Steps: {
         Stmts: [{
             Cmd: "go version"
             Sanitisers: [{
-                Pattern:     "linux\\/.+(?:\\n$)"
+                Pattern:     "linux\\/.+$"
                 Replacement: "linux/amd64"
+                LineWise:    true
             }]
         }]
         Terminal: string
@@ -10246,7 +10275,10 @@ Steps: {
         Stmts: [{
             CmdStr:   "go version"
             ExitCode: 0
-            Output:   "go version go1.19.1 linux/amd64"
+            Output: """
+                go version go1.19.1 linux/amd64
+
+                """
         }]
     }
     public_init: {
@@ -10583,7 +10615,7 @@ Steps: {
             Output: """
                 go: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 404 Not Found
                 \tserver response:
-                \tnot found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/8174d40ee07dbff8ba120e684692e03a12d67fd862d96e6453ba3222ebe3367c: exit status 128:
+                \tnot found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/6f24e6c3f0f418f23971c3f3f96e9d70729d1ef5d14781310442dcb8d214d2f6: exit status 128:
                 \t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
                 \tConfirm the import path was entered correctly.
                 \tIf this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
@@ -10615,7 +10647,7 @@ Steps: {
                 go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
                 go: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 404 Not Found
                 \tserver response:
-                \tnot found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/8174d40ee07dbff8ba120e684692e03a12d67fd862d96e6453ba3222ebe3367c: exit status 128:
+                \tnot found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/6f24e6c3f0f418f23971c3f3f96e9d70729d1ef5d14781310442dcb8d214d2f6: exit status 128:
                 \t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
                 \tConfirm the import path was entered correctly.
                 \tIf this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
@@ -10703,7 +10735,7 @@ Steps: {
         }]
     }
 }
-Hash: "79d8442564f5e3fd17f6cffc41f9f17969b543884b9d7c743dd9891394cf051a"
+Hash: "d19d2d53c22999d1a0057f28bad1f57f08af47455f6634d1746efa923a02bbd2"
 Delims: ["{{{", "}}}"]
 // ---
 Networks: ["playwithgo_pwg"]
@@ -10808,8 +10840,9 @@ Steps: {
         Stmts: [{
             Cmd: "go version"
             Sanitisers: [{
-                Pattern:     "linux\\/.+(?:\\n$)"
+                Pattern:     "linux\\/.+$"
                 Replacement: "linux/amd64"
+                LineWise:    true
             }]
         }]
         Terminal: string
@@ -11248,7 +11281,10 @@ Steps: {
         Stmts: [{
             CmdStr:   "go version"
             ExitCode: 0
-            Output:   "go version go1.19.1 linux/amd64"
+            Output: """
+                go version go1.19.1 linux/amd64
+
+                """
         }]
     }
     branch_init: {
@@ -11731,7 +11767,7 @@ Steps: {
         }]
     }
 }
-Hash: "3f05fa31786a39bbda64558b6fdd6069144925c39f6994d2839481793b328ac7"
+Hash: "b95bad945dd62885ac3329f46de99c150b7afdfc83ff05be98c322ddbfbefa57"
 Delims: ["{{{", "}}}"]
 // ---
 Networks: ["playwithgo_pwg"]
@@ -11868,8 +11904,9 @@ Steps: {
         Stmts: [{
             Cmd: "go version"
             Sanitisers: [{
-                Pattern:     "linux\\/.+(?:\\n$)"
+                Pattern:     "linux\\/.+$"
                 Replacement: "linux/amd64"
+                LineWise:    true
             }]
         }, {
             Cmd: "cue version"
@@ -12657,7 +12694,10 @@ Steps: {
         Stmts: [{
             CmdStr:   "go version"
             ExitCode: 0
-            Output:   "go version go1.19.1 linux/amd64"
+            Output: """
+                go version go1.19.1 linux/amd64
+
+                """
         }, {
             CmdStr:   "cue version"
             ExitCode: 0
@@ -13880,7 +13920,7 @@ Steps: {
         }]
     }
 }
-Hash: "061d934d15a6d4303f898cac6fb28ce97465695997c97ec32268f61a4b068aa9"
+Hash: "5ab76f8ce3183aea299d772ebef08c1d44c92a71752fcbd21d6b8b68dc363691"
 Delims: ["{{{", "}}}"]
 // ---
 import "strings"

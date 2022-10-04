@@ -1,7 +1,8 @@
 $ sudo mkdir -p /var/gocache /var/gomodcache
 $ sudo chown gopher:gopher /var/gocache /var/gomodcache
 $ go version
-go version go1.19.1 linux/amd64$ cue version
+go version go1.19.1 linux/amd64
+$ cue version
 cue version v0.4.4-0.20220923112746-fe50dff0dce8
 
        -compiler gc

@@ -6,7 +6,8 @@ title: Creating a shell script
 ---
 
 <pre data-command-src="Z28gdmVyc2lvbgpjdWUgdmVyc2lvbgo="><code class="language-.term1">$ go version
-go version go1.19.1 linux/amd64$ cue version
+go version go1.19.1 linux/amd64
+$ cue version
 cue version v0.4.4-0.20220923112746-fe50dff0dce8
 
        -compiler gc

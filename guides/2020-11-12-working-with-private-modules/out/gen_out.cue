@@ -151,7 +151,10 @@ Steps: {
 		Stmts: [{
 			CmdStr:   "go version"
 			ExitCode: 0
-			Output:   "go version go1.19.1 linux/amd64"
+			Output: """
+				go version go1.19.1 linux/amd64
+
+				"""
 		}]
 	}
 	public_init: {
@@ -488,7 +491,7 @@ Steps: {
 			Output: """
 				go: module {{{.PRIVATE}}}: reading https://proxy.golang.org/{{{.PRIVATE}}}/@v/list: 404 Not Found
 				\tserver response:
-				\tnot found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/8174d40ee07dbff8ba120e684692e03a12d67fd862d96e6453ba3222ebe3367c: exit status 128:
+				\tnot found: module {{{.PRIVATE}}}: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/6f24e6c3f0f418f23971c3f3f96e9d70729d1ef5d14781310442dcb8d214d2f6: exit status 128:
 				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
 				\tConfirm the import path was entered correctly.
 				\tIf this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
@@ -520,7 +523,7 @@ Steps: {
 				go: downloading {{{.PRIVATE}}} v0.0.0-20060102150405-abcedf12345
 				go: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: verifying module: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: reading https://sum.golang.org/lookup/{{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: 404 Not Found
 				\tserver response:
-				\tnot found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/8174d40ee07dbff8ba120e684692e03a12d67fd862d96e6453ba3222ebe3367c: exit status 128:
+				\tnot found: {{{.PRIVATE}}}@v0.0.0-20060102150405-abcedf12345: invalid version: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/6f24e6c3f0f418f23971c3f3f96e9d70729d1ef5d14781310442dcb8d214d2f6: exit status 128:
 				\t\tfatal: could not read Username for 'https://gopher.live': terminal prompts disabled
 				\tConfirm the import path was entered correctly.
 				\tIf this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
@@ -608,5 +611,5 @@ Steps: {
 		}]
 	}
 }
-Hash: "79d8442564f5e3fd17f6cffc41f9f17969b543884b9d7c743dd9891394cf051a"
+Hash: "d19d2d53c22999d1a0057f28bad1f57f08af47455f6634d1746efa923a02bbd2"
 Delims: ["{{{", "}}}"]
