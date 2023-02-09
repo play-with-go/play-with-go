@@ -31,7 +31,7 @@ require (
 	github.com/docker/distribution v2.6.0-rc.1.0.20170726174610-edc3ab29cdff+incompatible // indirect
 	github.com/docker/go-connections v0.3.0 // indirect
 	github.com/docker/go-units v0.3.2 // indirect
-	github.com/emicklei/go-restful v2.4.0+incompatible // indirect
+	github.com/emicklei/go-restful v2.16.0+incompatible // indirect
 	github.com/emicklei/go-restful-swagger12 v0.0.0-20170208215640-dcef7f557305 // indirect
 	github.com/emicklei/proto v1.6.15 // indirect
 	github.com/ghodss/yaml v1.0.0 // indirect
