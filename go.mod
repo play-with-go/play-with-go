@@ -20,8 +20,6 @@ require (
 	docker.io/go-docker v1.0.0 // indirect
 	github.com/BurntSushi/toml v0.4.1 // indirect
 	github.com/Microsoft/go-winio v0.4.5 // indirect
-	github.com/PuerkitoBio/purell v1.1.1 // indirect
-	github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578 // indirect
 	github.com/aws/aws-sdk-go v1.38.23 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cespare/xxhash/v2 v2.1.1 // indirect
@@ -34,11 +32,6 @@ require (
 	github.com/emicklei/go-restful v2.4.0+incompatible // indirect
 	github.com/emicklei/go-restful-swagger12 v0.0.0-20170208215640-dcef7f557305 // indirect
 	github.com/emicklei/proto v1.6.15 // indirect
-	github.com/ghodss/yaml v1.0.0 // indirect
-	github.com/go-openapi/jsonpointer v0.19.5 // indirect
-	github.com/go-openapi/jsonreference v0.0.0-20161105162150-36d33bfe519e // indirect
-	github.com/go-openapi/spec v0.0.0-20171105074921-a4fa9574c7aa // indirect
-	github.com/go-openapi/swag v0.19.5 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
 	github.com/gogo/protobuf v1.2.1 // indirect
 	github.com/gohugoio/hugo v0.86.0 // indirect
@@ -65,7 +58,6 @@ require (
 	github.com/jteeuwen/go-bindata v3.0.7+incompatible // indirect
 	github.com/juju/ratelimit v1.0.1 // indirect
 	github.com/kr/text v0.2.0 // indirect
-	github.com/mailru/easyjson v0.0.0-20190626092158-b2ccc519800e // indirect
 	github.com/mattn/go-isatty v0.0.12 // indirect
 	github.com/mattn/go-runewidth v0.0.9 // indirect
 	github.com/matttproud/golang_protobuf_extensions v1.0.1 // indirect
@@ -119,9 +111,10 @@ require (
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 	honnef.co/go/tools v0.3.3 // indirect
 	k8s.io/api v0.0.0-20171027084545-218912509d74 // indirect
-	k8s.io/apimachinery v0.0.0-20171027084411-18a564baac72 // indirect
+	k8s.io/apimachinery v0.15.7 // indirect
 	k8s.io/client-go v5.0.1+incompatible // indirect
-	k8s.io/kube-openapi v0.0.0-20171101183504-39a7bf85c140 // indirect
+	k8s.io/klog v0.3.1 // indirect
 	mvdan.cc/dockexec v0.0.0-20200617140021-ca98d4465984 // indirect
 	mvdan.cc/sh/v3 v3.5.1 // indirect
+	sigs.k8s.io/yaml v1.1.0 // indirect
 )
