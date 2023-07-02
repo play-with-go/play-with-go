@@ -115,6 +115,8 @@ RUN unset GEM_HOME && unset GEM_BIN && \
 #
 
 RUN unset GEM_HOME && unset GEM_BIN && yes | gem install --force bundler
+RUN gem install sass
+RUN gem install sass-embedded --force
 RUN gem install jekyll -v3.8 -- \
     --use-system-libraries
 
