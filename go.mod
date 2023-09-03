@@ -40,7 +40,7 @@ require (
 	github.com/go-openapi/spec v0.0.0-20171105074921-a4fa9574c7aa // indirect
 	github.com/go-openapi/swag v0.19.5 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
-	github.com/gogo/protobuf v1.2.1 // indirect
+	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/gohugoio/hugo v0.86.0 // indirect
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b // indirect
 	github.com/golang/groupcache v0.0.0-20200121045136-8c9f03a8e57e // indirect
