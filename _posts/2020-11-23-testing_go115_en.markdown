@@ -1,0 +1,53 @@
+---
+difficulty: Beginner
+excerpt: Write Go tests and benchmarks
+guide: 2020-11-23-testing
+lang: en
+layout: post
+title: Testing in Go
+---
+
+<pre data-command-src="Z28gdmVyc2lvbgo="><code class="language-.term1">$ go version
+go version go1.15.5 linux/amd64
+</code></pre>
+
+<pre data-command-src="bWtkaXIgL2hvbWUvZ29waGVyL2ZpYgpjZCAvaG9tZS9nb3BoZXIvZmliCg=="><code class="language-.term1">$ mkdir /home/gopher/fib
+$ cd /home/gopher/fib
+</code></pre>
+
+<pre data-command-src="Z28gbW9kIGluaXQgZmliCg=="><code class="language-.term1">$ go mod init fib
+go: creating new go.mod: module fib
+</code></pre>
+
+<pre data-upload-path="L2hvbWUvZ29waGVyL2ZpYg==" data-upload-src="ZmliLmdv:cGFja2FnZSBmaWIKCmZ1bmMgRmliKG4gaW50KSBpbnQgewoJaWYgbiA8IDIgewoJCXJldHVybiBuCgl9CglyZXR1cm4gRmliKG4tMSkgKyBGaWIobi0yKQp9Cg==" data-upload-term=".term1"><code class="language-go">package fib
+
+func Fib(n int) int &#123;
+	if n &lt; 2 &#123;
+		return n
+	&#125;
+	return Fib(n-1) + Fib(n-2)
+&#125;
+</code></pre>
+
+<pre data-upload-path="L2hvbWUvZ29waGVyL2ZpYg==" data-upload-src="ZmliX3Rlc3QuZ28=:cGFja2FnZSBmaWIKCmltcG9ydCAidGVzdGluZyIKCmZ1bmMgQmVuY2htYXJrRmliMTAoYiAqdGVzdGluZy5CKSB7CgkvLyBydW4gdGhlIEZpYiBmdW5jdGlvbiBiLk4gdGltZXMKCWZvciBuIDo9IDA7IG4gPCBiLk47IG4rKyB7CgkJRmliKDEwKQoJfQp9Cg==" data-upload-term=".term1"><code class="language-go">package fib
+
+import &#34;testing&#34;
+
+func BenchmarkFib10(b *testing.B) &#123;
+	// run the Fib function b.N times
+	for n := 0; n &lt; b.N; n++ &#123;
+		Fib(10)
+	&#125;
+&#125;
+</code></pre>
+
+<pre data-command-src="Z28gdGVzdCAtYmVuY2g9Lgo="><code class="language-.term1">$ go test -bench=.
+goos: linux
+goarch: amd64
+pkg: fib
+BenchmarkFib10 	 3039295	       376 ns/op
+PASS
+ok  	fib	1.546s
+</code></pre>
+
+<script>let pageGuide="2020-11-23-testing"; let pageLanguage="en"; let pageScenario="go115";</script>
